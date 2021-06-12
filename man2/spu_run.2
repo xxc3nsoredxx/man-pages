@@ -21,7 +21,8 @@ Standard C library
 .BR "#include <sys/syscall.h>" "      /* Definition of " SYS_* " constants */"
 .B #include <unistd.h>
 .PP
-.BI "int spu_run(int " fd ", uint32_t *" npc ", uint32_t *" event );
+.BI "int syscall(SYS_spu_run, int " fd ", uint32_t *" npc \
+", uint32_t *" event );
 .fi
 .PP
 .IR Note :
@@ -219,7 +220,7 @@ int main(void)
     int context, fd, spu_status;
     uint32_t instruction, npc;
 
-    context = spu_create("/spu/example\-context", 0, 0755);
+    context = syscall(SYS_spu_create, "/spu/example\-context", 0, 0755);
     if (context == \-1)
         handle_error("spu_create");
 
@@ -241,7 +242,7 @@ int main(void)
      */
     npc = 0;
 
-    spu_status = spu_run(context, &npc, NULL);
+    spu_status = syscall(SYS_spu_run, context, &npc, NULL);
     if (spu_status == \-1)
         handle_error("open");
 
