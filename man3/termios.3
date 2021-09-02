@@ -348,7 +348,12 @@ bits.
 .B _BSD_SOURCE
 or
 .BR _SVID_SOURCE ]
-(Not implemented on Linux.)
+(Not implemented in glibc, supported on Linux via
+.BR TCGET *
+and
+.BR TCSET *
+ioctls; see
+.BR ioctl_tty (2))
 .TP
 .B CMSPAR
 (not in POSIX)
