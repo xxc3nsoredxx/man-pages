@@ -1209,6 +1209,16 @@ in the caller's context, no child process is created, and
 is set to indicate the error.
 .SH ERRORS
 .TP
+.BR EACCES " (" clone3 "() only)"
+.B CLONE_INTO_CGROUP
+was specified in
+.IR cl_args.flags ,
+but the restrictions (described in
+.BR cgroups (7))
+on placing the child process into the version 2 cgroup referred to by
+.I cl_args.cgroup
+are not met.
+.TP
 .B EAGAIN
 Too many processes are already running; see
 .BR fork (2).
