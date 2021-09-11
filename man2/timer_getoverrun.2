@@ -6,14 +6,15 @@
 .TH TIMER_GETOVERRUN 2 2021-03-22 Linux "Linux Programmer's Manual"
 .SH NAME
 timer_getoverrun \- get overrun count for a POSIX per-process timer
+.SH LIBRARY
+Real-time library
+.RI ( librt ", " -lrt )
 .SH SYNOPSIS
 .nf
 .B  #include <time.h>
 .PP
 .BI "int timer_getoverrun(timer_t " timerid );
 .fi
-.PP
-Link with \fI\-lrt\fP.
 .PP
 .RS -4
 Feature Test Macro Requirements for glibc (see
