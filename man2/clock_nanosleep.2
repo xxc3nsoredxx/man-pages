@@ -6,6 +6,14 @@
 .TH CLOCK_NANOSLEEP 2 2021-03-22 "Linux" "Linux Programmer's Manual"
 .SH NAME
 clock_nanosleep \- high-resolution sleep with specifiable clock
+.SH LIBRARY
+Standard C library
+.RI ( libc ", " -lc ),
+since glibc 2.17
+.PP
+Before glibc 2.17,
+Real-time library
+.RI ( librt ", " -lrt )
 .SH SYNOPSIS
 .B #include <time.h>
 .nf
@@ -14,8 +22,6 @@ clock_nanosleep \- high-resolution sleep with specifiable clock
 .BI "                    const struct timespec *" request ,
 .BI "                    struct timespec *" remain );
 .fi
-.PP
-Link with \fI\-lrt\fP (only for glibc versions before 2.17).
 .PP
 .RS -4
 Feature Test Macro Requirements for glibc (see
