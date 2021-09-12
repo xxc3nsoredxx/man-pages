@@ -7,7 +7,6 @@
 .SH NAME
 removexattr, lremovexattr, fremovexattr \- remove an extended attribute
 .SH SYNOPSIS
-.fam C
 .nf
 .B #include <sys/xattr.h>
 .PP
@@ -15,7 +14,6 @@ removexattr, lremovexattr, fremovexattr \- remove an extended attribute
 .BI "int lremovexattr(const char\ *" path ", const char\ *" name );
 .BI "int fremovexattr(int " fd ", const char\ *" name );
 .fi
-.fam T
 .SH DESCRIPTION
 Extended attributes are
 .IR name : value
