@@ -5,6 +5,13 @@
 .TH IO_CANCEL 2 2021-03-22 "Linux" "Linux Programmer's Manual"
 .SH NAME
 io_cancel \- cancel an outstanding asynchronous I/O operation
+.SH LIBRARY
+Standard C library
+.RI ( libc ", " -lc )
+.PP
+Alternatively, Asynchronous I/O library
+.RI ( libaio ", " -laio );
+see NOTES.
 .SH SYNOPSIS
 .nf
 .BR "#include <linux/aio_abi.h>" "    /* Definition of needed types */"
