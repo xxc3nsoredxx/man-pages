@@ -18,6 +18,9 @@
 .TH MIGRATE_PAGES 2 2021-03-22 "Linux" "Linux Programmer's Manual"
 .SH NAME
 migrate_pages \- move all pages in a process to another set of nodes
+.SH LIBRARY
+NUMA (Non-Uniform Memory Access) policy library
+.RI ( libnuma ", " -lnuma )
 .SH SYNOPSIS
 .nf
 .B #include <numaif.h>
@@ -26,11 +29,6 @@ migrate_pages \- move all pages in a process to another set of nodes
 .BI "                   const unsigned long *" old_nodes,
 .BI "                   const unsigned long *" new_nodes );
 .fi
-.PP
-.IR Note :
-There is no glibc wrapper for this system call; see NOTES.
-.PP
-Link with \fI\-lnuma\fP.
 .SH DESCRIPTION
 .BR migrate_pages ()
 attempts to move all pages of the process
@@ -143,7 +141,6 @@ system call first appeared on Linux in version 2.6.16.
 .SH CONFORMING TO
 This system call is Linux-specific.
 .SH NOTES
-Glibc does not provide a wrapper for this system call.
 For information on library support, see
 .BR numa (7).
 .PP
