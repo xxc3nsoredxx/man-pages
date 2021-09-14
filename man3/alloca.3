@@ -90,11 +90,8 @@ originates from PWB and 32V, and appears in all their derivatives.
 The
 .BR alloca ()
 function is machine- and compiler-dependent.
-For certain applications,
-its use can improve efficiency compared to the use of
-.BR malloc (3)
-plus
-.BR free (3).
+Because it allocates from the stack, it's faster than
+.BR malloc (3)/ free (3).
 In certain cases,
 it can also simplify memory deallocation in applications that use
 .BR longjmp (3)
@@ -140,6 +137,13 @@ The fact that
 .BR alloca ()
 is a built-in means it is impossible to take its address
 or to change its behavior by linking with a different library.
+.PP
+Variable length arrays (VLAs) are part of the C99 standard,
+optional since C11, and can be used for a similar purpose.
+However, they do not port to standard C++, and, being variables,
+live in their block scope and don't have an allocator-like interface,
+making them unfit for implementing functionality like
+.BR strdupa (3).
 .SH BUGS
 Due to the nature of the stack, it is impossible to check if the allocation
 would overflow the space available, and, hence, neither is indicating an error.
