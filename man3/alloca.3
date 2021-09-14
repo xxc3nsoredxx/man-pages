@@ -163,10 +163,11 @@ The inlined code often consists of a single instruction adjusting
 the stack pointer, and does not check for stack overflow.
 Thus, there is no NULL error return.
 .SH BUGS
-There is no error indication if the stack frame cannot be extended.
-(However, after a failed allocation, the program is likely to receive a
+Due to the nature of the stack, it is impossible to check if the allocation
+would overflow the space available, and, hence, neither is indicating an error.
+(However, the program is likely to receive a
 .B SIGSEGV
-signal if it attempts to access the unallocated space.)
+signal if it attempts to access unavailable space.)
 .PP
 On many systems
 .BR alloca ()
