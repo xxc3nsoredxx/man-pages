@@ -27,6 +27,9 @@
 .TH GET_MEMPOLICY 2 2021-03-22 Linux "Linux Programmer's Manual"
 .SH NAME
 get_mempolicy \- retrieve NUMA memory policy for a thread
+.SH LIBRARY
+NUMA (Non-Uniform Memory Access) policy library
+.RI ( libnuma ", " -lnuma )
 .SH SYNOPSIS
 .B "#include <numaif.h>"
 .nf
@@ -34,12 +37,7 @@ get_mempolicy \- retrieve NUMA memory policy for a thread
 .BI "long get_mempolicy(int *" mode ", unsigned long *" nodemask ,
 .BI "                   unsigned long " maxnode ", void *" addr ,
 .BI "                   unsigned long " flags );
-.PP
-Link with \fI\-lnuma\fP.
 .fi
-.PP
-.IR Note :
-There is no glibc wrapper for this system call; see NOTES.
 .SH DESCRIPTION
 .BR get_mempolicy ()
 retrieves the NUMA policy of the calling thread or of a memory address,
@@ -242,7 +240,6 @@ system call was added to the Linux kernel in version 2.6.7.
 .SH CONFORMING TO
 This system call is Linux-specific.
 .SH NOTES
-Glibc does not provide a wrapper for this system call.
 For information on library support, see
 .BR numa (7).
 .SH SEE ALSO
