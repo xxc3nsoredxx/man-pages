@@ -616,10 +616,10 @@ is the device name as a null-terminated string, for example, eth0.
 .PP
 This structure is obsolete and should not be used in new code.
 .SH BUGS
+.SS LLC header handling
 The IEEE 802.2/803.3 LLC handling could be considered as a bug.
 .PP
-Socket filters are not documented.
-.PP
+.SS MSG_TRUNC issues
 The
 .B MSG_TRUNC
 .BR recvmsg (2)
@@ -627,6 +627,38 @@ extension is an ugly hack and should be replaced by a control message.
 There is currently no way to get the original destination address of
 packets via
 .BR SOCK_DGRAM .
+.PP
+.SS spkt_device device name truncation
+The
+.I spkt_device
+field of
+.I sockaddr_pkt
+has a size of 14 bytes which is less than the constant
+.B IFNAMSIZ
+defined in
+.I <net/if.h>
+which is 16 bytes and describes the system limit for a network interface name.
+This means the names of network devices longer than 14 bytes will be truncated
+to fit into
+.IR spkt_device .
+All these lengths include the terminating null byte (\(aq\e0\(aq)).
+.PP
+Issues from this with old code typically show up with very long interface
+names used by the
+.B Predictable Network Interface Names
+feature enabled by default in many modern Linux distributions.
+.PP
+The preferred solution is to rewrite code to avoid
+.BR SOCK_PACKET .
+Possible user solutions are to disable
+.B Predictable Network Interface Names
+or to rename the interface to a name of at most 13 bytes, for example using
+the
+.BR ip (8)
+tool.
+.PP
+.SS Documentation issues
+Socket filters are not documented.
 .\" .SH CREDITS
 .\" This man page was written by Andi Kleen with help from Matthew Wilcox.
 .\" AF_PACKET in Linux 2.2 was implemented
@@ -637,7 +669,8 @@ packets via
 .BR capabilities (7),
 .BR ip (7),
 .BR raw (7),
-.BR socket (7)
+.BR socket (7),
+.BR ip (8),
 .PP
 RFC\ 894 for the standard IP Ethernet encapsulation.
 RFC\ 1700 for the IEEE 802.3 IP encapsulation.
