@@ -252,6 +252,38 @@ data on sockets that support this notion (e.g., of type
 the underlying protocol must also support
 .I out-of-band
 data.
+.TP
+.BR MSG_FASTOPEN " (since Linux 3.7)"
+Attempts TCP Fast Open (RFC7413) and sends data in the SYN like a
+combination of
+.BR connect (2)
+and
+.BR write (2),
+by performing an implicit
+.BR connect (2)
+operation.
+It blocks until the data is buffered and the handshake has completed.
+For a non-blocking socket,
+it returns the number of bytes buffered and sent in the SYN packet.
+If the cookie is not available locally,
+it returns
+.BR EINPROGRESS ,
+and sends a SYN with a Fast Open cookie request automatically.
+The caller needs to write the data again when the socket is connected.
+On errors,
+it sets the same
+.I errno
+as
+.BR connect (2)
+if the handshake fails.
+This flag requires enabling TCP Fast Open client support on sysctl
+.IR net.ipv4.tcp_fastopen .
+.IP
+Refer to
+.B TCP_FASTOPEN_CONNECT
+socket option in
+.BR tcp (7)
+for an alternative approach.
 .SS sendmsg()
 The definition of the
 .I msghdr
