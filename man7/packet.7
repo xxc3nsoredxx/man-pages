@@ -633,18 +633,19 @@ The
 .I spkt_device
 field of
 .I sockaddr_pkt
-has a size of 14 bytes which is less than the constant
+has a size of 14 bytes,
+which is less than the constant
 .B IFNAMSIZ
 defined in
 .I <net/if.h>
 which is 16 bytes and describes the system limit for a network interface name.
-This means the names of network devices longer than 14 bytes will be truncated
-to fit into
+This means the names of network devices longer than 14 bytes
+will be truncated to fit into
 .IR spkt_device .
 All these lengths include the terminating null byte (\(aq\e0\(aq)).
 .PP
-Issues from this with old code typically show up with very long interface
-names used by the
+Issues from this with old code typically show up with
+very long interface names used by the
 .B Predictable Network Interface Names
 feature enabled by default in many modern Linux distributions.
 .PP
@@ -652,8 +653,8 @@ The preferred solution is to rewrite code to avoid
 .BR SOCK_PACKET .
 Possible user solutions are to disable
 .B Predictable Network Interface Names
-or to rename the interface to a name of at most 13 bytes, for example using
-the
+or to rename the interface to a name of at most 13 bytes,
+for example using the
 .BR ip (8)
 tool.
 .PP
