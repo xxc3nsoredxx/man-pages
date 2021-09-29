@@ -721,6 +721,9 @@ invalid state for the applied operation.
 called on an already connected socket or a target address was
 specified on a connected socket.
 .TP
+.B ENFILE
+The system-wide limit on the total number of open files has been reached.
+.TP
 .B ENOENT
 The pathname in the remote address specified to
 .BR connect (2)
