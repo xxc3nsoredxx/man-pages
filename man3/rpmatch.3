@@ -125,19 +125,15 @@ is available on a few other systems.
 .\" It is available on at least AIX 5.1 and FreeBSD 6.0.
 .SH BUGS
 The
-.BR rpmatch ()
-implementation looks at only the first character
-of
+.BR YESEXPR " and " NOEXPR
+of some locales (including "C") only inspect the first character of the
 .IR response .
-As a consequence, "nyes" returns 0, and
-"ynever; not in a million years" returns 1.
-It would be preferable to accept input strings much more
-strictly, for example (using the extended regular
-expression notation described in
-.BR regex (7)):
-.B \(ha([yY]|yes|YES)$
-and
-.BR \(ha([nN]|no|NO)$ .
+This can mean that "yno" et al. resolve to
+.BR 1 .
+This is an unfortunate historical side-effect which should be fixed in time
+with proper localisation, and should not deter from
+.BR rpmatch ()
+being the proper way to distinguish between binary answers.
 .SH EXAMPLES
 The following program displays the results when
 .BR rpmatch ()
