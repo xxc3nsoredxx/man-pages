@@ -173,15 +173,14 @@ function man_lsvar()
 
 function pdfman()
 {
-	if (($# != 1)); then
-		>&2 echo "Usage: ${FUNCNAME[0]} <man-page.n>";
+	if (($# == 0)); then
+		>&2 echo "Usage: ${FUNCNAME[0]} [man(1) options] [section] page";
 		return ${EX_USAGE};
 	fi;
 
-	local tmp="$(mktemp -t "${1##*/}.XXXXXX")";
+	local tmp="$(mktemp -t "${!###*/}.XXXXXX")";
 
-	<${1} \
-	man -Tps -l - \
+	man -Tps $@ \
 	|ps2pdf - - \
 	>${tmp};
 	xdg-open ${tmp};
