@@ -7,6 +7,9 @@
 .SH NAME
 timer_settime, timer_gettime \- arm/disarm and fetch
 state of POSIX per-process timer
+.SH LIBRARY
+Real-time library
+.RI ( librt ", " -lrt )
 .SH SYNOPSIS
 .nf
 .B  #include <time.h>
@@ -16,8 +19,6 @@ state of POSIX per-process timer
 .BI "                  struct itimerspec *restrict " old_value );
 .BI "int timer_gettime(timer_t " timerid ", struct itimerspec *" curr_value );
 .fi
-.PP
-Link with \fI\-lrt\fP.
 .PP
 .RS -4
 Feature Test Macro Requirements for glibc (see
