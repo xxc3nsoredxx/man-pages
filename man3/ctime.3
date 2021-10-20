@@ -24,10 +24,12 @@ Standard C library
 .B #include <time.h>
 .PP
 .BI "char *asctime(const struct tm *" tm );
-.BI "char *asctime_r(const struct tm *restrict " tm ", char *restrict " buf );
+.BI "char *asctime_r(const struct tm *restrict " tm ,
+.BI "                    char " buf "[restrict 26]);"
 .PP
 .BI "char *ctime(const time_t *" timep );
-.BI "char *ctime_r(const time_t *restrict " timep ", char *restrict " buf );
+.BI "char *ctime_r(const time_t *restrict " timep ,
+.BI "                    char " buf "[restrict 26]);"
 .PP
 .BI "struct tm *gmtime(const time_t *" timep );
 .BI "struct tm *gmtime_r(const time_t *restrict " timep ,
