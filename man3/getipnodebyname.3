@@ -16,11 +16,12 @@ Standard C library
 .B #include <sys/socket.h>
 .B #include <netdb.h>
 .PP
-.BI "struct hostent *getipnodebyname(const char *" name ", int " af ,
-.BI "                                int " flags ", int *" error_num );
-.BI "struct hostent *getipnodebyaddr(const void *" addr ", size_t " len ,
-.BI "                                int " af ", int *" "error_num" );
-.BI "void freehostent(struct hostent *" "ip" );
+.BI "[[deprecated]] struct hostent *getipnodebyname(const char *" name ", int " af ,
+.BI "                                            int " flags ", int *" error_num );
+.BI "[[deprecated]] struct hostent *getipnodebyaddr(const void *" addr ,
+.BI "                                            size_t " len ", int " af ,
+.BI "                                            int *" "error_num" );
+.BI "[[deprecated]] void freehostent(struct hostent *" "ip" );
 .fi
 .SH DESCRIPTION
 These functions are deprecated (and unavailable in glibc).
