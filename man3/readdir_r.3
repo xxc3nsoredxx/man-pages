@@ -13,8 +13,9 @@ Standard C library
 .nf
 .B #include <dirent.h>
 .PP
-.BI "int readdir_r(DIR *restrict " dirp ", struct dirent *restrict " entry ,
-.BI "              struct dirent **restrict " result );
+.BI "[[deprecated]] int readdir_r(DIR *restrict " dirp ,
+.BI "                             struct dirent *restrict " entry ,
+.BI "                             struct dirent **restrict " result );
 .fi
 .PP
 .RS -4
