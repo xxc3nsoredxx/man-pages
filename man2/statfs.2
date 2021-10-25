@@ -15,8 +15,8 @@ Standard C library
 .nf
 .BR "#include <sys/vfs.h>    " "/* or <sys/statfs.h> */"
 .PP
-.BI "int statfs(const char *" path ", struct statfs *" buf );
-.BI "int fstatfs(int " fd ", struct statfs *" buf );
+.BI "[[deprecated]] int statfs(const char *" path ", struct statfs *" buf );
+.BI "[[deprecated]] int fstatfs(int " fd ", struct statfs *" buf );
 .fi
 .SH DESCRIPTION
 The
