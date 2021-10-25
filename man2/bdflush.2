@@ -12,12 +12,9 @@ bdflush \- start, flush, or tune buffer-dirty-flush daemon
 .nf
 .B #include <sys/kdaemon.h>
 .PP
-.BI "int bdflush(int "  func ", long *" address );
-.BI "int bdflush(int "  func ", long " data );
+.BI "[[deprecated]] int bdflush(int "  func ", long *" address );
+.BI "[[deprecated]] int bdflush(int "  func ", long " data );
 .fi
-.PP
-.IR Note :
-There is no glibc wrapper for this system call; see VERSIONS.
 .SH DESCRIPTION
 .IR Note :
 Since Linux 2.6,
