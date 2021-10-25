@@ -12,11 +12,8 @@ get_kernel_syms \- retrieve exported kernel and module symbols
 .nf
 .B #include <linux/module.h>
 .PP
-.BI "int get_kernel_syms(struct kernel_sym *" table );
+.BI "[[deprecated]] int get_kernel_syms(struct kernel_sym *" table );
 .fi
-.PP
-.IR Note :
-No declaration of this system call is provided in glibc headers; see NOTES.
 .SH DESCRIPTION
 .BR Note :
 This system call is present only in kernels before Linux 2.6.
