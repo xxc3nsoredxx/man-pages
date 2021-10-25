@@ -163,6 +163,7 @@ main(int argc, char *argv[])
     int ngroups;
     struct passwd *pw;
     struct group *gr;
+    gid_t *groups;
 
     if (argc != 3) {
         fprintf(stderr, "Usage: %s <user> <ngroups>\en", argv[0]);
@@ -171,7 +172,7 @@ main(int argc, char *argv[])
 
     ngroups = atoi(argv[2]);
 
-    gid_t *groups = malloc(sizeof(*groups) * ngroups);
+    groups = malloc(sizeof(*groups) * ngroups);
     if (groups == NULL) {
         perror("malloc");
         exit(EXIT_FAILURE);
