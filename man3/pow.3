@@ -70,14 +70,6 @@ On success, these functions return the value of
 to the power of
 .IR y .
 .PP
-If
-.I x
-is a finite value less than 0, and
-.I y
-is a finite noninteger, a domain error occurs,
-.\" The domain error is generated at least as far back as glibc 2.4
-and a NaN is returned.
-.PP
 If the result overflows,
 a range error occurs,
 .\" The range error is generated at least as far back as glibc 2.4
@@ -95,128 +87,7 @@ and 0.0 is returned.
 .\" but http://sources.redhat.com/bugzilla/show_bug.cgi?id=2678
 .\" points out that the zero has the wrong sign in some cases.
 .PP
-Except as specified below, if
-.I x
-or
-.I y
-is a NaN, the result is a NaN.
-.PP
-If
-.I x
-is +1, the result is 1.0 (even if
-.I y
-is a NaN).
-.PP
-If
-.I y
-is 0, the result is 1.0 (even if
-.I x
-is a NaN).
-.PP
-If
-.I x
-is +0 (\-0),
-and
-.I y
-is an odd integer greater than 0,
-the result is +0 (\-0).
-.PP
-If
-.I x
-is 0,
-and
-.I y
-greater than 0 and not an odd integer,
-the result is +0.
-.PP
-If
-.I x
-is \-1,
-and
-.I y
-is positive infinity or negative infinity,
-the result is 1.0.
-.PP
-If the absolute value of
-.I x
-is less than 1,
-and
-.I y
-is negative infinity,
-the result is positive infinity.
-.PP
-If the absolute value of
-.I x
-is greater than 1,
-and
-.I y
-is negative infinity,
-the result is +0.
-.PP
-If the absolute value of
-.I x
-is less than 1,
-and
-.I y
-is positive infinity,
-the result is +0.
-.PP
-If the absolute value of
-.I x
-is greater than 1,
-and
-.I y
-is positive infinity,
-the result is positive infinity.
-.PP
-If
-.I x
-is negative infinity,
-and
-.I y
-is an odd integer less than 0,
-the result is \-0.
-.PP
-If
-.I x
-is negative infinity,
-and
-.I y
-less than 0 and not an odd integer,
-the result is +0.
-.PP
-If
-.I x
-is negative infinity,
-and
-.I y
-is an odd integer greater than 0,
-the result is negative infinity.
-.PP
-If
-.I x
-is negative infinity,
-and
-.I y
-greater than 0 and not an odd integer,
-the result is positive infinity.
-.PP
-If
-.I x
-is positive infinity,
-and
-.I y
-less than 0,
-the result is +0.
-.PP
-If
-.I x
-is positive infinity,
-and
-.I y
-greater than 0,
-the result is positive infinity.
-.PP
+.\" pow(\(+-0, <0 [[odd]]) = HUGE_VAL*
 If
 .I x
 is +0 or \-0,
@@ -232,6 +103,7 @@ is returned,
 with the same sign as
 .IR x .
 .PP
+.\" pow(\(+-0, <0 [[!odd]]) = HUGE_VAL*
 If
 .I x
 is +0 or \-0,
@@ -245,6 +117,153 @@ a pole error occurs and
 or
 .RB + HUGE_VALL ,
 is returned.
+.PP
+.\" pow(\(+-0, >0 [[odd]]) = \(+-0
+If
+.I x
+is +0 (\-0),
+and
+.I y
+is an odd integer greater than 0,
+the result is +0 (\-0).
+.PP
+.\" pow(\(+-0, >0 [[!odd]]) = +0
+If
+.I x
+is 0,
+and
+.I y
+greater than 0 and not an odd integer,
+the result is +0.
+.PP
+.\" pow(-1, \(+-INFINITY) = 1.0
+If
+.I x
+is \-1,
+and
+.I y
+is positive infinity or negative infinity,
+the result is 1.0.
+.PP
+.\" pow(+1, y) = 1.0
+If
+.I x
+is +1, the result is 1.0 (even if
+.I y
+is a NaN).
+.PP
+.\" pow(x, \(+-0) = 1.0
+If
+.I y
+is 0, the result is 1.0 (even if
+.I x
+is a NaN).
+.PP
+.\" pow(<0, y) = NaN
+If
+.I x
+is a finite value less than 0, and
+.I y
+is a finite noninteger, a domain error occurs,
+.\" The domain error is generated at least as far back as glibc 2.4
+and a NaN is returned.
+.PP
+.\" pow(|x|<1, -INFINITY) = INFINITY
+If the absolute value of
+.I x
+is less than 1,
+and
+.I y
+is negative infinity,
+the result is positive infinity.
+.PP
+.\" pow(|x|>1, -INFINITY) = +0
+If the absolute value of
+.I x
+is greater than 1,
+and
+.I y
+is negative infinity,
+the result is +0.
+.PP
+.\" pow(|x|<1, INFINITY) = +0
+If the absolute value of
+.I x
+is less than 1,
+and
+.I y
+is positive infinity,
+the result is +0.
+.PP
+.\" pow(|x|>1, INFINITY) = INFINITY
+If the absolute value of
+.I x
+is greater than 1,
+and
+.I y
+is positive infinity,
+the result is positive infinity.
+.PP
+.\" pow(-INFINITY, <0 [[odd]]) = -0
+If
+.I x
+is negative infinity,
+and
+.I y
+is an odd integer less than 0,
+the result is \-0.
+.PP
+.\" pow(-INFINITY, <0 [[!odd]]) = +0
+If
+.I x
+is negative infinity,
+and
+.I y
+less than 0 and not an odd integer,
+the result is +0.
+.PP
+.\" pow(-INFINITY, >0 [[odd]]) = -INFINITY
+If
+.I x
+is negative infinity,
+and
+.I y
+is an odd integer greater than 0,
+the result is negative infinity.
+.PP
+.\" pow(-INFINITY, >0 [[!odd]]) = INFINITY
+If
+.I x
+is negative infinity,
+and
+.I y
+greater than 0 and not an odd integer,
+the result is positive infinity.
+.PP
+.\" pow(INFINITY, <0) = +0
+If
+.I x
+is positive infinity,
+and
+.I y
+less than 0,
+the result is +0.
+.PP
+.\" pow(INFINITY, >0) = INFINITY
+If
+.I x
+is positive infinity,
+and
+.I y
+greater than 0,
+the result is positive infinity.
+.PP
+.\" pow(NaN, y) or pow(x, NaN) = NaN
+Except as specified above, if
+.I x
+or
+.I y
+is a NaN, the result is a NaN.
 .SH ERRORS
 .\" FIXME . review status of this error
 .\" longstanding bug report for glibc:
