@@ -82,7 +82,7 @@ respectively, with the mathematically correct sign.
 .PP
 If result underflows, and is not representable,
 a range error occurs,
-and 0.0 is returned.
+and 0.0 with the appropriate sign is returned.
 .\" POSIX.1 does not specify the sign of the zero,
 .\" but http://sources.redhat.com/bugzilla/show_bug.cgi?id=2678
 .\" points out that the zero has the wrong sign in some cases.
