@@ -22,7 +22,7 @@ Standard C library
 .BI "char *getcwd(char *" buf ", size_t " size );
 .B "char *get_current_dir_name(void);"
 .PP
-.BI "[[deprecated]] char *getwd(char *" buf );
+.BI "[[deprecated]] char *getwd(char " buf [PATH_MAX]);
 .fi
 .PP
 .RS -4
