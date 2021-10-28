@@ -23,9 +23,10 @@ Standard C library
 .PP
 .B #include <errno.h>
 .PP
-.BI "const char *const " sys_errlist [];
-.BI "int " sys_nerr ;
 .BI "int " errno ";       \fR/* Not really declared this way; see errno(3) */"
+.PP
+.BI "[[deprecated]] const char *const " sys_errlist [];
+.BI "[[deprecated]] int " sys_nerr ;
 .fi
 .PP
 .RS -4
