@@ -13,14 +13,9 @@ Standard C library
 .BR "#include <sys/syscall.h>" "      /* Definition of " SYS_* " constants */"
 .B #include <unistd.h>
 .PP
-.B "long syscall(SYS_sgetmask, void);"
-.BI "long syscall(SYS_ssetmask, long " newmask );
+.B [[deprecated]] long syscall(SYS_sgetmask, void);
+.BI "[[deprecated]] long syscall(SYS_ssetmask, long " newmask );
 .fi
-.PP
-.IR Note :
-glibc provides no wrappers for these functions,
-necessitating the use of
-.BR syscall (2).
 .SH DESCRIPTION
 These system calls are obsolete.
 .IR "Do not use them" ;
