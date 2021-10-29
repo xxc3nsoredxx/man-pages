@@ -14,8 +14,8 @@ Standard C library
 .BR "#include <fcntl.h>" "            /* Definition of " AT_* " constants */"
 .B #include <sys/time.h>
 .PP
-.BI "int futimesat(int " dirfd ", const char *" pathname ,
-.BI "              const struct timeval " times [2]);
+.BI "[[deprecated]] int futimesat(int " dirfd ", const char *" pathname ,
+.BI "                             const struct timeval " times [2]);
 .fi
 .PP
 .RS -4
