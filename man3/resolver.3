@@ -64,29 +64,31 @@ Resolver library
 .BI "           const unsigned char *" eomorig ,
 .BI "           const unsigned char *" comp_dn ", char *" exp_dn ,
 .BI "           int " length );
-.fi
-.\"
-.SS Deprecated
-.nf
-.B extern struct __res_state _res;
 .PP
-.B int res_init(void);
+.B [[deprecated]] extern struct __res_state _res;
 .PP
+.B [[deprecated]] int res_init(void);
+.PP
+.B [[deprecated]]
 .BI "int res_query(const char *" dname ", int " class ", int " type ,
 .BI "           unsigned char *" answer ", int " anslen );
 .PP
+.B [[deprecated]]
 .BI "int res_search(const char *" dname ", int " class ", int " type ,
 .BI "           unsigned char *" answer ", int " anslen );
 .PP
+.B [[deprecated]]
 .BI "int res_querydomain(const char *" name ", const char *" domain ,
 .BI "           int " class ", int " type ", unsigned char *" answer ,
 .BI "           int " anslen );
 .PP
+.B [[deprecated]]
 .BI "int res_mkquery(int " op ", const char *" dname ", int " class ,
 .BI "           int " type ", const unsigned char *" data ", int " datalen ,
 .BI "           const unsigned char *" newrr ,
 .BI "           unsigned char *" buf ", int " buflen );
 .PP
+.B [[deprecated]]
 .BI "int res_send(const unsigned char *" msg ", int " msglen ,
 .BI "           unsigned char *" answer ", int " anslen );
 .fi
