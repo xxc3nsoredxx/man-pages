@@ -15,11 +15,8 @@ uselib \- load shared library
 .nf
 .B #include <unistd.h>
 .PP
-.BI "int uselib(const char *" library );
+.BI "[[deprecated]] int uselib(const char *" library );
 .fi
-.PP
-.IR Note :
-No declaration of this system call is provided in glibc headers; see NOTES.
 .SH DESCRIPTION
 The system call
 .BR uselib ()
