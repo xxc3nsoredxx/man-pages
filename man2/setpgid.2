@@ -30,11 +30,11 @@ Standard C library
 .BI "int setpgid(pid_t " pid ", pid_t " pgid );
 .BI "pid_t getpgid(pid_t " pid );
 .PP
-.BR "pid_t getpgrp(void);" "                 /* POSIX.1 version */"
-.BI "pid_t getpgrp(pid_t " pid ");\fR            /* BSD version */"
+.BR "pid_t getpgrp(void);" "                            /* POSIX.1 version */"
+.BI "[[deprecated]] pid_t getpgrp(pid_t " pid ");\fR        /* BSD version */"
 .PP
-.BR "int setpgrp(void);" "                   /* System V version */"
-.BI "int setpgrp(pid_t " pid ", pid_t " pgid ");\fR  /* BSD version */"
+.BR "int setpgrp(void);" "                              /* System V version */"
+.BI "[[deprecated]] int setpgrp(pid_t " pid ", pid_t " pgid ");\fR  /* BSD version */"
 .fi
 .PP
 .RS -4
