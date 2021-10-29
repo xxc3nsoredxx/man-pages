@@ -30,22 +30,23 @@ Standard C library
 .nf
 .B #include <netdb.h>
 .PP
-.B extern int h_errno;
+.B [[deprecated]] extern int h_errno;
 .PP
-.BI "struct hostent *gethostbyname(const char *" name );
-.BI "struct hostent *gethostbyaddr(const void *" addr ,
-.BI "                              socklen_t " len ", int " type );
+.BI "[[deprecated]] struct hostent *gethostbyname(const char *" name );
+.BI "[[deprecated]] struct hostent *gethostbyaddr(const void *" addr ,
+.BI "                                      socklen_t " len ", int " type );
 .PP
 .BI "void sethostent(int " stayopen );
 .B void endhostent(void);
 .PP
-.BI "void herror(const char *" s );
-.BI "const char *hstrerror(int " err );
+.BI "[[deprecated]] void herror(const char *" s );
+.BI "[[deprecated]] const char *hstrerror(int " err );
 .PP
 /* System V/POSIX extension */
 .B struct hostent *gethostent(void);
 .PP
 /* GNU extensions */
+.B [[deprecated]]
 .BI "struct hostent *gethostbyname2(const char *" name ", int " af );
 .PP
 .BI "int gethostent_r(struct hostent *restrict " ret ,
@@ -53,17 +54,20 @@ Standard C library
 .BI "                 struct hostent **restrict " result ,
 .BI "                 int *restrict " h_errnop );
 .PP
+.B [[deprecated]]
 .BI "int gethostbyaddr_r(const void *restrict " addr ", socklen_t " len \
 ", int " type ,
 .BI "                 struct hostent *restrict " ret ,
 .BI "                 char *restrict " buf ", size_t " buflen ,
 .BI "                 struct hostent **restrict " result ,
 .BI "                 int *restrict " h_errnop );
+.B [[deprecated]]
 .BI "int gethostbyname_r(const char *restrict " name ,
 .BI "                 struct hostent *restrict " ret ,
 .BI "                 char *restrict " buf ", size_t " buflen ,
 .BI "                 struct hostent **restrict " result ,
 .BI "                 int *restrict " h_errnop );
+.B [[deprecated]]
 .BI "int gethostbyname2_r(const char *restrict " name ", int " af,
 .BI "                 struct hostent *restrict " ret ,
 .BI "                 char *restrict " buf ", size_t " buflen ,
