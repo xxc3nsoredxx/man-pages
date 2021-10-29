@@ -12,7 +12,7 @@ Standard C library
 .nf
 .B #include <unistd.h>
 .PP
-.BI "char *getpass(const char *" prompt );
+.BI "[[deprecated]] char *getpass(const char *" prompt );
 .fi
 .PP
 .RS -4
@@ -32,6 +32,7 @@ Feature Test Macro Requirements for glibc (see
 .SH DESCRIPTION
 This function is obsolete.
 Do not use it.
+See NOTES.
 If you want to read input without terminal echoing enabled,
 see the description of the
 .I ECHO
@@ -110,7 +111,11 @@ Removed in POSIX.1-2001.
 .\" are transmitted as part of the password.
 .\" Since libc 5.4.19 also line editing is disabled, so that also
 .\" backspace and the like will be seen as part of the password.
-.
+You should use instead
+.BR readpassphrase (3bsd),
+provided by
+.IR libbsd .
+.PP
 In the GNU C library implementation, if
 .I /dev/tty
 cannot be opened, the prompt is written to
