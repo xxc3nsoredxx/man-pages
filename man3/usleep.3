@@ -115,24 +115,6 @@ Only the
 .B EINVAL
 error return is documented by SUSv2 and POSIX.1-2001.
 .SH NOTES
-The type
-.I useconds_t
-is an unsigned integer type capable of holding integers
-in the range [0,1000000].
-Programs will be more portable
-if they never mention this type explicitly.
-Use
-.PP
-.in +4n
-.EX
-#include <unistd.h>
-\&...
-    unsigned int usecs;
-\&...
-    usleep(usecs);
-.EE
-.in
-.PP
 The interaction of this function with the
 .B SIGALRM
 signal, and with other timer functions such as
@@ -155,4 +137,5 @@ is unspecified.
 .BR setitimer (2),
 .BR sleep (3),
 .BR ualarm (3),
+.BR useconds_t (3),
 .BR time (7)
