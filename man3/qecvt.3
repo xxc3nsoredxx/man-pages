@@ -15,13 +15,11 @@ Standard C library
 .nf
 .B #include <stdlib.h>
 .PP
-.BI "char *qecvt(long double " number ", int " ndigits \
-", int *restrict " decpt ,
-.BI "            int *restrict " sign );
-.BI "char *qfcvt(long double " number ", int " ndigits \
-", int *restrict " decpt ,
-.BI "            int *restrict " sign );
-.BI "char *qgcvt(long double " number ", int " ndigit ", char *" buf );
+.BI "[[deprecated]] char *qecvt(long double " number ", int " ndigits ,
+.BI "                           int *restrict " decpt ", int *restrict " sign );
+.BI "[[deprecated]] char *qfcvt(long double " number ", int " ndigits ,
+.BI "                           int *restrict " decpt ", int *restrict " sign );
+.BI "[[deprecated]] char *qgcvt(long double " number ", int " ndigit ", char *" buf );
 .fi
 .PP
 .RS -4
