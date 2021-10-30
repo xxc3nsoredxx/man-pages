@@ -17,17 +17,19 @@ Standard C library
 .nf
 .B #include <stdlib.h>
 .PP
-.BI "int ecvt_r(double " number ", int " ndigits ", int *restrict " decpt ,
-.BI "           int *restrict " sign ", char *restrict " buf ", size_t " len );
-.BI "int fcvt_r(double " number ", int " ndigits ", int *restrict " decpt ,
-.BI "           int *restrict " sign ", char *restrict " buf ", size_t " len );
+.BI "[[deprecated]] int ecvt_r(double " number ", int " ndigits ,
+.BI "                          int *restrict " decpt ", int *restrict " sign ,
+.BI "                          char *restrict " buf ", size_t " len );
+.BI "[[deprecated]] int fcvt_r(double " number ", int " ndigits ,
+.BI "                          int *restrict " decpt ", int *restrict " sign ,
+.BI "                          char *restrict " buf ", size_t " len );
 .PP
-.BI "int qecvt_r(long double " number ", int " ndigits \
-", int *restrict " decpt ,
-.BI "           int *restrict " sign ", char *restrict " buf ", size_t " len );
-.BI "int qfcvt_r(long double " number ", int " ndigits \
-", int *restrict " decpt ,
-.BI "           int *restrict " sign ", char *restrict " buf ", size_t " len );
+.BI "[[deprecated]] int qecvt_r(long double " number ", int " ndigits ,
+.BI "                          int *restrict " decpt ", int *restrict " sign ,
+.BI "                          char *restrict " buf ", size_t " len );
+.BI "[[deprecated]] int qfcvt_r(long double " number ", int " ndigits ,
+.BI "                          int *restrict " decpt ", int *restrict " sign ,
+.BI "                          char *restrict " buf ", size_t " len );
 .fi
 .PP
 .RS -4
