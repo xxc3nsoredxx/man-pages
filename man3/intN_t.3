@@ -16,6 +16,41 @@ uintN_t, uint8_t, uint16_t, uint32_t, uint64_t
 .BR typedef " /* ... */ " uint16_t;
 .BR typedef " /* ... */ " uint32_t;
 .BR typedef " /* ... */ " uint64_t;
+.PP
+.B "#define INT8_WIDTH   8"
+.B "#define INT16_WIDTH  16"
+.B "#define INT32_WIDTH  32"
+.B "#define INT64_WIDTH  64"
+.PP
+.B "#define UINT8_WIDTH  8"
+.B "#define UINT16_WIDTH 16"
+.B "#define UINT32_WIDTH 32"
+.B "#define UINT64_WIDTH 64"
+.PP
+.BR "#define INT8_MAX     " "/*  2**(INT8_WIDTH - 1) - 1   */
+.BR "#define INT16_MAX    " "/*  2**(INT16_WIDTH - 1) - 1  */
+.BR "#define INT32_MAX    " "/*  2**(INT32_WIDTH - 1) - 1  */
+.BR "#define INT64_MAX    " "/*  2**(INT64_WIDTH - 1) - 1  */
+.PP
+.BR "#define INT8_MIN     " "/*  - 2**(INT8_WIDTH - 1)     */
+.BR "#define INT16_MIN    " "/*  - 2**(INT16_WIDTH - 1)    */
+.BR "#define INT32_MIN    " "/*  - 2**(INT32_WIDTH - 1)    */
+.BR "#define INT64_MIN    " "/*  - 2**(INT64_WIDTH - 1)    */
+.PP
+.BR "#define UINT8_MAX    " "/*  2**INT8_WIDTH - 1         */
+.BR "#define UINT16_MAX   " "/*  2**INT16_WIDTH - 1        */
+.BR "#define UINT32_MAX   " "/*  2**INT32_WIDTH - 1        */
+.BR "#define UINT64_MAX   " "/*  2**INT64_WIDTH - 1        */
+.PP
+.BI "#define INT8_C(" c ")    " c " ## " "\fR/* ... */\fP"
+.BI "#define INT16_C(" c ")   " c " ## " "\fR/* ... */\fP"
+.BI "#define INT32_C(" c ")   " c " ## " "\fR/* ... */\fP"
+.BI "#define INT64_C(" c ")   " c " ## " "\fR/* ... */\fP"
+.PP
+.BI "#define UINT8_C(" c ")   " c " ## " "\fR/* ... */\fP"
+.BI "#define UINT16_C(" c ")  " c " ## " "\fR/* ... */\fP"
+.BI "#define UINT32_C(" c ")  " c " ## " "\fR/* ... */\fP"
+.BI "#define UINT64_C(" c ")  " c " ## " "\fR/* ... */\fP"
 .fi
 .SH DESCRIPTION
 .IR int N _t
@@ -53,6 +88,24 @@ are required;
 .RI [ u ] int64_t
 are only required in implementations that provide integer types with width 64;
 and all other types of this form are optional.
+.PP
+The macros
+.RB [ U ] INT \fIN\fP _WIDTH W
+expand to the width in bits of these types
+.RI ( N ).
+.PP
+The macros
+.RB [ U ] INT \fIN\fP _MAX
+expand to the maximum value that these types can hold.
+.PP
+The macros
+.BI INT N _MIN
+expand to the minimum value that these types can hold.
+.PP
+The macros
+.RB [ U ] INT \fIN\fP _C ()
+expand their argument to an integer constant of type
+.RI [ u ] int N _t .
 .PP
 The length modifiers for the
 .RI [ u ] int N _t
