@@ -1,1 +1,31 @@
-.so man7/system_data_types.7
+.TH MODE_T 3 2021-11-02 Linux "Linux Programmer's Manual"
+.SH NAME
+mode_t \- file attributes
+.SH SYNOPSIS
+.nf
+.B #include <sys/types.h>
+.PP
+.BR typedef " /* ... */ " mode_t;
+.fi
+.SH DESCRIPTION
+Used for some file attributes (e.g., file mode).
+According to POSIX,
+it shall be an integer type.
+.SH CONFORMING TO
+POSIX.1-2001 and later.
+.SH NOTES
+The following headers also provide this type:
+.IR <fcntl.h> ,
+.IR <ndbm.h> ,
+.IR <spawn.h> ,
+.IR <sys/ipc.h> ,
+.IR <sys/mman.h> ,
+and
+.IR <sys/stat.h> .
+.PP
+.SH SEE ALSO
+.BR chmod (2),
+.BR mkdir (2),
+.BR open (2),
+.BR umask (2),
+.BR stat-struct (3)
