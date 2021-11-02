@@ -65,37 +65,6 @@ system_data_types \- overview of system data types
 .\"------------------------------------- FILE -------------------------/
 .\"------------------------------------- float_t ----------------------/
 .\"------------------------------------- gid_t ------------------------/
-.TP
-.I gid_t
-.RS
-.IR Include :
-.IR <sys/types.h> .
-Alternatively,
-.IR <grp.h> ,
-.IR <pwd.h> ,
-.IR <signal.h> ,
-.IR <stropts.h> ,
-.IR <sys/ipc.h> ,
-.IR <sys/stat.h> ,
-or
-.IR <unistd.h> .
-.PP
-A type used to hold group IDs.
-According to POSIX,
-this shall be an integer type.
-.PP
-.IR "Conforming to" :
-POSIX.1-2001 and later.
-.PP
-.IR "See also" :
-.BR chown (2),
-.BR getgid (2),
-.BR getegid (2),
-.BR getgroups (2),
-.BR getresgid (2),
-.BR getgrnam (3),
-.BR credentials (7)
-.RE
 .\"------------------------------------- id_t -------------------------/
 .\"------------------------------------- imaxdiv_t --------------------/
 .TP

@@ -1,16 +1,23 @@
 .TH ID_T 3 2021-11-02 Linux "Linux Programmer's Manual"
 .SH NAME
-id_t \- process/user/group identifier
+gid_t, id_t \- process/user/group identifier
 .SH SYNOPSIS
 .nf
 .B #include <sys/types.h>
 .PP
+.BR typedef " /* ... */ " gid_t;
 .BR typedef " /* ... */ " id_t;
 .fi
 .SH DESCRIPTION
-A type used to hold a general identifier.
+.I gid_t
+is a type used to hold group IDs.
 According to POSIX,
-this shall be an integer type that can be used to contain a
+it shall be an integer type.
+.PP
+.I id_t
+is a type used to hold a general identifier.
+According to POSIX,
+it shall be an integer type that can be used to contain a
 .IR pid_t ,
 .IR uid_t ,
 or
@@ -18,8 +25,27 @@ or
 .SH CONFORMING TO
 POSIX.1-2001 and later.
 .SH NOTES
-The following header also provides this type:
+The following headers also provide
+.IR gid_t :
+.IR <grp.h> ,
+.IR <pwd.h> ,
+.IR <signal.h> ,
+.IR <stropts.h> ,
+.IR <sys/ipc.h> ,
+.IR <sys/stat.h> ,
+and
+.IR <unistd.h> .
+.PP
+The following header also provides
+.IR id_t :
 .IR <sys/resource.h> .
 .SH SEE ALSO
+.BR chown (2),
+.BR getgid (2),
+.BR getegid (2),
+.BR getgroups (2),
 .BR getpriority (2),
+.BR getresgid (2),
 .BR waitid (2)
+.BR getgrnam (3),
+.BR credentials (7)
