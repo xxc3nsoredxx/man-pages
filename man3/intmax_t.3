@@ -1,14 +1,16 @@
 .TH INTMAX_T 3 2021-11-02 Linux "Linux Programmer's Manual"
 .SH NAME
-intmax_t \- greatest-width basic integer type
+intmax_t, uintmax_t \- greatest-width basic integer types
 .SH SYNOPSIS
 .nf
-.B #include stdint.h>
+.B #include <stdint.h>
 .PP
 .BR typedef " /* ... */ " intmax_t;
+.BR typedef " /* ... */ " uintmax_t;
 .fi
 .SH DESCRIPTION
-A signed integer type
+.I intmax_t
+is a signed integer type
 capable of representing any value of any basic signed integer type
 supported by the implementation.
 According to the C language standard, it shall be
@@ -16,13 +18,28 @@ capable of storing values in the range
 .RB [ INTMAX_MIN ,
 .BR INTMAX_MAX ].
 .PP
+.I uintmax_t
+is an unsigned integer type
+capable of representing any value of any basic unsigned integer type
+supported by the implementation.
+According to the C language standard, it shall be
+capable of storing values in the range [0,
+.BR UINTMAX_MAX ].
+.PP
 The macro
 .BR INTMAX_C ()
 expands its argument to an integer constant of type
 .IR intmax_t .
 .PP
+The macro
+.BR UINTMAX_C ()
+expands its argument to an integer constant of type
+.IR uintmax_t .
+.PP
 The length modifier for
 .I intmax_t
+and
+.I uintmax_t
 for the
 .BR printf (3)
 and the
@@ -30,21 +47,26 @@ and the
 families of functions is
 .BR j ;
 resulting commonly in
-.B %jd
+.BR %jd ,
+.BR %ji ,
+.BR %ju ,
 or
-.B %ji
+.B %jx
 for printing
 .I intmax_t
+or
+.I uintmax_t
 values.
 .SH CONFORMING TO
 C99 and later; POSIX.1-2001 and later.
 .SH NOTES
-The following header also provides this type:
+The following header also provides these types:
 .IR <inttypes.h> .
 .SH BUGS
-.I intmax_t
-may not be as large as extended integer types, such as
+These types may not be as large as extended integer types, such as
 .I __int128
 .SH SEE ALSO
+.BR int64_t (3),
+.BR intptr_t (3),
 .BR printf (3),
 .BR strtoimax (3)
