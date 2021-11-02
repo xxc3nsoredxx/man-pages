@@ -1,1 +1,20 @@
-.so man7/system_data_types.7
+.TH DIV_T 3 2021-11-02 Linux "Linux Programmer's Manual"
+.SH NAME
+div_t \- quotient and remainder of an integer division
+.SH SYNOPSIS
+.nf
+.B #include <stdlib.h>
+.PP
+.B typedef struct {
+.BR "    int quot;" " /* Quotient */"
+.BR "    int rem;" "  /* Remainder */"
+.B } div_t;
+.fi
+.SH DESCRIPTION
+It is the type of the value returned by the
+.BR div (3)
+function.
+.SH CONFORMING TO
+C99 and later; POSIX.1-2001 and later.
+.SH SEE ALSO
+.BR div (3)

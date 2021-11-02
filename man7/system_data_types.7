@@ -58,29 +58,6 @@ system_data_types \- overview of system data types
 .\"------------------------------------- clockid_t --------------------/
 .\"------------------------------------- dev_t ------------------------/
 .\"------------------------------------- div_t ------------------------/
-.TP
-.I div_t
-.RS
-.IR Include :
-.IR <stdlib.h> .
-.PP
-.EX
-typedef struct {
-    int quot; /* Quotient */
-    int rem;  /* Remainder */
-} div_t;
-.EE
-.PP
-It is the type of the value returned by the
-.BR div (3)
-function.
-.PP
-.IR "Conforming to" :
-C99 and later; POSIX.1-2001 and later.
-.PP
-.IR "See also" :
-.BR div (3)
-.RE
 .\"------------------------------------- double_t ---------------------/
 .TP
 .I double_t
