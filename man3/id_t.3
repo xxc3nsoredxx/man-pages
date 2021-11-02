@@ -1,11 +1,12 @@
 .TH ID_T 3 2021-11-02 Linux "Linux Programmer's Manual"
 .SH NAME
-pid_t, gid_t, id_t \- process/user/group identifier
+pid_t, uid_t, gid_t, id_t \- process/user/group identifier
 .SH SYNOPSIS
 .nf
 .B #include <sys/types.h>
 .PP
 .BR typedef " /* ... */ " pid_t;
+.BR typedef " /* ... */ " uid_t;
 .BR typedef " /* ... */ " gid_t;
 .BR typedef " /* ... */ " id_t;
 .fi
@@ -18,6 +19,11 @@ where the width of
 .I pid_t
 is no greater than the width of the type
 .IR long .
+.PP
+.I uid_t
+is a type used to hold user IDs.
+According to POSIX,
+it shall be an integer type.
 .PP
 .I gid_t
 is a type used to hold group IDs.
@@ -52,6 +58,16 @@ and
 .IR <utmpx.h> .
 .PP
 The following headers also provide
+.IR uid_t :
+.IR <pwd.h> ,
+.IR <signal.h> ,
+.IR <stropts.h> ,
+.IR <sys/ipc.h> ,
+.IR <sys/stat.h> ,
+or
+.IR <unistd.h> .
+.PP
+The following headers also provide
 .IR gid_t :
 .IR <grp.h> ,
 .IR <pwd.h> ,
@@ -69,15 +85,19 @@ The following header also provides
 .BR chown (2),
 .BR fork (2),
 .BR getegid (2),
+.BR geteuid (2),
 .BR getgid (2),
 .BR getgroups (2),
 .BR getpgid (2),
 .BR getpid (2),
 .BR getppid (2),
 .BR getpriority (2),
+.BR getpwnam (3),
 .BR getresgid (2),
+.BR getresuid (2),
 .BR getsid (2),
 .BR gettid (2),
+.BR getuid (2),
 .BR kill (2),
 .BR pidfd_open (2),
 .BR sched_setscheduler (2),
