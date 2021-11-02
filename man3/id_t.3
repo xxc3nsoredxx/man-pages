@@ -1,1 +1,25 @@
-.so man7/system_data_types.7
+.TH ID_T 3 2021-11-02 Linux "Linux Programmer's Manual"
+.SH NAME
+id_t \- process/user/group identifier
+.SH SYNOPSIS
+.nf
+.B #include <sys/types.h>
+.PP
+.BR typedef " /* ... */ " id_t;
+.fi
+.SH DESCRIPTION
+A type used to hold a general identifier.
+According to POSIX,
+this shall be an integer type that can be used to contain a
+.IR pid_t ,
+.IR uid_t ,
+or
+.IR gid_t .
+.SH CONFORMING TO
+POSIX.1-2001 and later.
+.SH NOTES
+The following header also provides this type:
+.IR <sys/resource.h> .
+.SH SEE ALSO
+.BR getpriority (2),
+.BR waitid (2)
