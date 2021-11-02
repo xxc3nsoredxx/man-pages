@@ -1,1 +1,17 @@
-.so man7/system_data_types.7
+.TH CC_T 3 2021-11-02 Linux "Linux Programmer's Manual"
+.SH NAME
+cc_t \- terminal special characters
+.SH SYNOPSIS
+.nf
+.B #include <termios.h>
+.PP
+.BR typedef " /* ... */ " cc_t;
+.fi
+.SH DESCRIPTION
+Used for terminal special characters.
+According to POSIX,
+it shall be an unsigned integer type.
+.SH CONFORMING TO
+POSIX.1-2001 and later.
+.SH SEE ALSO
+.BR termios (3)
