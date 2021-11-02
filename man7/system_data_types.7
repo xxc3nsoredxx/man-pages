@@ -67,29 +67,6 @@ system_data_types \- overview of system data types
 .\"------------------------------------- gid_t ------------------------/
 .\"------------------------------------- id_t -------------------------/
 .\"------------------------------------- imaxdiv_t --------------------/
-.TP
-.I imaxdiv_t
-.RS
-.IR Include :
-.IR <inttypes.h> .
-.PP
-.EX
-typedef struct {
-    intmax_t    quot; /* Quotient */
-    intmax_t    rem;  /* Remainder */
-} imaxdiv_t;
-.EE
-.PP
-It is the type of the value returned by the
-.BR imaxdiv (3)
-function.
-.PP
-.IR "Conforming to" :
-C99 and later; POSIX.1-2001 and later.
-.PP
-.IR "See also" :
-.BR imaxdiv (3)
-.RE
 .\"------------------------------------- intmax_t ---------------------/
 .TP
 .I intmax_t
