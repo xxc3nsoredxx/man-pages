@@ -1,1 +1,20 @@
-.so man7/system_data_types.7
+.TH BLKSIZE_T 3 2021-11-02 Linux "Linux Programmer's Manual"
+.SH NAME
+blksize_t \- file block sizes
+.SH SYNOPSIS
+.nf
+.B #include <sys/types.h>
+.PP
+.BR typedef " /* ... */ " blksize_t;
+.fi
+.SH DESCRIPTION
+Used for file block sizes.
+According to POSIX,
+it shall be a signed integer type.
+.SH CONFORMING TO
+POSIX.1-2001 and later.
+.SH NOTES
+The following header also provides this type:
+.IR <sys/stat.h> .
+.SH SEE ALSO
+.BR stat-struct (3)
