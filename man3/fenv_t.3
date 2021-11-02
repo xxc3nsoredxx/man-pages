@@ -1,1 +1,17 @@
-.so man7/system_data_types.7
+.TH FENV_T 3 2021-11-02 Linux "Linux Programmer's Manual"
+.SH NAME
+fenv_t \- floating-point environment
+.SH SYNOPSIS
+.nf
+.B #include <fenv.h>
+.PP
+.BR typedef " /* ... */ " fenv_t;
+.fi
+.SH DESCRIPTION
+This type represents the entire floating-point environment,
+including control modes and status flags; for further details, see
+.BR fenv (3).
+.SH CONFORMING TO
+C99 and later; POSIX.1-2001 and later.
+.SH SEE ALSO
+.BR fenv (3)
