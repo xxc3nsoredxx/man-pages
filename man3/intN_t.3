@@ -1,6 +1,8 @@
 .TH INTN_T 3 2021-11-02 Linux "Linux Programmer's Manual"
 .SH NAME
-intN_t, int8_t, int16_t, int32_t, int64_t \- fixed-width basic integer types
+intN_t, int8_t, int16_t, int32_t, int64_t,
+uintN_t, uint8_t, uint16_t, uint32_t, uint64_t
+\- fixed-width basic integer types
 .SH SYNOPSIS
 .nf
 .B #include <stdint.h>
@@ -9,38 +11,60 @@ intN_t, int8_t, int16_t, int32_t, int64_t \- fixed-width basic integer types
 .BR typedef " /* ... */ " int16_t;
 .BR typedef " /* ... */ " int32_t;
 .BR typedef " /* ... */ " int64_t;
+.PP
+.BR typedef " /* ... */ " uint8_t;
+.BR typedef " /* ... */ " uint16_t;
+.BR typedef " /* ... */ " uint32_t;
+.BR typedef " /* ... */ " uint64_t;
 .fi
 .SH DESCRIPTION
 .IR int N _t
 are
 signed integer types
 of a fixed width of exactly N bits,
-N being the value specified in its type name.
+.I N
+being the value specified in its type name.
 According to the C language standard, they shall be
 capable of storing values in the range
-.RB [ INT N _MIN ,
-.BR INT N _MAX ],
-substituting N by the appropriate number.
+.RB [ INT \fIN\fP _MIN ,
+.BR INT \fIN\fP _MAX ],
+substituting
+.I N
+by the appropriate number.
+.PP
+.IR uint N _t
+are
+unsigned integer types
+of a fixed width of exactly N bits,
+N being the value specified in its type name.
+According to the C language standard, they shall be
+capable of storing values in the range [0,
+.BR UINT \fIN\fP _MAX ],
+substituting
+.I N
+by the appropriate number.
 .PP
 According to POSIX,
-.IR int8_t ,
-.IR int16_t ,
+.RI [ u ] int8_t ,
+.RI [ u ] int16_t ,
 and
-.I int32_t
+.RI [ u ] int32_t
 are required;
-.I int64_t
-is only required in implementations that provide integer types with width 64;
+.RI [ u ] int64_t
+are only required in implementations that provide integer types with width 64;
 and all other types of this form are optional.
 .PP
 The length modifiers for the
-.IR int N _t
+.RI [ u ] int N _t
 types for the
 .BR printf (3)
 family of functions
 are expanded by macros of the forms
-.BR PRId N
+.BR PRId \fIN\fP,
+.BR PRIi \fIN\fP,
+.BR PRIu \fIN\fP,
 and
-.BR PRIi N
+.BI PRIx N
 (defined in
 .IR <inttypes.h> );
 resulting for example in
@@ -51,22 +75,24 @@ for printing
 .I int64_t
 values.
 The length modifiers for the
-.IR int N _t
+.RI [ u ] int N _t
 types for the
 .BR scanf (3)
 family of functions
 are expanded by macros of the forms
-.BR SCNd N
+.BR SCNd \fIN\fP,
+.BR SCNi \fIN\fP,
+.BR SCNu \fIN\fP,
 and
-.BR SCNi N,
+.BI SCNx N,
 (defined in
 .IR <inttypes.h> );
 resulting for example in
-.B %"SCNd8"
+.B %"SCNu8"
 or
-.B %"SCNi8"
+.B %"SCNx8"
 for scanning
-.I int8_t
+.I uint8_t
 values.
 .PP
 .IR "Conforming to" :
