@@ -40,9 +40,9 @@ system \- execute a shell command
 .SH DESCRIPTION
 The
 .BR system ()
-library function uses
+library function behaves as if it used
 .BR fork (2)
-to create a child process that executes the shell command specified in
+to create a child process that executed the shell command specified in
 .I command
 using
 .BR execl (3)
