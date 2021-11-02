@@ -1,14 +1,24 @@
 .TH ID_T 3 2021-11-02 Linux "Linux Programmer's Manual"
 .SH NAME
-gid_t, id_t \- process/user/group identifier
+pid_t, gid_t, id_t \- process/user/group identifier
 .SH SYNOPSIS
 .nf
 .B #include <sys/types.h>
 .PP
+.BR typedef " /* ... */ " pid_t;
 .BR typedef " /* ... */ " gid_t;
 .BR typedef " /* ... */ " id_t;
 .fi
 .SH DESCRIPTION
+.I pid_t
+is a type used for storing process IDs, process group IDs, and session IDs.
+According to POSIX, it shall be a signed integer type,
+and the implementation shall support one or more programming environments
+where the width of
+.I pid_t
+is no greater than the width of the type
+.IR long .
+.PP
 .I gid_t
 is a type used to hold group IDs.
 According to POSIX,
@@ -26,6 +36,22 @@ or
 POSIX.1-2001 and later.
 .SH NOTES
 The following headers also provide
+.IR pid_t :
+.IR <fcntl.h> ,
+.IR <sched.h> ,
+.IR <signal.h> ,
+.IR <spawn.h> ,
+.IR <sys/msg.h> ,
+.IR <sys/sem.h> ,
+.IR <sys/shm.h> ,
+.IR <sys/wait.h> ,
+.IR <termios.h> ,
+.IR <time.h> ,
+.IR <unistd.h> ,
+and
+.IR <utmpx.h> .
+.PP
+The following headers also provide
 .IR gid_t :
 .IR <grp.h> ,
 .IR <pwd.h> ,
@@ -41,11 +67,21 @@ The following header also provides
 .IR <sys/resource.h> .
 .SH SEE ALSO
 .BR chown (2),
-.BR getgid (2),
+.BR fork (2),
 .BR getegid (2),
+.BR getgid (2),
 .BR getgroups (2),
+.BR getpgid (2),
+.BR getpid (2),
+.BR getppid (2),
 .BR getpriority (2),
 .BR getresgid (2),
-.BR waitid (2)
+.BR getsid (2),
+.BR gettid (2),
+.BR kill (2),
+.BR pidfd_open (2),
+.BR sched_setscheduler (2),
+.BR waitid (2),
 .BR getgrnam (3),
+.BR sigqueue (3),
 .BR credentials (7)

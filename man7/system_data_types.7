@@ -513,51 +513,6 @@ See also the
 type in this page.
 .RE
 .\"------------------------------------- pid_t ------------------------/
-.TP
-.I pid_t
-.RS
-.IR Include :
-.IR <sys/types.h> .
-Alternatively,
-.IR <fcntl.h> ,
-.IR <sched.h> ,
-.IR <signal.h> ,
-.IR <spawn.h> ,
-.IR <sys/msg.h> ,
-.IR <sys/sem.h> ,
-.IR <sys/shm.h> ,
-.IR <sys/wait.h> ,
-.IR <termios.h> ,
-.IR <time.h> ,
-.IR <unistd.h> ,
-or
-.IR <utmpx.h> .
-.PP
-This type is used for storing process IDs, process group IDs, and session IDs.
-According to POSIX, it shall be a signed integer type,
-and the implementation shall support one or more programming environments
-where the width of
-.I pid_t
-is no greater than the width of the type
-.IR long .
-.PP
-.IR "Conforming to" :
-POSIX.1-2001 and later.
-.PP
-.IR "See also" :
-.BR fork (2),
-.BR getpid (2),
-.BR getppid (2),
-.BR getsid (2),
-.BR gettid (2),
-.BR getpgid (2),
-.BR kill (2),
-.BR pidfd_open (2),
-.BR sched_setscheduler (2),
-.BR waitpid (2),
-.BR sigqueue (3),
-.BR credentials (7),
-.RE
 .\"------------------------------------- ptrdiff_t --------------------/
 .TP
 .I ptrdiff_t
