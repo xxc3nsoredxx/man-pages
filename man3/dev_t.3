@@ -1,1 +1,23 @@
-.so man7/system_data_types.7
+.TH DEV_T 3 2021-11-02 Linux "Linux Programmer's Manual"
+.SH NAME
+dev_t \- devide ID
+.SH SYNOPSIS
+.nf
+.B #include <sys/types.h>
+.PP
+.BR typedef " /* ... */  " dev_t;
+.fi
+.SH DESCRIPTION
+Used for device IDs.
+According to POSIX,
+it shall be an integer type.
+For further details of this type, see
+.BR makedev (3).
+.SH CONFORMING TO
+POSIX.1-2001 and later.
+.SH NOTES
+The following header also provides this type:
+.IR <sys/stat.h> .
+.SH SEE ALSO
+.BR mknod (2),
+.BR stat-struct (3)
