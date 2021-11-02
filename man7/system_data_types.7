@@ -137,29 +137,6 @@ types in this page.
 .\"------------------------------------- lconv ------------------------/
 .\"------------------------------------- ldiv_t -----------------------/
 .\"------------------------------------- lldiv_t ----------------------/
-.TP
-.I lldiv_t
-.RS
-.IR Include :
-.IR <stdlib.h> .
-.PP
-.EX
-typedef struct {
-    long long   quot; /* Quotient */
-    long long   rem;  /* Remainder */
-} lldiv_t;
-.EE
-.PP
-It is the type of the value returned by the
-.BR lldiv (3)
-function.
-.PP
-.IR "Conforming to" :
-C99 and later; POSIX.1-2001 and later.
-.PP
-.IR "See also" :
-.BR lldiv (3)
-.RE
 .\"------------------------------------- mode_t -----------------------/
 .TP
 .I mode_t

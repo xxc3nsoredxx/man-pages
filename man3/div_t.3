@@ -1,6 +1,6 @@
 .TH DIV_T 3 2021-11-02 Linux "Linux Programmer's Manual"
 .SH NAME
-div_t, ldiv_t, imaxdiv_t \- quotient and remainder of an integer division
+div_t, ldiv_t, lldiv_t, imaxdiv_t \- quotient and remainder of an integer division
 .SH SYNOPSIS
 .nf
 .B #include <stdlib.h>
@@ -15,6 +15,11 @@ div_t, ldiv_t, imaxdiv_t \- quotient and remainder of an integer division
 .BR "    long rem;" "  /* Remainder */"
 .B } ldiv_t;
 .PP
+.B typedef struct {
+.BR "    long long quot;" " /* Quotient */"
+.BR "    long long rem;" "  /* Remainder */"
+.B } lldiv_t;
+.PP
 .B #include <inttypes.h>
 .PP
 .B typedef struct {
@@ -23,9 +28,9 @@ div_t, ldiv_t, imaxdiv_t \- quotient and remainder of an integer division
 .B } imaxdiv_t;
 .fi
 .SH DESCRIPTION
-.RI [ l ] div_t
+.RI [[ l ] l ] div_t
 is the type of the value returned by the
-.RB [ l ] div (3)
+.RB [[ l ] l ] div (3)
 function.
 .PP
 .I imaxdiv_t
@@ -37,4 +42,5 @@ C99 and later; POSIX.1-2001 and later.
 .SH SEE ALSO
 .BR div (3),
 .BR imaxdiv (3),
-.BR ldiv (3)
+.BR ldiv (3),
+.BR lldiv (3)
