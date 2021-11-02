@@ -60,27 +60,6 @@ system_data_types \- overview of system data types
 .\"------------------------------------- div_t ------------------------/
 .\"------------------------------------- double_t ---------------------/
 .\"------------------------------------- fd_set -----------------------/
-.TP
-.I fd_set
-.RS
-.IR Include :
-.IR <sys/select.h> .
-Alternatively,
-.IR <sys/time.h> .
-.PP
-A structure type that can represent a set of file descriptors.
-According to POSIX,
-the maximum number of file descriptors in an
-.I fd_set
-structure is the value of the macro
-.BR FD_SETSIZE .
-.PP
-.IR "Conforming to" :
-POSIX.1-2001 and later.
-.PP
-.IR "See also" :
-.BR select (2)
-.RE
 .\"------------------------------------- fenv_t -----------------------/
 .TP
 .I fenv_t
