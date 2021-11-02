@@ -55,30 +55,6 @@ system_data_types \- overview of system data types
 .\"------------------------------------- blksize_t --------------------/
 .\"------------------------------------- cc_t -------------------------/
 .\"------------------------------------- clock_t ----------------------/
-.TP
-.I clock_t
-.RS
-.IR Include :
-.I <time.h>
-or
-.IR <sys/types.h> .
-Alternatively,
-.IR <sys/time.h> .
-.PP
-Used for system time in clock ticks or
-.B CLOCKS_PER_SEC
-(defined in
-.IR <time.h> ).
-According to POSIX,
-it shall be an integer type or a real-floating type.
-.PP
-.IR "Conforming to" :
-C99 and later; POSIX.1-2001 and later.
-.PP
-.IR "See also" :
-.BR times (2),
-.BR clock (3)
-.RE
 .\"------------------------------------- clockid_t --------------------/
 .TP
 .I clockid_t
