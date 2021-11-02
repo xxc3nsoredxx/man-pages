@@ -56,28 +56,6 @@ system_data_types \- overview of system data types
 .\"------------------------------------- cc_t -------------------------/
 .\"------------------------------------- clock_t ----------------------/
 .\"------------------------------------- clockid_t --------------------/
-.TP
-.I clockid_t
-.RS
-.IR Include :
-.IR <sys/types.h> .
-Alternatively,
-.IR <time.h> .
-.PP
-Used for clock ID type in the clock and timer functions.
-According to POSIX,
-it shall be defined as an arithmetic type.
-.PP
-.IR "Conforming to" :
-POSIX.1-2001 and later.
-.PP
-.IR "See also" :
-.BR clock_adjtime (2),
-.BR clock_getres (2),
-.BR clock_nanosleep (2),
-.BR timer_create (2),
-.BR clock_getcpuclockid (3)
-.RE
 .\"------------------------------------- dev_t ------------------------/
 .TP
 .I dev_t
