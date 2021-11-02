@@ -1,1 +1,41 @@
-.so man7/system_data_types.7
+.TH DOUBLE_T 3 2021-11-02 Linux "Linux Programmer's Manual"
+.SH NAME
+double_t \- most efficient floating types
+.SH SYNOPSIS
+.nf
+.B #include <math.h>
+.PP
+.BR typedef " /* ... */ " double_t;
+.fi
+.SH DESCRIPTION
+The implementation's most efficient floating type at least as wide as
+.IR double .
+Its type depends on the value of the macro
+.B FLT_EVAL_METHOD
+(defined in
+.IR <float.h> ):
+.TP
+0
+.I double_t
+is
+.IR double .
+.TP
+1
+.I double_t
+is
+.IR double .
+.TP
+2
+.I double_t
+is
+.IR "long double" .
+.PP
+For other values of
+.BR FLT_EVAL_METHOD ,
+the type of
+.I double_t
+is implementation-defined.
+.SH CONFORMING TO
+C99 and later; POSIX.1-2001 and later.
+.SH SEE ALSO
+.BR float_t (3)
