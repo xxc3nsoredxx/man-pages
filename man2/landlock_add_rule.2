@@ -34,10 +34,12 @@ landlock_add_rule \- add a new Landlock rule to a ruleset
 .PP
 .BI "int syscall(SYS_landlock_add_rule, int " ruleset_fd ,
 .BI "            enum landlock_rule_type " rule_type ,
-.BI "            const void *" rule_attr ", __u32 " flags );
+.BI "            const void *" rule_attr ", uint32_t " flags );
+.fi
 .SH DESCRIPTION
 A Landlock rule describes an action on an object.
-An object is currently a file hierarchy, and the related filesystem actions
+An object is currently a file hierarchy,
+and the related filesystem actions
 are defined with a set of access rights.
 This
 .BR landlock_add_rule ()
@@ -114,13 +116,15 @@ is 0).
 .TP
 .B EBADF
 .I ruleset_fd
-is not a file descriptor for the current thread, or a member of
+is not a file descriptor for the current thread,
+or a member of
 .I rule_attr
 is not a file descriptor as expected.
 .TP
 .B EBADFD
 .I ruleset_fd
-is not a ruleset file descriptor, or a member of
+is not a ruleset file descriptor,
+or a member of
 .I rule_attr
 is not the expected file descriptor type.
 .TP

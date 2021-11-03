@@ -33,7 +33,7 @@ landlock_restrict_self \- enforce a Landlock ruleset
 .BR "#include <sys/syscall.h>" "     /* Definition of " SYS_* " constants */"
 .PP
 .BI "int syscall(SYS_landlock_restrict_self, int " ruleset_fd ,
-.BI "            __u32 " flags );
+.BI "            uint32_t " flags );
 .SH DESCRIPTION
 Once a Landlock ruleset is populated with the desired rules, the
 .BR landlock_restrict_self ()
@@ -42,13 +42,13 @@ See
 .BR landlock (7)
 for a global overview.
 .PP
-A thread can be restricted with multiple rulesets that are then composed
-together to form the thread's Landlock domain.
-This can be seen as a stack of rulesets but it is implemented in a more
-efficient way.
-A domain can only be updated in such a way that the constraints of each
-past and future composed rulesets will restrict the thread and its future
-children for their entire life.
+A thread can be restricted with multiple rulesets that are then
+composed together to form the thread's Landlock domain.
+This can be seen as a stack of rulesets but
+it is implemented in a more efficient way.
+A domain can only be updated in such a way that
+the constraints of each past and future composed rulesets
+will restrict the thread and its future children for their entire life.
 It is then possible to gradually enforce tailored access control policies
 with multiple independant rulesets coming from different sources
 (e.g., init system configuration, user session policy,
@@ -68,8 +68,8 @@ capability in its user namespace, or the thread must already have the
 bit set.
 As for
 .BR seccomp (2),
-this avoids scenarios where unprivileged processes can affect the behavior
-of privileged children (e.g., because of set-user-ID binaries).
+this avoids scenarios where unprivileged processes can affect
+the behavior of privileged children (e.g., because of set-user-ID binaries).
 If that bit was not already set by an ancestor of this thread,
 the thread must make the following call:
 .IP
@@ -91,7 +91,7 @@ On success,
 returns 0.
 .SH ERRORS
 .BR landlock_restrict_self ()
-can failed for the following reasons:
+can fail for the following reasons:
 .TP
 .B EOPNOTSUPP
 Landlock is supported by the kernel but disabled at boot time.

@@ -34,7 +34,8 @@ landlock_create_ruleset \- create a new Landlock ruleset
 .PP
 .BI "int syscall(SYS_landlock_create_ruleset,
 .BI "            const struct landlock_ruleset_attr *" attr ,
-.BI "            size_t " size " , __u32 " flags );
+.BI "            size_t " size " , uint32_t " flags );
+.fi
 .SH DESCRIPTION
 A Landlock ruleset identifies a set of rules (i.e., actions on objects).
 This
@@ -55,14 +56,14 @@ It points to the following structure:
 .in +4n
 .EX
 struct landlock_ruleset_attr {
-	__u64 handled_access_fs;
+    __u64 handled_access_fs;
 };
 .EE
 .in
 .IP
 .I handled_access_fs
-is a bitmask of actions that is handled by this ruleset and should then be
-forbidden if no rule explicitly allow them
+is a bitmask of actions that is handled by this ruleset and
+should then be forbidden if no rule explicitly allows them
 (see
 .B Filesystem actions
 in
@@ -98,12 +99,13 @@ All features documented in these man pages are available with the version
 .SH RETURN VALUE
 On success,
 .BR landlock_create_ruleset ()
-returns a new Landlock ruleset file descriptor, or a Landlock ABI version
+returns a new Landlock ruleset file descriptor,
+or a Landlock ABI version,
 according to
 .IR flags .
 .SH ERRORS
 .BR landlock_create_ruleset ()
-can failed for the following reasons:
+can fail for the following reasons:
 .TP
 .B EOPNOTSUPP
 Landlock is supported by the kernel but disabled at boot time.
