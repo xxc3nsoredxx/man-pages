@@ -39,14 +39,14 @@ The
 .BR pthread_atfork ()
 function registers fork handlers that are to be executed when
 .BR fork (2)
-is called by this thread.
+is called by any thread in a process.
 The handlers are executed in the context of the thread that calls
 .BR fork (2).
 .PP
 Three kinds of handler can be registered:
 .IP * 3
 .IR prepare
-specifies a handler that is executed before
+specifies a handler that is executed in the parent process before
 .BR fork (2)
 processing starts.
 .IP *
@@ -70,8 +70,8 @@ On success,
 returns zero.
 On error, it returns an error number.
 .BR pthread_atfork ()
-may be called multiple times by a thread,
-to register multiple handlers for each phase.
+may be called multiple times by a process
+to register additional handlers.
 The handlers for each phase are called in a specified order: the
 .I prepare
 handlers are called in reverse order of registration; the
@@ -82,7 +82,7 @@ handlers are called in the order of registration.
 .SH ERRORS
 .TP
 .B ENOMEM
-Could not allocate memory to record the form handler entry.
+Could not allocate memory to record the fork handler list entry.
 .SH CONFORMING TO
 POSIX.1-2001, POSIX.1-2008.
 .SH NOTES
@@ -92,7 +92,7 @@ is called in a multithreaded process,
 only the calling thread is duplicated in the child process.
 The original intention of
 .BR pthread_atfork ()
-was to allow the calling thread to be returned to a consistent state.
+was to allow the child process to be returned to a consistent state.
 For example, at the time of the call to
 .BR fork (2),
 other threads may have locked mutexes that are visible in the
