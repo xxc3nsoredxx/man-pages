@@ -640,11 +640,13 @@ makes it easier to write tools that parse man page source files.)
 .SS Use semantic newlines
 In the source of a manual page,
 new sentences should be started on new lines,
-and long sentences should be split into lines at clause breaks
-(commas, semicolons, colons, and so on).
+long sentences should be split into lines at clause breaks
+(commas, semicolons, colons, and so on),
+and long clauses should be split at phrase boundaries.
 This convention, sometimes known as "semantic newlines",
 makes it easier to see the effect of patches,
-which often operate at the level of individual sentences or sentence clauses.
+which often operate at the level of
+individual sentences, sentence clauses, or phrases.
 .\"
 .SS Formatting conventions (general)
 Paragraphs should be separated by suitable markers (usually either
