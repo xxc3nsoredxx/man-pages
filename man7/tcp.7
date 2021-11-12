@@ -423,26 +423,31 @@ option.
 .\" Since 2.4.0-test7
 Enable RFC\ 2883 TCP Duplicate SACK support.
 .TP
-.IR tcp_fastopen  " (Bitmask; default: 0x1; since Linux 3.7)"
-Enables RFC\ 7413 Fast Open support.
+.IR tcp_fastopen " (Bitmask; default: 0x1; since Linux 3.7)"
+Enables RFC\~7413 Fast Open support.
 The flag is used as a bitmap with the following values:
 .RS
-.IP 0x1
+.TP
+.B 0x1
 Enables client side Fast Open support
-.IP 0x2
+.TP
+.B 0x2
 Enables server side Fast Open support
-.IP 0x4
+.TP
+.B 0x4
 Allows client side to transmit data in SYN without Fast Open option
-.IP 0x200
+.TP
+.B 0x200
 Allows server side to accept SYN data without Fast Open option
-.IP 0x400
+.TP
+.B 0x400
 Enables Fast Open on all listeners without
 .B TCP_FASTOPEN
 socket option
 .RE
 .TP
 .IR tcp_fastopen_key " (since Linux 3.7)"
-Set server side RFC\ 7413 Fast Open key to generate Fast Open cookie
+Set server side RFC\~7413 Fast Open key to generate Fast Open cookie
 when server side Fast Open support is enabled.
 .TP
 .IR tcp_ecn " (Integer; default: see below; since Linux 2.4)"
@@ -1226,19 +1231,19 @@ This option should not be used in code intended to be
 portable.
 .TP
 .BR TCP_FASTOPEN " (since Linux 3.6)"
-This option enables Fast Open (RFC\ 7413) on the listener socket.
+This option enables Fast Open (RFC\~7413) on the listener socket.
 The value specifies the maximum length of pending SYNs
 (similar to the backlog argument in
 .BR listen (2)).
 Once enabled,
-the listener socket grants the TCP Fast Open cookie on incoming
-SYN with TCP Fast Open option.
+the listener socket grants the TCP Fast Open cookie
+on incoming SYN with TCP Fast Open option.
 .IP
 More importantly it accepts the data in SYN with a valid Fast Open cookie
 and responds SYN-ACK acknowledging both the data and the SYN sequence.
 .BR accept (2)
-returns a socket that is available for read and write when the handshake
-has not completed yet.
+returns a socket that is available for read and write
+when the handshake has not completed yet.
 Thus the data exchange can commence before the handshake completes.
 This option requires enabling the server-side support on sysctl
 .IR net.ipv4.tcp_fastopen
@@ -1252,18 +1257,18 @@ or
 below.
 .TP
 .BR TCP_FASTOPEN_CONNECT " (since Linux 4.11)"
-This option enables an alternative way to perform Fast Open on the active
-side (client).
+This option enables an alternative way to perform Fast Open
+on the active side (client).
 When this option is enabled,
 .BR connect (2)
-would behave differently depending on if a Fast Open cookie is available
-for the destination.
+would behave differently depending on
+if a Fast Open cookie is available for the destination.
 .IP
 If a cookie is not available (i.e. first contact to the destination),
 .BR connect (2)
 behaves as usual by sending a SYN immediately,
-except the SYN would include an empty Fast Open cookie option to solicit a
-cookie.
+except the SYN would include an empty Fast Open cookie option
+to solicit a cookie.
 .IP
 If a cookie is available,
 .BR connect (2)
@@ -1297,13 +1302,12 @@ without
 .BR write (2)
 will cause the blocking socket to be blocked forever.
 .IP
-The application should  either set
+The application should either set
 .B TCP_FASTOPEN_CONNECT
 socket option before
 .BR write (2)
 or
-.BR sendmsg (2)
-,
+.BR sendmsg (2),
 or call
 .BR write (2)
 or
@@ -1322,11 +1326,10 @@ setsockopt(s, IPPROTO_TCP, TCP_FASTOPEN_CONNECT, 1, ...);
 connect(s);
 write(s); // write() should always follow connect() in order to trigger SYN to go out
 read(s)/write(s);
-...
+/* ... */
 close(s);
 .EE
 .in
-.IP
 .SS Sockets API
 TCP provides limited support for out-of-band data,
 in the form of (a single byte of) urgent data.
