@@ -52,12 +52,14 @@ function grep_syscall()
 
 	find * -type f \
 	|grep '\.c$' \
+	|xargs grep -l "${1}" \
 	|sort \
 	|xargs pcregrep -Mn "(?s)^\w*SYSCALL_DEFINE.\(${1},.*?\)" \
 	|sed -E 's/^[^:]+:[0-9]+:/&\n/';
 
 	find * -type f \
 	|grep '\.[ch]$' \
+	|xargs grep -l "${1}" \
 	|sort \
 	|xargs pcregrep -Mn "(?s)^asmlinkage\s+[\w\s]+\**sys_${1}\s*\(.*?\)" \
 	|sed -E 's/^[^:]+:[0-9]+:/&\n/';
@@ -77,6 +79,7 @@ function grep_syscall_def()
 
 	find * -type f \
 	|grep '\.c$' \
+	|xargs grep -l "${1}" \
 	|sort \
 	|xargs pcregrep -Mn "(?s)^\w*SYSCALL_DEFINE.\(${1},.*?^}" \
 	|sed -E 's/^[^:]+:[0-9]+:/&\n/';
@@ -216,6 +219,7 @@ function grep_glibc_prototype()
 
 	find * -type f \
 	|grep '\.h$' \
+	|xargs grep -l "${1}" \
 	|sort \
 	|xargs pcregrep -Mn \
 	  "(?s)^[\w[][\w\s(,)[:\]]+\s+\**${1}\s*\([\w\s(,)[\]*]+?(...)?\)[\w\s(,)[:\]]*;" \
