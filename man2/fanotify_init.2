@@ -57,15 +57,6 @@ In the current implementation, the number of fanotify groups per user is
 limited to 128.
 This limit cannot be overridden.
 .PP
-Calling
-.BR fanotify_init ()
-requires the
-.B CAP_SYS_ADMIN
-capability.
-This constraint might be relaxed in future versions of the API.
-Therefore, certain additional capability checks have been implemented as
-indicated below.
-.PP
 The
 .I flags
 argument contains a multi-bit field defining the notification class of the
@@ -86,6 +77,9 @@ It is intended for event listeners that need to access files before they
 contain their final data.
 This notification class might be used by hierarchical storage managers,
 for example.
+Use of this flag requires the
+.B CAP_SYS_ADMIN
+capability.
 .TP
 .B FAN_CLASS_CONTENT
 This value allows the receipt of events notifying that a file has been
@@ -94,6 +88,9 @@ It is intended for event listeners that need to access files when they
 already contain their final content.
 This notification class might be used by malware detection programs, for
 example.
+Use of this flag requires the
+.B CAP_SYS_ADMIN
+capability.
 .TP
 .B FAN_CLASS_NOTIF
 This is the default value.
@@ -155,6 +152,9 @@ supplied to
 .BR read (2)
 (see
 .BR fanotify (7)).
+Use of this flag requires the
+.B CAP_SYS_ADMIN
+capability.
 .TP
 .BR FAN_ENABLE_AUDIT " (since Linux 4.15)"
 .\" commit de8cd83e91bc3ee212b3e6ec6e4283af9e4ab269
@@ -163,6 +163,9 @@ permission events.
 The permission event response has to be marked with the
 .B FAN_AUDIT
 flag for an audit log record to be generated.
+Use of this flag requires the
+.B CAP_AUDIT_WRITE
+capability.
 .TP
 .BR FAN_REPORT_FID " (since Linux 5.1)"
 .\" commit a8b13aa20afb69161b5123b4f1acc7ea0a03d360
@@ -378,13 +381,63 @@ The fanotify API is available only if the kernel was configured with
 .BR CONFIG_FANOTIFY .
 .TP
 .B EPERM
-The operation is not permitted because the caller lacks the
-.B CAP_SYS_ADMIN
-capability.
+The operation is not permitted because the caller lacks a required capability.
 .SH VERSIONS
 .BR fanotify_init ()
 was introduced in version 2.6.36 of the Linux kernel and enabled in version
 2.6.37.
+.PP
+Prior to Linux 5.13,
+.\" commit 7cea2a3c505e87a9d6afc78be4a7f7be636a73a7
+calling
+.BR fanotify_init ()
+required the
+.B CAP_SYS_ADMIN
+capability.
+Since Linux 5.13,
+.\" commit 7cea2a3c505e87a9d6afc78be4a7f7be636a73a7
+users may call
+.BR fanotify_init ()
+without the
+.B CAP_SYS_ADMIN
+capability to create and intialize an fanotify group with limited functionality.
+.TP
+The limitations imposed on an event listener created by a user without the
+.B CAP_SYS_ADMIN
+capability are as follows:
+.RS
+.IP * 3
+The user cannot request for an unlimited event queue by using
+.BR FAN_UNLIMITED_QUEUE .
+.IP * 3
+The user cannot request for an unlimited number of marks by using
+.BR FAN_UNLIMITED_MARKS .
+.IP * 3
+The user cannot request to use either notification classes
+.BR FAN_CLASS_CONTENT
+or
+.BR FAN_CLASS_PRE_CONTENT .
+This means that user cannot request permission events.
+.IP * 3
+The user is required to create a group that identifies filesystem objects by
+file handles, for example, by providing the
+.BR FAN_REPORT_FID
+flag.
+.IP * 3
+The user is limited to only mark inodes.
+The ability to mark a mount or filesystem via
+.BR fanotify_mark()
+through the use of
+.BR FAN_MARK_MOUNT
+or
+.BR FAN_MARK_FILESYSTEM
+is not permitted.
+.IP * 3
+The event object in the event queue is limited in terms of the information
+that is made available to the unprivileged user.
+A user will also not receive the pid that generated the event, unless the
+listening process itself generated the event.
+.RE
 .SH CONFORMING TO
 This system call is Linux-specific.
 .SH BUGS

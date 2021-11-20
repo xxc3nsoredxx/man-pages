@@ -142,6 +142,9 @@ contains
 Attempting to do so will result in the error
 .B EINVAL
 being returned.
+Use of this flag requires the
+.B CAP_SYS_ADMIN
+capability.
 .TP
 .BR FAN_MARK_FILESYSTEM " (since Linux 4.20)"
 .\" commit d54f4fba889b205e9cd8239182ca5d27d0ac3bc2
@@ -152,6 +155,9 @@ The filesystem containing
 will be marked.
 All the contained files and directories of the filesystem from any mount
 point will be monitored.
+Use of this flag requires the
+.B CAP_SYS_ADMIN
+capability.
 .TP
 .B FAN_MARK_IGNORED_MASK
 The events in
@@ -453,6 +459,9 @@ is associated with a filesystem that does not support the encoding of file
 handles.
 This error can be returned only with an fanotify group that identifies
 filesystem objects by file handles.
+.TP
+.B EPERM
+The operation is not permitted because the caller lacks a required capability.
 .TP
 .B EXDEV
 The filesystem object indicated by
