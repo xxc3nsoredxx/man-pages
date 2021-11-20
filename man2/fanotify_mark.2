@@ -414,7 +414,12 @@ The filesystem object indicated by
 is not associated with a filesystem that supports
 .I fsid
 (e.g.,
-.BR tmpfs (5)).
+.BR fuse (4)).
+.BR tmpfs (5)
+did not support
+.I fsid
+prior to Linux 5.13.
+.\" commit 59cda49ecf6c9a32fae4942420701b6e087204f6
 This error can be returned only with an fanotify group that identifies
 filesystem objects by file handles.
 .TP
