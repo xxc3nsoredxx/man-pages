@@ -336,7 +336,7 @@ A file or directory that was opened read-only
 was closed.
 .TP
 .B FAN_Q_OVERFLOW
-The event queue exceeded the limit of 16384 entries.
+The event queue exceeded the limit on number of events.
 This limit can be overridden by specifying the
 .BR FAN_UNLIMITED_QUEUE
 flag when calling
@@ -606,7 +606,7 @@ are freed for reuse by the kernel.
 Upon
 .BR close (2),
 outstanding permission events will be set to allowed.
-.SS /proc/[pid]/fdinfo
+.SS /proc interfaces
 The file
 .I /proc/[pid]/fdinfo/[fd]
 contains information about fanotify marks for file descriptor
@@ -616,6 +616,37 @@ of process
 See
 .BR proc (5)
 for details.
+.PP
+Since Linux 5.13,
+.\" commit 5b8fea65d197f408bb00b251c70d842826d6b70b
+the following interfaces can be used to control the amount of
+kernel resources consumed by fanotify:
+.TP
+.I /proc/sys/fs/fanotify/max_queued_events
+The value in this file is used when an application calls
+.BR fanotify_init (2)
+to set an upper limit on the number of events that can be
+queued to the corresponding fanotify group.
+Events in excess of this limit are dropped, but an
+.B FAN_Q_OVERFLOW
+event is always generated.
+Prior to Linux kernel 5.13,
+.\" commit 5b8fea65d197f408bb00b251c70d842826d6b70b
+the hardcoded limit was 16384 events.
+.TP
+.I /proc/sys/fs/fanotify/max_user_group
+This specifies an upper limit on the number of fanotify groups
+that can be created per real user ID.
+Prior to Linux kernel 5.13,
+.\" commit 5b8fea65d197f408bb00b251c70d842826d6b70b
+the hardcoded limit was 128 groups per user.
+.TP
+.I /proc/sys/fs/fanotify/max_user_marks
+This specifies an upper limit on the number of fanotify marks
+that can be created per real user ID.
+Prior to Linux kernel 5.13,
+.\" commit 5b8fea65d197f408bb00b251c70d842826d6b70b
+the hardcoded limit was 8192 marks per group (not per user).
 .SH ERRORS
 In addition to the usual errors for
 .BR read (2),

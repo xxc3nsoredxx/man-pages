@@ -431,10 +431,13 @@ which is not marked.
 The necessary memory could not be allocated.
 .TP
 .B ENOSPC
-The number of marks exceeds the limit of 8192 and the
+The number of marks for this user exceeds the limit and the
 .B FAN_UNLIMITED_MARKS
 flag was not specified when the fanotify file descriptor was created with
 .BR fanotify_init (2).
+See
+.BR fanotify (7)
+for details about this limit.
 .TP
 .B ENOSYS
 This kernel does not implement

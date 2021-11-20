@@ -53,9 +53,10 @@ descriptor.
 Multiple programs may be using the fanotify interface at the same time to
 monitor the same files.
 .PP
-In the current implementation, the number of fanotify groups per user is
-limited to 128.
-This limit cannot be overridden.
+The number of fanotify groups per user is limited.
+See
+.BR fanotify (7)
+for details about this limit.
 .PP
 The
 .I flags
@@ -130,13 +131,19 @@ fails with the error
 .BR EAGAIN .
 .TP
 .B FAN_UNLIMITED_QUEUE
-Remove the limit of 16384 events for the event queue.
+Remove the limit on the number of events in the event queue.
+See
+.BR fanotify (7)
+for details about this limit.
 Use of this flag requires the
 .B CAP_SYS_ADMIN
 capability.
 .TP
 .B FAN_UNLIMITED_MARKS
-Remove the limit of 8192 marks.
+Remove the limit on the number of fanotify marks per user.
+See
+.BR fanotify (7)
+for details about this limit.
 Use of this flag requires the
 .B CAP_SYS_ADMIN
 capability.
@@ -366,7 +373,10 @@ defines all allowable bits for
 .IR flags .
 .TP
 .B EMFILE
-The number of fanotify groups for this user exceeds 128.
+The number of fanotify groups for this user exceeds the limit.
+See
+.BR fanotify (7)
+for details about this limit.
 .TP
 .B EMFILE
 The per-process limit on the number of open file descriptors has been reached.
