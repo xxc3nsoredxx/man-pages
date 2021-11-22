@@ -426,23 +426,23 @@ The user cannot request for an unlimited number of marks by using
 .BR FAN_UNLIMITED_MARKS .
 .IP * 3
 The user cannot request to use either notification classes
-.BR FAN_CLASS_CONTENT
+.B FAN_CLASS_CONTENT
 or
 .BR FAN_CLASS_PRE_CONTENT .
 This means that user cannot request permission events.
 .IP * 3
 The user is required to create a group that identifies filesystem objects by
 file handles, for example, by providing the
-.BR FAN_REPORT_FID
+.B FAN_REPORT_FID
 flag.
 .IP * 3
 The user is limited to only mark inodes.
 The ability to mark a mount or filesystem via
-.BR fanotify_mark()
+.BR fanotify_mark ()
 through the use of
-.BR FAN_MARK_MOUNT
+.B FAN_MARK_MOUNT
 or
-.BR FAN_MARK_FILESYSTEM
+.B FAN_MARK_FILESYSTEM
 is not permitted.
 .IP * 3
 The event object in the event queue is limited in terms of the information
