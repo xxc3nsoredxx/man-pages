@@ -242,6 +242,12 @@ is invalid.
 .B ENOEXEC
 .I fd
 does not refer to an open file.
+.TP
+.BR ETXTBSY " (since Linux 4.7)"
+.\" commit 39d637af5aa7577f655c58b9e55587566c63a0af
+The file referred to by
+.I fd
+is opened for read-write.
 .PP
 In addition to the above errors, if the module's
 .I init
