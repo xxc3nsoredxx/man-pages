@@ -149,7 +149,7 @@ used once, it should be safe enough) and, if
 is set nonzero, the internal static variables (not exposed to users)
 used to hold the last printed filename and line number are accessed
 and modified without synchronization; the update is not atomic and it
-occurs before disabling cancellation, so it can be interrupted only after
+occurs before disabling cancelation, so it can be interrupted only after
 one of the two variables is modified.
 After that,
 .BR error_at_line ()

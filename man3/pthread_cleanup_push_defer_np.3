@@ -26,7 +26,7 @@
 .TH PTHREAD_CLEANUP_PUSH_DEFER_NP 3 2021-03-22 "Linux" "Linux Programmer's Manual"
 .SH NAME
 pthread_cleanup_push_defer_np, pthread_cleanup_pop_restore_np \- push and pop
-thread cancellation clean-up handlers while saving cancelability type
+thread cancelation clean-up handlers while saving cancelability type
 .SH SYNOPSIS
 .nf
 .B #include <pthread.h>
@@ -59,11 +59,11 @@ Like
 .BR pthread_cleanup_push_defer_np ()
 pushes
 .I routine
-onto the thread's stack of cancellation clean-up handlers.
+onto the thread's stack of cancelation clean-up handlers.
 In addition, it also saves the thread's current cancelability type,
 and sets the cancelability type to "deferred" (see
 .BR pthread_setcanceltype (3));
-this ensures that cancellation clean-up will occur
+this ensures that cancelation clean-up will occur
 even if the thread's cancelability type was "asynchronous"
 before the call.
 .PP
@@ -71,7 +71,7 @@ Like
 .BR pthread_cleanup_pop (3),
 .BR pthread_cleanup_pop_restore_np ()
 pops the top-most clean-up handler from the thread's
-stack of cancellation clean-up handlers.
+stack of cancelation clean-up handlers.
 In addition, it restores the thread's cancelability
 type to its value at the time of the matching
 .BR pthread_cleanup_push_defer_np ().

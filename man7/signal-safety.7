@@ -322,9 +322,9 @@ is likely to remove
 from the list of async-signal-safe functions.
 .\"
 .IP * 3
-Asynchronous signal handlers that call functions which are cancellation
-points and nest over regions of deferred cancellation may trigger
-cancellation whose behavior is as if asynchronous cancellation had
+Asynchronous signal handlers that call functions which are cancelation
+points and nest over regions of deferred cancelation may trigger
+cancelation whose behavior is as if asynchronous cancelation had
 occurred and may cause application state to become inconsistent.
 .\"
 .SS errno
