@@ -324,16 +324,9 @@ The
 argument specifies an upper limit on the amount of time that
 .BR ppoll ()
 will block.
-This argument is a pointer to a structure of the following form:
-.PP
-.in +4n
-.EX
-struct timespec {
-    long    tv_sec;         /* seconds */
-    long    tv_nsec;        /* nanoseconds */
-};
-.EE
-.in
+This argument is a pointer to a
+.BR timespec (3)
+structure.
 .PP
 If
 .I tmo_p
@@ -659,5 +652,6 @@ main(int argc, char *argv[])
 .BR restart_syscall (2),
 .BR select (2),
 .BR select_tut (2),
+.BR timespec (3),
 .BR epoll (7),
 .BR time (7)

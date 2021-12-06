@@ -72,18 +72,11 @@ terminates,
 the call returns an error.
 The
 .I abstime
-argument is a structure of the following form,
+argument is a
+.BR timespec (3)
+structure,
 specifying an absolute time measured since the Epoch (see
-.BR time (2)):
-.PP
-.in +4n
-.EX
-struct timespec {
-    time_t tv_sec;     /* seconds */
-    long   tv_nsec;    /* nanoseconds */
-};
-.EE
-.in
+.BR time (2)).
 .SH RETURN VALUE
 On success,
 these functions return 0;
@@ -178,4 +171,5 @@ if (s != 0) {
 .BR clock_gettime (2),
 .BR pthread_exit (3),
 .BR pthread_join (3),
+.BR timespec (3),
 .BR pthreads (7)

@@ -58,17 +58,8 @@ and in allowing the sleep interval to be specified as
 either an absolute or a relative value.
 .PP
 The time values passed to and returned by this call are specified using
-.I timespec
-structures, defined as follows:
-.PP
-.in +4n
-.EX
-struct timespec {
-    time_t tv_sec;        /* seconds */
-    long   tv_nsec;       /* nanoseconds [0 .. 999999999] */
-};
-.EE
-.in
+.BR timespec (3)
+structures.
 .PP
 The
 .I clockid
@@ -272,5 +263,6 @@ shall have no effect on a thread that is blocked on a relative
 .BR restart_syscall (2),
 .BR timer_create (2),
 .BR sleep (3),
+.BR timespec (3),
 .BR usleep (3),
 .BR time (7)

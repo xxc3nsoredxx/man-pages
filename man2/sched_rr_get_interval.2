@@ -38,7 +38,7 @@ sched_rr_get_interval \- get the SCHED_RR interval for the named process
 .SH DESCRIPTION
 .BR sched_rr_get_interval ()
 writes into the
-.I timespec
+.BR timespec (3)
 structure pointed to by
 .I tp
 the round-robin time quantum for the process identified by
@@ -46,19 +46,6 @@ the round-robin time quantum for the process identified by
 The specified process should be running under the
 .B SCHED_RR
 scheduling policy.
-.PP
-The
-.I timespec
-structure has the following form:
-.PP
-.in +4n
-.EX
-struct timespec {
-    time_t tv_sec;    /* seconds */
-    long   tv_nsec;   /* nanoseconds */
-};
-.EE
-.in
 .PP
 If
 .I pid
@@ -132,4 +119,5 @@ Writing 0 to this file resets the quantum to the default value.
 .\" ENOSYS, because SCHED_RR has not yet been fully implemented and tested
 .\" properly.
 .SH SEE ALSO
+.BR timespec (3),
 .BR sched (7)

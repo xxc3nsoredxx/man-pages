@@ -353,16 +353,9 @@ struct timeval {
 .PP
 The corresponding argument for
 .BR pselect ()
-has the following type:
-.PP
-.in +4n
-.EX
-struct timespec {
-    time_t      tv_sec;         /* seconds */
-    long        tv_nsec;        /* nanoseconds */
-};
-.EE
-.in
+is a
+.BR timespec (3)
+structure.
 .PP
 On Linux,
 .BR select ()
@@ -761,6 +754,7 @@ main(void)
 .BR send (2),
 .BR sigprocmask (2),
 .BR write (2),
+.BR timespec (3),
 .BR epoll (7),
 .BR time (7)
 .PP

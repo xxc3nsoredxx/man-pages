@@ -76,19 +76,10 @@ can then be used to call
 .BR nanosleep ()
 again and complete the specified pause (but see NOTES).
 .PP
-The structure
-.I timespec
+The
+.BR timespec (3)
+structure
 is used to specify intervals of time with nanosecond precision.
-It is defined as follows:
-.PP
-.in +4n
-.EX
-struct timespec {
-    time_t tv_sec;        /* seconds */
-    long   tv_nsec;       /* nanoseconds */
-};
-.EE
-.in
 .PP
 The value of the nanoseconds field must be in the range 0 to 999999999.
 .PP
@@ -237,5 +228,6 @@ This problem is fixed in Linux 2.6.0 and later kernels.
 .BR sched_setscheduler (2),
 .BR timer_create (2),
 .BR sleep (3),
+.BR timespec (3),
 .BR usleep (3),
 .BR time (7)

@@ -65,11 +65,6 @@ structure is defined as follows:
 .PP
 .in +4n
 .EX
-struct timespec {
-    time_t tv_sec;                /* Seconds */
-    long   tv_nsec;               /* Nanoseconds */
-};
-
 struct itimerspec {
     struct timespec it_interval;  /* Timer interval */
     struct timespec it_value;     /* Initial expiration */
@@ -80,7 +75,7 @@ struct itimerspec {
 Each of the substructures of the
 .I itimerspec
 structure is a
-.I timespec
+.BR timespec (3)
 structure that allows a time value to be specified
 in seconds and nanoseconds.
 These time values are measured according to the clock
@@ -214,4 +209,5 @@ See
 .SH SEE ALSO
 .BR timer_create (2),
 .BR timer_getoverrun (2),
+.BR timespec (3),
 .BR time (7)

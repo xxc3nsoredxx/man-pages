@@ -86,18 +86,8 @@ The
 and
 .I tp
 arguments are
-.I timespec
-structures, as specified in
-.IR <time.h> :
-.PP
-.in +4n
-.EX
-struct timespec {
-    time_t   tv_sec;        /* seconds */
-    long     tv_nsec;       /* nanoseconds */
-};
-.EE
-.in
+.BR timespec (3)
+structures.
 .PP
 The
 .I clockid
@@ -539,6 +529,7 @@ main(int argc, char *argv[])
 .BR ftime (3),
 .BR pthread_getcpuclockid (3),
 .BR sysconf (3),
+.BR timespec (3),
 .BR time (7),
 .BR time_namespaces (7),
 .BR vdso (7),

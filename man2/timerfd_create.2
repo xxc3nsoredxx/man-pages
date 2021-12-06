@@ -152,16 +152,12 @@ argument specifies the initial expiration and interval for the timer.
 The
 .I itimerspec
 structure used for this argument contains two fields,
-each of which is in turn a structure of type
-.IR timespec :
+each of which is in turn a
+.BR timespec (3)
+structure:
 .PP
 .in +4n
 .EX
-struct timespec {
-    time_t tv_sec;                /* Seconds */
-    long   tv_nsec;               /* Nanoseconds */
-};
-
 struct itimerspec {
     struct timespec it_interval;  /* Interval for periodic timer */
     struct timespec it_value;     /* Initial expiration */
@@ -722,5 +718,6 @@ main(int argc, char *argv[])
 .BR timer_create (2),
 .BR timer_gettime (2),
 .BR timer_settime (2),
+.BR timespec (3),
 .BR epoll (7),
 .BR time (7)

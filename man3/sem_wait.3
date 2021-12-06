@@ -76,18 +76,10 @@ specifies a limit on the amount of time that the call
 should block if the decrement cannot be immediately performed.
 The
 .I abs_timeout
-argument points to a structure that specifies an absolute timeout
+argument points to a
+.BR timespec (3)
+structure that specifies an absolute timeout
 in seconds and nanoseconds since the Epoch, 1970-01-01 00:00:00 +0000 (UTC).
-This structure is defined as follows:
-.PP
-.in +4n
-.EX
-struct timespec {
-    time_t tv_sec;      /* Seconds */
-    long   tv_nsec;     /* Nanoseconds [0 .. 999999999] */
-};
-.EE
-.in
 .PP
 If the timeout has already expired by the time of the call,
 and the semaphore could not be locked immediately,
@@ -270,5 +262,6 @@ main(int argc, char *argv[])
 .BR clock_gettime (2),
 .BR sem_getvalue (3),
 .BR sem_post (3),
+.BR timespec (3),
 .BR sem_overview (7),
 .BR time (7)

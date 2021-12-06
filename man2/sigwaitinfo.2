@@ -88,16 +88,9 @@ the thread is suspended waiting for a signal.
 (This interval will be rounded up to the system clock granularity,
 and kernel scheduling delays mean that the interval
 may overrun by a small amount.)
-This argument is of the following type:
-.PP
-.in +4n
-.EX
-struct timespec {
-    long    tv_sec;         /* seconds */
-    long    tv_nsec;        /* nanoseconds */
-}
-.EE
-.in
+This argument is a
+.BR timespec (3)
+structure.
 .PP
 If both fields of this structure are specified as 0, a poll is performed:
 .BR sigtimedwait ()
@@ -248,5 +241,6 @@ when the kernel provides it.
 .BR sigqueue (3),
 .BR sigsetops (3),
 .BR sigwait (3),
+.BR timespec (3),
 .BR signal (7),
 .BR time (7)
