@@ -317,7 +317,9 @@ checkpoint/restore in user space (CRIU) feature.
 process information via the
 .BR proc (5)
 filesystem; this was deemed to be unsuitable for security reasons.)
-Since Linux 5.12, this system call is made available unconditionally.
+Since Linux 5.12,
+this system call is also available if the kernel is configured with
+.BR CONFIG_KCMP .
 .PP
 See
 .BR clone (2)
