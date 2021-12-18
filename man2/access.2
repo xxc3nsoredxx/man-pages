@@ -280,6 +280,11 @@ is relative and
 .I dirfd
 is a file descriptor referring to a file other than a directory.
 .TP
+.B EPERM
+Write permission was requested to a file that has the immutable flag set.
+See also
+.BR ioctl_iflags (2).
+.TP
 .B EROFS
 Write permission was requested for a file on a read-only filesystem.
 .TP
