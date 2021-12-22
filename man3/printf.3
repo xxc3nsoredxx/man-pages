@@ -301,6 +301,17 @@ and
 .B G
 conversions, trailing zeros are not removed from the result as they would
 otherwise be.
+For
+.BR m ,
+if
+.I errno
+contains a valid error code,
+the output of
+.I strerrorname_np(errno)
+is printed;
+otherwise, the value stored in
+.I errno
+is printed as a decimal number.
 For other conversions, the result is undefined.
 .TP
 .B \&0
@@ -853,7 +864,10 @@ any flags, a field width, or a precision.
 .B m
 (Glibc extension; supported by uClibc and musl.)
 Print output of
-.IR strerror(errno) .
+.I strerror(errno)
+(or
+.I strerrorname_np(errno)
+in the alternate form).
 No argument is required.
 .TP
 .B %
@@ -974,6 +988,13 @@ and conversion characters \fBa\fP and \fBA\fP.
 .PP
 glibc 2.2 adds the conversion character \fBF\fP with C99 semantics,
 and the flag character \fBI\fP.
+.PP
+glibc 2.35 gives a meaning to the alternate form
+.RB ( # )
+of the
+.B m
+conversion specifier, that is
+.IR %#m .
 .SH NOTES
 Some programs imprudently rely on code such as the following
 .PP
