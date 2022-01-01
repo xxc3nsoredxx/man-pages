@@ -203,7 +203,9 @@ Map CR to NL on output.
 Don't output CR at column 0.
 .TP
 .B ONLRET
-Don't output CR.
+The NL character is assumed to do the carriage-return function;
+the kernel's idea of the current column is set to 0
+after both NL and CR.
 .TP
 .B OFILL
 Send fill characters for a delay, rather than using a timed delay.
