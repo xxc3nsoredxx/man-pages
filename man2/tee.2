@@ -164,7 +164,7 @@ int
 main(int argc, char *argv[])
 {
     int fd;
-    int len, slen;
+    ssize_t len, slen;
 
     if (argc != 2) {
         fprintf(stderr, "Usage: %s <file>\en", argv[0]);
