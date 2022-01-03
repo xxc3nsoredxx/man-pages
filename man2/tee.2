@@ -189,9 +189,9 @@ main(int argc, char *argv[])
                 continue;
             perror("tee");
             exit(EXIT_FAILURE);
-        } else
-            if (len == 0)
-                break;
+        }
+        if (len == 0)
+            break;
 
         /*
          * Consume stdin by splicing it to a file.
