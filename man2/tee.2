@@ -177,7 +177,7 @@ main(int argc, char *argv[])
         exit(EXIT_FAILURE);
     }
 
-    do {
+    for (;;) {
         /*
          * tee stdin to stdout.
          */
@@ -205,7 +205,7 @@ main(int argc, char *argv[])
             }
             len \-= slen;
         }
-    } while (1);
+    }
 
     close(fd);
     exit(EXIT_SUCCESS);
