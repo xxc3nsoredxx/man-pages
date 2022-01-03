@@ -201,7 +201,7 @@ main(int argc, char *argv[])
                           len, SPLICE_F_MOVE);
             if (slen < 0) {
                 perror("splice");
-                break;
+                exit(EXIT_FAILURE);
             }
             len \-= slen;
         }
