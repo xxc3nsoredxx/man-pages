@@ -183,7 +183,6 @@ main(int argc, char *argv[])
          */
         len = tee(STDIN_FILENO, STDOUT_FILENO,
                   INT_MAX, SPLICE_F_NONBLOCK);
-
         if (len < 0) {
             if (errno == EAGAIN)
                 continue;
