@@ -1134,6 +1134,7 @@ cecilia
 #include <linux/filter.h>
 #include <linux/seccomp.h>
 #include <sys/prctl.h>
+#include <sys/syscall.h>
 
 #define X32_SYSCALL_BIT 0x40000000
 #define ARRAY_SIZE(arr) (sizeof(arr) / sizeof((arr)[0]))
@@ -1191,7 +1192,7 @@ install_filter(int syscall_nr, int t_arch, int f_errno)
         .filter = filter,
     };
 
-    if (seccomp(SECCOMP_SET_MODE_FILTER, 0, &prog)) {
+    if (syscall(SYS_seccomp, SECCOMP_SET_MODE_FILTER, 0, &prog)) {
         perror("seccomp");
         return 1;
     }
