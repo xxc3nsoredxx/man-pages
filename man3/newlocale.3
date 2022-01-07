@@ -360,7 +360,7 @@ main(int argc, char *argv[])
 
     /* Free the locale object. */
 
-    uselocale(LC_GLOBAL_HANDLE);    /* So \(aqloc\(aq is no longer in use */
+    uselocale(LC_GLOBAL_LOCALE);    /* So \(aqloc\(aq is no longer in use */
     freelocale(loc);
 
     exit(EXIT_SUCCESS);
