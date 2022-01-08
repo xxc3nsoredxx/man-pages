@@ -184,47 +184,9 @@ Segmentation fault (core dumped)
 .EX
 #define _GNU_SOURCE
 #include <unistd.h>
-#include <sys/syscall.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <sys/mman.h>
-
-static inline void
-wrpkru(unsigned int pkru)
-{
-    unsigned int eax = pkru;
-    unsigned int ecx = 0;
-    unsigned int edx = 0;
-
-    asm volatile(".byte 0x0f,0x01,0xef\en\et"
-                 : : "a" (eax), "c" (ecx), "d" (edx));
-}
-
-int
-pkey_set(int pkey, unsigned int rights)
-{
-    unsigned int pkru = (rights << (2 * pkey));
-    wrpkru(pkru);
-    return 0;
-}
-
-int
-pkey_mprotect(void *ptr, size_t size, int orig_prot, int pkey)
-{
-    return syscall(SYS_pkey_mprotect, ptr, size, orig_prot, pkey);
-}
-
-int
-pkey_alloc(unsigned int flags, unsigned int rights)
-{
-    return syscall(SYS_pkey_alloc, flags, rights);
-}
-
-int
-pkey_free(int pkey)
-{
-    return syscall(SYS_pkey_free, pkey);
-}
 
 #define errExit(msg)    do { perror(msg); exit(EXIT_FAILURE); \e
                            } while (0)
