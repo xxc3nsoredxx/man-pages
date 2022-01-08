@@ -28,6 +28,7 @@ mq_notify \- register for notification when a message is available
 .SH SYNOPSIS
 .nf
 .B #include <mqueue.h>
+.BR "#include <signal.h>           " "/* Definition of SIGEV_* constants */"
 .PP
 .BI "int mq_notify(mqd_t " mqdes ", const struct sigevent *" sevp );
 .fi
@@ -224,6 +225,7 @@ queue and then terminates the process.
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
+#include <signal.h>
 
 #define handle_error(msg) \e
     do { perror(msg); exit(EXIT_FAILURE); } while (0)
