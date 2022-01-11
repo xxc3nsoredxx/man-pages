@@ -42,8 +42,9 @@ to change the contents of a register in order to remove write
 access, or all access to a tagged page.
 .PP
 Protection keys work in conjunction with the existing
-.BR PROT_READ /
-.BR PROT_WRITE /
+.BR PROT_READ ,
+.BR PROT_WRITE ,
+and
 .BR PROT_EXEC
 permissions passed to system calls such as
 .BR mprotect (2)
