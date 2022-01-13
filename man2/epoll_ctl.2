@@ -106,8 +106,11 @@ The
 .I events
 member of the
 .I epoll_event
-structure is a bit mask composed by ORing together zero or more of
-the following available event types:
+structure is a bit mask composed by ORing together zero or more event types,
+returned by
+.BR epoll_wait (2),
+and input flags, which affect its behaviour, but aren't returned.
+The available event types are:
 .TP
 .B EPOLLIN
 The associated file is available for
@@ -156,6 +159,8 @@ Note that when reading from a channel such as a pipe or a stream socket,
 this event merely indicates that the peer closed its end of the channel.
 Subsequent reads from the channel will return 0 (end of file)
 only after all outstanding data in the channel has been consumed.
+.PP
+And the available input flags are:
 .TP
 .B EPOLLET
 Requests edge-triggered notification for the associated file descriptor.
@@ -166,13 +171,6 @@ See
 .BR epoll (7)
 for more detailed information about edge-triggered and
 level-triggered notification.
-.IP
-This flag is an input flag for the
-.I event.events
-field when calling
-.BR epoll_ctl ();
-it is never returned by
-.BR epoll_wait (2).
 .TP
 .BR EPOLLONESHOT " (since Linux 2.6.2)"
 Requests one-shot notification for the associated file descriptor.
@@ -187,13 +185,6 @@ The user must call
 with
 .B EPOLL_CTL_MOD
 to rearm the file descriptor with a new event mask.
-.IP
-This flag is an input flag for the
-.I event.events
-field when calling
-.BR epoll_ctl ();
-it is never returned by
-.BR epoll_wait (2).
 .TP
 .BR EPOLLWAKEUP " (since Linux 3.5)"
 .\" commit 4d7e30d98939a0340022ccd49325a3d70f7e0238
@@ -222,13 +213,6 @@ or the clearing of
 for the event file descriptor with
 .BR EPOLL_CTL_MOD .
 See also BUGS.
-.IP
-This flag is an input flag for the
-.I event.events
-field when calling
-.BR epoll_ctl ();
-it is never returned by
-.BR epoll_wait (2).
 .TP
 .BR EPOLLEXCLUSIVE " (since Linux 4.5)"
 Sets an exclusive wakeup mode for the epoll file descriptor that is being
@@ -299,15 +283,6 @@ and specifies the target file descriptor
 as an epoll instance will likewise fail.
 The error in all of these cases is
 .BR EINVAL .
-.IP
-The
-.BR EPOLLEXCLUSIVE
-flag is an input flag for the
-.I event.events
-field when calling
-.BR epoll_ctl ();
-it is never returned by
-.BR epoll_wait (2).
 .SH RETURN VALUE
 When successful,
 .BR epoll_ctl ()
