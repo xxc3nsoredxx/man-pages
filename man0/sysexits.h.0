@@ -1,0 +1,155 @@
+.\" Copyright (c) 1996 Joerg Wunsch
+.\" Copyright (c) 2022 Alejandro Colomar <alx.manpages@gmail.com>
+.\"
+.\" All rights reserved.
+.\"
+.\" %%%LICENSE_START(BSD_2_CLAUSE)
+.\" Redistribution and use in source and binary forms, with or without
+.\" modification, are permitted provided that the following conditions
+.\" are met:
+.\" 1. Redistributions of source code must retain the above copyright
+.\"    notice, this list of conditions and the following disclaimer.
+.\" 2. Redistributions in binary form must reproduce the above copyright
+.\"    notice, this list of conditions and the following disclaimer in the
+.\"    documentation and/or other materials provided with the distribution.
+.\"
+.\" THIS SOFTWARE IS PROVIDED BY THE DEVELOPERS ``AS IS'' AND ANY EXPRESS OR
+.\" IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES
+.\" OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
+.\" IN NO EVENT SHALL THE DEVELOPERS BE LIABLE FOR ANY DIRECT, INDIRECT,
+.\" INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
+.\" NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+.\" DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+.\" THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+.\" (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF
+.\" THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+.\" %%%LICENSE_END
+.\"
+.\" Rewritten for the Linux man-pages by Alejandro Colomar
+.\"
+.TH sysexits.h 0 2022-01-23 GNU "Linux Programmer's Manual"
+.SH NAME
+sysexits \- exit codes for programs
+.SH SYNOPSIS
+.nf
+.B #include <sysexits.h>
+.fi
+.SH DESCRIPTION
+A few programs exit with the following error codes.
+.PP
+The successful exit is always indicated by a status of
+.BR 0 ,
+or
+.B EX_OK
+(equivalent to
+.B EXIT_SUCCESS
+from
+.IR <stdlib.h> ).
+Error numbers begin at
+.B EX__BASE
+to reduce the possibility of clashing with other exit statuses
+that random programs may already return.
+The meaning of the code is approximately as follows:
+.PP
+.TP
+.BR EX_USAGE " (" 64 )
+The command was used incorrectly,
+e.g.,
+with the wrong number of arguments,
+a bad flag,
+bad syntax in a parameter,
+or whatever.
+.TP
+.BR EX_DATAERR " (" 65 )
+The input data was incorrect in some way.
+This should only be used for user's data and not system files.
+.TP
+.BR EX_NOINPUT " (" 66 )
+An input file (not a system file) did not exist or was not readable.
+This could also include errors like "No message" to a mailer
+(if it cared to catch it).
+.TP
+.BR EX_NOUSER " (" 67 )
+The user specified did not exist.
+This might be used for mail addresses or remote logins.
+.TP
+.BR EX_NOHOST " (" 68 )
+The host specified did not exist.
+This is used in mail addresses or network requests.
+.TP
+.BR EX_UNAVAILABLE " (" 69 )
+A service is unavailable.
+This can occur if a support program or file does not exist.
+This can also be used as a catch-all message
+when something you wanted to do doesn't work, but you don't know why.
+.TP
+.BR EX_SOFTWARE " (" 70 )
+An internal software error has been detected.
+This should be limited to non-operating system related errors if possible.
+.TP
+.BR EX_OSERR " (" 71 )
+An operating system error has been detected.
+This is intended to be used for such things as
+"cannot fork",
+"cannot create pipe",
+or the like.
+It includes things like
+.BR getuid (2)
+returning a user that does not exist in the
+.BR passwd (5)
+file.
+.TP
+.BR EX_OSFILE " (" 72 )
+Some system file
+(e.g.,
+.IR /etc/passwd ,
+.IR /etc/utmp ,
+etc.)
+does not exist,
+cannot be opened,
+or has some sort of error (e.g., syntax error).
+.TP
+.BR EX_CANTCREAT " (" 73 )
+A (user specified) output file cannot be created.
+.TP
+.BR EX_IOERR " (" 74 )
+An error occurred while doing I/O on some file.
+.TP
+.BR EX_TEMPFAIL " (" 75 )
+Temporary failure,
+indicating something that is not really an error.
+For example that a mailer could not create a connection,
+and the request should be reattempted later.
+.TP
+.BR EX_PROTOCOL " (" 76 )
+The remote system returned something that
+was "not possible" during a protocol exchange.
+.TP
+.BR EX_OSFILE " (" 77 )
+You did not have sufficient permission to perform the operation.
+This is not intended for file system problems,
+which should use
+.B EX_NOINPUT
+or
+.BR EX_CANTCREAT ,
+but rather for higher level permissions.
+.TP
+.BR EX_CONFIG " (" 78 )
+Something was found in an unconfigured or misconfigured state.
+.PP
+The numerical values corresponding to the symbolical ones
+are given in parenthesis for easy reference.
+.SH CONFORMING TO
+Not in POSIX.1.
+Present on the BSDs.
+The
+.I <sysexits.h>
+file appeared in 4.0BSD for use by the deliverymail utility,
+later renamed to
+.BR sendmail (8).
+.SH BUGS
+The choice of an appropriate exit value is often ambiguous.
+.SH SEE ALSO
+.BR err (3),
+.BR error (3),
+.BR exit (3)
