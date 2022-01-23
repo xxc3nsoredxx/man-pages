@@ -197,7 +197,7 @@ function man_gitstaged()
 {
 	git diff --staged --name-only					\
 	|sed "s/$/, /"							\
-	|sed "s%man[1-9]/%%"						\
+	|sed "s%man[0-9]/%%"						\
 	|tr -d '\n'							\
 	|sed "s/, $//"
 }

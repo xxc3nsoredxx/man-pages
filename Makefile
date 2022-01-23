@@ -39,6 +39,7 @@ datarootdir := $(prefix)/share
 docdir := $(datarootdir)/doc
 MANDIR := $(CURDIR)
 mandir := $(datarootdir)/man
+MAN0DIR := $(MANDIR)/man0
 MAN1DIR := $(MANDIR)/man1
 MAN2DIR := $(MANDIR)/man2
 MAN3DIR := $(MANDIR)/man3
@@ -47,6 +48,7 @@ MAN5DIR := $(MANDIR)/man5
 MAN6DIR := $(MANDIR)/man6
 MAN7DIR := $(MANDIR)/man7
 MAN8DIR := $(MANDIR)/man8
+man0dir := $(mandir)/man0
 man1dir := $(mandir)/man1
 man2dir := $(mandir)/man2
 man3dir := $(mandir)/man3
@@ -56,6 +58,7 @@ man6dir := $(mandir)/man6
 man7dir := $(mandir)/man7
 man8dir := $(mandir)/man8
 manext := \.[0-9]
+man0ext := .0
 man1ext := .1
 man2ext := .2
 man3ext := .3
@@ -74,7 +77,7 @@ INSTALL_DIR := $(INSTALL) -m 755 -d
 RM := rm
 RMDIR := rmdir --ignore-fail-on-non-empty
 
-MAN_SECTIONS := 1 2 3 4 5 6 7 8
+MAN_SECTIONS := 0 1 2 3 4 5 6 7 8
 
 
 .PHONY: all
@@ -120,6 +123,7 @@ clean:
 
 MANPAGES   := $(sort $(shell find $(MANDIR)/man?/ -type f | grep '$(manext)$$'))
 _manpages  := $(patsubst $(MANDIR)/%,$(DESTDIR)$(mandir)/%,$(MANPAGES))
+_man0pages := $(filter %$(man0ext),$(_manpages))
 _man1pages := $(filter %$(man1ext),$(_manpages))
 _man2pages := $(filter %$(man2ext),$(_manpages))
 _man3pages := $(filter %$(man3ext),$(_manpages))
@@ -131,6 +135,7 @@ _man8pages := $(filter %$(man8ext),$(_manpages))
 
 MANDIRS  := $(sort $(shell find $(MANDIR)/man? -type d))
 _mandirs := $(patsubst $(MANDIR)/%,$(DESTDIR)$(mandir)/%/.,$(MANDIRS))
+_man0dir := $(filter %man0/.,$(_mandirs))
 _man1dir := $(filter %man1/.,$(_mandirs))
 _man2dir := $(filter %man2/.,$(_mandirs))
 _man3dir := $(filter %man3/.,$(_mandirs))
@@ -142,6 +147,7 @@ _man8dir := $(filter %man8/.,$(_mandirs))
 _mandir  := $(DESTDIR)$(mandir)/.
 
 _manpages_rm  := $(addsuffix -rm,$(wildcard $(_manpages)))
+_man0pages_rm := $(filter %$(man0ext)-rm,$(_manpages_rm))
 _man1pages_rm := $(filter %$(man1ext)-rm,$(_manpages_rm))
 _man2pages_rm := $(filter %$(man2ext)-rm,$(_manpages_rm))
 _man3pages_rm := $(filter %$(man3ext)-rm,$(_manpages_rm))
@@ -152,6 +158,7 @@ _man7pages_rm := $(filter %$(man7ext)-rm,$(_manpages_rm))
 _man8pages_rm := $(filter %$(man8ext)-rm,$(_manpages_rm))
 
 _mandirs_rmdir := $(addsuffix -rmdir,$(wildcard $(_mandirs)))
+_man0dir_rmdir := $(addsuffix -rmdir,$(wildcard $(_man0dir)))
 _man1dir_rmdir := $(addsuffix -rmdir,$(wildcard $(_man1dir)))
 _man2dir_rmdir := $(addsuffix -rmdir,$(wildcard $(_man2dir)))
 _man3dir_rmdir := $(addsuffix -rmdir,$(wildcard $(_man3dir)))
@@ -257,7 +264,7 @@ uninstall-html:
 .PHONY: check-groff-warnings
 check-groff-warnings:
 	GROFF_LOG="$$(mktemp --tmpdir manpages-checksXXXX)" || exit $$?; \
-	for i in man?/*.[1-9]; \
+	for i in man?/*.[0-9]; \
 	do \
 		if grep -q 'SH.*NAME' "$$i"; then \
 			LC_ALL=en_US.UTF-8 MANWIDTH=80 man --warnings -E UTF-8 -l "$$i" > /dev/null 2>| "$$GROFF_LOG"; \
