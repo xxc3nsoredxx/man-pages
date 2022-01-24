@@ -118,6 +118,56 @@ This function modifies its first argument.
 This function cannot be used on constant strings.
 .IP *
 The identity of the delimiting character is lost.
+.SH EXAMPLES
+The program below is a port of the one found in
+.BR strtok (3),
+which, however, doesn't discard multiple delimiters or empty tokens:
+.PP
+.in +4n
+.EX
+.RB "$" " ./a.out \(aqa/bbb///cc;xxx:yyy:\(aq \(aq:;\(aq \(aq/\(aq"
+1: a/bbb///cc
+         \-\-> a
+         \-\-> bbb
+         \-\->
+         \-\->
+         \-\-> cc
+2: xxx
+         \-\-> xxx
+3: yyy
+         \-\-> yyy
+4:
+         \-\->
+.EE
+.in
+.SS Program source
+\&
+.EX
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+int
+main(int argc, char *argv[])
+{
+    char *token, *subtoken;
+
+    if (argc != 4) {
+        fprintf(stderr, "Usage: %s string delim subdelim\en",
+                argv[0]);
+        exit(EXIT_FAILURE);
+    }
+
+    for (int j = 1; (token = strsep(&argv[1], argv[2])); j++) {
+        printf("%d: %s\en", j, token);
+
+        while ((subtoken = strsep(&token, argv[3])))
+            printf("\et \-\-> %s\en", subtoken);
+    }
+
+    exit(EXIT_SUCCESS);
+}
+.EE
 .SH SEE ALSO
 .BR index (3),
 .BR memchr (3),
