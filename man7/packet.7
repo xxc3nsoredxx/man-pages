@@ -47,6 +47,14 @@ is set to
 then all protocols are received.
 All incoming packets of that protocol type will be passed to the packet
 socket before they are passed to the protocols implemented in the kernel.
+If
+.I protocol
+is set to zero,
+no packets are received.
+.BR bind (2)
+can optionally be called with a nonzero
+.IR sll_protocol
+to start receiving packets for the protocols specified.
 .PP
 In order to create a packet socket, a process must have the
 .B CAP_NET_RAW
