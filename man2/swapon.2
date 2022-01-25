@@ -33,6 +33,9 @@
 .\" 2004-12-14 mtk, Anand Kumria: added new errors
 .\" 2007-06-22 Ivana Varekova <varekova@redhat.com>, mtk
 .\"     Update text describing limit on number of swap files.
+.\" 2021-01-17 Alex Baranowski <alex@euro-linux.com>
+.\"     Update information about available swap files decreased by
+.\"     CONFIG_DEVICE_PRIVATE option.
 .\"
 .\" FIXME Linux 3.11 added SWAP_FLAG_DISCARD_ONCE and SWAP_FLAG_DISCARD_PAGES
 .\"	commit dcf6b7ddd7df8965727746f89c59229b23180e5a
@@ -189,6 +192,10 @@ and
 Since kernel 2.6.32, the limit is further decreased by 1
 if the kernel is built with the
 .B CONFIG_MEMORY_FAILURE
+option.
+Since kernel 5.14, the limit is further decreased by 4
+if the kernel is built with the
+.B CONFIG_DEVICE_PRIVATE
 option.
 .PP
 Discard of swap pages was introduced in kernel 2.6.29,
