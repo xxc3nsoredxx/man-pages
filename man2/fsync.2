@@ -126,6 +126,10 @@ is set to indicate the error.
 .I fd
 is not a valid open file descriptor.
 .TP
+.B EINTR
+The function was interrupted by a signal; see
+.BR signal (7).
+.TP
 .B EIO
 An error occurred during synchronization.
 This error may relate to data written to some other file descriptor
