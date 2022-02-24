@@ -1,6 +1,6 @@
 .TH SOCKADDR 3 2022-02-24 Linux "Linux Programmer's Manual"
 .SH NAME
-sockaddr, socklen_t \- socket address
+sockaddr, sockaddr_storage, socklen_t \- socket address
 .SH SYNOPSIS
 .nf
 .B #include <sys/socket.h>
@@ -10,12 +10,26 @@ sockaddr, socklen_t \- socket address
 .BR "    char        sa_data[];" "  /* Socket address */"
 .B };
 .PP
+.B struct sockaddr_storage {
+.BR "    sa_family_t ss_family;" "  /* Address family */"
+.B };
+.PP
 .BR typedef " /* ... */ " socklen_t;
 .fi
 .SH DESCRIPTION
 .TP
 .I sockaddr
 Describes a socket address.
+.TP
+.I sockaddr_storage
+According to POSIX,
+a structure large enough to accomodate all supported
+.IR sockaddr_ *
+address structures.
+It's aligned so that a pointer to it can be cast
+as a pointer to other
+.IR sockaddr_ *
+structures and used to access its fields.
 .TP
 .I socklen_t
 Describes the length of a socket address.
@@ -34,5 +48,8 @@ is also defined in
 .BR getpeername (2),
 .BR getsockname (2),
 .BR socket (2),
+.BR getaddrinfo (3),
 .BR gethostbyaddr (3),
-.BR getnameinfo (3)
+.BR getnameinfo (3),
+.BR ipv6 (7),
+.BR socket (7)
