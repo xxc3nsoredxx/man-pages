@@ -1,1 +1,21 @@
-.so man7/system_data_types.7
+.TH SOCKADDR 3 2022-02-24 Linux "Linux Programmer's Manual"
+.SH NAME
+sockaddr \- socket address
+.SH SYNOPSIS
+.nf
+.B #include <sys/socket.h>
+.PP
+.B struct sockaddr {
+.BR "    sa_family_t sa_family;" "  /* Address family */"
+.BR "    char        sa_data[];" "  /* Socket address */"
+.B };
+.fi
+.SH DESCRIPTION
+Describes a socket address.
+.SH CONFORMING TO
+POSIX.1-2001 and later.
+.SH SEE ALSO
+.BR accept (2),
+.BR getpeername (2),
+.BR getsockname (2),
+.BR socket (2)
