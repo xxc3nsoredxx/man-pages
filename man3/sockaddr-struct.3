@@ -1,6 +1,7 @@
 .TH SOCKADDR 3 2022-02-24 Linux "Linux Programmer's Manual"
 .SH NAME
-sockaddr, sockaddr_storage, sockaddr_un, socklen_t \- socket address
+sockaddr, sockaddr_storage, sockaddr_in, sockaddr_un, socklen_t,
+\- socket address
 .SH SYNOPSIS
 .nf
 .B #include <sys/socket.h>
@@ -16,6 +17,16 @@ sockaddr, sockaddr_storage, sockaddr_un, socklen_t \- socket address
 .PP
 .BR typedef " /* ... */ " socklen_t;
 .PP
+.fi
+.SS Internet domain sockets
+.nf
+.B #include <netinet/in.h>
+.PP
+.B struct sockaddr_in {
+.BR "    sa_family_t    sin_family;" "  /* " AF_INET " */"
+.BR "    in_port_t      sin_port;" "    /* Port number */"
+.BR "    struct in_addr sin_addr;" "    /* IP address */"
+.B };
 .fi
 .SS UNIX domain sockets
 .nf
@@ -45,6 +56,10 @@ structures and used to access its fields.
 Describes the length of a socket address.
 According to POSIX,
 this shall be an integer type of at least 32 bits.
+.SS Internet domain sockets
+.TP
+.I sockaddr_in
+Describes an Internet domain socket address.
 .SS UNIX domain sockets
 .TP
 .I sockaddr_un
@@ -61,6 +76,9 @@ is also defined in
 .BR connect (2),
 .BR getpeername (2),
 .BR getsockname (2),
+.BR getsockopt (2),
+.BR sendto (2),
+.BR setsockopt (2),
 .BR socket (2),
 .BR socketpair (2),
 .BR getaddrinfo (3),
