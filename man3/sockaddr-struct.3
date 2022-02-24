@@ -1,6 +1,6 @@
 .TH SOCKADDR 3 2022-02-24 Linux "Linux Programmer's Manual"
 .SH NAME
-sockaddr \- socket address
+sockaddr, socklen_t \- socket address
 .SH SYNOPSIS
 .nf
 .B #include <sys/socket.h>
@@ -9,13 +9,30 @@ sockaddr \- socket address
 .BR "    sa_family_t sa_family;" "  /* Address family */"
 .BR "    char        sa_data[];" "  /* Socket address */"
 .B };
+.PP
+.BR typedef " /* ... */ " socklen_t;
 .fi
 .SH DESCRIPTION
+.TP
+.I sockaddr
 Describes a socket address.
+.TP
+.I socklen_t
+Describes the length of a socket address.
+According to POSIX,
+this shall be an integer type of at least 32 bits.
 .SH CONFORMING TO
 POSIX.1-2001 and later.
+.SH NOTES
+.I socklen_t
+is also defined in
+.IR <netdb.h> .
 .SH SEE ALSO
 .BR accept (2),
+.BR bind (2),
+.BR connect (2),
 .BR getpeername (2),
 .BR getsockname (2),
-.BR socket (2)
+.BR socket (2),
+.BR gethostbyaddr (3),
+.BR getnameinfo (3)
