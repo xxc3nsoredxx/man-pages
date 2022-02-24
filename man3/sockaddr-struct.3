@@ -1,6 +1,6 @@
 .TH SOCKADDR 3 2022-02-24 Linux "Linux Programmer's Manual"
 .SH NAME
-sockaddr, sockaddr_storage, socklen_t \- socket address
+sockaddr, sockaddr_storage, sockaddr_un, socklen_t \- socket address
 .SH SYNOPSIS
 .nf
 .B #include <sys/socket.h>
@@ -15,6 +15,16 @@ sockaddr, sockaddr_storage, socklen_t \- socket address
 .B };
 .PP
 .BR typedef " /* ... */ " socklen_t;
+.PP
+.fi
+.SS UNIX domain sockets
+.nf
+.B #include <sys/un.h>
+.PP
+.B struct sockaddr_un {
+.BR "    sa_family_t sun_family;" "  /* Address family */"
+.BR "    char        sun_path[];" "  /* Socket pathname */"
+.B };
 .fi
 .SH DESCRIPTION
 .TP
@@ -35,6 +45,10 @@ structures and used to access its fields.
 Describes the length of a socket address.
 According to POSIX,
 this shall be an integer type of at least 32 bits.
+.SS UNIX domain sockets
+.TP
+.I sockaddr_un
+Describes a UNIX domain socket address.
 .SH CONFORMING TO
 POSIX.1-2001 and later.
 .SH NOTES
@@ -48,6 +62,7 @@ is also defined in
 .BR getpeername (2),
 .BR getsockname (2),
 .BR socket (2),
+.BR socketpair (2),
 .BR getaddrinfo (3),
 .BR gethostbyaddr (3),
 .BR getnameinfo (3),
