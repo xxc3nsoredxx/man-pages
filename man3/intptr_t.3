@@ -1,1 +1,63 @@
-.so man7/system_data_types.7
+.TH INTPTR_T 3 2022-02-25 Linux "Linux Programmer's Manual"
+.SH NAME
+intptr_t \- integer types wide enough to hold pointers
+.SH SYNOPSIS
+.nf
+.B #include <stdint.h>
+.PP
+.BR typedef " /* ... */ " intptr_t;
+.fi
+.SH DESCRIPTION
+.I intptr_t
+is a signed integer type
+such that any valid
+.RI ( "void *" )
+value can be converted to this type and then converted back.
+According to the C language standard, it shall be
+capable of storing values in the range
+.RB [ INTPTR_MIN ,
+.BR INTPTR_MAX ].
+.PP
+The length modifier for
+.I intptr_t
+for the
+.BR printf (3)
+family of functions
+is expanded by the macros
+.B PRIdPTR
+and
+.B PRIiPTR
+(defined in
+.IR <inttypes.h> );
+resulting commonly in
+.B %"PRIdPTR"
+or
+.B %"PRIiPTR"
+for printing
+.I intptr_t
+values.
+The length modifier for
+.I intptr_t
+for the
+.BR scanf (3)
+family of functions
+is expanded by the macros
+.B SCNdPTR
+and
+.B SCNiPTR,
+(defined in
+.IR <inttypes.h> );
+resulting commonly in
+.B %"SCNdPTR"
+or
+.B %"SCNiPTR"
+for scanning
+.I intptr_t
+values.
+.SH CONFORMING TO
+C99 and later; POSIX.1-2001 and later.
+.SH NOTES
+The following header also provides these types:
+.IR <inttypes.h> .
+.SH SEE ALSO
+.BR void (3)
