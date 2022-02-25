@@ -1,11 +1,12 @@
 .TH INTPTR_T 3 2022-02-25 Linux "Linux Programmer's Manual"
 .SH NAME
-intptr_t \- integer types wide enough to hold pointers
+intptr_t, uintptr_t \- integer types wide enough to hold pointers
 .SH SYNOPSIS
 .nf
 .B #include <stdint.h>
 .PP
 .BR typedef " /* ... */ " intptr_t;
+.BR typedef " /* ... */ " uintptr_t;
 .fi
 .SH DESCRIPTION
 .I intptr_t
@@ -18,15 +19,27 @@ capable of storing values in the range
 .RB [ INTPTR_MIN ,
 .BR INTPTR_MAX ].
 .PP
-The length modifier for
-.I intptr_t
+.I uintptr_t
+is an unsigned integer type
+such that any valid
+.RI ( "void *" )
+value can be converted to this type and then converted back.
+According to the C language standard, it shall be
+capable of storing values in the range
+.RB [ 0 ,
+.BR INTPTR_MAX ].
+.PP
+The length modifiers for the
+.RI [ u ] intptr_t
+types
 for the
 .BR printf (3)
 family of functions
-is expanded by the macros
-.B PRIdPTR
+are expanded by the macros
+.BR PRIdPTR ,
+.BR PRIiPTR ,
 and
-.B PRIiPTR
+.B PRIuPTR
 (defined in
 .IR <inttypes.h> );
 resulting commonly in
@@ -36,23 +49,23 @@ or
 for printing
 .I intptr_t
 values.
-The length modifier for
-.I intptr_t
+The length modifiers for the
+.IR [ u ] intptr_t
+types
 for the
 .BR scanf (3)
 family of functions
-is expanded by the macros
-.B SCNdPTR
+are expanded by the macros
+.BR SCNdPTR ,
+.BR SCNiPTR ,
 and
-.B SCNiPTR,
+.B SCNuPTR
 (defined in
 .IR <inttypes.h> );
 resulting commonly in
-.B %"SCNdPTR"
-or
-.B %"SCNiPTR"
+.B %"SCNuPTR"
 for scanning
-.I intptr_t
+.I uintptr_t
 values.
 .SH CONFORMING TO
 C99 and later; POSIX.1-2001 and later.
@@ -60,4 +73,5 @@ C99 and later; POSIX.1-2001 and later.
 The following header also provides these types:
 .IR <inttypes.h> .
 .SH SEE ALSO
+.BR intmax_t (3),
 .BR void (3)
