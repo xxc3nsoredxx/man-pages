@@ -1,7 +1,7 @@
 .TH SOCKADDR 3 2022-02-24 Linux "Linux Programmer's Manual"
 .SH NAME
 sockaddr, sockaddr_storage, sockaddr_in, sockaddr_in6, sockaddr_un, socklen_t,
-in_addr, in_addr_t, in_port_t,
+in_addr, in6_addr, in_addr_t, in_port_t,
 \- socket address
 .SH SYNOPSIS
 .nf
@@ -39,6 +39,10 @@ in_addr, in_addr_t, in_port_t,
 .PP
 .B struct in_addr {
 .B "    in_addr_t s_addr;"
+.B };
+.PP
+.B struct in6_addr {
+.B "    uint8_t   s6_addr[16];"
 .B };
 .PP
 .B typedef uint32_t in_addr_t;
@@ -84,6 +88,10 @@ members shall be in network byte order.
 .TP
 .I sockaddr_in6
 Describes an IPv6 Internet domain socket address.
+According to POSIX, the
+.I sin6_addr.s6_addr
+array is used to contain a 128-bit IPv6 address,
+stored in network byte order.
 .SS UNIX domain sockets
 .TP
 .I sockaddr_un
