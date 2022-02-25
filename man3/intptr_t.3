@@ -7,6 +7,13 @@ intptr_t, uintptr_t \- integer types wide enough to hold pointers
 .PP
 .BR typedef " /* ... */ " intptr_t;
 .BR typedef " /* ... */ " uintptr_t;
+.PP
+.BR "#define INTPTR_WIDTH" "  /* ... */"
+.B #define UINTPTR_WIDTH INTPTR_WIDTH
+.PP
+.BR "#define INTPTR_MAX" "    /*  2**(INTPTR_WIDTH \- 1) \- 1  */"
+.BR "#define INTPTR_MIN" "    /*  \- 2**(INTPTR_WIDTH \- 1)    */"
+.BR "#define UINTPTR_MAX" "   /*  2**UINTPTR_WIDTH \- 1       */"
 .fi
 .SH DESCRIPTION
 .I intptr_t
@@ -28,6 +35,20 @@ According to the C language standard, it shall be
 capable of storing values in the range
 .RB [ 0 ,
 .BR INTPTR_MAX ].
+.PP
+The macros
+.RB [ U ] INTPTR_WIDTH
+expand to the width in bits of these types.
+.PP
+The macros
+.RB [ U ] INTPTR_MAX
+expand to the maximum value that these types can hold.
+.PP
+The macro
+.B INTPTR_MIN
+expands to the minimum value that
+.I intptr_t
+can hold.
 .PP
 The length modifiers for the
 .RI [ u ] intptr_t
