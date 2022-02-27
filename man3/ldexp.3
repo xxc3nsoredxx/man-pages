@@ -14,6 +14,9 @@
 .TH LDEXP 3 2021-03-22 "" "Linux Programmer's Manual"
 .SH NAME
 ldexp, ldexpf, ldexpl \- multiply floating-point number by integral power of 2
+.SH LIBRARY
+Math library
+.RI ( libm ", " -lm )
 .SH SYNOPSIS
 .nf
 .B #include <math.h>
@@ -22,8 +25,6 @@ ldexp, ldexpf, ldexpl \- multiply floating-point number by integral power of 2
 .BI "float ldexpf(float " x ", int " exp );
 .BI "long double ldexpl(long double " x ", int " exp );
 .fi
-.PP
-Link with \fI\-lm\fP.
 .PP
 .RS -4
 Feature Test Macro Requirements for glibc (see
