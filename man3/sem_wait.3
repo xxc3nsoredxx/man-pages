@@ -5,6 +5,9 @@
 .TH SEM_WAIT 3 2021-08-27 "Linux" "Linux Programmer's Manual"
 .SH NAME
 sem_wait, sem_timedwait, sem_trywait \- lock a semaphore
+.SH LIBRARY
+POSIX threads library
+.RI ( libpthread ", " -lpthread )
 .SH SYNOPSIS
 .nf
 .B #include <semaphore.h>
@@ -14,8 +17,6 @@ sem_wait, sem_timedwait, sem_trywait \- lock a semaphore
 .BI "int sem_timedwait(sem_t *restrict " sem ,
 .BI "                  const struct timespec *restrict " abs_timeout );
 .fi
-.PP
-Link with \fI\-pthread\fP.
 .PP
 .RS -4
 Feature Test Macro Requirements for glibc (see
