@@ -5,14 +5,15 @@
 .TH SEM_INIT 3 2021-03-22 "Linux" "Linux Programmer's Manual"
 .SH NAME
 sem_init \- initialize an unnamed semaphore
+.SH LIBRARY
+POSIX threads library
+.RI ( libpthread ", " -lpthread )
 .SH SYNOPSIS
 .nf
 .B #include <semaphore.h>
 .PP
 .BI "int sem_init(sem_t *" sem ", int " pshared ", unsigned int " value );
 .fi
-.PP
-Link with \fI\-pthread\fP.
 .SH DESCRIPTION
 .BR sem_init ()
 initializes the unnamed semaphore at the address pointed to by
