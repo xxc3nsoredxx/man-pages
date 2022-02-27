@@ -5,6 +5,9 @@
 .TH SEM_OPEN 3 2021-03-22 "Linux" "Linux Programmer's Manual"
 .SH NAME
 sem_open \- initialize and open a named semaphore
+.SH LIBRARY
+POSIX threads library
+.RI ( libpthread ", " -lpthread )
 .SH SYNOPSIS
 .nf
 .BR "#include <fcntl.h>" "           /* For O_* constants */"
@@ -15,8 +18,6 @@ sem_open \- initialize and open a named semaphore
 .BI "sem_t *sem_open(const char *" name ", int " oflag ,
 .BI "                mode_t " mode ", unsigned int " value );
 .fi
-.PP
-Link with \fI\-pthread\fP.
 .SH DESCRIPTION
 .BR sem_open ()
 creates a new POSIX semaphore or opens an existing semaphore.
