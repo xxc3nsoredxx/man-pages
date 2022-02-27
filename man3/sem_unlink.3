@@ -5,14 +5,15 @@
 .TH SEM_UNLINK 3 2021-03-22 "Linux" "Linux Programmer's Manual"
 .SH NAME
 sem_unlink \- remove a named semaphore
+.SH LIBRARY
+POSIX threads library
+.RI ( libpthread ", " -lpthread )
 .SH SYNOPSIS
 .nf
 .B #include <semaphore.h>
 .PP
 .BI "int sem_unlink(const char *" name );
 .fi
-.PP
-Link with \fI\-pthread\fP.
 .SH DESCRIPTION
 .BR sem_unlink ()
 removes the named semaphore referred to by
