@@ -8,6 +8,9 @@
 .SH NAME
 significand, significandf, significandl \-
 get mantissa of floating-point number
+.SH LIBRARY
+Math library
+.RI ( libm ", " -lm )
 .SH SYNOPSIS
 .nf
 .B #include <math.h>
@@ -16,8 +19,6 @@ get mantissa of floating-point number
 .BI "float significandf(float " x );
 .BI "long double significandl(long double " x );
 .fi
-.PP
-Link with \fI\-lm\fP.
 .PP
 .RS -4
 Feature Test Macro Requirements for glibc (see
