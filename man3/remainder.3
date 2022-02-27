@@ -18,6 +18,9 @@
 .SH NAME
 drem, dremf, dreml, remainder, remainderf, remainderl \- \
 floating-point remainder function
+.SH LIBRARY
+Math library
+.RI ( libm ", " -lm )
 .SH SYNOPSIS
 .nf
 .B #include <math.h>
@@ -32,8 +35,6 @@ floating-point remainder function
 .BI "float dremf(float " x ", float " y );
 .BI "long double dreml(long double " x ", long double " y );
 .PP
-.fi
-Link with \fI\-lm\fP.
 .PP
 .RS -4
 Feature Test Macro Requirements for glibc (see
