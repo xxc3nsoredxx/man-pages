@@ -16,6 +16,9 @@
 .TH SINH 3  2021-03-22 "" "Linux Programmer's Manual"
 .SH NAME
 sinh, sinhf, sinhl \- hyperbolic sine function
+.SH LIBRARY
+Math library
+.RI ( libm ", " -lm )
 .SH SYNOPSIS
 .nf
 .B #include <math.h>
@@ -24,8 +27,6 @@ sinh, sinhf, sinhl \- hyperbolic sine function
 .BI "float sinhf(float " x );
 .BI "long double sinhl(long double " x );
 .fi
-.PP
-Link with \fI\-lm\fP.
 .PP
 .RS -4
 Feature Test Macro Requirements for glibc (see
