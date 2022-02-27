@@ -15,6 +15,9 @@
 res_ninit, res_nclose, res_nquery, res_nsearch, res_nquerydomain, res_nmkquery, res_nsend,
 res_init, res_query, res_search, res_querydomain, res_mkquery, res_send,
 dn_comp, dn_expand \- resolver routines
+.SH LIBRARY
+Resolver library
+.RI ( libresolv ", " -lresolv )
 .SH SYNOPSIS
 .nf
 .B #include <netinet/in.h>
@@ -85,8 +88,6 @@ dn_comp, dn_expand \- resolver routines
 .BI "int res_send(const unsigned char *" msg ", int " msglen ,
 .BI "           unsigned char *" answer ", int " anslen );
 .fi
-.PP
-Link with \fI\-lresolv\fP.
 .SH DESCRIPTION
 .B Note:
 This page is incomplete (various resolver functions provided by glibc
