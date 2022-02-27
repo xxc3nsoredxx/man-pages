@@ -10,6 +10,9 @@
 .TH UPDWTMP 3  2021-03-22 "GNU" "Linux Programmer's Manual"
 .SH NAME
 updwtmp, logwtmp \- append an entry to the wtmp file
+.SH LIBRARY
+System utilities library
+.RI ( libutil ", " -lutil )
 .SH SYNOPSIS
 .nf
 .B #include <utmp.h>
@@ -18,10 +21,6 @@ updwtmp, logwtmp \- append an entry to the wtmp file
 .BI "void logwtmp(const char *" line ", const char *" name \
 ", const char *" host );
 .fi
-.PP
-For
-.BR logwtmp (),
-link with \fI\-lutil\fP.
 .SH DESCRIPTION
 .BR updwtmp ()
 appends the utmp structure
