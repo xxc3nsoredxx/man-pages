@@ -15,6 +15,9 @@
 .TH TAN 3 2021-03-22 ""  "Linux Programmer's Manual"
 .SH NAME
 tan, tanf, tanl \- tangent function
+.SH LIBRARY
+Math library
+.RI ( libm ", " -lm )
 .SH SYNOPSIS
 .nf
 .B #include <math.h>
@@ -23,8 +26,6 @@ tan, tanf, tanl \- tangent function
 .BI "float tanf(float " x );
 .BI "long double tanl(long double " x );
 .fi
-.PP
-Link with \fI\-lm\fP.
 .PP
 .RS -4
 Feature Test Macro Requirements for glibc (see
