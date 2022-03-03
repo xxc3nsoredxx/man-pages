@@ -1857,7 +1857,7 @@ fwait(uint32_t *futexp)
 }
 
 /* Release the futex pointed to by \(aqfutexp\(aq: if the futex currently
-   has the value 0, set its value to 1 and the wake any futex waiters,
+   has the value 0, set its value to 1 and then wake any futex waiters,
    so that if the peer is blocked in fwait(), it can proceed. */
 
 static void
