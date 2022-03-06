@@ -5,13 +5,14 @@
 .TH AIO_RETURN 3 2021-03-22  "" "Linux Programmer's Manual"
 .SH NAME
 aio_return \- get return status of asynchronous I/O operation
+.SH LIBRARY
+Real-time library
+.RI ( librt ", " -lrt )
 .SH SYNOPSIS
 .nf
 .B "#include <aio.h>"
 .PP
 .BI "ssize_t aio_return(struct aiocb *" aiocbp );
-.PP
-Link with \fI\-lrt\fP.
 .fi
 .SH DESCRIPTION
 The

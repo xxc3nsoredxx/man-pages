@@ -5,6 +5,9 @@
 .TH AIO_INIT 3  2020-08-13 "Linux" "Linux Programmer's Manual"
 .SH NAME
 aio_init \- asynchronous I/O initialization
+.SH LIBRARY
+Real-time library
+.RI ( librt ", " -lrt )
 .SH SYNOPSIS
 .nf
 .BR "#define _GNU_SOURCE" "         /* See feature_test_macros(7) */"
@@ -12,8 +15,6 @@ aio_init \- asynchronous I/O initialization
 .PP
 .BI "void aio_init(const struct aioinit *" init );
 .fi
-.PP
-Link with \fI\-lrt\fP.
 .SH DESCRIPTION
 The GNU-specific
 .BR aio_init ()

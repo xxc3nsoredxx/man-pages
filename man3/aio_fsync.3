@@ -5,13 +5,14 @@
 .TH AIO_FSYNC 3 2021-03-22  "" "Linux Programmer's Manual"
 .SH NAME
 aio_fsync \- asynchronous file synchronization
+.SH LIBRARY
+Real-time library
+.RI ( librt ", " -lrt )
 .SH SYNOPSIS
 .nf
 .B "#include <aio.h>"
 .PP
 .BI "int aio_fsync(int " op ", struct aiocb *" aiocbp );
-.PP
-Link with \fI\-lrt\fP.
 .fi
 .SH DESCRIPTION
 The

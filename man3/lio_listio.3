@@ -5,14 +5,15 @@
 .TH LIO_LISTIO  3 2021-03-22  "" "Linux Programmer's Manual"
 .SH NAME
 lio_listio \- initiate a list of I/O requests
+.SH LIBRARY
+Real-time library
+.RI ( librt ", " -lrt )
 .SH SYNOPSIS
 .nf
 .B "#include <aio.h>"
 .PP
 .BI "int lio_listio(int " mode ", struct aiocb *restrict const " aiocb_list [restrict],
 .BI "               int " nitems ", struct sigevent *restrict " sevp );
-.PP
-Link with \fI\-lrt\fP.
 .fi
 .SH DESCRIPTION
 The
