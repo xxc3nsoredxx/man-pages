@@ -16,6 +16,9 @@
 .TH LOG10 3  2021-03-22  "" "Linux Programmer's Manual"
 .SH NAME
 log10, log10f, log10l \-  base-10 logarithmic function
+.SH LIBRARY
+Math library
+.RI ( libm ", " -lm )
 .SH SYNOPSIS
 .nf
 .B #include <math.h>
@@ -24,8 +27,6 @@ log10, log10f, log10l \-  base-10 logarithmic function
 .BI "float log10f(float " x );
 .BI "long double log10l(long double " x );
 .fi
-.PP
-Link with \fI\-lm\fP.
 .PP
 .RS -4
 Feature Test Macro Requirements for glibc (see
