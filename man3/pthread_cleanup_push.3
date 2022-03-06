@@ -7,14 +7,15 @@
 .SH NAME
 pthread_cleanup_push, pthread_cleanup_pop \- push and pop
 thread cancelation clean-up handlers
+.SH LIBRARY
+POSIX threads library
+.RI ( libpthread ", " -lpthread )
 .SH SYNOPSIS
 .nf
 .B #include <pthread.h>
 .PP
 .BI "void pthread_cleanup_push(void (*" routine ")(void *), void *" arg );
 .BI "void pthread_cleanup_pop(int " execute );
-.PP
-Compile and link with \fI\-pthread\fP.
 .fi
 .SH DESCRIPTION
 These functions manipulate the calling thread's stack of
