@@ -6,6 +6,9 @@
 .TH LOGIN 3 2021-03-22 "GNU" "Linux Programmer's Manual"
 .SH NAME
 login, logout \- write utmp and wtmp entries
+.SH LIBRARY
+System utilities library
+.RI ( libutil ", " -lutil )
 .SH SYNOPSIS
 .nf
 .B #include <utmp.h>
@@ -13,8 +16,6 @@ login, logout \- write utmp and wtmp entries
 .BI "void login(const struct utmp *" ut );
 .BI "int logout(const char *" ut_line );
 .fi
-.PP
-Link with \fI\-lutil\fP.
 .SH DESCRIPTION
 The utmp file records who is currently using the system.
 The wtmp file records all logins and logouts.
