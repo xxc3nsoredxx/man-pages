@@ -5,6 +5,9 @@
 .TH PTHREAD_YIELD 3 2021-03-22 "Linux" "Linux Programmer's Manual"
 .SH NAME
 pthread_yield \- yield the processor
+.SH LIBRARY
+POSIX threads library
+.RI ( libpthread ", " -lpthread )
 .SH SYNOPSIS
 .nf
 .BR "#define _GNU_SOURCE" "             /* See feature_test_macros(7) */"
@@ -12,8 +15,6 @@ pthread_yield \- yield the processor
 .PP
 .B int pthread_yield(void);
 .fi
-.PP
-Compile and link with \fI\-pthread\fP.
 .SH DESCRIPTION
 .BR Note :
 This function is deprecated; see below.
