@@ -9,6 +9,9 @@
 .TH LOGB 3 2021-03-22 "" "Linux Programmer's Manual"
 .SH NAME
 logb, logbf, logbl \- get exponent of a floating-point value
+.SH LIBRARY
+Math library
+.RI ( libm ", " -lm )
 .SH SYNOPSIS
 .nf
 .B #include <math.h>
@@ -17,8 +20,6 @@ logb, logbf, logbl \- get exponent of a floating-point value
 .BI "float logbf(float " x );
 .BI "long double logbl(long double " x );
 .fi
-.PP
-Link with \fI\-lm\fP.
 .PP
 .RS -4
 Feature Test Macro Requirements for glibc (see
