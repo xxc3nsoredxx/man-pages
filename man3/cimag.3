@@ -5,6 +5,9 @@
 .TH CIMAG 3 2021-03-22 "" "Linux Programmer's Manual"
 .SH NAME
 cimag, cimagf, cimagl \- get imaginary part of a complex number
+.SH LIBRARY
+Math library
+.RI ( libm ", " -lm )
 .SH SYNOPSIS
 .nf
 .B #include <complex.h>
@@ -12,8 +15,6 @@ cimag, cimagf, cimagl \- get imaginary part of a complex number
 .BI "double cimag(double complex " z ");"
 .BI "float cimagf(float complex " z ");"
 .BI "long double cimagl(long double complex " z ");"
-.PP
-Link with \fI\-lm\fP.
 .fi
 .SH DESCRIPTION
 These functions return the imaginary part of the complex number

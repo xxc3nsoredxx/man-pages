@@ -15,6 +15,9 @@
 .TH ASIN 3 2021-03-22 "" "Linux Programmer's Manual"
 .SH NAME
 asin, asinf, asinl \- arc sine function
+.SH LIBRARY
+Math library
+.RI ( libm ", " -lm )
 .SH SYNOPSIS
 .nf
 .B #include <math.h>
@@ -23,8 +26,6 @@ asin, asinf, asinl \- arc sine function
 .BI "float asinf(float " x );
 .BI "long double asinl(long double " x );
 .fi
-.PP
-Link with \fI\-lm\fP.
 .PP
 .RS -4
 Feature Test Macro Requirements for glibc (see

@@ -5,6 +5,9 @@
 .TH CEXP2 3 2021-03-22 "" "Linux Programmer's Manual"
 .SH NAME
 cexp2, cexp2f, cexp2l \- base-2 exponent of a complex number
+.SH LIBRARY
+Math library
+.RI ( libm ", " -lm )
 .SH SYNOPSIS
 .nf
 .B #include <complex.h>
@@ -12,8 +15,6 @@ cexp2, cexp2f, cexp2l \- base-2 exponent of a complex number
 .BI "double complex cexp2(double complex " z ");"
 .BI "float complex cexp2f(float complex " z ");"
 .BI "long double complex cexp2l(long double complex " z ");"
-.PP
-Link with \fI\-lm\fP.
 .fi
 .SH DESCRIPTION
 The function returns 2 raised to the power of

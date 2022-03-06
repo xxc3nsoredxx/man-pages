@@ -16,6 +16,9 @@
 .TH EXP2 3  2021-03-22  "" "Linux Programmer's Manual"
 .SH NAME
 exp2, exp2f, exp2l \- base-2 exponential function
+.SH LIBRARY
+Math library
+.RI ( libm ", " -lm )
 .SH SYNOPSIS
 .nf
 .B #include <math.h>
@@ -24,8 +27,6 @@ exp2, exp2f, exp2l \- base-2 exponential function
 .BI "float exp2f(float " x );
 .BI "long double exp2l(long double " x );
 .fi
-.PP
-Link with \fI\-lm\fP.
 .PP
 .RS -4
 Feature Test Macro Requirements for glibc (see

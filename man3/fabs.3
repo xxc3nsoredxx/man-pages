@@ -12,6 +12,9 @@
 .TH FABS 3  2021-03-22 "" "Linux Programmer's Manual"
 .SH NAME
 fabs, fabsf, fabsl \- absolute value of floating-point number
+.SH LIBRARY
+Math library
+.RI ( libm ", " -lm )
 .SH SYNOPSIS
 .nf
 .B #include <math.h>
@@ -20,8 +23,6 @@ fabs, fabsf, fabsl \- absolute value of floating-point number
 .BI "float fabsf(float " x );
 .BI "long double fabsl(long double " x );
 .fi
-.PP
-Link with \fI\-lm\fP.
 .PP
 .RS -4
 Feature Test Macro Requirements for glibc (see

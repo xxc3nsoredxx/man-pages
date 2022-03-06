@@ -5,6 +5,9 @@
 .TH CARG 3 2021-03-22 "" "Linux Programmer's Manual"
 .SH NAME
 carg, cargf, cargl \- calculate the complex argument
+.SH LIBRARY
+Math library
+.RI ( libm ", " -lm )
 .SH SYNOPSIS
 .nf
 .B #include <complex.h>
@@ -12,8 +15,6 @@ carg, cargf, cargl \- calculate the complex argument
 .BI "double carg(double complex " z ");"
 .BI "float cargf(float complex " z ");"
 .BI "long double cargl(long double complex " z ");"
-.PP
-Link with \fI\-lm\fP.
 .fi
 .SH DESCRIPTION
 These functions calculate the complex argument (also called phase angle) of

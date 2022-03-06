@@ -5,6 +5,9 @@
 .TH CSINH 3 2021-03-22 "" "Linux Programmer's Manual"
 .SH NAME
 csinh, csinhf, csinhl \- complex hyperbolic sine
+.SH LIBRARY
+Math library
+.RI ( libm ", " -lm )
 .SH SYNOPSIS
 .nf
 .B #include <complex.h>
@@ -12,8 +15,6 @@ csinh, csinhf, csinhl \- complex hyperbolic sine
 .BI "double complex csinh(double complex " z ");"
 .BI "float complex csinhf(float complex " z ");"
 .BI "long double complex csinhl(long double complex " z ");"
-.PP
-Link with \fI\-lm\fP.
 .fi
 .SH DESCRIPTION
 These functions calculate the complex hyperbolic sine of

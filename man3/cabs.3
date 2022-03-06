@@ -5,6 +5,9 @@
 .TH CABS 3 2021-03-22 "" "Linux Programmer's Manual"
 .SH NAME
 cabs, cabsf, cabsl \- absolute value of a complex number
+.SH LIBRARY
+Math library
+.RI ( libm ", " -lm )
 .SH SYNOPSIS
 .nf
 .B #include <complex.h>
@@ -12,8 +15,6 @@ cabs, cabsf, cabsl \- absolute value of a complex number
 .BI "double cabs(double complex " z );
 .BI "float cabsf(float complex " z );
 .BI "long double cabsl(long double complex " z );
-.PP
-Link with \fI\-lm\fP.
 .fi
 .SH DESCRIPTION
 These functions return the absolute value of the complex number

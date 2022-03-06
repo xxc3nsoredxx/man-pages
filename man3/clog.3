@@ -5,6 +5,9 @@
 .TH CLOG 3 2021-03-22 "" "Linux Programmer's Manual"
 .SH NAME
 clog, clogf, clogl \- natural logarithm of a complex number
+.SH LIBRARY
+Math library
+.RI ( libm ", " -lm )
 .SH SYNOPSIS
 .nf
 .B #include <complex.h>
@@ -12,8 +15,6 @@ clog, clogf, clogl \- natural logarithm of a complex number
 .BI "double complex clog(double complex " z );
 .BI "float complex clogf(float complex " z );
 .BI "long double complex clogl(long double complex " z );
-.PP
-Link with \fI\-lm\fP.
 .fi
 .SH DESCRIPTION
 These functions calculate the complex natural logarithm of

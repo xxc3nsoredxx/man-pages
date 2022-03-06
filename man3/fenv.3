@@ -11,6 +11,9 @@ feclearexcept, fegetexceptflag, feraiseexcept, fesetexceptflag,
 fetestexcept, fegetenv, fegetround, feholdexcept, fesetround,
 fesetenv, feupdateenv, feenableexcept, fedisableexcept,
 fegetexcept \- floating-point rounding and exception handling
+.SH LIBRARY
+Math library
+.RI ( libm ", " -lm )
 .SH SYNOPSIS
 .nf
 .B #include <fenv.h>
@@ -29,8 +32,6 @@ fegetexcept \- floating-point rounding and exception handling
 .BI "int fesetenv(const fenv_t *" envp );
 .BI "int feupdateenv(const fenv_t *" envp );
 .fi
-.PP
-Link with \fI\-lm\fP.
 .SH DESCRIPTION
 These eleven functions were defined in C99, and describe the handling
 of floating-point rounding and exceptions (overflow, zero-divide, etc.).

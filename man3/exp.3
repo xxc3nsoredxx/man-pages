@@ -16,6 +16,9 @@
 .TH EXP 3  2021-03-22  "" "Linux Programmer's Manual"
 .SH NAME
 exp, expf, expl \- base-e exponential function
+.SH LIBRARY
+Math library
+.RI ( libm ", " -lm )
 .SH SYNOPSIS
 .nf
 .B #include <math.h>
@@ -24,8 +27,6 @@ exp, expf, expl \- base-e exponential function
 .BI "float expf(float " x );
 .BI "long double expl(long double " x );
 .fi
-.PP
-Link with \fI\-lm\fP.
 .PP
 .RS -4
 Feature Test Macro Requirements for glibc (see

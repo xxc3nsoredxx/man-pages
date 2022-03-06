@@ -15,6 +15,9 @@
 .TH ATANH 3  2021-03-22 "" "Linux Programmer's Manual"
 .SH NAME
 atanh, atanhf, atanhl \- inverse hyperbolic tangent function
+.SH LIBRARY
+Math library
+.RI ( libm ", " -lm )
 .SH SYNOPSIS
 .nf
 .B #include <math.h>
@@ -24,8 +27,6 @@ atanh, atanhf, atanhl \- inverse hyperbolic tangent function
 .BI "long double atanhl(long double " x );
 .PP
 .fi
-Link with \fI\-lm\fP.
-.PP
 .RS -4
 Feature Test Macro Requirements for glibc (see
 .BR feature_test_macros (7)):

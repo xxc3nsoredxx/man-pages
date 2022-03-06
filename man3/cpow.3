@@ -5,6 +5,9 @@
 .TH CPOW 3 2021-03-22 "" "Linux Programmer's Manual"
 .SH NAME
 cpow, cpowf, cpowl \- complex power function
+.SH LIBRARY
+Math library
+.RI ( libm ", " -lm )
 .SH SYNOPSIS
 .nf
 .B #include <complex.h>
@@ -13,8 +16,6 @@ cpow, cpowf, cpowl \- complex power function
 .BI "float complex cpowf(float complex " x ", float complex " z );
 .BI "long double complex cpowl(long double complex " x ,
 .BI "                          long double complex " z );
-.PP
-Link with \fI\-lm\fP.
 .fi
 .SH DESCRIPTION
 These functions calculate

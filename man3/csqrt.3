@@ -5,6 +5,9 @@
 .TH CSQRT 3 2021-03-22 "" "Linux Programmer's Manual"
 .SH NAME
 csqrt, csqrtf, csqrtl \- complex square root
+.SH LIBRARY
+Math library
+.RI ( libm ", " -lm )
 .SH SYNOPSIS
 .nf
 .B #include <complex.h>
@@ -12,8 +15,6 @@ csqrt, csqrtf, csqrtl \- complex square root
 .BI "double complex csqrt(double complex " z ");"
 .BI "float complex csqrtf(float complex " z ");"
 .BI "long double complex csqrtl(long double complex " z ");"
-.PP
-Link with \fI\-lm\fP.
 .fi
 .SH DESCRIPTION
 These functions calculate the complex square root of

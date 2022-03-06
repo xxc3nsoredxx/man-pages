@@ -9,6 +9,9 @@
 .SH NAME
 isgreater, isgreaterequal, isless, islessequal, islessgreater,
 isunordered \- floating-point relational tests without exception for NaN
+.SH LIBRARY
+Math library
+.RI ( libm ", " -lm )
 .SH SYNOPSIS
 .nf
 .B #include <math.h>
@@ -20,8 +23,6 @@ isunordered \- floating-point relational tests without exception for NaN
 .BI "int islessgreater(" x ", " y );
 .BI "int isunordered(" x ", " y );
 .fi
-.PP
-Link with \fI\-lm\fP.
 .PP
 .RS -4
 Feature Test Macro Requirements for glibc (see

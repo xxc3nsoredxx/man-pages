@@ -10,6 +10,9 @@
 .TH FMA 3  2021-03-22 "" "Linux Programmer's Manual"
 .SH NAME
 fma, fmaf, fmal \- floating-point multiply and add
+.SH LIBRARY
+Math library
+.RI ( libm ", " -lm )
 .SH SYNOPSIS
 .nf
 .B #include <math.h>
@@ -18,8 +21,6 @@ fma, fmaf, fmal \- floating-point multiply and add
 .BI "float fmaf(float " x ", float " y ", float " z );
 .BI "long double fmal(long double " x ", long double " y ", long double " z );
 .fi
-.PP
-Link with \fI\-lm\fP.
 .PP
 .RS -4
 Feature Test Macro Requirements for glibc (see

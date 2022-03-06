@@ -5,6 +5,9 @@
 .TH CCOS 3 2021-03-22 "" "Linux Programmer's Manual"
 .SH NAME
 ccos, ccosf, ccosl \- complex cosine function
+.SH LIBRARY
+Math library
+.RI ( libm ", " -lm )
 .SH SYNOPSIS
 .nf
 .B #include <complex.h>
@@ -12,8 +15,6 @@ ccos, ccosf, ccosl \- complex cosine function
 .BI "double complex ccos(double complex " z ");"
 .BI "float complex ccosf(float complex " z ");"
 .BI "long double complex ccosl(long double complex " z ");"
-.PP
-Link with \fI\-lm\fP.
 .fi
 .SH DESCRIPTION
 These functions calculate the complex cosine of

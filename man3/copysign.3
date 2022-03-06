@@ -11,6 +11,9 @@
 .TH COPYSIGN 3  2021-03-22 "GNU" "Linux Programmer's Manual"
 .SH NAME
 copysign, copysignf, copysignl \- copy sign of a number
+.SH LIBRARY
+Math library
+.RI ( libm ", " -lm )
 .SH SYNOPSIS
 .nf
 .B #include <math.h>
@@ -19,8 +22,6 @@ copysign, copysignf, copysignl \- copy sign of a number
 .BI "float copysignf(float " x ", float " y );
 .BI "long double copysignl(long double " x ", long double " y );
 .fi
-.PP
-Link with \fI\-lm\fP.
 .PP
 .RS -4
 Feature Test Macro Requirements for glibc (see

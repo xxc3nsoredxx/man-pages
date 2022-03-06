@@ -15,6 +15,9 @@
 .TH EXP10 3  2021-03-22  "GNU" "Linux Programmer's Manual"
 .SH NAME
 exp10, exp10f, exp10l \- base-10 exponential function
+.SH LIBRARY
+Math library
+.RI ( libm ", " -lm )
 .SH SYNOPSIS
 .nf
 .BR "#define _GNU_SOURCE" "         /* See feature_test_macros(7) */"
@@ -24,8 +27,6 @@ exp10, exp10f, exp10l \- base-10 exponential function
 .BI "float exp10f(float " x );
 .BI "long double exp10l(long double " x );
 .fi
-.PP
-Link with \fI\-lm\fP.
 .SH DESCRIPTION
 These functions return the value of 10
 raised to the power of

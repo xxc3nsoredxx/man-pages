@@ -13,6 +13,9 @@
 .TH HYPOT 3 2021-03-22 ""  "Linux Programmer's Manual"
 .SH NAME
 hypot, hypotf, hypotl \- Euclidean distance function
+.SH LIBRARY
+Math library
+.RI ( libm ", " -lm )
 .SH SYNOPSIS
 .nf
 .B #include <math.h>
@@ -21,8 +24,6 @@ hypot, hypotf, hypotl \- Euclidean distance function
 .BI "float hypotf(float " x ", float " y );
 .BI "long double hypotl(long double " x ", long double " y );
 .fi
-.PP
-Link with \fI\-lm\fP.
 .PP
 .RS -4
 Feature Test Macro Requirements for glibc (see

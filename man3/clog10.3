@@ -5,6 +5,9 @@
 .TH CLOG10 3 2021-03-22 "" "Linux Programmer's Manual"
 .SH NAME
 clog10, clog10f, clog10l \- base-10 logarithm of a complex number
+.SH LIBRARY
+Math library
+.RI ( libm ", " -lm )
 .SH SYNOPSIS
 .nf
 .BR "#define _GNU_SOURCE" "         /* See feature_test_macros(7) */"
@@ -13,8 +16,6 @@ clog10, clog10f, clog10l \- base-10 logarithm of a complex number
 .BI "double complex clog10(double complex " z );
 .BI "float complex clog10f(float complex " z );
 .BI "long double complex clog10l(long double complex " z );
-.PP
-Link with \fI\-lm\fP.
 .fi
 .SH DESCRIPTION
 The call
