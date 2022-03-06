@@ -7,6 +7,9 @@
 .SH NAME
 pthread_setaffinity_np, pthread_getaffinity_np \- set/get
 CPU affinity of a thread
+.SH LIBRARY
+POSIX threads library
+.RI ( libpthread ", " -lpthread )
 .SH SYNOPSIS
 .nf
 .BR "#define _GNU_SOURCE" "             /* See feature_test_macros(7) */"
@@ -16,8 +19,6 @@ CPU affinity of a thread
 .BI "                           const cpu_set_t *" cpuset );
 .BI "int pthread_getaffinity_np(pthread_t " thread ", size_t " cpusetsize ,
 .BI "                           cpu_set_t *" cpuset );
-.PP
-Compile and link with \fI\-pthread\fP.
 .fi
 .SH DESCRIPTION
 The
