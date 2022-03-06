@@ -16,6 +16,9 @@
 .TH LOG 3  2021-03-22  "" "Linux Programmer's Manual"
 .SH NAME
 log, logf, logl \- natural logarithmic function
+.SH LIBRARY
+Math library
+.RI ( libm ", " -lm )
 .SH SYNOPSIS
 .nf
 .B #include <math.h>
@@ -24,8 +27,6 @@ log, logf, logl \- natural logarithmic function
 .BI "float logf(float " x );
 .BI "long double logl(long double " x );
 .fi
-.PP
-Link with \fI\-lm\fP.
 .PP
 .RS -4
 Feature Test Macro Requirements for glibc (see
