@@ -6,13 +6,14 @@
 .TH PTHREAD_SETSCHEDPRIO 3 2021-03-22 "Linux" "Linux Programmer's Manual"
 .SH NAME
 pthread_setschedprio \- set scheduling priority of a thread
+.SH LIBRARY
+POSIX threads library
+.RI ( libpthread ", " -lpthread )
 .SH SYNOPSIS
 .nf
 .B #include <pthread.h>
 .PP
 .BI "int pthread_setschedprio(pthread_t " thread ", int " prio );
-.PP
-Compile and link with \fI\-pthread\fP.
 .fi
 .SH DESCRIPTION
 The
