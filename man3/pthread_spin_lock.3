@@ -6,6 +6,9 @@
 .SH NAME
 pthread_spin_lock, pthread_spin_trylock, pthread_spin_unlock \-
 lock and unlock a spin lock
+.SH LIBRARY
+POSIX threads library
+.RI ( libpthread ", " -lpthread )
 .SH SYNOPSIS
 .nf
 .B #include <pthread.h>
@@ -14,8 +17,6 @@ lock and unlock a spin lock
 .BI "int pthread_spin_trylock(pthread_spinlock_t *" lock );
 .BI "int pthread_spin_unlock(pthread_spinlock_t *" lock );
 .fi
-.PP
-Compile and link with \fI\-pthread\fP.
 .PP
 .RS -4
 Feature Test Macro Requirements for glibc (see
