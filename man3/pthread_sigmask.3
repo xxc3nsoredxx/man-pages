@@ -6,6 +6,9 @@
 .TH PTHREAD_SIGMASK 3 2021-03-22 "Linux" "Linux Programmer's Manual"
 .SH NAME
 pthread_sigmask \- examine and change mask of blocked signals
+.SH LIBRARY
+POSIX threads library
+.RI ( libpthread ", " -lpthread )
 .SH SYNOPSIS
 .nf
 .B #include <signal.h>
@@ -13,8 +16,6 @@ pthread_sigmask \- examine and change mask of blocked signals
 .BI "int pthread_sigmask(int " how ", const sigset_t *" set \
 ", sigset_t *" oldset );
 .fi
-.PP
-Compile and link with \fI\-pthread\fP.
 .PP
 .RS -4
 Feature Test Macro Requirements for glibc (see
