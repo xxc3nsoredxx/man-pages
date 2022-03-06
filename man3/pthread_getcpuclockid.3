@@ -6,14 +6,15 @@
 .TH PTHREAD_GETCPUCLOCKID 3 2021-03-22 "Linux" "Linux Programmer's Manual"
 .SH NAME
 pthread_getcpuclockid \- retrieve ID of a thread's CPU time clock
+.SH LIBRARY
+POSIX threads library
+.RI ( libpthread ", " -lpthread )
 .SH SYNOPSIS
 .nf
 .B #include <pthread.h>
 .B #include <time.h>
 .PP
 .BI "int pthread_getcpuclockid(pthread_t " thread ", clockid_t *" clockid );
-.PP
-Compile and link with \fI\-pthread\fP.
 .fi
 .SH DESCRIPTION
 The
