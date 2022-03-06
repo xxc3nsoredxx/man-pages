@@ -11,6 +11,9 @@
 .TH ENCRYPT 3 2021-03-22 "" "Linux Programmer's Manual"
 .SH NAME
 encrypt, setkey, encrypt_r, setkey_r \- encrypt 64-bit messages
+.SH LIBRARY
+Encryption and decryption library
+.RI ( libcrypto ", " \-lcrypto )
 .SH SYNOPSIS
 .nf
 .BR "#define _XOPEN_SOURCE" "       /* See feature_test_macros(7) */"
@@ -30,8 +33,6 @@ encrypt, setkey, encrypt_r, setkey_r \- encrypt 64-bit messages
 .BI "void encrypt_r(char *" block ", int " edflag \
 ", struct crypt_data *" data );
 .fi
-.PP
-Each of these requires linking with \fI\-lcrypt\fP.
 .SH DESCRIPTION
 These functions encrypt and decrypt 64-bit messages.
 The
