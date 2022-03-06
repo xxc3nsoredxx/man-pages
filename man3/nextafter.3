@@ -10,6 +10,9 @@
 .SH NAME
 nextafter, nextafterf, nextafterl, nexttoward, nexttowardf, nexttowardl \-
 floating-point number manipulation
+.SH LIBRARY
+Math library
+.RI ( libm ", " -lm )
 .SH SYNOPSIS
 .nf
 .B #include <math.h>
@@ -22,8 +25,6 @@ floating-point number manipulation
 .BI "float nexttowardf(float " x ", long double " y );
 .BI "long double nexttowardl(long double " x ", long double " y );
 .fi
-.PP
-Link with \fI\-lm\fP.
 .PP
 .RS -4
 Feature Test Macro Requirements for glibc (see
