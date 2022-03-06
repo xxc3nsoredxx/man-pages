@@ -5,6 +5,9 @@
 .TH MQ_OPEN 3 2021-03-22 "Linux" "Linux Programmer's Manual"
 .SH NAME
 mq_open \- open a message queue
+.SH LIBRARY
+Real-time library
+.RI ( librt ", " -lrt )
 .SH SYNOPSIS
 .nf
 .BR "#include <fcntl.h>" "           /* For O_* constants */"
@@ -15,8 +18,6 @@ mq_open \- open a message queue
 .BI "mqd_t mq_open(const char *" name ", int " oflag ", mode_t " mode ,
 .BI "              struct mq_attr *" attr );
 .fi
-.PP
-Link with \fI\-lrt\fP.
 .SH DESCRIPTION
 .BR mq_open ()
 creates a new POSIX message queue or opens an existing queue.
