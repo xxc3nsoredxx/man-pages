@@ -7,6 +7,9 @@
 .SH NAME
 pthread_mutexattr_getrobust, pthread_mutexattr_setrobust
 \- get and set the robustness attribute of a mutex attributes object
+.SH LIBRARY
+POSIX threads library
+.RI ( libpthread ", " -lpthread )
 .SH SYNOPSIS
 .nf
 .B #include <pthread.h>
@@ -16,8 +19,6 @@ pthread_mutexattr_getrobust, pthread_mutexattr_setrobust
 .BI "int pthread_mutexattr_setrobust(pthread_mutexattr_t *" attr ,
 .BI "                                int " robustness ");"
 .fi
-.PP
-Compile and link with \fI\-pthread\fP.
 .PP
 .RS -4
 Feature Test Macro Requirements for glibc (see
