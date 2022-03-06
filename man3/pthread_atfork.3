@@ -5,6 +5,9 @@
 .TH PTHREAD_ATFORK 3 2020-08-13 "Linux" "Linux Programmer's Manual"
 .SH NAME
 pthread_atfork \- register fork handlers
+.SH LIBRARY
+POSIX threads library
+.RI ( libpthread ", " -lpthread )
 .SH SYNOPSIS
 .nf
 .B  #include <pthread.h>
@@ -12,8 +15,6 @@ pthread_atfork \- register fork handlers
 .BI "int pthread_atfork(void (*" prepare ")(void), void (*" parent ")(void),"
 .BI "                   void (*" child ")(void));"
 .fi
-.PP
-Link with \fI\-pthread\fP.
 .SH DESCRIPTION
 The
 .BR pthread_atfork ()
