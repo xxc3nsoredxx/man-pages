@@ -6,13 +6,14 @@
 .TH PTHREAD_SELF 3 2021-03-22 "Linux" "Linux Programmer's Manual"
 .SH NAME
 pthread_self \- obtain ID of the calling thread
+.SH LIBRARY
+POSIX threads library
+.RI ( libpthread ", " -lpthread )
 .SH SYNOPSIS
 .nf
 .B #include <pthread.h>
 .PP
 .B pthread_t pthread_self(void);
-.PP
-Compile and link with \fI\-pthread\fP.
 .fi
 .SH DESCRIPTION
 The
