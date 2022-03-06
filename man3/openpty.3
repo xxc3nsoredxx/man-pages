@@ -10,6 +10,9 @@
 .TH OPENPTY 3  2021-03-22 "GNU" "Linux Programmer's Manual"
 .SH NAME
 openpty, login_tty, forkpty \- terminal utility functions
+.SH LIBRARY
+System utilities library
+.RI ( libutil ", " -lutil )
 .SH SYNOPSIS
 .nf
 .B #include <pty.h>
@@ -24,8 +27,6 @@ openpty, login_tty, forkpty \- terminal utility functions
 .B #include <utmp.h>
 .PP
 .BI "int login_tty(int " fd );
-.PP
-Link with \fI\-lutil\fP.
 .fi
 .SH DESCRIPTION
 The
