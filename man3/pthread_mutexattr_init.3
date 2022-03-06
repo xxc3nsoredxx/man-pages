@@ -6,6 +6,9 @@
 .SH NAME
 pthread_mutexattr_init, pthread_mutexattr_destroy \- initialize and
 destroy a mutex attributes object
+.SH LIBRARY
+POSIX threads library
+.RI ( libpthread ", " -lpthread )
 .SH SYNOPSIS
 .nf
 .B #include <pthread.h>
@@ -13,8 +16,6 @@ destroy a mutex attributes object
 .BI "int pthread_mutexattr_init(pthread_mutexattr_t *" attr ");"
 .BI "int pthread_mutexattr_destroy(pthread_mutexattr_t *" attr ");"
 .fi
-.PP
-Compile and link with \fI\-pthread\fP.
 .SH DESCRIPTION
 The
 .BR pthread_mutexattr_init ()
