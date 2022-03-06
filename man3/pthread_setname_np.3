@@ -6,6 +6,9 @@
 .TH PTHREAD_SETNAME_NP 3 2021-08-27 "Linux" "Linux Programmer's Manual"
 .SH NAME
 pthread_setname_np, pthread_getname_np \- set/get the name of a thread
+.SH LIBRARY
+POSIX threads library
+.RI ( libpthread ", " -lpthread )
 .SH SYNOPSIS
 .nf
 .BR "#define _GNU_SOURCE" "             /* See feature_test_macros(7) */"
@@ -14,8 +17,6 @@ pthread_setname_np, pthread_getname_np \- set/get the name of a thread
 .BI "int pthread_setname_np(pthread_t " thread ", const char *" name );
 .BI "int pthread_getname_np(pthread_t " thread ", char *" name ", size_t " len );
 .fi
-.PP
-Compile and link with \fI\-pthread\fP.
 .SH DESCRIPTION
 By default, all the threads created using
 .BR pthread_create ()
