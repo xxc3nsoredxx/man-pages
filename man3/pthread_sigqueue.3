@@ -5,6 +5,9 @@
 .TH PTHREAD_SIGQUEUE 3 2021-03-22 "Linux" "Linux Programmer's Manual"
 .SH NAME
 pthread_sigqueue \- queue a signal and data to a thread
+.SH LIBRARY
+POSIX threads library
+.RI ( libpthread ", " -lpthread )
 .SH SYNOPSIS
 .nf
 .B #include <signal.h>
@@ -13,8 +16,6 @@ pthread_sigqueue \- queue a signal and data to a thread
 .BI "int pthread_sigqueue(pthread_t " thread ", int " sig ,
 .BI "                     const union sigval " value );
 .fi
-.PP
-Compile and link with \fI\-pthread\fP.
 .PP
 .RS -4
 Feature Test Macro Requirements for glibc (see
