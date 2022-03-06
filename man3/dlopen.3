@@ -17,6 +17,9 @@
 .SH NAME
 dlclose, dlopen, dlmopen \-
 open and close a shared object
+.SH LIBRARY
+Dynamic linking library
+.RI ( libdl ", " \-ldl )
 .SH SYNOPSIS
 .nf
 .B #include <dlfcn.h>
@@ -30,8 +33,6 @@ open and close a shared object
 .PP
 .BI "void *dlmopen(Lmid_t " lmid ", const char *" filename ", int " flags );
 .fi
-.PP
-Link with \fI\-ldl\fP.
 .SH DESCRIPTION
 .SS dlopen()
 The function

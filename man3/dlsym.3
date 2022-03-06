@@ -6,6 +6,9 @@
 .TH DLSYM 3 2021-03-22 "Linux" "Linux Programmer's Manual"
 .SH NAME
 dlsym, dlvsym \- obtain address of a symbol in a shared object or executable
+.SH LIBRARY
+Dynamic linking library
+.RI ( libdl ", " \-ldl )
 .SH SYNOPSIS
 .nf
 .B #include <dlfcn.h>
@@ -17,8 +20,6 @@ dlsym, dlvsym \- obtain address of a symbol in a shared object or executable
 .PP
 .BI "void *dlvsym(void *restrict " handle ", const char *restrict " symbol ,
 .BI "             const char *restrict " version );
-.PP
-Link with \fI\-ldl\fP.
 .fi
 .SH DESCRIPTION
 The function

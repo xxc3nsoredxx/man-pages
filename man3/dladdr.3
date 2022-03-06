@@ -6,6 +6,9 @@
 .TH DLADDR 3 2021-03-22 "Linux" "Linux Programmer's Manual"
 .SH NAME
 dladdr, dladdr1 \- translate address to symbolic information
+.SH LIBRARY
+Dynamic linking library
+.RI ( libdl ", " \-ldl )
 .SH SYNOPSIS
 .nf
 .B #define _GNU_SOURCE
@@ -14,8 +17,6 @@ dladdr, dladdr1 \- translate address to symbolic information
 .BI "int dladdr(const void *" addr ", Dl_info *" info );
 .BI "int dladdr1(const void *" addr ", Dl_info *" info ", void **" extra_info ,
 .BI "            int " flags );
-.PP
-Link with \fI\-ldl\fP.
 .fi
 .SH DESCRIPTION
 The function

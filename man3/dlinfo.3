@@ -5,6 +5,9 @@
 .TH DLINFO 3 2021-03-22 "Linux" "Linux Programmer's Manual"
 .SH NAME
 dlinfo \- obtain information about a dynamically loaded object
+.SH LIBRARY
+Dynamic linking library
+.RI ( libdl ", " \-ldl )
 .SH SYNOPSIS
 .nf
 .B #define _GNU_SOURCE
@@ -13,8 +16,6 @@ dlinfo \- obtain information about a dynamically loaded object
 .PP
 .BR "int dlinfo(void *restrict " handle ", int " request \
 ", void *restrict " info );
-.PP
-Link with \fI\-ldl\fP.
 .fi
 .SH DESCRIPTION
 The

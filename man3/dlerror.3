@@ -6,13 +6,14 @@
 .TH DLERROR 3 2021-03-22 "Linux" "Linux Programmer's Manual"
 .SH NAME
 dlerror \- obtain error diagnostic for functions in the dlopen API
+.SH LIBRARY
+Dynamic linking library
+.RI ( libdl ", " \-ldl )
 .SH SYNOPSIS
 .nf
 .B #include <dlfcn.h>
 .PP
 .B "char *dlerror(void);"
-.PP
-Link with \fI\-ldl\fP.
 .fi
 .SH DESCRIPTION
 The
