@@ -5,6 +5,9 @@
 .TH PTHREAD_SPIN_INIT 3 2021-03-22 "Linux" "Linux Programmer's Manual"
 .SH NAME
 pthread_spin_init, pthread_spin_destroy \- initialize or destroy a spin lock
+.SH LIBRARY
+POSIX threads library
+.RI ( libpthread ", " -lpthread )
 .SH SYNOPSIS
 .nf
 .B #include <pthread.h>
@@ -12,8 +15,6 @@ pthread_spin_init, pthread_spin_destroy \- initialize or destroy a spin lock
 .BI "int pthread_spin_init(pthread_spinlock_t *" lock ", int " pshared ");"
 .BI "int pthread_spin_destroy(pthread_spinlock_t *" lock ");"
 .fi
-.PP
-Compile and link with \fI\-pthread\fP.
 .PP
 .RS -4
 Feature Test Macro Requirements for glibc (see
