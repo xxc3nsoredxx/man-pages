@@ -200,34 +200,9 @@ to obtain its definition.
 .TP
 .BR AT_NO_AUTOMOUNT " (since Linux 2.6.38)"
 Don't automount the terminal ("basename") component of
-.I pathname
-if it is a directory that is an automount point.
-This allows the caller to gather attributes of an automount point
-(rather than the location it would mount).
-Since Linux 4.14,
-.\" commit 42f46148217865a545e129612075f3d828a2c4e4
-also don't instantiate a nonexistent name in an
-on-demand directory such as used for automounter indirect maps.
-This
-flag has no effect if the mount point has already been mounted over.
-.IP
-Both
-.BR stat ()
-and
-.BR lstat ()
-act as though
-.B AT_NO_AUTOMOUNT
-was set.
-.IP
-The
-.B AT_NO_AUTOMOUNT
-can be used in tools that scan directories
-to prevent mass-automounting of a directory of automount points.
-.IP
-This flag is Linux-specific; define
-.B _GNU_SOURCE
-.\" Before glibc 2.16, defining _ATFILE_SOURCE sufficed
-to obtain its definition.
+.I pathname.
+Since Linux 3.1 this flag is ignored.
+Since Linux 4.11 this flag is implied.
 .TP
 .B AT_SYMLINK_NOFOLLOW
 If

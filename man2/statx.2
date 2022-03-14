@@ -178,11 +178,22 @@ Don't automount the terminal ("basename") component of
 if it is a directory that is an automount point.
 This allows the caller to gather attributes of an automount point
 (rather than the location it would mount).
-This flag can be used in tools that scan directories
-to prevent mass-automounting of a directory of automount points.
+This flag has no effect if the mount point has already been mounted over.
+.IP
 The
 .B AT_NO_AUTOMOUNT
-flag has no effect if the mount point has already been mounted over.
+flag can be used in tools that scan directories
+to prevent mass-automounting of a directory of automount points.
+.IP
+All of
+.BR stat (2),
+.BR lstat (2),
+and
+.BR fstatat (2)
+act as though
+.B AT_NO_AUTOMOUNT
+was set.
+.IP
 This flag is Linux-specific; define
 .B _GNU_SOURCE
 .\" Before glibc 2.16, defining _ATFILE_SOURCE sufficed
