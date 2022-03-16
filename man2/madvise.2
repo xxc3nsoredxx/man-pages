@@ -604,6 +604,16 @@ is not a valid.
 .B EINVAL
 .I advice
 is
+.B MADV_COLD
+or
+.B MADV_PAGEOUT
+and the specified address range includes locked, Huge TLB pages, or
+.B VM_PFNMAP
+pages.
+.TP
+.B EINVAL
+.I advice
+is
 .B MADV_DONTNEED
 or
 .BR MADV_REMOVE
