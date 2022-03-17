@@ -76,6 +76,7 @@ INSTALL_DATA := $(INSTALL) -m 644
 INSTALL_DIR := $(INSTALL) -m 755 -d
 RM := rm
 RMDIR := rmdir --ignore-fail-on-non-empty
+MAN2HTML := man2html
 
 MAN_SECTIONS := 0 1 2 3 4 5 6 7 8
 
@@ -87,15 +88,15 @@ all:
 
 
 %/.:
-	$(info -	INSTALL	$(@D))
+	$(info INSTALL	$(@D))
 	$(INSTALL_DIR) $(@D)
 
 %-rm:
-	$(info -	RM	$*)
+	$(info RM	$*)
 	$(RM) $*
 
 %-rmdir:
-	$(info -	RMDIR	$(@D))
+	$(info RMDIR	$(@D))
 	$(RMDIR) $(@D)
 
 
@@ -113,15 +114,14 @@ uninstall remove: uninstall-man
 
 .PHONY: clean
 clean:
-	find man?/ -type f \
-	|while read f; do \
-		rm -f "$(htmlbuilddir)/$$f".*; \
-	done;
+	$(RM) -rf $(htmlbuilddir)
 
 ########################################################################
 # man
 
 MANPAGES   := $(sort $(shell find $(MANDIR)/man?/ -type f | grep '$(manext)$$'))
+HTMLPAGES  := $(patsubst $(MANDIR)/%,$(htmlbuilddir)/%.html,$(MANPAGES))
+_htmlpages := $(patsubst $(htmlbuilddir)/%,$(DESTDIR)$(htmldir_)/%,$(HTMLPAGES))
 _manpages  := $(patsubst $(MANDIR)/%,$(DESTDIR)$(mandir)/%,$(MANPAGES))
 _man0pages := $(filter %$(man0ext),$(_manpages))
 _man1pages := $(filter %$(man1ext),$(_manpages))
@@ -133,19 +133,23 @@ _man6pages := $(filter %$(man6ext),$(_manpages))
 _man7pages := $(filter %$(man7ext),$(_manpages))
 _man8pages := $(filter %$(man8ext),$(_manpages))
 
-MANDIRS  := $(sort $(shell find $(MANDIR)/man? -type d))
-_mandirs := $(patsubst $(MANDIR)/%,$(DESTDIR)$(mandir)/%/.,$(MANDIRS))
-_man0dir := $(filter %man0/.,$(_mandirs))
-_man1dir := $(filter %man1/.,$(_mandirs))
-_man2dir := $(filter %man2/.,$(_mandirs))
-_man3dir := $(filter %man3/.,$(_mandirs))
-_man4dir := $(filter %man4/.,$(_mandirs))
-_man5dir := $(filter %man5/.,$(_mandirs))
-_man6dir := $(filter %man6/.,$(_mandirs))
-_man7dir := $(filter %man7/.,$(_mandirs))
-_man8dir := $(filter %man8/.,$(_mandirs))
-_mandir  := $(DESTDIR)$(mandir)/.
+MANDIRS   := $(sort $(shell find $(MANDIR)/man? -type d))
+HTMLDIRS  := $(patsubst $(MANDIR)/%,$(htmlbuilddir)/%/.,$(MANDIRS))
+_htmldirs := $(patsubst $(htmlbuilddir)/%,$(DESTDIR)$(htmldir_)/%,$(HTMLDIRS))
+_mandirs  := $(patsubst $(MANDIR)/%,$(DESTDIR)$(mandir)/%/.,$(MANDIRS))
+_man0dir  := $(filter %man0/.,$(_mandirs))
+_man1dir  := $(filter %man1/.,$(_mandirs))
+_man2dir  := $(filter %man2/.,$(_mandirs))
+_man3dir  := $(filter %man3/.,$(_mandirs))
+_man4dir  := $(filter %man4/.,$(_mandirs))
+_man5dir  := $(filter %man5/.,$(_mandirs))
+_man6dir  := $(filter %man6/.,$(_mandirs))
+_man7dir  := $(filter %man7/.,$(_mandirs))
+_man8dir  := $(filter %man8/.,$(_mandirs))
+_mandir   := $(DESTDIR)$(mandir)/.
+_htmldir  := $(DESTDIR)$(htmldir_)/.
 
+_htmlpages_rm := $(addsuffix -rm,$(wildcard $(_htmlpages)))
 _manpages_rm  := $(addsuffix -rm,$(wildcard $(_manpages)))
 _man0pages_rm := $(filter %$(man0ext)-rm,$(_manpages_rm))
 _man1pages_rm := $(filter %$(man1ext)-rm,$(_manpages_rm))
@@ -157,17 +161,19 @@ _man6pages_rm := $(filter %$(man6ext)-rm,$(_manpages_rm))
 _man7pages_rm := $(filter %$(man7ext)-rm,$(_manpages_rm))
 _man8pages_rm := $(filter %$(man8ext)-rm,$(_manpages_rm))
 
-_mandirs_rmdir := $(addsuffix -rmdir,$(wildcard $(_mandirs)))
-_man0dir_rmdir := $(addsuffix -rmdir,$(wildcard $(_man0dir)))
-_man1dir_rmdir := $(addsuffix -rmdir,$(wildcard $(_man1dir)))
-_man2dir_rmdir := $(addsuffix -rmdir,$(wildcard $(_man2dir)))
-_man3dir_rmdir := $(addsuffix -rmdir,$(wildcard $(_man3dir)))
-_man4dir_rmdir := $(addsuffix -rmdir,$(wildcard $(_man4dir)))
-_man5dir_rmdir := $(addsuffix -rmdir,$(wildcard $(_man5dir)))
-_man6dir_rmdir := $(addsuffix -rmdir,$(wildcard $(_man6dir)))
-_man7dir_rmdir := $(addsuffix -rmdir,$(wildcard $(_man7dir)))
-_man8dir_rmdir := $(addsuffix -rmdir,$(wildcard $(_man8dir)))
-_mandir_rmdir  := $(addsuffix -rmdir,$(wildcard $(_mandir)))
+_htmldirs_rmdir := $(addsuffix -rmdir,$(wildcard $(_htmldirs)))
+_mandirs_rmdir  := $(addsuffix -rmdir,$(wildcard $(_mandirs)))
+_man0dir_rmdir  := $(addsuffix -rmdir,$(wildcard $(_man0dir)))
+_man1dir_rmdir  := $(addsuffix -rmdir,$(wildcard $(_man1dir)))
+_man2dir_rmdir  := $(addsuffix -rmdir,$(wildcard $(_man2dir)))
+_man3dir_rmdir  := $(addsuffix -rmdir,$(wildcard $(_man3dir)))
+_man4dir_rmdir  := $(addsuffix -rmdir,$(wildcard $(_man4dir)))
+_man5dir_rmdir  := $(addsuffix -rmdir,$(wildcard $(_man5dir)))
+_man6dir_rmdir  := $(addsuffix -rmdir,$(wildcard $(_man6dir)))
+_man7dir_rmdir  := $(addsuffix -rmdir,$(wildcard $(_man7dir)))
+_man8dir_rmdir  := $(addsuffix -rmdir,$(wildcard $(_man8dir)))
+_mandir_rmdir   := $(addsuffix -rmdir,$(wildcard $(_mandir)))
+_htmldir_rmdir  := $(addsuffix -rmdir,$(wildcard $(_htmldir)))
 
 install_manX     := $(foreach x,$(MAN_SECTIONS),install-man$(x))
 installdirs_manX := $(foreach x,$(MAN_SECTIONS),installdirs-man$(x))
@@ -176,7 +182,7 @@ uninstall_manX   := $(foreach x,$(MAN_SECTIONS),uninstall-man$(x))
 
 .SECONDEXPANSION:
 $(_manpages): $(DESTDIR)$(mandir)/man%: $(MANDIR)/man% | $$(@D)/.
-	$(info -	INSTALL	$@)
+	$(info INSTALL	$@)
 	$(INSTALL_DATA) -T $< $@
 
 $(_mandirs): %/.: | $$(dir %). $(_mandir)
@@ -194,7 +200,7 @@ install-man: $(install_manX)
 	@:
 
 .PHONY: $(installdirs_manX)
-$(installdirs_manX): installdirs-man%: $$(_man%dir) $(_mandir)
+$(installdirs_manX): installdirs-man%: $$(_man%dir)
 	@:
 
 .PHONY: installdirs-man
@@ -216,44 +222,38 @@ uninstall-man: $(_mandir_rmdir) $(uninstall_manX)
 # Use with
 #  make HTOPTS=whatever html
 # The sed removes the lines "Content-type: text/html\n\n"
-.PHONY: html
-html: | builddirs-html
-	find man?/ -type f \
-	|while read f; do \
-		man2html $(HTOPTS) "$$f" \
-		|sed -e '1,2d' \
-		>"$(htmlbuilddir)/$${f}$(htmlext)" \
-			|| exit $$?; \
-	done;
+$(HTMLPAGES): $(htmlbuilddir)/%.html: $(MANDIR)/% | $$(@D)/.
+	$(info MAN2HTML	$@)
+	$(MAN2HTML) $(HTOPTS) $< | sed -e 1,2d >$@ || exit $$?
+
+$(HTMLDIRS): %/.: | $$(dir %). $(htmlbuilddir)/.
+
+$(_htmlpages): $(DESTDIR)$(htmldir_)/%: $(htmlbuilddir)/% | $$(@D)/.
+	$(info INSTALL	$@)
+	$(INSTALL_DATA) -T $< $@
+
+$(_htmldirs): %/.: | $$(dir %). $(_htmldir)
+
+
+.PHONY: build-html html
+build-html html: $(HTMLPAGES) | builddirs-html
+	@:
 
 .PHONY: builddirs-html
-builddirs-html:
-	find man?/ -type d \
-	|while read d; do \
-		$(INSTALL_DIR) "$(htmlbuilddir)/$$d" || exit $$?; \
-	done;
+builddirs-html: $(HTMLDIRS)
+	@:
 
 .PHONY: install-html
-install-html: | installdirs-html
-	cd $(htmlbuilddir) && \
-	find man?/ -type f \
-	|while read f; do \
-		$(INSTALL_DATA) -T "$$f" "$(DESTDIR)$(htmldir_)/$$f" || exit $$?; \
-	done;
+install-html: $(_htmlpages) | installdirs-html
+	@:
 
 .PHONY: installdirs-html
-installdirs-html:
-	find man?/ -type d \
-	|while read d; do \
-		$(INSTALL_DIR) "$(DESTDIR)$(htmldir_)/$$d" || exit $$?; \
-	done;
+installdirs-html: $(_htmldirs)
+	@:
 
 .PHONY: uninstall-html
-uninstall-html:
-	find man?/ -type f \
-	|while read f; do \
-		rm -f "$(DESTDIR)$(htmldir_)/$$f".* || exit $$?; \
-	done;
+uninstall-html: $(_htmldir_rmdir) $(_htmldirs_rmdir) $(_htmlpages_rm)
+	@:
 
 
 ########################################################################
