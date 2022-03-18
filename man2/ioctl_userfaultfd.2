@@ -218,11 +218,6 @@ operation is supported.
 The
 .B UFFDIO_UNREGISTER
 operation is supported.
-.TP
-.B 1 << _UFFDIO_WRITEPROTECT
-The
-.B UFFDIO_WRITEPROTECT
-operation is supported.
 .PP
 This
 .BR ioctl (2)
@@ -316,8 +311,26 @@ If the operation is successful, the kernel modifies the
 bit-mask field to indicate which
 .BR ioctl (2)
 operations are available for the specified range.
-This returned bit mask is as for
-.BR UFFDIO_API .
+This returned bit mask can contain the following bits:
+.TP
+.B 1 << _UFFDIO_COPY
+The
+.B UFFDIO_COPY
+operation is supported.
+.TP
+.B 1 << _UFFDIO_WAKE
+The
+.B UFFDIO_WAKE
+operation is supported.
+.TP
+.B 1 << _UFFDIO_WRITEPROTECT
+The
+.B UFFDIO_WRITEPROTECT
+.TP
+.B 1 << _UFFDIO_ZEROPAGE
+The
+.B UFFDIO_ZEROPAGE
+operation is supported.
 .PP
 This
 .BR ioctl (2)
