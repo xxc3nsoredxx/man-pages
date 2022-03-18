@@ -1,2 +1,2 @@
-# Default $htmlbuilddir:
-/.html/
+# Default $builddir:
+/tmp/

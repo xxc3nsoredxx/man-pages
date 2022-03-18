@@ -30,7 +30,8 @@ MAKEFLAGS += --silent
 MAKEFLAGS += --warn-undefined-variables
 
 
-htmlbuilddir := $(CURDIR)/.html
+builddir := tmp
+htmlbuilddir := $(builddir)/html
 HTOPTS :=
 
 DESTDIR :=
@@ -88,7 +89,7 @@ all:
 
 
 %/.:
-	$(info INSTALL	$(@D))
+	$(info INSTALL	$(@D)/)
 	$(INSTALL_DIR) $(@D)
 
 %-rm:
@@ -114,7 +115,7 @@ uninstall remove: uninstall-man
 
 .PHONY: clean
 clean:
-	$(RM) -rf $(htmlbuilddir)
+	$(RM) -rf $(builddir)
 
 ########################################################################
 # man
