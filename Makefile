@@ -147,6 +147,8 @@ clean:
 # man
 
 MANPAGES   := $(sort $(shell find $(MANDIR)/man?/ -type f | grep '$(manext)$$'))
+LINTPAGES  := $(sort $(shell find $(MANDIR)/man?/ -type f | grep '$(manext)$$' \
+                             | xargs grep -l '^\.TH '))
 HTMLPAGES  := $(patsubst $(MANDIR)/%,$(HTMLDIR)/%.html,$(MANPAGES))
 _htmlpages := $(patsubst $(HTMLDIR)/%,$(DESTDIR)$(htmldir_)/%,$(HTMLPAGES))
 _manpages  := $(patsubst $(MANDIR)/%,$(DESTDIR)$(mandir)/%,$(MANPAGES))
@@ -159,8 +161,8 @@ _man5pages := $(filter %$(man5ext),$(_manpages))
 _man6pages := $(filter %$(man6ext),$(_manpages))
 _man7pages := $(filter %$(man7ext),$(_manpages))
 _man8pages := $(filter %$(man8ext),$(_manpages))
-LINT_groff := $(patsubst $(MANDIR)/%,$(LINTDIR)/%.lint.groff.touch,$(MANPAGES))
-LINT_mandoc:= $(patsubst $(MANDIR)/%,$(LINTDIR)/%.lint.mandoc.touch,$(MANPAGES))
+LINT_groff :=$(patsubst $(MANDIR)/%,$(LINTDIR)/%.lint.groff.touch,$(LINTPAGES))
+LINT_mandoc:=$(patsubst $(MANDIR)/%,$(LINTDIR)/%.lint.mandoc.touch,$(LINTPAGES))
 
 MANDIRS   := $(sort $(shell find $(MANDIR)/man? -type d))
 HTMLDIRS  := $(patsubst $(MANDIR)/%,$(HTMLDIR)/%/.,$(MANDIRS))
