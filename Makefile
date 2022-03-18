@@ -26,7 +26,6 @@
 ########################################################################
 
 MAKEFLAGS += --no-print-directory
-MAKEFLAGS += --silent
 MAKEFLAGS += --warn-undefined-variables
 
 
@@ -279,4 +278,5 @@ check-groff-warnings:
 
 ########################################################################
 
+$(V).SILENT:
 FORCE:
