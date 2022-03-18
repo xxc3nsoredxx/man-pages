@@ -129,7 +129,7 @@ not available on the new host.
 Bound sockets are automatically updated to the new CID.
 .SS Ioctls
 The following ioctls are available on the
-.IR /dev/vsock
+.I /dev/vsock
 device.
 .TP
 .B IOCTL_VM_SOCKETS_GET_LOCAL_CID
@@ -154,7 +154,7 @@ This is useful
 for testing applications on a single host and for debugging.
 .PP
 The local CID obtained with
-.BR IOCTL_VM_SOCKETS_GET_LOCAL_CID
+.B IOCTL_VM_SOCKETS_GET_LOCAL_CID
 can be used for the same purpose, but it is preferable to use
 .B VMADDR_CID_LOCAL .
 .SH ERRORS

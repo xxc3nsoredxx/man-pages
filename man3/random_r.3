@@ -76,7 +76,7 @@ except that it initializes the state in the object pointed to by
 .IR buf ,
 rather than initializing the global state variable.
 Before calling this function, the
-.IR buf.state
+.I buf.state
 field must be initialized to NULL.
 The
 .BR initstate_r ()
@@ -85,9 +85,9 @@ function records a pointer to the
 argument inside the structure pointed to by
 .IR buf .
 Thus,
-.IR statebuf
+.I statebuf
 should not be deallocated so long as
-.IR buf
+.I buf
 is still in use.
 (So,
 .I statebuf
@@ -166,7 +166,7 @@ The
 interface is confusing.
 .\" FIXME . https://sourceware.org/bugzilla/show_bug.cgi?id=3662
 It appears that the
-.IR random_data
+.I random_data
 type is intended to be opaque,
 but the implementation requires the user to either initialize the
 .I buf.state

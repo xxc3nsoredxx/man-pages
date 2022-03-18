@@ -117,7 +117,7 @@ such as
 and
 .BR FAN_DELETE_SELF ,
 cannot be provided as a
-.IR mask
+.I mask
 when
 .I flags
 contains
@@ -265,7 +265,7 @@ In the context of directory entry events, such as
 and
 .BR FAN_MOVED_TO ,
 specifying the flag
-.BR FAN_ONDIR
+.B FAN_ONDIR
 is required in order to create events when subdirectory entries are
 modified (i.e.,
 .BR mkdir (2)/
@@ -281,13 +281,13 @@ More specifically, the directory entry modification events
 .BR FAN_DELETE ,
 .BR FAN_MOVED_FROM ,
 and
-.BR FAN_MOVED_TO
+.B FAN_MOVED_TO
 are not generated for any entry modifications performed inside subdirectories
 of marked directories.
 Note that the events
-.BR FAN_DELETE_SELF
+.B FAN_DELETE_SELF
 and
-.BR FAN_MOVE_SELF
+.B FAN_MOVE_SELF
 are not generated for children of marked directories.
 To monitor complete directory trees it is necessary to mark the relevant
 mount or filesystem.
@@ -375,7 +375,7 @@ nor a valid file descriptor.
 .TP
 .B EINVAL
 An invalid value was passed in
-.IR flags
+.I flags
 or
 .IR mask ,
 or
@@ -408,9 +408,9 @@ filesystem objects by file handles.
 .TP
 .B ENOENT
 The filesystem object indicated by
-.IR dirfd
+.I dirfd
 and
-.IR pathname
+.I pathname
 does not exist.
 This error also occurs when trying to remove a mark from an object
 which is not marked.
@@ -497,7 +497,7 @@ or
 .BR execveat (2).
 .PP
 For example, if the following ELF binary were to be invoked and a
-.BR FAN_OPEN_EXEC
+.B FAN_OPEN_EXEC
 mark has been placed on /:
 .PP
 .in +4n
@@ -507,7 +507,7 @@ $ /bin/echo foo
 .in
 .PP
 The listening application in this case would receive
-.BR FAN_OPEN_EXEC
+.B FAN_OPEN_EXEC
 events for both the ELF binary and interpreter, respectively:
 .PP
 .in +4n

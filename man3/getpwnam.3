@@ -110,7 +110,11 @@ was found or an error occurred) is stored in
 .PP
 The call
 .PP
-    sysconf(_SC_GETPW_R_SIZE_MAX)
+.in +4n
+.EX
+sysconf(_SC_GETPW_R_SIZE_MAX)
+.EE
+.in
 .PP
 returns either \-1, without changing
 .IR errno ,
@@ -150,7 +154,7 @@ On success,
 and
 .BR getpwuid_r ()
 return zero, and set
-.IR *result
+.I *result
 to
 .IR pwd .
 If no matching password record was found,

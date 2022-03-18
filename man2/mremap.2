@@ -106,15 +106,15 @@ The
 .B MREMAP_DONTUNMAP
 flag can be used only with private anonymous mappings
 (see the description of
-.BR MAP_PRIVATE
+.B MAP_PRIVATE
 and
-.BR MAP_ANONYMOUS
+.B MAP_ANONYMOUS
 in
 .BR mmap (2)).
 .IP
 After completion,
 any access to the range specified by
-.IR old_address
+.I old_address
 and
 .I old_size
 will result in a page fault.
@@ -126,7 +126,7 @@ if the address is in a range previously registered with
 Otherwise, the kernel allocates a zero-filled page to handle the fault.
 .IP
 The
-.BR MREMAP_DONTUNMAP
+.B MREMAP_DONTUNMAP
 flag may be used to atomically move a mapping while leaving the source
 mapped.
 See NOTES for some possible applications of
@@ -208,14 +208,14 @@ was specified without also specifying
 .IP *
 .B MREMAP_DONTUNMAP
 was specified, but one or more pages in the range specified by
-.IR old_address
+.I old_address
 and
-.IR old_size
+.I old_size
 were not private anonymous;
 .IP *
 .B MREMAP_DONTUNMAP
 was specified and
-.IR old_size
+.I old_size
 was not equal to
 .IR new_size ;
 .IP *
@@ -223,7 +223,7 @@ was not equal to
 shareable mapping (but see BUGS);
 .IP *
 \fIold_size\fP was zero and the
-.BR MREMAP_MAYMOVE
+.B MREMAP_MAYMOVE
 flag was not specified.
 .RE
 .TP
@@ -290,29 +290,29 @@ argument.
 .\"
 .SS MREMAP_DONTUNMAP use cases
 Possible applications for
-.BR MREMAP_DONTUNMAP
+.B MREMAP_DONTUNMAP
 include:
 .IP * 3
 Non-cooperative
 .BR userfaultfd (2):
 an application can yank out a virtual address range using
-.BR MREMAP_DONTUNMAP
+.B MREMAP_DONTUNMAP
 and then employ a
 .BR userfaultfd (2)
 handler to handle the page faults that subsequently occur
 as other threads in the process touch pages in the yanked range.
 .IP *
 Garbage collection:
-.BR MREMAP_DONTUNMAP
+.B MREMAP_DONTUNMAP
 can be used in conjunction with
 .BR userfaultfd (2)
 to implement garbage collection algorithms (e.g., in a Java virtual machine).
 Such an implementation can be cheaper (and simpler)
 than conventional garbage collection techniques that involve
 marking pages with protection
-.BR PROT_NONE
+.B PROT_NONE
 in conjunction with the of a
-.BR SIGSEGV
+.B SIGSEGV
 handler to catch accesses to those pages.
 .SH BUGS
 Before Linux 4.14,

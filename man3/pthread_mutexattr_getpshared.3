@@ -13,7 +13,7 @@ POSIX threads library
 .nf
 .B #include <pthread.h>
 .PP
-.BI "int pthread_mutexattr_getpshared("
+.B int pthread_mutexattr_getpshared(
 .BI "                      const pthread_mutexattr_t *restrict " attr ,
 .BI "                      int *restrict " pshared );
 .BI "int pthread_mutexattr_setpshared(pthread_mutexattr_t *" attr ,
@@ -40,14 +40,14 @@ including threads in different processes.
 .BR pthread_mutexattr_getpshared ()
 places the value of the process-shared attribute of
 the mutex attributes object referred to by
-.IR attr
+.I attr
 in the location pointed to by
 .IR pshared .
 .PP
 .BR pthread_mutexattr_setpshared ()
 sets the value of the process-shared attribute of
 the mutex attributes object referred to by
-.IR attr
+.I attr
 to the value specified in
 .BR pshared .
 .PP
@@ -69,7 +69,7 @@ is invalid.
 .TP
 .B ENOTSUP
 .I pshared is
-.BR PTHREAD_PROCESS_SHARED
+.B PTHREAD_PROCESS_SHARED
 but the implementation does not support process-shared mutexes.
 .SH CONFORMING TO
 POSIX.1-2001, POSIX.1-2008.

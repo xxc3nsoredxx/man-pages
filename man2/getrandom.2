@@ -32,7 +32,7 @@ By default,
 draws entropy from the
 .I urandom
 source (i.e., the same source as the
-.IR /dev/urandom
+.I /dev/urandom
 device).
 This behavior can be changed via the
 .I flags
@@ -67,7 +67,7 @@ If this bit is set, then random bytes are drawn from the
 .I random
 source
 (i.e., the same source as the
-.IR /dev/random
+.I /dev/random
 device)
 instead of the
 .I urandom
@@ -89,12 +89,12 @@ argument.
 .TP
 .B GRND_NONBLOCK
 By default, when reading from the
-.IR random
+.I random
 source,
 .BR getrandom ()
 blocks if no random bytes are available,
 and when reading from the
-.IR urandom
+.I urandom
 source, it blocks if the entropy pool has not yet been initialized.
 If the
 .B GRND_NONBLOCK
@@ -112,11 +112,11 @@ returns the number of bytes that were copied to the buffer
 This may be less than the number of bytes requested via
 .I buflen
 if either
-.BR GRND_RANDOM
+.B GRND_RANDOM
 was specified in
-.IR flags
+.I flags
 and insufficient entropy was present in the
-.IR random
+.I random
 source or the system call was interrupted by a signal.
 .PP
 On error, \-1 is returned, and
@@ -166,7 +166,7 @@ can be used to obtain randomness, see
 .BR random (7).
 .PP
 Unlike
-.IR /dev/random
+.I /dev/random
 and
 .IR /dev/urandom ,
 .BR getrandom ()
@@ -186,7 +186,7 @@ that was opened by a library.
 As of Linux 3.19 the following limits apply:
 .IP * 3
 When reading from the
-.IR urandom
+.I urandom
 source, a maximum of 33554431 bytes is returned by a single call to
 .BR getrandom ()
 on systems where
@@ -194,7 +194,7 @@ on systems where
 has a size of 32 bits.
 .IP *
 When reading from the
-.IR random
+.I random
 source, a maximum of 512 bytes is returned.
 .SS Interruption by a signal handler
 When reading from the
@@ -205,7 +205,7 @@ is not set),
 .BR getrandom ()
 will block until the entropy pool has been initialized
 (unless the
-.BR GRND_NONBLOCK
+.B GRND_NONBLOCK
 flag was specified).
 If a request is made to read a large number of bytes (more than 256),
 .BR getrandom ()
@@ -220,7 +220,7 @@ is set),
 .BR getrandom ()
 will block until some random bytes become available
 (unless the
-.BR GRND_NONBLOCK
+.B GRND_NONBLOCK
 flag was specified).
 .PP
 The behavior when a call to
@@ -249,7 +249,7 @@ will not fail with
 Instead, it will return all of the bytes that have been requested.
 .PP
 When reading from the
-.IR random
+.I random
 source, blocking requests of any size can be interrupted by a signal handler
 (the call fails with the error
 .BR EINTR ).

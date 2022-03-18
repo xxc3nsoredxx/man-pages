@@ -183,7 +183,7 @@ and
 The result of the addition
 .IR addr + len
 was less than
-.IR addr
+.I addr
 (e.g., the addition may have resulted in an overflow).
 .TP
 .B EINVAL
@@ -448,7 +448,7 @@ then the already locked bytes in the overlapping region were counted twice
 when checking against the limit.
 Such double accounting could incorrectly calculate a "total locked memory"
 value for the process that exceeded the
-.BR RLIMIT_MEMLOCK
+.B RLIMIT_MEMLOCK
 limit, with the result that
 .BR mlock ()
 and

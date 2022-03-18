@@ -167,9 +167,9 @@ available on the system, including: inspecting the contents of
 using
 .BR sysconf (3)
 to obtain the values of the
-.BR _SC_NPROCESSORS_CONF
+.B _SC_NPROCESSORS_CONF
 and
-.BR _SC_NPROCESSORS_ONLN
+.B _SC_NPROCESSORS_ONLN
 parameters; and inspecting the list of CPU directories under
 .IR /sys/devices/system/cpu/ .
 .PP
@@ -249,7 +249,11 @@ meaning that the maximum CPU number that can be represented is 1023.
 If the kernel CPU affinity mask is larger than 1024,
 then calls of the form:
 .PP
-    sched_getaffinity(pid, sizeof(cpu_set_t), &mask);
+.in +4n
+.EX
+sched_getaffinity(pid, sizeof(cpu_set_t), &mask);
+.EE
+.in
 .PP
 fail with the error
 .BR EINVAL ,

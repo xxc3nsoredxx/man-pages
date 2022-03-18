@@ -144,7 +144,7 @@ did not allow search permission.
 (See also
 .BR path_resolution (7).)
 .TP
-.BR EBUSY
+.B EBUSY
 The file
 .I pathname
 cannot be unlinked because it is being used by the system
@@ -276,9 +276,9 @@ When
 .I pathname
 is a relative pathname,
 glibc constructs a pathname based on the symbolic link in
-.IR /proc/self/fd
+.I /proc/self/fd
 that corresponds to the
-.IR dirfd
+.I dirfd
 argument.
 .SH BUGS
 Infelicities in the protocol underlying NFS can cause the unexpected

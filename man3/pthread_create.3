@@ -24,7 +24,7 @@ The
 function starts a new thread in the calling process.
 The new thread starts execution by invoking
 .IR start_routine ();
-.IR arg
+.I arg
 is passed as the sole argument of
 .IR start_routine ().
 .PP
@@ -100,7 +100,7 @@ On success,
 .BR pthread_create ()
 returns 0;
 on error, it returns an error number, and the contents of
-.IR *thread
+.I *thread
 are undefined.
 .SH ERRORS
 .TP
@@ -111,7 +111,7 @@ Insufficient resources to create another thread.
 .\" NOTE! The following should match the description in fork(2)
 A system-imposed limit on the number of threads was encountered.
 There are a number of limits that may trigger this error: the
-.BR RLIMIT_NPROC
+.B RLIMIT_NPROC
 soft resource limit (set via
 .BR setrlimit (2)),
 which limits the number of processes and threads for a real user ID,
@@ -156,7 +156,7 @@ POSIX.1-2001, POSIX.1-2008.
 See
 .BR pthread_self (3)
 for further information on the thread ID returned in
-.IR *thread
+.I *thread
 by
 .BR pthread_create ().
 Unless real-time scheduling policies are being employed,
@@ -186,9 +186,9 @@ was set to create the thread in a detached state (using
 .BR pthread_attr_setdetachstate (3)).
 .PP
 Under the NPTL threading implementation, if the
-.BR RLIMIT_STACK
+.B RLIMIT_STACK
 soft resource limit
-.IR "at the time the program started"
+.I at the time the program started
 has any value other than "unlimited",
 then it determines the default stack size of new threads.
 Using
@@ -198,7 +198,7 @@ the stack size attribute can be explicitly set in the
 argument used to create a thread,
 in order to obtain a stack size other than the default.
 If the
-.BR RLIMIT_STACK
+.B RLIMIT_STACK
 resource limit is set to "unlimited",
 a per-architecture value is used for the stack size.
 Here is the value for a few architectures:

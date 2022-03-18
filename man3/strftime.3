@@ -319,7 +319,7 @@ See also
 and
 .BR %W .
 (Calculated from
-.IR tm_yday
+.I tm_yday
 and
 .IR tm_wday .)
 .TP
@@ -349,7 +349,7 @@ See also
 The week number of the current year as a decimal number,
 range 00 to 53, starting with the first Monday as the first day of week 01.
 (Calculated from
-.IR tm_yday
+.I tm_yday
 and
 .IR tm_wday .)
 .TP
@@ -553,7 +553,7 @@ included a double leap second
 .BR %G ,
 .BR %g ,
 and
-.BR %V
+.B %V
 yield values calculated from the week-based year defined by the
 ISO\ 8601 standard.
 In this system, weeks start on a Monday, and are numbered from 01,
@@ -667,11 +667,11 @@ my_strftime(char *s, size_t max, const char *fmt,
 Nowadays,
 .BR gcc (1)
 provides the
-.IR \-Wno\-format\-y2k
+.I \-Wno\-format\-y2k
 option to prevent the warning,
 so that the above workaround is no longer required.
 .SH EXAMPLES
-.BR "RFC\ 2822-compliant date format"
+.B RFC\~2822-compliant date format
 (with an English locale for %a and %b)
 .PP
 .in +4n
@@ -680,7 +680,7 @@ so that the above workaround is no longer required.
 .EE
 .in
 .PP
-.BR "RFC\ 822-compliant date format"
+.B RFC\~822-compliant date format
 (with an English locale for %a and %b)
 .PP
 .in +4n

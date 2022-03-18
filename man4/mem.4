@@ -8,13 +8,13 @@
 .SH NAME
 mem, kmem, port \- system memory, kernel memory and system ports
 .SH DESCRIPTION
-.IR /dev/mem
+.I /dev/mem
 is a character device file
 that is an image of the main memory of the computer.
 It may be used, for example, to examine (and even patch) the system.
 .PP
 Byte addresses in
-.IR /dev/mem
+.I /dev/mem
 are interpreted as physical memory addresses.
 References to nonexistent locations cause errors to be returned.
 .PP
@@ -38,7 +38,7 @@ chown root:kmem /dev/mem
 .in
 .PP
 The file
-.IR /dev/kmem
+.I /dev/kmem
 is the same as
 .IR /dev/mem ,
 except that the kernel virtual memory
@@ -56,7 +56,7 @@ chown root:kmem /dev/kmem
 .EE
 .in
 .PP
-.IR /dev/port
+.I /dev/port
 is similar to
 .IR /dev/mem ,
 but the I/O ports are accessed.

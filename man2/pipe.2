@@ -46,11 +46,11 @@ Standard C library
 creates a pipe, a unidirectional data channel that
 can be used for interprocess communication.
 The array
-.IR pipefd
+.I pipefd
 is used to return two file descriptors referring to the ends of the pipe.
-.IR pipefd[0]
+.I pipefd[0]
 refers to the read end of the pipe.
-.IR pipefd[1]
+.I pipefd[1]
 refers to the write end of the pipe.
 Data written to the write end of the pipe is buffered by the kernel
 until it is read from the read end of the pipe.
@@ -58,13 +58,13 @@ For further details, see
 .BR pipe (7).
 .PP
 If
-.IR flags
+.I flags
 is 0, then
 .BR pipe2 ()
 is the same as
 .BR pipe ().
 The following values can be bitwise ORed in
-.IR flags
+.I flags
 to obtain different behavior:
 .TP
 .B O_CLOEXEC
@@ -87,12 +87,12 @@ Note the following points:
 .RS
 .IP * 3
 Writes of greater than
-.BR PIPE_BUF
+.B PIPE_BUF
 bytes (see
 .BR pipe (7))
 will be split into multiple packets.
 The constant
-.BR PIPE_BUF
+.B PIPE_BUF
 is defined in
 .IR <limits.h> .
 .IP *
@@ -102,7 +102,7 @@ specifies a buffer size that is smaller than the next packet,
 then the requested number of bytes are read,
 and the excess bytes in the packet are discarded.
 Specifying a buffer size of
-.BR PIPE_BUF
+.B PIPE_BUF
 will be sufficient to read the largest possible packets
 (see the previous point).
 .IP *
@@ -126,7 +126,7 @@ setting of a pipe file descriptor using
 .TP
 .B O_NONBLOCK
 Set the
-.BR O_NONBLOCK
+.B O_NONBLOCK
 file status flag on the open file descriptions
 referred to by the new file descriptors.
 Using this flag saves extra calls to

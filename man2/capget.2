@@ -106,7 +106,7 @@ Kernels prior to 2.6.25 prefer
 Linux 2.6.25 added 64-bit capability sets, with version
 .BR _LINUX_CAPABILITY_VERSION_2 .
 There was, however, an API glitch, and Linux 2.6.26 added
-.BR _LINUX_CAPABILITY_VERSION_3
+.B _LINUX_CAPABILITY_VERSION_3
 to fix the problem.
 .PP
 Note that 64-bit capabilities use
@@ -148,7 +148,7 @@ are 0 or, equivalently, the value returned by
 On older kernels that do not provide VFS capabilities support
 .BR capset ()
 can, if the caller has the
-.BR CAP_SETPCAP
+.B CAP_SETPCAP
 capability, be used to change not only the caller's own capabilities,
 but also the capabilities of other threads.
 The call operates on the capabilities of the thread specified by the

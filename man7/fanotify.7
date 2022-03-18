@@ -120,7 +120,7 @@ until either a file event occurs or the call is interrupted by a signal
 .PP
 The use of one of the flags
 .BR FAN_REPORT_FID ,
-.BR FAN_REPORT_DIR_FID
+.B FAN_REPORT_DIR_FID
 in
 .BR fanotify_init (2)
 influences what data structures are returned to the event listener for each
@@ -318,7 +318,7 @@ was closed.
 .B FAN_Q_OVERFLOW
 The event queue exceeded the limit on number of events.
 This limit can be overridden by specifying the
-.BR FAN_UNLIMITED_QUEUE
+.B FAN_UNLIMITED_QUEUE
 flag when calling
 .BR fanotify_init (2).
 .TP
@@ -350,7 +350,11 @@ To check for any close event, the following bit mask may be used:
 A file was closed.
 This is a synonym for:
 .IP
-    FAN_CLOSE_WRITE | FAN_CLOSE_NOWRITE
+.in +4n
+.EX
+FAN_CLOSE_WRITE | FAN_CLOSE_NOWRITE
+.EE
+.in
 .PP
 To check for any move event, the following bit mask may be used:
 .TP
@@ -358,7 +362,11 @@ To check for any move event, the following bit mask may be used:
 A file or directory was moved.
 This is a synonym for:
 .IP
-    FAN_MOVED_FROM | FAN_MOVED_TO
+.in +4n
+.EX
+FAN_MOVED_FROM | FAN_MOVED_TO
+.EE
+.in
 .PP
 The following bits may appear in
 .I mask
@@ -373,7 +381,7 @@ See
 .BR fanotify_mark (2)
 for additional details.
 The
-.BR FAN_ONDIR
+.B FAN_ONDIR
 flag is reported in an event mask only if the fanotify group identifies
 filesystem objects by file handles.
 .PP
@@ -393,7 +401,7 @@ a single information record is expected to be attached to the event with
 field value of
 .BR FAN_EVENT_INFO_TYPE_FID .
 When an fanotify file descriptor is created using the combination of
-.BR FAN_REPORT_FID
+.B FAN_REPORT_FID
 and
 .BR FAN_REPORT_DIR_FID ,
 there may be two information records attached to the event:
@@ -414,14 +422,14 @@ field.
 The value of
 .I len
 is the size of the additional information record including the
-.IR fanotify_event_info_header
+.I fanotify_event_info_header
 itself.
 The total size of all additional information records is not expected
 to be bigger than
 (
-.IR event_len
+.I event_len
 \-
-.IR metadata_len
+.I metadata_len
 ).
 .TP
 .I fsid
@@ -448,7 +456,7 @@ Note that for the directory entry modification events
 and
 .BR FAN_MOVE ,
 the
-.IR file_handle
+.I file_handle
 identifies the modified directory and not the created/deleted/moved child
 object.
 If the value of
@@ -468,14 +476,14 @@ if the value of
 field is
 .BR FAN_EVENT_INFO_TYPE_FID ,
 the
-.IR file_handle
+.I file_handle
 identifies the object correlated to the event.
 If the value of
 .I info_type
 field is
 .BR FAN_EVENT_INFO_TYPE_DFID ,
 the
-.IR file_handle
+.I file_handle
 identifies the directory object correlated to the event or the parent directory
 of a non-directory object correlated to the event.
 If the value of
@@ -483,9 +491,9 @@ If the value of
 field is
 .BR FAN_EVENT_INFO_TYPE_DFID_NAME ,
 the
-.IR file_handle
+.I file_handle
 identifies the same directory object that would be reported with
-.BR FAN_EVENT_INFO_TYPE_DFID
+.B FAN_EVENT_INFO_TYPE_DFID
 and the file handle is followed by a null terminated string that identifies the
 name of a directory entry in that directory, or '.' to identify the directory
 object itself.
@@ -508,7 +516,7 @@ field of the first metadata structure in the buffer.
 This macro uses the length indicated in the
 .I event_len
 field of the metadata structure pointed to by
-.IR meta
+.I meta
 to calculate the address of the next metadata structure that follows
 .IR meta .
 .I len
@@ -519,7 +527,7 @@ and reduces
 .I len
 by the number of bytes in the metadata structure that
 has been skipped over (i.e., it subtracts
-.IR meta\->event_len
+.I meta\->event_len
 from
 .IR len ).
 .PP
@@ -567,7 +575,7 @@ to allow the file operation or
 to deny the file operation.
 .PP
 If access is denied, the requesting application call will receive an
-.BR EPERM
+.B EPERM
 error.
 Additionally, if the notification group has been created with the
 .B FAN_ENABLE_AUDIT
@@ -744,7 +752,7 @@ the following bugs exist:
 .IP * 3
 On Linux, a filesystem object may be accessible through multiple paths,
 for example, a part of a filesystem may be remounted using the
-.IR \-\-bind
+.I \-\-bind
 option of
 .BR mount (8).
 A listener that marked a mount will be notified only of events that were

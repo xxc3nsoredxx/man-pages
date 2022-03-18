@@ -78,7 +78,7 @@ and
 .IP
 This capability was added in Linux 5.8 to separate out
 BPF functionality from the overloaded
-.BR CAP_SYS_ADMIN
+.B CAP_SYS_ADMIN
 capability.
 .TP
 .BR CAP_CHECKPOINT_RESTORE " (since Linux 5.9)"
@@ -100,14 +100,14 @@ feature of
 .\" prctl_set_mm_map().
 .IP *
 read the contents of the symbolic links in
-.IR /proc/[pid]/map_files
+.IR /proc/ pid /map_files
 for other processes.
 .RE
 .PD
 .IP
 This capability was added in Linux 5.9 to separate out
 checkpoint/restore functionality from the overloaded
-.BR CAP_SYS_ADMIN
+.B CAP_SYS_ADMIN
 capability.
 .TP
 .B CAP_CHOWN
@@ -267,7 +267,7 @@ use
 to set the following socket options:
 .BR SO_DEBUG ,
 .BR SO_MARK ,
-.BR SO_PRIORITY
+.B SO_PRIORITY
 (for a priority outside the range 0 to 6),
 .BR SO_RCVBUFFORCE ,
 and
@@ -309,7 +309,7 @@ employ various BPF operations that have performance implications.
 .IP
 This capability was added in Linux 5.8 to separate out
 performance monitoring functionality from the overloaded
-.BR CAP_SYS_ADMIN
+.B CAP_SYS_ADMIN
 capability.
 See also the kernel source file
 .IR Documentation/admin\-guide/perf\-security.rst .
@@ -398,7 +398,7 @@ and
 perform privileged
 .BR syslog (2)
 operations (since Linux 2.6.37,
-.BR CAP_SYSLOG
+.B CAP_SYSLOG
 should be used to permit such operations);
 .IP *
 perform
@@ -407,17 +407,17 @@ perform
 command;
 .IP *
 access the same checkpoint/restore functionality that is governed by
-.BR CAP_CHECKPOINT_RESTORE
+.B CAP_CHECKPOINT_RESTORE
 (but the latter, weaker capability is preferred for accessing
 that functionality).
 .IP *
 perform the same BPF operations as are governed by
-.BR CAP_BPF
+.B CAP_BPF
 (but the latter, weaker capability is preferred for accessing
 that functionality).
 .IP *
 employ the same performance monitoring mechanisms as are governed by
-.BR CAP_PERFMON
+.B CAP_PERFMON
 (but the latter, weaker capability is preferred for accessing
 that functionality).
 .IP *
@@ -521,7 +521,7 @@ operations;
 perform privileged
 .BR ioctl (2)
 operations on the
-.IR /dev/random
+.I /dev/random
 device (see
 .BR random (4));
 .IP *
@@ -548,7 +548,7 @@ flag);
 perform administrative operations on many device drivers;
 .IP *
 modify autogroup nice values by writing to
-.IR /proc/[pid]/autogroup
+.IR /proc/ pid /autogroup
 (see
 .BR sched (7)).
 .RE
@@ -687,7 +687,7 @@ map files in
 .IR /proc/bus/pci ;
 .IP *
 open
-.IR /dev/mem
+.I /dev/mem
 and
 .IR /dev/kmem ;
 .IP *
@@ -752,7 +752,7 @@ limit when setting the capacity of a pipe using the
 command;
 .IP *
 use
-.BR F_SETPIPE_SZ
+.B F_SETPIPE_SZ
 to increase the capacity of a pipe above the limit specified by
 .IR /proc/sys/fs/pipe\-max\-size ;
 .IP *
@@ -770,7 +770,7 @@ employ the
 operation;
 .IP *
 set
-.IR /proc/[pid]/oom_score_adj
+.IR /proc/ pid /oom_score_adj
 to a value lower than the value last set by a process with
 .BR CAP_SYS_RESOURCE .
 .RE
@@ -804,7 +804,7 @@ for information on which operations require privilege.
 View kernel addresses exposed via
 .I /proc
 and other interfaces when
-.IR /proc/sys/kernel/kptr_restrict
+.I /proc/sys/kernel/kptr_restrict
 has the value 1.
 (See the discussion of the
 .I kptr_restrict
@@ -861,7 +861,7 @@ requiring capabilities that will always be used along with the new feature.
 If the new feature is useless without these other features,
 you should use the same capability as the other features.
 .IP *
-.IR Don't
+.I Don't
 choose
 .B CAP_SYS_ADMIN
 if you can possibly avoid it!
@@ -883,7 +883,7 @@ If you have determined that it really is necessary to create
 a new capability for your feature,
 don't make or name it as a "single-use" capability.
 Thus, for example, the addition of the highly specific
-.BR CAP_SYS_PACCT
+.B CAP_SYS_PACCT
 was probably a mistake.
 Instead, try to identify and name your new capability as a broader
 silo into which other related future use cases might fit.
@@ -892,7 +892,7 @@ silo into which other related future use cases might fit.
 Each thread has the following capability sets containing zero or more
 of the above capabilities:
 .TP
-.IR Permitted
+.I Permitted
 This is a limiting superset for the effective
 capabilities that the thread may assume.
 It is also a limiting superset for the capabilities that
@@ -906,7 +906,7 @@ it can never reacquire that capability (unless it
 either a set-user-ID-root program, or
 a program whose associated file capabilities grant that capability).
 .TP
-.IR Inheritable
+.I Inheritable
 This is a set of capabilities preserved across an
 .BR execve (2).
 Inheritable capabilities remain inheritable when executing any program,
@@ -919,7 +919,7 @@ when running as a non-root user, applications that wish to run helper
 programs with elevated capabilities should consider using
 ambient capabilities, described below.
 .TP
-.IR Effective
+.I Effective
 This is the set of capabilities used by the kernel to
 perform permission checks for the thread.
 .TP
@@ -996,7 +996,7 @@ and
 named
 .IR "security.capability" .
 Writing to this extended attribute requires the
-.BR CAP_SETFCAP
+.B CAP_SETFCAP
 capability.
 The file capability sets,
 in conjunction with the capability sets of the thread,
@@ -1051,7 +1051,7 @@ These version numbers are internal to the implementation,
 and not directly visible to user-space applications.
 To date, the following versions are supported:
 .TP
-.BR VFS_CAP_REVISION_1
+.B VFS_CAP_REVISION_1
 This was the original file capability implementation,
 which supported 32-bit masks for file capabilities.
 .TP
@@ -1108,7 +1108,7 @@ The thread writing the attribute resides in a noninitial user namespace.
 than the one from which the underlying filesystem was mounted.)
 .IP (2)
 The thread has the
-.BR CAP_SETFCAP
+.B CAP_SETFCAP
 capability over the file inode,
 meaning that (a) the thread has the
 .B CAP_SETFCAP
@@ -1117,7 +1117,7 @@ and (b) the UID and GID of the file inode have mappings in
 the writer's user namespace.
 .PP
 When a
-.BR VFS_CAP_REVISION_3
+.B VFS_CAP_REVISION_3
 .I security.capability
 extended attribute is created, the root user ID of the creating thread's
 user namespace is saved in the extended attribute.
@@ -1620,7 +1620,7 @@ above.)
 .B SECBIT_NO_CAP_AMBIENT_RAISE
 Setting this flag disallows raising ambient capabilities via the
 .BR prctl (2)
-.BR PR_CAP_AMBIENT_RAISE
+.B PR_CAP_AMBIENT_RAISE
 operation.
 .PP
 Each of the above "base" flags has a companion "locked" flag.
@@ -1646,7 +1646,7 @@ The
 .B CAP_SETPCAP
 capability is required to modify the flags.
 Note that the
-.BR SECBIT_*
+.B SECBIT_*
 constants are available only after including the
 .I <linux/securebits.h>
 header file.
@@ -1712,7 +1712,7 @@ Because version 2 file capabilities confer capabilities to
 the executing process regardless of which user namespace it resides in,
 only privileged processes are permitted to associate capabilities with a file.
 Here, "privileged" means a process that has the
-.BR CAP_SETFCAP
+.B CAP_SETFCAP
 capability in the user namespace where the filesystem was mounted
 (normally the initial user namespace).
 This limitation renders file capabilities useless for certain use cases.
@@ -1738,9 +1738,9 @@ the kernel records not just the capability masks in the extended attribute,
 but also the namespace root user ID.
 .PP
 As with a binary that has
-.BR VFS_CAP_REVISION_2
+.B VFS_CAP_REVISION_2
 file capabilities, a binary with
-.BR VFS_CAP_REVISION_3
+.B VFS_CAP_REVISION_3
 file capabilities confers capabilities to a process during
 .BR execve ().
 However, capabilities are conferred only if the binary is executed by
@@ -1782,10 +1782,10 @@ and could be enabled/disabled via the
 kernel configuration option.
 .PP
 The
-.I /proc/[pid]/task/TID/status
+.IR /proc/ pid /task/TID/status
 file can be used to view the capability sets of a thread.
 The
-.I /proc/[pid]/status
+.IR /proc/ pid /status
 file shows the capability sets of a process's main thread.
 Before Linux 3.8, nonexistent capabilities were shown as being
 enabled (1) in these sets.
@@ -1819,7 +1819,7 @@ file capabilities are not enabled, a thread with the
 capability can manipulate the capabilities of threads other than itself.
 However, this is only theoretically possible,
 since no thread ever has
-.BR CAP_SETPCAP
+.B CAP_SETPCAP
 in either of these cases:
 .IP * 2
 In the pre-2.6.25 implementation the system-wide capability bounding set,

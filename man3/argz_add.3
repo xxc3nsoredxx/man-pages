@@ -5,7 +5,7 @@
 .\" based on the description in glibc source and infopages
 .\"
 .\" Corrections and additions, aeb
-.TH ARGZ_ADD 3 2021-03-22  "" "Linux Programmer's Manual"
+.TH ARGZ_ADD 3 2021-03-22 GNU "Linux Programmer's Manual"
 .SH NAME
 argz_add, argz_add_sep, argz_append, argz_count, argz_create,
 argz_create_sep, argz_delete, argz_extract, argz_insert,
@@ -95,7 +95,7 @@ appends the argz vector
 after
 .RI ( *argz ,\  *argz_len )
 and updates
-.IR *argz
+.I *argz
 and
 .IR *argz_len .
 (Thus,
@@ -197,7 +197,7 @@ all null bytes (\(aq\e0\(aq) except the last by
 .IR sep .
 .SH RETURN VALUE
 All argz functions that do memory allocation have a return type of
-.IR error_t
+.I error_t
 (an integer type),
 and return 0 for success, and
 .B ENOMEM

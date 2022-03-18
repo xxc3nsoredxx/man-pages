@@ -9,7 +9,7 @@
 .\"
 .\" SPDX-License-Identifier: GPL-1.0-or-later
 .\"
-.TH DES_CRYPT 3  2021-03-22 "" "Linux Programmer's Manual"
+.TH DES_CRYPT 3  2021-03-22 GNU "Linux Programmer's Manual"
 .SH NAME
 des_crypt, ecb_crypt, cbc_crypt, des_setparity, DES_FAILED \- fast
 DES encryption
@@ -82,16 +82,16 @@ The fourth argument,
 .IR mode ,
 is formed by ORing together some things.
 For the encryption direction OR in either
-.BR DES_ENCRYPT
+.B DES_ENCRYPT
 or
 .BR DES_DECRYPT .
 For software versus hardware
 encryption, OR in either
-.BR DES_HW
+.B DES_HW
 or
 .BR DES_SW .
 If
-.BR DES_HW
+.B DES_HW
 is specified, and there is no hardware, then the encryption is performed
 in software and the routine returns
 .BR DESERR_NOHWDEVICE .
@@ -105,16 +105,16 @@ It is updated to the next initialization
 vector upon return.
 .SH RETURN VALUE
 .TP
-.BR DESERR_NONE
+.B DESERR_NONE
 No error.
 .TP
-.BR DESERR_NOHWDEVICE
+.B DESERR_NOHWDEVICE
 Encryption succeeded, but done in software instead of the requested hardware.
 .TP
-.BR DESERR_HWERROR
+.B DESERR_HWERROR
 An error occurred in the hardware or driver.
 .TP
-.BR DESERR_BADPARAM
+.B DESERR_BADPARAM
 Bad argument to routine.
 .PP
 Given a result status

@@ -25,11 +25,11 @@ The
 .BR restart_syscall ()
 system call is used to restart certain system calls
 after a process that was stopped by a signal (e.g.,
-.BR SIGSTOP
+.B SIGSTOP
 or
 .BR SIGTSTP )
 is later resumed after receiving a
-.BR SIGCONT
+.B SIGCONT
 signal.
 This system call is designed only for internal use by the kernel.
 .PP
@@ -45,10 +45,10 @@ when restarted, should adjust their time-related parameters\(emnamely
 and
 .BR futex (2),
 when employed with the
-.BR FUTEX_WAIT
+.B FUTEX_WAIT
 (since Linux 2.6.22)
 and
-.BR FUTEX_WAIT_BITSET
+.B FUTEX_WAIT_BITSET
 (since Linux 2.6.31)
 operations.
 .\" These system calls correspond to the special internal errno value

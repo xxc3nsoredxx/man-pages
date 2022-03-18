@@ -12,7 +12,7 @@ Standard C library
 .nf
 .B #include <search.h>
 .PP
-.BI "typedef enum { preorder, postorder, endorder, leaf } VISIT;"
+.B typedef enum { preorder, postorder, endorder, leaf } VISIT;
 .PP
 .BI "void *tsearch(const void *" key ", void **" rootp ,
 .BI "                int (*" compar ")(const void *, const void *));"

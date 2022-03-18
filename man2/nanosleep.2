@@ -38,7 +38,7 @@ Feature Test Macro Requirements for glibc (see
 .BR nanosleep ()
 suspends the execution of the calling thread
 until either at least the time specified in
-.IR *req
+.I *req
 has elapsed, or the delivery of a signal
 that triggers the invocation of a handler in the calling thread or
 that terminates the process.
@@ -178,18 +178,18 @@ If a program that catches signals and uses
 receives signals at a very high rate,
 then scheduling delays and rounding errors in the kernel's
 calculation of the sleep interval and the returned
-.IR remain
+.I remain
 value mean that the
-.IR remain
+.I remain
 value may steadily
-.IR increase
+.I increase
 on successive restarts of the
 .BR nanosleep ()
 call.
 To avoid such problems, use
 .BR clock_nanosleep (2)
 with the
-.BR TIMER_ABSTIME
+.B TIMER_ABSTIME
 flag to sleep to an absolute deadline.
 .PP
 In Linux 2.4, if

@@ -80,7 +80,7 @@ and is expressed either as a pathname relative to the calling process's
 current working directory at the time of the call to
 .BR nftw (),
 if
-.IR dirpath
+.I dirpath
 was expressed as a relative pathname,
 or as an absolute pathname, if
 .I dirpath
@@ -308,7 +308,7 @@ The notable differences are as follows:
 .IP * 3
 .BR ftw ()
 has no
-.IR flags
+.I flags
 argument.
 It behaves the same as when
 .BR nftw ()
@@ -406,7 +406,7 @@ For predictable results, use
 .BR nftw ().
 .SH BUGS
 According to POSIX.1-2008, when the
-.IR typeflag
+.I typeflag
 argument passed to
 .IR fn ()
 contains

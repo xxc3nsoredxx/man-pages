@@ -40,7 +40,7 @@ and raw sockets.
 selects the kernel module or netlink group to communicate with.
 The currently assigned netlink families are:
 .TP
-.BR NETLINK_ROUTE
+.B NETLINK_ROUTE
 Receives routing and link updates and may be used to modify the routing
 tables (both IPv4 and IPv6), IP addresses, link parameters,
 neighbor setups, queueing disciplines, traffic classes, and
@@ -50,7 +50,7 @@ packet classifiers (see
 .BR NETLINK_W1 " (Linux 2.6.13 to 2.16.17)"
 Messages from 1-wire subsystem.
 .TP
-.BR NETLINK_USERSOCK
+.B NETLINK_USERSOCK
 Reserved for user-mode socket protocols.
 .TP
 .BR NETLINK_FIREWALL " (up to and including Linux 3.4)"
@@ -62,7 +62,7 @@ kernel module.
 After a long period of being declared obsolete (in favor of the more advanced
 .I nfnetlink_queue
 feature),
-.BR NETLINK_FIREWALL
+.B NETLINK_FIREWALL
 was removed in Linux 3.5.
 .TP
 .BR NETLINK_SOCK_DIAG " (since Linux 3.3)"
@@ -78,7 +78,7 @@ An obsolete synonym for
 .BR NETLINK_NFLOG " (up to and including Linux 3.16)"
 Netfilter/iptables ULOG.
 .TP
-.BR NETLINK_XFRM
+.B NETLINK_XFRM
 .\" FIXME More details on NETLINK_XFRM needed.
 IPsec.
 .TP
@@ -102,7 +102,7 @@ Kernel connector.
 See
 .I Documentation/driver\-api/connector.rst
 (or
-.IR /Documentation/connector/connector.*
+.I /Documentation/connector/connector.*
 .\" commit baa293e9544bea71361950d071579f0e4d5713ed
 in kernel 5.2 and earlier)
 in the Linux kernel source tree for further information.
@@ -430,7 +430,7 @@ As at Linux 3.0, the
 .BR NETLINK_GENERIC ,
 .BR NETLINK_ROUTE ,
 and
-.BR NETLINK_SELINUX
+.B NETLINK_SELINUX
 groups allow other users to receive messages.
 No groups allow other users to send messages.
 .SS Socket options

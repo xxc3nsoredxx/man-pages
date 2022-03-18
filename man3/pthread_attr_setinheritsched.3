@@ -24,7 +24,7 @@ The
 .BR pthread_attr_setinheritsched ()
 function sets the inherit-scheduler attribute of the
 thread attributes object referred to by
-.IR attr
+.I attr
 to the value specified in
 .IR inheritsched .
 The inherit-scheduler attribute determines whether a thread created using
@@ -68,7 +68,7 @@ a newly initialized thread attributes object is
 The
 .BR pthread_attr_getinheritsched ()
 returns the inherit-scheduler attribute of the thread attributes object
-.IR attr
+.I attr
 in the buffer pointed to by
 .IR inheritsched .
 .SH RETURN VALUE
@@ -112,7 +112,7 @@ POSIX.1-2001, POSIX.1-2008.
 As at glibc 2.8, if a thread attributes object is initialized using
 .BR pthread_attr_init (3),
 then the scheduling policy of the attributes object is set to
-.BR SCHED_OTHER
+.B SCHED_OTHER
 and the scheduling priority is set to 0.
 However, if the inherit-scheduler attribute is then set to
 .BR PTHREAD_EXPLICIT_SCHED ,

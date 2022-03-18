@@ -15,7 +15,7 @@ file access is extremely fast.
 .PP
 The filesystem is automatically created when mounting
 a filesystem with the type
-.BR tmpfs
+.B tmpfs
 via a command such as the following:
 .PP
 .in +4n
@@ -206,7 +206,7 @@ filesystems, the kernel must be configured with the
 option.
 .PP
 The
-.BR tmpfs
+.B tmpfs
 filesystem supports extended attributes (see
 .BR xattr (7)),
 but
@@ -221,7 +221,7 @@ and shared anonymous mappings
 with the
 .B MAP_SHARED
 and
-.BR MAP_ANONYMOUS
+.B MAP_ANONYMOUS
 flags).
 This filesystem is available regardless of whether
 the kernel was configured with the
@@ -231,7 +231,7 @@ option.
 A
 .B tmpfs
 filesystem mounted at
-.IR /dev/shm
+.I /dev/shm
 is used for the implementation of POSIX shared memory
 .RB ( shm_overview (7))
 and POSIX semaphores
@@ -242,7 +242,7 @@ The amount of memory consumed by all
 filesystems is shown in the
 .I Shmem
 field of
-.IR /proc/meminfo
+.I /proc/meminfo
 and in the
 .I shared
 field displayed by
@@ -262,6 +262,6 @@ facility was formerly called
 .BR mount (8)
 .PP
 The kernel source files
-.IR Documentation/filesystems/tmpfs.txt
+.I Documentation/filesystems/tmpfs.txt
 and
 .IR Documentation/admin\-guide/mm/transhuge.rst .

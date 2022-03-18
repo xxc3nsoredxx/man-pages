@@ -33,7 +33,7 @@ Secure Computing (seccomp) facility.
 As well as the use of the
 .B SECCOMP_FILTER_FLAG_NEW_LISTENER
 flag, the
-.BR SECCOMP_RET_USER_NOTIF
+.B SECCOMP_RET_USER_NOTIF
 action value, and the
 .B SECCOMP_GET_NOTIF_SIZES
 operation described in
@@ -115,7 +115,7 @@ the target to the supervisor.
 One way in which this could be done is by passing the file descriptor
 over a UNIX domain socket connection between the target and the supervisor
 (using the
-.BR SCM_RIGHTS
+.B SCM_RIGHTS
 ancillary message type described in
 .BR unix (7)).
 Another way to do this is through the use of
@@ -218,7 +218,7 @@ The information in the notification can be used to discover the
 values of pointer arguments for the target's system call.
 (This is something that can't be done from within a seccomp filter.)
 One way in which the supervisor can do this is to open the corresponding
-.I /proc/[tid]/mem
+.IR /proc/ tid /mem
 file (see
 .BR proc (5))
 and read bytes from the location that corresponds to one of
@@ -228,7 +228,7 @@ the pointer arguments whose value is supplied in the notification event.
 (The supervisor must be careful to avoid
 a race condition that can occur when doing this;
 see the description of the
-.BR SECCOMP_IOCTL_NOTIF_ID_VALID
+.B SECCOMP_IOCTL_NOTIF_ID_VALID
 .BR ioctl (2)
 operation below.)
 In addition,
@@ -302,7 +302,7 @@ For each of these operations, the first (file descriptor) argument of
 is the listening file descriptor returned by a call to
 .BR seccomp (2)
 with the
-.BR SECCOMP_FILTER_FLAG_NEW_LISTENER
+.B SECCOMP_FILTER_FLAG_NEW_LISTENER
 flag.
 .\"
 .SS SECCOMP_IOCTL_NOTIF_RECV
@@ -344,9 +344,9 @@ operation described below.
 .IP \(bu
 When returning a notification response to the kernel,
 the supervisor must include the cookie value in the
-.IR seccomp_notif_resp
+.I seccomp_notif_resp
 structure that is specified as the argument of the
-.BR SECCOMP_IOCTL_NOTIF_SEND
+.B SECCOMP_IOCTL_NOTIF_SEND
 operation.
 .RE
 .TP
@@ -454,7 +454,7 @@ TID that was freed when the target terminated.
 The supervisor
 .BR open (2)s
 the
-.IR /proc/[tid]/mem
+.IR /proc/ tid /mem
 file for the TID obtained in step 1, with the intention of (say)
 inspecting the memory location(s) that containing the argument(s) of
 the system call that triggered the notification in step 1.
@@ -650,7 +650,7 @@ operation (available since Linux 5.9)
 allows the supervisor to install a file descriptor
 into the target's file descriptor table.
 Much like the use of
-.BR SCM_RIGHTS
+.B SCM_RIGHTS
 messages described in
 .BR unix (7),
 this operation is semantically equivalent to duplicating
@@ -658,7 +658,7 @@ a file descriptor from the supervisor's file descriptor table
 into the target's file descriptor table.
 .PP
 The
-.BR SECCOMP_IOCTL_NOTIF_ADDFD
+.B SECCOMP_IOCTL_NOTIF_ADDFD
 operation permits the supervisor to emulate a target system call (such as
 .BR socket (2)
 or
@@ -678,7 +678,7 @@ In the target,
 the received file descriptor is subject to the same
 Linux Security Module (LSM) checks as are applied to a file descriptor
 that is received in an
-.BR SCM_RIGHTS
+.B SCM_RIGHTS
 ancillary message.
 If the file descriptor refers to a socket,
 it inherits the cgroup version 1 network controller settings
@@ -717,7 +717,7 @@ This field is a bit mask of flags that modify the behavior of the operation.
 Currently, only one flag is supported:
 .RS
 .TP
-.BR SECCOMP_ADDFD_FLAG_SETFD
+.B SECCOMP_ADDFD_FLAG_SETFD
 When allocating the file descriptor in the target,
 use the file descriptor number specified in the
 .I newfd
@@ -747,7 +747,7 @@ in the supervisor that is to be duplicated.
 .I newfd
 This field determines which file descriptor number is allocated in the target.
 If the
-.BR SECCOMP_ADDFD_FLAG_SETFD
+.B SECCOMP_ADDFD_FLAG_SETFD
 flag is set,
 then this field specifies which file descriptor number should be allocated.
 If this file descriptor number is already open in the target,
@@ -760,7 +760,7 @@ the file descriptor
 will not be closed in the target process.
 .IP
 If the
-.BR SECCOMP_ADDFD_FLAG_SETFD
+.B SECCOMP_ADDFD_FLAG_SETFD
 flag it not set, then this field must be 0,
 and the kernel allocates the lowest unused file descriptor number
 in the target.
@@ -785,7 +785,7 @@ a file descriptor as its function result (e.g.,
 this value can be used as the return value
 .RI ( resp.val )
 that is supplied in the response that is subsequently sent with the
-.BR SECCOMP_IOCTL_NOTIF_SEND
+.B SECCOMP_IOCTL_NOTIF_SEND
 operation.
 .PP
 On error, \-1 is returned and
@@ -796,7 +796,7 @@ This operation can fail with the following errors:
 .TP
 .B EBADF
 Allocating the file descriptor in the target would cause the target's
-.BR RLIMIT_NOFILE
+.B RLIMIT_NOFILE
 limit to be exceeded (see
 .BR getrlimit (2)).
 .TP
@@ -878,7 +878,7 @@ mechanism is to allow a container manager
 the processes inside the container)
 to mount block devices or create device nodes for the container.
 The mount use case provides an example of where the
-.BR SECCOMP_USER_NOTIF_FLAG_CONTINUE
+.B SECCOMP_USER_NOTIF_FLAG_CONTINUE
 .BR ioctl (2)
 operation is useful.
 Upon receiving a notification for the
@@ -982,10 +982,10 @@ the system call if its arguments are rewritten to something unsafe.
 .\"
 .SS Caveats regarding the use of /proc/[tid]/mem
 The discussion above noted the need to use the
-.BR SECCOMP_IOCTL_NOTIF_ID_VALID
+.B SECCOMP_IOCTL_NOTIF_ID_VALID
 .BR ioctl (2)
 when opening the
-.IR /proc/[tid]/mem
+.IR /proc/ tid /mem
 file of the target
 to avoid the possibility of accessing the memory of the wrong process
 in the event that the target terminates and its ID
@@ -1007,9 +1007,9 @@ the target calls
 which triggers a user-space notification and causes the target to block.
 .IP \(bu
 The supervisor receives the notification, opens
-.IR /proc/[tid]/mem ,
+.IR /proc/ tid /mem ,
 and (successfully) performs the
-.BR SECCOMP_IOCTL_NOTIF_ID_VALID
+.B SECCOMP_IOCTL_NOTIF_ID_VALID
 check.
 .IP \(bu
 The target receives a signal, which causes the
@@ -1044,7 +1044,7 @@ the target's memory must be considered invalid.
 To prevent such scenarios,
 every read from the target's memory must be separated from use of
 the bytes so obtained by a
-.BR SECCOMP_IOCTL_NOTIF_ID_VALID
+.B SECCOMP_IOCTL_NOTIF_ID_VALID
 check.
 In the above example, the check would be placed between the two final steps.
 An example of such a check is shown in EXAMPLES.
@@ -1119,7 +1119,7 @@ When (if) the supervisor attempts to send a notification response, the
 .B SECCOMP_IOCTL_NOTIF_SEND
 .BR ioctl (2))
 operation will fail with the
-.BR ENOENT
+.B ENOENT
 error.
 .PP
 In this scenario, the kernel will restart the target's system call.
@@ -1135,7 +1135,7 @@ will occur even for the blocking system calls listed in
 that would
 .B never
 normally be restarted by the
-.BR SA_RESTART
+.B SA_RESTART
 flag.
 .\" FIXME
 .\" About the above, Kees Cook commented:
@@ -1166,7 +1166,7 @@ can be used to atomically add the file descriptor and return that value,
 making sure no file descriptors are inadvertently leaked into the target.
 .SH BUGS
 If a
-.BR SECCOMP_IOCTL_NOTIF_RECV
+.B SECCOMP_IOCTL_NOTIF_RECV
 .BR ioctl (2)
 operation
 .\" or a poll/epoll/select
@@ -1201,7 +1201,7 @@ that are generated when the target process calls
 .BR mkdir (2).
 When such a notification occurs,
 the supervisor examines the memory of the target process (using
-.IR /proc/[pid]/mem )
+.IR /proc/ pid /mem )
 to discover the pathname argument that was supplied to the
 .BR mkdir (2)
 call, and performs one of the following actions:
@@ -1228,7 +1228,7 @@ the supervisor spoofs an error return for the target process,
 so that the target process's
 .BR mkdir (2)
 call appears to fail with the error
-.BR EOPNOTSUPP
+.B EOPNOTSUPP
 ("Operation not supported").
 Additionally, if the specified pathname is exactly "/bye",
 then the supervisor terminates.
@@ -1331,7 +1331,7 @@ Upon receiving the notification,
 the supervisor attempts to create that directory, but the
 .BR mkdir (2)
 call fails because the directory
-.BR /tmp/nosuchdir
+.B /tmp/nosuchdir
 does not exist.
 Consequently, the supervisor spoofs an error return that passes the error
 that it received back to the target process's

@@ -249,13 +249,13 @@ On Linux, the kernel provides a
 system call, which the functions described in this page will use if possible.
 The system call takes the same arguments as the library function
 of the same name, but is limited to returning at most
-.BR PATH_MAX
+.B PATH_MAX
 bytes.
 (Before Linux 3.12,
 .\" commit 3272c544da48f8915a0e34189182aed029bd0f2b
 the limit on the size of the returned pathname was the system page size.
 On many architectures,
-.BR PATH_MAX
+.B PATH_MAX
 and the system page size are both 4096 bytes,
 but a few architectures have a larger page size.)
 If the length of the pathname of the current working directory

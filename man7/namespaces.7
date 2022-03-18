@@ -89,7 +89,7 @@ The
 system call allows the calling process to join an existing namespace.
 The namespace to join is specified via a file descriptor that refers to
 one of the
-.IR /proc/[pid]/ns
+.IR /proc/ pid /ns
 files described below.
 .TP
 .BR unshare (2)
@@ -117,7 +117,7 @@ Creation of new namespaces using
 and
 .BR unshare (2)
 in most cases requires the
-.BR CAP_SYS_ADMIN
+.B CAP_SYS_ADMIN
 capability, since, in the new namespace,
 the creator will have the power to change global resources
 that are visible to other processes that are subsequently created in,
@@ -129,7 +129,7 @@ no privilege is required to create a user namespace.
 .\"
 .SS The /proc/[pid]/ns/ directory
 Each process has a
-.IR /proc/[pid]/ns/
+.IR /proc/ pid /ns/
 .\" See commit 6b4e306aa3dc94a0545eb9279475b1ab6209a31f
 subdirectory containing one entry for each namespace that
 supports being manipulated by
@@ -177,7 +177,7 @@ Since Linux 3.8,
 they appear as symbolic links.
 If two processes are in the same namespace,
 then the device IDs and inode numbers of their
-.IR /proc/[pid]/ns/xxx
+.IR /proc/ pid /ns/ xxx
 symbolic links will be the same; an application can check this using the
 .I stat.st_dev
 .\" Eric Biederman: "I reserve the right for st_dev to be significant
@@ -201,26 +201,26 @@ uts:[4026531838]
 .PP
 The symbolic links in this subdirectory are as follows:
 .TP
-.IR /proc/[pid]/ns/cgroup " (since Linux 4.6)"
+.IR /proc/ pid /ns/cgroup " (since Linux 4.6)"
 This file is a handle for the cgroup namespace of the process.
 .TP
-.IR /proc/[pid]/ns/ipc " (since Linux 3.0)"
+.IR /proc/ pid /ns/ipc " (since Linux 3.0)"
 This file is a handle for the IPC namespace of the process.
 .TP
-.IR /proc/[pid]/ns/mnt " (since Linux 3.8)"
+.IR /proc/ pid /ns/mnt " (since Linux 3.8)"
 .\" commit 8823c079ba7136dc1948d6f6dcb5f8022bde438e
 This file is a handle for the mount namespace of the process.
 .TP
-.IR /proc/[pid]/ns/net " (since Linux 3.0)"
+.IR /proc/ pid /ns/net " (since Linux 3.0)"
 This file is a handle for the network namespace of the process.
 .TP
-.IR /proc/[pid]/ns/pid " (since Linux 3.8)"
+.IR /proc/ pid /ns/pid " (since Linux 3.8)"
 .\" commit 57e8391d327609cbf12d843259c968b9e5c1838f
 This file is a handle for the PID namespace of the process.
 This handle is permanent for the lifetime of the process
 (i.e., a process's PID namespace membership never changes).
 .TP
-.IR /proc/[pid]/ns/pid_for_children " (since Linux 4.12)"
+.IR /proc/ pid /ns/pid_for_children " (since Linux 4.12)"
 .\" commit eaa0d190bfe1ed891b814a52712dcd852554cb08
 This file is a handle for the PID namespace of
 child processes created by this process.
@@ -231,17 +231,17 @@ and
 (see
 .BR pid_namespaces (7)),
 so the file may differ from
-.IR /proc/[pid]/ns/pid .
+.IR /proc/ pid /ns/pid .
 The symbolic link gains a value only after the first child process
 is created in the namespace.
 (Beforehand,
 .BR readlink (2)
 of the symbolic link will return an empty buffer.)
 .TP
-.IR /proc/[pid]/ns/time " (since Linux 5.6)"
+.IR /proc/ pid /ns/time " (since Linux 5.6)"
 This file is a handle for the time namespace of the process.
 .TP
-.IR /proc/[pid]/ns/time_for_children " (since Linux 5.6)"
+.IR /proc/ pid /ns/time_for_children " (since Linux 5.6)"
 This file is a handle for the time namespace of
 child processes created by this process.
 This can change as a consequence of calls to
@@ -251,13 +251,13 @@ and
 (see
 .BR time_namespaces (7)),
 so the file may differ from
-.IR /proc/[pid]/ns/time .
+.IR /proc/ pid /ns/time .
 .TP
-.IR /proc/[pid]/ns/user " (since Linux 3.8)"
+.IR /proc/ pid /ns/user " (since Linux 3.8)"
 .\" commit cde1975bc242f3e1072bde623ef378e547b73f91
 This file is a handle for the user namespace of the process.
 .TP
-.IR /proc/[pid]/ns/uts " (since Linux 3.0)"
+.IR /proc/ pid /ns/uts " (since Linux 3.0)"
 This file is a handle for the UTS namespace of the process.
 .PP
 Permission to dereference or read
@@ -276,23 +276,23 @@ directory (which is present since Linux 4.9) expose limits
 on the number of namespaces of various types that can be created.
 The files are as follows:
 .TP
-.IR max_cgroup_namespaces
+.I max_cgroup_namespaces
 The value in this file defines a per-user limit on the number of
 cgroup namespaces that may be created in the user namespace.
 .TP
-.IR max_ipc_namespaces
+.I max_ipc_namespaces
 The value in this file defines a per-user limit on the number of
 ipc namespaces that may be created in the user namespace.
 .TP
-.IR max_mnt_namespaces
+.I max_mnt_namespaces
 The value in this file defines a per-user limit on the number of
 mount namespaces that may be created in the user namespace.
 .TP
-.IR max_net_namespaces
+.I max_net_namespaces
 The value in this file defines a per-user limit on the number of
 network namespaces that may be created in the user namespace.
 .TP
-.IR max_pid_namespaces
+.I max_pid_namespaces
 The value in this file defines a per-user limit on the number of
 PID namespaces that may be created in the user namespace.
 .TP
@@ -301,11 +301,11 @@ PID namespaces that may be created in the user namespace.
 The value in this file defines a per-user limit on the number of
 time namespaces that may be created in the user namespace.
 .TP
-.IR max_user_namespaces
+.I max_user_namespaces
 The value in this file defines a per-user limit on the number of
 user namespaces that may be created in the user namespace.
 .TP
-.IR max_uts_namespaces
+.I max_uts_namespaces
 The value in this file defines a per-user limit on the number of
 uts namespaces that may be created in the user namespace.
 .PP
@@ -366,7 +366,7 @@ a namespace into existence even though it has no member processes.
 These factors include the following:
 .IP * 3
 An open file descriptor or a bind mount exists for the corresponding
-.IR /proc/[pid]/ns/*
+.IR /proc/ pid /ns/*
 file.
 .IP *
 The namespace is hierarchical (i.e., a PID or user namespace),
@@ -376,12 +376,12 @@ It is a user namespace that owns one or more nonuser namespaces.
 .IP *
 It is a PID namespace,
 and there is a process that refers to the namespace via a
-.IR /proc/[pid]/ns/pid_for_children
+.IR /proc/ pid /ns/pid_for_children
 symbolic link.
 .IP *
 It is a time namespace,
 and there is a process that refers to the namespace via a
-.IR /proc/[pid]/ns/time_for_children
+.IR /proc/ pid /ns/time_for_children
 symbolic link.
 .IP *
 It is an IPC namespace, and a corresponding mount of an

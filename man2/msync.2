@@ -34,7 +34,7 @@ is updated.
 The
 .I flags
 argument should specify exactly one of
-.BR MS_ASYNC
+.B MS_ASYNC
 and
 .BR MS_SYNC ,
 and may additionally include the
@@ -107,9 +107,9 @@ to a value greater than 0.
 .\" glibc defines them to 1.
 .SH NOTES
 According to POSIX, either
-.BR MS_SYNC
+.B MS_SYNC
 or
-.BR MS_ASYNC
+.B MS_ASYNC
 must be specified in
 .IR flags ,
 and indeed failure to include one of these flags will cause
@@ -122,14 +122,14 @@ with semantics that are (currently) equivalent to specifying
 .BR MS_ASYNC .
 (Since Linux 2.6.19,
 .\" commit 204ec841fbea3e5138168edbc3a76d46747cc987
-.BR MS_ASYNC
+.B MS_ASYNC
 is in fact a no-op, since the kernel properly tracks dirty
 pages and flushes them to storage as necessary.)
 Notwithstanding the Linux behavior,
 portable, future-proof applications should ensure that they specify either
-.BR MS_SYNC
+.B MS_SYNC
 or
-.BR MS_ASYNC
+.B MS_ASYNC
 in
 .IR flags .
 .SH SEE ALSO

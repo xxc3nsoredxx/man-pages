@@ -53,20 +53,24 @@ command if you use
 .PP
 The initial environment of the shell is populated in various ways,
 such as definitions from
-.IR /etc/environment
+.I /etc/environment
 that are processed by
 .BR pam_env (8)
 for all users at login time (on systems that employ
 .BR pam (8)).
 In addition, various shell initialization scripts, such as the system-wide
-.IR /etc/profile
+.I /etc/profile
 script and per-user initializations script may include commands
 that add variables to the shell's environment;
 see the manual page of your preferred shell for details.
 .PP
 Bourne-style shells support the syntax
 .PP
-    NAME=value command
+.in +4n
+.EX
+NAME=value command
+.EE
+.in
 .PP
 to create an environment variable definition only in the scope
 of the process that executes
@@ -114,11 +118,11 @@ or more specific environment variables such as
 .BR LC_MONETARY ,
 .BR LC_NUMERIC ,
 and
-.BR LC_TIME
+.B LC_TIME
 (see
 .BR locale (7)
 for further details of the
-.BR LC_*
+.B LC_*
 environment variables).
 .TP
 .B PATH
@@ -209,7 +213,7 @@ and other programs.
 .IP *
 .BR LD_LIBRARY_PATH ", " LD_PRELOAD ,
 and other
-.BR LD_*
+.B LD_*
 variables influence the behavior of the dynamic loader/linker.
 See also
 .BR ld.so (8).

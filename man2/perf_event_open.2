@@ -149,7 +149,7 @@ at the same time as another thread calls
 then
 .BR execve (2).
 .TP
-.BR PERF_FLAG_FD_NO_GROUP
+.B PERF_FLAG_FD_NO_GROUP
 This flag tells the event to ignore the
 .I group_fd
 parameter except for the purpose of setting up output redirection
@@ -941,7 +941,7 @@ the time the counter is created (nor to any new children of
 existing children).
 .IP
 Inherit does not work for some combinations of
-.IR read_format
+.I read_format
 values, such as
 .BR PERF_FORMAT_GROUP .
 .TP
@@ -3054,9 +3054,9 @@ or
 .BR epoll (7).
 Alternatively, the overflow events can be captured via sa signal handler,
 by enabling I/O signaling on the file descriptor; see the discussion of the
-.BR F_SETOWN
+.B F_SETOWN
 and
-.BR F_SETSIG
+.B F_SETSIG
 operations in
 .BR fcntl (2).
 .PP
@@ -3245,7 +3245,7 @@ This allows pausing and resuming the event's ring-buffer.
 A paused ring-buffer does not prevent generation of samples,
 but simply discards them.
 The discarded samples are considered lost, and cause a
-.BR PERF_RECORD_LOST
+.B PERF_RECORD_LOST
 sample to be generated when possible.
 An overflow signal may still be triggered by the discarded sample
 even though the ring-buffer remains empty.
@@ -3787,5 +3787,5 @@ main(int argc, char *argv[])
 .BR prctl (2),
 .BR read (2)
 .PP
-.IR Documentation/admin\-guide/perf\-security.rst
+.I Documentation/admin\-guide/perf\-security.rst
 in the kernel source tree

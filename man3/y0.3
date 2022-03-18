@@ -13,7 +13,7 @@
 .\" Modified 2004-11-12 as per suggestion by Fabian Kreutz/AEB
 .\" 2008-07-24, mtk, created this page, based on material from j0.3.
 .\"
-.TH Y0 3  2021-03-22 "" "Linux Programmer's Manual"
+.TH Y0 3 2021-03-22 GNU "Linux Programmer's Manual"
 .SH NAME
 y0, y0f, y0l, y1, y1f, y1l, yn, ynf, ynl \-
 Bessel functions of the second kind
@@ -165,7 +165,7 @@ Pole error: \fIx\fP is 0.0
 .\" as a range error.
 .I errno
 is set to
-.BR ERANGE
+.B ERANGE
 and an
 .B FE_DIVBYZERO
 exception is raised
@@ -188,7 +188,7 @@ Range error: result overflow
 .\" e.g., yn(10, 1e-40) on glibc 2.8/x86-32
 .I errno
 is set to
-.BR ERANGE
+.B ERANGE
 (but see BUGS).
 An overflow floating-point exception
 .RB ( FE_OVERFLOW )
@@ -236,7 +236,7 @@ these functions misdiagnosed pole errors:
 was set to
 .BR EDOM ,
 instead of
-.BR ERANGE
+.B ERANGE
 and no
 .B FE_DIVBYZERO
 exception was raised.

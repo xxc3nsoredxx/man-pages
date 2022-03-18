@@ -121,17 +121,17 @@ the creating process.
 .IP
 Because the context cannot be removed from the SPU, some functionality
 is disabled for
-.BR SPU_CREATE_NOSCHED
+.B SPU_CREATE_NOSCHED
 contexts.
 Only a subset of the files will be
 available in this context directory in
 .BR spufs .
 Additionally,
-.BR SPU_CREATE_NOSCHED
+.B SPU_CREATE_NOSCHED
 contexts cannot dump a core file when crashing.
 .IP
 Creating
-.BR SPU_CREATE_NOSCHED
+.B SPU_CREATE_NOSCHED
 contexts requires the
 .B CAP_SYS_NICE
 capability.

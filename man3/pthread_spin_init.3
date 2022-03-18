@@ -117,7 +117,7 @@ real-time scheduling policies
 or possibly
 .BR SCHED_RR ).
 Use of spin locks with nondeterministic scheduling policies such as
-.BR SCHED_OTHER
+.B SCHED_OTHER
 probably indicates a design mistake.
 The problem is that if a thread operating under such a policy
 is scheduled off the CPU while it holds a spin lock,

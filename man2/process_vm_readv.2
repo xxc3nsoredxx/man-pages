@@ -43,7 +43,7 @@ Feature Test Macro Requirements for glibc (see
 .SH DESCRIPTION
 These system calls transfer data between the address space
 of the calling process ("the local process") and the process identified by
-.IR pid
+.I pid
 ("the remote process").
 The data moves directly between the address spaces of the two processes,
 without passing through kernel space.
@@ -52,24 +52,24 @@ The
 .BR process_vm_readv ()
 system call transfers data from the remote process to the local process.
 The data to be transferred is identified by
-.IR remote_iov
+.I remote_iov
 and
 .IR riovcnt :
-.IR remote_iov
+.I remote_iov
 is a pointer to an array describing address ranges in the process
 .IR pid ,
 and
-.IR riovcnt
+.I riovcnt
 specifies the number of elements in
 .IR remote_iov .
 The data is transferred to the locations specified by
-.IR local_iov
+.I local_iov
 and
 .IR liovcnt :
-.IR local_iov
+.I local_iov
 is a pointer to an array describing address ranges in the calling process,
 and
-.IR liovcnt
+.I liovcnt
 specifies the number of elements in
 .IR local_iov .
 .PP
@@ -83,7 +83,7 @@ Other than the direction of the transfer, the arguments
 .IR local_iov ,
 .IR riovcnt ,
 and
-.IR remote_iov
+.I remote_iov
 have the same meaning as for
 .BR process_vm_readv ().
 .PP
@@ -94,7 +94,7 @@ and
 arguments point to an array of
 .I iovec
 structures, defined in
-.IR <sys/uio.h>
+.I <sys/uio.h>
 as:
 .PP
 .in +4n
@@ -148,7 +148,7 @@ The values specified in the
 and
 .I riovcnt
 arguments must be less than or equal to
-.BR IOV_MAX
+.B IOV_MAX
 (defined in
 .I <limits.h>
 or accessible via the call
@@ -157,7 +157,7 @@ or accessible via the call
 .\" as is done for readv()/writev()
 .PP
 The count arguments and
-.IR local_iov
+.I local_iov
 are checked before doing any transfers.
 If the counts are too big, or
 .I local_iov

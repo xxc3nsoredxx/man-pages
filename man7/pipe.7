@@ -117,9 +117,9 @@ Since Linux 2.6.11, the pipe capacity is 16 pages
 Since Linux 2.6.35, the default pipe capacity is 16 pages,
 but the capacity can be queried and set using the
 .BR fcntl (2)
-.BR F_GETPIPE_SZ
+.B F_GETPIPE_SZ
 and
-.BR F_SETPIPE_SZ
+.B F_SETPIPE_SZ
 operations.
 See
 .BR fcntl (2)
@@ -133,7 +133,11 @@ places a count of the number of unread bytes in the pipe in the
 .I int
 buffer pointed to by the final argument of the call:
 .PP
-    ioctl(fd, FIONREAD, &nbytes);
+.in +4n
+.EX
+ioctl(fd, FIONREAD, &nbytes);
+.EE
+.in
 .PP
 The
 .B FIONREAD
@@ -147,7 +151,7 @@ On Linux, the following files control how much memory can be used for pipes:
 .\" commit b492e95be0ae672922f4734acf3f5d35c30be948
 An upper limit, in pages, on the capacity that an unprivileged user
 (one without the
-.BR CAP_SYS_RESOURCE
+.B CAP_SYS_RESOURCE
 capability)
 can set for a pipe.
 .IP
@@ -218,9 +222,9 @@ The default value for this file is 16384,
 which permits creating up to 1024 pipes with the default capacity.
 .PP
 Before Linux 4.9, some bugs affected the handling of the
-.IR pipe\-user\-pages\-soft
+.I pipe\-user\-pages\-soft
 and
-.IR pipe\-user\-pages\-hard
+.I pipe\-user\-pages\-hard
 limits; see BUGS.
 .\"
 .SS PIPE_BUF
@@ -320,12 +324,12 @@ Portable applications should avoid reliance on
 bidirectional pipe semantics.
 .SS BUGS
 Before Linux 4.9, some bugs affected the handling of the
-.IR pipe\-user\-pages\-soft
+.I pipe\-user\-pages\-soft
 and
-.IR pipe\-user\-pages\-hard
+.I pipe\-user\-pages\-hard
 limits when using the
 .BR fcntl (2)
-.BR F_SETPIPE_SZ
+.B F_SETPIPE_SZ
 operation to change a pipe's capacity:
 .\" These bugs where remedied by a series of patches, in particular,
 .\" commit b0b91d18e2e97b741b294af9333824ecc3fadfd8 and

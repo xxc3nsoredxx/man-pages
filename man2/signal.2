@@ -143,7 +143,7 @@ if
 .B _BSD_SOURCE
 (glibc 2.19 and earlier)
 or
-.BR _DEFAULT_SOURCE
+.B _DEFAULT_SOURCE
 (glibc 2.19 and later)
 is defined.
 Without use of such a type, the declaration of
@@ -159,7 +159,7 @@ is the somewhat harder to read:
 The only portable use of
 .BR signal ()
 is to set a signal's disposition to
-.BR SIG_DFL
+.B SIG_DFL
 or
 .BR SIG_IGN .
 The semantics when using
@@ -234,7 +234,7 @@ This default behavior is provided as long as a suitable
 feature test macro is defined:
 .B _BSD_SOURCE
 on glibc 2.19 and earlier or
-.BR _DEFAULT_SOURCE
+.B _DEFAULT_SOURCE
 in glibc 2.19 and later.
 (By default, these macros are defined; see
 .BR feature_test_macros (7)

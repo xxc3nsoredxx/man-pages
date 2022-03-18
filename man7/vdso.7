@@ -101,7 +101,7 @@ tag.
 This is used only for locating the vsyscall entry point and is frequently
 omitted or set to 0 (meaning it's not available).
 This tag is a throwback to the initial vDSO work (see
-.IR History
+.I History
 below) and its use should be avoided.
 .SS File format
 Since the vDSO is a fully formed ELF image, you can do symbol lookups on it.
@@ -134,7 +134,11 @@ When you compile the kernel,
 it will automatically compile and link the vDSO code for you.
 You will frequently find it under the architecture-specific directory:
 .PP
-    find arch/$ARCH/ \-name \(aq*vdso*.so*\(aq \-o \-name \(aq*gate*.so*\(aq
+.in +4n
+.EX
+find arch/$ARCH/ \-name \(aq*vdso*.so*\(aq \-o \-name \(aq*gate*.so*\(aq
+.EE
+.in
 .\"
 .SS vDSO names
 The name of the vDSO varies across architectures.
@@ -338,7 +342,11 @@ symbol lookups or versioning.
 Simply call into the appropriate offset via the branch instruction,
 for example:
 .PP
-    ble <offset>(%sr2, %r0)
+.in +4n
+.EX
+ble <offset>(%sr2, %r0)
+.EE
+.in
 .if t \{\
 .ft CW
 \}

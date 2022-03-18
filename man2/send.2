@@ -54,11 +54,19 @@ is equivalent to
 .BR write (2).
 Also, the following call
 .PP
-    send(sockfd, buf, len, flags);
+.in +4n
+.EX
+send(sockfd, buf, len, flags);
+.EE
+.in
 .PP
 is equivalent to
 .PP
-    sendto(sockfd, buf, len, flags, NULL, 0);
+.in +4n
+.EX
+sendto(sockfd, buf, len, flags, NULL, 0);
+.EE
+.in
 .PP
 The argument
 .I sockfd

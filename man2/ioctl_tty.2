@@ -250,13 +250,13 @@ when the driver does not support breaks.
 .TP
 .B TIOCSBRK
 Argument:
-.BI "void"
+.B void
 .IP
 Turn break on, that is, start sending zero bits.
 .TP
 .B TIOCCBRK
 Argument:
-.BI "void"
+.B void
 .IP
 Turn break off, that is, stop sending zero bits.
 .SS Software flow control
@@ -277,7 +277,7 @@ for the argument values
 .BR TCION .
 .SS Buffer count and flushing
 .TP
-.BI FIONREAD
+.B FIONREAD
 Argument:
 .BI "int\~*" argp
 .IP
@@ -320,7 +320,7 @@ Insert the given byte in the input queue.
 .TP
 .B TIOCCONS
 Argument:
-.BI "void"
+.B void
 .IP
 Redirect output that would have gone to
 .I /dev/console
@@ -331,7 +331,7 @@ If that was a pseudoterminal master, send it to the slave.
 In Linux before version 2.6.10,
 anybody can do this as long as the output was not redirected yet;
 since version 2.6.10, only a process with the
-.BR CAP_SYS_ADMIN
+.B CAP_SYS_ADMIN
 capability may do this.
 If output was redirected already, then
 .B EBUSY
@@ -359,7 +359,7 @@ If this terminal is already the controlling terminal
 of a different session group, then the ioctl fails with
 .BR EPERM ,
 unless the caller has the
-.BR CAP_SYS_ADMIN
+.B CAP_SYS_ADMIN
 capability and
 .I arg
 equals 1, in which case the terminal is stolen, and all processes that had
@@ -367,7 +367,7 @@ it as controlling terminal lose it.
 .TP
 .B TIOCNOTTY
 Argument:
-.BI "void"
+.B void
 .IP
 If the given terminal was the controlling terminal of the calling process,
 give up this controlling terminal.
@@ -415,7 +415,7 @@ Strange.
 .TP
 .B TIOCEXCL
 Argument:
-.BI "void"
+.B void
 .IP
 Put the terminal into exclusive mode.
 No further
@@ -424,7 +424,7 @@ operations on the terminal are permitted.
 (They fail with
 .BR EBUSY ,
 except for a process with the
-.BR CAP_SYS_ADMIN
+.B CAP_SYS_ADMIN
 capability.)
 .TP
 .B TIOCGEXCL
@@ -440,7 +440,7 @@ otherwise, place zero in
 .TP
 .B TIOCNXCL
 Argument:
-.BI "void"
+.B void
 .IP
 Disable exclusive mode.
 .SS Line discipline
@@ -532,9 +532,9 @@ Argument:
 .BI "int\~*" argp
 .IP
 Set (if
-.IR *argp
+.I *argp
 is nonzero) or remove (if
-.IR *argp
+.I *argp
 is zero) the lock on the pseudoterminal slave device.
 (See also
 .BR unlockpt (3).)

@@ -5,7 +5,7 @@
 .\" based on the description in glibc source and infopages
 .\"
 .\" Corrections and additions, aeb
-.TH ENVZ_ADD 3 2021-03-22 "" "Linux Programmer's Manual"
+.TH ENVZ_ADD 3 2021-03-22 GNU "Linux Programmer's Manual"
 .SH NAME
 envz_add, envz_entry, envz_get, envz_merge,
 envz_remove, envz_strip \- environment string support
@@ -14,7 +14,7 @@ Standard C library
 .RI ( libc ", " \-lc )
 .SH SYNOPSIS
 .nf
-.B "#include <envz.h>"
+.B #include <envz.h>
 .PP
 .BI "error_t envz_add(char **restrict " envz ", size_t *restrict " envz_len ,
 .BI "               const char *restrict " name \
@@ -113,7 +113,7 @@ if there was one.
 removes all entries with value NULL.
 .SH RETURN VALUE
 All envz functions that do memory allocation have a return type of
-.IR error_t
+.I error_t
 (an integer type),
 and return 0 for success, and
 .B ENOMEM

@@ -85,12 +85,12 @@ in the range [0..3].
 A return value of 0 indicates that CPU capacity information is stored in
 .IR *resp_buffer .
 A return value of 3 indicates "unsupported function code" and the content of
-.IR *resp_buffer
+.I *resp_buffer
 is unchanged.
 The return values 1 and 2 are reserved.
 .PP
 On error, \-1 is returned, and
-.IR errno
+.I errno
 is set to indicate the error.
 .SH ERRORS
 .TP

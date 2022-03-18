@@ -14,7 +14,7 @@
 .\" added _XOPEN_SOURCE, aeb, 970705
 .\" added GNU MD5 stuff, aeb, 011223
 .\"
-.TH CRYPT 3 2021-03-22 "" "Linux Programmer's Manual"
+.TH CRYPT 3 2021-03-22 GNU "Linux Programmer's Manual"
 .SH NAME
 crypt, crypt_r \- password and data encryption
 .SH LIBRARY
@@ -44,7 +44,6 @@ Feature Test Macro Requirements for glibc (see
     Glibc 2.27 and earlier:
         _XOPEN_SOURCE
 .fi
-.BR
 .PP
 .BR crypt_r ():
 .nf
@@ -201,7 +200,7 @@ and
 functions are part of the POSIX.1-2008 XSI Options Group for Encryption
 and are optional.
 If the interfaces are not available, then the symbolic constant
-.BR _XOPEN_CRYPT
+.B _XOPEN_CRYPT
 is either not defined,
 or it is defined to \-1 and availability can be checked at run time with
 .BR sysconf (3).
@@ -210,7 +209,7 @@ crypt to
 .IR libxcrypt .
 When recompiling applications in such distributions,
 the programmer must detect if
-.BR _XOPEN_CRYPT
+.B _XOPEN_CRYPT
 is not available and include
 .I <crypt.h>
 for the function prototypes;

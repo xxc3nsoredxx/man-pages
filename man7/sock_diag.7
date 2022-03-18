@@ -85,7 +85,7 @@ If the
 field of the
 .I "struct nlmsghdr"
 header has the
-.BR NLM_F_DUMP
+.B NLM_F_DUMP
 flag set, it means that a list of sockets is being requested;
 otherwise it is a query about an individual socket.
 .\"
@@ -256,7 +256,7 @@ described below in the subsection "Socket memory information".
 .PP
 The following attributes are reported back without any specific request:
 .TP
-.BR UNIX_DIAG_SHUTDOWN
+.B UNIX_DIAG_SHUTDOWN
 The payload associated with this attribute is __u8 value which represents
 bits of
 .BR shutdown (2)
@@ -302,7 +302,7 @@ or
 .TP
 .I udiag_state
 This is set to one of
-.BR TCP_LISTEN
+.B TCP_LISTEN
 or
 .BR TCP_ESTABLISHED .
 .TP
@@ -570,7 +570,7 @@ This is the socket inode number.
 The payload associated with
 .B UNIX_DIAG_MEMINFO
 and
-.BR INET_DIAG_SKMEMINFO
+.B INET_DIAG_SKMEMINFO
 netlink attributes is an array of the following __u32 values:
 .TP
 .B SK_MEMINFO_RMEM_ALLOC
@@ -614,7 +614,7 @@ sockets.
 .PP
 .B UNIX_DIAG_MEMINFO
 and
-.BR INET_DIAG_SKMEMINFO
+.B INET_DIAG_SKMEMINFO
 were introduced in Linux 3.6.
 .SH CONFORMING TO
 The NETLINK_SOCK_DIAG API is Linux-specific.

@@ -72,12 +72,12 @@ The original Linux system call was named
 .BR sigpending ().
 However, with the addition of real-time signals in Linux 2.2,
 the fixed-size, 32-bit
-.IR sigset_t
+.I sigset_t
 argument supported by that system call was no longer fit for purpose.
 Consequently, a new system call,
 .BR rt_sigpending (),
 was added to support an enlarged
-.IR sigset_t
+.I sigset_t
 type.
 The new system call takes a second argument,
 .IR "size_t sigsetsize" ,

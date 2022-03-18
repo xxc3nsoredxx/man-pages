@@ -122,10 +122,10 @@ The
 .I sevp\->sigev_notify
 field can have the following values:
 .TP
-.BR SIGEV_NONE
+.B SIGEV_NONE
 Don't provide any notification.
 .TP
-.BR SIGEV_SIGNAL
+.B SIGEV_SIGNAL
 When a look-up completes, generate the signal
 .I sigev_signo
 for the process.
@@ -141,7 +141,7 @@ structure will be set to
 .\" si_pid and si_uid are also set, to the values of the calling process,
 .\" which doesn't provide useful information, so we'll skip mentioning it.
 .TP
-.BR SIGEV_THREAD
+.B SIGEV_THREAD
 When a look-up completes, invoke
 .I sigev_notify_function
 as if it were the start function of a new thread.
@@ -150,11 +150,11 @@ See
 for details.
 .PP
 For
-.BR SIGEV_SIGNAL
+.B SIGEV_SIGNAL
 and
 .BR SIGEV_THREAD ,
 it may be useful to point
-.IR sevp\->sigev_value.sival_ptr
+.I sevp\->sigev_value.sival_ptr
 to
 .IR list .
 .PP

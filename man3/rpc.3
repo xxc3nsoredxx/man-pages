@@ -8,7 +8,7 @@
 .\"
 .\" 2007-12-30, mtk, Convert function prototypes to modern C syntax
 .\"
-.TH RPC 3 2021-03-22 "" "Linux Programmer's Manual"
+.TH RPC 3 2021-03-22 GNU "Linux Programmer's Manual"
 .SH NAME
 rpc \- library routines for remote procedure calls
 .SH LIBRARY
@@ -48,7 +48,7 @@ See the header files for the declarations of the
 .IR CLIENT ,
 .IR SVCXPRT ,
 and
-.IR XDR
+.I XDR
 types.
 .PP
 .nf
@@ -64,7 +64,7 @@ is undefined after calling
 .BR auth_destroy ().
 .PP
 .nf
-.BI "AUTH *authnone_create(void);"
+.B AUTH *authnone_create(void);
 .fi
 .IP
 Create and return an RPC
@@ -93,7 +93,7 @@ refer to a counted array of groups to which the user belongs.
 It is easy to impersonate a user.
 .PP
 .nf
-.BI "AUTH *authunix_create_default(void);"
+.B AUTH *authunix_create_default(void);
 .fi
 .IP
 Calls
@@ -542,7 +542,7 @@ program-to-port mappings on the host located at IP address
 .IR *addr .
 This routine can return NULL.
 The command
-.IR "rpcinfo\ \-p"
+.I rpcinfo\~\-p
 uses this routine.
 .PP
 .nf
@@ -938,7 +938,7 @@ indicate sizes for the send and receive buffers.
 If they are zero, a reasonable default is chosen.
 .PP
 .nf
-.BI "SVCXPRT *svcraw_create(void);"
+.B SVCXPRT *svcraw_create(void);
 .fi
 .IP
 This routine creates a toy RPC

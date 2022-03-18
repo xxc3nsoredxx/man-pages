@@ -2,7 +2,7 @@
 .\"
 .\" SPDX-License-Identifier: GPL-2.0-or-later
 .\"
-.TH AIO_READ 3 2021-03-22  "" "Linux Programmer's Manual"
+.TH AIO_READ 3 2021-03-22 GNU "Linux Programmer's Manual"
 .SH NAME
 aio_read \- asynchronous read
 .SH LIBRARY
@@ -23,13 +23,17 @@ This function is the asynchronous analog of
 .BR read (2).
 The arguments of the call
 .PP
-    read(fd, buf, count)
+.in +4n
+.EX
+read(fd, buf, count)
+.EE
+.in
 .PP
 correspond (in order) to the fields
 .IR aio_fildes ,
 .IR aio_buf ,
 and
-.IR aio_nbytes
+.I aio_nbytes
 of the structure pointed to by
 .IR aiocbp .
 (See
@@ -52,7 +56,7 @@ One tests for completion using
 The return status of a completed I/O operation can be obtained by
 .BR aio_return (3).
 Asynchronous notification of I/O completion can be obtained by setting
-.IR aiocbp\->aio_sigevent
+.I aiocbp\->aio_sigevent
 appropriately; see
 .BR sigevent (7)
 for details.

@@ -42,21 +42,21 @@ used for the creation of the userfaultfd or subsequent calls to
 .BR fcntl (2).
 .PP
 The following values may be bitwise ORed in
-.IR flags
+.I flags
 to change the behavior of
 .BR userfaultfd ():
 .TP
-.BR O_CLOEXEC
+.B O_CLOEXEC
 Enable the close-on-exec flag for the new userfaultfd file descriptor.
 See the description of the
 .B O_CLOEXEC
 flag in
 .BR open (2).
 .TP
-.BR O_NONBLOCK
+.B O_NONBLOCK
 Enables non-blocking operation for the userfaultfd object.
 See the description of the
-.BR O_NONBLOCK
+.B O_NONBLOCK
 flag in
 .BR open (2).
 .PP
@@ -182,7 +182,7 @@ to determine the API version and supported features.
 This operation must be performed before any of the other
 .BR ioctl (2)
 operations described below (or those operations fail with the
-.BR EINVAL
+.B EINVAL
 error).
 .PP
 After a successful
@@ -293,7 +293,7 @@ Note: since only writes can trigger this kind of fault,
 write-protect notifications will always have the
 .B UFFD_PAGEFAULT_FLAG_WRITE
 bit set along with the
-.BR UFFD_PAGEFAULT_FLAG_WP
+.B UFFD_PAGEFAULT_FLAG_WP
 bit.
 .PP
 To resolve a write-protection page fault, the user should initiate another
@@ -394,7 +394,7 @@ Generated when the faulting process invokes
 (or
 .BR clone (2)
 without the
-.BR CLONE_VM
+.B CLONE_VM
 flag).
 The event details are available in the
 .I fork
@@ -412,9 +412,9 @@ field.
 Generated when the faulting process invokes
 .BR madvise (2)
 with
-.BR MADV_DONTNEED
+.B MADV_DONTNEED
 or
-.BR MADV_REMOVE
+.B MADV_REMOVE
 advice.
 The event details are available in the
 .I remove
@@ -494,7 +494,7 @@ on a userfaultfd file descriptor can fail with the following errors:
 .TP
 .B EINVAL
 The userfaultfd object has not yet been enabled using the
-.BR UFFDIO_API
+.B UFFDIO_API
 .BR ioctl (2)
 operation
 .PP
@@ -512,7 +512,7 @@ If the
 flag is not enabled, then
 .BR poll (2)
 (always) indicates the file as having a
-.BR POLLERR
+.B POLLERR
 condition, and
 .BR select (2)
 indicates the file descriptor as both readable and writable.
@@ -532,7 +532,7 @@ is set to indicate the error.
 An unsupported value was specified in
 .IR flags .
 .TP
-.BR EMFILE
+.B EMFILE
 The per-process limit on the number of open file descriptors has been
 reached
 .TP
@@ -564,7 +564,7 @@ portable.
 .SH NOTES
 The userfaultfd mechanism can be used as an alternative to
 traditional user-space paging techniques based on the use of the
-.BR SIGSEGV
+.B SIGSEGV
 signal and
 .BR mmap (2).
 It can also be used to implement lazy restore
@@ -864,5 +864,5 @@ main(int argc, char *argv[])
 .BR madvise (2),
 .BR mmap (2)
 .PP
-.IR Documentation/admin\-guide/mm/userfaultfd.rst
+.I Documentation/admin\-guide/mm/userfaultfd.rst
 in the Linux kernel source tree

@@ -280,7 +280,7 @@ equivalent because whereas a negative
 value for
 .BR poll ()
 is interpreted as an infinite timeout, a negative value expressed in
-.IR *tmo_p
+.I *tmo_p
 results in an error from
 .BR ppoll ().
 .PP
@@ -352,7 +352,7 @@ value.
 .B EINVAL
 .RB ( ppoll ())
 The timeout value expressed in
-.IR *ip
+.I *ip
 is invalid (negative).
 .TP
 .B ENOMEM
@@ -388,7 +388,7 @@ The operation of
 and
 .BR ppoll ()
 is not affected by the
-.BR O_NONBLOCK
+.B O_NONBLOCK
 flag.
 .PP
 On some other UNIX systems,
@@ -408,7 +408,7 @@ and loop, just as with
 Some implementations define the nonstandard constant
 .B INFTIM
 with the value \-1 for use as a
-.IR timeout
+.I timeout
 for
 .BR poll ().
 This constant is not provided in glibc.
@@ -437,7 +437,7 @@ The raw
 system call has a fifth argument,
 .IR "size_t sigsetsize" ,
 which specifies the size in bytes of the
-.IR sigmask
+.I sigmask
 argument.
 The glibc
 .BR ppoll ()
@@ -530,7 +530,7 @@ The program then consumed some of the available input.
 The second return from
 .BR poll ()
 also indicated
-.BR POLLIN
+.B POLLIN
 and
 .BR POLLHUP ;
 the program then consumed the last of the available input.
@@ -538,7 +538,7 @@ the program then consumed the last of the available input.
 On the final return,
 .BR poll ()
 indicated only
-.BR POLLHUP
+.B POLLHUP
 on the FIFO,
 at which point the file descriptor was closed and the program terminated.
 .\"

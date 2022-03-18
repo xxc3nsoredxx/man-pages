@@ -162,7 +162,7 @@ capability.
 This value allows the receipt of events which contain additional information
 about the underlying filesystem object correlated to an event.
 An additional record of type
-.BR FAN_EVENT_INFO_TYPE_FID
+.B FAN_EVENT_INFO_TYPE_FID
 encapsulates the information about the object and is included alongside the
 generic event metadata structure.
 The file descriptor that is used to represent the object correlated to an
@@ -186,9 +186,9 @@ Note that for the directory entry modification events the reported file handle
 identifies the modified directory and not the created/deleted/moved child
 object.
 The use of
-.BR FAN_CLASS_CONTENT
+.B FAN_CLASS_CONTENT
 or
-.BR FAN_CLASS_PRE_CONTENT
+.B FAN_CLASS_PRE_CONTENT
 is not permitted with this flag and will result in the error
 .BR EINVAL .
 See
@@ -201,7 +201,7 @@ Events for fanotify groups initialized with this flag will contain
 (see exceptions below) additional information about a directory object
 correlated to an event.
 An additional record of type
-.BR FAN_EVENT_INFO_TYPE_DFID
+.B FAN_EVENT_INFO_TYPE_DFID
 encapsulates the information about the directory object and is included
 alongside the generic event metadata structure.
 For events that occur on a non-directory object, the additional structure
@@ -217,12 +217,12 @@ directory object.
 Note that in some cases, a filesystem object does not have a parent,
 for example, when an event occurs on an unlinked but open file.
 In that case, with the
-.BR FAN_REPORT_FID
+.B FAN_REPORT_FID
 flag, the event will be reported with only one record to identify the
 non-directory object itself, because there is no directory associated with
 the event.
 Without the
-.BR FAN_REPORT_FID
+.B FAN_REPORT_FID
 flag, no event will be reported.
 See
 .BR fanotify (7)
@@ -235,7 +235,7 @@ information about the name of the directory entry correlated to an event.
 This flag must be provided in conjunction with the flag
 .BR FAN_REPORT_DIR_FID .
 Providing this flag value without
-.BR FAN_REPORT_DIR_FID
+.B FAN_REPORT_DIR_FID
 will result in the error
 .BR EINVAL .
 This flag may be combined with the flag
@@ -267,7 +267,7 @@ to get an open directory file descriptor and that file descriptor along with
 the reported name can be used to call
 .BR fstatat (2).
 The same rule that applies to record type
-.BR FAN_EVENT_INFO_TYPE_DFID
+.B FAN_EVENT_INFO_TYPE_DFID
 also applies to record type
 .BR FAN_EVENT_INFO_TYPE_DFID_NAME :
 if a non-directory object has no parent, either the event will not be reported

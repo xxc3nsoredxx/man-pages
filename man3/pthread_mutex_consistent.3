@@ -31,7 +31,7 @@ state.
 A mutex can be left in an inconsistent state if its owner terminates
 while holding the mutex, in which case the next owner who acquires the
 mutex will succeed and be notified by a return value of
-.BR EOWNERDEAD
+.B EOWNERDEAD
 from a call to
 .BR pthread_mutex_lock ().
 .SH RETURN VALUE
@@ -62,7 +62,7 @@ Before the addition of
 .BR pthread_mutex_consistent ()
 to POSIX,
 glibc defined the following equivalent nonstandard function if
-.BR _GNU_SOURCE
+.B _GNU_SOURCE
 was defined:
 .PP
 .nf

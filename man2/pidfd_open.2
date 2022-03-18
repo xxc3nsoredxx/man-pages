@@ -41,7 +41,7 @@ If the process referred to by the file descriptor has not yet terminated,
 then an attempt to wait on the file descriptor using
 .BR waitid (2)
 will immediately return the error
-.BR EAGAIN
+.B EAGAIN
 rather than blocking.
 .SH RETURN VALUE
 On success,
@@ -63,7 +63,7 @@ is not valid.
 .B EMFILE
 The per-process limit on the number of open file descriptors has been reached
 (see the description of
-.BR RLIMIT_NOFILE
+.B RLIMIT_NOFILE
 in
 .BR getrlimit (2)).
 .TP
@@ -109,18 +109,18 @@ Note, however, that this is guaranteed only if the following
 conditions hold true:
 .IP \(bu 2
 the disposition of
-.BR SIGCHLD
+.B SIGCHLD
 has not been explicitly set to
-.BR SIG_IGN
+.B SIG_IGN
 (see
 .BR sigaction (2));
 .IP \(bu
 the
-.BR SA_NOCLDWAIT
+.B SA_NOCLDWAIT
 flag was not specified while establishing a handler for
-.BR SIGCHLD
+.B SIGCHLD
 or while setting the disposition of that signal to
-.BR SIG_DFL
+.B SIG_DFL
 (see
 .BR sigaction (2));
 and
@@ -135,7 +135,7 @@ then the child process (along with a PID file descriptor that refers to it)
 should instead be created using
 .BR clone (2)
 with the
-.BR CLONE_PIDFD
+.B CLONE_PIDFD
 flag.
 .\"
 .SS Use cases for PID file descriptors
@@ -144,7 +144,7 @@ A PID file descriptor returned by
 (or by
 .BR clone (2)
 with the
-.BR CLONE_PID
+.B CLONE_PID
 flag) can be used for the following purposes:
 .IP \(bu 2
 The
@@ -204,7 +204,7 @@ process whose PID is specified as its command-line argument.
 It then uses
 .BR poll (2)
 to monitor the file descriptor for process exit, as indicated by an
-.BR EPOLLIN
+.B EPOLLIN
 event.
 .\"
 .SS Program source

@@ -112,7 +112,7 @@ to the target process.
 .B EPERM
 .I pidfd
 doesn't refer to the calling process, and
-.IR info.si_code
+.I info.si_code
 is invalid (see
 .BR rt_sigqueueinfo (2)).
 .TP
@@ -134,7 +134,7 @@ a file descriptor that refers to  process.
 Such a file descriptor can be obtained in any of the following ways:
 .IP * 3
 by opening a
-.IR /proc/[pid]
+.IR /proc/ pid
 directory;
 .IP *
 using
@@ -146,7 +146,7 @@ via the PID file descriptor that is returned by a call to
 or
 .BR clone3 (2)
 that specifies the
-.BR CLONE_PIDFD
+.B CLONE_PIDFD
 flag.
 .PP
 The

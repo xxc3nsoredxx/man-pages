@@ -202,10 +202,10 @@ is not NULL and the requested size is zero;
 this is not considered an error.
 (See "Nonportable behavior" for portability issues.)
 Otherwise, the returned pointer may be the same as
-.IR ptr
+.I ptr
 if the allocation was not moved
 (e.g., there was room to expand the allocation in-place), or different from
-.IR ptr
+.I ptr
 if the allocation was moved to a new address.
 If these functions fail,
 the original block is left untouched; it is not freed or moved.
@@ -220,9 +220,9 @@ can fail with the following error:
 .B ENOMEM
 Out of memory.
 Possibly, the application hit the
-.BR RLIMIT_AS
+.B RLIMIT_AS
 or
-.BR RLIMIT_DATA
+.B RLIMIT_DATA
 limit described in
 .BR getrlimit (2).
 .SH VERSIONS
@@ -276,9 +276,9 @@ is available.
 In case it turns out that the system is out of memory,
 one or more processes will be killed by the OOM killer.
 For more information, see the description of
-.IR /proc/sys/vm/overcommit_memory
+.I /proc/sys/vm/overcommit_memory
 and
-.IR /proc/sys/vm/oom_adj
+.I /proc/sys/vm/oom_adj
 in
 .BR proc (5),
 and the Linux kernel source file
@@ -315,7 +315,7 @@ allocate and free memory,
 there could be contention for these mutexes.
 To scalably handle memory allocation in multithreaded applications,
 glibc creates additional
-.IR "memory allocation arenas"
+.I memory allocation arenas
 if mutex contention is detected.
 Each arena is a large region of memory that is internally allocated
 by the system

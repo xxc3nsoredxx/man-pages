@@ -58,7 +58,7 @@ Feature Test Macro Requirements for glibc (see
 .BR "WARNING" :
 .BR select ()
 can monitor only file descriptors numbers that are less than
-.BR FD_SETSIZE
+.B FD_SETSIZE
 (1024)\(eman unreasonably low limit for many modern applications\(emand
 this limitation will not change.
 All modern applications should instead use
@@ -407,7 +407,7 @@ A signal was caught; see
 .B EINVAL
 .I nfds
 is negative or exceeds the
-.BR RLIMIT_NOFILE
+.B RLIMIT_NOFILE
 resource limit (see
 .BR getrlimit (2)).
 .TP
@@ -470,7 +470,7 @@ The operation of
 and
 .BR pselect ()
 is not affected by the
-.BR O_NONBLOCK
+.B O_NONBLOCK
 flag.
 .PP
 On some other UNIX systems,
@@ -561,7 +561,7 @@ The Linux kernel allows file descriptor sets of arbitrary size,
 determining the length of the sets to be checked from the value of
 .IR nfds .
 However, in the glibc implementation, the
-.IR fd_set
+.I fd_set
 type is fixed in size.
 See also BUGS.
 .PP
@@ -634,9 +634,9 @@ advertised via the constant
 on the range of file descriptors that can be specified
 in a file descriptor set.
 The Linux kernel imposes no fixed limit, but the glibc implementation makes
-.IR fd_set
+.I fd_set
 a fixed-size type, with
-.BR FD_SETSIZE
+.B FD_SETSIZE
 defined as 1024, and the
 .BR FD_* ()
 macros operating according to that limit.

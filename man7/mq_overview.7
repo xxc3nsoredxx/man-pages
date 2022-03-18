@@ -23,7 +23,7 @@ which is used to refer to the open message queue in later calls.
 Each message queue is identified by a name of the form
 .IR /somename ;
 that is, a null-terminated string of up to
-.BI NAME_MAX
+.B NAME_MAX
 (i.e., 255) characters consisting of an initial slash,
 followed by one or more characters, none of which are slashes.
 Two processes can operate on the same queue by passing the same name to
@@ -133,7 +133,7 @@ The minimum and maximum are as for
 A new queue's default
 .I mq_maxmsg
 value will be the smaller of
-.IR msg_default
+.I msg_default
 and
 .IR msg_max .
 Up until Linux 2.6.28, the default
@@ -161,19 +161,19 @@ The
 limit is ignored for privileged processes
 .RB ( CAP_SYS_RESOURCE ),
 but the
-.BR HARD_MSGMAX
+.B HARD_MSGMAX
 ceiling is nevertheless imposed.
 .IP
 The definition of
-.BR HARD_MSGMAX
+.B HARD_MSGMAX
 has changed across kernel versions:
 .RS
 .IP * 3
 Up to Linux 2.6.32:
-.IR "131072\ /\ sizeof(void\ *)"
+.I 131072\~/\~sizeof(void\~*)
 .IP *
 Linux 2.6.33 to 3.4:
-.IR "(32768\ *\ sizeof(void\ *) / 4)"
+.I (32768\~*\~sizeof(void\~*) / 4)
 .IP *
 Since Linux 3.5:
 .\" commit 5b5c4d1a1440e94994c73dddbad7be0676cd8b9a
@@ -192,7 +192,7 @@ The default value for this file is 8192 (bytes).
 The minimum and maximum are as for
 .IR /proc/sys/fs/mqueue/msgsize_max .
 If
-.IR msgsize_default
+.I msgsize_default
 exceeds
 .IR msgsize_max ,
 a new queue's default
@@ -237,7 +237,7 @@ The
 limit is ignored for privileged process
 .RB ( CAP_SYS_RESOURCE ),
 but, since Linux 3.5, the
-.BR HARD_MSGSIZEMAX
+.B HARD_MSGSIZEMAX
 ceiling is enforced for privileged processes.
 .TP
 .I /proc/sys/fs/mqueue/queues_max

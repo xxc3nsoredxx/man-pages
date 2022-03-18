@@ -108,19 +108,19 @@ The
 .I spu_status
 register value is a bit mask of status codes and
 optionally a 14-bit code returned from the
-.BR stop-and-signal
+.B stop-and-signal
 instruction on the SPU.
 The bit masks for the status codes
 are:
 .TP
 .B 0x02
 SPU was stopped by a
-.BR stop-and-signal
+.B stop-and-signal
 instruction.
 .TP
 .B 0x04
 SPU was stopped by a
-.BR halt
+.B halt
 instruction.
 .TP
 .B 0x08
@@ -137,7 +137,7 @@ SPU has tried to access an invalid channel.
 .TP
 .B 0x3fff0000
 The bits masked with this value contain the code returned from a
-.BR stop-and-signal
+.B stop-and-signal
 instruction.
 These bits are valid only if the 0x02 bit is set.
 .PP

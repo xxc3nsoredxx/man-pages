@@ -106,7 +106,7 @@ Since Linux 2.6.39,
 .I pathname
 can be an empty string,
 in which case the call operates on the symbolic link referred to by
-.IR dirfd
+.I dirfd
 (which should have been obtained using
 .BR open (2)
 with the
@@ -239,9 +239,9 @@ When
 .I pathname
 is a relative pathname,
 glibc constructs a pathname based on the symbolic link in
-.IR /proc/self/fd
+.I /proc/self/fd
 that corresponds to the
-.IR dirfd
+.I dirfd
 argument.
 .SH EXAMPLES
 The following program allocates the buffer needed by
@@ -249,7 +249,7 @@ The following program allocates the buffer needed by
 dynamically from the information provided by
 .BR lstat (2),
 falling back to a buffer of size
-.BR PATH_MAX
+.B PATH_MAX
 in cases where
 .BR lstat (2)
 reports a size of zero.

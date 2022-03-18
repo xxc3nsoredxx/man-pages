@@ -52,7 +52,7 @@ The
 argument specifies which resource is to be compared in the two processes.
 It has one of the following values:
 .TP
-.BR KCMP_FILE
+.B KCMP_FILE
 Check whether a file descriptor
 .I idx1
 in the process
@@ -71,7 +71,7 @@ open file description can occur as a result of
 or passing file descriptors via a domain socket (see
 .BR unix (7)).
 .TP
-.BR KCMP_FILES
+.B KCMP_FILES
 Check whether the processes share the same set of open file descriptors.
 The arguments
 .I idx1
@@ -79,11 +79,11 @@ and
 .I idx2
 are ignored.
 See the discussion of the
-.BR CLONE_FILES
+.B CLONE_FILES
 flag in
 .BR clone (2).
 .TP
-.BR KCMP_FS
+.B KCMP_FS
 Check whether the processes share the same filesystem information
 (i.e., file mode creation mask, working directory, and filesystem root).
 The arguments
@@ -92,11 +92,11 @@ and
 .I idx2
 are ignored.
 See the discussion of the
-.BR CLONE_FS
+.B CLONE_FS
 flag in
 .BR clone (2).
 .TP
-.BR KCMP_IO
+.B KCMP_IO
 Check whether the processes share I/O context.
 The arguments
 .I idx1
@@ -104,11 +104,11 @@ and
 .I idx2
 are ignored.
 See the discussion of the
-.BR CLONE_IO
+.B CLONE_IO
 flag in
 .BR clone (2).
 .TP
-.BR KCMP_SIGHAND
+.B KCMP_SIGHAND
 Check whether the processes share the same table of signal dispositions.
 The arguments
 .I idx1
@@ -116,11 +116,11 @@ and
 .I idx2
 are ignored.
 See the discussion of the
-.BR CLONE_SIGHAND
+.B CLONE_SIGHAND
 flag in
 .BR clone (2).
 .TP
-.BR KCMP_SYSVSEM
+.B KCMP_SYSVSEM
 Check whether the processes share the same
 list of System\ V semaphore undo operations.
 The arguments
@@ -129,11 +129,11 @@ and
 .I idx2
 are ignored.
 See the discussion of the
-.BR CLONE_SYSVSEM
+.B CLONE_SYSVSEM
 flag in
 .BR clone (2).
 .TP
-.BR KCMP_VM
+.B KCMP_VM
 Check whether the processes share the same address space.
 The arguments
 .I idx1
@@ -141,7 +141,7 @@ and
 .I idx2
 are ignored.
 See the discussion of the
-.BR CLONE_VM
+.B CLONE_VM
 flag in
 .BR clone (2).
 .TP
@@ -189,7 +189,7 @@ Note the
 is not protected against false positives which may occur if
 the processes are currently running.
 One should stop the processes by sending
-.BR SIGSTOP
+.B SIGSTOP
 (see
 .BR signal (7))
 prior to inspection with this system call to obtain meaningful results.

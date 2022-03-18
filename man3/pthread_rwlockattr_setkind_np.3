@@ -15,7 +15,7 @@ POSIX threads library
 .PP
 .BI "int pthread_rwlockattr_setkind_np(pthread_rwlockattr_t *" attr ,
 .BI "                       int " pref );
-.BI "int pthread_rwlockattr_getkind_np("
+.B int pthread_rwlockattr_getkind_np(
 .BI "                       const pthread_rwlockattr_t *restrict " attr ,
 .BI "                       int *restrict " pref );
 .PP
@@ -94,7 +94,7 @@ The
 .BR pthread_rwlockattr_getkind_np ()
 function returns the value of the lock kind attribute of the
 read-write lock attribute object referred to by
-.IR attr
+.I attr
 in the pointer
 .IR pref .
 .SH RETURN VALUE
@@ -107,7 +107,7 @@ On error,
 returns a nonzero error number.
 .SH ERRORS
 .TP
-.BR EINVAL
+.B EINVAL
 .I pref
 specifies an unsupported value.
 .SH VERSIONS

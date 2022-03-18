@@ -65,7 +65,7 @@ the resulting string in
 is always null-terminated.
 .PP
 If
-.IR src
+.I src
 contains
 .I n
 or more bytes,
@@ -133,19 +133,23 @@ POSIX.1-2001, POSIX.1-2008, C89, C99, SVr4, 4.3BSD.
 .SH NOTES
 Some systems (the BSDs, Solaris, and others) provide the following function:
 .PP
-    size_t strlcat(char *dest, const char *src, size_t size);
+.in +4n
+.EX
+size_t strlcat(char *dest, const char *src, size_t size);
+.EE
+.in
 .PP
 This function appends the null-terminated string
 .I src
 to the string
 .IR dest ,
 copying at most
-.IR "size\-strlen(dest)\-1"
+.I size\-strlen(dest)\-1
 from
 .IR src ,
 and adds a terminating null byte to the result,
 .I unless
-.IR size
+.I size
 is less than
 .IR strlen(dest) .
 This function fixes the buffer overrun problem of
@@ -165,7 +169,7 @@ either check the arguments before the call, or test the function return value.
 is not present in glibc and is not standardized by POSIX,
 .\" https://lwn.net/Articles/506530/
 but is available on Linux via the
-.IR libbsd
+.I libbsd
 library.
 .\"
 .SH EXAMPLES

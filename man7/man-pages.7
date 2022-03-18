@@ -436,7 +436,7 @@ an address for reporting bugs, place this under the BUGS section.
 .TP
 .B REPORTING BUGS
 The
-.IR man-pages
+.I man-pages
 project doesn't use a REPORTING BUGS section in manual pages.
 Information on reporting bugs is instead supplied in the
 script-generated COLOPHON section.
@@ -445,7 +445,7 @@ It is recommended to place it near the foot of the page.
 .TP
 .B COPYRIGHT
 The
-.IR man-pages
+.I man-pages
 project doesn't use a COPYRIGHT section in manual pages.
 Copyright information is instead maintained in the page source.
 In pages where this section is present,
@@ -477,7 +477,7 @@ manual pages provided by other projects.
 .SH FORMATTING AND WORDING CONVENTIONS
 The following subsections note some details for preferred formatting and
 wording conventions in various sections of the pages in the
-.IR man-pages
+.I man-pages
 project.
 .SS SYNOPSIS
 Wrap the function prototype(s) in a
@@ -573,7 +573,7 @@ width of less than 80 columns).
 For examples of all of the above, see the source code of various pages.
 .SH STYLE GUIDE
 The following subsections describe the preferred style for the
-.IR man-pages
+.I man-pages
 project.
 For details not covered below, the Chicago Manual of Style
 is usually a good source;
@@ -841,7 +841,7 @@ zeros	zeroes
 .TE
 .PP
 See also the discussion
-.IR "Hyphenation of attributive compounds"
+.I Hyphenation of attributive compounds
 below.
 .SS Terms to avoid
 The following table lists some terms to avoid using in man pages,
@@ -887,14 +887,14 @@ relevant trademarks that are sometimes misspelled:
      UnixWare
 .SS NULL, NUL, null pointer, and null byte
 A
-.IR "null pointer"
+.I null pointer
 is a pointer that points to nothing,
 and is normally indicated by the constant
 .IR NULL .
 On the other hand,
 .I NUL
 is the
-.IR "null byte",
+.IR "null byte" ,
 a byte with the value 0, represented in C via the character constant
 .IR \(aq\e0\(aq .
 .PP
@@ -917,7 +917,11 @@ macro pair
 This produces proper hyperlinks that can be used in a web browser,
 when rendering a page with, say:
 .PP
-     BROWSER=firefox man -H pagename
+.in +4n
+.EX
+BROWSER=firefox man -H pagename
+.EE
+.in
 .SS Use of e.g., i.e., etc., a.k.a., and similar
 In general, the use of abbreviations such as "e.g.", "i.e.", "etc.",
 "cf.", and "a.k.a." should be avoided,
@@ -996,7 +1000,11 @@ or when writing options that have a leading dash, such as in
 .IR "ls\ \-l"),
 use the following form in the man page source:
 .PP
-    \e\-
+.in +4n
+.EX
+\e\-
+.EE
+.in
 .PP
 This guideline applies also to code examples.
 .PP
@@ -1013,7 +1021,11 @@ produce real minus signs when pasted into a terminal.
 To produce unslanted single quotes that render well in ASCII, UTF-8, and PDF,
 use "\e(aq" ("apostrophe quote"); for example
 .PP
-    \e(aqC\e(aq
+.in +4n
+.EX
+\e(aqC\e(aq
+.EE
+.in
 .PP
 where
 .I C
@@ -1075,18 +1087,30 @@ Ritchie style, with 4-space indents.
 The following command can be used to format your source code to
 something close to the preferred style:
 .IP
-    indent \-npro \-kr \-i4 \-ts4 \-sob \-l72 \-ss \-nut \-psl prog.c
+.in +4n
+.EX
+indent \-npro \-kr \-i4 \-ts4 \-sob \-l72 \-ss \-nut \-psl prog.c
+.EE
+.in
 .IP *
 For consistency, all example programs should terminate using either of:
 .IP
-     exit(EXIT_SUCCESS);
-     exit(EXIT_FAILURE);
+.in +4n
+.EX
+exit(EXIT_SUCCESS);
+exit(EXIT_FAILURE);
+.EE
+.in
 .IP
 Avoid using the following forms to terminate a program:
 .IP
-    exit(0);
-    exit(1);
-    return n;
+.in +4n
+.EX
+exit(0);
+exit(1);
+return n;
+.EE
+.in
 .IP *
 If there is extensive explanatory text before the
 program source code, mark off the source code

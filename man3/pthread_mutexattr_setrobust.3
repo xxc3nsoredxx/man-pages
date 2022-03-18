@@ -53,10 +53,10 @@ the owning thread dies without unlocking the mutex.
 The following values are valid for
 .IR robustness :
 .TP
-.BR PTHREAD_MUTEX_STALLED
+.B PTHREAD_MUTEX_STALLED
 This is the default value for a mutex attributes object.
 If a mutex is initialized with the
-.BR PTHREAD_MUTEX_STALLED
+.B PTHREAD_MUTEX_STALLED
 attribute and its owner dies without unlocking it,
 the mutex remains locked afterwards and any future attempts to call
 .BR pthread_mutex_lock (3)
@@ -64,7 +64,7 @@ on the mutex will block indefinitely.
 .TP
 .B PTHREAD_MUTEX_ROBUST
 If a mutex is initialized with the
-.BR PTHREAD_MUTEX_ROBUST
+.B PTHREAD_MUTEX_ROBUST
 attribute and its owner dies without unlocking it,
 any future attempts to call
 .BR pthread_mutex_lock (3)
@@ -96,7 +96,7 @@ operations on this mutex will still return
 .BR EOWNERDEAD .
 .PP
 Note that the
-.IR attr
+.I attr
 argument of
 .BR pthread_mutexattr_getrobust ()
 and
@@ -145,7 +145,7 @@ and
 .BR pthread_mutexattr_setrobust ()
 to POSIX,
 glibc defined the following equivalent nonstandard functions if
-.BR _GNU_SOURCE
+.B _GNU_SOURCE
 was defined:
 .PP
 .nf

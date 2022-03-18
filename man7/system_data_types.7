@@ -701,7 +701,7 @@ Instead, there were three timestamp
 and
 .IR st_ctime \(emtyped
 as
-.IR time_t
+.I time_t
 that recorded timestamps with one-second precision.
 .PP
 Since Linux 2.5.48, the
@@ -714,9 +714,9 @@ if suitable test macros are defined.
 Nanosecond timestamps were standardized in POSIX.1-2008,
 and, starting with version 2.12,
 glibc exposes the nanosecond component names if
-.BR _POSIX_C_SOURCE
+.B _POSIX_C_SOURCE
 is defined with the value 200809L or greater, or
-.BR _XOPEN_SOURCE
+.B _XOPEN_SOURCE
 is defined with the value 700 or greater.
 Up to and including glibc 2.19,
 the definitions of the nanoseconds components are also defined if

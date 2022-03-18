@@ -94,7 +94,7 @@ the same value makes it impossible to directly determine
 whether the call succeeded or failed.
 Instead, the caller must resort to looking at the return value
 from a further call such as
-.IR setfsgid(\-1)
+.I setfsgid(\-1)
 (which will always fail), in order to determine if a preceding call to
 .BR setfsgid ()
 changed the filesystem group ID.

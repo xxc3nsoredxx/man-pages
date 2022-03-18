@@ -184,7 +184,7 @@ is an empty string.
 .RB ( symlinkat ())
 .I linkpath
 is a relative pathname and
-.IR newdirfd
+.I newdirfd
 refers to a directory that has been deleted.
 .TP
 .B ENOMEM
@@ -246,9 +246,9 @@ When
 .I linkpath
 is a relative pathname,
 glibc constructs a pathname based on the symbolic link in
-.IR /proc/self/fd
+.I /proc/self/fd
 that corresponds to the
-.IR newdirfd
+.I newdirfd
 argument.
 .SH SEE ALSO
 .BR ln (1),

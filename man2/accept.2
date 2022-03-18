@@ -94,7 +94,7 @@ If the socket is marked
 nonblocking and no pending connections are present on the queue,
 .BR accept ()
 fails with the error
-.BR EAGAIN
+.B EAGAIN
 or
 .BR EWOULDBLOCK .
 .PP
@@ -114,18 +114,18 @@ when activity occurs on a socket; see
 for details.
 .PP
 If
-.IR flags
+.I flags
 is 0, then
 .BR accept4 ()
 is the same as
 .BR accept ().
 The following values can be bitwise ORed in
-.IR flags
+.I flags
 to obtain different behavior:
 .TP 16
 .B SOCK_NONBLOCK
 Set the
-.BR O_NONBLOCK
+.B O_NONBLOCK
 file status flag on the open file description (see
 .BR open (2))
 referred to by the new file descriptor.

@@ -6,7 +6,7 @@
 .\"
 .\" Modified 2002-07-27 by Walter Harms
 .\" 	(walter.harms@informatik.uni-oldenburg.de)
-.TH LOG1P 3   2021-03-22 "" "Linux Programmer's Manual"
+.TH LOG1P 3 2021-03-22 GNU "Linux Programmer's Manual"
 .SH NAME
 log1p, log1pf, log1pl \-  logarithm of 1 plus argument
 .SH LIBRARY
@@ -94,7 +94,7 @@ The following errors can occur:
 Domain error: \fIx\fP is less than \-1
 .I errno
 is set to
-.BR EDOM
+.B EDOM
 (but see BUGS).
 An invalid floating-point exception
 .RB ( FE_INVALID )
@@ -103,7 +103,7 @@ is raised.
 Pole error: \fIx\fP is \-1
 .I errno
 is set to
-.BR ERANGE
+.B ERANGE
 (but see BUGS).
 A divide-by-zero floating-point exception
 .RB ( FE_DIVBYZERO )

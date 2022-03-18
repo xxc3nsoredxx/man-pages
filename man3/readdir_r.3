@@ -3,7 +3,7 @@
 .\"
 .\" SPDX-License-Identifier: Linux-man-pages-copyleft
 .\"
-.TH READDIR_R 3  2021-03-22 "" "Linux Programmer's Manual"
+.TH READDIR_R 3 2021-03-22 GNU "Linux Programmer's Manual"
 .SH NAME
 readdir_r \- read a directory
 .SH LIBRARY
@@ -41,7 +41,7 @@ It reads the next directory entry from the directory stream
 and returns it in the caller-allocated buffer pointed to by
 .IR entry .
 For details of the
-.IR dirent
+.I dirent
 structure, see
 .BR readdir (3).
 .PP
@@ -60,7 +60,7 @@ Furthermore, since version 2.24, glibc deprecates
 The reasons are as follows:
 .IP * 3
 On systems where
-.BR NAME_MAX
+.B NAME_MAX
 is undefined, calling
 .BR readdir_r ()
 may be unsafe because the interface does not allow the caller to specify
@@ -77,7 +77,7 @@ fails with the error
 On some other systems,
 .BR readdir_r ()
 may return a success status, but the returned
-.IR d_name
+.I d_name
 field may not be null terminated or may be truncated.
 .IP *
 In the current POSIX.1 specification (POSIX.1-2008),

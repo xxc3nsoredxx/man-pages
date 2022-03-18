@@ -632,7 +632,11 @@ in
 .I include/net/tcp.h
 should be modified to keep
 .IP
-    TCP_SYNQ_HSIZE * 16 <= tcp_max_syn_backlog
+.in +4n
+.EX
+TCP_SYNQ_HSIZE * 16 <= tcp_max_syn_backlog
+.EE
+.in
 .IP
 and the kernel should be
 recompiled.
@@ -806,7 +810,11 @@ This is not used to limit the size of the receive buffer declared using
 on a socket.
 The default value is calculated using the formula
 .IP
-    max(87380, min(4\ MB, \fItcp_mem\fP[1]*PAGE_SIZE/128))
+.in +4n
+.EX
+max(87380, min(4\ MB, \fItcp_mem\fP[1]*PAGE_SIZE/128))
+.EE
+.in
 .IP
 (On Linux 2.4, the default is 87380*2 bytes,
 lowered to 87380 in low-memory systems).
@@ -1011,7 +1019,11 @@ This is not used to limit the size of the send buffer declared using
 on a socket.
 The default value is calculated using the formula
 .IP
-    max(65536, min(4\ MB, \fItcp_mem\fP[1]*PAGE_SIZE/128))
+.in +4n
+.EX
+max(65536, min(4\ MB, \fItcp_mem\fP[1]*PAGE_SIZE/128))
+.EE
+.in
 .IP
 (On Linux 2.4, the default value is 128\ kB,
 lowered 64\ kB depending on low-memory systems.)
@@ -1053,13 +1065,13 @@ The argument for this option is a string.
 This option allows the caller to set the TCP congestion control
 algorithm to be used, on a per-socket basis.
 Unprivileged processes are restricted to choosing one of the algorithms in
-.IR tcp_allowed_congestion_control
+.I tcp_allowed_congestion_control
 (described above).
 Privileged processes
 .RB ( CAP_NET_ADMIN )
 can choose from any of the available congestion-control algorithms
 (see the description of
-.IR tcp_available_congestion_control
+.I tcp_available_congestion_control
 above).
 .TP
 .BR TCP_CORK " (since Linux 2.2)"
@@ -1184,7 +1196,7 @@ This option should not be used in code intended to be portable.
 .\" commit message.
 .\"
 This option takes an
-.IR "unsigned int"
+.I unsigned int
 as an argument.
 When the value is greater than 0,
 it specifies the maximum amount of time in milliseconds that transmitted
@@ -1246,7 +1258,7 @@ returns a socket that is available for read and write
 when the handshake has not completed yet.
 Thus the data exchange can commence before the handshake completes.
 This option requires enabling the server-side support on sysctl
-.IR net.ipv4.tcp_fastopen
+.I net.ipv4.tcp_fastopen
 (see above).
 For TCP Fast Open client-side support,
 see
@@ -1363,9 +1375,9 @@ argument of
 This flag causes the received bytes of data to be discarded,
 rather than passed back in a caller-supplied buffer.
 Since Linux 2.4.4,
-.BR MSG_TRUNC
+.B MSG_TRUNC
 also has this effect when used in conjunction with
-.BR MSG_OOB
+.B MSG_OOB
 to receive out-of-band data.
 .SS Ioctls
 The following

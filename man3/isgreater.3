@@ -5,7 +5,7 @@
 .\" 2002-07-27 Walter Harms
 .\" this was done with the help of the glibc manual
 .\"
-.TH ISGREATER 3  2021-03-22 "" "Linux Programmer's Manual"
+.TH ISGREATER 3 2021-03-22 GNU "Linux Programmer's Manual"
 .SH NAME
 isgreater, isgreaterequal, isless, islessequal, islessgreater,
 isunordered \- floating-point relational tests without exception for NaN
@@ -50,7 +50,7 @@ be promoted to real-floating types).
 .BR isgreater ()
 determines \fI(x)\ >\ (y)\fP without an exception
 if
-.IR x
+.I x
 or
 .I y
 is NaN.
@@ -58,7 +58,7 @@ is NaN.
 .BR isgreaterequal ()
 determines \fI(x)\ >=\ (y)\fP without an exception
 if
-.IR x
+.I x
 or
 .I y
 is NaN.
@@ -66,7 +66,7 @@ is NaN.
 .BR isless ()
 determines \fI(x)\ <\ (y)\fP without an exception
 if
-.IR x
+.I x
 or
 .I y
 is NaN.
@@ -74,7 +74,7 @@ is NaN.
 .BR islessequal ()
 determines \fI(x)\ <=\ (y)\fP without an exception
 if
-.IR x
+.I x
 or
 .I y
 is NaN.
@@ -82,13 +82,13 @@ is NaN.
 .BR islessgreater ()
 determines \fI(x)\ < (y) || (x) >\ (y)\fP
 without an exception if
-.IR x
+.I x
 or
 .I y
 is NaN.
 This macro is not equivalent to \fIx\ !=\ y\fP because that expression is
 true if
-.IR x
+.I x
 or
 .I y
 is NaN.
@@ -104,7 +104,7 @@ these macros return 0 if either argument is a NaN.
 .PP
 .BR isunordered ()
 returns 1 if
-.IR x
+.I x
 or
 .I y
 is NaN and 0 otherwise.

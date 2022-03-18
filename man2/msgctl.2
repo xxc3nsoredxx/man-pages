@@ -78,7 +78,7 @@ system call.
 .I msg_ctime
 Time of creation of queue or time of last
 .BR msgctl ()
-.BR IPC_SET
+.B IPC_SET
 operation.
 .TP
 .I msg_cbytes
@@ -282,9 +282,9 @@ structure as for
 However,
 .I msg_perm.mode
 is not checked for read access for
-.IR msqid
+.I msqid
 meaning that any user can employ this operation (just as any user may read
-.IR /proc/sysvipc/msg
+.I /proc/sysvipc/msg
 to obtain the same information).
 .SH RETURN VALUE
 On success,

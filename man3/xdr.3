@@ -8,7 +8,7 @@
 .\"
 .\" 2007-12-30, mtk, Convert function prototypes to modern C syntax
 .\"
-.TH XDR 3 2021-03-22 "" "Linux Programmer's Manual"
+.TH XDR 3 2021-03-22 GNU "Linux Programmer's Manual"
 .SH NAME
 xdr \- library routines for external data representation
 .SH LIBRARY
@@ -300,7 +300,7 @@ first before calling any other XDR APIs.
 This inserts additional bytes in the stream to provide
 record boundary information.
 Also, XDR streams created with different
-.BR xdr*_create
+.B xdr*_create
 APIs are not compatible for the same reason.
 .PP
 .nf
@@ -525,7 +525,7 @@ representation.
 This routine returns one if it succeeds, zero otherwise.
 .PP
 .nf
-.BI "bool_t xdr_void(void);"
+.B bool_t xdr_void(void);
 .fi
 .IP
 This routine always returns one.

@@ -37,7 +37,7 @@ to the buffer pointed to by
 The strings may not overlap, and the destination string
 .I dest
 must be large enough to receive the copy.
-.IR "Beware of buffer overruns!"
+.I Beware of buffer overruns!
 (See BUGS.)
 .PP
 The
@@ -171,7 +171,11 @@ bytes, information is lost in the copying to
 .SS strlcpy()
 Some systems (the BSDs, Solaris, and others) provide the following function:
 .PP
-    size_t strlcpy(char *dest, const char *src, size_t size);
+.in +4n
+.EX
+size_t strlcpy(char *dest, const char *src, size_t size);
+.EE
+.in
 .PP
 .\" http://static.usenix.org/event/usenix99/full_papers/millert/millert_html/index.html
 .\"     "strlcpy and strlcat - consistent, safe, string copy and concatenation"
@@ -205,7 +209,7 @@ or test the function return value.
 is not present in glibc and is not standardized by POSIX,
 .\" https://lwn.net/Articles/506530/
 but is available on Linux via the
-.IR libbsd
+.I libbsd
 library.
 .SH BUGS
 If the destination string of a

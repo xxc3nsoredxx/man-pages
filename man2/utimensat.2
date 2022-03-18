@@ -149,7 +149,7 @@ If
 .I pathname
 is relative, then by default it is interpreted relative to the
 directory referred to by the open file descriptor,
-.IR dirfd
+.I dirfd
 (rather than relative to the current working directory of
 the calling process, as is done by
 .BR utimes (2)
@@ -248,7 +248,7 @@ is not a valid file descriptor.
 is relative but
 .I dirfd
 is neither
-.BR AT_FDCWD
+.B AT_FDCWD
 nor a valid file descriptor.
 .TP
 .B EFAULT
@@ -340,7 +340,7 @@ and either:
 the caller's effective user ID does not match the owner of file,
 and the caller is not privileged
 (Linux: does not have the
-.BR CAP_FOWNER
+.B CAP_FOWNER
 capability); or,
 .IP *
 .\" Linux 2.6.22 was broken here:
@@ -416,7 +416,7 @@ fields are specified as
 then the Linux implementation of
 .BR utimensat ()
 succeeds even if the file referred to by
-.IR dirfd
+.I dirfd
 and
 .I pathname
 does not exist.
@@ -449,7 +449,7 @@ Note, however, that the glibc wrapper for
 disallows passing NULL as the value for
 .IR pathname :
 the wrapper function returns the error
-.BR EINVAL
+.B EINVAL
 in this case.
 .SH BUGS
 Several bugs afflict
@@ -479,7 +479,7 @@ Various bugs mean that for the purposes of permission checking,
 the case where both
 .I tv_nsec
 fields are set to
-.BR UTIME_NOW
+.B UTIME_NOW
 isn't always treated the same as specifying
 .I times
 as NULL,

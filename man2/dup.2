@@ -76,14 +76,14 @@ is adjusted so that it now refers to the same open file description as
 .IR oldfd .
 .PP
 If the file descriptor
-.IR newfd
+.I newfd
 was previously open, it is closed before being reused;
 the close is performed silently
 (i.e., any errors during the close are not reported by
 .BR dup2 ()).
 .PP
 The steps of closing and reusing the file descriptor
-.IR newfd
+.I newfd
 are performed
 .IR atomically .
 This is important, because trying to implement equivalent functionality using
@@ -125,7 +125,7 @@ except that:
 .IP * 3
 The caller can force the close-on-exec flag to be set
 for the new file descriptor by specifying
-.BR O_CLOEXEC
+.B O_CLOEXEC
 in
 .IR flags .
 See the description of the same flag in
@@ -136,7 +136,7 @@ for reasons why this may be useful.
 .\"	We deliberately decided on this change.  Otherwise, what is the
 .\"	result of dup3(fd, fd, O_CLOEXEC)?
 If
-.IR oldfd
+.I oldfd
 equals
 .IR newfd ,
 then
@@ -158,7 +158,7 @@ isn't an open file descriptor.
 .B EBADF
 .I newfd
 is out of the allowed range for file descriptors (see the discussion of
-.BR RLIMIT_NOFILE
+.B RLIMIT_NOFILE
 in
 .BR getrlimit (2)).
 .TP
@@ -194,7 +194,7 @@ was equal to
 .B EMFILE
 The per-process limit on the number of open file descriptors has been reached
 (see the discussion of
-.BR RLIMIT_NOFILE
+.B RLIMIT_NOFILE
 in
 .BR getrlimit (2)).
 .SH VERSIONS

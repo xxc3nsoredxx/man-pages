@@ -43,7 +43,7 @@ mode ", int " flags );
 .BR "#include <sys/syscall.h>" "      /* Definition of " SYS_* " constants */"
 .B #include <unistd.h>
 .PP
-.BI "int syscall(SYS_faccessat2,"
+.B int syscall(SYS_faccessat2,
 .BI "            int " dirfd ", const char *" pathname ", int " mode \
 ", int " flags );
 .fi
@@ -375,9 +375,9 @@ When
 .I pathname
 is a relative pathname,
 glibc constructs a pathname based on the symbolic link in
-.IR /proc/self/fd
+.I /proc/self/fd
 that corresponds to the
-.IR dirfd
+.I dirfd
 argument.
 .SH BUGS
 Because the Linux kernel's

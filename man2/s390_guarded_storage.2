@@ -101,14 +101,14 @@ On success, the return value of
 is 0.
 .PP
 On error, \-1 is returned, and
-.IR errno
+.I errno
 is set to indicate the error.
 .SH ERRORS
 .TP
 .B EFAULT
 .I command
 was
-.BR GS_SET_BC_CB
+.B GS_SET_BC_CB
 and the copying of the guarded storage control block structure pointed by the
 .I gs_cb
 argument has failed.

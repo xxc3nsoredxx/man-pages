@@ -2,7 +2,7 @@
 .\"
 .\" SPDX-License-Identifier: GPL-1.0-or-later
 .\"
-.TH CASINH 3 2021-03-22 "" "Linux Programmer's Manual"
+.TH CASINH 3 2021-03-22 GNU "Linux Programmer's Manual"
 .SH NAME
 casinh, casinhf, casinhl \- complex arc sine hyperbolic
 .SH LIBRARY
@@ -19,16 +19,18 @@ Math library
 .SH DESCRIPTION
 These functions calculate the complex arc hyperbolic sine of
 .IR z .
-If \fIy\ =\ casinh(z)\fP, then \fIz\ =\ csinh(y)\fP.
+If \fIy\~=\~casinh(z)\fP, then \fIz\~=\~csinh(y)\fP.
 The imaginary part of
 .I y
 is chosen in the interval [\-pi/2,pi/2].
 .PP
 One has:
 .PP
-.nf
-    casinh(z) = clog(z + csqrt(z * z + 1))
-.fi
+.in +4n
+.EX
+casinh(z) = clog(z + csqrt(z * z + 1))
+.EE
+.in
 .SH VERSIONS
 These functions first appeared in glibc in version 2.1.
 .SH ATTRIBUTES

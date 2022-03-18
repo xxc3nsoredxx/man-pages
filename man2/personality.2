@@ -39,7 +39,7 @@ is not
 sets the caller's execution domain to the value specified by
 .IR persona .
 Specifying
-.IR persona
+.I persona
 as 0xffffffff provides a way of retrieving
 the current persona without changing it.
 .PP
@@ -78,9 +78,9 @@ Map page 0 as read-only
 .TP
 .BR READ_IMPLIES_EXEC " (since Linux 2.6.8)"
 With this flag set,
-.BR PROT_READ
+.B PROT_READ
 implies
-.BR PROT_EXEC
+.B PROT_EXEC
 for
 .BR mmap (2).
 .TP
@@ -168,7 +168,7 @@ was defined as.
 .TP
 .BR PER_OSR5 " (since Linux 2.4)"
 Implies
-.BR STICKY_TIMEOUTS
+.B STICKY_TIMEOUTS
 and
 .BR WHOLE_SECONDS ;
 otherwise no effects.
@@ -199,35 +199,35 @@ support was removed in Linux 2.6.26.
 .TP
 .BR PER_SVR3 " (since Linux 1.2.0)"
 Implies
-.BR STICKY_TIMEOUTS
+.B STICKY_TIMEOUTS
 and
 .BR SHORT_INODE ;
 otherwise no effects.
 .TP
 .BR PER_SVR4 " (since Linux 1.2.0)"
 Implies
-.BR STICKY_TIMEOUTS
+.B STICKY_TIMEOUTS
 and
 .BR MMAP_PAGE_ZERO ;
 otherwise no effects.
 .TP
 .BR PER_UW7 " (since Linux 2.4)"
 Implies
-.BR STICKY_TIMEOUTS
+.B STICKY_TIMEOUTS
 and
 .BR MMAP_PAGE_ZERO ;
 otherwise no effects.
 .TP
 .BR PER_WYSEV386 " (since Linux 1.2.0)"
 Implies
-.BR STICKY_TIMEOUTS
+.B STICKY_TIMEOUTS
 and
 .BR SHORT_INODE ;
 otherwise no effects.
 .TP
 .BR PER_XENIX " (since Linux 1.2.0)"
 Implies
-.BR STICKY_TIMEOUTS
+.B STICKY_TIMEOUTS
 and
 .BR SHORT_INODE ;
 otherwise no effects.

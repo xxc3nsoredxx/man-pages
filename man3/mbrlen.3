@@ -41,7 +41,7 @@ shift state
 to the initial state and returns 0.
 .PP
 If the
-.IR n
+.I n
 bytes starting at
 .I s
 do not contain a complete multibyte
@@ -62,7 +62,7 @@ contains an invalid multibyte
 sequence before the next complete character,
 .BR mbrlen ()
 returns
-.IR "(size_t)\ \-1"
+.I (size_t)\ \-1
 and sets
 .I errno
 to
@@ -95,7 +95,7 @@ to
 if an invalid multibyte sequence was
 encountered.
 It returns
-.IR "(size_t)\ \-2"
+.I (size_t)\ \-2
 if it couldn't parse a complete multibyte
 character, meaning that
 .I n

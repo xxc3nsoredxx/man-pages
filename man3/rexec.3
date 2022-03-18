@@ -45,12 +45,12 @@ The
 .BR rexec ()
 function
 looks up the host
-.IR *ahost
+.I *ahost
 using
 .BR gethostbyname (3),
 returning \-1 if the host does not exist.
 Otherwise,
-.IR *ahost
+.I *ahost
 is set to the standard name of the host.
 If a username and password are both specified, then these
 are used to authenticate to the foreign host; otherwise
@@ -73,10 +73,10 @@ The protocol for connection is described in detail in
 .PP
 If the connection succeeds,
 a socket in the Internet domain of type
-.BR SOCK_STREAM
+.B SOCK_STREAM
 is returned to
 the caller, and given to the remote command as
-.IR stdin
+.I stdin
 and
 .IR stdout .
 If
@@ -96,10 +96,10 @@ verified.
 If
 .I fd2p
 is 0, then the
-.IR stderr
+.I stderr
 (unit 2 of the remote
 command) will be made the same as the
-.IR stdout
+.I stdout
 and no
 provision is made for sending arbitrary signals to the remote process,
 although you may be able to get its attention by using out-of-band data.
@@ -117,7 +117,7 @@ This argument can be specified as
 .BR AF_INET ,
 .BR AF_INET6 ,
 or
-.BR AF_UNSPEC
+.B AF_UNSPEC
 (to allow the implementation to select the protocol).
 .SH VERSIONS
 The

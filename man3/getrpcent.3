@@ -5,7 +5,7 @@
 .\" %%%LICENSE_END
 .\"
 .\" @(#)getrpcent.3n	2.2 88/08/02 4.0 RPCSRC; from 1.11 88/03/14 SMI
-.TH GETRPCENT 3 2021-03-22 "" "Linux Programmer's Manual"
+.TH GETRPCENT 3 2021-03-22 GNU "Linux Programmer's Manual"
 .SH NAME
 getrpcent, getrpcbyname, getrpcbynumber, setrpcent, endrpcent \- get
 RPC entry
@@ -16,13 +16,13 @@ Standard C library
 .nf
 .B #include <netdb.h>
 .PP
-.BI "struct rpcent *getrpcent(void);"
+.B struct rpcent *getrpcent(void);
 .PP
 .BI "struct rpcent *getrpcbyname(const char *" name );
 .BI "struct rpcent *getrpcbynumber(int " number );
 .PP
 .BI "void setrpcent(int " stayopen );
-.BI "void endrpcent(void);"
+.B void endrpcent(void);
 .fi
 .SH DESCRIPTION
 The

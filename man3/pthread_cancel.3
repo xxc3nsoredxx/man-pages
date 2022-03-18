@@ -43,9 +43,9 @@ then its cancelability type determines when cancelation occurs.
 A thread's cancelation type, determined by
 .BR pthread_setcanceltype (3),
 may be either
-.IR asynchronous
+.I asynchronous
 or
-.IR deferred
+.I deferred
 (the default for new threads).
 Asynchronous cancelability
 means that the thread can be canceled at any time
@@ -57,7 +57,7 @@ A list of functions that are or may be cancelation points is provided in
 .BR pthreads (7).
 .PP
 When a cancelation requested is acted on, the following steps occur for
-.IR thread
+.I thread
 (in this order):
 .IP 1. 3
 Cancellation clean-up handlers are popped

@@ -154,11 +154,11 @@ as well as the use of a number of other scheduling-related
 pthreads functions.
 .PP
 In the following run, the main thread sets its scheduling policy to
-.BR SCHED_FIFO
+.B SCHED_FIFO
 with a priority of 10,
 and initializes a thread attributes object with
 a scheduling policy attribute of
-.BR SCHED_RR
+.B SCHED_RR
 and a scheduling priority attribute of 20.
 The program then sets (using
 .BR pthread_attr_setinheritsched (3))
@@ -216,9 +216,9 @@ were taken from the creating thread,
 rather than the thread attributes object.
 .PP
 Note that if we had omitted the
-.IR "\-i\ i"
+.I \-i\~i
 option, the output would have been the same, since
-.BR PTHREAD_INHERIT_SCHED
+.B PTHREAD_INHERIT_SCHED
 is the default for the inherit scheduler attribute.
 .SS Program source
 \&

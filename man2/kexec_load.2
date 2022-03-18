@@ -119,7 +119,7 @@ The kernel image defined by
 is copied from the calling process into
 the kernel either in regular
 memory or in reserved memory (if
-.BR KEXEC_ON_CRASH
+.B KEXEC_ON_CRASH
 is set).
 The kernel first performs various sanity checks on the
 information passed in
@@ -156,7 +156,7 @@ is less than
 then the excess bytes in the kernel buffer are zeroed out.
 .PP
 In case of a normal kexec (i.e., the
-.BR KEXEC_ON_CRASH
+.B KEXEC_ON_CRASH
 flag is not set), the segment data is loaded in any available memory
 and is moved to the final destination at kexec reboot time (e.g., when the
 .BR kexec (8)
@@ -165,7 +165,7 @@ command is executed with the
 option).
 .PP
 In case of kexec on panic (i.e., the
-.BR KEXEC_ON_CRASH
+.B KEXEC_ON_CRASH
 flag is set), the segment data is
 loaded to reserved memory at the time of the call, and, after a crash,
 the kexec mechanism simply passes control to that kernel.
@@ -187,34 +187,34 @@ and the initrd (initial RAM disk)
 to be loaded from file referred to by the file descriptor
 .IR initrd_fd .
 The
-.IR cmdline
+.I cmdline
 argument is a pointer to a buffer containing the command line
 for the new kernel.
 The
-.IR cmdline_len
+.I cmdline_len
 argument specifies size of the buffer.
 The last byte in the buffer must be a null byte (\(aq\e0\(aq).
 .PP
 The
-.IR flags
+.I flags
 argument is a bit mask which modifies the behavior of the call.
 The following values can be specified in
 .IR flags :
 .TP
-.BR KEXEC_FILE_UNLOAD
+.B KEXEC_FILE_UNLOAD
 Unload the currently loaded kernel.
 .TP
-.BR KEXEC_FILE_ON_CRASH
+.B KEXEC_FILE_ON_CRASH
 Load the new kernel in the memory region reserved for the crash kernel
 (as for
 .BR KEXEC_ON_CRASH ).
 This kernel is booted if the currently running kernel crashes.
 .TP
-.BR KEXEC_FILE_NO_INITRAMFS
+.B KEXEC_FILE_NO_INITRAMFS
 Loading initrd/initramfs is optional.
 Specify this flag if no initramfs is being loaded.
 If this flag is set, the value passed in
-.IR initrd_fd
+.I initrd_fd
 is ignored.
 .PP
 The
@@ -277,9 +277,9 @@ entries exceeds the value in the corresponding
 field.
 .TP
 .B EINVAL
-.IR nr_segments
+.I nr_segments
 exceeds
-.BR KEXEC_SEGMENT_MAX
+.B KEXEC_SEGMENT_MAX
 (16).
 .TP
 .B EINVAL
@@ -309,7 +309,7 @@ Could not allocate memory.
 .TP
 .B EPERM
 The caller does not have the
-.BR CAP_SYS_BOOT
+.B CAP_SYS_BOOT
 capability.
 .SH VERSIONS
 The
@@ -326,6 +326,6 @@ These system calls are Linux-specific.
 .BR kexec (8)
 .PP
 The kernel source files
-.IR Documentation/kdump/kdump.txt
+.I Documentation/kdump/kdump.txt
 and
-.IR Documentation/admin\-guide/kernel\-parameters.txt
+.I Documentation/admin\-guide/kernel\-parameters.txt

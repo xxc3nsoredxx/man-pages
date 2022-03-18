@@ -234,15 +234,15 @@ the message.
 .PP
 The resolver routines use configuration and state information
 contained in a
-.IR __res_state
+.I __res_state
 structure (either passed as the
-.IR statep
+.I statep
 argument, or in the global variable
 .IR _res ,
 in the case of the older nonreentrant functions).
 The only field of this structure that is normally manipulated by the
 user is the
-.IR options
+.I options
 field.
 This field can contain the bitwise "OR"
 of the following options:

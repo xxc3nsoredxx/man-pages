@@ -179,11 +179,11 @@ to the value given in
 .IR len ,
 which must be an integer between 1 and 8 (inclusive).
 The kernel silently enforces a minimum value of
-.IR minimum_console_loglevel
+.I minimum_console_loglevel
 for
 .IR len .
 See the
-.IR "log level"
+.I log level
 section for details.
 The
 .I bufp
@@ -213,16 +213,16 @@ In Linux kernels before 2.6.37,
 command types 3 and 10 are allowed to unprivileged processes;
 since Linux 2.6.37,
 these commands are allowed to unprivileged processes only if
-.IR /proc/sys/kernel/dmesg_restrict
+.I /proc/sys/kernel/dmesg_restrict
 has the value 0.
 Before Linux 2.6.37, "privileged" means that the caller has the
-.BR CAP_SYS_ADMIN
+.B CAP_SYS_ADMIN
 capability.
 Since Linux 2.6.37,
 "privileged" means that the caller has either the
-.BR CAP_SYS_ADMIN
+.B CAP_SYS_ADMIN
 capability (now deprecated for this purpose) or the (new)
-.BR CAP_SYSLOG
+.B CAP_SYSLOG
 capability.
 .\"
 .\"
@@ -244,7 +244,7 @@ The default value for this field is
 and to 15 in case
 of a kernel fault (the 10 and 15 are just silly, and equivalent to 8).
 The value of
-.IR console_loglevel
+.I console_loglevel
 can be set (to a value in the range 1\(en8) by a
 .BR syslog ()
 call with a
@@ -253,7 +253,7 @@ of 8.
 .TP
 .I default_message_loglevel
 This value will be used as the log level for
-.IR printk()
+.I printk()
 messages that do not have an explicit level.
 Up to and including Linux 2.6.38,
 the hard-coded default value for this field was 4
@@ -301,7 +301,7 @@ KERN_DEBUG	7	Debug-level messages
 .TE
 .sp 1
 The kernel
-.IR printk()
+.I printk()
 routine will print a message on the
 console only if it has a log level less than the value of
 .IR console_loglevel .
@@ -344,7 +344,7 @@ is outside the range 1 to 8).
 This
 .BR syslog ()
 system call is not available, because the kernel was compiled with the
-.BR CONFIG_PRINTK
+.B CONFIG_PRINTK
 kernel-configuration option disabled.
 .TP
 .B EPERM
@@ -355,7 +355,7 @@ message ring buffer by a process without sufficient privilege
 (more precisely: without the
 .B CAP_SYS_ADMIN
 or
-.BR CAP_SYSLOG
+.B CAP_SYSLOG
 capability).
 .TP
 .B ERESTARTSYS

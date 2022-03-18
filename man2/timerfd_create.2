@@ -67,12 +67,12 @@ Like
 .BR CLOCK_MONOTONIC ,
 this is a monotonically increasing clock.
 However, whereas the
-.BR CLOCK_MONOTONIC
+.B CLOCK_MONOTONIC
 clock does not measure the time while a system is suspended, the
-.BR CLOCK_BOOTTIME
+.B CLOCK_BOOTTIME
 clock does include the time during which the system is suspended.
 This is useful for applications that need to be suspend-aware.
-.BR CLOCK_REALTIME
+.B CLOCK_REALTIME
 is not suitable for such applications, since that clock is affected
 by discontinuous changes to the system clock.
 .TP
@@ -102,13 +102,13 @@ The current value of each of these clocks can be retrieved using
 .BR clock_gettime (2).
 .PP
 Starting with Linux 2.6.27, the following values may be bitwise ORed in
-.IR flags
+.I flags
 to change the behavior of
 .BR timerfd_create ():
 .TP 14
 .B TFD_NONBLOCK
 Set the
-.BR O_NONBLOCK
+.B O_NONBLOCK
 file status flag on the open file description (see
 .BR open (2))
 referred to by the new file descriptor.
@@ -197,11 +197,11 @@ The timer will expire when the value of the timer's
 clock reaches the value specified in
 .IR new_value.it_value .
 .TP
-.BR TFD_TIMER_CANCEL_ON_SET
+.B TFD_TIMER_CANCEL_ON_SET
 If this flag is specified along with
 .B TFD_TIMER_ABSTIME
 and the clock for this timer is
-.BR CLOCK_REALTIME
+.B CLOCK_REALTIME
 or
 .BR CLOCK_REALTIME_ALARM ,
 then mark this timer as cancelable if the real-time clock
@@ -229,7 +229,7 @@ following.
 returns, in
 .IR curr_value ,
 an
-.IR itimerspec
+.I itimerspec
 structure that contains the current setting of the timer
 referred to by the file descriptor
 .IR fd .
@@ -241,7 +241,7 @@ until the timer will next expire.
 If both fields of this structure are zero,
 then the timer is currently disarmed.
 This field always contains a relative value, regardless of whether the
-.BR TFD_TIMER_ABSTIME
+.B TFD_TIMER_ABSTIME
 flag was specified when setting the timer.
 .PP
 The
@@ -289,31 +289,31 @@ fails with the error
 if the size of the supplied buffer is less than 8 bytes.
 .IP
 If the associated clock is either
-.BR CLOCK_REALTIME
+.B CLOCK_REALTIME
 or
 .BR CLOCK_REALTIME_ALARM ,
 the timer is absolute
 .RB ( TFD_TIMER_ABSTIME ),
 and the flag
-.BR TFD_TIMER_CANCEL_ON_SET
+.B TFD_TIMER_CANCEL_ON_SET
 was specified when calling
 .BR timerfd_settime (),
 then
 .BR read (2)
 fails with the error
-.BR ECANCELED
+.B ECANCELED
 if the real-time clock undergoes a discontinuous change.
 (This allows the reading application to discover
 such discontinuous changes to the clock.)
 .IP
 If the associated clock is either
-.BR CLOCK_REALTIME
+.B CLOCK_REALTIME
 or
 .BR CLOCK_REALTIME_ALARM ,
 the timer is absolute
 .RB ( TFD_TIMER_ABSTIME ),
 and the flag
-.BR TFD_TIMER_CANCEL_ON_SET
+.B TFD_TIMER_CANCEL_ON_SET
 was
 .I not
 specified when calling
@@ -360,7 +360,7 @@ Once the number is set, any waiter on the timer is woken up.
 The only purpose of this command is to restore the expirations
 for the purpose of checkpoint/restore.
 This operation is available only if the kernel was configured with the
-.BR CONFIG_CHECKPOINT_RESTORE
+.B CONFIG_CHECKPOINT_RESTORE
 option.
 .RE
 .TP
@@ -435,11 +435,11 @@ There was insufficient kernel memory to create the timer.
 .B EPERM
 .I clockid
 was
-.BR CLOCK_REALTIME_ALARM
+.B CLOCK_REALTIME_ALARM
 or
-.BR CLOCK_BOOTTIME_ALARM
+.B CLOCK_BOOTTIME_ALARM
 but the caller did not have the
-.BR CAP_WAKE_ALARM
+.B CAP_WAKE_ALARM
 capability.
 .PP
 .BR timerfd_settime ()
@@ -486,24 +486,24 @@ Library support is provided by glibc since version 2.8.
 These system calls are Linux-specific.
 .SH NOTES
 Suppose the following scenario for
-.BR CLOCK_REALTIME
+.B CLOCK_REALTIME
 or
-.BR CLOCK_REALTIME_ALARM
+.B CLOCK_REALTIME_ALARM
 timer that was created with
 .BR timerfd_create ():
 .IP (a) 4
 The timer has been started
 .RB ( timerfd_settime ())
 with the
-.BR TFD_TIMER_ABSTIME
+.B TFD_TIMER_ABSTIME
 and
-.BR TFD_TIMER_CANCEL_ON_SET
+.B TFD_TIMER_CANCEL_ON_SET
 flags;
 .IP (b)
 A discontinuous change (e.g.,
 .BR settimeofday (2))
 is subsequently made to the
-.BR CLOCK_REALTIME
+.B CLOCK_REALTIME
 clock; and
 .IP (c)
 the caller once more calls

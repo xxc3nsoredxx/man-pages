@@ -275,7 +275,7 @@ Note that if
 is interrupted by a signal, causing the call to fail with the error
 .BR EINTR ,
 the contents of
-.IR timeout
+.I timeout
 are left unchanged.
 .SH RETURN VALUE
 On success,
@@ -438,7 +438,7 @@ this limit should not be raised above 1000,
 because of the risk of that
 .BR semop ()
 fails due to kernel memory fragmentation when allocating memory to copy the
-.IR sops
+.I sops
 array.
 .TP
 .B SEMVMX

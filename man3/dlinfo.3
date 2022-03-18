@@ -22,7 +22,7 @@ The
 .BR dlinfo ()
 function obtains information about the dynamically loaded object
 referred to by
-.IR handle
+.I handle
 (typically obtained by an earlier call to
 .BR dlopen (3)
 or
@@ -37,9 +37,9 @@ returned by the call; the type of this argument depends on
 .IR request .
 .PP
 The following values are supported for
-.IR request
+.I request
 (with the corresponding type for
-.IR info
+.I info
 shown in parentheses):
 .TP
 .BR RTLD_DI_LMID " (\fILmid_t *\fP)"
@@ -53,7 +53,7 @@ Obtain a pointer to the
 structure corresponding to
 .IR handle .
 The
-.IR info
+.I info
 argument points to a pointer to a
 .I link_map
 structure, defined in
@@ -81,7 +81,7 @@ struct link_map {
 .TP
 .BR RTLD_DI_ORIGIN " (\fIchar *\fP)"
 Copy the pathname of the origin of the shared object corresponding to
-.IR handle
+.I handle
 to the location pointed to by
 .IR info .
 .TP
@@ -95,7 +95,7 @@ argument is a pointer to a
 that contains the search paths.
 Because the number of search paths may vary,
 the size of the structure pointed to by
-.IR info
+.I info
 can vary.
 The
 .B RTLD_DI_SERINFOSIZE
@@ -175,7 +175,7 @@ and
 fields of the
 .I Dl_serinfo
 structure pointed to by
-.IR info
+.I info
 with values suitable for allocating a buffer for use in a subsequent
 .B RTLD_DI_SERINFO
 request.

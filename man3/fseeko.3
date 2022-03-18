@@ -2,7 +2,7 @@
 .\"
 .\" SPDX-License-Identifier: Linux-man-pages-copyleft
 .\"
-.TH FSEEKO 3  2021-03-22 "" "Linux Programmer's Manual"
+.TH FSEEKO 3 2021-03-22 GNU "Linux Programmer's Manual"
 .SH NAME
 fseeko, ftello \- seek to or report file position
 .SH LIBRARY
@@ -49,11 +49,11 @@ instead of
 .IR long .
 .PP
 On some architectures, both
-.IR off_t
+.I off_t
 and
 .I long
 are 32-bit types, but defining
-.BR _FILE_OFFSET_BITS
+.B _FILE_OFFSET_BITS
 with the value 64 (before including
 .I any
 header files)

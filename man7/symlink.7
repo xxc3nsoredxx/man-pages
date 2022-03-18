@@ -120,11 +120,11 @@ though this mode is not currently used in any permission checks.
 Using the combination of the
 .B O_PATH
 and
-.BR O_NOFOLLOW
+.B O_NOFOLLOW
 flags to
 .BR open (2)
 yields a file descriptor that can be passed as the
-.IR dirfd
+.I dirfd
 argument in system calls such as
 .BR fstatat (2),
 .BR fchownat (2),
@@ -137,7 +137,7 @@ in order to operate on the symbolic link itself
 .PP
 By default
 (i.e., if the
-.BR AT_SYMLINK_FOLLOW
+.B AT_SYMLINK_FOLLOW
 flag is not specified), if
 .BR name_to_handle_at (2)
 is applied to a symbolic link, it yields a handle for the symbolic link
@@ -189,7 +189,7 @@ is called the
 component, and the part following the final slash (i.e.,
 .IR c )
 is called the
-.IR basename
+.I basename
 component.
 .\"
 .SS Treatment of symbolic links in system calls

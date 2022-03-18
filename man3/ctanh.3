@@ -2,7 +2,7 @@
 .\"
 .\" SPDX-License-Identifier: GPL-1.0-or-later
 .\"
-.TH CTANH 3 2021-03-22 "" "Linux Programmer's Manual"
+.TH CTANH 3 2021-03-22 GNU "Linux Programmer's Manual"
 .SH NAME
 ctanh, ctanhf, ctanhl \- complex hyperbolic tangent
 .SH LIBRARY
@@ -12,9 +12,9 @@ Math library
 .nf
 .B #include <complex.h>
 .PP
-.BI "double complex ctanh(double complex " z ");"
+.BI "double complex ctanh(double complex " z );
 .BI "float complex ctanhf(float complex " z );
-.BI "long double complex ctanhl(long double complex " z ");"
+.BI "long double complex ctanhl(long double complex " z );
 .fi
 .SH DESCRIPTION
 These functions calculate the complex hyperbolic tangent of
@@ -23,9 +23,11 @@ These functions calculate the complex hyperbolic tangent of
 The complex hyperbolic tangent function is defined
 mathematically as:
 .PP
-.nf
-    ctanh(z) = csinh(z) / ccosh(z)
-.fi
+.in +4n
+.EX
+ctanh(z) = csinh(z) / ccosh(z)
+.EE
+.in
 .SH VERSIONS
 These functions first appeared in glibc in version 2.1.
 .SH ATTRIBUTES

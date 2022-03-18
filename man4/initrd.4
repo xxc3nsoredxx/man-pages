@@ -37,7 +37,7 @@ chown root:disk /dev/initrd
 .PP
 Also, support for both "RAM disk" and "Initial RAM disk"
 (e.g.,
-.BR CONFIG_BLK_DEV_RAM=y
+.B CONFIG_BLK_DEV_RAM=y
 and
 .BR CONFIG_BLK_DEV_INITRD=y )
 must be compiled directly into the Linux kernel to use
@@ -97,7 +97,7 @@ root filesystem (e.g.,
 then the kernel skips to the last step for the usual boot sequence.
 .IP 5.
 If the executable file
-.IR /linuxrc
+.I /linuxrc
 is present in the initial root filesystem,
 .I /linuxrc
 is executed with UID 0.
@@ -125,16 +125,16 @@ If the normal root filesystem has a directory
 the device
 .I /dev/ram0
 is moved from
-.IR /
+.I /
 to
 .IR /initrd .
 Otherwise, if the directory
-.IR /initrd
+.I /initrd
 does not exist, the device
 .I /dev/ram0
 is unmounted.
 (When moved from
-.IR /
+.I /
 to
 .IR /initrd ,
 .I /dev/ram0
@@ -144,7 +144,7 @@ If directory
 .I /initrd
 does not exist on the normal root filesystem
 and any processes remain running from
-.IR /dev/ram0
+.I /dev/ram0
 when
 .I /linuxrc
 exits, the behavior of the kernel is
@@ -229,9 +229,9 @@ For more information on NFS-mounted root see the kernel documentation file
 .I Documentation/filesystems/nfsroot.txt
 before Linux 2.6.33).
 For more information on setting the root filesystem see also the
-.BR LILO
+.B LILO
 and
-.BR LOADLIN
+.B LOADLIN
 documentation.
 .PP
 It is also possible for the
@@ -240,7 +240,7 @@ executable to change the normal root device.
 For
 .I /linuxrc
 to change the normal root device,
-.IR /proc
+.I /proc
 must be mounted.
 After mounting
 .IR /proc ,
@@ -257,7 +257,7 @@ write the new root filesystem device number into
 For an NFS root filesystem, the root device is changed by having
 .I /linuxrc
 write the NFS setting into files
-.IR /proc/sys/kernel/nfs\-root\-name
+.I /proc/sys/kernel/nfs\-root\-name
 and
 .I /proc/sys/kernel/nfs\-root\-addrs
 and then writing 0xff (e.g., the pseudo-NFS-device number) into file
@@ -318,7 +318,7 @@ The loader program boots from floppy or other media with a minimal kernel
 .IR /dev/ram ,
 .IR /dev/initrd ,
 and the ext2 filesystem) and loads
-.IR /dev/initrd
+.I /dev/initrd
 with a gzipped version of the initial filesystem.
 .IP 2.
 The executable
@@ -340,7 +340,7 @@ creates and populates the root filesystem.
 completed system yet.)
 .IP 5.
 The executable
-.IR /linuxrc
+.I /linuxrc
 sets
 .IR /proc/sys/kernel/real\-root\-dev ,
 unmounts
@@ -402,7 +402,7 @@ from CD-ROM without the need of any floppies.
 The distribution could also use a
 .B LILO
 boot floppy and then bootstrap a bigger RAM disk via
-.IR /dev/initrd
+.I /dev/initrd
 from the CD-ROM.
 .\"
 .\"
@@ -441,7 +441,7 @@ be fully unmounted if
 .I /dev/ram0
 is used by any process or has any filesystem mounted on it.
 If
-.IR /dev/ram0
+.I /dev/ram0
 is
 .B not
 fully unmounted, then

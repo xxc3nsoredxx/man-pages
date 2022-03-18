@@ -30,7 +30,7 @@ the ID of the process to which this process has been reparented (either
 .BR init (1)
 or a "subreaper" process defined via the
 .BR prctl (2)
-.BR PR_SET_CHILD_SUBREAPER
+.B PR_SET_CHILD_SUBREAPER
 operation).
 .SH ERRORS
 These functions are always successful.
@@ -50,7 +50,7 @@ which is unique for each thread.
 For further details, see
 .BR gettid (2)
 and the discussion of the
-.BR CLONE_THREAD
+.B CLONE_THREAD
 flag in
 .BR clone (2).
 .\"

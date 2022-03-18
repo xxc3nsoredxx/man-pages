@@ -32,18 +32,18 @@ written.
 This behavior is commonly referred to as "copy on write".
 .PP
 This ioctl reflinks up to
-.IR src_length
+.I src_length
 bytes from file descriptor
-.IR src_fd
+.I src_fd
 at offset
-.IR src_offset
+.I src_offset
 into the file
-.IR dest_fd
+.I dest_fd
 at offset
 .IR dest_offset ,
 provided that both are files.
 If
-.IR src_length
+.I src_length
 is zero, the ioctl reflinks to the end of the source file.
 This information is conveyed in a structure of
 the following form:
@@ -73,12 +73,12 @@ is set to indicate the error.
 Error codes can be one of, but are not limited to, the following:
 .TP
 .B EBADF
-.IR src_fd
+.I src_fd
 is not open for reading;
-.IR dest_fd
+.I dest_fd
 is not open for writing or is open for append-only writes;
 or the filesystem which
-.IR src_fd
+.I src_fd
 resides on does not support reflink.
 .TP
 .B EINVAL
@@ -99,7 +99,7 @@ This can appear if the filesystem does not support reflinking either file
 descriptor, or if either file descriptor refers to special inodes.
 .TP
 .B EPERM
-.IR dest_fd
+.I dest_fd
 is immutable.
 .TP
 .B ETXTBSY

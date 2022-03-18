@@ -81,7 +81,7 @@ which may be less than the number of bytes in a complete network address.
 The
 .BR inet_net_ntop ()
 function converts the network number in the buffer pointed to by
-.IR netp
+.I netp
 to presentation format;
 .I *netp
 is interpreted as a value in network byte order.
@@ -127,7 +127,7 @@ The size of the output buffer was insufficient.
 .TP
 .B ENOENT
 .RB ( inet_net_pton ())
-.IR pres
+.I pres
 was not in correct presentation format.
 .SH CONFORMING TO
 The
@@ -150,10 +150,14 @@ In dotted-decimal notation, up to four octets are specified,
 as decimal numbers separated by dots.
 Thus, any of the following forms are accepted:
 .PP
-    a.b.c.d
-    a.b.c
-    a.b
-    a
+.in +4n
+.EX
+a.b.c.d
+a.b.c
+a.b
+a
+.EE
+.in
 .PP
 Each part is a number in the range 0 to 255 that
 populates one byte of the resulting network number,

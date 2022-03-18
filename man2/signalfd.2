@@ -62,13 +62,13 @@ then it must specify a valid existing signalfd file descriptor, and
 is used to replace the signal set associated with that file descriptor.
 .PP
 Starting with Linux 2.6.27, the following values may be bitwise ORed in
-.IR flags
+.I flags
 to change the behavior of
 .BR signalfd ():
 .TP 14
 .B SFD_NONBLOCK
 Set the
-.BR O_NONBLOCK
+.B O_NONBLOCK
 file status flag on the open file description (see
 .BR open (2))
 referred to by the new file descriptor.
@@ -365,7 +365,7 @@ are silently ignored.
 .PP
 The signal mask employed by a signalfd file descriptor can be viewed
 via the entry for the corresponding file descriptor in the process's
-.IR /proc/[pid]/fdinfo
+.IR /proc/ pid /fdinfo
 directory.
 See
 .BR proc (5)
@@ -374,10 +374,10 @@ for further details.
 .SS Limitations
 The signalfd mechanism can't be used to receive signals that
 are synchronously generated, such as the
-.BR SIGSEGV
+.B SIGSEGV
 signal that results from accessing an invalid memory address
 or the
-.BR SIGFPE
+.B SIGFPE
 signal that results from an arithmetic error.
 Such signals can be caught only via signal handler.
 .PP

@@ -132,7 +132,7 @@ By contrast, when creating a mapping using
 .BR MAP_SHARED_VALIDATE ,
 the kernel verifies all passed flags are known and fails the
 mapping with the error
-.BR EOPNOTSUPP
+.B EOPNOTSUPP
 for unknown flags.
 This mapping type is also required to be able to use some mapping flags
 (e.g.,
@@ -245,12 +245,12 @@ If the specified address cannot be used,
 will fail.
 .IP
 Software that aspires to be portable should use the
-.BR MAP_FIXED
+.B MAP_FIXED
 flag with care,
 keeping in mind that the exact layout of a process's memory mappings
 is allowed to change significantly between kernel versions,
 C library versions, and operating system releases.
-.IR "Carefully read the discussion of this flag in NOTES!"
+.I Carefully read the discussion of this flag in NOTES!
 .TP
 .BR MAP_FIXED_NOREPLACE " (since Linux 4.17)"
 .\" commit a4ff8e8620d3f4f50ac4b41e8067b7d395056843
@@ -269,7 +269,7 @@ This flag can therefore be used as a way to atomically
 one thread will succeed; all others will report failure.
 .IP
 Note that older kernels which do not recognize the
-.BR MAP_FIXED_NOREPLACE
+.B MAP_FIXED_NOREPLACE
 flag will typically (upon detecting a collision with a preexisting mapping)
 fall back to a
 .RB \(lqnon- MAP_FIXED \(rq
@@ -343,7 +343,7 @@ plus
 .BR mlock (2)
 when major faults are not acceptable after the initialization of the mapping.
 The
-.BR MAP_LOCKED
+.B MAP_LOCKED
 flag is ignored in older kernels.
 .\" If set, the mapped pages will not be swapped out.
 .TP
@@ -356,12 +356,12 @@ that are already present in RAM.
 Since Linux 2.6.23,
 .\" commit 54cb8821de07f2ffcd28c380ce9b93d5784b40d7
 this flag causes
-.BR MAP_POPULATE
+.B MAP_POPULATE
 to do nothing.
 One day, the combination of
-.BR MAP_POPULATE
+.B MAP_POPULATE
 and
-.BR MAP_NONBLOCK
+.B MAP_NONBLOCK
 may be reimplemented.
 .TP
 .B MAP_NORESERVE
@@ -388,7 +388,7 @@ The
 call doesn't fail if the mapping cannot be populated (for example, due
 to limitations on the number of mapped huge pages when using
 .BR MAP_HUGETLB ).
-.BR MAP_POPULATE
+.B MAP_POPULATE
 is supported for private mappings only since Linux 2.6.23.
 .TP
 .BR MAP_STACK " (since Linux 2.6.27)"
@@ -408,7 +408,7 @@ for stack allocations.
 .\" "pthread_create() slow for many threads; also time to revisit 64b
 .\"  context switch optimization?"
 A further reason to employ this flag is portability:
-.BR MAP_STACK
+.B MAP_STACK
 exists (and has an effect) on some other systems (e.g., some of the BSDs).
 .TP
 .BR MAP_SYNC " (since Linux 4.15)"
@@ -525,13 +525,13 @@ is not a valid file descriptor (and
 was not set).
 .TP
 .B EEXIST
-.BR MAP_FIXED_NOREPLACE
+.B MAP_FIXED_NOREPLACE
 was specified in
 .IR flags ,
 and the range covered by
-.IR addr
+.I addr
 and
-.IR length
+.I length
 clashes with an existing mapping.
 .TP
 .B EINVAL
@@ -730,21 +730,21 @@ Certain
 .I flags
 constants are defined only if suitable feature test macros are defined
 (possibly by default):
-.BR _DEFAULT_SOURCE
+.B _DEFAULT_SOURCE
 with glibc 2.19 or later;
 or
-.BR _BSD_SOURCE
+.B _BSD_SOURCE
 or
-.BR _SVID_SOURCE
+.B _SVID_SOURCE
 in glibc 2.19 and earlier.
 (Employing
-.BR _GNU_SOURCE
+.B _GNU_SOURCE
 also suffices,
 and requiring that macro specifically would have been more logical,
 since these flags are all Linux-specific.)
 The relevant flags are:
 .BR MAP_32BIT ,
-.BR MAP_ANONYMOUS
+.B MAP_ANONYMOUS
 (and the synonym
 .BR MAP_ANON ),
 .BR MAP_DENYWRITE ,
@@ -765,14 +765,14 @@ currently resident in the buffer/page cache using
 .\"
 .SS Using MAP_FIXED safely
 The only safe use for
-.BR MAP_FIXED
+.B MAP_FIXED
 is where the address range specified by
-.IR addr
+.I addr
 and
 .I length
 was previously reserved using another mapping;
 otherwise, the use of
-.BR MAP_FIXED
+.B MAP_FIXED
 is hazardous because it forcibly removes preexisting mappings,
 making it easy for a multithreaded process to corrupt its own address space.
 .PP
@@ -805,7 +805,7 @@ and the PAM libraries
 .UE .
 .PP
 Since Linux 4.17, a multithreaded program can use the
-.BR MAP_FIXED_NOREPLACE
+.B MAP_FIXED_NOREPLACE
 flag to avoid the hazard described above
 when attempting to create a mapping at a fixed address
 that has not been reserved by a preexisting mapping.

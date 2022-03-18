@@ -195,7 +195,7 @@ symbols in shared objects (and their dependencies)
 that were previously opened with
 .BR dlopen ()
 using the
-.BR RTLD_GLOBAL
+.B RTLD_GLOBAL
 flag;
 and definitions in the shared object itself
 (and any dependencies that were loaded for that object).
@@ -232,9 +232,9 @@ call that loads the same shared object with
 may force symbol resolution for a shared object earlier loaded with
 .BR RTLD_LAZY .
 Similarly, an object that was previously opened with
-.BR RTLD_LOCAL
+.B RTLD_LOCAL
 can be promoted to
-.BR RTLD_GLOBAL
+.B RTLD_GLOBAL
 in a subsequent
 .BR dlopen ().
 .PP
@@ -308,7 +308,7 @@ then the object is unloaded
 after first calling any destructors defined for the object.
 (Symbols in this object might be required in another object
 because this object was opened with the
-.BR RTLD_GLOBAL
+.B RTLD_GLOBAL
 flag and one of its symbols satisfied a relocation in another object.)
 .PP
 All shared objects that were automatically loaded when
@@ -384,7 +384,7 @@ The
 .BR RTLD_NOLOAD ,
 .BR RTLD_NODELETE ,
 and
-.BR RTLD_DEEPBIND
+.B RTLD_DEEPBIND
 flags are GNU extensions;
 the first two of these flags are also present on Solaris.
 .SH NOTES
@@ -420,16 +420,16 @@ flag.
 The
 .BR dlmopen ()
 function also can be used to provide better isolation than the
-.BR RTLD_LOCAL
+.B RTLD_LOCAL
 flag.
 In particular, shared objects loaded with
-.BR RTLD_LOCAL
+.B RTLD_LOCAL
 may be promoted to
-.BR RTLD_GLOBAL
+.B RTLD_GLOBAL
 if they are dependencies of another shared object loaded with
 .BR RTLD_GLOBAL .
 Thus,
-.BR RTLD_LOCAL
+.B RTLD_LOCAL
 is insufficient to isolate a loaded shared object except in the (uncommon)
 case where one has explicit control over all shared object dependencies.
 .PP
@@ -467,7 +467,7 @@ A shared object may export multiple constructors and destructors,
 and priorities can be associated with each function
 to determine the order in which they are executed.
 See the
-.BR gcc
+.B gcc
 info pages (under "Function attributes")
 .\" info gcc "C Extensions" "Function attributes"
 for further information.
@@ -495,7 +495,7 @@ command-line option.
 Use of
 .B _init
 and
-.BR _fini
+.B _fini
 is now deprecated in favor of the aforementioned
 constructors and destructors,
 which among other advantages,
@@ -521,13 +521,13 @@ called when a shared object is unloaded.
 These functions are part of the dlopen API, derived from SunOS.
 .SH BUGS
 As at glibc 2.24, specifying the
-.BR RTLD_GLOBAL
+.B RTLD_GLOBAL
 flag when calling
 .BR dlmopen ()
 .\" dlerror(): "invalid mode"
 generates an error.
 Furthermore, specifying
-.BR RTLD_GLOBAL
+.B RTLD_GLOBAL
 when calling
 .BR dlopen ()
 results in a program crash

@@ -40,9 +40,9 @@ argument indicates a command to be applied to the user or
 group ID specified in
 .IR id .
 To initialize the
-.IR cmd
+.I cmd
 argument, use the
-.IR "QCMD(subcmd, type)"
+.I QCMD(subcmd, type)
 macro.
 The
 .I type
@@ -83,20 +83,20 @@ argument is the identification number of the quota format to be used.
 Currently, there are three supported quota formats:
 .RS
 .TP 13
-.BR QFMT_VFS_OLD
+.B QFMT_VFS_OLD
 The original quota format.
 .TP
-.BR QFMT_VFS_V0
+.B QFMT_VFS_V0
 The standard VFS v0 quota format, which can handle 32-bit UIDs and GIDs
 and quota limits up to 2^42 bytes and 2^32 inodes.
 .TP
-.BR QFMT_VFS_V1
+.B QFMT_VFS_V1
 A quota format that can handle 32-bit UIDs and GIDs
 and quota limits of 2^63 - 1 bytes and 2^63 - 1 inodes.
 .RE
 .IP
 The
-.IR addr
+.I addr
 argument points to the pathname of a file containing the quotas for
 the filesystem.
 The quota file must exist; it is normally created with the
@@ -141,7 +141,7 @@ The
 argument is a pointer to a
 .I dqblk
 structure defined in
-.IR <sys/quota.h>
+.I <sys/quota.h>
 as follows:
 .IP
 .in +4n
@@ -205,7 +205,7 @@ can retrieve the quotas of any user.
 This operation is the same as
 .BR Q_GETQUOTA ,
 but it returns quota information for the next ID greater than or equal to
-.IR id
+.I id
 that has a quota set.
 .IP
 The
@@ -264,7 +264,7 @@ argument should be a pointer to a
 .I dqinfo
 structure.
 This structure is defined in
-.IR <sys/quota.h>
+.I <sys/quota.h>
 as follows:
 .IP
 .in +4n
@@ -503,7 +503,7 @@ but it returns (in the
 structure pointed by
 .IR addr )
 quota information for the next ID greater than or equal to
-.IR id
+.I id
 that has a quota set.
 Note that since
 .I fs_disk_quota
@@ -769,7 +769,7 @@ is
 or
 .BR Q_XGETNEXTQUOTA ,
 but there is no ID greater than or equal to
-.IR id
+.I id
 that has an active quota.
 .SH NOTES
 Instead of

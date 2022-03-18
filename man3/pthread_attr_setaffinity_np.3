@@ -38,7 +38,7 @@ The
 function
 returns the CPU affinity mask attribute of the thread attributes object
 referred to by
-.IR attr
+.I attr
 in the buffer pointed to by
 .IR cpuset .
 .PP
@@ -59,12 +59,12 @@ On success, these functions return 0;
 on error, they return a nonzero error number.
 .SH ERRORS
 .TP
-.BR EINVAL
+.B EINVAL
 .RB ( pthread_attr_setaffinity_np ())
 .I cpuset
 specified a CPU that was outside the set supported by the kernel.
 (The kernel configuration option
-.BR CONFIG_NR_CPUS
+.B CONFIG_NR_CPUS
 defines the range of the set supported by the kernel data type
 .\" cpumask_t
 used to represent CPU sets.)
@@ -76,7 +76,7 @@ used to represent CPU sets.)
 A CPU in the affinity mask of the thread attributes object referred to by
 .I attr
 lies outside the range specified by
-.IR cpusetsize
+.I cpusetsize
 (i.e.,
 .IR cpuset / cpusetsize
 is too small).

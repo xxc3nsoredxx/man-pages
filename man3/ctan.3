@@ -2,7 +2,7 @@
 .\"
 .\" SPDX-License-Identifier: GPL-1.0-or-later
 .\"
-.TH CTAN 3 2021-03-22 "" "Linux Programmer's Manual"
+.TH CTAN 3 2021-03-22 GNU "Linux Programmer's Manual"
 .SH NAME
 ctan, ctanf, ctanl \- complex tangent function
 .SH LIBRARY
@@ -12,9 +12,9 @@ Math library
 .nf
 .B #include <complex.h>
 .PP
-.BI "double complex ctan(double complex " z ");"
+.BI "double complex ctan(double complex " z );
 .BI "float complex ctanf(float complex " z );
-.BI "long double complex ctanl(long double complex " z ");"
+.BI "long double complex ctanl(long double complex " z );
 .fi
 .SH DESCRIPTION
 These functions calculate the complex tangent of
@@ -22,9 +22,11 @@ These functions calculate the complex tangent of
 .PP
 The complex tangent function is defined as:
 .PP
-.nf
-    ctan(z) = csin(z) / ccos(z)
-.fi
+.in +4n
+.EX
+ctan(z) = csin(z) / ccos(z)
+.EE
+.in
 .SH VERSIONS
 These functions first appeared in glibc in version 2.1.
 .SH ATTRIBUTES

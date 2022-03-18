@@ -67,12 +67,12 @@ refers to the main thread, then
 can fail because of errors from various underlying calls:
 .BR fopen (3),
 if
-.IR /proc/self/maps
+.I /proc/self/maps
 can't be opened;
 and
 .BR getrlimit (2),
 if the
-.BR RLIMIT_STACK
+.B RLIMIT_STACK
 resource limit is not supported.
 .SH VERSIONS
 This function is available in glibc since version 2.2.3.

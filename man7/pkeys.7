@@ -25,7 +25,7 @@ Protection keys work in conjunction with the existing
 .BR PROT_READ ,
 .BR PROT_WRITE ,
 and
-.BR PROT_EXEC
+.B PROT_EXEC
 permissions passed to system calls such as
 .BR mprotect (2)
 and
@@ -35,7 +35,7 @@ mechanisms.
 .PP
 If a process performs an access that violates pkey
 restrictions, it receives a
-.BR SIGSEGV
+.B SIGSEGV
 signal.
 See
 .BR sigaction (2)
@@ -73,7 +73,7 @@ called on them because it would have processor or memory performance
 implications to perform the additional checks needed to disallow it.
 Implementation of the necessary checks is left up to applications.
 Applications may implement these checks by searching the
-.IR /proc/[pid]/smaps
+.IR /proc/ pid /smaps
 file for memory regions with the pkey assigned.
 Further details can be found in
 .BR proc (5).
@@ -99,7 +99,7 @@ instruction.
 Details of how to do this can be found in the Intel Software
 Developers Manual.
 The kernel performs this enumeration and exposes the information in
-.IR /proc/cpuinfo
+.I /proc/cpuinfo
 under the "flags" field.
 The string "pku" in this field indicates hardware support for protection
 keys and the string "ospke" indicates that the kernel contains and has
@@ -141,7 +141,7 @@ and
 .PP
 The Linux pkey system calls are available only if the kernel was
 configured and built with the
-.BR CONFIG_X86_INTEL_MEMORY_PROTECTION_KEYS
+.B CONFIG_X86_INTEL_MEMORY_PROTECTION_KEYS
 option.
 .SH EXAMPLES
 The program below allocates a page of memory with read and write permissions.

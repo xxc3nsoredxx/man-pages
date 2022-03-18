@@ -193,7 +193,7 @@ set to
 Unless
 .B MSG_COPY
 is specified in
-.IR msgflg
+.I msgflg
 (see below),
 the
 .I msgtyp
@@ -253,14 +253,14 @@ the call fails immediately with the error
 Because they alter the meaning of
 .I msgtyp
 in orthogonal ways,
-.BR MSG_COPY
+.B MSG_COPY
 and
-.BR MSG_EXCEPT
+.B MSG_EXCEPT
 may not both be specified in
 .IR msgflg .
 .IP
 The
-.BR MSG_COPY
+.B MSG_COPY
 flag was added for the implementation of
 the kernel checkpoint-restore facility and
 is available only if the kernel was built with the
@@ -420,7 +420,7 @@ but not
 .BR EINVAL " (since Linux 3.14)"
 .I msgflg
 specified both
-.BR MSG_COPY
+.B MSG_COPY
 and
 .BR MSG_EXCEPT .
 .TP
@@ -504,7 +504,7 @@ In Linux 3.13 and earlier,
 if
 .BR msgrcv ()
 was called with the
-.BR MSG_COPY
+.B MSG_COPY
 flag, but without
 .BR IPC_NOWAIT ,
 and the message queue contained less than

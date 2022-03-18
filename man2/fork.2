@@ -115,7 +115,7 @@ when its parent terminates.
 The default timer slack value is set to the parent's
 current timer slack value.
 See the description of
-.BR PR_SET_TIMERSLACK
+.B PR_SET_TIMERSLACK
 in
 .BR prctl (2).
 .IP *
@@ -210,7 +210,7 @@ There are a number of limits that may trigger this error:
 .RS
 .IP * 3
 the
-.BR RLIMIT_NPROC
+.B RLIMIT_NPROC
 soft resource limit (set via
 .BR setrlimit (2)),
 which limits the number of processes and threads for a real user ID,
@@ -234,7 +234,7 @@ imposed by the cgroup "process number" (PIDs) controller was reached.
 .TP
 .B EAGAIN
 The caller is operating under the
-.BR SCHED_DEADLINE
+.B SCHED_DEADLINE
 scheduling policy and does not have the reset-on-fork flag set.
 See
 .BR sched (7).

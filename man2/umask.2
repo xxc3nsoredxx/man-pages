@@ -55,7 +55,11 @@ and permission bits absent in the
 argument are turned off.
 For example, the following default ACL is equivalent to a umask of 022:
 .PP
-    u::rwx,g::r-x,o::r-x
+.in +4n
+.EX
+u::rwx,g::r-x,o::r-x
+.EE
+.in
 .PP
 Combining the effect of this default ACL with a
 .I mode
@@ -116,9 +120,9 @@ for races in multithreaded programs.
 Since Linux 4.7, the umask of any process can be viewed via the
 .I Umask
 field of
-.IR /proc/[pid]/status .
+.IR /proc/ pid /status .
 Inspecting this field in
-.IR /proc/self/status
+.I /proc/self/status
 allows a process to retrieve its umask without at the same time changing it.
 .PP
 The umask setting also affects the permissions assigned to POSIX IPC objects

@@ -98,7 +98,7 @@ This can provide I/O performance benefits for applications that do not care
 about the accuracy of this timestamp.
 This flag provides functionality similar to the
 .BR mount (2)
-.BR MS_NOATIME
+.B MS_NOATIME
 flag, but on a per-file basis.
 .\" .TP
 .\" .BR FS_NOCOMP_FL " \(aq\(aq"
@@ -141,10 +141,10 @@ is surprisingly difficult.
 Make file updates synchronous.
 For files, this makes all writes synchronous
 (as though all opens of the file were with the
-.BR O_SYNC
+.B O_SYNC
 flag).
 For directories, this has the same effect as the
-.BR FS_DIRSYNC_FL
+.B FS_DIRSYNC_FL
 flag.
 .TP
 .BR FS_TOPDIR_FL " \(aqT\(aq"
@@ -174,23 +174,23 @@ which is inherited only by subdirectories.
 Inode flags are a nonstandard Linux extension.
 .SH NOTES
 In order to change the inode flags of a file using the
-.BR FS_IOC_SETFLAGS
+.B FS_IOC_SETFLAGS
 operation,
 the effective user ID of the caller must match the owner of the file,
 or the caller must have the
-.BR CAP_FOWNER
+.B CAP_FOWNER
 capability.
 .PP
 The type of the argument given to the
-.BR FS_IOC_GETFLAGS
+.B FS_IOC_GETFLAGS
 and
-.BR FS_IOC_SETFLAGS
+.B FS_IOC_SETFLAGS
 operations is
-.IR "int\ *" ,
+.IR int\~* ,
 notwithstanding the implication in the kernel source file
 .I include/uapi/linux/fs.h
 that the argument is
-.IR "long\ *" .
+.IR long\~* .
 .SH SEE ALSO
 .BR chattr (1),
 .BR lsattr (1),

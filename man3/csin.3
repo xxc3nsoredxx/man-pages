@@ -2,7 +2,7 @@
 .\"
 .\" SPDX-License-Identifier: GPL-1.0-or-later
 .\"
-.TH CSIN 3 2021-03-22 "" "Linux Programmer's Manual"
+.TH CSIN 3 2021-03-22 GNU "Linux Programmer's Manual"
 .SH NAME
 csin, csinf, csinl \- complex sine function
 .SH LIBRARY
@@ -12,9 +12,9 @@ Math library
 .nf
 .B #include <complex.h>
 .PP
-.BI "double complex csin(double complex " z ");"
+.BI "double complex csin(double complex " z );
 .BI "float complex csinf(float complex " z );
-.BI "long double complex csinl(long double complex " z ");"
+.BI "long double complex csinl(long double complex " z );
 .fi
 .SH DESCRIPTION
 These functions calculate the complex sine of
@@ -22,9 +22,11 @@ These functions calculate the complex sine of
 .PP
 The complex sine function is defined as:
 .PP
-.nf
-    csin(z) = (exp(i * z) \- exp(\-i * z)) / (2 * i)
-.fi
+.in +4n
+.EX
+csin(z) = (exp(i * z) \- exp(\-i * z)) / (2 * i)
+.EE
+.in
 .SH VERSIONS
 These functions first appeared in glibc in version 2.1.
 .SH ATTRIBUTES

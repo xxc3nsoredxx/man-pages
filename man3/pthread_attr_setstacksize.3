@@ -48,7 +48,7 @@ can fail with the following error:
 .TP
 .B EINVAL
 The stack size is less than
-.BR PTHREAD_STACK_MIN
+.B PTHREAD_STACK_MIN
 (16384) bytes.
 .PP
 On some systems,
@@ -97,7 +97,7 @@ As at glibc 2.8,
 if the specified
 .I stacksize
 is not a multiple of
-.BR STACK_ALIGN
+.B STACK_ALIGN
 (16 bytes on most architectures), it may be rounded
 .IR downward ,
 in violation of POSIX.1, which says that the allocated stack will

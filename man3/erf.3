@@ -50,8 +50,12 @@ Feature Test Macro Requirements for glibc (see
 These functions return the error function of
 .IR x ,
 defined as
-.TP
-    erf(x) = 2/sqrt(pi) * integral from 0 to x of exp(\-t*t) dt
+.PP
+.in +4n
+.EX
+erf(x) = 2/sqrt(pi) * integral from 0 to x of exp(\-t*t) dt
+.EE
+.in
 .SH RETURN VALUE
 On success, these functions return the value of the error function of
 .IR x ,

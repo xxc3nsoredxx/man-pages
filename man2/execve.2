@@ -45,7 +45,8 @@ starting with a line of the form:
 .PP
 For details of the latter case, see "Interpreter scripts" below.
 .PP
-\fIargv\fP is an array of pointers to strings passed to the new program
+.I argv
+is an array of pointers to strings passed to the new program
 as its command-line arguments.
 By convention, the first of these strings (i.e.,
 .IR argv[0] )
@@ -54,11 +55,13 @@ The
 .I argv
 array must be terminated by a NULL pointer.
 (Thus, in the new program,
-.IR argv[argc]
+.I argv[argc]
 will be NULL.)
 .PP
-\fIenvp\fP is an array of pointers to strings, conventionally of the form
-\fBkey=value\fP, which are passed as the environment of the new program.
+.I envp
+is an array of pointers to strings, conventionally of the form
+.BR key=value ,
+which are passed as the environment of the new program.
 The
 .I envp
 array must be terminated by a NULL pointer.
@@ -200,12 +203,12 @@ or a program with capabilities is being executed,
 in which case the dumpable flag may instead be reset to the value in
 .IR /proc/sys/fs/suid_dumpable ,
 in the circumstances described under
-.BR PR_SET_DUMPABLE
+.B PR_SET_DUMPABLE
 in
 .BR prctl (2).
 Note that changes to the "dumpable" attribute may cause ownership
 of files in the process's
-.IR /proc/[pid]
+.IR /proc/ pid
 directory to change to
 .IR root:root ,
 as described in
@@ -340,7 +343,7 @@ argument of
 starting at
 .IR argv[1] .
 Note that there is no way to get the
-.IR argv[0]
+.I argv[0]
 that was passed to the
 .BR execve ()
 call.
@@ -411,7 +414,7 @@ of the kernel constant
 Since Linux 2.6.25,
 the kernel also places a floor of 32 pages on this size limit,
 so that, even when
-.BR RLIMIT_STACK
+.B RLIMIT_STACK
 is set very low,
 applications are guaranteed to have at least as much argument and
 environment space as was provided by Linux 2.6.22 and earlier.
@@ -456,7 +459,7 @@ The filesystem is mounted
 Having changed its real UID using one of the
 .BR set*uid ()
 calls, the caller was\(emand is now still\(emabove its
-.BR RLIMIT_NPROC
+.B RLIMIT_NPROC
 resource limit (see
 .BR setrlimit (2)).
 For a more detailed explanation of this error, see NOTES.
@@ -606,7 +609,7 @@ POSIX.1 says that values returned by
 .BR sysconf (3)
 should be invariant over the lifetime of a process.
 However, since Linux 2.6.23, if the
-.BR RLIMIT_STACK
+.B RLIMIT_STACK
 resource limit changes, then the value reported by
 .B _SC_ARG_MAX
 will also change,
@@ -625,7 +628,7 @@ the original executable image has been torn down,
 but the new image could not be completely built.
 In such cases, the kernel kills the process with a
 .\" commit 19d860a140beac48a1377f179e693abe86a9dac9
-.BR SIGSEGV
+.B SIGSEGV
 .RB ( SIGKILL
 until Linux 3.17)
 signal.
@@ -671,13 +674,13 @@ ignores the set-user-ID and set-group-ID bits on scripts.
 .\" ELF binary. There are no known problems with 2.0.34 or 2.2.15.
 .SS execve() and EAGAIN
 A more detailed explanation of the
-.BR EAGAIN
+.B EAGAIN
 error that can occur (since Linux 3.1) when calling
 .BR execve ()
 is as follows.
 .PP
 The
-.BR EAGAIN
+.B EAGAIN
 error can occur when a
 .I preceding
 call to
@@ -687,7 +690,7 @@ or
 .BR setresuid (2)
 caused the real user ID of the process to change,
 and that change caused the process to exceed its
-.BR RLIMIT_NPROC
+.B RLIMIT_NPROC
 resource limit (i.e., the number of processes belonging
 to the new real UID exceeds the resource limit).
 From Linux 2.6.0 to 3.0, this caused the
@@ -710,17 +713,17 @@ calls now successfully change the real UID,
 but the kernel sets an internal flag, named
 .BR PF_NPROC_EXCEEDED ,
 to note that the
-.BR RLIMIT_NPROC
+.B RLIMIT_NPROC
 resource limit has been exceeded.
 If the
-.BR PF_NPROC_EXCEEDED
+.B PF_NPROC_EXCEEDED
 flag is set and the resource limit is still
 exceeded at the time of a subsequent
 .BR execve ()
 call, that call fails with the error
 .BR EAGAIN .
 This kernel logic ensures that the
-.BR RLIMIT_NPROC
+.B RLIMIT_NPROC
 resource limit is still enforced for the
 common privileged daemon workflow\(emnamely,
 .BR fork (2)
@@ -739,7 +742,7 @@ call and the
 call), then the
 .BR execve ()
 call succeeds and the kernel clears the
-.BR PF_NPROC_EXCEEDED
+.B PF_NPROC_EXCEEDED
 process flag.
 The flag is also cleared if a subsequent call to
 .BR fork (2)

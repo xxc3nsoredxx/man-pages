@@ -170,7 +170,7 @@ While processing the option list,
 .BR getopt ()
 can detect two kinds of errors:
 (1) an option character that was not specified in
-.IR optstring
+.I optstring
 and (2) a missing option argument
 (i.e., an option at the end of the command line without an expected argument).
 Such errors are handled and reported as follows:
@@ -183,14 +183,14 @@ places the erroneous option character in
 and returns \(aq?\(aq as the function result.
 .IP *
 If the caller has set the global variable
-.IR opterr
+.I opterr
 to zero, then
 .BR getopt ()
 does not print an error message.
 The caller can determine that there was an error by testing whether
 the function return value is \(aq?\(aq.
 (By default,
-.IR opterr
+.I opterr
 has a nonzero value.)
 .IP *
 If the first character

@@ -134,16 +134,16 @@ possible root devices in major/minor format is also accepted.
 is major 8, minor 3, so you could use 'root=0x803' as an
 alternative.)
 .TP
-.BR "'rootdelay='"
+.B 'rootdelay='
 This parameter sets the delay (in seconds) to pause before attempting
 to mount the root filesystem.
 .TP
-.BR "'rootflags=...'"
+.B 'rootflags=...'
 This parameter sets the mount option string for the root filesystem
 (see also
 .BR fstab (5)).
 .TP
-.BR "'rootfstype=...'"
+.B 'rootfstype=...'
 The 'rootfstype' option tells the kernel to mount the root filesystem as
 if it where of the type specified.
 This can be useful (for example) to
@@ -255,7 +255,7 @@ This boot argument will cause the kernel to also
 print messages logged at level
 .BR KERN_DEBUG .
 The console loglevel can also be set on a booted system via the
-.IR /proc/sys/kernel/printk
+.I /proc/sys/kernel/printk
 file (described in
 .BR syslog (2)),
 the
@@ -313,7 +313,7 @@ a 'ramdisk=N' parameter to tell its size.
 These days ram disks use the buffer cache, and grow dynamically.
 For a lot of information on the current ramdisk
 setup, see the kernel source file
-.IR Documentation/blockdev/ramdisk.txt
+.I Documentation/blockdev/ramdisk.txt
 .RI ( Documentation/ramdisk.txt
 in older kernels).
 .IP
@@ -597,7 +597,7 @@ The sound driver can also accept boot arguments to override the compiled-in
 values.
 This is not recommended, as it is rather complex.
 It is described in the Linux kernel source file
-.IR Documentation/sound/oss/README.OSS
+.I Documentation/sound/oss/README.OSS
 .RI ( drivers/sound/Readme.linux
 in older kernel versions).
 It accepts

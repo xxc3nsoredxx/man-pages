@@ -51,21 +51,21 @@ Currently, Linux supports the following "normal"
 (i.e., non-real-time) scheduling policies as values that may be specified in
 .IR policy :
 .TP 14
-.BR SCHED_OTHER
+.B SCHED_OTHER
 the standard round-robin time-sharing policy;
 .\" In the 2.6 kernel sources, SCHED_OTHER is actually called
 .\" SCHED_NORMAL.
 .TP
-.BR SCHED_BATCH
+.B SCHED_BATCH
 for "batch" style execution of processes; and
 .TP
-.BR SCHED_IDLE
+.B SCHED_IDLE
 for running
 .I very
 low priority background jobs.
 .PP
 For each of the above policies,
-.IR param\->sched_priority
+.I param\->sched_priority
 must be 0.
 .PP
 Various "real-time" policies are also supported,
@@ -74,17 +74,17 @@ the way in which runnable threads are selected for execution.
 For the rules governing when a process may use these policies, see
 .BR sched (7).
 The real-time policies that may be specified in
-.IR policy
+.I policy
 are:
 .TP 14
-.BR SCHED_FIFO
+.B SCHED_FIFO
 a first-in, first-out policy; and
 .TP
-.BR SCHED_RR
+.B SCHED_RR
 a round-robin policy.
 .PP
 For each of the above policies,
-.IR param\->sched_priority
+.I param\->sched_priority
 specifies a scheduling priority for the thread.
 This is a number in the range returned by calling
 .BR sched_get_priority_min (2)

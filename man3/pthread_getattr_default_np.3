@@ -32,11 +32,11 @@ Note the following details about the supplied attributes object:
 The attribute settings in the object must be valid.
 .IP *
 The
-.IR "stack address"
+.I stack address
 attribute must not be set in the object.
 .IP *
 Setting the
-.IR "stack size"
+.I stack size
 attribute to zero means leave the default stack size unchanged.
 .PP
 The
@@ -49,7 +49,7 @@ so that it contains the default attributes used for thread creation.
 .B EINVAL
 .RB ( pthread_setattr_default_np ())
 One of the attribute settings in
-.IR attr
+.I attr
 is invalid, or the stack address attribute is set in
 .IR attr .
 .TP

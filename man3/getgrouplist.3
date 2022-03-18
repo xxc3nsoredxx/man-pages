@@ -79,7 +79,7 @@ groups, then
 .BR getgrouplist ()
 returns \-1.
 In this case, the value returned in
-.IR *ngroups
+.I *ngroups
 can be used to resize the buffer passed to a further call to
 .BR getgrouplist ().
 .SH VERSIONS
@@ -107,7 +107,7 @@ This function is nonstandard; it appears on most BSDs.
 In glibc versions before 2.3.3,
 the implementation of this function contains a buffer-overrun bug:
 it returns the complete list of groups for
-.IR user
+.I user
 in the array
 .IR groups ,
 even when the number of groups exceeds

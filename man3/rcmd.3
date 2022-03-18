@@ -112,10 +112,10 @@ residing at the well-known Internet port
 .PP
 If the connection succeeds,
 a socket in the Internet domain of type
-.BR SOCK_STREAM
+.B SOCK_STREAM
 is returned to the caller, and given to the remote
 command as
-.IR stdin
+.I stdin
 and
 .IR stdout .
 If
@@ -131,10 +131,10 @@ forwarded to the process group of the command.
 If
 .I fd2p
 is 0, then the
-.IR stderr
+.I stderr
 (unit 2 of the remote
 command) will be made the same as the
-.IR stdout
+.I stdout
 and no
 provision is made for sending arbitrary signals to the remote process,
 although you may be able to get its attention by using out-of-band data.
@@ -175,10 +175,10 @@ name is that of the superuser.
 Then, if the user is
 .I not
 the superuser, it checks the
-.IR /etc/hosts.equiv
+.I /etc/hosts.equiv
 file.
 If that lookup is not done, or is unsuccessful, the
-.IR .rhosts
+.I .rhosts
 in the local user's home directory is checked to see if the request for
 service is allowed.
 .PP
@@ -186,9 +186,9 @@ If this file does not exist, is not a regular file, is owned by anyone
 other than the user or the superuser, is writable by anyone other
 than the owner, or is hardlinked anywhere, the check automatically fails.
 Zero is returned if the machine name is listed in the
-.IR hosts.equiv
+.I hosts.equiv
 file, or the host and remote username are found in the
-.IR .rhosts
+.I .rhosts
 file; otherwise
 .BR iruserok ()
 and
@@ -212,7 +212,7 @@ socket address family to be specified.
 For these functions, the
 .I af
 argument can be specified as
-.BR AF_INET
+.B AF_INET
 or
 .BR AF_INET6 .
 In addition,
@@ -234,7 +234,7 @@ On failure, it returns \-1 and sets
 .I errno
 to indicate the error.
 The error code
-.BR EAGAIN
+.B EAGAIN
 is overloaded to mean: "All network ports in use".
 .PP
 For information on the return from

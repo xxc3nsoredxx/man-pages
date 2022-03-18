@@ -156,10 +156,10 @@ or
 .BR sigtimedwait (),
 can't be used to receive signals that
 are synchronously generated, such as the
-.BR SIGSEGV
+.B SIGSEGV
 signal that results from accessing an invalid memory address
 or the
-.BR SIGFPE
+.B SIGFPE
 signal that results from an arithmetic error.
 Such signals can be caught only via signal handler.
 .PP
@@ -197,14 +197,14 @@ type supported by that system call was no longer fit for purpose.
 Consequently, a new system call,
 .BR rt_sigtimedwait (),
 was added to support an enlarged
-.IR sigset_t
+.I sigset_t
 type.
 The new system call takes a fourth argument,
 .IR "size_t sigsetsize" ,
 which specifies the size in bytes of the signal set in
 .IR set .
 This argument is currently required to have the value
-.IR sizeof(sigset_t)
+.I sizeof(sigset_t)
 (or the error
 .B EINVAL
 results).

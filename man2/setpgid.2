@@ -129,7 +129,11 @@ and
 .IR pgid ,
 is a wrapper function that calls
 .PP
-    setpgid(pid, pgid)
+.in +4n
+.EX
+setpgid(pid, pgid)
+.EE
+.in
 .PP
 .\" The true BSD setpgrp() system call differs in allowing the PGID
 .\" to be set to arbitrary values, rather than being restricted to
@@ -148,7 +152,11 @@ call, which takes a single
 .I pid
 argument, is a wrapper function that calls
 .PP
-    getpgid(pid)
+.in +4n
+.EX
+getpgid(pid)
+.EE
+.in
 .PP
 Since glibc 2.19, the BSD-specific
 .BR getpgrp ()

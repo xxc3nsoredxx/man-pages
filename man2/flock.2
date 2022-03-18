@@ -238,7 +238,7 @@ and
 locks interact with one another.
 Another important side-effect is that the locks are not advisory anymore:
 any IO on a locked file will always fail with
-.BR EACCES
+.B EACCES
 when done from a separate file descriptor.
 This difference originates from the design of locks in the SMB protocol,
 which provides mandatory locking semantics.

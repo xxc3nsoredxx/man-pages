@@ -17,7 +17,7 @@ Standard C library
 .SH SYNOPSIS
 .nf
 .BR "#define _GNU_SOURCE" "         /* See feature_test_macros(7) */"
-.BI "#include <sys/socket.h>"
+.B #include <sys/socket.h>
 .PP
 .BI "int recvmmsg(int " sockfd ", struct mmsghdr *" msgvec \
 ", unsigned int " vlen ","
@@ -116,7 +116,7 @@ and returns immediately.
 On return from
 .BR recvmmsg (),
 successive elements of
-.IR msgvec
+.I msgvec
 are updated to contain information about each received message:
 .I msg_len
 contains the size of the received message;

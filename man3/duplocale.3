@@ -74,7 +74,11 @@ This is done by applying
 .BR duplocale ()
 to the value returned by the following call:
 .IP
-    loc = uselocale((locale_t) 0);
+.in +4n
+.EX
+loc = uselocale((locale_t) 0);
+.EE
+.in
 .IP
 This technique is necessary, because the above
 .BR uselocale (3)
@@ -85,7 +89,7 @@ which results in undefined behavior if passed to functions such as
 Calling
 .BR duplocale ()
 can be used to ensure that the
-.BR LC_GLOBAL_LOCALE
+.B LC_GLOBAL_LOCALE
 value is converted into a usable locale object.
 See EXAMPLES, below.
 .PP

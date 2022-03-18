@@ -312,13 +312,13 @@ to
 .BR EINVAL .
 Otherwise, a four-byte value is placed in the data buffer.
 This value is the number of elements that can be read from (for
-.IR mbox_stat
+.I mbox_stat
 and
 .IR ibox_stat )
 or written to (for
 .IR wbox_stat )
 the respective mailbox without blocking or returning an
-.BR EAGAIN
+.B EAGAIN
 error.
 .RE
 .TP
@@ -394,7 +394,7 @@ the
 flag.
 .RE
 .TP
-.IR /fpcr
+.I /fpcr
 This file provides access to the Floating Point Status and
 Control Register (fcpr) as a binary, four-byte file.
 The operations on the
@@ -476,17 +476,17 @@ The signal notification register will either be replaced with
 the input data or will be updated to the bitwise OR operation
 of the old value and the input data, depending on the contents
 of the
-.IR signal1_type
+.I signal1_type
 or
-.IR signal2_type
+.I signal2_type
 files respectively.
 .RE
 .TP
 .IR /signal1_type ", " /signal2_type
 These two files change the behavior of the
-.IR signal1
+.I signal1
 and
-.IR signal2
+.I signal2
 notification files.
 They contain a numeric ASCII string which is read
 as either "1" or "0".
@@ -610,7 +610,7 @@ These files are not present on contexts that have been created with the
 .B SPU_CREATE_NOSCHED
 flag.
 .TP
-.IR /cntl
+.I /cntl
 This file provides access to the SPU Run Control and SPU status
 registers, as an ASCII string.
 The following operations are supported:

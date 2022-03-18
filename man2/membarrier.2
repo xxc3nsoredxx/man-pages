@@ -103,7 +103,7 @@ previously registered with
 .IP
 Given that registration is about the intent to receive the barriers, it
 is valid to invoke
-.BR MEMBARRIER_CMD_GLOBAL_EXPEDITED
+.B MEMBARRIER_CMD_GLOBAL_EXPEDITED
 from a process that has not employed
 .BR MEMBARRIER_CMD_REGISTER_GLOBAL_EXPEDITED .
 .IP
@@ -112,7 +112,7 @@ they never block, but have the downside of causing extra overhead.
 .TP
 .BR MEMBARRIER_CMD_REGISTER_GLOBAL_EXPEDITED " (since Linux 4.16)"
 Register the process's intent to receive
-.BR MEMBARRIER_CMD_GLOBAL_EXPEDITED
+.B MEMBARRIER_CMD_GLOBAL_EXPEDITED
 memory barriers.
 .TP
 .BR MEMBARRIER_CMD_PRIVATE_EXPEDITED " (since Linux 4.14)"
@@ -180,7 +180,7 @@ Register the process's intent to use
 .TP
 .BR MEMBARRIER_CMD_SHARED " (since Linux 4.3)"
 This is an alias for
-.BR MEMBARRIER_CMD_GLOBAL
+.B MEMBARRIER_CMD_GLOBAL
 that exists for header backward compatibility.
 .PP
 The
@@ -257,13 +257,13 @@ set to 0, error handling is required only for the first call to
 is invalid, or
 .I flags
 is nonzero, or the
-.BR MEMBARRIER_CMD_GLOBAL
+.B MEMBARRIER_CMD_GLOBAL
 command is disabled because the
 .I nohz_full
 CPU parameter has been set, or the
-.BR MEMBARRIER_CMD_PRIVATE_EXPEDITED_SYNC_CORE
+.B MEMBARRIER_CMD_PRIVATE_EXPEDITED_SYNC_CORE
 and
-.BR MEMBARRIER_CMD_REGISTER_PRIVATE_EXPEDITED_SYNC_CORE
+.B MEMBARRIER_CMD_REGISTER_PRIVATE_EXPEDITED_SYNC_CORE
 commands are not implemented by the architecture.
 .TP
 .B ENOSYS

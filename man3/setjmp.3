@@ -2,7 +2,7 @@
 .\"
 .\" SPDX-License-Identifier: GPL-2.0-or-later
 .\"
-.TH SETJMP 3 2021-03-22 "" "Linux Programmer's Manual"
+.TH SETJMP 3 2021-03-22 GNU "Linux Programmer's Manual"
 .SH NAME
 setjmp, sigsetjmp, longjmp, siglongjmp  \- performing a nonlocal goto
 .SH LIBRARY
@@ -48,7 +48,7 @@ function saves various information about the calling environment
 (typically, the stack pointer, the instruction pointer,
 possibly the values of other registers and the signal mask)
 in the buffer
-.IR env
+.I env
 for later use by
 .BR longjmp ().
 In this case,
@@ -58,7 +58,7 @@ returns 0.
 The
 .BR longjmp ()
 function uses the information saved in
-.IR env
+.I env
 to transfer control back to the point where
 .BR setjmp ()
 was called and to restore ("rewind") the stack to its state at the time of the
@@ -164,7 +164,7 @@ On Linux with glibc versions before 2.19,
 .BR setjmp ()
 follows the System V behavior by default,
 but the BSD behavior is provided if the
-.BR _BSD_SOURCE
+.B _BSD_SOURCE
 feature test macro is explicitly defined
 .\" so that _FAVOR_BSD is triggered
 and none of
@@ -177,7 +177,7 @@ or
 .B _SVID_SOURCE
 is defined.
 Since glibc 2.19,
-.IR <setjmp.h>
+.I <setjmp.h>
 exposes only the System V version of
 .BR setjmp ().
 Programs that need the BSD semantics should replace calls to
@@ -236,7 +236,7 @@ allow the programmer to easily perceive the flow of control.
 Nonlocal gotos provide no such cues: multiple
 .BR setjmp ()
 calls might employ the same
-.IR jmp_buf
+.I jmp_buf
 variable so that the content of the variable may change
 over the lifetime of the application.
 Consequently, the programmer may be forced to perform detailed
@@ -246,7 +246,7 @@ call.
 (To make the programmer's life easier, each
 .BR setjmp ()
 call should employ a unique
-.IR jmp_buf
+.I jmp_buf
 variable.)
 .PP
 Adding further difficulty, the

@@ -557,7 +557,7 @@ argument.
 .TP
 .B Z
 A nonstandard synonym for
-.BR z
+.B z
 that predates the appearance of
 .BR z .
 Do not use in new code.
@@ -607,11 +607,11 @@ As a nonstandard extension, the GNU implementations treats
 and
 .B L
 as synonyms, so that one can, for example, write
-.BR llg
+.B llg
 (as a synonym for the standards-compliant
 .BR Lg )
 and
-.BR Ld
+.B Ld
 (as a synonym for the standards compliant
 .BR lld ).
 Such usage is nonportable.
@@ -982,7 +982,11 @@ with C99.
 .SH NOTES
 Some programs imprudently rely on code such as the following
 .PP
-    sprintf(buf, "%s some further text", buf);
+.in +4n
+.EX
+sprintf(buf, "%s some further text", buf);
+.EE
+.in
 .PP
 to append text to
 .IR buf .

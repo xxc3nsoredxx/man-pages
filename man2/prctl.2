@@ -98,7 +98,7 @@ call returns 1 if the capability in
 .I arg3
 is in the ambient set and 0 if it is not.
 .TP
-.BR PR_CAP_AMBIENT_CLEAR_ALL
+.B PR_CAP_AMBIENT_CLEAR_ALL
 All capabilities will be removed from the ambient set.
 This operation requires setting
 .I arg3
@@ -157,11 +157,11 @@ The call fails with the error:
 .B EPERM
 if the calling thread does not have the
 .BR CAP_SETPCAP ;
-.BR EINVAL
+.B EINVAL
 if
 .I arg2
 does not represent a valid capability; or
-.BR EINVAL
+.B EINVAL
 if file capabilities are not enabled in the kernel,
 in which case bounding sets are not supported.
 .IP
@@ -193,7 +193,7 @@ Subsequently, calls to
 in the orphaned process will now return the PID of the subreaper process,
 and when the orphan terminates, it is the subreaper process that
 will receive a
-.BR SIGCHLD
+.B SIGCHLD
 signal and will be able to
 .BR wait (2)
 on the process to discover its termination status.
@@ -221,7 +221,7 @@ employ a subreaper process for similar reasons.
 .BR PR_GET_CHILD_SUBREAPER " (since Linux 3.4)"
 Return the "child subreaper" setting of the caller,
 in the location pointed to by
-.IR "(int\ *) arg2" .
+.IR "(int\~*) arg2" .
 .\" prctl PR_SET_DUMPABLE
 .TP
 .BR PR_SET_DUMPABLE " (since Linux 2.3.20)"
@@ -253,7 +253,7 @@ in
 .IP
 Normally, the "dumpable" attribute is set to 1.
 However, it is reset to the current value contained in the file
-.IR /proc/sys/fs/\:suid_dumpable
+.I /proc/sys/fs/\:suid_dumpable
 (which by default has the value 0),
 in the following circumstances:
 .\" See kernel/cred.c::commit_creds() (Linux 3.18 sources)
@@ -288,7 +288,7 @@ for further details.
 .IP
 If a process is not dumpable,
 the ownership of files in the process's
-.IR /proc/[pid]
+.IR /proc/ pid
 directory is affected as described in
 .BR proc (5).
 .\" prctl PR_GET_DUMPABLE
@@ -315,7 +315,7 @@ or
 .BR PR_GET_ENDIAN " (since Linux 2.6.18, PowerPC only)"
 Return the endian-ness of the calling process,
 in the location pointed to by
-.IR "(int\ *) arg2" .
+.IR "(int\~*) arg2" .
 .\" prctl PR_SET_FP_MODE
 .TP
 .BR PR_SET_FP_MODE " (since Linux 4.0, only on MIPS)"
@@ -344,7 +344,7 @@ The
 argument is a bit mask describing the floating-point mode used:
 .RS
 .TP
-.BR PR_FP_MODE_FR
+.B PR_FP_MODE_FR
 When this bit is
 .I unset
 (so called
@@ -376,11 +376,11 @@ can operate only when this bit is
 .I set
 .RB ( FR=1 ).
 Applications that use the O32 FPXX ABI can operate with either
-.BR FR=0
+.B FR=0
 or
-.BR FR=1 .
+.B FR=1 .
 .TP
-.BR PR_FP_MODE_FRE
+.B PR_FP_MODE_FRE
 Enable emulation of 32-bit floating-point mode.
 When this mode is enabled,
 it emulates 32-bit floating-point operations
@@ -420,7 +420,7 @@ The arguments
 .IR arg3 ,
 .IR arg4 ,
 and
-.IR arg5
+.I arg5
 are ignored.
 .\" prctl PR_GET_FP_MODE
 .TP
@@ -438,7 +438,7 @@ The arguments
 .IR arg3 ,
 .IR arg4 ,
 and
-.IR arg5
+.I arg5
 are ignored.
 .\" prctl PR_SET_FPEMU
 .TP
@@ -456,7 +456,7 @@ instead.
 .BR PR_GET_FPEMU " (since Linux 2.4.18, 2.5.9, only on ia64)"
 Return floating-point emulation control bits,
 in the location pointed to by
-.IR "(int\ *) arg2" .
+.IR "(int\~*) arg2" .
 .\" prctl PR_SET_FPEXC
 .TP
 .BR PR_SET_FPEXC " (since Linux 2.4.21, 2.5.32, only on PowerPC)"
@@ -476,7 +476,7 @@ Pass \fBPR_FP_EXC_SW_ENABLE\fP to use FPEXC for FP exception enables,
 .BR PR_GET_FPEXC " (since Linux 2.4.21, 2.5.32, only on PowerPC)"
 Return floating-point exception mode,
 in the location pointed to by
-.IR "(int\ *) arg2" .
+.IR "(int\~*) arg2" .
 .\" prctl PR_SET_IO_FLUSHER
 .TP
 .BR PR_SET_IO_FLUSHER " (since Linux 5.6)"
@@ -489,13 +489,13 @@ If \fIarg2\fP is 0, the process will clear the IO_FLUSHER state, and
 the default behavior will be used.
 .IP
 The calling process must have the
-.BR CAP_SYS_RESOURCE
+.B CAP_SYS_RESOURCE
 capability.
 .IP
 .IR arg3 ,
 .IR arg4 ,
 and
-.IR arg5
+.I arg5
 must be zero.
 .IP
 The IO_FLUSHER state is inherited by a child process created via
@@ -514,14 +514,14 @@ A value of 1 indicates that the caller is in the IO_FLUSHER state;
 0 indicates that the caller is not in the IO_FLUSHER state.
 .IP
 The calling process must have the
-.BR CAP_SYS_RESOURCE
+.B CAP_SYS_RESOURCE
 capability.
 .IP
 .IR arg2 ,
 .IR arg3 ,
 .IR arg4 ,
 and
-.IR arg5
+.I arg5
 must be zero.
 .\" prctl PR_SET_KEEPCAPS
 .TP
@@ -577,7 +577,7 @@ In late kill mode, the process is killed only when it accesses a corrupted page.
 See
 .BR sigaction (2)
 for more information on the
-.BR SIGBUS
+.B SIGBUS
 signal.
 The policy is inherited by children.
 The remaining unused
@@ -604,7 +604,7 @@ However, there are cases, such as self-modifying programs,
 where a program might find it useful to change its own memory map.
 .IP
 The calling process must have the
-.BR CAP_SYS_RESOURCE
+.B CAP_SYS_RESOURCE
 capability.
 The value in
 .I arg2
@@ -620,11 +620,11 @@ arguments must be zero if unused.
 Before Linux 3.10,
 .\" commit 52b3694157e3aa6df871e283115652ec6f2d31e0
 this feature is available only if the kernel is built with the
-.BR CONFIG_CHECKPOINT_RESTORE
+.B CONFIG_CHECKPOINT_RESTORE
 option enabled.
 .RS
 .TP
-.BR PR_SET_MM_START_CODE
+.B PR_SET_MM_START_CODE
 Set the address above which the program text can run.
 The corresponding memory area must be readable and executable,
 but not writable or shareable (see
@@ -633,12 +633,12 @@ and
 .BR mmap (2)
 for more information).
 .TP
-.BR PR_SET_MM_END_CODE
+.B PR_SET_MM_END_CODE
 Set the address below which the program text can run.
 The corresponding memory area must be readable and executable,
 but not writable or shareable.
 .TP
-.BR PR_SET_MM_START_DATA
+.B PR_SET_MM_START_DATA
 Set the address above which initialized and
 uninitialized (bss) data are placed.
 The corresponding memory area must be readable and writable,
@@ -650,11 +650,11 @@ uninitialized (bss) data are placed.
 The corresponding memory area must be readable and writable,
 but not executable or shareable.
 .TP
-.BR PR_SET_MM_START_STACK
+.B PR_SET_MM_START_STACK
 Set the start address of the stack.
 The corresponding memory area must be readable and writable.
 .TP
-.BR PR_SET_MM_START_BRK
+.B PR_SET_MM_START_BRK
 Set the address above which the program heap can be expanded with
 .BR brk (2)
 call.
@@ -662,31 +662,31 @@ The address must be greater than the ending address of
 the current program data segment.
 In addition, the combined size of the resulting heap and
 the size of the data segment can't exceed the
-.BR RLIMIT_DATA
+.B RLIMIT_DATA
 resource limit (see
 .BR setrlimit (2)).
 .TP
-.BR PR_SET_MM_BRK
+.B PR_SET_MM_BRK
 Set the current
 .BR brk (2)
 value.
 The requirements for the address are the same as for the
-.BR PR_SET_MM_START_BRK
+.B PR_SET_MM_START_BRK
 option.
 .PP
 The following options are available since Linux 3.5.
 .\" commit fe8c7f5cbf91124987106faa3bdf0c8b955c4cf7
 .TP
-.BR PR_SET_MM_ARG_START
+.B PR_SET_MM_ARG_START
 Set the address above which the program command line is placed.
 .TP
-.BR PR_SET_MM_ARG_END
+.B PR_SET_MM_ARG_END
 Set the address below which the program command line is placed.
 .TP
-.BR PR_SET_MM_ENV_START
+.B PR_SET_MM_ENV_START
 Set the address above which the program environment is placed.
 .TP
-.BR PR_SET_MM_ENV_END
+.B PR_SET_MM_ENV_END
 Set the address below which the program environment is placed.
 .IP
 The address passed with
@@ -694,15 +694,15 @@ The address passed with
 .BR PR_SET_MM_ARG_END ,
 .BR PR_SET_MM_ENV_START ,
 and
-.BR PR_SET_MM_ENV_END
+.B PR_SET_MM_ENV_END
 should belong to a process stack area.
 Thus, the corresponding memory area must be readable, writable, and
 (depending on the kernel configuration) have the
-.BR MAP_GROWSDOWN
+.B MAP_GROWSDOWN
 attribute set (see
 .BR mmap (2)).
 .TP
-.BR PR_SET_MM_AUXV
+.B PR_SET_MM_AUXV
 Set a new auxiliary vector.
 The
 .I arg3
@@ -711,10 +711,10 @@ The
 .I arg4
 is the size of the vector.
 .TP
-.BR PR_SET_MM_EXE_FILE
+.B PR_SET_MM_EXE_FILE
 .\" commit b32dfe377102ce668775f8b6b1461f7ad428f8b6
 Supersede the
-.IR /proc/pid/exe
+.IR /proc/ pid /exe
 symbolic link with a new one pointing to a new executable file
 identified by the file descriptor provided in
 .I arg3
@@ -727,12 +727,12 @@ To change the symbolic link, one needs to unmap all existing
 executable memory areas, including those created by the kernel itself
 (for example the kernel usually creates at least one executable
 memory area for the ELF
-.IR \.text
+.I \.text
 section).
 .IP
 In Linux 4.9 and earlier, the
 .\" commit 3fb4afd9a504c2386b8435028d43283216bf588e
-.BR PR_SET_MM_EXE_FILE
+.B PR_SET_MM_EXE_FILE
 operation can be performed only once in a process's lifetime;
 attempting to perform the operation a second time results in the error
 .BR EPERM .
@@ -744,7 +744,7 @@ user-space applications needed to perform this operation more than once.
 The following options are available since Linux 3.18.
 .\" commit f606b77f1a9e362451aca8f81d8f36a3a112139e
 .TP
-.BR PR_SET_MM_MAP
+.B PR_SET_MM_MAP
 Provides one-shot access to all the addresses by passing in a
 .I struct prctl_mm_map
 (as defined in \fI<linux/prctl.h>\fP).
@@ -753,10 +753,10 @@ The
 argument should provide the size of the struct.
 .IP
 This feature is available only if the kernel is built with the
-.BR CONFIG_CHECKPOINT_RESTORE
+.B CONFIG_CHECKPOINT_RESTORE
 option enabled.
 .TP
-.BR PR_SET_MM_MAP_SIZE
+.B PR_SET_MM_MAP_SIZE
 Returns the size of the
 .I struct prctl_mm_map
 the kernel expects.
@@ -766,7 +766,7 @@ The
 argument should be a pointer to an unsigned int.
 .IP
 This feature is available only if the kernel is built with the
-.BR CONFIG_CHECKPOINT_RESTORE
+.B CONFIG_CHECKPOINT_RESTORE
 option enabled.
 .RE
 .\" prctl PR_MPX_ENABLE_MANAGEMENT
@@ -782,7 +782,7 @@ The
 .IR arg3 ,
 .IR arg4 ,
 and
-.IR arg5
+.I arg5
 .\" commit e9d1b4f3c60997fe197bf0243cb4a41a44387a88
 arguments must be zero.
 .IP
@@ -818,7 +818,7 @@ register.
 .IP
 These calls fail if the CPU or kernel does not support MPX.
 Kernel support for MPX is enabled via the
-.BR CONFIG_X86_INTEL_MPX
+.B CONFIG_X86_INTEL_MPX
 configuration option.
 You can check whether the CPU supports MPX by looking for the
 .I mpx
@@ -841,7 +841,7 @@ inherits the state of MPX management.
 During
 .BR execve (2),
 MPX management is reset to a state as if
-.BR PR_MPX_DISABLE_MANAGEMENT
+.B PR_MPX_DISABLE_MANAGEMENT
 had been called.
 .IP
 For further information on Intel MPX, see the kernel source file
@@ -857,7 +857,7 @@ are not supported in Linux 5.4 and later.
 .BR PR_SET_NAME " (since Linux 2.6.9)"
 Set the name of the calling thread,
 using the value in the location pointed to by
-.IR "(char\ *) arg2" .
+.IR "(char\~*) arg2" .
 The name can be up to 16 bytes long,
 .\" TASK_COMM_LEN in include/linux/sched.h
 including the terminating null byte.
@@ -868,11 +868,11 @@ This is the same attribute that can be set via
 and retrieved using
 .BR pthread_getname_np (3).
 The attribute is likewise accessible via
-.IR /proc/self/task/[tid]/comm
+.IR /proc/self/task/ tid /comm
 (see
 .BR proc (5)),
 where
-.I [tid]
+.I tid
 is the thread ID of the calling thread, as returned by
 .BR gettid (2).
 .\" prctl PR_GET_NAME
@@ -880,7 +880,7 @@ is the thread ID of the calling thread, as returned by
 .BR PR_GET_NAME " (since Linux 2.6.11)"
 Return the name of the calling thread,
 in the buffer pointed to by
-.IR "(char\ *) arg2" .
+.IR "(char\~*) arg2" .
 The buffer should allow space for up to 16 bytes;
 the returned string will be null-terminated.
 .\" prctl PR_SET_NO_NEW_PRIVS
@@ -916,14 +916,14 @@ the value of a thread's
 attribute can be viewed via the
 .I NoNewPrivs
 field in the
-.IR /proc/[pid]/status
+.IR /proc/ pid /status
 file.
 .IP
 For more information, see the kernel source file
-.IR Documentation/userspace\-api/no_new_privs.rst
+.I Documentation/userspace\-api/no_new_privs.rst
 .\" commit 40fde647ccb0ae8c11d256d271e24d385eed595b
 (or
-.IR Documentation/prctl/no_new_privs.txt
+.I Documentation/prctl/no_new_privs.txt
 before Linux 4.13).
 See also
 .BR seccomp (2).
@@ -976,7 +976,7 @@ Since new keys could be added in future,
 this is the recommended way to completely wipe the existing keys
 when establishing a clean execution context.
 Note that there is no need to use
-.BR PR_PAC_RESET_KEYS
+.B PR_PAC_RESET_KEYS
 in preparation for calling
 .BR execve (2),
 since
@@ -1038,7 +1038,7 @@ thread and also upon termination of each subreaper process
 above) to which the caller is subsequently reparented.
 If the parent thread and all ancestor subreapers have already terminated
 by the time of the
-.BR PR_SET_PDEATHSIG
+.B PR_SET_PDEATHSIG
 operation, then no parent-death signal is sent to the caller.
 .IP
 The parent-death signal is process-directed (see
@@ -1073,7 +1073,7 @@ or filesystem group ID.
 .BR PR_GET_PDEATHSIG " (since Linux 2.3.15)"
 Return the current value of the parent process death signal,
 in the location pointed to by
-.IR "(int\ *) arg2" .
+.IR "(int\~*) arg2" .
 .\" prctl PR_SET_PTRACER
 .TP
 .BR PR_SET_PTRACER " (since Linux 3.4)"
@@ -1102,10 +1102,10 @@ the ptrace restrictions introduced by Yama are effectively disabled for the
 calling process.
 .IP
 For further information, see the kernel source file
-.IR Documentation/admin\-guide/LSM/Yama.rst
+.I Documentation/admin\-guide/LSM/Yama.rst
 .\" commit 90bb766440f2147486a2acc3e793d7b8348b0c22
 (or
-.IR Documentation/security/Yama.txt
+.I Documentation/security/Yama.txt
 before Linux 4.13).
 .\" prctl PR_SET_SECCOMP
 .TP
@@ -1173,7 +1173,7 @@ call will cause a
 signal to be sent to the process.
 If the caller is in filter mode, and this system call is allowed by the
 seccomp filters, it returns 2; otherwise, the process is killed with a
-.BR SIGKILL
+.B SIGKILL
 signal.
 .IP
 This operation is available only
@@ -1182,9 +1182,9 @@ if the kernel is configured with
 enabled.
 .IP
 Since Linux 3.8, the
-.IR Seccomp
+.I Seccomp
 field of the
-.IR /proc/[pid]/status
+.IR /proc/ pid /status
 file provides a method of obtaining the same information,
 without the risk that the process is killed; see
 .BR proc (5).
@@ -1209,24 +1209,24 @@ Return (as the function result)
 the state of the speculation misfeature specified in
 .IR arg2 .
 Currently, the only permitted value for this argument is
-.BR PR_SPEC_STORE_BYPASS
+.B PR_SPEC_STORE_BYPASS
 (otherwise the call fails with the error
 .BR ENODEV ).
 .IP
 The return value uses bits 0-3 with the following meaning:
 .RS
 .TP
-.BR PR_SPEC_PRCTL
+.B PR_SPEC_PRCTL
 Mitigation can be controlled per thread by
 .BR PR_SET_SPECULATION_CTRL .
 .TP
-.BR PR_SPEC_ENABLE
+.B PR_SPEC_ENABLE
 The speculation feature is enabled, mitigation is disabled.
 .TP
-.BR PR_SPEC_DISABLE
+.B PR_SPEC_DISABLE
 The speculation feature is disabled, mitigation is enabled.
 .TP
-.BR PR_SPEC_FORCE_DISABLE
+.B PR_SPEC_FORCE_DISABLE
 Same as
 .B PR_SPEC_DISABLE
 but cannot be undone.
@@ -1284,18 +1284,18 @@ then the call fails with the error
 .BR ENODEV .
 .IP
 The
-.IR arg3
+.I arg3
 argument is used to hand in the control value,
 which is one of the following:
 .RS
 .TP
-.BR PR_SPEC_ENABLE
+.B PR_SPEC_ENABLE
 The speculation feature is enabled, mitigation is disabled.
 .TP
-.BR PR_SPEC_DISABLE
+.B PR_SPEC_DISABLE
 The speculation feature is disabled, mitigation is enabled.
 .TP
-.BR PR_SPEC_FORCE_DISABLE
+.B PR_SPEC_FORCE_DISABLE
 Same as
 .BR PR_SPEC_DISABLE ,
 but cannot be undone.
@@ -1321,7 +1321,7 @@ equal to
 .RE
 .IP
 Any unsupported value in
-.IR arg3
+.I arg3
 will result in the call failing with the error
 .BR ERANGE .
 .IP
@@ -1350,7 +1350,10 @@ Configure the thread's SVE vector length,
 as specified by
 .IR "(int) arg2" .
 Arguments
-.IR arg3 ", " arg4 ", and " arg5
+.IR arg3 ,
+.IR arg4 ,
+and
+.I arg5
 are ignored.
 .IP
 The bits of
@@ -1563,12 +1566,12 @@ associated with the signal:
 will contain
 .BR SIGSYS .
 .IP *
-.IR si_call_addr
+.I si_call_addr
 will show the address of the system call instruction.
 .IP *
-.IR si_syscall
+.I si_syscall
 and
-.IR si_arch
+.I si_arch
 will indicate which system call was attempted.
 .IP *
 .I si_code
@@ -1615,7 +1618,7 @@ or
 .IP
 For more information,
 see the kernel source file
-.IR Documentation/admin-guide/syscall-user-dispatch.rst
+.I Documentation/admin-guide/syscall-user-dispatch.rst
 .\" prctl PR_SET_TAGGED_ADDR_CTRL
 .\" commit 63f0c60379650d82250f22e4cf4137ef3dc4f43d
 .TP
@@ -1825,9 +1828,9 @@ and the
 .BR clone (2)
 .B CLONE_CHILD_CLEARTID
 flag, in the location pointed to by
-.IR "(int\ **)\ arg2" .
+.IR "(int\~**)\~arg2" .
 This feature is available only if the kernel is built with the
-.BR CONFIG_CHECKPOINT_RESTORE
+.B CONFIG_CHECKPOINT_RESTORE
 option enabled.
 Note that since the
 .BR prctl ()
@@ -1847,7 +1850,7 @@ This operation sets the "current" timer slack value for the calling thread.
 is an unsigned long value, then maximum "current" value is ULONG_MAX and
 the minimum "current" value is 1.
 If the nanosecond value supplied in
-.IR arg2
+.I arg2
 is greater than zero, then the "current" value is set to this value.
 If
 .I arg2
@@ -1893,7 +1896,7 @@ Thereafter, a thread can adjust its "current" timer slack value via
 .BR PR_SET_TIMERSLACK .
 The "default" value can't be changed.
 The timer slack values of
-.IR init
+.I init
 (PID 1), the ancestor of all processes,
 are 50,000 nanoseconds (50 microseconds).
 The timer slack value is inherited by a child created via
@@ -1903,7 +1906,7 @@ and is preserved across
 .IP
 Since Linux 4.6, the "current" timer slack value of any process
 can be examined and changed via the file
-.IR /proc/[pid]/timerslack_ns .
+.IR /proc/ pid /timerslack_ns .
 See
 .BR proc (5).
 .\" prctl PR_GET_TIMERSLACK
@@ -1956,7 +1959,7 @@ when the process tries to read the timestamp counter.
 Return the state of the flag determining whether the timestamp counter
 can be read,
 in the location pointed to by
-.IR "(int\ *) arg2" .
+.IR "(int\~*) arg2" .
 .\" prctl PR_SET_UNALIGN
 .TP
 .B PR_SET_UNALIGN
@@ -1975,9 +1978,9 @@ Alpha also supports an additional flag with the value
 of 4 and no corresponding named constant,
 which instructs kernel to not fix up
 unaligned accesses (it is analogous to providing the
-.BR UAC_NOFIX
+.B UAC_NOFIX
 flag in
-.BR SSI_NVPAIRS
+.B SSI_NVPAIRS
 operation of the
 .BR setsysinfo ()
 system call on Tru64).
@@ -1988,7 +1991,7 @@ system call on Tru64).
 .B PR_SET_UNALIGN
 for information on versions and architectures.)
 Return unaligned access control bits, in the location pointed to by
-.IR "(unsigned int\ *) arg2" .
+.IR "(unsigned int\~*) arg2" .
 .SH RETURN VALUE
 On success,
 .BR PR_CAP_AMBIENT + PR_CAP_AMBIENT_IS_SET ,
@@ -2008,7 +2011,7 @@ On success,
 .BR PR_GET_TIMING ,
 .BR PR_GET_TIMERSLACK ,
 and (if it returns)
-.BR PR_GET_SECCOMP
+.B PR_GET_SECCOMP
 return the nonnegative values described above.
 All other
 .I option
@@ -2021,17 +2024,17 @@ is set to indicate the error.
 .B EACCES
 .I option
 is
-.BR PR_SET_SECCOMP
+.B PR_SET_SECCOMP
 and
 .I arg2
 is
 .BR SECCOMP_MODE_FILTER ,
 but the process does not have the
-.BR CAP_SYS_ADMIN
+.B CAP_SYS_ADMIN
 capability or has not set the
-.IR no_new_privs
+.I no_new_privs
 attribute (see the discussion of
-.BR PR_SET_NO_NEW_PRIVS
+.B PR_SET_NO_NEW_PRIVS
 above).
 .TP
 .B EACCES
@@ -2063,7 +2066,7 @@ is
 is
 .BR PR_SET_MM_EXE_FILE ,
 and this the second attempt to change the
-.I /proc/pid/exe
+.IR /proc/ pid /exe
 symbolic link, which is prohibited.
 .TP
 .B EFAULT
@@ -2100,9 +2103,9 @@ or not supported on this system.
 .B EINVAL
 .I option
 is
-.BR PR_MCE_KILL
+.B PR_MCE_KILL
 or
-.BR PR_MCE_KILL_GET
+.B PR_MCE_KILL_GET
 or
 .BR PR_SET_MM ,
 and unused
@@ -2117,7 +2120,7 @@ is not valid value for this
 .B EINVAL
 .I option
 is
-.BR PR_SET_SECCOMP
+.B PR_SET_SECCOMP
 or
 .BR PR_GET_SECCOMP ,
 and the kernel was not configured with
@@ -2162,7 +2165,7 @@ and the permissions of the corresponding memory area are not as required;
 .IP *
 .I arg2
 is
-.BR PR_SET_MM_START_BRK
+.B PR_SET_MM_START_BRK
 or
 .BR PR_SET_MM_BRK ,
 and
@@ -2176,7 +2179,7 @@ resource limit to be exceeded.
 .B EINVAL
 .I option
 is
-.BR PR_SET_PTRACER
+.B PR_SET_PTRACER
 and
 .I arg2
 is not 0,
@@ -2194,7 +2197,7 @@ is not a valid signal number.
 .B EINVAL
 .I option
 is
-.BR PR_SET_DUMPABLE
+.B PR_SET_DUMPABLE
 and
 .I arg2
 is neither
@@ -2205,7 +2208,7 @@ nor
 .B EINVAL
 .I option
 is
-.BR PR_SET_TIMING
+.B PR_SET_TIMING
 and
 .I arg2
 is not
@@ -2214,7 +2217,7 @@ is not
 .B EINVAL
 .I option
 is
-.BR PR_SET_NO_NEW_PRIVS
+.B PR_SET_NO_NEW_PRIVS
 and
 .I arg2
 is not equal to 1
@@ -2222,42 +2225,42 @@ or
 .IR arg3 ,
 .IR arg4 ,
 or
-.IR arg5
+.I arg5
 is nonzero.
 .TP
 .B EINVAL
 .I option
 is
-.BR PR_GET_NO_NEW_PRIVS
+.B PR_GET_NO_NEW_PRIVS
 and
 .IR arg2 ,
 .IR arg3 ,
 .IR arg4 ,
 or
-.IR arg5
+.I arg5
 is nonzero.
 .TP
 .B EINVAL
 .I option
 is
-.BR PR_SET_THP_DISABLE
+.B PR_SET_THP_DISABLE
 and
 .IR arg3 ,
 .IR arg4 ,
 or
-.IR arg5
+.I arg5
 is nonzero.
 .TP
 .B EINVAL
 .I option
 is
-.BR PR_GET_THP_DISABLE
+.B PR_GET_THP_DISABLE
 and
 .IR arg2 ,
 .IR arg3 ,
 .IR arg4 ,
 or
-.IR arg5
+.I arg5
 is nonzero.
 .TP
 .B EINVAL
@@ -2272,25 +2275,25 @@ in the case of
 .BR PR_CAP_AMBIENT_CLEAR_ALL ,
 .IR arg3 )
 is nonzero; or
-.IR arg2
+.I arg2
 has an invalid value;
 or
-.IR arg2
+.I arg2
 is
 .BR PR_CAP_AMBIENT_LOWER ,
 .BR PR_CAP_AMBIENT_RAISE ,
 or
-.BR PR_CAP_AMBIENT_IS_SET
+.B PR_CAP_AMBIENT_IS_SET
 and
-.IR arg3
+.I arg3
 does not specify a valid capability.
 .TP
 .B EINVAL
 .I option
 was
-.BR PR_GET_SPECULATION_CTRL
+.B PR_GET_SPECULATION_CTRL
 or
-.BR PR_SET_SPECULATION_CTRL
+.B PR_SET_SPECULATION_CTRL
 and unused arguments to
 .BR prctl ()
 are not 0.
@@ -2344,7 +2347,7 @@ is invalid.
 .B EINVAL
 .I option
 is
-.BR PR_SET_TAGGED_ADDR_CTRL
+.B PR_SET_TAGGED_ADDR_CTRL
 and the arguments are invalid or unsupported.
 See the description of
 .B PR_SET_TAGGED_ADDR_CTRL
@@ -2353,7 +2356,7 @@ above for details.
 .B EINVAL
 .I option
 is
-.BR PR_GET_TAGGED_ADDR_CTRL
+.B PR_GET_TAGGED_ADDR_CTRL
 and the arguments are invalid or unsupported.
 See the description of
 .B PR_GET_TAGGED_ADDR_CTRL
@@ -2362,25 +2365,25 @@ above for details.
 .B ENODEV
 .I option
 was
-.BR PR_SET_SPECULATION_CTRL
+.B PR_SET_SPECULATION_CTRL
 the kernel or CPU does not support the requested speculation misfeature.
 .TP
 .B ENXIO
 .I option
 was
-.BR PR_MPX_ENABLE_MANAGEMENT
+.B PR_MPX_ENABLE_MANAGEMENT
 or
-.BR PR_MPX_DISABLE_MANAGEMENT
+.B PR_MPX_DISABLE_MANAGEMENT
 and the kernel or the CPU does not support MPX management.
 Check that the kernel and processor have MPX support.
 .TP
 .B ENXIO
 .I option
 was
-.BR PR_SET_SPECULATION_CTRL
+.B PR_SET_SPECULATION_CTRL
 implies that the control of the selected speculation misfeature is not possible.
 See
-.BR PR_GET_SPECULATION_CTRL
+.B PR_GET_SPECULATION_CTRL
 for the bit fields to determine which option is available.
 .TP
 .B EOPNOTSUPP
@@ -2406,7 +2409,7 @@ or tried to set a flag whose corresponding locked flag was set
 .B EPERM
 .I option
 is
-.BR PR_SET_SPECULATION_CTRL
+.B PR_SET_SPECULATION_CTRL
 wherein the speculation was disabled with
 .B PR_SPEC_FORCE_DISABLE
 and caller tried to enable it again.
@@ -2438,15 +2441,15 @@ and the caller does not have the
 capability.
 .TP
 .B EPERM
-.IR option
+.I option
 is
-.BR PR_CAP_AMBIENT
+.B PR_CAP_AMBIENT
 and
-.IR arg2
+.I arg2
 is
 .BR PR_CAP_AMBIENT_RAISE ,
 but either the capability specified in
-.IR arg3
+.I arg3
 is not present in the process's permitted and inheritable capability sets,
 or the
 .B PR_CAP_AMBIENT_LOWER
@@ -2455,9 +2458,9 @@ securebit has been set.
 .B ERANGE
 .I option
 was
-.BR PR_SET_SPECULATION_CTRL
+.B PR_SET_SPECULATION_CTRL
 and
-.IR arg3
+.I arg3
 is not
 .BR PR_SPEC_ENABLE ,
 .BR PR_SPEC_DISABLE ,

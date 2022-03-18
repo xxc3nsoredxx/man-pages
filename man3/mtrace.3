@@ -48,14 +48,14 @@ the tracing information is to be recorded.
 If the pathname is successfully opened, it is truncated to zero length.
 .PP
 If
-.BR MALLOC_TRACE
+.B MALLOC_TRACE
 is not set,
 or the pathname it specifies is invalid or not writable,
 then no hook functions are installed, and
 .BR mtrace ()
 has no effect.
 In set-user-ID and set-group-ID programs,
-.BR MALLOC_TRACE
+.B MALLOC_TRACE
 is ignored, and
 .BR mtrace ()
 has no effect.

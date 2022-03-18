@@ -24,7 +24,7 @@ Standard C library
 .BI "             unsigned int " count );
 .PP
 .BR "#define _GNU_SOURCE" "           /* See feature_test_macros(7) */"
-.BR "#include <dirent.h>"
+.B #include <dirent.h>
 .PP
 .BI "ssize_t getdents64(int " fd ", void *" dirp ", size_t " count );
 .fi
@@ -125,7 +125,7 @@ The
 .I d_type
 field is implemented since Linux 2.6.4.
 It occupies a space that was previously a zero-filled padding byte in the
-.IR linux_dirent
+.I linux_dirent
 structure.
 Thus, on kernels up to and including 2.6.3,
 attempting to access this field always provides the value 0

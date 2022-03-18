@@ -36,7 +36,7 @@ function must be called before the first call to
 .BR malloc (3)
 or a related function.
 In cases where this is difficult to ensure, linking the program with
-.IR \-lmcheck
+.I \-lmcheck
 inserts an implicit call to
 .BR mcheck ()
 (with a NULL argument)
@@ -66,7 +66,7 @@ that indicates what type of inconsistency was detected.
 If
 .I abortfunc
 is NULL, a default function prints an error message on
-.IR stderr
+.I stderr
 and calls
 .BR abort (3).
 .PP

@@ -192,7 +192,7 @@ is designed to be implementable on systems that lack an MMU.)
 On systems where memory is constrained,
 .BR vfork ()
 avoids the need to temporarily commit memory (see the description of
-.IR /proc/sys/vm/overcommit_memory
+.I /proc/sys/vm/overcommit_memory
 in
 .BR proc (5))
 in order to execute a new program.
@@ -262,7 +262,11 @@ with
 .I flags
 specified as:
 .PP
-     CLONE_VM | CLONE_VFORK | SIGCHLD
+.in +4n
+.EX
+ CLONE_VM | CLONE_VFORK | SIGCHLD
+.EE
+.in
 .SS History
 The
 .BR vfork ()

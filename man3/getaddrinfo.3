@@ -128,7 +128,7 @@ as follows:
 .I ai_family
 This field specifies the desired address family for the returned addresses.
 Valid values for this field include
-.BR AF_INET
+.B AF_INET
 and
 .BR AF_INET6 .
 The value
@@ -143,7 +143,7 @@ and
 .TP
 .I ai_socktype
 This field specifies the preferred socket type, for example
-.BR SOCK_STREAM
+.B SOCK_STREAM
 or
 .BR SOCK_DGRAM .
 Specifying 0 in this field indicates that socket addresses of any type
@@ -214,7 +214,7 @@ connections.
 The returned socket address will contain the "wildcard address"
 .RB ( INADDR_ANY
 for IPv4 addresses,
-.BR IN6ADDR_ANY_INIT
+.B IN6ADDR_ANY_INIT
 for IPv6 address).
 The wildcard address is used by applications (typically servers)
 that intend to accept connections on any of the host's network addresses.
@@ -239,7 +239,7 @@ is NULL,
 then the network address will be set to the loopback interface address
 .RB ( INADDR_LOOPBACK
 for IPv4 addresses,
-.BR IN6ADDR_LOOPBACK_INIT
+.B IN6ADDR_LOOPBACK_INIT
 for IPv6 address);
 this is used by applications that intend to communicate
 with peers running on the same host.
@@ -294,7 +294,7 @@ the linked list may have more than one
 .I addrinfo
 structure, including: the network host is multihomed, accessible
 over multiple protocols (e.g., both
-.BR AF_INET
+.B AF_INET
 and
 .BR AF_INET6 );
 or the same service is available from multiple socket types (one
@@ -308,7 +308,7 @@ The sorting function used within
 .BR getaddrinfo ()
 is defined in RFC\ 3484; the order can be tweaked for a particular
 system by editing
-.IR /etc/gai.conf
+.I /etc/gai.conf
 (available since glibc 2.5).
 .PP
 If
@@ -550,7 +550,7 @@ or the error could occur if
 was not NULL, and
 .I hints.ai_socktype
 was
-.BR SOCK_RAW
+.B SOCK_RAW
 (a socket type that does not support the concept of services).
 .TP
 .B EAI_SOCKTYPE
@@ -560,7 +560,7 @@ This could occur, for example, if
 and
 .I hints.ai_protocol
 are inconsistent (e.g.,
-.BR SOCK_DGRAM
+.B SOCK_DGRAM
 and
 .BR IPPROTO_TCP ,
 respectively).
@@ -623,7 +623,7 @@ as NULL should cause
 .I ai_flags
 to be assumed as 0.
 The GNU C library instead assumes a value of
-.BR "(AI_V4MAPPED\ |\ AI_ADDRCONFIG)"
+.B (AI_V4MAPPED\~|\~AI_ADDRCONFIG)
 for this case,
 since this value is considered an improvement on the specification.
 .SH EXAMPLES

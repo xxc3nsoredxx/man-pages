@@ -10,7 +10,7 @@
 .\" Modified 1993-07-24 by Rik Faith (faith@cs.unc.edu)
 .\" Modified 2003-11-15 by aeb
 .\"
-.TH GETGRNAM 3 2021-03-22 "" "Linux Programmer's Manual"
+.TH GETGRNAM 3 2021-03-22 GNU "Linux Programmer's Manual"
 .SH NAME
 getgrnam, getgrnam_r, getgrgid, getgrgid_r \- get group file entry
 .SH LIBRARY
@@ -104,7 +104,11 @@ was found or an error occurred) is stored in
 .PP
 The call
 .PP
-    sysconf(_SC_GETGR_R_SIZE_MAX)
+.in +4n
+.EX
+sysconf(_SC_GETGR_R_SIZE_MAX)
+.EE
+.in
 .PP
 returns either \-1, without changing
 .IR errno ,
@@ -144,7 +148,7 @@ On success,
 and
 .BR getgrgid_r ()
 return zero, and set
-.IR *result
+.I *result
 to
 .IR grp .
 If no matching group record was found,

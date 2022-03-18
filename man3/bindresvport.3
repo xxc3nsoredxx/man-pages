@@ -7,7 +7,7 @@
 .\" 2007-05-31, mtk: Rewrite and substantial additional text.
 .\" 2008-12-03, mtk: Rewrote some pieces and fixed some errors
 .\"
-.TH BINDRESVPORT 3  2021-03-22 "" "Linux Programmer's Manual"
+.TH BINDRESVPORT 3 2021-03-22 GNU "Linux Programmer's Manual"
 .SH NAME
 bindresvport \- bind a socket to a privileged IP port
 .SH LIBRARY
@@ -60,7 +60,7 @@ can fail for any of the same reasons as
 .BR bind (2).
 In addition, the following errors may occur:
 .TP
-.BR EACCES
+.B EACCES
 The calling process was not privileged
 (on Linux: the calling process did not have the
 .B CAP_NET_BIND_SERVICE

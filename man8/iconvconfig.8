@@ -32,7 +32,7 @@ custom gconv module directories with the environment variable
 .BR GCONV_PATH .
 However, iconv module configuration caching is used only when
 the environment variable
-.BR GCONV_PATH
+.B GCONV_PATH
 is not set.
 .SH OPTIONS
 .TP
@@ -52,7 +52,7 @@ By default, the prefix is empty.
 Setting the prefix to
 .IR foo ,
 the gconv module configuration would be read from
-.IR foo/usr/lib/gconv/gconv\-modules
+.I foo/usr/lib/gconv/gconv\-modules
 and the cache would be written to
 .IR foo/usr/lib/gconv/gconv\-modules.cache .
 .TP

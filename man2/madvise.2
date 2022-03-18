@@ -56,7 +56,7 @@ values, which are also available on several other implementations.
 .BR madvise ()
 is not specified in POSIX.)
 Subsequently, a number of Linux-specific
-.IR advice
+.I advice
 values have been added.
 .\"
 .\" ======================================================================
@@ -119,7 +119,7 @@ and shmem-based techniques such as System V shared memory segments)
 or zero-fill-on-demand pages for anonymous private mappings.
 .IP
 Note that, when applied to shared mappings,
-.BR MADV_DONTNEED
+.B MADV_DONTNEED
 might not lead to immediate freeing of the pages in the range.
 The kernel is free to delay freeing the pages until an appropriate moment.
 The resident set size (RSS) of the calling process will be immediately
@@ -127,7 +127,7 @@ reduced however.
 .IP
 .B MADV_DONTNEED
 cannot be applied to locked pages, Huge TLB pages, or
-.BR VM_PFNMAP
+.B VM_PFNMAP
 pages.
 (Pages marked with the kernel-internal
 .B VM_PFNMAP
@@ -165,7 +165,7 @@ bytes containing zero.
 .IP
 The specified address range must be mapped shared and writable.
 This flag cannot be applied to locked pages, Huge TLB pages, or
-.BR VM_PFNMAP
+.B VM_PFNMAP
 pages.
 .IP
 In the initial implementation, only
@@ -176,11 +176,11 @@ but since Linux 3.5,
 .\" commit 3f31d07571eeea18a7d34db9af21d2285b807a17
 any filesystem which supports the
 .BR fallocate (2)
-.BR FALLOC_FL_PUNCH_HOLE
+.B FALLOC_FL_PUNCH_HOLE
 mode also supports
 .BR MADV_REMOVE .
 Hugetlbfs fails with the error
-.BR EINVAL
+.B EINVAL
 and other filesystems fail with the error
 .BR EOPNOTSUPP .
 .TP
@@ -227,7 +227,7 @@ restoring the default behavior, whereby a mapping is inherited across
 Poison the pages in the range specified by
 .I addr
 and
-.IR length
+.I length
 and handle subsequent references to those pages
 like a hardware memory corruption.
 This operation is available only for privileged
@@ -263,18 +263,18 @@ See the Linux kernel source file
 for more details.
 .IP
 The
-.BR MADV_MERGEABLE
+.B MADV_MERGEABLE
 and
-.BR MADV_UNMERGEABLE
+.B MADV_UNMERGEABLE
 operations are available only if the kernel was configured with
 .BR CONFIG_KSM .
 .TP
 .BR MADV_UNMERGEABLE " (since Linux 2.6.32)"
 Undo the effect of an earlier
-.BR MADV_MERGEABLE
+.B MADV_MERGEABLE
 operation on the specified address range;
 KSM unmerges whatever pages it had merged in the address range specified by
-.IR addr
+.I addr
 and
 .IR length .
 .TP
@@ -326,7 +326,7 @@ for more details.
 Most common kernels configurations provide
 .BR MADV_HUGEPAGE -style
 behavior by default, and thus
-.BR MADV_HUGEPAGE
+.B MADV_HUGEPAGE
 is normally not necessary.
 It is mostly intended for embedded systems, where
 .BR MADV_HUGEPAGE -style
@@ -334,24 +334,24 @@ behavior may not be enabled by default in the kernel.
 On such systems,
 this flag can be used in order to selectively enable THP.
 Whenever
-.BR MADV_HUGEPAGE
+.B MADV_HUGEPAGE
 is used, it should always be in regions of memory with
 an access pattern that the developer knows in advance won't risk
 to increase the memory footprint of the application when transparent
 hugepages are enabled.
 .IP
 The
-.BR MADV_HUGEPAGE
+.B MADV_HUGEPAGE
 and
-.BR MADV_NOHUGEPAGE
+.B MADV_NOHUGEPAGE
 operations are available only if the kernel was configured with
 .BR CONFIG_TRANSPARENT_HUGEPAGE .
 .TP
 .BR MADV_NOHUGEPAGE " (since Linux 2.6.38)"
 Ensures that memory in the address range specified by
-.IR addr
+.I addr
 and
-.IR length
+.I length
 will not be backed by transparent hugepages.
 .TP
 .BR MADV_DONTDUMP " (since Linux 3.4)"
@@ -364,7 +364,7 @@ and
 This is useful in applications that have large areas of memory
 that are known not to be useful in a core dump.
 The effect of
-.BR MADV_DONTDUMP
+.B MADV_DONTDUMP
 takes precedence over the bit mask that is set via the
 .I /proc/[pid]/coredump_filter
 file (see
@@ -376,7 +376,7 @@ Undo the effect of an earlier
 .TP
 .BR MADV_FREE " (since Linux 4.5)"
 The application no longer requires the pages in the range specified by
-.IR addr
+.I addr
 and
 .IR len .
 The kernel can thus free these pages,
@@ -616,7 +616,7 @@ pages.
 is
 .B MADV_DONTNEED
 or
-.BR MADV_REMOVE
+.B MADV_REMOVE
 and the specified address range includes locked, Huge TLB pages, or
 .B VM_PFNMAP
 pages.
@@ -624,7 +624,7 @@ pages.
 .B EINVAL
 .I advice
 is
-.BR MADV_MERGEABLE
+.B MADV_MERGEABLE
 or
 .BR MADV_UNMERGEABLE ,
 but the kernel was not configured with
@@ -633,13 +633,13 @@ but the kernel was not configured with
 .B EINVAL
 .I advice
 is
-.BR MADV_FREE
+.B MADV_FREE
 or
-.BR MADV_WIPEONFORK
+.B MADV_WIPEONFORK
 but the specified address range includes file, Huge TLB,
 .BR MAP_SHARED ,
 or
-.BR VM_PFNMAP
+.B VM_PFNMAP
 ranges.
 .TP
 .B EINVAL
@@ -750,7 +750,7 @@ from the system call, as it should).
 .\" function first appeared in 4.4BSD.
 .SH SEE ALSO
 .BR getrlimit (2),
-.BR memfd_secret(2),
+.BR memfd_secret (2),
 .BR mincore (2),
 .BR mmap (2),
 .BR mprotect (2),

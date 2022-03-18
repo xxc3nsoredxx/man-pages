@@ -42,9 +42,9 @@ according to their scheduling policy and priority.
 .B PTHREAD_SCOPE_PROCESS
 The thread competes for resources with all other threads
 in the same process that were also created with the
-.BR PTHREAD_SCOPE_PROCESS
+.B PTHREAD_SCOPE_PROCESS
 contention scope.
-.BR PTHREAD_SCOPE_PROCESS
+.B PTHREAD_SCOPE_PROCESS
 threads are scheduled relative to other threads in the process
 according to their scheduling policy and priority.
 POSIX.1 leaves it unspecified how these threads contend
@@ -92,7 +92,7 @@ An invalid value was specified in
 .IR scope .
 .TP
 .B ENOTSUP
-.IR scope
+.I scope
 specified the value
 .BR PTHREAD_SCOPE_PROCESS ,
 which is not supported on Linux.

@@ -45,7 +45,7 @@ has not yet terminated,
 then the call blocks until a maximum time, specified in
 .IR abstime ,
 measured against the
-.BR CLOCK_REALTIME
+.B CLOCK_REALTIME
 clock.
 If the timeout expires before
 .I thread
@@ -75,15 +75,15 @@ had not yet terminated at the time of the call.
 .BR pthread_timedjoin_np ()
 can in addition fail with the following errors:
 .TP
-.BR EINVAL
+.B EINVAL
 .I abstime
 value is invalid
 .RI ( tv_sec
 is less than 0 or
-.IR tv_nsec
+.I tv_nsec
 is greater than 1e9).
 .TP
-.BR ETIMEDOUT
+.B ETIMEDOUT
 The call timed out before
 .I thread
 terminated.
@@ -119,12 +119,12 @@ The
 .BR pthread_timedjoin_np ()
 function measures time by internally calculating a relative sleep interval
 that is then measured against the
-.BR CLOCK_MONOTONIC
+.B CLOCK_MONOTONIC
 clock instead of the
-.BR CLOCK_REALTIME
+.B CLOCK_REALTIME
 clock.
 Consequently, the timeout is unaffected by discontinuous changes to the
-.BR CLOCK_REALTIME
+.B CLOCK_REALTIME
 clock.
 .SH EXAMPLES
 The following code waits to join for up to 5 seconds:

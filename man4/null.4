@@ -9,17 +9,17 @@
 null, zero \- data sink
 .SH DESCRIPTION
 Data written to the
-.IR /dev/null
+.I /dev/null
 and
-.IR /dev/zero
+.I /dev/zero
 special files is discarded.
 .PP
 Reads from
-.IR /dev/null
+.I /dev/null
 always return end of file (i.e.,
 .BR read (2)
 returns 0), whereas reads from
-.IR /dev/zero
+.I /dev/zero
 always return bytes containing zero (\(aq\e0\(aq characters).
 .PP
 These devices are typically created by:
@@ -42,7 +42,7 @@ programs will act strangely.
 Since Linux 2.6.31,
 .\" commit 2b83868723d090078ac0e2120e06a1cc94dbaef0
 reads from
-.IR /dev/zero
+.I /dev/zero
 are interruptible by signals.
 (This change was made to help with bad latencies for large reads from
 .IR /dev/zero .)

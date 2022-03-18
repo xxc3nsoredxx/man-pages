@@ -164,7 +164,7 @@ argument is a bit mask consisting of zero or more of the following flags:
 .TP
 .B RENAME_EXCHANGE
 Atomically exchange
-.IR oldpath
+.I oldpath
 and
 .IR newpath .
 Both pathnames must exist
@@ -173,10 +173,10 @@ and the other a symbolic link).
 .TP
 .B RENAME_NOREPLACE
 Don't overwrite
-.IR newpath
+.I newpath
 of the rename.
 Return an error if
-.IR newpath
+.I newpath
 already exists.
 .IP
 .B RENAME_NOREPLACE
@@ -251,7 +251,7 @@ as of Linux 4.19, at least.)
 .IP
 .B RENAME_WHITEOUT
 requires the same privileges as creating a device node (i.e., the
-.BR CAP_MKNOD
+.B CAP_MKNOD
 capability).
 .IP
 .B RENAME_WHITEOUT
@@ -478,7 +478,7 @@ The filesystem does not support one of the flags in
 contains
 .B RENAME_EXCHANGE
 and
-.IR newpath
+.I newpath
 does not exist.
 .TP
 .B EPERM
@@ -517,11 +517,11 @@ and
 .I newpath
 are relative pathnames,
 glibc constructs pathnames based on the symbolic links in
-.IR /proc/self/fd
+.I /proc/self/fd
 that correspond to the
 .I olddirfd
 and
-.IR newdirfd
+.I newdirfd
 arguments.
 .SH BUGS
 On NFS filesystems, you can not assume that if the operation

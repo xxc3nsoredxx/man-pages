@@ -66,7 +66,7 @@ The target user or group ID is not valid in this user namespace.
 In the case of
 .BR seteuid ():
 the calling process is not privileged (does not have the
-.BR CAP_SETUID
+.B CAP_SETUID
 capability in its user namespace) and
 .I euid
 does not match the current real user ID, current effective user ID,
@@ -75,7 +75,7 @@ or current saved set-user-ID.
 In the case of
 .BR setegid ():
 the calling process is not privileged (does not have the
-.BR CAP_SETGID
+.B CAP_SETGID
 capability in its user namespace) and
 .I egid
 does not match the current real group ID, current effective group ID,

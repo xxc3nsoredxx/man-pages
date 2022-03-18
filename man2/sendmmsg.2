@@ -14,7 +14,7 @@ Standard C library
 .SH SYNOPSIS
 .nf
 .BR "#define _GNU_SOURCE" "         /* See feature_test_macros(7) */"
-.BI "#include <sys/socket.h>"
+.B #include <sys/socket.h>
 .PP
 .BI "int sendmmsg(int " sockfd ", struct mmsghdr *" msgvec \
 ", unsigned int " vlen ","
@@ -67,7 +67,7 @@ structure, as described in
 The
 .I msg_len
 field is used to return the number of bytes sent from the message in
-.IR msg_hdr
+.I msg_hdr
 (i.e., the same as the return value from a single
 .BR sendmsg (2)
 call).
@@ -93,7 +93,7 @@ On return from
 the
 .I msg_len
 fields of successive elements of
-.IR msgvec
+.I msgvec
 are updated to contain the number of bytes transmitted from the corresponding
 .IR msg_hdr .
 The return value of the call indicates the number of elements of

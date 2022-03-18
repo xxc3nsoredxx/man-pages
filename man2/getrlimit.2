@@ -317,7 +317,7 @@ on BSD.)
 Since Linux 4.5,
 this limit also defines the maximum number of file descriptors that
 an unprivileged process (one without the
-.BR CAP_SYS_RESOURCE
+.B CAP_SYS_RESOURCE
 capability) may have "in flight" to other processes,
 by being passed across UNIX domain sockets.
 This limit applies to the
@@ -450,14 +450,14 @@ and
 .BR getrlimit ().
 .PP
 If the
-.IR new_limit
+.I new_limit
 argument is a not NULL, then the
 .I rlimit
 structure to which it points is used to set new values for
 the soft and hard limits for
 .IR resource .
 If the
-.IR old_limit
+.I old_limit
 argument is a not NULL, then a successful call to
 .BR prlimit ()
 places the previous soft and hard limits for
@@ -518,7 +518,7 @@ capability is required to do this.
 The caller tried to increase the hard
 .B RLIMIT_NOFILE
 limit above the maximum defined by
-.IR /proc/sys/fs/nr_open
+.I /proc/sys/fs/nr_open
 (see
 .BR proc (5))
 .TP
@@ -594,7 +594,7 @@ current consumption of that resource will succeed
 its consumption of the resource).
 .PP
 One can set the resource limits of the shell using the built-in
-.IR ulimit
+.I ulimit
 command
 .RI ( limit
 in
@@ -603,7 +603,7 @@ The shell's resource limits are inherited by the processes that
 it creates to execute commands.
 .PP
 Since Linux 2.6.24, the resource limits of any process can be inspected via
-.IR /proc/[pid]/limits ;
+.IR /proc/ pid /limits ;
 see
 .BR proc (5).
 .PP
@@ -670,7 +670,7 @@ Since Linux 2.6.12,
 .\" Subject: [PATCH 7/7] make RLIMIT_CPU/SIGXCPU per-process
 .\" Date: 2005-01-23 23:27:46 GMT
 if a process reaches its soft
-.BR RLIMIT_CPU
+.B RLIMIT_CPU
 limit and has a handler installed for
 .BR SIGXCPU ,
 then, in addition to invoking the signal handler,
@@ -681,13 +681,13 @@ at which point the process is killed.
 Other implementations
 .\" Tested Solaris 10, FreeBSD 9, OpenBSD 5.0
 do not change the
-.BR RLIMIT_CPU
+.B RLIMIT_CPU
 soft limit in this manner,
 and the Linux behavior is probably not standards conformant;
 portable applications should avoid relying on this Linux-specific behavior.
 .\" FIXME . https://bugzilla.kernel.org/show_bug.cgi?id=50951
 The Linux-specific
-.BR RLIMIT_RTTIME
+.B RLIMIT_RTTIME
 limit exhibits the same behavior when the soft limit is encountered.
 .PP
 Kernels before 2.4.22 did not diagnose the error
@@ -710,7 +710,7 @@ The glibc
 and
 .BR setrlimit ()
 wrapper functions use a 64-bit
-.IR rlim_t
+.I rlim_t
 data type, even on 32-bit platforms.
 However, the
 .I rlim_t
@@ -736,7 +736,7 @@ which specifies the maximum size to which a file can grow:
 to be useful, this limit must be represented using a type
 that is as wide as the type used to
 represent file offsets\(emthat is, as wide as a 64-bit
-.BR off_t
+.B off_t
 (assuming a program compiled with
 .IR _FILE_OFFSET_BITS=64 ).
 .PP

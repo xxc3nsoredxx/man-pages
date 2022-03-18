@@ -10,7 +10,7 @@
 .\" Modified 2002-07-27 by Walter Harms
 .\" 	(walter.harms@informatik.uni-oldenburg.de)
 .\"
-.TH MODF 3  2021-03-22 ""  "Linux Programmer's Manual"
+.TH MODF 3 2021-03-22 GNU "Linux Programmer's Manual"
 .SH NAME
 modf, modff, modfl \- extract signed integral and fractional values from
 floating-point number
@@ -53,13 +53,13 @@ These functions return the fractional part of
 If
 .I x
 is a NaN, a NaN is returned, and
-.IR *iptr
+.I *iptr
 is set to a NaN.
 .PP
 If
 .I x
 is positive infinity (negative infinity), +0 (\-0) is returned, and
-.IR *iptr
+.I *iptr
 is set to positive infinity (negative infinity).
 .SH ERRORS
 No errors occur.

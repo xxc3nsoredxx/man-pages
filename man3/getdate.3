@@ -7,7 +7,7 @@
 .\" Modified, 2001-12-26, aeb
 .\" 2008-09-07, mtk, Various rewrites; added an example program.
 .\"
-.TH GETDATE 3 2021-03-22 "" "Linux Programmer's Manual"
+.TH GETDATE 3 2021-03-22 GNU "Linux Programmer's Manual"
 .SH NAME
 getdate, getdate_r \- convert a date-plus-time string to broken-down time
 .SH LIBRARY
@@ -121,7 +121,7 @@ When successful,
 returns a pointer to a
 .IR "struct tm" .
 Otherwise, it returns NULL and sets the global variable
-.IR getdate_err
+.I getdate_err
 to one of the error numbers shown below.
 Changes to
 .I errno
@@ -133,7 +133,7 @@ returns 0;
 on error it returns one of the error numbers shown below.
 .SH ERRORS
 The following errors are returned via
-.IR getdate_err
+.I getdate_err
 (for
 .BR getdate ())
 or as the function result (for

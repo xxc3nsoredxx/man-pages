@@ -176,7 +176,7 @@ included in the count of successful assignments returned by
 For decimal conversions, an optional quote character (\(aq).
 This specifies that the input number may include thousands'
 separators as defined by the
-.BR LC_NUMERIC
+.B LC_NUMERIC
 category of the current locale.
 (See
 .BR setlocale (3).)
@@ -629,8 +629,12 @@ allocate a buffer for an input string,
 with a pointer to that buffer being returned in
 .IR *buf :
 .PP
-    char *buf;
-    scanf("%as", &buf);
+.in +4n
+.EX
+char *buf;
+scanf("%as", &buf);
+.EE
+.in
 .PP
 The use of the letter
 .B a
@@ -646,9 +650,9 @@ modifier for assignment allocation (as documented in DESCRIPTION, above).
 Note that the
 .B a
 modifier is not available if the program is compiled with
-.I "gcc \-std=c99"
+.I gcc\~\-std=c99
 or
-.IR "gcc \-D_ISOC99_SOURCE"
+.I gcc\~\-D_ISOC99_SOURCE
 (unless
 .B _GNU_SOURCE
 is also specified), in which case the
@@ -665,7 +669,7 @@ As well as being standardized by POSIX, the
 .B m
 modifier has the following further advantages over
 the use of
-.BR a:
+.BR a :
 .IP * 2
 It may also be applied to
 .B %c
@@ -675,7 +679,7 @@ conversion specifiers (e.g.,
 It avoids ambiguity with respect to the
 .B %a
 floating-point conversion specifier (and is unaffected by
-.IR "gcc \-std=c99"
+.I gcc\~\-std=c99
 etc.).
 .SH BUGS
 All functions are fully C89 conformant, but provide the

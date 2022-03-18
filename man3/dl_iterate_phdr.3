@@ -13,10 +13,10 @@ Standard C library
 .BR "#define _GNU_SOURCE" "         /* See feature_test_macros(7) */"
 .B #include <link.h>
 .PP
-.BI "int dl_iterate_phdr("
+.B int dl_iterate_phdr(
 .BI "          int (*" callback ")(struct dl_phdr_info *" info ,
-.BI "                          size_t " size ", void *" data "),"
-.BI "          void *" data ");"
+.BI "                          size_t " size ", void *" data ),
+.BI "          void *" data );
 .fi
 .SH DESCRIPTION
 The
@@ -158,7 +158,7 @@ addr == info\->dlpi_addr + info\->dlpi_phdr[x].p_vaddr;
 Possible values for
 .I p_type
 include the following (see
-.IR <elf.h>
+.I <elf.h>
 for further details):
 .PP
 .in +4n
@@ -214,18 +214,18 @@ On the BSDs and Solaris, the structure includes the fields
 .IR dlpi_name ,
 .IR dlpi_phdr ,
 and
-.IR dlpi_phnum
+.I dlpi_phnum
 in addition to other implementation-specific fields.
 .SH NOTES
 Future versions of the C library may add further fields to the
-.IR dl_phdr_info
+.I dl_phdr_info
 structure; in that event, the
 .I size
 argument provides a mechanism for the callback function to discover
 whether it is running on a system with added fields.
 .PP
 The first object visited by
-.IR callback
+.I callback
 is the main program.
 For the main program, the
 .I dlpi_name

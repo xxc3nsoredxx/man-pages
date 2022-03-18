@@ -17,9 +17,11 @@ modules to be loaded.
 If a prohibited or restricted feature is accessed or used, the kernel will emit
 a message that looks like:
 .PP
-.RS
- Lockdown: X: Y is restricted, see man kernel_lockdown.7
-.RE
+.in +4n
+.EX
+Lockdown: X: Y is restricted, see man kernel_lockdown.7
+.EE
+.in
 .PP
 where X indicates the process name and Y indicates what is restricted.
 .PP

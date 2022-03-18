@@ -36,7 +36,7 @@ two sets of four numbers: the principal (auto-rewind) minor device numbers,
 and the \(lqno-rewind\(rq device numbers,
 .RI ( n " + 128)."
 Devices opened using the principal device number will be sent a
-.BR REWIND
+.B REWIND
 command when they are closed.
 Devices opened using the \(lqno-rewind\(rq device number will not.
 (Note that using an auto-rewind device for positioning the tape with,
@@ -328,7 +328,7 @@ the rest of the tape contains partition 1.
 The physical ordering of partitions depends on the drive.
 This command is not allowed for a drive unless the partition support
 is enabled for the drive (see
-.BR MT_ST_CAN_PARTITIONS
+.B MT_ST_CAN_PARTITIONS
 below).
 .TP
 .B MTNOP
@@ -357,7 +357,7 @@ command (device-specific address)
 or a Tandberg-compatible SCSI-1 drive (Tandberg, Archive
 Viper, Wangtek, ...).
 The block number should be one that was previously returned by
-.BR MTIOCPOS
+.B MTIOCPOS
 if device-specific addresses are used.
 .TP
 .B MTSETBLK
@@ -413,17 +413,17 @@ The buffering modes are:
 .RS 12
 .IP 0 4
 The drive will not report
-.BR GOOD
+.B GOOD
 status on write commands until the data
 blocks are actually written to the medium.
 .IP 1
 The drive may report
-.BR GOOD
+.B GOOD
 status on write commands as soon as all the
 data has been transferred to the drive's internal buffer.
 .IP 2
 The drive may report
-.BR GOOD
+.B GOOD
 status on write commands as soon as (a) all
 the data has been transferred to the drive's internal buffer, and
 (b) all buffered data from different initiators has been successfully
@@ -433,7 +433,7 @@ written to the medium.
 To control the write threshold the value in
 .I mt_count
 must include the constant
-.BR MT_ST_WRITE_THRESHOLD
+.B MT_ST_WRITE_THRESHOLD
 bitwise ORed with a block count in the low 28 bits.
 The block count refers to 1024-byte blocks, not the physical block
 size on the tape.
@@ -448,19 +448,19 @@ must include one of the constants
 .BR MT_ST_SETBOOLEANS ,
 .BR MT_ST_CLEARBOOLEANS ,
 or
-.BR MT_ST_DEFBOOLEANS
+.B MT_ST_DEFBOOLEANS
 bitwise ORed with
 whatever combination of the following options is desired.
 Using
-.BR MT_ST_BOOLEANS
+.B MT_ST_BOOLEANS
 the options can be set to the values
 defined in the corresponding bits.
 With
-.BR MT_ST_SETBOOLEANS
+.B MT_ST_SETBOOLEANS
 the options can be selectively set and with
-.BR MT_ST_DEFBOOLEANS
+.B MT_ST_DEFBOOLEANS
 selectively cleared.
-.IP ""
+.IP
 The default options for a tape device are set with
 .BR MT_ST_DEFBOOLEANS .
 A nonactive tape device (e.g., device with
@@ -468,7 +468,7 @@ minor 32 or 160) is activated when the default options for it are
 defined the first time.
 An activated device inherits from the device
 activated at start-up the options not set explicitly.
-.IP ""
+.IP
 The Boolean options are:
 .RS
 .TP
@@ -771,7 +771,7 @@ Implemented in kernels since 2.4.19 and 2.5.43.
 The only field defined in
 .I mt_erreg
 is the recovered error count in the low 16 bits (as defined by
-.BR MT_ST_SOFTERR_SHIFT
+.B MT_ST_SOFTERR_SHIFT
 and
 .BR MT_ST_SOFTERR_MASK ).
 Due to inconsistencies in the way drives report recovered errors, this
@@ -781,7 +781,7 @@ soft errors but this can be changed with a SCSI MODE SELECT command).
 \fImt_fileno\fP
 reports the current file number (zero-based).
 This value is set to \-1 when the file number is unknown (e.g., after
-.BR MTBSS
+.B MTBSS
 or
 .BR MTSEEK ).
 .TP

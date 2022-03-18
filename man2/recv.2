@@ -54,11 +54,19 @@ is generally equivalent to
 (but see NOTES).
 Also, the following call
 .PP
-    recv(sockfd, buf, len, flags);
+.in +4n
+.EX
+recv(sockfd, buf, len, flags);
+.EE
+.in
 .PP
 is equivalent to
 .PP
-    recvfrom(sockfd, buf, len, flags, NULL, NULL);
+.in +4n
+.EX
+recvfrom(sockfd, buf, len, flags, NULL, NULL);
+.EE
+.in
 .PP
 All three calls return the length of the message on successful
 completion.
@@ -284,7 +292,11 @@ socket (see
 .BR connect (2)).
 It is equivalent to the call:
 .PP
-    recvfrom(fd, buf, len, flags, NULL, 0);
+.in +4n
+.EX
+recvfrom(fd, buf, len, flags, NULL, 0);
+.EE
+.in
 .\"
 .SS recvmsg()
 The

@@ -8,7 +8,7 @@
 .\"
 .\" Modified 2003-04-04, aeb
 .\"
-.TH ENCRYPT 3 2021-03-22 "" "Linux Programmer's Manual"
+.TH ENCRYPT 3 2021-03-22 GNU "Linux Programmer's Manual"
 .SH NAME
 encrypt, setkey, encrypt_r, setkey_r \- encrypt 64-bit messages
 .SH LIBRARY
@@ -27,7 +27,7 @@ Encryption and decryption library
 .BI "void setkey(const char *" key );
 .PP
 .BR "#define _GNU_SOURCE" "         /* See feature_test_macros(7) */"
-.B "#include <crypt.h>"
+.B #include <crypt.h>
 .PP
 .BI "void setkey_r(const char *" key ", struct crypt_data *" data );
 .BI "void encrypt_r(char *" block ", int " edflag \

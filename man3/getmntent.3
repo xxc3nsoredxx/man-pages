@@ -9,7 +9,7 @@
 .\" Modified Sat Jul 24 21:46:57 1993 by Rik Faith (faith@cs.unc.edu)
 .\" Modified 961109, 031115, aeb
 .\"
-.TH GETMNTENT 3  2021-03-22 "" "Linux Programmer's Manual"
+.TH GETMNTENT 3 2021-03-22 GNU "Linux Programmer's Manual"
 .SH NAME
 getmntent, setmntent, addmntent, endmntent, hasmntopt,
 getmntent_r \- get filesystem descriptor file entry
@@ -101,7 +101,7 @@ the end of the open
 The
 .BR endmntent ()
 function closes the
-.IR stream
+.I stream
 associated with the filesystem description file.
 .PP
 The
@@ -126,7 +126,7 @@ The reentrant
 function is similar to
 .BR getmntent (),
 but stores the
-.IR "struct mount"
+.I struct mount
 in the provided
 .I *mntbuf
 and stores the strings pointed to by the entries in that struct

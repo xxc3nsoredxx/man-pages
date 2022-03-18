@@ -33,7 +33,7 @@ character encoding
 .IR tocode .
 .PP
 The values permitted for
-.IR fromcode
+.I fromcode
 and
 .I tocode
 and the supported
@@ -85,7 +85,7 @@ On success,
 returns a freshly allocated conversion
 descriptor.
 On failure, it returns
-.IR (iconv_t)\ \-1
+.I (iconv_t)\ \-1
 and sets
 .I errno
 to indicate the error.
@@ -94,7 +94,7 @@ The following error can occur, among others:
 .TP
 .B EINVAL
 The conversion from
-.IR fromcode
+.I fromcode
 to
 .I tocode
 is not supported by the

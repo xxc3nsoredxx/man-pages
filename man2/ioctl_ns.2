@@ -27,7 +27,7 @@ new_fd = ioctl(fd, request);
 In each case,
 .I fd
 refers to a
-.IR /proc/[pid]/ns/*
+.IR /proc/ pid /ns/*
 file.
 Both operations return a new file descriptor on success.
 .TP
@@ -46,14 +46,14 @@ the namespace referred to by
 This operation is valid only for hierarchical namespaces
 (i.e., PID and user namespaces).
 For user namespaces,
-.BR NS_GET_PARENT
+.B NS_GET_PARENT
 is synonymous with
 .BR NS_GET_USERNS .
 .PP
 The new file descriptor returned by these operations is opened with the
-.BR O_RDONLY
+.B O_RDONLY
 and
-.BR O_CLOEXEC
+.B O_CLOEXEC
 (close-on-exec; see
 .BR fcntl (2))
 flags.
@@ -68,7 +68,7 @@ structure whose
 .I st_ino
 (inode number) fields together identify the owning/parent namespace.
 This inode number can be matched with the inode number of another
-.IR /proc/[pid]/ns/{pid,user}
+.IR /proc/ pid /ns/ { pid , user }
 file to determine whether that is the owning/parent namespace.
 .PP
 Either of these
@@ -112,11 +112,11 @@ nstype = ioctl(fd, NS_GET_NSTYPE);
 .PP
 .I fd
 refers to a
-.IR /proc/[pid]/ns/*
+.IR /proc/ pid /ns/*
 file.
 .PP
 The return value is one of the
-.BR CLONE_NEW*
+.B CLONE_NEW*
 values that can be specified to
 .BR clone (2)
 or
@@ -142,7 +142,7 @@ ioctl(fd, NS_GET_OWNER_UID, &uid);
 .PP
 .I fd
 refers to a
-.IR /proc/[pid]/ns/user
+.IR /proc/ pid /ns/user
 file.
 .PP
 The owner user ID is returned in the

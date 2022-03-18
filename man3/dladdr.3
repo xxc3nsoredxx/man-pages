@@ -22,7 +22,7 @@ Dynamic linking library
 The function
 .BR dladdr ()
 determines whether the address specified in
-.IR addr
+.I addr
 is located in one of the shared objects loaded by the calling application.
 If it is, then
 .BR dladdr ()
@@ -68,11 +68,11 @@ which can have one of the following values:
 .B RTLD_DL_LINKMAP
 Obtain a pointer to the link map for the matched file.
 The
-.IR extra_info
+.I extra_info
 argument points to a pointer to a
 .I link_map
 structure (i.e.,
-.IR "struct link_map\ **" ),
+.IR "struct link_map\~**" ),
 defined in
 .I <link.h>
 as:
@@ -99,7 +99,7 @@ struct link_map {
 .B RTLD_DL_SYMENT
 Obtain a pointer to the ELF symbol table entry of the matching symbol.
 The
-.IR extra_info
+.I extra_info
 argument is a pointer to a symbol pointer:
 .IR "const ElfW(Sym) **" .
 The
@@ -111,7 +111,7 @@ For example, on a 64-bit platform,
 yields the data type name
 .IR Elf64_Sym ,
 which is defined in
-.IR <elf.h>
+.I <elf.h>
 as:
 .IP
 .in +4n
@@ -135,9 +135,9 @@ The
 .I st_info
 field encodes the symbol's type and binding.
 The type can be extracted using the macro
-.BR ELF64_ST_TYPE(st_info)
+.B ELF64_ST_TYPE(st_info)
 (or
-.BR ELF32_ST_TYPE()
+.B ELF32_ST_TYPE()
 on 32-bit platforms), which yields one of the following values:
 .in +4n
 .TS
@@ -158,9 +158,9 @@ STT_GNU_IFUNC	Symbol is indirect code object
 The symbol binding can be extracted from the
 .I st_info
 field using the macro
-.BR ELF64_ST_BIND(st_info)
+.B ELF64_ST_BIND(st_info)
 (or
-.BR ELF32_ST_BIND()
+.B ELF32_ST_BIND()
 on 32-bit platforms), which yields one of the following values:
 .in +4n
 .TS
@@ -177,9 +177,9 @@ STB_GNU_UNIQUE	Unique symbol
 The
 .I st_other
 field contains the symbol's visibility, which can be extracted using the macro
-.BR ELF64_ST_VISIBILITY(st_info)
+.B ELF64_ST_VISIBILITY(st_info)
 (or
-.BR ELF32_ST_VISIBILITY()
+.B ELF32_ST_VISIBILITY()
 on 32-bit platforms), which yields one of the following values:
 .in +4n
 .TS

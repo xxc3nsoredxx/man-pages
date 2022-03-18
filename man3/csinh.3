@@ -2,7 +2,7 @@
 .\"
 .\" SPDX-License-Identifier: GPL-1.0-or-later
 .\"
-.TH CSINH 3 2021-03-22 "" "Linux Programmer's Manual"
+.TH CSINH 3 2021-03-22 GNU "Linux Programmer's Manual"
 .SH NAME
 csinh, csinhf, csinhl \- complex hyperbolic sine
 .SH LIBRARY
@@ -12,9 +12,9 @@ Math library
 .nf
 .B #include <complex.h>
 .PP
-.BI "double complex csinh(double complex " z ");"
-.BI "float complex csinhf(float complex " z ");"
-.BI "long double complex csinhl(long double complex " z ");"
+.BI "double complex csinh(double complex " z );
+.BI "float complex csinhf(float complex " z );
+.BI "long double complex csinhl(long double complex " z );
 .fi
 .SH DESCRIPTION
 These functions calculate the complex hyperbolic sine of
@@ -22,9 +22,11 @@ These functions calculate the complex hyperbolic sine of
 .PP
 The complex hyperbolic sine function is defined as:
 .PP
-.nf
-    csinh(z) = (exp(z)\-exp(\-z))/2
-.fi
+.in +4n
+.EX
+csinh(z) = (exp(z)\-exp(\-z))/2
+.EE
+.in
 .SH VERSIONS
 These functions first appeared in glibc in version 2.1.
 .SH ATTRIBUTES

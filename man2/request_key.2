@@ -110,7 +110,7 @@ newly constructed key should be linked,
 it tries the following keyrings,
 beginning with the keyring set via the
 .BR keyctl (2)
-.BR KEYCTL_SET_REQKEY_KEYRING
+.B KEYCTL_SET_REQKEY_KEYRING
 operation and continuing in the order shown below
 until it finds the first keyring that exists:
 .IP \(bu 3
@@ -183,25 +183,25 @@ This keyring is also expected to always exist.
 .PP
 If the
 .BR keyctl (2)
-.BR KEYCTL_SET_REQKEY_KEYRING
+.B KEYCTL_SET_REQKEY_KEYRING
 operation specifies
-.BR KEY_REQKEY_DEFL_DEFAULT
+.B KEY_REQKEY_DEFL_DEFAULT
 (or no
-.BR KEYCTL_SET_REQKEY_KEYRING
+.B KEYCTL_SET_REQKEY_KEYRING
 operation is performed),
 then the kernel looks for a keyring
 starting from the beginning of the list.
 .\"
 .SS Requesting user-space instantiation of a key
 If the kernel cannot find a key matching
-.IR type
+.I type
 and
 .IR description ,
 and
 .I callout
 is not NULL, then the kernel attempts to invoke a user-space
 program to instantiate a key with the given
-.IR type
+.I type
 and
 .IR description .
 In this case, the following steps are performed:
@@ -236,9 +236,9 @@ The key grants
 .IR view ,
 .IR read ,
 and
-.IR search
+.I search
 permissions to the key possessor as well as
-.IR view
+.I view
 permission for the key user.
 .IP *
 The description (name) of the key is the hexadecimal
@@ -291,7 +291,7 @@ The ID of the session keyring of the caller of
 .IP
 .IR Note :
 each of the command-line arguments that is a key ID is encoded in
-.IR decimal
+.I decimal
 (unlike the key IDs shown in
 .IR /proc/keys ,
 which are shown as hexadecimal values).
@@ -301,7 +301,7 @@ The program spawned in the previous step:
 .IP * 3
 Assumes the authority to instantiate the key U using the
 .BR keyctl (2)
-.BR KEYCTL_ASSUME_AUTHORITY
+.B KEYCTL_ASSUME_AUTHORITY
 operation (typically via the
 .BR keyctl_assume_authority (3)
 function).
@@ -309,7 +309,7 @@ function).
 Obtains the callout data from the payload of the authorization key V
 (using the
 .BR keyctl (2)
-.BR KEYCTL_READ
+.B KEYCTL_READ
 operation (or, more commonly, the
 .BR keyctl_read (3)
 function) with a key ID value of
@@ -329,7 +329,7 @@ can be accessed using the special key ID
 .\" * A key added to that ring is then owned by the requester
 Instantiation is performed using the
 .BR keyctl (2)
-.BR KEYCTL_INSTANTIATE
+.B KEYCTL_INSTANTIATE
 operation (or, more commonly, the
 .BR keyctl_instantiate (3)
 function).
@@ -339,7 +339,7 @@ call completes, and the requesting program can continue execution.
 .RE
 .PP
 If these steps are unsuccessful, then an
-.BR ENOKEY
+.B ENOKEY
 error will be returned to the caller of
 .BR request_key ()
 and a temporary, negatively instantiated key will be installed
@@ -387,7 +387,7 @@ One of
 .IR type ,
 .IR description ,
 or
-.IR callout_info
+.I callout_info
 points outside the process's accessible address space.
 .TP
 .B EINTR
@@ -439,7 +439,7 @@ The
 .IR type ,
 .IR description ,
 and
-.IR callout_info
+.I callout_info
 arguments for the system call are taken from the values
 supplied in the command-line arguments.
 The call specifies the session keyring as the target keyring.
@@ -483,7 +483,7 @@ for details of these
 specifiers.
 .PP
 Then we run the program and check the contents of
-.IR /proc/keys
+.I /proc/keys
 to verify that the requested key has been instantiated:
 .PP
 .in +4n
@@ -550,12 +550,12 @@ main(int argc, char *argv[])
 .BR request\-key (8)
 .PP
 The kernel source files
-.IR Documentation/security/keys/core.rst
+.I Documentation/security/keys/core.rst
 and
-.IR Documentation/keys/request\-key.rst
+.I Documentation/keys/request\-key.rst
 (or, before Linux 4.13, in the files
 .\" commit b68101a1e8f0263dbc7b8375d2a7c57c6216fb76
-.IR Documentation/security/keys.txt
+.I Documentation/security/keys.txt
 and
 .\" commit 3db38ed76890565772fcca3279cc8d454ea6176b
 .IR Documentation/security/keys\-request\-key.txt ).

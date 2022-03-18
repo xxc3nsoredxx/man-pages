@@ -30,7 +30,7 @@ then no implementation needs to be provided for the corresponding
 auditing function.
 .PP
 To employ the auditing interface, the environment variable
-.BR LD_AUDIT
+.B LD_AUDIT
 must be defined to contain a colon-separated list of shared libraries,
 each of which can implement (parts of) the auditing API.
 When an auditable event occurs,
@@ -322,7 +322,7 @@ for PLT entries, each time the symbol is referenced.
 .\" but don't seem to be called for dynamically loaded libs?
 .\" Is this the same on Solaris?
 The following flags can be ORed into
-.IR *flags
+.I *flags
 to change this default behavior:
 .TP 22
 .B LA_SYMB_NOPLTENTER
@@ -368,7 +368,7 @@ The
 .IR refcook ,
 .IR defcook ,
 and
-.IR symname
+.I symname
 are as for
 .BR la_symbind* ().
 .PP
@@ -387,9 +387,9 @@ and can be used to modify subsequent auditing of, this PLT entry, as for
 .PP
 .\" FIXME . Is the following correct?
 The
-.IR framesizep
+.I framesizep
 argument points to a
-.IR "long\ int"
+.I long\~int
 buffer that can be used to explicitly set the frame size
 used for the call to this PLT entry.
 If different
@@ -431,7 +431,7 @@ The
 .IR refcook ,
 .IR defcook ,
 and
-.IR symname
+.I symname
 are as for
 .BR la_symbind* ().
 .PP
@@ -484,7 +484,7 @@ function does not provide
 and
 .I outregs
 arguments (but does provide a
-.IR retval
+.I retval
 argument with the function return value).
 .SH BUGS
 In glibc versions up to and include 2.9,

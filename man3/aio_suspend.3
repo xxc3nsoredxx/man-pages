@@ -3,7 +3,7 @@
 .\"
 .\" SPDX-License-Identifier: GPL-2.0-or-later
 .\"
-.TH AIO_SUSPEND 3 2021-03-22  "" "Linux Programmer's Manual"
+.TH AIO_SUSPEND 3 2021-03-22 GNU "Linux Programmer's Manual"
 .SH NAME
 aio_suspend \- wait for asynchronous I/O operation or timeout
 .SH LIBRARY
@@ -114,7 +114,7 @@ One can achieve polling by using a non-NULL
 that specifies a zero time interval.
 .PP
 If one or more of the asynchronous I/O operations specified in
-.IR aiocb_list
+.I aiocb_list
 has already completed at the time of the call to
 .BR aio_suspend (),
 then the call returns immediately.

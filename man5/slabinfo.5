@@ -3,7 +3,7 @@
 .\"
 .\" SPDX-License-Identifier: Linux-man-pages-copyleft
 .\"
-.TH SLABINFO 5 2021-03-22 "" "Linux Programmer's Manual"
+.TH SLABINFO 5 2021-03-22 Linux "Linux Programmer's Manual"
 .SH NAME
 slabinfo \- kernel slab allocator statistics
 .SH SYNOPSIS
@@ -87,7 +87,7 @@ is the cache name, and
 .IR limit ,
 .IR batchcount ,
 and
-.IR sharedfactor
+.I sharedfactor
 are integers defining new values for the corresponding tunables.
 The
 .I limit
@@ -204,7 +204,7 @@ The current format, which first appeared in Linux 2.6.10.
 Only root can read and (if the kernel was configured with
 .BR CONFIG_SLAB )
 write the
-.IR /proc/slabinfo
+.I /proc/slabinfo
 file.
 .PP
 The total amount of memory allocated to the SLAB/SLUB cache is shown in the
@@ -215,6 +215,6 @@ field of
 .BR slabtop (1)
 .PP
 The kernel source file
-.IR Documentation/vm/slub.txt
+.I Documentation/vm/slub.txt
 and
 .IR tools/vm/slabinfo.c .

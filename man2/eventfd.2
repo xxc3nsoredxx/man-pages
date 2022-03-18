@@ -34,7 +34,7 @@ returns a new file descriptor that can be used to refer to the
 eventfd object.
 .PP
 The following values may be bitwise ORed in
-.IR flags
+.I flags
 to change the behavior of
 .BR eventfd ():
 .TP
@@ -50,7 +50,7 @@ for reasons why this may be useful.
 .TP
 .BR EFD_NONBLOCK " (since Linux 2.6.27)"
 Set the
-.BR O_NONBLOCK
+.B O_NONBLOCK
 file status flag on the open file description (see
 .BR open (2))
 referred to by the new file descriptor.
@@ -88,19 +88,19 @@ The semantics of
 .BR read (2)
 depend on whether the eventfd counter currently has a nonzero value
 and whether the
-.BR EFD_SEMAPHORE
+.B EFD_SEMAPHORE
 flag was specified when creating the eventfd file descriptor:
 .RS
 .IP * 3
 If
-.BR EFD_SEMAPHORE
+.B EFD_SEMAPHORE
 was not specified and the eventfd counter has a nonzero value, then a
 .BR read (2)
 returns 8 bytes containing that value,
 and the counter's value is reset to zero.
 .IP *
 If
-.BR EFD_SEMAPHORE
+.B EFD_SEMAPHORE
 was specified and the eventfd counter has a nonzero value, then a
 .BR read (2)
 returns 8 bytes containing the value 1,
@@ -314,7 +314,7 @@ or
 .PP
 The current value of an eventfd counter can be viewed
 via the entry for the corresponding file descriptor in the process's
-.IR /proc/[pid]/fdinfo
+.IR /proc/ pid /fdinfo
 directory.
 See
 .BR proc (5)

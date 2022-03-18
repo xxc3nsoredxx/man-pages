@@ -12,7 +12,7 @@
 .\" Modified 1995-08-14 by Arnt Gulbrandsen <agulbra@troll.no>
 .\" Modified 2002-07-27 by Walter Harms
 .\" 	(walter.harms@informatik.uni-oldenburg.de)
-.TH POW 3  2021-03-22 "" "Linux Programmer's Manual"
+.TH POW 3 2021-03-22 GNU "Linux Programmer's Manual"
 .SH NAME
 pow, powf, powl \- power functions
 .SH LIBRARY
@@ -284,7 +284,7 @@ is raised.
 Pole error: \fIx\fP is zero, and \fIy\fP is negative
 .I errno
 is set to
-.BR ERANGE
+.B ERANGE
 (but see BUGS).
 A divide-by-zero floating-point exception
 .RB ( FE_DIVBYZERO )
@@ -361,7 +361,7 @@ In glibc 2.9 and earlier,
 when a pole error occurs,
 .I errno
 is set to
-.BR EDOM
+.B EDOM
 instead of the POSIX-mandated
 .BR ERANGE .
 Since version 2.10,

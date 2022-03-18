@@ -138,15 +138,15 @@ in the buffer pointed to by
 The time remaining until the next timer expiration is returned in
 .IR curr_value\->it_value ;
 this is always a relative value, regardless of whether the
-.BR TIMER_ABSTIME
+.B TIMER_ABSTIME
 flag was used when arming the timer.
 If the value returned in
-.IR curr_value\->it_value
+.I curr_value\->it_value
 is zero, then the timer is currently disarmed.
 The timer interval is returned in
 .IR curr_value\->it_interval .
 If the value returned in
-.IR curr_value\->it_interval
+.I curr_value\->it_interval
 is zero, then this is a "one-shot" timer.
 .SH RETURN VALUE
 On success,

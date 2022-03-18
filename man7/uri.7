@@ -473,7 +473,11 @@ The following characters are reserved, that is, they may appear in a
 URI but their use is limited to their reserved purpose
 (conflicting data must be escaped before forming the URI):
 .IP
-   ; / ? : @ & = + $ ,
+.in +4n
+.EX
+; / ? : @ & = + $ ,
+.EE
+.in
 .PP
 Unreserved characters may be included in a URI.
 Unreserved characters
@@ -481,7 +485,11 @@ include uppercase and lowercase Latin letters,
 decimal digits, and the following
 limited set of punctuation marks and symbols:
 .IP
- \- _ . ! \(ti * ' ( )
+.in +4n
+.EX
+\- _ . ! \(ti * ' ( )
+.EE
+.in
 .PP
 All other characters must be escaped.
 An escaped octet is encoded as a character triplet, consisting of the

@@ -102,7 +102,7 @@ the state of the switched-away signal handler.
 On kernels where this flag is not supported,
 .BR sigaltstack ()
 fails with the error
-.BR EINVAL
+.B EINVAL
 when this flag is supplied.
 .RE
 .TP
@@ -122,7 +122,7 @@ size required to execute a signal handler.
 To disable an existing stack, specify \fIss.ss_flags\fP
 as \fBSS_DISABLE\fP.
 In this case, the kernel ignores any other flags in
-.IR ss.ss_flags
+.I ss.ss_flags
 and the remaining fields
 in \fIss\fP.
 .PP
@@ -259,7 +259,7 @@ inherits a copy of its parent's alternate signal stack settings.
 The same is also true for a child process created using
 .BR clone (2),
 unless the clone flags include
-.BR CLONE_VM
+.B CLONE_VM
 and do not include
 .BR CLONE_VFORK ,
 in which case any alternate signal stack that was established in the parent
@@ -297,7 +297,7 @@ a change was made to allow
 to allow
 .I ss.ss_flags==SS_ONSTACK
 with the same meaning as
-.IR "ss.ss_flags==0"
+.I ss.ss_flags==0
 (i.e., the inclusion of
 .B SS_ONSTACK
 in
@@ -325,7 +325,7 @@ The following code segment demonstrates the use of
 .BR sigaction (2))
 to install an alternate signal stack that is employed by a handler
 for the
-.BR SIGSEGV
+.B SIGSEGV
 signal:
 .PP
 .in +4n

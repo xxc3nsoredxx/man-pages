@@ -15,7 +15,7 @@ Standard C library
 .RI ( libc ", " \-lc )
 .SH SYNOPSIS
 .nf
-.BI "int sigreturn(...);"
+.B int sigreturn(...);
 .fi
 .SH DESCRIPTION
 If the Linux kernel determines that an unblocked
@@ -101,9 +101,9 @@ field of the
 .I sigaction
 structure,
 and sets the
-.BR SA_RESTORER
+.B SA_RESTORER
 flag in the
-.IR sa_flags
+.I sa_flags
 field.
 .PP
 The saved process context information is placed in a
@@ -114,7 +114,7 @@ That structure is visible within the signal handler
 as the third argument of a handler established via
 .BR sigaction (2)
 with the
-.BR SA_SIGINFO
+.B SA_SIGINFO
 flag.
 .PP
 On some other UNIX systems,
@@ -132,7 +132,7 @@ However, with the addition of real-time signals in Linux 2.2,
 a new system call,
 .BR rt_sigreturn ()
 was added to support an enlarged
-.IR sigset_t
+.I sigset_t
 type.
 The GNU C library
 hides these details from us, transparently employing

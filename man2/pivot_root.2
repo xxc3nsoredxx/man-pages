@@ -48,9 +48,9 @@ and thus it should be followed by a
 .PP
 The following restrictions apply:
 .IP \- 3
-.IR new_root
+.I new_root
 and
-.IR put_old
+.I put_old
 must be directories.
 .IP \-
 .I new_root
@@ -71,7 +71,7 @@ A path that is not already a mount point can be converted into one by
 bind mounting the path onto itself.
 .IP \-
 The propagation type of the parent mount of
-.IR new_root
+.I new_root
 and the parent mount of the current root directory must not be
 .BR MS_SHARED ;
 similarly, if
@@ -229,7 +229,7 @@ working directory refer to the new root mount point
 During the subsequent
 .BR umount ()
 call, resolution of
-.IR """."""
+.I """."""
 starts with
 .I new_root
 and then moves up the list of mounts stacked at

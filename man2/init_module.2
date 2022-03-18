@@ -173,7 +173,7 @@ The caller was not privileged
 capability),
 or module loading is disabled
 (see
-.IR /proc/sys/kernel/modules_disabled
+.I /proc/sys/kernel/modules_disabled
 in
 .BR proc (5)).
 .PP
@@ -186,7 +186,7 @@ A module with this name is already loaded.
 .B EINVAL
 .I param_values
 is invalid, or some part of the ELF image in
-.IR module_image
+.I module_image
 contains inconsistencies.
 .\" .TP
 .\" .BR EINVAL " (Linux 2.4 and earlier)"
@@ -264,7 +264,7 @@ alternatively, you can invoke the system call using
 .BR syscall (2).
 .PP
 Information about currently loaded modules can be found in
-.IR /proc/modules
+.I /proc/modules
 and in the file trees under the per-module subdirectories under
 .IR /sys/module .
 .PP
@@ -285,7 +285,7 @@ system call was rather different:
 is available by calling
 .BR query_module ();
 the latter call fails with the error
-.BR ENOSYS
+.B ENOSYS
 on Linux 2.6 and later.)
 .PP
 The older version of the system call

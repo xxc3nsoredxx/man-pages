@@ -3,7 +3,7 @@
 .\"
 .\" SPDX-License-Identifier: GPL-1.0-or-later
 .\"
-.TH CATANH 3 2021-03-22 "" "Linux Programmer's Manual"
+.TH CATANH 3 2021-03-22 GNU "Linux Programmer's Manual"
 .SH NAME
 catanh, catanhf, catanhl \- complex arc tangents hyperbolic
 .SH LIBRARY
@@ -20,16 +20,18 @@ Math library
 .SH DESCRIPTION
 These functions calculate the complex arc hyperbolic tangent of
 .IR z .
-If \fIy\ =\ catanh(z)\fP, then \fIz\ =\ ctanh(y)\fP.
+If \fIy\~=\~catanh(z)\fP, then \fIz\~=\~ctanh(y)\fP.
 The imaginary part of
 .I y
 is chosen in the interval [\-pi/2,pi/2].
 .PP
 One has:
 .PP
-.nf
-    catanh(z) = 0.5 * (clog(1 + z) \- clog(1 \- z))
-.fi
+.in +4n
+.EX
+catanh(z) = 0.5 * (clog(1 + z) \- clog(1 \- z))
+.EE
+.in
 .SH VERSIONS
 These functions first appeared in glibc in version 2.1.
 .SH ATTRIBUTES

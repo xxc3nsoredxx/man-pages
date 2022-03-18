@@ -109,12 +109,12 @@ mapping the storage space actually allocated to a file.
 to the underlying storage may not be reported as a hole.)
 In the simplest implementation,
 a filesystem can support the operations by making
-.BR SEEK_HOLE
+.B SEEK_HOLE
 always return the offset of the end of the file,
 and making
-.BR SEEK_DATA
+.B SEEK_DATA
 always return
-.IR offset
+.I offset
 (i.e., even if the location referred to by
 .I offset
 is a hole,
@@ -124,18 +124,18 @@ it can be considered to consist of data that is a sequence of zeros).
 .\" http://blogs.oracle.com/bonwick/entry/seek_hole_and_seek_data
 .PP
 The
-.BR _GNU_SOURCE
+.B _GNU_SOURCE
 feature test macro must be defined in order to obtain the definitions of
-.BR SEEK_DATA
+.B SEEK_DATA
 and
-.BR SEEK_HOLE
+.B SEEK_HOLE
 from
 .IR <unistd.h> .
 .PP
 The
-.BR SEEK_HOLE
+.B SEEK_HOLE
 and
-.BR SEEK_DATA
+.B SEEK_DATA
 operations are supported for the following filesystems:
 .IP * 3
 Btrfs (since Linux 3.1)
@@ -208,9 +208,9 @@ is associated with a pipe, socket, or FIFO.
 .SH CONFORMING TO
 POSIX.1-2001, POSIX.1-2008, SVr4, 4.3BSD.
 .PP
-.BR SEEK_DATA
+.B SEEK_DATA
 and
-.BR SEEK_HOLE
+.B SEEK_HOLE
 are nonstandard extensions also present in Solaris,
 FreeBSD, and DragonFly BSD;
 they are proposed for inclusion in the next POSIX revision (Issue 8).

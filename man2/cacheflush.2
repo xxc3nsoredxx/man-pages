@@ -59,7 +59,7 @@ is not one of
 .BR ICACHE ,
 .BR DCACHE ,
 or
-.BR BCACHE
+.B BCACHE
 (but see BUGS).
 .SH CONFORMING TO
 Historically, this system call was available on all MIPS UNIX variants
@@ -136,7 +136,7 @@ arguments, making this function fairly expensive.
 Therefore, the whole cache is always flushed.
 .PP
 This function always behaves as if
-.BR BCACHE
+.B BCACHE
 has been passed for the
 .I cache
 argument and does not do any error checking on the

@@ -116,7 +116,7 @@ specified in the
 environment variable.
 If this variable isn't defined, the path list defaults to
 a list that includes the directories returned by
-.IR confstr(_CS_PATH)
+.I confstr(_CS_PATH)
 (which typically returns the value "/bin:/usr/bin")
 and possibly also the current working directory;
 see NOTES for further details.
@@ -212,7 +212,7 @@ shows some variation across systems.
 It generally includes
 .I /bin
 and
-.IR /usr/bin
+.I /usr/bin
 (in that order) and may also include the current working directory.
 On some other systems, the current working is included after
 .I /bin

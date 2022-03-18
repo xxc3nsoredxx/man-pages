@@ -47,14 +47,14 @@ The
 .BR UFFDIO_API ,
 .BR UFFDIO_REGISTER ,
 and
-.BR UFFDIO_UNREGISTER
+.B UFFDIO_UNREGISTER
 operations are used to
 .I configure
 userfaultfd behavior.
 These operations allow the caller to choose what features will be enabled and
 what kinds of events will be delivered to the application.
 The remaining operations are
-.IR range
+.I range
 operations.
 These operations enable the calling application to resolve page-fault
 events.
@@ -66,7 +66,7 @@ Enable operation of the userfaultfd and perform API handshake.
 The
 .I argp
 argument is a pointer to a
-.IR uffdio_api
+.I uffdio_api
 structure, defined as:
 .PP
 .in +4n
@@ -239,7 +239,7 @@ accessible address space.
 .TP
 .B EINVAL
 The userfaultfd has already been enabled by a previous
-.BR UFFDIO_API
+.B UFFDIO_API
 operation.
 .TP
 .B EINVAL
@@ -368,7 +368,7 @@ The pages in the range must be "compatible" (see the description of
 .BR  UFFDIO_REGISTER .)
 .PP
 The address range to unregister is specified in the
-.IR uffdio_range
+.I uffdio_range
 structure pointed to by
 .IR argp .
 .PP
@@ -422,7 +422,7 @@ struct uffdio_copy {
 .in
 .PP
 The following value may be bitwise ORed in
-.IR mode
+.I mode
 to change the behavior of the
 .B UFFDIO_COPY
 operation:
@@ -484,18 +484,18 @@ Either
 or
 .I len
 was not a multiple of the system page size, or the range specified by
-.IR src
+.I src
 and
-.IR len
+.I len
 or
-.IR dst
+.I dst
 and
-.IR len
+.I len
 was invalid.
 .TP
 .B EINVAL
 An invalid bit was specified in the
-.IR mode
+.I mode
 field.
 .TP
 .BR ENOENT " (since Linux 4.11)"
@@ -536,7 +536,7 @@ struct uffdio_zeropage {
 .in
 .PP
 The following value may be bitwise ORed in
-.IR mode
+.I mode
 to change the behavior of the
 .B UFFDIO_ZEROPAGE
 operation:
@@ -593,7 +593,7 @@ was zero; or the range specified was invalid.
 .TP
 .B EINVAL
 An invalid bit was specified in the
-.IR mode
+.I mode
 field.
 .TP
 .BR ESRCH " (since Linux 4.13)"
@@ -609,20 +609,20 @@ a specified memory address range.
 The
 .B UFFDIO_WAKE
 operation is used in conjunction with
-.BR UFFDIO_COPY
+.B UFFDIO_COPY
 and
-.BR UFFDIO_ZEROPAGE
+.B UFFDIO_ZEROPAGE
 operations that have the
-.BR UFFDIO_COPY_MODE_DONTWAKE
+.B UFFDIO_COPY_MODE_DONTWAKE
 or
-.BR UFFDIO_ZEROPAGE_MODE_DONTWAKE
+.B UFFDIO_ZEROPAGE_MODE_DONTWAKE
 bit set in the
 .I mode
 field.
 The userfault monitor can perform several
-.BR UFFDIO_COPY
+.B UFFDIO_COPY
 and
-.BR UFFDIO_ZEROPAGE
+.B UFFDIO_ZEROPAGE
 operations in a batch and then explicitly wake up the faulting thread using
 .BR UFFDIO_WAKE .
 .PP
@@ -733,7 +733,7 @@ does not point to a valid memory address.
 (For all operations except
 .BR UFFDIO_API .)
 The userfaultfd object has not yet been enabled (via the
-.BR UFFDIO_API
+.B UFFDIO_API
 operation).
 .SH CONFORMING TO
 These
@@ -743,10 +743,10 @@ operations are Linux-specific.
 In order to detect available userfault features and
 enable some subset of those features
 the userfaultfd file descriptor must be closed after the first
-.BR UFFDIO_API
+.B UFFDIO_API
 operation that queries features availability and reopened before
 the second
-.BR UFFDIO_API
+.B UFFDIO_API
 operation that actually enables the desired features.
 .SH EXAMPLES
 See
@@ -756,5 +756,5 @@ See
 .BR mmap (2),
 .BR userfaultfd (2)
 .PP
-.IR Documentation/admin\-guide/mm/userfaultfd.rst
+.I Documentation/admin\-guide/mm/userfaultfd.rst
 in the Linux kernel source tree

@@ -12,7 +12,7 @@ Standard C library
 .nf
 .BR "#include <fcntl.h>" "            /* Definition of " O_* " constants */"
 .BR "#include <sys/syscall.h>" "      /* Definition of " SYS_* " constants */"
-.BR "#include <unistd.h>
+.B #include <unistd.h>
 .PP
 .BI "int syscall(SYS_delete_module, const char *" name ", unsigned int " flags );
 .fi
@@ -32,7 +32,7 @@ If the module has an
 .I exit
 function, then that function is executed before unloading the module.
 The
-.IR flags
+.I flags
 argument is used to modify the behavior of the system call,
 as described below.
 This system call requires privilege.
@@ -51,9 +51,9 @@ If a module has a nonzero reference count,
 then the behavior depends on the bits set in
 .IR flags .
 In normal usage (see NOTES), the
-.BR O_NONBLOCK
+.B O_NONBLOCK
 flag is always specified, and the
-.BR O_TRUNC
+.B O_TRUNC
 flag may additionally be specified.
 .\"  	O_TRUNC == KMOD_REMOVE_FORCE in kmod library
 .\"  	O_NONBLOCK == KMOD_REMOVE_NOWAIT in kmod library
@@ -98,7 +98,7 @@ function but no
 .I exit
 function, then an attempt to remove the module fails.
 However, if
-.BR O_TRUNC
+.B O_TRUNC
 was specified, this requirement is bypassed.
 .PP
 Using the
@@ -108,7 +108,7 @@ If the kernel was not built with
 .BR CONFIG_MODULE_FORCE_UNLOAD ,
 this flag is silently ignored.
 (Normally,
-.BR CONFIG_MODULE_FORCE_UNLOAD
+.B CONFIG_MODULE_FORCE_UNLOAD
 is enabled.)
 Using this flag taints the kernel (TAINT_FORCED_RMMOD).
 .SH RETURN VALUE
@@ -145,14 +145,14 @@ The caller was not privileged
 capability),
 or module unloading is disabled
 (see
-.IR /proc/sys/kernel/modules_disabled
+.I /proc/sys/kernel/modules_disabled
 in
 .BR proc (5)).
 .TP
 .B EWOULDBLOCK
 Other modules depend on this module;
 or,
-.BR O_NONBLOCK
+.B O_NONBLOCK
 was specified in
 .IR flags ,
 but the reference count of this module is nonzero and
@@ -175,13 +175,13 @@ alternatively, you can invoke the system call using
 .BR syscall (2).
 .PP
 The uninterruptible sleep that may occur if
-.BR O_NONBLOCK
+.B O_NONBLOCK
 is omitted from
-.IR flags
+.I flags
 is considered undesirable, because the sleeping process is left
 in an unkillable state.
 As at Linux 3.7, specifying
-.BR O_NONBLOCK
+.B O_NONBLOCK
 is optional, but in future kernels it is likely to become mandatory.
 .SS Linux 2.4 and earlier
 In Linux 2.4 and earlier, the system call took only one argument:

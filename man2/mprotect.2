@@ -105,7 +105,7 @@ Like
 .BR mprotect (),
 .BR pkey_mprotect ()
 changes the protection on the pages specified by
-.IR addr
+.I addr
 and
 .IR len .
 The
@@ -143,24 +143,24 @@ to mark it
 \fIaddr\fP is not a valid pointer,
 or not a multiple of the system page size.
 .TP
-.BR EINVAL
+.B EINVAL
 .RB ( pkey_mprotect ())
 \fIpkey\fP has not been allocated with
 .BR pkey_alloc (2)
 .TP
-.BR EINVAL
+.B EINVAL
 Both
-.BR PROT_GROWSUP
+.B PROT_GROWSUP
 and
-.BR PROT_GROWSDOWN
+.B PROT_GROWSDOWN
 were specified in
 .IR prot .
 .TP
-.BR EINVAL
+.B EINVAL
 Invalid flags specified in
 .IR prot .
 .TP
-.BR EINVAL
+.B EINVAL
 (PowerPC architecture)
 .B PROT_SAO
 was specified in
@@ -177,7 +177,7 @@ Addresses in the range
 are invalid for the address space of the process,
 or specify one or more pages that are not mapped.
 (Before kernel 2.4.19, the error
-.BR EFAULT
+.B EFAULT
 was incorrectly produced for these cases.)
 .TP
 .B ENOMEM
@@ -186,9 +186,9 @@ mappings with distinct attributes (e.g., read versus read/write protection)
 exceeding the allowed maximum.
 .\" I.e., the number of VMAs would exceed the 64 kB maximum
 (For example, making the protection of a range
-.BR PROT_READ
+.B PROT_READ
 in the middle of a region currently protected as
-.BR PROT_READ|PROT_WRITE
+.B PROT_READ|PROT_WRITE
 would result in three mappings:
 two read/write mappings at each end and a read-only mapping in the middle.)
 .SH VERSIONS
@@ -251,7 +251,7 @@ and
 On x86, when
 .BR mprotect ()
 is used with
-.IR prot
+.I prot
 set to
 .B PROT_EXEC
 a pkey may be allocated and set on the memory implicitly
@@ -260,7 +260,7 @@ by the kernel, but only when the pkey was 0 previously.
 On systems that do not support protection keys in hardware,
 .BR pkey_mprotect ()
 may still be used, but
-.IR pkey
+.I pkey
 must be set to \-1.
 When called this way, the operation of
 .BR pkey_mprotect ()

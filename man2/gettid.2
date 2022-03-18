@@ -25,7 +25,7 @@ is equal to the process ID (PID, as returned by
 In a multithreaded process, all threads
 have the same PID, but each one has a unique TID.
 For further details, see the discussion of
-.BR CLONE_THREAD
+.B CLONE_THREAD
 in
 .BR clone (2).
 .SH RETURN VALUE
@@ -52,7 +52,7 @@ POSIX thread ID (i.e., the opaque value returned by
 In a new thread group created by a
 .BR clone (2)
 call that does not specify the
-.BR CLONE_THREAD
+.B CLONE_THREAD
 flag (or, equivalently, a new process created by
 .BR fork (2)),
 the new process is a thread group leader,

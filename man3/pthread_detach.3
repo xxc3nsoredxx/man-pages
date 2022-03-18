@@ -19,7 +19,7 @@ POSIX threads library
 The
 .BR pthread_detach ()
 function marks the thread identified by
-.IR thread
+.I thread
 as detached.
 When a detached thread terminates,
 its resources are automatically released back to the system without
@@ -91,7 +91,11 @@ actions has not been done will be freed when the process terminates.)
 .SH EXAMPLES
 The following statement detaches the calling thread:
 .PP
-    pthread_detach(pthread_self());
+.in +4n
+.EX
+pthread_detach(pthread_self());
+.EE
+.in
 .SH SEE ALSO
 .BR pthread_attr_setdetachstate (3),
 .BR pthread_cancel (3),
