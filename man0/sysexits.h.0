@@ -7,7 +7,7 @@
 .\"
 .\" Rewritten for the Linux man-pages by Alejandro Colomar
 .\"
-.TH sysexits.h 0 2022-01-23 GNU "Linux Programmer's Manual"
+.TH SYSEXITS.H 0 2022-01-23 GNU "Linux Programmer's Manual"
 .SH NAME
 sysexits \- exit codes for programs
 .SH SYNOPSIS
@@ -30,7 +30,6 @@ Error numbers begin at
 to reduce the possibility of clashing with other exit statuses
 that random programs may already return.
 The meaning of the code is approximately as follows:
-.PP
 .TP
 .BR EX_USAGE " (" 64 )
 The command was used incorrectly,

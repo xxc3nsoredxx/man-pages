@@ -630,7 +630,6 @@ This structure is obsolete and should not be used in new code.
 .SH BUGS
 .SS LLC header handling
 The IEEE 802.2/803.3 LLC handling could be considered as a bug.
-.PP
 .SS MSG_TRUNC issues
 The
 .B MSG_TRUNC
@@ -639,7 +638,6 @@ extension is an ugly hack and should be replaced by a control message.
 There is currently no way to get the original destination address of
 packets via
 .BR SOCK_DGRAM .
-.PP
 .SS spkt_device device name truncation
 The
 .I spkt_device
@@ -669,7 +667,6 @@ or to rename the interface to a name of at most 13 bytes,
 for example using the
 .BR ip (8)
 tool.
-.PP
 .SS Documentation issues
 Socket filters are not documented.
 .\" .SH CREDITS

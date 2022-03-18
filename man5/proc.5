@@ -791,7 +791,8 @@ the symbolic links in this directory is governed by a ptrace access mode
 check; see
 .BR ptrace (2).
 .IP
-Note that for file descriptors referring to inodes (pipes and sockets, see above),
+Note that for file descriptors referring to inodes
+(pipes and sockets, see above),
 those inodes still have permission bits and ownership information
 distinct from those of the
 .IR /proc/ pid /fd
@@ -813,7 +814,8 @@ and owned by that shell's user, which is not
 .IR nobody ,
 so
 .B cat
-does not have permission to create a new file descriptor to read from that inode,
+does not have permission
+to create a new file descriptor to read from that inode,
 even though it can still read from its existing file descriptor 0.
 .TP
 .IR /proc/ pid /fdinfo/ " (since Linux 2.6.22)"
@@ -1215,7 +1217,8 @@ files (see
 Entries are named by memory region start and end
 address pair (expressed as hexadecimal numbers),
 and are symbolic links to the mapped files themselves.
-Here is an example, with the output wrapped and reformatted to fit on an 80-column display:
+Here is an example,
+with the output wrapped and reformatted to fit on an 80-column display:
 .IP
 .in +4n
 .EX
@@ -1640,7 +1643,8 @@ whether the process is privileged (\-).
 .\" More precisely, if it has CAP_SYS_ADMIN or (pre 2.6.36) CAP_SYS_RESOURCE
 .RE
 .IP
-Before kernel 2.6.36 the following factors were also used in the calculation of oom_score:
+Before kernel 2.6.36
+the following factors were also used in the calculation of oom_score:
 .RS
 .IP * 2
 whether the process creates a lot of children using
