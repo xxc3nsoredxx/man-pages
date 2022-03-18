@@ -29,15 +29,19 @@ MAKEFLAGS += --no-print-directory
 MAKEFLAGS += --warn-undefined-variables
 
 
+srcdir := .
 builddir := tmp
+LINTDIR := $(builddir)/lint
 htmlbuilddir := $(builddir)/html
 HTOPTS :=
 
 DESTDIR :=
 prefix := /usr/local
+SYSCONFDIR := $(srcdir)/etc
+TMACDIR := $(SYSCONFDIR)/groff/tmac
 datarootdir := $(prefix)/share
 docdir := $(datarootdir)/doc
-MANDIR := $(CURDIR)
+MANDIR := $(srcdir)
 mandir := $(datarootdir)/man
 MAN0DIR := $(MANDIR)/man0
 MAN1DIR := $(MANDIR)/man1
@@ -71,12 +75,23 @@ htmldir := $(docdir)
 htmldir_ := $(htmldir)/man
 htmlext := .html
 
-INSTALL := install
+TMACFILES            := $(sort $(shell find $(TMACDIR) -not -type d))
+TMACNAMES            := $(basename $(notdir $(TMACFILES)))
+GROFF_CHECKSTYLE_LVL := 3
+DEFAULT_GROFFFLAGS   := -man
+DEFAULT_GROFFFLAGS   += -M $(TMACDIR)
+DEFAULT_GROFFFLAGS   += $(foreach x,$(TMACNAMES),-m $(x))
+DEFAULT_GROFFFLAGS   += -rCHECKSTYLE=$(GROFF_CHECKSTYLE_LVL)
+EXTRA_GROFFFLAGS     :=
+GROFFFLAGS           := $(DEFAULT_GROFFFLAGS) $(EXTRA_GROFFFLAGS)
+
+INSTALL      := install
 INSTALL_DATA := $(INSTALL) -m 644
-INSTALL_DIR := $(INSTALL) -m 755 -d
-RM := rm
-RMDIR := rmdir --ignore-fail-on-non-empty
-MAN2HTML := man2html
+INSTALL_DIR  := $(INSTALL) -m 755 -d
+RM           := rm
+RMDIR        := rmdir --ignore-fail-on-non-empty
+GROFF        := groff
+MAN2HTML     := man2html
 
 MAN_SECTIONS := 0 1 2 3 4 5 6 7 8
 
@@ -132,9 +147,11 @@ _man5pages := $(filter %$(man5ext),$(_manpages))
 _man6pages := $(filter %$(man6ext),$(_manpages))
 _man7pages := $(filter %$(man7ext),$(_manpages))
 _man8pages := $(filter %$(man8ext),$(_manpages))
+LINT_groff := $(patsubst $(MANDIR)/%,$(LINTDIR)/%.lint.groff.touch,$(MANPAGES))
 
 MANDIRS   := $(sort $(shell find $(MANDIR)/man? -type d))
 HTMLDIRS  := $(patsubst $(MANDIR)/%,$(htmlbuilddir)/%/.,$(MANDIRS))
+LINTDIRS  := $(patsubst $(MANDIR)/%,$(LINTDIR)/%/.,$(MANDIRS))
 _htmldirs := $(patsubst $(htmlbuilddir)/%,$(DESTDIR)$(htmldir_)/%,$(HTMLDIRS))
 _mandirs  := $(patsubst $(MANDIR)/%,$(DESTDIR)$(mandir)/%/.,$(MANDIRS))
 _man0dir  := $(filter %man0/.,$(_mandirs))
@@ -213,6 +230,32 @@ $(uninstall_manX): uninstall-man%: $$(_man%pages_rm) $$(_man%dir_rmdir)
 
 .PHONY: uninstall-man
 uninstall-man: $(_mandir_rmdir) $(uninstall_manX)
+	@:
+
+
+########################################################################
+# lint
+
+linters := groff
+lint    := $(foreach x,$(linters),lint-$(x))
+
+$(LINT_groff): $(LINTDIR)/%.lint.groff.touch: $(MANDIR)/% | $$(@D)/.
+	$(info LINT (groff)	$@)
+	$(GROFF) $(GROFFFLAGS) -z $<
+	touch $@
+
+$(LINTDIRS): %/.: | $$(dir %). $(LINTDIR)/.
+
+.PHONY: lint-groff
+lint-groff: $(LINT_groff) | lintdirs
+	@:
+
+.PHONY: lintdirs
+lintdirs: $(LINTDIRS)
+	@:
+
+.PHONY: lint
+lint: $(lint)
 	@:
 
 
