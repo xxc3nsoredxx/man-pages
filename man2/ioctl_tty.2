@@ -51,7 +51,7 @@ from
 .TP
 .B TCGETS
 Argument:
-.BI "struct termios *" argp
+.BI "struct termios\~*" argp
 .IP
 Equivalent to
 .IR "tcgetattr(fd, argp)" .
@@ -60,7 +60,7 @@ Get the current serial port settings.
 .TP
 .B TCSETS
 Argument:
-.BI "const struct termios *" argp
+.BI "const struct termios\~*" argp
 .IP
 Equivalent to
 .IR "tcsetattr(fd, TCSANOW, argp)" .
@@ -69,7 +69,7 @@ Set the current serial port settings.
 .TP
 .B TCSETSW
 Argument:
-.BI "const struct termios *" argp
+.BI "const struct termios\~*" argp
 .IP
 Equivalent to
 .IR "tcsetattr(fd, TCSADRAIN, argp)" .
@@ -79,7 +79,7 @@ set the current serial port settings.
 .TP
 .B TCSETSF
 Argument:
-.BI "const struct termios *" argp
+.BI "const struct termios\~*" argp
 .IP
 Equivalent to
 .IR "tcsetattr(fd, TCSAFLUSH, argp)" .
@@ -96,9 +96,9 @@ are just like
 .BR TCSETSW ,
 .BR TCSETSF ,
 except that they take a
-.I "struct termios2\ *"
+.I "struct termios2\~*"
 instead of a
-.IR "struct termios\ *" .
+.IR "struct termios\~*" .
 If the structure member
 .B c_cflag
 contains the flag
@@ -125,9 +125,9 @@ The following four ioctls are just like
 .BR TCSETSW ,
 .BR TCSETSF ,
 except that they take a
-.I "struct termio\ *"
+.I "struct termio\~*"
 instead of a
-.IR "struct termios\ *" .
+.IR "struct termios\~*" .
 .RS
 .TS
 lb l.
@@ -148,7 +148,7 @@ locked value.
 .TP
 .B TIOCGLCKTRMIOS
 Argument:
-.BI "struct termios *" argp
+.BI "struct termios\~*" argp
 .IP
 Gets the locking status of the
 .I termios
@@ -156,13 +156,13 @@ structure of the terminal.
 .TP
 .B TIOCSLCKTRMIOS
 Argument:
-.BI "const struct termios *" argp
+.BI "const struct termios\~*" argp
 .IP
 Sets the locking status of the
 .I termios
 structure of the terminal.
 Only a process with the
-.BR CAP_SYS_ADMIN
+.B CAP_SYS_ADMIN
 capability can do this.
 .SS Get and set window size
 Window sizes are kept in the kernel, but not used by the kernel
@@ -172,13 +172,13 @@ for example, by loading a new font).
 .TP
 .B TIOCGWINSZ
 Argument:
-.BI "struct winsize *" argp
+.BI "struct winsize\~*" argp
 .IP
 Get window size.
 .TP
 .B TIOCSWINSZ
 Argument:
-.BI "const struct winsize *" argp
+.BI "const struct winsize\~*" argp
 .IP
 Set window size.
 .PP
@@ -279,20 +279,20 @@ for the argument values
 .TP
 .BI FIONREAD
 Argument:
-.BI "int *" argp
+.BI "int\~*" argp
 .IP
 Get the number of bytes in the input buffer.
 .TP
 .B TIOCINQ
 Argument:
-.BI "int *" argp
+.BI "int\~*" argp
 .IP
 Same as
 .BR FIONREAD .
 .TP
 .B TIOCOUTQ
 Argument:
-.BI "int *" argp
+.BI "int\~*" argp
 .IP
 Get the number of bytes in the output buffer.
 .TP
@@ -313,7 +313,7 @@ for the argument values
 .TP
 .B TIOCSTI
 Argument:
-.BI "const char *" argp
+.BI "const char\~*" argp
 .IP
 Insert the given byte in the input queue.
 .SS Redirecting console output
@@ -382,7 +382,7 @@ and all processes in the current session lose their controlling terminal.
 .TP
 .B TIOCGPGRP
 Argument:
-.BI "pid_t *" argp
+.BI "pid_t\~*" argp
 .IP
 When successful, equivalent to
 .IR "*argp = tcgetpgrp(fd)" .
@@ -391,7 +391,7 @@ Get the process group ID of the foreground process group on this terminal.
 .TP
 .B TIOCSPGRP
 Argument:
-.BI "const pid_t *" argp
+.BI "const pid_t\~*" argp
 .IP
 Equivalent to
 .IR "tcsetpgrp(fd, *argp)" .
@@ -400,7 +400,7 @@ Set the foreground process group ID of this terminal.
 .TP
 .B TIOCGSID
 Argument:
-.BI "pid_t *" argp
+.BI "pid_t\~*" argp
 .IP
 When successful, equivalent to
 .IR "*argp = tcgetsid(fd)" .
@@ -429,7 +429,7 @@ capability.)
 .TP
 .B TIOCGEXCL
 Argument:
-.BI "int *" argp
+.BI "int\~*" argp
 .IP
 (since Linux 3.8)
 If the terminal is currently in exclusive mode,
@@ -447,20 +447,20 @@ Disable exclusive mode.
 .TP
 .B TIOCGETD
 Argument:
-.BI "int *" argp
+.BI "int\~*" argp
 .IP
 Get the line discipline of the terminal.
 .TP
 .B TIOCSETD
 Argument:
-.BI "const int *" argp
+.BI "const int\~*" argp
 .IP
 Set the line discipline of the terminal.
 .SS Pseudoterminal ioctls
 .TP
 .B TIOCPKT
 Argument:
-.BI "const int *" argp
+.BI "const int\~*" argp
 .IP
 Enable (when
 .RI * argp
@@ -521,7 +521,7 @@ locally \fB\(haS\fP/\fB\(haQ\fP flow-controlled remote login.
 .TP
 .B TIOCGPKT
 Argument:
-.BI "const int *" argp
+.BI "const int\~*" argp
 .IP
 (since Linux 3.8)
 Return the current packet mode setting in the integer pointed to by
@@ -529,7 +529,7 @@ Return the current packet mode setting in the integer pointed to by
 .TP
 .B TIOCSPTLCK
 Argument:
-.BI "int *" argp
+.BI "int\~*" argp
 .IP
 Set (if
 .IR *argp
@@ -541,7 +541,7 @@ is zero) the lock on the pseudoterminal slave device.
 .TP
 .B TIOCGPTLCK
 Argument:
-.BI "int *" argp
+.BI "int\~*" argp
 .IP
 (since Linux 3.8)
 Place the current lock state of the pseudoterminal slave device
@@ -588,25 +588,25 @@ have not been implemented under Linux.
 .TP
 .B TIOCMGET
 Argument:
-.BI "int *" argp
+.BI "int\~*" argp
 .IP
 Get the status of modem bits.
 .TP
 .B TIOCMSET
 Argument:
-.BI "const int *" argp
+.BI "const int\~*" argp
 .IP
 Set the status of modem bits.
 .TP
 .B TIOCMBIC
 Argument:
-.BI "const int *" argp
+.BI "const int\~*" argp
 .IP
 Clear the indicated modem bits.
 .TP
 .B TIOCMBIS
 Argument:
-.BI "const int *" argp
+.BI "const int\~*" argp
 .IP
 Set the indicated modem bits.
 .PP
@@ -646,7 +646,7 @@ to see which bit has changed.
 .TP
 .B TIOCGICOUNT
 Argument:
-.BI "struct serial_icounter_struct *" argp
+.BI "struct serial_icounter_struct\~*" argp
 .IP
 Get counts of input serial line interrupts (DCD, RI, DSR, CTS).
 The counts are written to the
@@ -660,7 +660,7 @@ RI, where only 0->1 transitions are counted.
 .TP
 .B TIOCGSOFTCAR
 Argument:
-.BI "int *" argp
+.BI "int\~*" argp
 .IP
 ("Get software carrier flag")
 Get the status of the CLOCAL flag in the c_cflag field of the
@@ -669,7 +669,7 @@ structure.
 .TP
 .B TIOCSSOFTCAR
 Argument:
-.BI "const int *" argp
+.BI "const int\~*" argp
 .IP
 ("Set software carrier flag")
 Set the CLOCAL flag in the
@@ -702,7 +702,7 @@ ioctl, see
 .TP
 .B TIOCTTYGSTRUCT
 Argument:
-.BI "struct tty_struct *" argp
+.BI "struct tty_struct\~*" argp
 .IP
 Get the
 .I tty_struct
