@@ -6,7 +6,8 @@
 #
 # - Follow "Makefile Conventions" from the "GNU Coding Standards" closely.
 #   However, when something could be improved, don't follow those.
-# - Uppercase variables, when referring files, refer to files in this repo.
+# - Uppercase variables, when referring files, refer to files in this repo,
+#   or temporary files produced in $builddir.
 # - Lowercase variables, when referring files, refer to system files.
 # - Variables starting with '_' refer to absolute paths, including $(DESTDIR).
 # - Variables ending with '_' refer to a subdir of their parent dir, which
@@ -32,8 +33,7 @@ MAKEFLAGS += --warn-undefined-variables
 srcdir := .
 builddir := tmp
 LINTDIR := $(builddir)/lint
-htmlbuilddir := $(builddir)/html
-HTOPTS :=
+HTMLDIR := $(builddir)/html
 
 DESTDIR :=
 prefix := /usr/local
@@ -85,6 +85,10 @@ DEFAULT_GROFFFLAGS   += -rCHECKSTYLE=$(GROFF_CHECKSTYLE_LVL)
 EXTRA_GROFFFLAGS     :=
 GROFFFLAGS           := $(DEFAULT_GROFFFLAGS) $(EXTRA_GROFFFLAGS)
 
+DEFAULT_MAN2HTMLFLAGS :=
+EXTRA_MAN2HTMLFLAGS   :=
+MAN2HTMLFLAGS         := $(DEFAULT_MAN2HTMLFLAGS) $(EXTRA_MAN2HTMLFLAGS)
+
 INSTALL      := install
 INSTALL_DATA := $(INSTALL) -m 644
 INSTALL_DIR  := $(INSTALL) -m 755 -d
@@ -135,8 +139,8 @@ clean:
 # man
 
 MANPAGES   := $(sort $(shell find $(MANDIR)/man?/ -type f | grep '$(manext)$$'))
-HTMLPAGES  := $(patsubst $(MANDIR)/%,$(htmlbuilddir)/%.html,$(MANPAGES))
-_htmlpages := $(patsubst $(htmlbuilddir)/%,$(DESTDIR)$(htmldir_)/%,$(HTMLPAGES))
+HTMLPAGES  := $(patsubst $(MANDIR)/%,$(HTMLDIR)/%.html,$(MANPAGES))
+_htmlpages := $(patsubst $(HTMLDIR)/%,$(DESTDIR)$(htmldir_)/%,$(HTMLPAGES))
 _manpages  := $(patsubst $(MANDIR)/%,$(DESTDIR)$(mandir)/%,$(MANPAGES))
 _man0pages := $(filter %$(man0ext),$(_manpages))
 _man1pages := $(filter %$(man1ext),$(_manpages))
@@ -150,9 +154,9 @@ _man8pages := $(filter %$(man8ext),$(_manpages))
 LINT_groff := $(patsubst $(MANDIR)/%,$(LINTDIR)/%.lint.groff.touch,$(MANPAGES))
 
 MANDIRS   := $(sort $(shell find $(MANDIR)/man? -type d))
-HTMLDIRS  := $(patsubst $(MANDIR)/%,$(htmlbuilddir)/%/.,$(MANDIRS))
+HTMLDIRS  := $(patsubst $(MANDIR)/%,$(HTMLDIR)/%/.,$(MANDIRS))
 LINTDIRS  := $(patsubst $(MANDIR)/%,$(LINTDIR)/%/.,$(MANDIRS))
-_htmldirs := $(patsubst $(htmlbuilddir)/%,$(DESTDIR)$(htmldir_)/%,$(HTMLDIRS))
+_htmldirs := $(patsubst $(HTMLDIR)/%,$(DESTDIR)$(htmldir_)/%,$(HTMLDIRS))
 _mandirs  := $(patsubst $(MANDIR)/%,$(DESTDIR)$(mandir)/%/.,$(MANDIRS))
 _man0dir  := $(filter %man0/.,$(_mandirs))
 _man1dir  := $(filter %man1/.,$(_mandirs))
@@ -263,15 +267,15 @@ lint: $(lint)
 # html
 
 # Use with
-#  make HTOPTS=whatever html
+#  make MAN2HTMLFLAGS=whatever html
 # The sed removes the lines "Content-type: text/html\n\n"
-$(HTMLPAGES): $(htmlbuilddir)/%.html: $(MANDIR)/% | $$(@D)/.
+$(HTMLPAGES): $(HTMLDIR)/%.html: $(MANDIR)/% | $$(@D)/.
 	$(info MAN2HTML	$@)
-	$(MAN2HTML) $(HTOPTS) $< | sed -e 1,2d >$@ || exit $$?
+	$(MAN2HTML) $(MAN2HTMLFLAGS) $< | sed -e 1,2d >$@ || exit $$?
 
-$(HTMLDIRS): %/.: | $$(dir %). $(htmlbuilddir)/.
+$(HTMLDIRS): %/.: | $$(dir %). $(HTMLDIR)/.
 
-$(_htmlpages): $(DESTDIR)$(htmldir_)/%: $(htmlbuilddir)/% | $$(@D)/.
+$(_htmlpages): $(DESTDIR)$(htmldir_)/%: $(HTMLDIR)/% | $$(@D)/.
 	$(info INSTALL	$@)
 	$(INSTALL_DATA) -T $< $@
 
