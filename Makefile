@@ -79,6 +79,7 @@ TMACFILES            := $(sort $(shell find $(TMACDIR) -not -type d))
 TMACNAMES            := $(basename $(notdir $(TMACFILES)))
 GROFF_CHECKSTYLE_LVL := 3
 DEFAULT_GROFFFLAGS   := -man
+DEFAULT_GROFFFLAGS   += -t
 DEFAULT_GROFFFLAGS   += -M $(TMACDIR)
 DEFAULT_GROFFFLAGS   += $(foreach x,$(TMACNAMES),-m $(x))
 DEFAULT_GROFFFLAGS   += -rCHECKSTYLE=$(GROFF_CHECKSTYLE_LVL)
