@@ -34,6 +34,7 @@ srcdir   := .
 builddir := tmp
 LINTDIR  := $(builddir)/lint
 HTMLDIR  := $(builddir)/html
+SRCDIR   := $(builddir)/src
 
 DESTDIR  :=
 prefix   := /usr/local
@@ -99,9 +100,11 @@ MAN2HTMLFLAGS         := $(DEFAULT_MAN2HTMLFLAGS) $(EXTRA_MAN2HTMLFLAGS)
 INSTALL      := install
 INSTALL_DATA := $(INSTALL) -m 644
 INSTALL_DIR  := $(INSTALL) -m 755 -d
+MKDIR        := mkdir -p
 RM           := rm
 RMDIR        := rmdir --ignore-fail-on-non-empty
 GROFF        := groff
+MAN          := man
 MANDOC       := mandoc
 MAN2HTML     := man2html
 
@@ -163,10 +166,20 @@ _man7pages := $(filter %$(man7ext),$(_manpages))
 _man8pages := $(filter %$(man8ext),$(_manpages))
 LINT_groff :=$(patsubst $(MANDIR)/%,$(LINTDIR)/%.lint.groff.touch,$(LINTPAGES))
 LINT_mandoc:=$(patsubst $(MANDIR)/%,$(LINTDIR)/%.lint.mandoc.touch,$(LINTPAGES))
+SRCPAGEDIRS:=$(patsubst $(MANDIR)/%,$(SRCDIR)/%.d,$(LINTPAGES))
+UNITS_c    := $(sort $(patsubst $(MANDIR)/%,$(SRCDIR)/%,$(shell \
+		find $(MANDIR)/man?/ -type f \
+		| grep '$(manext)$$' \
+		| xargs grep -l '^\.TH ' \
+		| while read m; do \
+			<$$m \
+			sed -n "s,^\... SRC BEGIN (\(.*.c\))$$,$$m.d/\1,p"; \
+		done)))
 
 MANDIRS   := $(sort $(shell find $(MANDIR)/man? -type d))
 HTMLDIRS  := $(patsubst $(MANDIR)/%,$(HTMLDIR)/%/.,$(MANDIRS))
 LINTDIRS  := $(patsubst $(MANDIR)/%,$(LINTDIR)/%/.,$(MANDIRS))
+SRCDIRS   := $(patsubst $(MANDIR)/%,$(SRCDIR)/%/.,$(MANDIRS))
 _htmldirs := $(patsubst $(HTMLDIR)/%,$(DESTDIR)$(htmldir_)/%,$(HTMLDIRS))
 _mandirs  := $(patsubst $(MANDIR)/%,$(DESTDIR)$(mandir)/%/.,$(MANDIRS))
 _man0dir  := $(filter %man0/.,$(_mandirs))
@@ -245,6 +258,38 @@ $(uninstall_manX): uninstall-man%: $$(_man%pages_rm) $$(_man%dir_rmdir)
 
 .PHONY: uninstall-man
 uninstall-man: $(_mandir_rmdir) $(uninstall_manX)
+	@:
+
+
+########################################################################
+# src
+
+$(SRCPAGEDIRS): $(SRCDIR)/%.d: $(MANDIR)/% | $$(@D)/.
+	$(info MKDIR	$@)
+	$(MKDIR) $@
+	touch $@
+
+$(UNITS_c): $$(@D)
+	$(info SED	$@)
+	<$(patsubst $(SRCDIR)/%.d,$(MANDIR)/%,$<) \
+	sed -n \
+		-e '/^\.TH/,/^\.SH/{/^\.SH/!p}' \
+		-e '/^\.SH EXAMPLES/p' \
+		-e "/^\... SRC BEGIN ($(@F))$$/,/^\... SRC END$$/p" \
+	| $(MAN) -P cat -l - \
+	| sed '/^[^ ]/d' \
+	| sed 's/^       //' \
+	>$@ \
+	|| exit $$?
+
+$(SRCDIRS): %/.: | $$(dir %). $(SRCDIR)/.
+
+.PHONY: build-src src
+build-src src: $(UNITS_c) | builddirs-src
+	@:
+
+.PHONY: builddirs-src
+builddirs-src: $(SRCDIRS)
 	@:
 
 
