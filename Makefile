@@ -86,6 +86,11 @@ DEFAULT_GROFFFLAGS   += -rCHECKSTYLE=$(GROFF_CHECKSTYLE_LVL)
 EXTRA_GROFFFLAGS     :=
 GROFFFLAGS           := $(DEFAULT_GROFFFLAGS) $(EXTRA_GROFFFLAGS)
 
+DEFAULT_MANDOCFLAGS := -man
+DEFAULT_MANDOCFLAGS += -Tlint
+EXTRA_MANDOCFLAGS   :=
+MANDOCFLAGS         := $(DEFAULT_MANDOCFLAGS) $(EXTRA_MANDOCFLAGS)
+
 DEFAULT_MAN2HTMLFLAGS :=
 EXTRA_MAN2HTMLFLAGS   :=
 MAN2HTMLFLAGS         := $(DEFAULT_MAN2HTMLFLAGS) $(EXTRA_MAN2HTMLFLAGS)
@@ -96,6 +101,7 @@ INSTALL_DIR  := $(INSTALL) -m 755 -d
 RM           := rm
 RMDIR        := rmdir --ignore-fail-on-non-empty
 GROFF        := groff
+MANDOC       := mandoc
 MAN2HTML     := man2html
 
 MAN_SECTIONS := 0 1 2 3 4 5 6 7 8
@@ -153,6 +159,7 @@ _man6pages := $(filter %$(man6ext),$(_manpages))
 _man7pages := $(filter %$(man7ext),$(_manpages))
 _man8pages := $(filter %$(man8ext),$(_manpages))
 LINT_groff := $(patsubst $(MANDIR)/%,$(LINTDIR)/%.lint.groff.touch,$(MANPAGES))
+LINT_mandoc:= $(patsubst $(MANDIR)/%,$(LINTDIR)/%.lint.mandoc.touch,$(MANPAGES))
 
 MANDIRS   := $(sort $(shell find $(MANDIR)/man? -type d))
 HTMLDIRS  := $(patsubst $(MANDIR)/%,$(HTMLDIR)/%/.,$(MANDIRS))
@@ -241,7 +248,7 @@ uninstall-man: $(_mandir_rmdir) $(uninstall_manX)
 ########################################################################
 # lint
 
-linters := groff
+linters := groff mandoc
 lint    := $(foreach x,$(linters),lint-$(x))
 
 $(LINT_groff): $(LINTDIR)/%.lint.groff.touch: $(MANDIR)/% | $$(@D)/.
@@ -249,10 +256,15 @@ $(LINT_groff): $(LINTDIR)/%.lint.groff.touch: $(MANDIR)/% | $$(@D)/.
 	$(GROFF) $(GROFFFLAGS) -z $<
 	touch $@
 
+$(LINT_mandoc): $(LINTDIR)/%.lint.mandoc.touch: $(MANDIR)/% | $$(@D)/.
+	$(info LINT (mandoc)	$@)
+	$(MANDOC) $(MANDOCFLAGS) $<
+	touch $@
+
 $(LINTDIRS): %/.: | $$(dir %). $(LINTDIR)/.
 
-.PHONY: lint-groff
-lint-groff: $(LINT_groff) | lintdirs
+.PHONY: $(lint)
+$(lint): lint-%: $$(LINT_%) | lintdirs
 	@:
 
 .PHONY: lintdirs
