@@ -76,6 +76,29 @@ htmldir     := $(docdir)
 htmldir_    := $(htmldir)/man
 htmlext     := .html
 
+DEFAULT_CPPFLAGS :=
+EXTRA_CPPFLAGS   :=
+CPPFLAGS         := $(DEFAULT_CPPFLAGS) $(EXTRA_CPPFLAGS)
+
+DEFAULT_CFLAGS := -std=gnu17
+DEFAULT_CFLAGS += -Wall
+DEFAULT_CFLAGS += -Wextra
+DEAFULT_CFLAGS += -Wstrict-prototypes
+DEFAULT_CFLAGS += -Werror
+EXTRA_CFLAGS   :=
+CFLAGS         := $(DEFAULT_CFLAGS) $(EXTRA_CFLAGS)
+
+DEFAULT_LDFLAGS := -Wl,--as-needed
+DEFAULT_LDFLAGS += -Wl,--no-allow-shlib-undefined
+DEFAULT_LDFLAGS += -Wl,--no-copy-dt-needed-entries
+DEFAULT_LDFLAGS += -Wl,--no-undefined
+EXTRA_LDFLAGS   :=
+LDFLAGS         := $(DEFAULT_LDFLAGS) $(EXTRA_LDFLAGS)
+
+DEFAULT_LDLIBS := -lc
+EXTRA_LDLIBS   :=
+LDLIBS         := $(DEFAULT_LDLIBS) $(EXTRA_LDLIBS)
+
 TMACFILES            := $(sort $(shell find $(TMACDIR) -not -type d))
 TMACNAMES            := $(basename $(notdir $(TMACFILES)))
 GROFF_CHECKSTYLE_LVL := 3
@@ -103,6 +126,8 @@ INSTALL_DIR  := $(INSTALL) -m 755 -d
 MKDIR        := mkdir -p
 RM           := rm
 RMDIR        := rmdir --ignore-fail-on-non-empty
+CC           := cc
+LD           := $(CC) $(CFLAGS)
 GROFF        := groff
 MAN          := man
 MANDOC       := mandoc
@@ -175,6 +200,8 @@ UNITS_c    := $(sort $(patsubst $(MANDIR)/%,$(SRCDIR)/%,$(shell \
 			<$$m \
 			sed -n "s,^\... SRC BEGIN (\(.*.c\))$$,$$m.d/\1,p"; \
 		done)))
+UNITS_o    := $(patsubst $(SRCDIR)/%.c,$(SRCDIR)/%.o,$(UNITS_c))
+UNITS_bin  := $(patsubst $(SRCDIR)/%.c,$(SRCDIR)/%,$(UNITS_c))
 
 MANDIRS   := $(sort $(shell find $(MANDIR)/man? -type d))
 HTMLDIRS  := $(patsubst $(MANDIR)/%,$(HTMLDIR)/%/.,$(MANDIRS))
@@ -282,10 +309,26 @@ $(UNITS_c): $$(@D)
 	>$@ \
 	|| exit $$?
 
+$(UNITS_o): $(SRCDIR)/%.o: $(SRCDIR)/%.c
+	$(info CC	$@)
+	$(CC) -c $(CPPFLAGS) $(CFLAGS) -o $@ $<
+
+$(UNITS_bin): $(SRCDIR)/%: $(SRCDIR)/%.o
+	$(info LD	$@)
+	$(LD) $(LDFLAGS) -o $@ $< $(LDLIBS)
+
 $(SRCDIRS): %/.: | $$(dir %). $(SRCDIR)/.
 
 .PHONY: build-src src
 build-src src: $(UNITS_c) | builddirs-src
+	@:
+
+.PHONY: build-cc
+build-cc: $(UNITS_o)
+	@:
+
+.PHONY: build-ld
+build-ld: $(UNITS_bin)
 	@:
 
 .PHONY: builddirs-src
