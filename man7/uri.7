@@ -51,23 +51,20 @@ relative_path = relative_segment [ absolute_path ]
 .SH DESCRIPTION
 A Uniform Resource Identifier (URI) is a short string of characters
 identifying an abstract or physical resource (for example, a web page).
-It normally identifies a resource through its primary access
-mechanism (e.g., its network "location").
-.PP
-Uniform Resource Locator (URL)
-used to refer to a subset of URIs,
-but since the distinction is not easy,
-the term has been superseeded by URI
-and can be understood as a synonim of URI.
-.PP
-A Uniform Resource Name (URN) is a URI that uses the urn: scheme,
-and must remain globally unique and persistent
-even when the resource ceases to exist or becomes unavailable.
+A Uniform Resource Locator (URL) is a URI
+that identifies a resource through its primary access
+mechanism (e.g., its network "location"), rather than
+by name or some other attribute of that resource.
+A Uniform Resource Name (URN) is a URI
+that must remain globally unique and persistent even when
+the resource ceases to exist or becomes unavailable.
 .PP
 URIs are the standard way to name hypertext link destinations
 for tools such as web browsers.
-The string "http://www.kernel.org" is a URI.
-Many people use the term URL loosely as a synonym for URI.
+The string "http://www.kernel.org" is a URL (and thus it
+is also a URI).
+Many people use the term URL loosely as a synonym for URI
+(though technically URLs are a subset of URIs).
 .PP
 URIs can be absolute or relative.
 An absolute identifier refers to a resource independent of
@@ -92,7 +89,7 @@ A URI beginning with \(aq#\(aq refers to that fragment in the current resource.
 There are many different URI schemes, each with specific
 additional rules and meanings, but they are intentionally made to be
 as similar as possible.
-For example, many URI schemes
+For example, many URL schemes
 permit the authority to be the following format, called here an
 .I ip_server
 (square brackets show what's optional):
@@ -111,8 +108,8 @@ logs into a web server on host example.com
 as fred (using fredpassword) using port 8080.
 Avoid including a password in a URI if possible because of the many
 security risks of having a password written down.
-If the URI supplies a username but no password, and the remote
-server requests a password, the program interpreting the URI
+If the URL supplies a username but no password, and the remote
+server requests a password, the program interpreting the URL
 should request one from the user.
 .PP
 Here are some of the most common schemes in use on UNIX-like systems
@@ -126,7 +123,7 @@ schemes; see those tools' documentation for information on those schemes.
 .br
 .RI http:// ip_server / path ? query
 .PP
-This is a URI accessing a web (HTTP) server.
+This is a URL accessing a web (HTTP) server.
 The default port is 80.
 If the path refers to a directory, the web server will choose what
 to return; usually if there is a file named "index.html" or "index.htm"
@@ -161,7 +158,7 @@ for more information.
 .PP
 .RI ftp:// ip_server / path
 .PP
-This is a URI accessing a file through the file transfer protocol (FTP).
+This is a URL accessing a file through the file transfer protocol (FTP).
 The default port (for control) is 21.
 If no username is included, the username "anonymous" is supplied, and
 in that case many clients provide as the password the requestor's
@@ -182,7 +179,7 @@ The default gopher port is 70.
 .I gophertype
 is a single-character field to denote the
 Gopher type of the resource to
-which the URI refers.
+which the URL refers.
 The entire path may also be empty, in
 which case the delimiting "/" is also optional and the gophertype
 defaults to "1".
@@ -236,7 +233,7 @@ presence of the "@" character.
 .PP
 .RI telnet:// ip_server /
 .PP
-The Telnet URI scheme is used to designate interactive text services that
+The Telnet URL scheme is used to designate interactive text services that
 may be accessed by the Telnet protocol.
 The final "/" character may be omitted.
 The default port is 23.
@@ -252,12 +249,12 @@ This represents a file or directory accessible locally.
 As a special case,
 .I ip_server
 can be the string "localhost" or the empty
-string; this is interpreted as "the machine from which the URI is
+string; this is interpreted as "the machine from which the URL is
 being interpreted".
 If the path is to a directory, the viewer should display the
 directory's contents with links to each containee;
 not all viewers currently do this.
-KDE supports generated files through the URI <file:/cgi-bin>.
+KDE supports generated files through the URL <file:/cgi-bin>.
 If the given file isn't found, browser writers may want to try to expand
 the filename via filename globbing
 (see
@@ -366,8 +363,8 @@ See
 .UR http://www.ietf.org\:/rfc\:/rfc2255.txt
 RFC\ 2255
 .UE
-for more information on the LDAP URI scheme.
-The components of this URI are:
+for more information on the LDAP URL scheme.
+The components of this URL are:
 .IP hostport 12
 the LDAP server to query, written as a hostname optionally followed by
 a colon and the port number.
@@ -512,8 +509,8 @@ A URI is always shown in its "escaped" form.
 Unreserved characters can be escaped without changing the semantics
 of the URI, but this should not be done unless the URI is being used
 in a context that does not allow the unescaped character to appear.
-For example, "%7e" is sometimes used instead of "\(ti" in an HTTP URI
-path, but the two are equivalent for an HTTP URI.
+For example, "%7e" is sometimes used instead of "\(ti" in an HTTP URL
+path, but the two are equivalent for an HTTP URL.
 .PP
 For URIs which must handle characters outside the US ASCII character set,
 the HTML 4.01 specification (section B.2) and
@@ -559,7 +556,7 @@ to have a prefix of "ftp://").
 Many client implementations heuristically resolve these references.
 Such heuristics may
 change over time, particularly when new schemes are introduced.
-Since an abbreviated URI has the same syntax as a relative URI path,
+Since an abbreviated URI has the same syntax as a relative URL path,
 abbreviated URI references cannot be used where relative URIs are
 permitted, and can be used only when there is no defined base
 (such as in dialog boxes).
@@ -581,7 +578,7 @@ fine and in fact encouraged.
 .PP
 Technically the fragment isn't part of the URI.
 .PP
-For information on how to embed URIs in a data format,
+For information on how to embed URIs (including URLs) in a data format,
 see documentation on that format.
 HTML uses the format <A HREF="\fIuri\fP">
 .I text
@@ -612,32 +609,32 @@ version of this man page will describe the converged result.
 Efforts to aid this convergence are encouraged.
 .SS Security
 A URI does not in itself pose a security threat.
-There is no general guarantee that a URI,
-which at one time located a given resource,
-will continue to do so.
-Nor is there any guarantee that a URI
-will not locate a different resource at some later point in time;
-such a guarantee can be obtained only from
-the person(s) controlling that namespace and the resource in question.
+There is no general guarantee that a URL, which at one time
+located a given resource, will continue to do so.
+Nor is there any
+guarantee that a URL will not locate a different resource at some
+later point in time; such a guarantee can be
+obtained only from the person(s) controlling that namespace and the
+resource in question.
 .PP
-It is sometimes possible to construct a URI such that
-an attempt to perform a seemingly harmless operation,
-such as the retrieval of an entity associated with the resource,
-will in fact cause a possibly damaging remote operation to occur.
-The unsafe URI is typically constructed
-by specifying a port number other than that
+It is sometimes possible to construct a URL such that an attempt to
+perform a seemingly harmless operation, such as the
+retrieval of an entity associated with the resource, will in fact
+cause a possibly damaging remote operation to occur.
+The unsafe URL
+is typically constructed by specifying a port number other than that
 reserved for the network protocol in question.
 The client unwittingly contacts a site that is in fact
 running a different protocol.
-The content of the URI contains instructions that,
-when interpreted according to this other protocol,
-cause an unexpected operation.
-An example has been the use of a gopher URI to cause
-an unintended or impersonating message to be sent via a SMTP server.
+The content of the URL contains instructions that, when
+interpreted according to this other protocol, cause an unexpected
+operation.
+An example has been the use of a gopher URL to cause an
+unintended or impersonating message to be sent via a SMTP server.
 .PP
-Caution should be used when using any URI that specifies
-a port number other than the default for the protocol,
-especially when it is a number within the reserved space.
+Caution should be used when using any URL that specifies a port
+number other than the default for the protocol, especially when it is
+a number within the reserved space.
 .PP
 Care should be taken when a URI contains escaped delimiters for a
 given protocol (for example, CR and LF characters for telnet
