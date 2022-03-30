@@ -319,6 +319,7 @@ following code (x86) can be transformed using
 .BR membarrier ():
 .PP
 .in +4n
+.\" SRC BEGIN (membarrier.c)
 .EX
 #include <stdlib.h>
 
@@ -365,6 +366,7 @@ main(void)
     exit(EXIT_SUCCESS);
 }
 .EE
+.\" SRC END
 .in
 .PP
 The code above transformed to use
