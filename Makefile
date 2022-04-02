@@ -85,6 +85,11 @@ _mandir     := $(DESTDIR)$(mandir)
 _htmldir    := $(DESTDIR)$(htmldir_)
 
 
+DEFAULT_IWYUFLAGS := -Xiwyu --no_fwd_decls
+DEFAULT_IWYUFLAGS += -Xiwyu --error
+EXTRA_IWYUFLAGS   :=
+IWYUFLAGS         := $(DEFAULT_IWYUFLAGS) $(EXTRA_IWYUFLAGS)
+
 DEFAULT_CPPFLAGS :=
 EXTRA_CPPFLAGS   :=
 CPPFLAGS         := $(DEFAULT_CPPFLAGS) $(EXTRA_CPPFLAGS)
@@ -136,6 +141,7 @@ INSTALL_DIR  := $(INSTALL) -m 755 -d
 MKDIR        := mkdir -p
 RM           := rm
 RMDIR        := rmdir --ignore-fail-on-non-empty
+IWYU         := iwyu
 CC           := cc
 LD           := $(CC) $(CFLAGS)
 GROFF        := groff
@@ -213,6 +219,7 @@ _UNITS_c    :=$(sort $(patsubst $(MANDIR)/%,$(_SRCDIR)/%,$(shell \
 		done)))
 _UNITS_o    := $(patsubst %.c,%.o,$(_UNITS_c))
 _UNITS_bin  := $(patsubst %.c,%,$(_UNITS_c))
+_LINT_iwyu  := $(patsubst %.c,%.lint.iwyu.touch,$(_UNITS_c))
 
 MANDIRS   := $(sort $(shell find $(MANDIR)/man? -type d))
 _HTMLDIRS  := $(patsubst $(MANDIR)/%,$(_HTMLDIR)/%/.,$(MANDIRS))
@@ -349,8 +356,13 @@ builddirs-src: $(_SRCDIRS)
 ########################################################################
 # lint
 
-linters := groff mandoc
+linters := iwyu groff mandoc
 lint    := $(foreach x,$(linters),lint-$(x))
+
+$(_LINT_iwyu): %.lint.iwyu.touch: %.c
+	$(info LINT (iwyu)	$@)
+	$(IWYU) $(IWYUFLAGS) $(CPPFLAGS) $(CFLAGS) $<
+	touch $@
 
 $(_LINT_groff): $(_LINTDIR)/%.lint.groff.touch: $(MANDIR)/% | $$(@D)/.
 	$(info LINT (groff)	$@)
@@ -370,7 +382,7 @@ $(lint): lint-%: $$(_LINT_%) | lintdirs
 	@:
 
 .PHONY: lintdirs
-lintdirs: $(_LINTDIRS)
+lintdirs: $(_LINTDIRS) $(_SRCDIRS)
 	@:
 
 .PHONY: lint
