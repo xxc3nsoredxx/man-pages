@@ -6,10 +6,12 @@
 #
 # - Follow "Makefile Conventions" from the "GNU Coding Standards" closely.
 #   However, when something could be improved, don't follow those.
-# - Uppercase variables, when referring files, refer to files in this repo,
-#   or temporary files produced in $builddir.
+# - Uppercase variables, when referring files, refer to files in this repo.
 # - Lowercase variables, when referring files, refer to system files.
-# - Variables starting with '_' refer to absolute paths, including $(DESTDIR).
+# - Lowercase variables starting with '_' refer to absolute paths,
+#   including $(DESTDIR).
+# - Uppercase variables starting with '_' refer to temporary files produced
+#   in $builddir.
 # - Variables ending with '_' refer to a subdir of their parent dir, which
 #   is in a variable of the same name but without the '_'.  The subdir is
 #   named after this project: <*/man>.
@@ -32,18 +34,12 @@ MAKEFLAGS += --warn-undefined-variables
 
 srcdir   := .
 builddir := tmp
-LINTDIR  := $(builddir)/lint
-HTMLDIR  := $(builddir)/html
-SRCDIR   := $(builddir)/src
-
 DESTDIR  :=
 prefix   := /usr/local
+
 SYSCONFDIR  := $(srcdir)/etc
 TMACDIR     := $(SYSCONFDIR)/groff/tmac
-datarootdir := $(prefix)/share
-docdir      := $(datarootdir)/doc
 MANDIR      := $(srcdir)
-mandir      := $(datarootdir)/man
 MAN0DIR     := $(MANDIR)/man0
 MAN1DIR     := $(MANDIR)/man1
 MAN2DIR     := $(MANDIR)/man2
@@ -53,6 +49,10 @@ MAN5DIR     := $(MANDIR)/man5
 MAN6DIR     := $(MANDIR)/man6
 MAN7DIR     := $(MANDIR)/man7
 MAN8DIR     := $(MANDIR)/man8
+
+datarootdir := $(prefix)/share
+docdir      := $(datarootdir)/doc
+mandir      := $(datarootdir)/man
 man0dir     := $(mandir)/man0
 man1dir     := $(mandir)/man1
 man2dir     := $(mandir)/man2
@@ -73,8 +73,17 @@ man6ext     := .6
 man7ext     := .7
 man8ext     := .8
 htmldir     := $(docdir)
-htmldir_    := $(htmldir)/man
 htmlext     := .html
+
+htmldir_    := $(htmldir)/man
+
+_LINTDIR    := $(builddir)/lint
+_HTMLDIR    := $(builddir)/html
+_SRCDIR     := $(builddir)/src
+
+_mandir     := $(DESTDIR)$(mandir)
+_htmldir    := $(DESTDIR)$(htmldir_)
+
 
 DEFAULT_CPPFLAGS :=
 EXTRA_CPPFLAGS   :=
@@ -120,6 +129,7 @@ DEFAULT_MAN2HTMLFLAGS :=
 EXTRA_MAN2HTMLFLAGS   :=
 MAN2HTMLFLAGS         := $(DEFAULT_MAN2HTMLFLAGS) $(EXTRA_MAN2HTMLFLAGS)
 
+
 INSTALL      := install
 INSTALL_DATA := $(INSTALL) -m 644
 INSTALL_DIR  := $(INSTALL) -m 755 -d
@@ -133,6 +143,7 @@ MAN          := man
 MANDOC       := mandoc
 MAN2HTML     := man2html
 
+
 MAN_SECTIONS := 0 1 2 3 4 5 6 7 8
 
 
@@ -140,7 +151,6 @@ MAN_SECTIONS := 0 1 2 3 4 5 6 7 8
 all:
 	$(MAKE) uninstall
 	$(MAKE) install
-
 
 %/.:
 	$(info INSTALL	$(@D)/)
@@ -171,28 +181,29 @@ uninstall remove: uninstall-man
 clean:
 	$(RM) -rf $(builddir)
 
+
 ########################################################################
 # man
 
 MANPAGES   := $(sort $(shell find $(MANDIR)/man?/ -type f | grep '$(manext)$$'))
-LINTPAGES  := $(sort $(shell find $(MANDIR)/man?/ -type f | grep '$(manext)$$' \
+LINTMAN    := $(sort $(shell find $(MANDIR)/man?/ -type f | grep '$(manext)$$' \
                              | xargs grep -l '^\.TH '))
-HTMLPAGES  := $(patsubst $(MANDIR)/%,$(HTMLDIR)/%.html,$(MANPAGES))
-_htmlpages := $(patsubst $(HTMLDIR)/%,$(DESTDIR)$(htmldir_)/%,$(HTMLPAGES))
-_manpages  := $(patsubst $(MANDIR)/%,$(DESTDIR)$(mandir)/%,$(MANPAGES))
-_man0pages := $(filter %$(man0ext),$(_manpages))
-_man1pages := $(filter %$(man1ext),$(_manpages))
-_man2pages := $(filter %$(man2ext),$(_manpages))
-_man3pages := $(filter %$(man3ext),$(_manpages))
-_man4pages := $(filter %$(man4ext),$(_manpages))
-_man5pages := $(filter %$(man5ext),$(_manpages))
-_man6pages := $(filter %$(man6ext),$(_manpages))
-_man7pages := $(filter %$(man7ext),$(_manpages))
-_man8pages := $(filter %$(man8ext),$(_manpages))
-LINT_groff :=$(patsubst $(MANDIR)/%,$(LINTDIR)/%.lint.groff.touch,$(LINTPAGES))
-LINT_mandoc:=$(patsubst $(MANDIR)/%,$(LINTDIR)/%.lint.mandoc.touch,$(LINTPAGES))
-SRCPAGEDIRS:=$(patsubst $(MANDIR)/%,$(SRCDIR)/%.d,$(LINTPAGES))
-UNITS_c    := $(sort $(patsubst $(MANDIR)/%,$(SRCDIR)/%,$(shell \
+_HTMLPAGES  := $(patsubst $(MANDIR)/%,$(_HTMLDIR)/%.html,$(MANPAGES))
+_htmlpages  := $(patsubst $(_HTMLDIR)/%,$(_htmldir)/%,$(_HTMLPAGES))
+_manpages   := $(patsubst $(MANDIR)/%,$(_mandir)/%,$(MANPAGES))
+_man0pages  := $(filter %$(man0ext),$(_manpages))
+_man1pages  := $(filter %$(man1ext),$(_manpages))
+_man2pages  := $(filter %$(man2ext),$(_manpages))
+_man3pages  := $(filter %$(man3ext),$(_manpages))
+_man4pages  := $(filter %$(man4ext),$(_manpages))
+_man5pages  := $(filter %$(man5ext),$(_manpages))
+_man6pages  := $(filter %$(man6ext),$(_manpages))
+_man7pages  := $(filter %$(man7ext),$(_manpages))
+_man8pages  := $(filter %$(man8ext),$(_manpages))
+_LINT_groff :=$(patsubst $(MANDIR)/%,$(_LINTDIR)/%.lint.groff.touch,$(LINTMAN))
+_LINT_mandoc:=$(patsubst $(MANDIR)/%,$(_LINTDIR)/%.lint.mandoc.touch,$(LINTMAN))
+_SRCPAGEDIRS:=$(patsubst $(MANDIR)/%,$(_SRCDIR)/%.d,$(LINTMAN))
+_UNITS_c    :=$(sort $(patsubst $(MANDIR)/%,$(_SRCDIR)/%,$(shell \
 		find $(MANDIR)/man?/ -type f \
 		| grep '$(manext)$$' \
 		| xargs grep -l '^\.TH ' \
@@ -200,15 +211,15 @@ UNITS_c    := $(sort $(patsubst $(MANDIR)/%,$(SRCDIR)/%,$(shell \
 			<$$m \
 			sed -n "s,^\... SRC BEGIN (\(.*.c\))$$,$$m.d/\1,p"; \
 		done)))
-UNITS_o    := $(patsubst $(SRCDIR)/%.c,$(SRCDIR)/%.o,$(UNITS_c))
-UNITS_bin  := $(patsubst $(SRCDIR)/%.c,$(SRCDIR)/%,$(UNITS_c))
+_UNITS_o    := $(patsubst %.c,%.o,$(_UNITS_c))
+_UNITS_bin  := $(patsubst %.c,%,$(_UNITS_c))
 
 MANDIRS   := $(sort $(shell find $(MANDIR)/man? -type d))
-HTMLDIRS  := $(patsubst $(MANDIR)/%,$(HTMLDIR)/%/.,$(MANDIRS))
-LINTDIRS  := $(patsubst $(MANDIR)/%,$(LINTDIR)/%/.,$(MANDIRS))
-SRCDIRS   := $(patsubst $(MANDIR)/%,$(SRCDIR)/%/.,$(MANDIRS))
-_htmldirs := $(patsubst $(HTMLDIR)/%,$(DESTDIR)$(htmldir_)/%,$(HTMLDIRS))
-_mandirs  := $(patsubst $(MANDIR)/%,$(DESTDIR)$(mandir)/%/.,$(MANDIRS))
+_HTMLDIRS  := $(patsubst $(MANDIR)/%,$(_HTMLDIR)/%/.,$(MANDIRS))
+_LINTDIRS  := $(patsubst $(MANDIR)/%,$(_LINTDIR)/%/.,$(MANDIRS))
+_SRCDIRS   := $(patsubst $(MANDIR)/%,$(_SRCDIR)/%/.,$(MANDIRS))
+_htmldirs := $(patsubst $(_HTMLDIR)/%,$(_htmldir)/%,$(_HTMLDIRS))
+_mandirs  := $(patsubst $(MANDIR)/%,$(_mandir)/%/.,$(MANDIRS))
 _man0dir  := $(filter %man0/.,$(_mandirs))
 _man1dir  := $(filter %man1/.,$(_mandirs))
 _man2dir  := $(filter %man2/.,$(_mandirs))
@@ -218,8 +229,6 @@ _man5dir  := $(filter %man5/.,$(_mandirs))
 _man6dir  := $(filter %man6/.,$(_mandirs))
 _man7dir  := $(filter %man7/.,$(_mandirs))
 _man8dir  := $(filter %man8/.,$(_mandirs))
-_mandir   := $(DESTDIR)$(mandir)/.
-_htmldir  := $(DESTDIR)$(htmldir_)/.
 
 _htmlpages_rm := $(addsuffix -rm,$(wildcard $(_htmlpages)))
 _manpages_rm  := $(addsuffix -rm,$(wildcard $(_manpages)))
@@ -244,8 +253,8 @@ _man5dir_rmdir  := $(addsuffix -rmdir,$(wildcard $(_man5dir)))
 _man6dir_rmdir  := $(addsuffix -rmdir,$(wildcard $(_man6dir)))
 _man7dir_rmdir  := $(addsuffix -rmdir,$(wildcard $(_man7dir)))
 _man8dir_rmdir  := $(addsuffix -rmdir,$(wildcard $(_man8dir)))
-_mandir_rmdir   := $(addsuffix -rmdir,$(wildcard $(_mandir)))
-_htmldir_rmdir  := $(addsuffix -rmdir,$(wildcard $(_htmldir)))
+_mandir_rmdir   := $(addsuffix -rmdir,$(wildcard $(_mandir)/.))
+_htmldir_rmdir  := $(addsuffix -rmdir,$(wildcard $(_htmldir)/.))
 
 install_manX     := $(foreach x,$(MAN_SECTIONS),install-man$(x))
 installdirs_manX := $(foreach x,$(MAN_SECTIONS),installdirs-man$(x))
@@ -253,13 +262,13 @@ uninstall_manX   := $(foreach x,$(MAN_SECTIONS),uninstall-man$(x))
 
 
 .SECONDEXPANSION:
-$(_manpages): $(DESTDIR)$(mandir)/man%: $(MANDIR)/man% | $$(@D)/.
+$(_manpages): $(_mandir)/man%: $(MANDIR)/man% | $$(@D)/.
 	$(info INSTALL	$@)
 	$(INSTALL_DATA) -T $< $@
 
-$(_mandirs): %/.: | $$(dir %). $(_mandir)
+$(_mandirs): %/.: | $$(dir %). $(_mandir)/.
 
-$(_mandirs_rmdir): $(DESTDIR)$(mandir)/man%/.-rmdir: $$(_man%pages_rm) FORCE
+$(_mandirs_rmdir): $(_mandir)/man%/.-rmdir: $$(_man%pages_rm) FORCE
 $(_mandir_rmdir): $(uninstall_manX) FORCE
 
 
@@ -291,14 +300,14 @@ uninstall-man: $(_mandir_rmdir) $(uninstall_manX)
 ########################################################################
 # src
 
-$(SRCPAGEDIRS): $(SRCDIR)/%.d: $(MANDIR)/% | $$(@D)/.
+$(_SRCPAGEDIRS): $(_SRCDIR)/%.d: $(MANDIR)/% | $$(@D)/.
 	$(info MKDIR	$@)
 	$(MKDIR) $@
 	touch $@
 
-$(UNITS_c): $$(@D)
+$(_UNITS_c): $$(@D)
 	$(info SED	$@)
-	<$(patsubst $(SRCDIR)/%.d,$(MANDIR)/%,$<) \
+	<$(patsubst $(_SRCDIR)/%.d,$(MANDIR)/%,$<) \
 	sed -n \
 		-e '/^\.TH/,/^\.SH/{/^\.SH/!p}' \
 		-e '/^\.SH EXAMPLES/p' \
@@ -309,30 +318,31 @@ $(UNITS_c): $$(@D)
 	>$@ \
 	|| exit $$?
 
-$(UNITS_o): $(SRCDIR)/%.o: $(SRCDIR)/%.c
+$(_UNITS_o): $(_SRCDIR)/%.o: $(_SRCDIR)/%.c
 	$(info CC	$@)
 	$(CC) -c $(CPPFLAGS) $(CFLAGS) -o $@ $<
 
-$(UNITS_bin): $(SRCDIR)/%: $(SRCDIR)/%.o
+$(_UNITS_bin): $(_SRCDIR)/%: $(_SRCDIR)/%.o
 	$(info LD	$@)
 	$(LD) $(LDFLAGS) -o $@ $< $(LDLIBS)
 
-$(SRCDIRS): %/.: | $$(dir %). $(SRCDIR)/.
+$(_SRCDIRS): %/.: | $$(dir %). $(_SRCDIR)/.
+
 
 .PHONY: build-src src
-build-src src: $(UNITS_c) | builddirs-src
+build-src src: $(_UNITS_c) | builddirs-src
 	@:
 
 .PHONY: build-cc
-build-cc: $(UNITS_o)
+build-cc: $(_UNITS_o)
 	@:
 
 .PHONY: build-ld
-build-ld: $(UNITS_bin)
+build-ld: $(_UNITS_bin)
 	@:
 
 .PHONY: builddirs-src
-builddirs-src: $(SRCDIRS)
+builddirs-src: $(_SRCDIRS)
 	@:
 
 
@@ -342,24 +352,25 @@ builddirs-src: $(SRCDIRS)
 linters := groff mandoc
 lint    := $(foreach x,$(linters),lint-$(x))
 
-$(LINT_groff): $(LINTDIR)/%.lint.groff.touch: $(MANDIR)/% | $$(@D)/.
+$(_LINT_groff): $(_LINTDIR)/%.lint.groff.touch: $(MANDIR)/% | $$(@D)/.
 	$(info LINT (groff)	$@)
 	$(GROFF) $(GROFFFLAGS) -z $<
 	touch $@
 
-$(LINT_mandoc): $(LINTDIR)/%.lint.mandoc.touch: $(MANDIR)/% | $$(@D)/.
+$(_LINT_mandoc): $(_LINTDIR)/%.lint.mandoc.touch: $(MANDIR)/% | $$(@D)/.
 	$(info LINT (mandoc)	$@)
 	$(MANDOC) $(MANDOCFLAGS) $<
 	touch $@
 
-$(LINTDIRS): %/.: | $$(dir %). $(LINTDIR)/.
+$(_LINTDIRS): %/.: | $$(dir %). $(_LINTDIR)/.
+
 
 .PHONY: $(lint)
-$(lint): lint-%: $$(LINT_%) | lintdirs
+$(lint): lint-%: $$(_LINT_%) | lintdirs
 	@:
 
 .PHONY: lintdirs
-lintdirs: $(LINTDIRS)
+lintdirs: $(_LINTDIRS)
 	@:
 
 .PHONY: lint
@@ -373,25 +384,25 @@ lint: $(lint)
 # Use with
 #  make MAN2HTMLFLAGS=whatever html
 # The sed removes the lines "Content-type: text/html\n\n"
-$(HTMLPAGES): $(HTMLDIR)/%.html: $(MANDIR)/% | $$(@D)/.
+$(_HTMLPAGES): $(_HTMLDIR)/%.html: $(MANDIR)/% | $$(@D)/.
 	$(info MAN2HTML	$@)
 	$(MAN2HTML) $(MAN2HTMLFLAGS) $< | sed -e 1,2d >$@ || exit $$?
 
-$(HTMLDIRS): %/.: | $$(dir %). $(HTMLDIR)/.
+$(_HTMLDIRS): %/.: | $$(dir %). $(_HTMLDIR)/.
 
-$(_htmlpages): $(DESTDIR)$(htmldir_)/%: $(HTMLDIR)/% | $$(@D)/.
+$(_htmlpages): $(_htmldir)/%: $(_HTMLDIR)/% | $$(@D)/.
 	$(info INSTALL	$@)
 	$(INSTALL_DATA) -T $< $@
 
-$(_htmldirs): %/.: | $$(dir %). $(_htmldir)
+$(_htmldirs): %/.: | $$(dir %). $(_htmldir)/.
 
 
 .PHONY: build-html html
-build-html html: $(HTMLPAGES) | builddirs-html
+build-html html: $(_HTMLPAGES) | builddirs-html
 	@:
 
 .PHONY: builddirs-html
-builddirs-html: $(HTMLDIRS)
+builddirs-html: $(_HTMLDIRS)
 	@:
 
 .PHONY: install-html
