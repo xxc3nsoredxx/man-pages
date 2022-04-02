@@ -54,7 +54,7 @@ function grep_syscall()
 	|grep '\.c$' \
 	|xargs grep -l "${1}" \
 	|sort \
-	|xargs pcregrep -Mn "(?s)^\w*SYSCALL_DEFINE.\(${1},.*?\)" \
+	|xargs pcregrep -Mn "(?s)^\w*SYSCALL_DEFINE.\(${1}\b.*?\)" \
 	|sed -E 's/^[^:]+:[0-9]+:/&\n/';
 
 	find * -type f \
@@ -81,7 +81,7 @@ function grep_syscall_def()
 	|grep '\.c$' \
 	|xargs grep -l "${1}" \
 	|sort \
-	|xargs pcregrep -Mn "(?s)^\w*SYSCALL_DEFINE.\(${1},.*?^}" \
+	|xargs pcregrep -Mn "(?s)^\w*SYSCALL_DEFINE.\(${1}\b.*?^}" \
 	|sed -E 's/^[^:]+:[0-9]+:/&\n/';
 }
 
