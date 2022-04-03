@@ -1,6 +1,16 @@
 ---
 Checks: >
     *,
+    -concurrency-mt-unsafe,
+    -cppcoreguidelines-avoid-non-const-global-variables,
+    -cppcoreguidelines-init-variables,
+    -google-readability-braces-around-statements,
+    -hicpp-braces-around-statements,
+    -hicpp-no-assembler,
+    -llvmlibc-restrict-system-libc-headers,
+    -performance-no-int-to-ptr,
+    -readability-braces-around-statements,
+    -readability-isolate-declaration,
 
 WarningsAsErrors: >
     *,
