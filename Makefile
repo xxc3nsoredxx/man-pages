@@ -28,6 +28,9 @@
 #
 ########################################################################
 
+SHELL := /bin/bash -Eeuo pipefail
+
+
 MAKEFLAGS += --no-print-directory
 MAKEFLAGS += --warn-undefined-variables
 
@@ -331,8 +334,7 @@ $(_UNITS_c): $$(@D)
 	| $(MAN) -P cat -l - \
 	| sed '/^[^ ]/d' \
 	| sed 's/^       //' \
-	>$@ \
-	|| exit $$?
+	>$@
 
 $(_UNITS_o): $(_SRCDIR)/%.o: $(_SRCDIR)/%.c
 	$(info CC	$@)
@@ -371,7 +373,7 @@ lint    := $(foreach x,$(linters),lint-$(x))
 $(_LINT_clang-tidy): %.lint.clang-tidy.touch: %.c
 	$(info LINT (clang-tidy)	$@)
 	$(CLANG-TIDY) $(CLANG-TIDYFLAGS) $< -- $(CPPFLAGS) $(CFLAGS) 2>&1 \
-	| sed '/generated\.$$/d' || exit $$?
+	| sed '/generated\.$$/d'
 	touch $@
 
 $(_LINT_iwyu): %.lint.iwyu.touch: %.c
@@ -413,7 +415,7 @@ lint: $(lint)
 # The sed removes the lines "Content-type: text/html\n\n"
 $(_HTMLPAGES): $(_HTMLDIR)/%.html: $(MANDIR)/% | $$(@D)/.
 	$(info MAN2HTML	$@)
-	$(MAN2HTML) $(MAN2HTMLFLAGS) $< | sed -e 1,2d >$@ || exit $$?
+	$(MAN2HTML) $(MAN2HTMLFLAGS) $< | sed -e 1,2d >$@
 
 $(_HTMLDIRS): %/.: | $$(dir %). $(_HTMLDIR)/.
 
