@@ -308,10 +308,6 @@ and the next pointer is a pointer to
 .I double
 (rather than
 .IR float ).
-Specifying two
-.B l
-characters is equivalent to
-.BR L .
 If used with
 .B %c
 or
@@ -320,12 +316,33 @@ the corresponding parameter is considered
 as a pointer to a wide character or wide-character string respectively.
 .\" This use of l was introduced in Amendment 1 to ISO C90.
 .TP
+.B ll
+(ell-ell)
+Indicates that the conversion will be one of
+.BR b ,
+.BR d ,
+.BR i ,
+.BR o ,
+.BR u ,
+.BR x ,
+.BR X ,
+or
+.B n
+and the next pointer is a pointer to a
+.I long long
+or
+.I unsigned long long
+(rather than
+.IR int ).
+.TP
 .B L
 Indicates that the conversion will be either
 \fBe\fP, \fBf\fP, or \fBg\fP
 and the next pointer is a pointer to
 .I "long double"
-or the conversion will be
+or
+(as a GNU extension)
+the conversion will be
 \fBd\fP, \fBi\fP, \fBo\fP, \fBu\fP, or \fBx\fP
 and the next pointer is a pointer to
 .IR "long long" .
@@ -683,17 +700,17 @@ floating-point conversion specifier (and is unaffected by
 etc.).
 .SH BUGS
 All functions are fully C89 conformant, but provide the
-additional specifiers
+additional modifiers
 .B q
 and
 .B a
 as well as an additional behavior of the
 .B L
 and
-.B l
-specifiers.
+.B ll
+modifiers.
 The latter may be considered to be a bug, as it changes the
-behavior of specifiers defined in C89.
+behavior of modifiers defined in C89.
 .PP
 Some combinations of the type modifiers and conversion
 specifiers defined by ANSI C do not make sense
