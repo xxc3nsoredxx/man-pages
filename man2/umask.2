@@ -72,7 +72,7 @@ are described in
 .BR inode (7).
 .PP
 The typical default value for the process umask is
-.I S_IWGRP\ |\ S_IWOTH
+.BR S_IWGRP " | " S_IWOTH
 (octal 022).
 In the usual case where the
 .I mode
@@ -82,7 +82,7 @@ is specified as:
 .PP
 .in +4n
 .EX
-S_IRUSR | S_IWUSR | S_IRGRP | S_IWGRP | S_IROTH | S_IWOTH
+.BR S_IRUSR " | " S_IWUSR " | " S_IRGRP " | " S_IWGRP " | " S_IROTH " | " S_IWOTH
 .EE
 .in
 .PP
@@ -91,11 +91,11 @@ resulting file will be:
 .PP
 .in +4n
 .EX
-S_IRUSR | S_IWUSR | S_IRGRP | S_IROTH
+.BR S_IRUSR " | " S_IWUSR " | " S_IRGRP " | " S_IROTH
 .EE
 .in
 .PP
-(because 0666 & \(ti022 = 0644; i.e., rw\-r\-\-r\-\-).
+(because 0666 & \(ti022 = 0644; i.e. rw\-r\-\-r\-\-).
 .SH RETURN VALUE
 This system call always succeeds and the previous value of the mask
 is returned.
