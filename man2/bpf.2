@@ -123,6 +123,7 @@ provided via
 which is a pointer to a union of type
 .I bpf_attr
 (see below).
+The unused fields and padding must be zeroed out before the call.
 The
 .I size
 argument is the size of the union pointed to by
