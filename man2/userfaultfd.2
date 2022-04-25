@@ -84,8 +84,9 @@ When registered with
 .B UFFDIO_REGISTER_MODE_MINOR
 mode, user-space will receive a page-fault notification
 when a minor page fault occurs.
-That is, when a backing page is in the page cache, but
-page table entries don't yet exist.
+That is,
+when a backing page is in the page cache,
+but page table entries don't yet exist.
 The faulted thread will be stopped from execution
 until the page fault is resolved from user-space by an
 .B UFFDIO_CONTINUE
