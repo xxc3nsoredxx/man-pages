@@ -220,14 +220,16 @@ _man8pages  := $(filter %$(man8ext),$(_manpages))
 _LINT_groff :=$(patsubst $(MANDIR)/%,$(_LINTDIR)/%.lint.groff.touch,$(LINTMAN))
 _LINT_mandoc:=$(patsubst $(MANDIR)/%,$(_LINTDIR)/%.lint.mandoc.touch,$(LINTMAN))
 _SRCPAGEDIRS:=$(patsubst $(MANDIR)/%,$(_SRCDIR)/%.d,$(LINTMAN))
-_UNITS_c    :=$(sort $(patsubst $(MANDIR)/%,$(_SRCDIR)/%,$(shell \
+_UNITS_src  :=$(sort $(patsubst $(MANDIR)/%,$(_SRCDIR)/%,$(shell \
 		find $(MANDIR)/man?/ -type f \
 		| grep '$(manext)$$' \
 		| xargs grep -l '^\.TH ' \
 		| while read m; do \
 			<$$m \
-			sed -n "s,^\... SRC BEGIN (\(.*.c\))$$,$$m.d/\1,p"; \
+			sed -n "s,^\... SRC BEGIN (\(.*.[ch]\))$$,$$m.d/\1,p"; \
 		done)))
+_UNITS_h    := $(filter %.h,$(_UNITS_src))
+_UNITS_c    := $(filter %.c,$(_UNITS_src))
 _UNITS_o    := $(patsubst %.c,%.o,$(_UNITS_c))
 _UNITS_bin  := $(patsubst %.c,%,$(_UNITS_c))
 _LINT_clang-tidy := $(patsubst %.c,%.lint.clang-tidy.touch,$(_UNITS_c))
@@ -324,9 +326,11 @@ $(_SRCPAGEDIRS): $(_SRCDIR)/%.d: $(MANDIR)/% | $$(@D)/.
 	$(MKDIR) $@
 	touch $@
 
-$(_UNITS_c): $$(@D)
+$(_UNITS_src): $$(patsubst $(_SRCDIR)/%.d,$(MANDIR)/%,$$(@D)) | $$(@D)
+$(_UNITS_c):   $$(filter $$(@D)/%.h,$(_UNITS_h))
+$(_UNITS_src):
 	$(info SED	$@)
-	<$(patsubst $(_SRCDIR)/%.d,$(MANDIR)/%,$<) \
+	<$< \
 	sed -n \
 		-e '/^\.TH/,/^\.SH/{/^\.SH/!p}' \
 		-e '/^\.SH EXAMPLES/p' \
