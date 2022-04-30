@@ -293,7 +293,7 @@ main(int argc, char *argv[])
         if (nread == 0)
             break;
 
-        printf("\-\-\-\-\-\-\-\-\-\-\-\-\-\-\- nread=%d \-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\en", nread);
+        printf("\-\-\-\-\-\-\-\-\-\-\-\-\-\-\- nread=%ld \-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\en", nread);
         printf("inode#    file type  d_reclen  d_off   d_name\en");
         for (long bpos = 0; bpos < nread;) {
             d = (struct linux_dirent *) (buf + bpos);

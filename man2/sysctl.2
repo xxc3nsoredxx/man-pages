@@ -146,7 +146,7 @@ main(void)
         perror("_sysctl");
         exit(EXIT_FAILURE);
     }
-    printf("This machine is running %*s\en", osnamelth, osname);
+    printf("This machine is running %*s\en", (int) osnamelth, osname);
     exit(EXIT_SUCCESS);
 }
 .EE
