@@ -1124,7 +1124,7 @@ cecilia
 #define ARRAY_SIZE(arr) (sizeof(arr) / sizeof((arr)[0]))
 
 static int
-install_filter(int syscall_nr, int t_arch, int f_errno)
+install_filter(int syscall_nr, unsigned int t_arch, int f_errno)
 {
     unsigned int upper_nr_limit = 0xffffffff;
 
@@ -1202,7 +1202,7 @@ main(int argc, char *argv[])
     }
 
     if (install_filter(strtol(argv[1], NULL, 0),
-                       strtol(argv[2], NULL, 0),
+                       strtoul(argv[2], NULL, 0),
                        strtol(argv[3], NULL, 0)))
         exit(EXIT_FAILURE);
 
