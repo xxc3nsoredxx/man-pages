@@ -2112,6 +2112,12 @@ main(int argc, char *argv[])
     int akp_size;       /* Size of auth_key_payload */
     int auth_key;
 
+    if (argc != 8) {
+        fprintf(stderr, "Usage: %s op key uid gid thread_keyring "
+                        "process_keyring session_keyring\en", argv[0]);
+        exit(EXIT_FAILURE);
+    }
+
     fp = fopen("/tmp/key_instantiate.log", "w");
     if (fp == NULL)
         exit(EXIT_FAILURE);
