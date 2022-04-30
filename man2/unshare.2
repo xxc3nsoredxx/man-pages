@@ -486,6 +486,7 @@ The differing output of the two
 commands shows that the two shells are in different mount namespaces.
 .SS Program source
 \&
+.\" SRC BEGIN (unshare.c)
 .EX
 /* unshare.c
 
@@ -551,6 +552,7 @@ main(int argc, char *argv[])
     errExit("execvp");
 }
 .EE
+.\" SRC END
 .SH SEE ALSO
 .BR unshare (1),
 .BR clone (2),

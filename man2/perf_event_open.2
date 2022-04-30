@@ -3725,6 +3725,7 @@ The following is a short example that measures the total
 instruction count of a call to
 .BR printf (3).
 .PP
+.\" SRC BEGIN (perf_event_open.c)
 .EX
 #include <stdlib.h>
 #include <stdio.h>
@@ -3779,6 +3780,7 @@ main(int argc, char *argv[])
     close(fd);
 }
 .EE
+.\" SRC END
 .SH SEE ALSO
 .BR perf (1),
 .BR fcntl (2),

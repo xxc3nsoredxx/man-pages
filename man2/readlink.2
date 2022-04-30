@@ -254,6 +254,7 @@ in cases where
 .BR lstat (2)
 reports a size of zero.
 .PP
+.\" SRC BEGIN (readlink.c)
 .EX
 #include <sys/types.h>
 #include <sys/stat.h>
@@ -320,6 +321,7 @@ main(int argc, char *argv[])
     exit(EXIT_SUCCESS);
 }
 .EE
+.\" SRC END
 .SH SEE ALSO
 .BR readlink (1),
 .BR lstat (2),

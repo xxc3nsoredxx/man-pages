@@ -378,6 +378,7 @@ Parent read 28 (0x1c) from efd
 .in
 .SS Program source
 \&
+.\" SRC BEGIN (eventfd.c)
 .EX
 #include <sys/eventfd.h>
 #include <unistd.h>
@@ -434,6 +435,7 @@ main(int argc, char *argv[])
     }
 }
 .EE
+.\" SRC END
 .SH SEE ALSO
 .BR futex (2),
 .BR pipe (2),

@@ -751,6 +751,7 @@ Insufficient permission.
 .SH EXAMPLES
 Check the condition of DTR on the serial port.
 .PP
+.\" SRC BEGIN (tiocmget.c)
 .EX
 #include <stdio.h>
 #include <unistd.h>
@@ -771,9 +772,11 @@ main(void)
     close(fd);
 }
 .EE
+.\" SRC END
 .PP
 Get or set arbitrary baudrate on the serial port.
 .PP
+.\" SRC BEGIN (tcgets.c)
 .EX
 /* SPDX-License-Identifier: GPL-2.0-or-later */
 
@@ -871,6 +874,7 @@ main(int argc, char *argv[])
 #endif
 }
 .EE
+.\" SRC END
 .SH SEE ALSO
 .BR ldattach (8),
 .BR ioctl (2),

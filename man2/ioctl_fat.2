@@ -249,6 +249,7 @@ Archive flag is not set
 .in
 .SS Program source (toggle_fat_archive_flag.c)
 \&
+.\" SRC BEGIN (toggle_fat_archive_flag.c)
 .EX
 #include <fcntl.h>
 #include <linux/msdos_fs.h>
@@ -330,7 +331,7 @@ main(int argc, char *argv[])
     exit(EXIT_SUCCESS);
 }
 .EE
-.\"
+.\" SRC END
 .SS Reading the volume ID
 The following program demonstrates the use of
 .BR ioctl (2)
@@ -348,6 +349,7 @@ Volume ID 6443\-6241
 .in
 .SS Program source (display_fat_volume_id.c)
 \&
+.\" SRC BEGIN (display_fat_volume_id.c)
 .EX
 #include <fcntl.h>
 #include <linux/msdos_fs.h>
@@ -394,7 +396,7 @@ main(int argc, char *argv[])
     exit(EXIT_SUCCESS);
 }
 .EE
-.\"
+.\" SRC END
 .SS Listing a directory
 The following program demonstrates the use of
 .BR ioctl (2)
@@ -416,6 +418,7 @@ LOWER.TXT \-> \(aqlower.txt\(aq
 .\"
 .SS Program source
 .in +4n
+.\" SRC BEGIN (ioctl_fat.c)
 .EX
 #include <fcntl.h>
 #include <linux/msdos_fs.h>
@@ -481,6 +484,7 @@ main(int argc, char *argv[])
     exit(EXIT_SUCCESS);
 }
 .EE
+.\" SRC END
 .in
 .SH SEE ALSO
 .BR ioctl (2)

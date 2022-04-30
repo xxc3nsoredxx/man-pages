@@ -209,6 +209,7 @@ event.
 .\"
 .SS Program source
 \&
+.\" SRC BEGIN (pidfd_open.c)
 .EX
 #define _GNU_SOURCE
 #include <sys/types.h>
@@ -261,6 +262,7 @@ main(int argc, char *argv[])
     exit(EXIT_SUCCESS);
 }
 .EE
+.\" SRC END
 .SH SEE ALSO
 .BR clone (2),
 .BR kill (2),

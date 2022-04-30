@@ -1824,6 +1824,7 @@ For the moment, this flag is a no-op on Linux,
 but it exists and has effect on some other systems,
 so we should include it for portability.
 .SS Program source
+.\" SRC BEGIN (clone.c)
 .EX
 #define _GNU_SOURCE
 #include <sys/wait.h>
@@ -1914,6 +1915,7 @@ main(int argc, char *argv[])
     exit(EXIT_SUCCESS);
 }
 .EE
+.\" SRC END
 .SH SEE ALSO
 .BR fork (2),
 .BR futex (2),

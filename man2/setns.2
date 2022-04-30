@@ -377,6 +377,7 @@ bizarro
 .EE
 .in
 .SS Program source
+.\" SRC BEGIN (setns.c)
 .EX
 #define _GNU_SOURCE
 #include <fcntl.h>
@@ -413,6 +414,7 @@ main(int argc, char *argv[])
     errExit("execvp");
 }
 .EE
+.\" SRC END
 .SH SEE ALSO
 .BR nsenter (1),
 .BR clone (2),

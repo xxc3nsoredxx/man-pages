@@ -709,6 +709,7 @@ but the glibc wrapper hides this behavior by internally copying the
 .I timeout
 to a local variable and passing that variable to the system call.
 .SH EXAMPLES
+.\" SRC BEGIN (select.c)
 .EX
 #include <stdio.h>
 #include <stdlib.h>
@@ -745,6 +746,7 @@ main(void)
     exit(EXIT_SUCCESS);
 }
 .EE
+.\" SRC END
 .SH SEE ALSO
 .BR accept (2),
 .BR connect (2),

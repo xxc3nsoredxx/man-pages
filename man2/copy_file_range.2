@@ -210,6 +210,7 @@ such as the use of reflinks (i.e., two or more inodes that share
 pointers to the same copy-on-write disk blocks)
 or server-side-copy (in the case of NFS).
 .SH EXAMPLES
+.\" SRC BEGIN (copy_file_range.c)
 .EX
 #define _GNU_SOURCE
 #include <fcntl.h>
@@ -264,6 +265,7 @@ main(int argc, char *argv[])
     exit(EXIT_SUCCESS);
 }
 .EE
+.\" SRC END
 .SH SEE ALSO
 .BR lseek (2),
 .BR sendfile (2),

@@ -333,6 +333,7 @@ Here is an example that better demonstrates the true utility of
 The listing below is a TCP forwarding program that forwards
 from one TCP port to another.
 .PP
+.\" SRC BEGIN (select.c)
 .EX
 #include <stdlib.h>
 #include <stdio.h>
@@ -600,6 +601,7 @@ main(int argc, char *argv[])
     exit(EXIT_SUCCESS);
 }
 .EE
+.\" SRC END
 .PP
 The above program properly forwards most kinds of TCP connections
 including OOB signal data transmitted by \fBtelnet\fP servers.

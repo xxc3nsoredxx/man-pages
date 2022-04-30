@@ -457,6 +457,7 @@ and displays selected fields in the returned
 .I stat
 structure.
 .PP
+.\" SRC BEGIN (stat.c)
 .EX
 #include <sys/types.h>
 #include <sys/stat.h>
@@ -521,6 +522,7 @@ main(int argc, char *argv[])
     exit(EXIT_SUCCESS);
 }
 .EE
+.\" SRC END
 .SH SEE ALSO
 .BR ls (1),
 .BR stat (1),

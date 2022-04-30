@@ -238,6 +238,7 @@ $ \fBgrep \(aq64a4dca\(aq /proc/keys\fP
 .in
 .SS Program source
 \&
+.\" SRC BEGIN (add_key.c)
 .EX
 #include <sys/types.h>
 #include <keyutils.h>
@@ -269,6 +270,7 @@ main(int argc, char *argv[])
     exit(EXIT_SUCCESS);
 }
 .EE
+.\" SRC END
 .SH SEE ALSO
 .ad l
 .nh

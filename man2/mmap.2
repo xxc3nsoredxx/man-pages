@@ -929,6 +929,7 @@ pages of the file and then uses
 .BR write (2)
 to output the desired bytes.
 .SS Program source
+.\" SRC BEGIN (mmap.c)
 .EX
 #include <sys/mman.h>
 #include <sys/stat.h>
@@ -1001,6 +1002,7 @@ main(int argc, char *argv[])
     exit(EXIT_SUCCESS);
 }
 .EE
+.\" SRC END
 .SH SEE ALSO
 .BR ftruncate (2),
 .BR getpagesize (2),

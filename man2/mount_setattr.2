@@ -858,6 +858,7 @@ with a structure which has every byte nonzero
 (to find the largest value which doesn't produce an error of
 .BR E2BIG ).
 .SH EXAMPLES
+.\" SRC BEGIN (mount_setattr.c)
 .EX
 /*
  * This program allows the caller to create a new detached mount
@@ -1009,6 +1010,7 @@ main(int argc, char *argv[])
     exit(EXIT_SUCCESS);
 }
 .EE
+.\" SRC END
 .SH SEE ALSO
 .BR newgidmap (1),
 .BR newuidmap (1),

@@ -310,6 +310,7 @@ Hello, world
 The following header file is included by the "reader" and "writer" programs:
 .PP
 .in +4n
+.\" SRC BEGIN (svshm_string.h)
 .EX
 /* svshm_string.h
 
@@ -337,6 +338,7 @@ union semun {                   /* Used in calls to semctl() */
 
 #define MEM_SIZE 4096
 .EE
+.\" SRC END
 .in
 .\"
 .SS Program source: svshm_string_read.c
@@ -349,6 +351,7 @@ and afterwards prints the string that has been copied into the
 shared memory segment by the "writer".
 .PP
 .in +4n
+.\" SRC BEGIN (svshm_string_read.c)
 .EX
 /* svshm_string_read.c
 
@@ -412,6 +415,7 @@ main(int argc, char *argv[])
     exit(EXIT_SUCCESS);
 }
 .EE
+.\" SRC END
 .in
 .\"
 .SS Program source: svshm_string_write.c
@@ -423,6 +427,7 @@ and then decrements the semaphore value to 0 in order to inform the
 "reader" that it can now examine the contents of the shared memory.
 .PP
 .in +4n
+.\" SRC BEGIN (svshm_string_write.c)
 .EX
 /* svshm_string_write.c
 
@@ -475,6 +480,7 @@ main(int argc, char *argv[])
     exit(EXIT_SUCCESS);
 }
 .EE
+.\" SRC END
 .in
 .SH SEE ALSO
 .BR brk (2),

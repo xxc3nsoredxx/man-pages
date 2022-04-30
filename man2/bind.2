@@ -217,6 +217,7 @@ domain, and accept connections:
 .\" accept.7 refers to this example.
 .\" unix.7 refers to this example.
 .PP
+.\" SRC BEGIN (bind.c)
 .EX
 #include <sys/socket.h>
 #include <sys/un.h>
@@ -268,6 +269,7 @@ main(int argc, char *argv[])
        should be deleted using unlink(2) or remove(3). */
 }
 .EE
+.\" SRC END
 .SH SEE ALSO
 .BR accept (2),
 .BR connect (2),

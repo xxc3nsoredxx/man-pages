@@ -1391,6 +1391,7 @@ T: terminating
 .in
 .\"
 .SS Program source
+.\" SRC BEGIN (seccomp_unotify.c)
 .EX
 #define _GNU_SOURCE
 #include <errno.h>
@@ -1984,6 +1985,7 @@ main(int argc, char *argv[])
     exit(EXIT_SUCCESS);
 }
 .EE
+.\" SRC END
 .SH SEE ALSO
 .BR ioctl (2),
 .BR pidfd_getfd (2),

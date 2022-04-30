@@ -112,6 +112,7 @@ Not all available objects are properly documented.
 It is not yet possible to change operating system by writing to
 .IR /proc/sys/kernel/ostype .
 .SH EXAMPLES
+.\" SRC BEGIN (sysctl.c)
 .EX
 #define _GNU_SOURCE
 #include <unistd.h>
@@ -149,5 +150,6 @@ main(void)
     exit(EXIT_SUCCESS);
 }
 .EE
+.\" SRC END
 .SH SEE ALSO
 .BR proc (5)

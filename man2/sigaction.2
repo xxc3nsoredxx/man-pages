@@ -1138,6 +1138,7 @@ is determined to be supported, and
 .B EXIT_FAILURE
 otherwise.
 .PP
+.\" SRC BEGIN (sigaction.c)
 .EX
 #include <signal.h>
 #include <stdlib.h>
@@ -1172,6 +1173,7 @@ main(void)
     raise(SIGSEGV);
 }
 .EE
+.\" SRC END
 .SH SEE ALSO
 .BR kill (1),
 .BR kill (2),

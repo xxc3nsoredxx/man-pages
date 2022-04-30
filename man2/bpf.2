@@ -1183,6 +1183,7 @@ riscv (since Linux 5.1).
 .\" commit 2353ecc6f91fd15b893fa01bf85a1c7a823ee4f2
 .PD
 .SH EXAMPLES
+.\" [[FIXME]] SRC BEGIN (bpf.c)
 .EX
 /* bpf+sockets example:
  * 1. create array map of 256 elements
@@ -1247,6 +1248,7 @@ main(int argc, char *argv[])
     return 0;
 }
 .EE
+.\" SRC END
 .PP
 Some complete working code can be found in the
 .I samples/bpf

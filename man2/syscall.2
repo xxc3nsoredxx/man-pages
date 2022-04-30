@@ -333,6 +333,7 @@ arguments 5 through 8 on the user stack.
 Note that these tables don't cover the entire calling convention\(emsome
 architectures may indiscriminately clobber other registers not listed here.
 .SH EXAMPLES
+.\" SRC BEGIN (syscall.c)
 .EX
 #define _GNU_SOURCE
 #include <unistd.h>
@@ -349,6 +350,7 @@ main(int argc, char *argv[])
     syscall(SYS_tgkill, getpid(), tid, SIGHUP);
 }
 .EE
+.\" SRC END
 .SH SEE ALSO
 .BR _syscall (2),
 .BR intro (2),

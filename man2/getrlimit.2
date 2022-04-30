@@ -766,6 +766,7 @@ as wrapper functions that call
 The program below demonstrates the use of
 .BR prlimit ().
 .PP
+.\" SRC BEGIN (getrlimit.c)
 .EX
 #define _GNU_SOURCE
 #define _FILE_OFFSET_BITS 64
@@ -819,6 +820,7 @@ main(int argc, char *argv[])
     exit(EXIT_SUCCESS);
 }
 .EE
+.\" SRC END
 .SH SEE ALSO
 .BR prlimit (1),
 .BR dup (2),

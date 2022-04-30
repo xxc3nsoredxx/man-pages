@@ -198,6 +198,7 @@ result from the calls to
 .BR opendir (3).
 .SS Program source
 \&
+.\" SRC BEGIN (close_range.c)
 .EX
 #define _GNU_SOURCE
 #include <fcntl.h>
@@ -263,5 +264,6 @@ main(int argc, char *argv[])
     exit(EXIT_FAILURE);
 }
 .EE
+.\" SRC END
 .SH SEE ALSO
 .BR close (2)

@@ -287,6 +287,7 @@ and writes the first 10 bytes into
 and the second 10 bytes into
 .IR buf2 .
 .PP
+.\" SRC BEGIN (process_vm_readv.c)
 .EX
 #include <sys/uio.h>
 
@@ -314,6 +315,7 @@ main(void)
         return 0;
 }
 .EE
+.\" SRC END
 .SH SEE ALSO
 .BR readv (2),
 .BR writev (2)

@@ -525,6 +525,7 @@ open_by_handle_at: Stale NFS file handle
 .in
 .SS Program source: t_name_to_handle_at.c
 \&
+.\" SRC BEGIN (t_name_to_handle_at.c)
 .EX
 #define _GNU_SOURCE
 #include <sys/types.h>
@@ -596,8 +597,10 @@ main(int argc, char *argv[])
     exit(EXIT_SUCCESS);
 }
 .EE
+.\" SRC END
 .SS Program source: t_open_by_handle_at.c
 \&
+.\" SRC BEGIN (t_open_by_handle_at.c)
 .EX
 #define _GNU_SOURCE
 #include <sys/types.h>
@@ -736,6 +739,7 @@ main(int argc, char *argv[])
     exit(EXIT_SUCCESS);
 }
 .EE
+.\" SRC END
 .SH SEE ALSO
 .BR open (2),
 .BR libblkid (3),

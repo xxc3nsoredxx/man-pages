@@ -167,6 +167,7 @@ and
 in two distinct UDP datagrams using one system call.
 The contents of the first datagram originates from a pair of buffers.
 .PP
+.\" SRC BEGIN (sendmmsg.c)
 .EX
 #define _GNU_SOURCE
 #include <netinet/ip.h>
@@ -225,6 +226,7 @@ main(void)
     exit(0);
 }
 .EE
+.\" SRC END
 .SH SEE ALSO
 .BR recvmmsg (2),
 .BR sendmsg (2),

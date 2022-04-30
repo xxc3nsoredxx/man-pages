@@ -419,6 +419,7 @@ or as a username (which is converted to a user ID by using
 .BR getpwnam (3)
 to perform a lookup in the system password file).
 .SS Program source
+.\" SRC BEGIN (chown.c)
 .EX
 #include <pwd.h>
 #include <stdio.h>
@@ -457,6 +458,7 @@ main(int argc, char *argv[])
     exit(EXIT_SUCCESS);
 }
 .EE
+.\" SRC END
 .SH SEE ALSO
 .BR chgrp (1),
 .BR chown (1),
