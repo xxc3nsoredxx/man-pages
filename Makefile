@@ -386,7 +386,10 @@ $(_LINT_clang-tidy): %.lint.clang-tidy.touch: %.c
 
 $(_LINT_iwyu): %.lint.iwyu.touch: %.c
 	$(info LINT (iwyu)	$@)
-	$(IWYU) $(IWYUFLAGS) $(CPPFLAGS) $(CFLAGS) $<
+	$(IWYU) $(IWYUFLAGS) $(CPPFLAGS) $(CFLAGS) $< 2>&1 \
+	| tac \
+	| sed '/correct/{N;d}' \
+	| tac
 	touch $@
 
 $(_LINT_groff): $(_LINTDIR)/%.lint.groff.touch: $(MANDIR)/% | $$(@D)/.
