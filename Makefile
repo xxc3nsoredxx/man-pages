@@ -109,6 +109,10 @@ DEFAULT_CFLAGS += -Wall
 DEFAULT_CFLAGS += -Wextra
 DEAFULT_CFLAGS += -Wstrict-prototypes
 DEFAULT_CFLAGS += -Werror
+DEFAULT_CFLAGS += -Wno-error=unused-parameter
+DEFAULT_CFLAGS += -Wno-error=sign-compare
+DEFAULT_CFLAGS += -Wno-error=format
+DEFAULT_CFLAGS += -Wno-error=uninitialized
 EXTRA_CFLAGS   :=
 CFLAGS         := $(DEFAULT_CFLAGS) $(EXTRA_CFLAGS)
 
