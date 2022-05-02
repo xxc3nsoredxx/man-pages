@@ -620,8 +620,9 @@ get_msg(int qid, int msgtype)
             exit(EXIT_FAILURE);
         }
         printf("No message available for msgrcv()\en");
-    } else
+    } else {
         printf("message received: %s\en", msg.mtext);
+    }
 }
 
 int

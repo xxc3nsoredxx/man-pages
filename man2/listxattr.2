@@ -279,9 +279,9 @@ main(int argc, char *argv[])
              * Copy value to buffer.
              */
             vallen = getxattr(argv[1], key, val, vallen);
-            if (vallen == \-1)
+            if (vallen == \-1) {
                 perror("getxattr");
-            else {
+            } else {
                 /*
                  * Output attribute value.
                  */
@@ -290,8 +290,9 @@ main(int argc, char *argv[])
             }
 
             free(val);
-        } else if (vallen == 0)
+        } else if (vallen == 0) {
             printf("<no value>");
+        }
 
         printf("\en");
 
