@@ -95,6 +95,10 @@ DEFAULT_CLANG-TIDYFLAGS += --use-color
 EXTRA_CLANG-TIDYFLAGS   :=
 CLANG-TIDYFLAGS         := $(DEFAULT_CLANG-TIDYFLAGS) $(EXTRA_CLANG-TIDYFLAGS)
 
+DEFAULT_CPPLINTFLAGS :=
+EXTRA_CPPLINTFLAGS   :=
+CPPLINTFLAGS         := $(DEFAULT_CPPLINTFLAGS) $(EXTRA_CPPLINTFLAGS)
+
 DEFAULT_IWYUFLAGS := -Xiwyu --no_fwd_decls
 DEFAULT_IWYUFLAGS += -Xiwyu --error
 EXTRA_IWYUFLAGS   :=
@@ -156,6 +160,7 @@ MKDIR        := mkdir -p
 RM           := rm
 RMDIR        := rmdir --ignore-fail-on-non-empty
 CLANG-TIDY   := clang-tidy
+CPPLINT      := cpplint
 IWYU         := iwyu
 CC           := cc
 LD           := $(CC) $(CFLAGS)
@@ -237,6 +242,7 @@ _UNITS_c    := $(filter %.c,$(_UNITS_src))
 _UNITS_o    := $(patsubst %.c,%.o,$(_UNITS_c))
 _UNITS_bin  := $(patsubst %.c,%,$(_UNITS_c))
 _LINT_clang-tidy := $(patsubst %.c,%.lint.clang-tidy.touch,$(_UNITS_c))
+_LINT_cpplint    := $(patsubst %.c,%.lint.cpplint.touch,$(_UNITS_c))
 _LINT_iwyu       := $(patsubst %.c,%.lint.iwyu.touch,$(_UNITS_c))
 
 MANDIRS   := $(sort $(shell find $(MANDIR)/man? -type d))
@@ -416,13 +422,18 @@ builddirs-src: $(_SRCDIRS)
 ########################################################################
 # lint
 
-linters := clang-tidy iwyu groff mandoc
+linters := clang-tidy cpplint iwyu groff mandoc
 lint    := $(foreach x,$(linters),lint-$(x))
 
 $(_LINT_clang-tidy): %.lint.clang-tidy.touch: %.c
 	$(info LINT (clang-tidy)	$@)
 	$(CLANG-TIDY) $(CLANG-TIDYFLAGS) $< -- $(CPPFLAGS) $(CFLAGS) 2>&1 \
 	| sed '/generated\.$$/d'
+	touch $@
+
+$(_LINT_cpplint): %.lint.cpplint.touch: %.c
+	$(info LINT (cpplint)	$@)
+	$(CPPLINT) $(CPPLINTFLAGS) $< >/dev/null
 	touch $@
 
 $(_LINT_iwyu): %.lint.iwyu.touch: %.c
