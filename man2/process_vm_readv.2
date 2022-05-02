@@ -312,9 +312,9 @@ main(void)
 
     nread = process_vm_readv(pid, local, 2, remote, 1, 0);
     if (nread != 20)
-        return 1;
-    else
-        return 0;
+        exit(EXIT_FAILURE);
+
+    exit(EXIT_SUCCESS);
 }
 .EE
 .\" SRC END
