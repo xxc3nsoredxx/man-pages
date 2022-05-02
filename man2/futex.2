@@ -1805,17 +1805,17 @@ Child  (18535) 4
    writing messages.
 */
 #define _GNU_SOURCE
-#include <stdio.h>
 #include <errno.h>
+#include <linux/futex.h>
 #include <stdatomic.h>
 #include <stdint.h>
+#include <stdio.h>
 #include <stdlib.h>
-#include <unistd.h>
-#include <sys/wait.h>
 #include <sys/mman.h>
 #include <sys/syscall.h>
-#include <linux/futex.h>
 #include <sys/time.h>
+#include <sys/wait.h>
+#include <unistd.h>
 
 #define errExit(msg)    do { perror(msg); exit(EXIT_FAILURE); \e
                         } while (0)

@@ -410,13 +410,13 @@ Existing seals: WRITE SHRINK
 .\" SRC BEGIN (t_memfd_create.c)
 .EX
 #define _GNU_SOURCE
-#include <stdint.h>
-#include <sys/mman.h>
 #include <fcntl.h>
-#include <stdlib.h>
-#include <unistd.h>
-#include <string.h>
+#include <stdint.h>
 #include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <sys/mman.h>
+#include <unistd.h>
 
 #define errExit(msg)    do { perror(msg); exit(EXIT_FAILURE); \e
                         } while (0)

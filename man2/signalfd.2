@@ -462,11 +462,11 @@ $
 \&
 .\" SRC BEGIN (signalfd.c)
 .EX
-#include <sys/signalfd.h>
 #include <signal.h>
-#include <unistd.h>
-#include <stdlib.h>
 #include <stdio.h>
+#include <stdlib.h>
+#include <sys/signalfd.h>
+#include <unistd.h>
 
 #define handle_error(msg) \e
     do { perror(msg); exit(EXIT_FAILURE); } while (0)

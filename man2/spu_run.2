@@ -205,12 +205,12 @@ system call.
 .PP
 .\" SRC BEGIN (spu_run.c)
 .EX
-#include <stdlib.h>
-#include <stdint.h>
-#include <unistd.h>
-#include <stdio.h>
-#include <sys/types.h>
 #include <fcntl.h>
+#include <stdint.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <sys/types.h>
+#include <unistd.h>
 
 #define handle_error(msg) \e
     do { perror(msg); exit(EXIT_FAILURE); } while (0)

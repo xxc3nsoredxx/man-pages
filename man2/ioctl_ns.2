@@ -235,16 +235,16 @@ The owning user namespace is outside your namespace scope
 
    Licensed under the GNU General Public License v2 or later.
 */
-#include <stdint.h>
-#include <stdlib.h>
-#include <unistd.h>
-#include <stdio.h>
-#include <fcntl.h>
-#include <string.h>
-#include <sys/stat.h>
-#include <sys/ioctl.h>
 #include <errno.h>
+#include <fcntl.h>
+#include <stdint.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <sys/ioctl.h>
+#include <sys/stat.h>
 #include <sys/sysmacros.h>
+#include <unistd.h>
 
 #ifndef NS_GET_USERNS
 #define NSIO    0xb7

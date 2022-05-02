@@ -137,12 +137,12 @@ Tue Oct 28 10:06:00 CET 2014
 .\" SRC BEGIN (tee.c)
 .EX
 #define _GNU_SOURCE
+#include <errno.h>
 #include <fcntl.h>
+#include <limits.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
-#include <errno.h>
-#include <limits.h>
 
 int
 main(int argc, char *argv[])

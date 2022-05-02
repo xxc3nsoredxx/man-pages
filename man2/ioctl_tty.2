@@ -753,10 +753,10 @@ Check the condition of DTR on the serial port.
 .PP
 .\" SRC BEGIN (tiocmget.c)
 .EX
-#include <stdio.h>
-#include <unistd.h>
 #include <fcntl.h>
+#include <stdio.h>
 #include <sys/ioctl.h>
+#include <unistd.h>
 
 int
 main(void)

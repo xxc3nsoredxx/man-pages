@@ -115,11 +115,12 @@ It is not yet possible to change operating system by writing to
 .\" SRC BEGIN (sysctl.c)
 .EX
 #define _GNU_SOURCE
-#include <unistd.h>
-#include <sys/syscall.h>
-#include <string.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
+#include <sys/syscall.h>
+#include <unistd.h>
+
 #include <linux/sysctl.h>
 
 int _sysctl(struct __sysctl_args *args );
