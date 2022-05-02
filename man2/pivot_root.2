@@ -304,16 +304,17 @@ hello world
 /* pivot_root_demo.c */
 
 #define _GNU_SOURCE
+#include <limits.h>
 #include <sched.h>
+#include <signal.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include <unistd.h>
-#include <sys/wait.h>
-#include <sys/syscall.h>
+#include <sys/mman.h>
 #include <sys/mount.h>
 #include <sys/stat.h>
-#include <limits.h>
-#include <sys/mman.h>
+#include <sys/syscall.h>
+#include <sys/wait.h>
+#include <unistd.h>
 
 #define errExit(msg)    do { perror(msg); exit(EXIT_FAILURE); \e
                         } while (0)

@@ -1827,15 +1827,16 @@ so we should include it for portability.
 .\" SRC BEGIN (clone.c)
 .EX
 #define _GNU_SOURCE
-#include <sys/wait.h>
-#include <sys/utsname.h>
 #include <sched.h>
-#include <string.h>
+#include <signal.h>
 #include <stdint.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include <unistd.h>
+#include <string.h>
 #include <sys/mman.h>
+#include <sys/utsname.h>
+#include <sys/wait.h>
+#include <unistd.h>
 
 #define errExit(msg)    do { perror(msg); exit(EXIT_FAILURE); \e
                         } while (0)
