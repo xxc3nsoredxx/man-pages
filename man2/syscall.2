@@ -336,10 +336,9 @@ architectures may indiscriminately clobber other registers not listed here.
 .\" SRC BEGIN (syscall.c)
 .EX
 #define _GNU_SOURCE
-#include <unistd.h>
-#include <sys/syscall.h>
-#include <sys/types.h>
 #include <signal.h>
+#include <sys/syscall.h>
+#include <unistd.h>
 
 int
 main(void)

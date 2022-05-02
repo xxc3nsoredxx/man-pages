@@ -560,15 +560,13 @@ message received: a message at Wed Mar  4 16:25:45 2015
 \&
 .\" SRC BEGIN (msgop.c)
 .EX
+#include <errno.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include <string.h>
-#include <time.h>
-#include <unistd.h>
-#include <errno.h>
-#include <sys/types.h>
 #include <sys/ipc.h>
 #include <sys/msg.h>
+#include <time.h>
+#include <unistd.h>
 
 struct msgbuf {
     long mtype;

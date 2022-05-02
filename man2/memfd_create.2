@@ -498,12 +498,9 @@ main(int argc, char *argv[])
 .\" SRC BEGIN (t_get_seals.c)
 .EX
 #define _GNU_SOURCE
-#include <sys/mman.h>
 #include <fcntl.h>
-#include <unistd.h>
-#include <stdlib.h>
-#include <string.h>
 #include <stdio.h>
+#include <stdlib.h>
 
 #define errExit(msg)    do { perror(msg); exit(EXIT_FAILURE); \e
                         } while (0)

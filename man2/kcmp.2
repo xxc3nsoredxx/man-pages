@@ -339,15 +339,14 @@ Child duplicated FD 3 to create FD 5
 .\" SRC BEGIN (kcmp.c)
 .EX
 #define _GNU_SOURCE
-#include <sys/syscall.h>
-#include <sys/wait.h>
-#include <sys/stat.h>
-#include <stdint.h>
-#include <stdlib.h>
-#include <stdio.h>
-#include <unistd.h>
 #include <fcntl.h>
 #include <linux/kcmp.h>
+#include <stdint.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <sys/syscall.h>
+#include <sys/wait.h>
+#include <unistd.h>
 
 #define errExit(msg)    do { perror(msg); exit(EXIT_FAILURE); \e
                         } while (0)

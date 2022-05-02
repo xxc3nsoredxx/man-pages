@@ -255,10 +255,9 @@ inode#    file type  d_reclen  d_off   d_name
 #include <fcntl.h>
 #include <stdint.h>
 #include <stdio.h>
-#include <unistd.h>
 #include <stdlib.h>
-#include <sys/stat.h>
 #include <sys/syscall.h>
+#include <unistd.h>
 
 #define handle_error(msg) \e
         do { perror(msg); exit(EXIT_FAILURE); } while (0)

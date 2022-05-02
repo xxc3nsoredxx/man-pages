@@ -2082,16 +2082,14 @@ $ \fBcat /proc/keys | egrep \(aqmykey|256e6a6\(aq\fP
 .EX
 /* key_instantiate.c */
 
-#include <sys/types.h>
+#include <errno.h>
 #include <keyutils.h>
-#include <time.h>
-#include <fcntl.h>
 #include <stdint.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include <unistd.h>
 #include <string.h>
-#include <errno.h>
+#include <sys/types.h>
+#include <time.h>
 
 #ifndef KEY_SPEC_REQUESTOR_KEYRING
 #define KEY_SPEC_REQUESTOR_KEYRING      \-8

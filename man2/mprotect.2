@@ -288,13 +288,12 @@ Got SIGSEGV at address: 0x804e000
 \&
 .\" SRC BEGIN (mprotect.c)
 .EX
-#include <unistd.h>
+#include <malloc.h>
 #include <signal.h>
 #include <stdio.h>
-#include <malloc.h>
 #include <stdlib.h>
-#include <errno.h>
 #include <sys/mman.h>
+#include <unistd.h>
 
 #define handle_error(msg) \e
     do { perror(msg); exit(EXIT_FAILURE); } while (0)

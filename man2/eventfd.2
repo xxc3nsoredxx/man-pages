@@ -380,12 +380,11 @@ Parent read 28 (0x1c) from efd
 \&
 .\" SRC BEGIN (eventfd.c)
 .EX
+#include <inttypes.h>
+#include <stdio.h>
+#include <stdlib.h>
 #include <sys/eventfd.h>
 #include <unistd.h>
-#include <inttypes.h>           /* Definition of PRIu64 & PRIx64 */
-#include <stdlib.h>
-#include <stdio.h>
-#include <stdint.h>             /* Definition of uint64_t */
 
 #define handle_error(msg) \e
     do { perror(msg); exit(EXIT_FAILURE); } while (0)

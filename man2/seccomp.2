@@ -1109,16 +1109,15 @@ cecilia
 .SS Program source
 .\" SRC BEGIN (seccomp.c)
 .EX
-#include <errno.h>
-#include <stddef.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <unistd.h>
 #include <linux/audit.h>
 #include <linux/filter.h>
 #include <linux/seccomp.h>
+#include <stddef.h>
+#include <stdio.h>
+#include <stdlib.h>
 #include <sys/prctl.h>
 #include <sys/syscall.h>
+#include <unistd.h>
 
 #define X32_SYSCALL_BIT 0x40000000
 #define ARRAY_SIZE(arr) (sizeof(arr) / sizeof((arr)[0]))
