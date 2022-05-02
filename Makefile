@@ -88,6 +88,10 @@ _mandir     := $(DESTDIR)$(mandir)
 _htmldir    := $(DESTDIR)$(htmldir_)
 
 
+DEFAULT_CHECKPATCHFLAGS :=
+EXTRA_CHECKPATCHFLAGS   :=
+CHECKPATCHFLAGS         := $(DEFAULT_CHECKPATCHFLAGS) $(EXTRA_CHECKPATCHFLAGS)
+
 clang-tidy_config       := $(SYSCONFDIR)/clang-tidy/config.yaml
 DEFAULT_CLANG-TIDYFLAGS := --config-file=$(clang-tidy_config)
 DEFAULT_CLANG-TIDYFLAGS += --quiet
@@ -159,6 +163,7 @@ INSTALL_DIR  := $(INSTALL) -m 755 -d
 MKDIR        := mkdir -p
 RM           := rm
 RMDIR        := rmdir --ignore-fail-on-non-empty
+CHECKPATCH   := checkpatch
 CLANG-TIDY   := clang-tidy
 CPPLINT      := cpplint
 IWYU         := iwyu
@@ -241,6 +246,7 @@ _UNITS_h    := $(filter %.h,$(_UNITS_src))
 _UNITS_c    := $(filter %.c,$(_UNITS_src))
 _UNITS_o    := $(patsubst %.c,%.o,$(_UNITS_c))
 _UNITS_bin  := $(patsubst %.c,%,$(_UNITS_c))
+_LINT_checkpatch := $(patsubst %.c,%.lint.checkpatch.touch,$(_UNITS_c))
 _LINT_clang-tidy := $(patsubst %.c,%.lint.clang-tidy.touch,$(_UNITS_c))
 _LINT_cpplint    := $(patsubst %.c,%.lint.cpplint.touch,$(_UNITS_c))
 _LINT_iwyu       := $(patsubst %.c,%.lint.iwyu.touch,$(_UNITS_c))
@@ -422,8 +428,13 @@ builddirs-src: $(_SRCDIRS)
 ########################################################################
 # lint
 
-linters := clang-tidy cpplint iwyu groff mandoc
+linters := checkpatch clang-tidy cpplint iwyu groff mandoc
 lint    := $(foreach x,$(linters),lint-$(x))
+
+$(_LINT_checkpatch): %.lint.checkpatch.touch: %.c
+	$(info LINT (checkpatch)	$@)
+	$(CHECKPATCH) $(CHECKPATCHFLAGS) -f $<
+	touch $@
 
 $(_LINT_clang-tidy): %.lint.clang-tidy.touch: %.c
 	$(info LINT (clang-tidy)	$@)
