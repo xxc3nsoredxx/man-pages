@@ -306,7 +306,7 @@ main(int argc, char *argv[])
                              (d_type == DT_BLK) ?  "block dev" :
                              (d_type == DT_CHR) ?  "char dev" : "???");
             printf("%4d %10jd  %s\en", d\->d_reclen,
-                    (intmax_t) d\->d_off, d\->d_name);
+                   (intmax_t) d\->d_off, d\->d_name);
             bpos += d\->d_reclen;
         }
     }

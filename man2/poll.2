@@ -607,16 +607,16 @@ main(int argc, char *argv[])
 
             if (pfds[j].revents != 0) {
                 printf("  fd=%d; events: %s%s%s\en", pfds[j].fd,
-                        (pfds[j].revents & POLLIN)  ? "POLLIN "  : "",
-                        (pfds[j].revents & POLLHUP) ? "POLLHUP " : "",
-                        (pfds[j].revents & POLLERR) ? "POLLERR " : "");
+                       (pfds[j].revents & POLLIN)  ? "POLLIN "  : "",
+                       (pfds[j].revents & POLLHUP) ? "POLLHUP " : "",
+                       (pfds[j].revents & POLLERR) ? "POLLERR " : "");
 
                 if (pfds[j].revents & POLLIN) {
                     ssize_t s = read(pfds[j].fd, buf, sizeof(buf));
                     if (s == \-1)
                         errExit("read");
                     printf("    read %zd bytes: %.*s\en",
-                            s, (int) s, buf);
+                           s, (int) s, buf);
                 } else {                /* POLLERR | POLLHUP */
                     printf("    closing fd %d\en", pfds[j].fd);
                     if (close(pfds[j].fd) == \-1)

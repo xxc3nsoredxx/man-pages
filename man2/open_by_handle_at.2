@@ -564,7 +564,9 @@ main(int argc, char *argv[])
     flags = 0;                  /* For name_to_handle_at() calls */
     fhp\->handle_bytes = 0;
     if (name_to_handle_at(dirfd, pathname, fhp,
-                &mount_id, flags) != \-1 || errno != EOVERFLOW) {
+                          &mount_id, flags) != \-1
+        || errno != EOVERFLOW)
+    {
         fprintf(stderr, "Unexpected result from name_to_handle_at()\en");
         exit(EXIT_FAILURE);
     }
@@ -680,8 +682,9 @@ main(int argc, char *argv[])
          Line 2: <handle_bytes> <handle_type>   <bytes of handle in hex>
     */
 
-    if ((fgets(line1, sizeof(line1), stdin) == NULL) ||
-           (fgets(line2, sizeof(line2), stdin) == NULL)) {
+    if (fgets(line1, sizeof(line1), stdin) == NULL ||
+        fgets(line2, sizeof(line2), stdin) == NULL)
+    {
         fprintf(stderr, "Missing mount_id / file handle\en");
         exit(EXIT_FAILURE);
     }

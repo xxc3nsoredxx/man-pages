@@ -388,7 +388,7 @@ main(int argc, char *argv[])
         errExit("mmap");
 
     if (clone(child, stack + STACK_SIZE,
-                CLONE_NEWNS | SIGCHLD, &argv[1]) == \-1)
+              CLONE_NEWNS | SIGCHLD, &argv[1]) == \-1)
         errExit("clone");
 
     /* Parent falls through to here; wait for child. */

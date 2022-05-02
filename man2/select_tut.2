@@ -366,7 +366,8 @@ listen_socket(int listen_port)
 
     yes = 1;
     if (setsockopt(lfd, SOL_SOCKET, SO_REUSEADDR,
-            &yes, sizeof(yes)) == \-1) {
+                   &yes, sizeof(yes)) == \-1)
+    {
         perror("setsockopt");
         close(lfd);
         return \-1;
@@ -446,7 +447,7 @@ main(int argc, char *argv[])
 
     if (argc != 4) {
         fprintf(stderr, "Usage\en\etfwd <listen\-port> "
-                 "<forward\-to\-port> <forward\-to\-ip\-address>\en");
+                "<forward\-to\-port> <forward\-to\-ip\-address>\en");
         exit(EXIT_FAILURE);
     }
 
@@ -521,7 +522,7 @@ main(int argc, char *argv[])
                     SHUT_FD1;
                 else
                     printf("connect from %s\en",
-                            inet_ntoa(client_addr.sin_addr));
+                           inet_ntoa(client_addr.sin_addr));
 
                 /* Skip any events on the old, closed file
                    descriptors. */
@@ -552,7 +553,7 @@ main(int argc, char *argv[])
         }
         if (fd1 > 0 && FD_ISSET(fd1, &readfds)) {
             nbytes = read(fd1, buf1 + buf1_avail,
-                      BUF_SIZE \- buf1_avail);
+                          BUF_SIZE \- buf1_avail);
             if (nbytes < 1)
                 SHUT_FD1;
             else
@@ -560,7 +561,7 @@ main(int argc, char *argv[])
         }
         if (fd2 > 0 && FD_ISSET(fd2, &readfds)) {
             nbytes = read(fd2, buf2 + buf2_avail,
-                      BUF_SIZE \- buf2_avail);
+                          BUF_SIZE \- buf2_avail);
             if (nbytes < 1)
                 SHUT_FD2;
             else
@@ -568,7 +569,7 @@ main(int argc, char *argv[])
         }
         if (fd1 > 0 && FD_ISSET(fd1, &writefds) && buf2_avail > 0) {
             nbytes = write(fd1, buf2 + buf2_written,
-                       buf2_avail \- buf2_written);
+                           buf2_avail \- buf2_written);
             if (nbytes < 1)
                 SHUT_FD1;
             else
@@ -576,7 +577,7 @@ main(int argc, char *argv[])
         }
         if (fd2 > 0 && FD_ISSET(fd2, &writefds) && buf1_avail > 0) {
             nbytes = write(fd2, buf1 + buf1_written,
-                       buf1_avail \- buf1_written);
+                           buf1_avail \- buf1_written);
             if (nbytes < 1)
                 SHUT_FD2;
             else

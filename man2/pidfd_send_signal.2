@@ -181,7 +181,7 @@ fails with the error
 
 static int
 pidfd_send_signal(int pidfd, int sig, siginfo_t *info,
-        unsigned int flags)
+                  unsigned int flags)
 {
     return syscall(SYS_pidfd_send_signal, pidfd, sig, info, flags);
 }

@@ -482,8 +482,8 @@ main(int argc, char *argv[])
     }
 
     printf("ID of containing device:  [%jx,%jx]\en",
-            (uintmax_t) major(sb.st_dev),
-            (uintmax_t) minor(sb.st_dev));
+           (uintmax_t) major(sb.st_dev),
+           (uintmax_t) minor(sb.st_dev));
 
     printf("File type:                ");
 
@@ -501,18 +501,18 @@ main(int argc, char *argv[])
     printf("I\-node number:            %ju\en", (uintmax_t) sb.st_ino);
 
     printf("Mode:                     %jo (octal)\en",
-            (uintmax_t) sb.st_mode);
+           (uintmax_t) sb.st_mode);
 
     printf("Link count:               %ju\en", (uintmax_t) sb.st_nlink);
     printf("Ownership:                UID=%ju   GID=%ju\en",
-            (uintmax_t) sb.st_uid, (uintmax_t) sb.st_gid);
+           (uintmax_t) sb.st_uid, (uintmax_t) sb.st_gid);
 
     printf("Preferred I/O block size: %jd bytes\en",
-            (intmax_t) sb.st_blksize);
+           (intmax_t) sb.st_blksize);
     printf("File size:                %jd bytes\en",
-            (intmax_t) sb.st_size);
+           (intmax_t) sb.st_size);
     printf("Blocks allocated:         %jd\en",
-            (intmax_t) sb.st_blocks);
+           (intmax_t) sb.st_blocks);
 
     printf("Last status change:       %s", ctime(&sb.st_ctime));
     printf("Last file access:         %s", ctime(&sb.st_atime));

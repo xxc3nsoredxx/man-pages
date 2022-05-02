@@ -3742,7 +3742,7 @@ perf_event_open(struct perf_event_attr *hw_event, pid_t pid,
     int ret;
 
     ret = syscall(SYS_perf_event_open, hw_event, pid, cpu,
-                   group_fd, flags);
+                  group_fd, flags);
     return ret;
 }
 

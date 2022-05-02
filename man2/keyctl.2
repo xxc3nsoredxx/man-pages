@@ -2165,7 +2165,7 @@ main(int argc, char *argv[])
      * Fetch the description of the key that is to be instantiated.
      */
     if (keyctl(KEYCTL_DESCRIBE, key_to_instantiate,
-                dbuf, sizeof(dbuf)) == \-1) {
+               dbuf, sizeof(dbuf)) == \-1) {
         fprintf(fp, "KEYCTL_DESCRIBE failed: %s\en", strerror(errno));
         exit(EXIT_FAILURE);
     }
@@ -2191,7 +2191,7 @@ main(int argc, char *argv[])
      * display it.
      */
     auth_key = keyctl(KEYCTL_GET_KEYRING_ID,
-            KEY_SPEC_REQKEY_AUTH_KEY);
+                      KEY_SPEC_REQKEY_AUTH_KEY);
     if (auth_key == \-1) {
         fprintf(fp, "KEYCTL_GET_KEYRING_ID failed: %s\en",
                 strerror(errno));
@@ -2221,7 +2221,8 @@ main(int argc, char *argv[])
      * string representing the ID of the key to be instantiated.
      */
     if (keyctl(KEYCTL_DESCRIBE, KEY_SPEC_REQKEY_AUTH_KEY,
-                dbuf, sizeof(dbuf)) == \-1) {
+               dbuf, sizeof(dbuf)) == \-1)
+    {
         fprintf(fp, "KEYCTL_DESCRIBE failed: %s\en", strerror(errno));
         exit(EXIT_FAILURE);
     }
@@ -2233,7 +2234,8 @@ main(int argc, char *argv[])
      * in the payload of the authorization key.
      */
     if (keyctl(KEYCTL_INSTANTIATE, key_to_instantiate,
-               auth_key_payload, akp_size + 1, dest_keyring) == \-1) {
+               auth_key_payload, akp_size + 1, dest_keyring) == \-1)
+    {
         fprintf(fp, "KEYCTL_INSTANTIATE failed: %s\en",
                 strerror(errno));
         exit(EXIT_FAILURE);

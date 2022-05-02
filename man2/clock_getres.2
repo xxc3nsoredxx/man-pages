@@ -466,16 +466,16 @@ displayClock(clockid_t clock, const char *name, bool showRes)
     }
 
     printf("%\-15s: %10jd.%03ld (", name,
-            (intmax_t) ts.tv_sec, ts.tv_nsec / 1000000);
+           (intmax_t) ts.tv_sec, ts.tv_nsec / 1000000);
 
     long days = ts.tv_sec / SECS_IN_DAY;
     if (days > 0)
         printf("%ld days + ", days);
 
     printf("%2dh %2dm %2ds",
-            (int) (ts.tv_sec % SECS_IN_DAY) / 3600,
-            (int) (ts.tv_sec % 3600) / 60,
-            (int) ts.tv_sec % 60);
+           (int) (ts.tv_sec % SECS_IN_DAY) / 3600,
+           (int) (ts.tv_sec % 3600) / 60,
+           (int) ts.tv_sec % 60);
     printf(")\en");
 
     if (clock_getres(clock, &ts) == \-1) {
@@ -485,7 +485,7 @@ displayClock(clockid_t clock, const char *name, bool showRes)
 
     if (showRes)
         printf("     resolution: %10jd.%09ld\en",
-                (intmax_t) ts.tv_sec, ts.tv_nsec);
+               (intmax_t) ts.tv_sec, ts.tv_nsec);
 }
 
 int

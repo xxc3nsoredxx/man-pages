@@ -251,7 +251,7 @@ main(int argc, char *argv[])
     }
 
     printf("Events (%#x): POLLIN is %sset\en", pollfd.revents,
-            (pollfd.revents & POLLIN) ? "" : "not ");
+           (pollfd.revents & POLLIN) ? "" : "not ");
 
     close(pidfd);
     exit(EXIT_SUCCESS);

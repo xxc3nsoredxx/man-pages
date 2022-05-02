@@ -791,9 +791,9 @@ fault_handler_thread(void *arg)
 
         printf("\enfault_handler_thread():\en");
         printf("    poll() returns: nready = %d; "
-                "POLLIN = %d; POLLERR = %d\en", nready,
-                (pollfd.revents & POLLIN) != 0,
-                (pollfd.revents & POLLERR) != 0);
+               "POLLIN = %d; POLLERR = %d\en", nready,
+               (pollfd.revents & POLLIN) != 0,
+               (pollfd.revents & POLLERR) != 0);
 
         /* Read an event from the userfaultfd. */
 
@@ -840,7 +840,7 @@ fault_handler_thread(void *arg)
             errExit("ioctl\-UFFDIO_COPY");
 
         printf("        (uffdio_copy.copy returned %"PRId64")\en",
-                uffdio_copy.copy);
+               uffdio_copy.copy);
     }
 }
 

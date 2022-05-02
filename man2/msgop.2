@@ -598,10 +598,11 @@ send_msg(int qid, int msgtype)
 
     time(&t);
     snprintf(msg.mtext, sizeof(msg.mtext), "a message at %s",
-            ctime(&t));
+             ctime(&t));
 
     if (msgsnd(qid, &msg, sizeof(msg.mtext),
-                IPC_NOWAIT) == \-1) {
+               IPC_NOWAIT) == \-1)
+    {
         perror("msgsnd error");
         exit(EXIT_FAILURE);
     }

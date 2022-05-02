@@ -248,7 +248,7 @@ main(void)
             sizeof(my_addr.sun_path) \- 1);
 
     if (bind(sfd, (struct sockaddr *) &my_addr,
-            sizeof(my_addr)) == \-1)
+             sizeof(my_addr)) == \-1)
         handle_error("bind");
 
     if (listen(sfd, LISTEN_BACKLOG) == \-1)
