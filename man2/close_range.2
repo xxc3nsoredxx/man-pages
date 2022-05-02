@@ -201,14 +201,13 @@ result from the calls to
 .\" SRC BEGIN (close_range.c)
 .EX
 #define _GNU_SOURCE
+#include <dirent.h>
 #include <fcntl.h>
-#include <linux/close_range.h>
+#include <limits.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <sys/syscall.h>
-#include <string.h>
 #include <unistd.h>
-#include <dirent.h>
 
 /* Show the contents of the symbolic links in /proc/self/fd */
 
