@@ -170,24 +170,20 @@ fails with the error
 .\" SRC BEGIN (pidfd_send_signal.c)
 .EX
 #define _GNU_SOURCE
+#include <fcntl.h>
 #include <limits.h>
 #include <signal.h>
-#include <fcntl.h>
 #include <stdio.h>
-#include <string.h>
 #include <stdlib.h>
-#include <unistd.h>
+#include <string.h>
 #include <sys/syscall.h>
-
-#ifndef __NR_pidfd_send_signal
-#define __NR_pidfd_send_signal 424
-#endif
+#include <unistd.h>
 
 static int
 pidfd_send_signal(int pidfd, int sig, siginfo_t *info,
         unsigned int flags)
 {
-    return syscall(__NR_pidfd_send_signal, pidfd, sig, info, flags);
+    return syscall(SYS_pidfd_send_signal, pidfd, sig, info, flags);
 }
 
 int

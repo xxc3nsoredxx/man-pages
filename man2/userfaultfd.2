@@ -868,7 +868,7 @@ main(int argc, char *argv[])
 
     /* Create and enable userfaultfd object. */
 
-    uffd = syscall(__NR_userfaultfd, O_CLOEXEC | O_NONBLOCK);
+    uffd = syscall(SYS_userfaultfd, O_CLOEXEC | O_NONBLOCK);
     if (uffd == \-1)
         errExit("userfaultfd");
 

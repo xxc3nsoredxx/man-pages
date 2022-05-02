@@ -212,21 +212,16 @@ event.
 .\" SRC BEGIN (pidfd_open.c)
 .EX
 #define _GNU_SOURCE
-#include <sys/types.h>
+#include <poll.h>
+#include <stdio.h>
+#include <stdlib.h>
 #include <sys/syscall.h>
 #include <unistd.h>
-#include <poll.h>
-#include <stdlib.h>
-#include <stdio.h>
-
-#ifndef __NR_pidfd_open
-#define __NR_pidfd_open 434   /* System call # on most architectures */
-#endif
 
 static int
 pidfd_open(pid_t pid, unsigned int flags)
 {
-    return syscall(__NR_pidfd_open, pid, flags);
+    return syscall(SYS_pidfd_open, pid, flags);
 }
 
 int

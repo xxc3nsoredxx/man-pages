@@ -1549,7 +1549,7 @@ sigchldHandler(int sig)
 static int
 seccomp(unsigned int operation, unsigned int flags, void *args)
 {
-    return syscall(__NR_seccomp, operation, flags, args);
+    return syscall(SYS_seccomp, operation, flags, args);
 }
 
 /* The following is the x86\-64\-specific BPF boilerplate code for checking
@@ -1585,7 +1585,7 @@ installNotifyFilter(void)
 
         /* mkdir() triggers notification to user\-space supervisor */
 
-        BPF_JUMP(BPF_JMP | BPF_JEQ | BPF_K, __NR_mkdir, 0, 1),
+        BPF_JUMP(BPF_JMP | BPF_JEQ | BPF_K, SYS_mkdir, 0, 1),
         BPF_STMT(BPF_RET + BPF_K, SECCOMP_RET_USER_NOTIF),
 
         /* Every other system call is allowed */
@@ -1841,7 +1841,7 @@ handleNotifications(int notifyFd)
            code in case the seccomp filter is later modified to
            generate notifications for other system calls. */
 
-        if (req\->data.nr != __NR_mkdir) {
+        if (req\->data.nr != SYS_mkdir) {
             printf("\etS: notification contained unexpected "
                     "system call number; bye!!!\en");
             exit(EXIT_FAILURE);
