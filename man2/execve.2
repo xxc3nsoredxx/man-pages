@@ -806,8 +806,8 @@ argument:
 int
 main(int argc, char *argv[])
 {
-    char *newargv[] = { NULL, "hello", "world", NULL };
-    char *newenviron[] = { NULL };
+    static char *newargv[] = { NULL, "hello", "world", NULL };
+    static char *newenviron[] = { NULL };
 
     if (argc != 2) {
         fprintf(stderr, "Usage: %s <file\-to\-exec>\en", argv[0]);
