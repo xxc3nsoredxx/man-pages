@@ -847,6 +847,8 @@ fault_handler_thread(void *arg)
 int
 main(int argc, char *argv[])
 {
+    int l;
+    char c;
     long uffd;          /* userfaultfd file descriptor */
     char *addr;         /* Start of region handled by userfaultfd */
     uint64_t len;       /* Length of region handled by userfaultfd */
@@ -908,13 +910,12 @@ main(int argc, char *argv[])
        locations 1024 bytes apart. This will trigger userfaultfd
        events for all pages in the region. */
 
-    int l;
     l = 0xf;    /* Ensure that faulting address is not on a page
                    boundary, in order to test that we correctly
                    handle that case in fault_handling_thread(). */
     while (l < len) {
-        char c = addr[l];
-        printf("Read address %p in main(): ", addr + l);
+        c = addr[l];
+        printf("Read address %p in %s(): ", addr + l, __func__);
         printf("%c\en", c);
         l += 1024;
         usleep(100000);         /* Slow things down a little */
