@@ -651,7 +651,7 @@ main(int argc, char *argv[])
     uint64_t exp, tot_exp;
     ssize_t s;
 
-    if ((argc != 2) && (argc != 4)) {
+    if (argc != 2 && argc != 4) {
         fprintf(stderr, "%s init\-secs [interval\-secs max\-exp]\en",
                 argv[0]);
         exit(EXIT_FAILURE);
