@@ -458,7 +458,8 @@ CLOCK_BOOTTIME :      72691.019 (20h 11m 31s)
 static void
 displayClock(clockid_t clock, const char *name, bool showRes)
 {
-    struct timespec ts;
+    long             days;
+    struct timespec  ts;
 
     if (clock_gettime(clock, &ts) == \-1) {
         perror("clock_gettime");
@@ -468,7 +469,7 @@ displayClock(clockid_t clock, const char *name, bool showRes)
     printf("%\-15s: %10jd.%03ld (", name,
            (intmax_t) ts.tv_sec, ts.tv_nsec / 1000000);
 
-    long days = ts.tv_sec / SECS_IN_DAY;
+    days = ts.tv_sec / SECS_IN_DAY;
     if (days > 0)
         printf("%ld days + ", days);
 

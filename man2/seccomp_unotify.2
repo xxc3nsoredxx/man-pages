@@ -1636,7 +1636,11 @@ closeSocketPair(int sockPair[2])
 static pid_t
 targetProcess(int sockPair[2], char *argv[])
 {
-    pid_t targetPid = fork();
+    int    notifyFd, s;
+    pid_t  targetPid;
+
+    targetPid = fork();
+
     if (targetPid == \-1)
         errExit("fork");
 
@@ -1652,7 +1656,7 @@ targetProcess(int sockPair[2], char *argv[])
     if (prctl(PR_SET_NO_NEW_PRIVS, 1, 0, 0, 0))
         errExit("prctl");
 
-    int notifyFd = installNotifyFilter();
+    notifyFd = installNotifyFilter();
 
     /* Pass the notification file descriptor to the tracing process over
        a UNIX domain socket */
@@ -1672,7 +1676,7 @@ targetProcess(int sockPair[2], char *argv[])
     for (char **ap = argv; *ap != NULL; ap++) {
         printf("\enT: about to mkdir(\e"%s\e")\en", *ap);
 
-        int s = mkdir(*ap, 0700);
+        s = mkdir(*ap, 0700);
         if (s == \-1)
             perror("T: ERROR: mkdir(2)");
         else
@@ -1711,11 +1715,13 @@ static bool
 getTargetPathname(struct seccomp_notif *req, int notifyFd,
                   int argNum, char *path, size_t len)
 {
-    char procMemPath[PATH_MAX];
+    int      procMemFd;
+    char     procMemPath[PATH_MAX];
+    ssize_t  nread;
 
     snprintf(procMemPath, sizeof(procMemPath), "/proc/%d/mem", req\->pid);
 
-    int procMemFd = open(procMemPath, O_RDONLY | O_CLOEXEC);
+    procMemFd = open(procMemPath, O_RDONLY | O_CLOEXEC);
     if (procMemFd == \-1)
         return false;
 
@@ -1734,7 +1740,7 @@ getTargetPathname(struct seccomp_notif *req, int notifyFd,
 
     /* Read bytes at the location containing the pathname argument */
 
-    ssize_t nread = pread(procMemFd, path, len, req\->data.args[argNum]);
+    nread = pread(procMemFd, path, len, req\->data.args[argNum]);
 
     close(procMemFd);
 
@@ -1778,6 +1784,8 @@ allocSeccompNotifBuffers(struct seccomp_notif **req,
                          struct seccomp_notif_resp **resp,
                          struct seccomp_notif_sizes *sizes)
 {
+    size_t  resp_size;
+
     /* Discover the sizes of the structures that are used to receive
        notifications and send notification responses, and allocate
        buffers of those sizes. */
@@ -1798,7 +1806,7 @@ allocSeccompNotifBuffers(struct seccomp_notif **req,
        structure that are past the response size that the kernel expects,
        then the supervisor is not touching an invalid memory location. */
 
-    size_t resp_size = sizes\->seccomp_notif_resp;
+    resp_size = sizes\->seccomp_notif_resp;
     if (sizeof(struct seccomp_notif_resp) > resp_size)
         resp_size = sizeof(struct seccomp_notif_resp);
 
@@ -1814,10 +1822,11 @@ allocSeccompNotifBuffers(struct seccomp_notif **req,
 static void
 handleNotifications(int notifyFd)
 {
-    struct seccomp_notif_sizes sizes;
-    struct seccomp_notif *req;
-    struct seccomp_notif_resp *resp;
-    char path[PATH_MAX];
+    bool                        pathOK;
+    char                        path[PATH_MAX];
+    struct seccomp_notif        *req;
+    struct seccomp_notif_resp   *resp;
+    struct seccomp_notif_sizes  sizes;
 
     allocSeccompNotifBuffers(&req, &resp, &sizes);
 
@@ -1849,8 +1858,7 @@ handleNotifications(int notifyFd)
             exit(EXIT_FAILURE);
         }
 
-        bool pathOK = getTargetPathname(req, notifyFd, 0, path,
-                                        sizeof(path));
+        pathOK = getTargetPathname(req, notifyFd, 0, path, sizeof(path));
 
         /* Prepopulate some fields of the response */
 
@@ -1937,7 +1945,10 @@ handleNotifications(int notifyFd)
 static void
 supervisor(int sockPair[2])
 {
-    int notifyFd = recvfd(sockPair[1]);
+    int notifyFd;
+
+    notifyFd = recvfd(sockPair[1]);
+
     if (notifyFd == \-1)
         errExit("recvfd");
 
@@ -1949,7 +1960,8 @@ supervisor(int sockPair[2])
 int
 main(int argc, char *argv[])
 {
-    int sockPair[2];
+    int               sockPair[2];
+    struct sigaction  sa;
 
     setbuf(stdout, NULL);
 
@@ -1975,7 +1987,6 @@ main(int argc, char *argv[])
     /* Catch SIGCHLD when the target terminates, so that the
        supervisor can also terminate. */
 
-    struct sigaction sa;
     sa.sa_handler = sigchldHandler;
     sa.sa_flags = 0;
     sigemptyset(&sa.sa_mask);
