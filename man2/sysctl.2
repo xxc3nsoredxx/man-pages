@@ -123,6 +123,8 @@ It is not yet possible to change operating system by writing to
 
 #include <linux/sysctl.h>
 
+#define ARRAY_SIZE(arr)  (sizeof(arr) / sizeof((arr)[0]))
+
 int _sysctl(struct __sysctl_args *args);
 
 #define OSNAMESZ 100
@@ -137,7 +139,7 @@ main(void)
 
     memset(&args, 0, sizeof(args));
     args.name = name;
-    args.nlen = sizeof(name)/sizeof(name[0]);
+    args.nlen = ARRAY_SIZE(name);
     args.oldval = osname;
     args.oldlenp = &osnamelth;
 

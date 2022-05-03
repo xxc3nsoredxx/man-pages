@@ -1416,6 +1416,8 @@ T: terminating
 #include <sys/un.h>
 #include <unistd.h>
 
+#define ARRAY_SIZE(arr)  (sizeof(arr) / sizeof((arr)[0]))
+
 #define errExit(msg)    do { perror(msg); exit(EXIT_FAILURE); \e
                         } while (0)
 
@@ -1596,7 +1598,7 @@ installNotifyFilter(void)
     };
 
     struct sock_fprog prog = {
-        .len = sizeof(filter) / sizeof(filter[0]),
+        .len = ARRAY_SIZE(filter),
         .filter = filter,
     };
 
