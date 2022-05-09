@@ -343,7 +343,7 @@ compression := gz xz
 dist        := $(foreach x,$(compression),dist-$(x))
 
 
-$(DISTFILE): $(shell git ls-files) | $$(@D)/.
+$(DISTFILE): $(shell git ls-files 2>/dev/null) | $$(@D)/.
 	$(info TAR	$@)
 	tar cf $@ -T /dev/null
 	git ls-files \
