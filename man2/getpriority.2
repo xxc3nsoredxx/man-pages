@@ -183,9 +183,12 @@ manner as Linux 2.6.12 and later.
 .SS C library/kernel differences
 The getpriority system call returns nice values translated to the range 40..1,
 since a negative return value would be interpreted as an error.
-The glibc wrapper function for getpriority translates the value back according to the formula
-.IR "unice\ =\ 20\ \-\ knice" .
-(Thus, the 40..1 range returned by the kernel corresponds to the range \-20..19 as seen by user space.)
+The glibc wrapper function for
+.BR getpriority ()
+translates the value back according to the formula
+.I unice\~=\~20\~\-\~knice
+(thus, the 40..1 range returned by the kernel
+corresponds to the range \-20..19 as seen by user space).
 .SH BUGS
 According to POSIX, the nice value is a per-process setting.
 However, under the current Linux/NPTL implementation of POSIX threads,
