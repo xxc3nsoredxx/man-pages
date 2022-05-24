@@ -283,6 +283,42 @@ for additional details.
 This is a synonym for
 .RB ( FAN_REPORT_DIR_FID | FAN_REPORT_NAME ).
 .PP
+.TP
+.BR FAN_REPORT_PIDFD " (since Linux 5.15)"
+.\" commit af579beb666aefb17e9a335c12c788c92932baf1
+Events for fanotify groups initialized with this flag will contain
+an additional information record alongside the generic
+.I fanotify_event_metadata
+structure.
+This information record will be of type
+.B FAN_EVENT_INFO_TYPE_PIDFD
+and will contain a pidfd for the process that
+was responsible for generating an event.
+A pidfd returned in this information record object is
+no different to the pidfd that is returned when calling
+.BR pidfd_open (2).
+Usage of this information record are for applications that
+may be interested in reliably determining whether
+the process responsible for generating an event
+has been recycled or terminated.
+The use of the
+.B FAN_REPORT_TID
+flag along with
+.B FAN_REPORT_PIDFD
+is currently not supported and
+attempting to do so will result in the error
+.B EINVAL
+being returned.
+This limitation is currently imposed by the pidfd API
+as it currently only supports
+the creation of pidfds for thread-group leaders.
+Creating pidfds for non-thread-group leaders
+may be supported at some point in the future,
+so this restriction may eventually be lifted.
+For more details on information records,
+see
+.BR fanotify (7).
+.PP
 The
 .I event_f_flags
 argument
