@@ -24,5 +24,5 @@
 # (http://www.gnu.org/licenses/gpl-2.0.html).
 #
 #
-find $@ -not -type d \
+find "$@" -not -type d \
 |xargs sed -i '/^.SH COLOPHON/,$d';
