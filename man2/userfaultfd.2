@@ -12,8 +12,9 @@ Standard C library
 .RI ( libc ", " \-lc )
 .SH SYNOPSIS
 .nf
-.BR "#include <fcntl.h>" "            /* Definition of " O_* " constants */"
-.BR "#include <sys/syscall.h>" "      /* Definition of " SYS_* " constants */"
+.BR "#include <fcntl.h>" "             /* Definition of " O_* " constants */"
+.BR "#include <sys/syscall.h>" "       /* Definition of " SYS_* " constants */"
+.BR "#include <linux/userfaultfd.h>" " /* Definition of " UFFD_* " constants */"
 .B #include <unistd.h>
 .PP
 .BI "int syscall(SYS_userfaultfd, int " flags );
@@ -59,6 +60,15 @@ See the description of the
 .B O_NONBLOCK
 flag in
 .BR open (2).
+.TP
+.B UFFD_USER_MODE_ONLY
+This is an userfaultfd specific flag that was introduced since Linux 5.11.
+When set, the userfaultfd object will only be able to handle page faults
+originated from the userspace on the registered regions.
+When a kernel originated fault was triggered on the registered range with
+this userfaultfd, a
+.B SIGBUS
+signal will be delivered.
 .PP
 When the last file descriptor referring to a userfaultfd object is closed,
 all memory ranges that were registered with the object are unregistered
