@@ -198,11 +198,11 @@ The
 argument should be zero.
 .\" See the pgoff overflow check in do_mmap().
 .\" See the offset check in sys_mmap in arch/x86/kernel/sys_x86_64.c.
-The use of
+Support for
 .B MAP_ANONYMOUS
 in conjunction with
 .B MAP_SHARED
-is supported on Linux only since kernel 2.4.
+was added in Linux 2.4.
 .TP
 .B MAP_DENYWRITE
 This flag is ignored.
@@ -388,8 +388,9 @@ The
 call doesn't fail if the mapping cannot be populated (for example, due
 to limitations on the number of mapped huge pages when using
 .BR MAP_HUGETLB ).
+Support for
 .B MAP_POPULATE
-is supported for private mappings only since Linux 2.6.23.
+in conjunction with private mappings was added in Linux 2.6.23.
 .TP
 .BR MAP_STACK " (since Linux 2.6.27)"
 Allocate the mapping at an address suitable for a process
