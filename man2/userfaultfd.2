@@ -270,12 +270,17 @@ Since Linux 4.11,
 userfaultfd can be also used with hugetlbfs and shared memory mappings.
 .\"
 .SS Userfaultfd write-protect mode (since 5.7)
-Since Linux 5.7, userfaultfd supports write-protect mode.
+Since Linux 5.7, userfaultfd supports write-protect mode for anonymous memory.
 The user needs to first check availability of this feature using
 .B UFFDIO_API
 ioctl against the feature bit
 .B UFFD_FEATURE_PAGEFAULT_FLAG_WP
 before using this feature.
+.PP
+Since Linux 5.19, the write-protection mode was also supported on shmem and hugetlbfs
+memory types.
+It can be detected with the feature bit
+.BR UFFD_FEATURE_WP_HUGETLBFS_SHMEM .
 .PP
 To register with userfaultfd write-protect mode, the user needs to initiate the
 .B UFFDIO_REGISTER
@@ -327,8 +332,6 @@ ioctl, whose
 should have the flag
 .B UFFDIO_WRITEPROTECT_MODE_WP
 cleared upon the faulted page or range.
-.PP
-Write-protect mode supports only private anonymous memory.
 .\"
 .SS Userfaultfd minor fault mode (since 5.13)
 Since Linux 5.13,
