@@ -66,10 +66,9 @@ field returns zero.
 (This provides an easy way of ignoring a
 file descriptor for a single
 .BR poll ()
-call: simply negate the
+call: simply set the
 .I fd
-field.
-Note, however, that this technique can't be used to ignore file descriptor 0.)
+field to its bitwise complement.)
 .PP
 The field
 .I events
