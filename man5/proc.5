@@ -1759,9 +1759,13 @@ If set, the page is in swap space
 61 (since Linux 3.5)
 The page is a file-mapped page or a shared anonymous page.
 .TP
-60\(en57 (since Linux 3.11)
+60\(en58 (since Linux 3.11)
 Zero
 .\" Not quite true; see commit 541c237c0923f567c9c4cabb8a81635baadc713f
+.TP
+57 (since Linux 5.14)
+If set, the page is write-protected through
+.BR userfaultfd (2).
 .TP
 56 (since Linux 4.2)
 .\" commit 77bb499bb60f4b79cca7d139c8041662860fcf87
