@@ -412,6 +412,13 @@ The caller tried to change the mount to
 .BR MOUNT_ATTR_RDONLY ,
 but the mount still holds files open for writing.
 .TP
+.B EBUSY
+The caller tried to create an ID-mapped mount raising
+.BR MOUNT_ATTR_IDMAP
+and specifying
+.I userns_fd
+but the mount still holds files open for writing.
+.TP
 .B EINVAL
 The pathname specified via the
 .I dirfd
@@ -645,6 +652,9 @@ This also implies that the ID mapping of a mount cannot be altered.
 The mount must be a detached mount;
 that is,
 it must have been created by calling
+.IP \(bu
+The mount must not have any writers.
+.\" commit 1bbcd277a53e08d619ffeec56c5c9287f2bf42f
 .BR open_tree (2)
 with the
 .B OPEN_TREE_CLONE
