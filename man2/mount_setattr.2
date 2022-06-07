@@ -632,10 +632,11 @@ The following conditions must be met in order to create an ID-mapped mount:
 .IP \(bu 3
 The caller must have the
 .B CAP_SYS_ADMIN
-capability in the initial user namespace.
-.IP \(bu
-The filesystem must be mounted in a mount namespace
-that is owned by the initial user namespace.
+capability in the user namespace the filesystem was mounted in.
+.\" commit bd303368b776eead1c29e6cdda82bde7128b82a7
+.\" Christian Brauner
+.\"     Note, currently no filesystems mountable in non-initial user namespaces
+.\"     support ID-mapped mounts.
 .IP \(bu
 The underlying filesystem must support ID-mapped mounts.
 Currently, the
