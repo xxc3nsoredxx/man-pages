@@ -639,14 +639,43 @@ capability in the user namespace the filesystem was mounted in.
 .\"     support ID-mapped mounts.
 .IP \(bu
 The underlying filesystem must support ID-mapped mounts.
-Currently, the
-.BR xfs (5),
-.BR ext4 (5),
-and
-.B FAT
-filesystems support ID-mapped mounts
-with more filesystems being actively worked on.
+Currently, the following filesystems support ID-mapped mounts:
+.\" fs_flags = FS_ALLOW_IDMAP in kernel sources
+.PP
+.RS 3
+.PD 0
+.IP \(bu 3
+.BR xfs (5)
+(since Linux 5.12)
 .IP \(bu
+.BR ext4 (5)
+(since Linux 5.12)
+.IP \(bu
+.BR FAT
+(since Linux 5.12)
+.IP \(bu
+.BR btrfs (5)
+(since Linux 5.15)
+.\" commit 5b9b26f5d0b88b74001dcfe4ab8a8f2f4e744112
+.IP \(bu
+.BR ntfs3
+(since Linux 5.15)
+.\" commit 82cae269cfa953032fbb8980a7d554d60fb00b17
+.IP \(bu
+.BR f2fs
+(since Linux 5.18)
+.\" commit 984fc4e76d63345499f01c0c198a4b44860cf027
+.IP \(bu
+.BR erofs
+(since Linux 5.19)
+.\" commit 6c459b78d4793afbba6d864c466cc5cd2932459d
+.IP \(bu
+.BR overlayfs
+(ID-mapped lower and upper layers supported since Linux 5.19)
+.PD
+.RE
+.PP
+.IP \(bu 3
 The mount must not already be ID-mapped.
 This also implies that the ID mapping of a mount cannot be altered.
 .IP \(bu
