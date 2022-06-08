@@ -414,7 +414,7 @@ but the mount still holds files open for writing.
 .TP
 .B EBUSY
 The caller tried to create an ID-mapped mount raising
-.BR MOUNT_ATTR_IDMAP
+.B MOUNT_ATTR_IDMAP
 and specifying
 .I userns_fd
 but the mount still holds files open for writing.
@@ -651,26 +651,26 @@ Currently, the following filesystems support ID-mapped mounts:
 .BR ext4 (5)
 (since Linux 5.12)
 .IP \(bu
-.BR FAT
+.B FAT
 (since Linux 5.12)
 .IP \(bu
 .BR btrfs (5)
 (since Linux 5.15)
 .\" commit 5b9b26f5d0b88b74001dcfe4ab8a8f2f4e744112
 .IP \(bu
-.BR ntfs3
+.B ntfs3
 (since Linux 5.15)
 .\" commit 82cae269cfa953032fbb8980a7d554d60fb00b17
 .IP \(bu
-.BR f2fs
+.B f2fs
 (since Linux 5.18)
 .\" commit 984fc4e76d63345499f01c0c198a4b44860cf027
 .IP \(bu
-.BR erofs
+.B erofs
 (since Linux 5.19)
 .\" commit 6c459b78d4793afbba6d864c466cc5cd2932459d
 .IP \(bu
-.BR overlayfs
+.B overlayfs
 (ID-mapped lower and upper layers supported since Linux 5.19)
 .PD
 .RE
