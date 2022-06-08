@@ -15,6 +15,7 @@ Standard C library
 .RI ( libc ", " \-lc )
 .SH SYNOPSIS
 .nf
+.BR "#define _GNU_SOURCE          " "/* See feature_test_macros(7) */"
 .BR "#include <fcntl.h>           " "/* Definition of " AT_* " constants */"
 .B #include <sys/stat.h>
 .PP
@@ -166,11 +167,6 @@ If
 is
 .BR AT_FDCWD ,
 the call operates on the current working directory.
-.IP
-This flag is Linux-specific; define
-.B _GNU_SOURCE
-.\" Before glibc 2.16, defining _ATFILE_SOURCE sufficed
-to obtain its definition.
 .TP
 .B AT_NO_AUTOMOUNT
 Don't automount the terminal ("basename") component of
@@ -193,11 +189,6 @@ and
 act as though
 .B AT_NO_AUTOMOUNT
 was set.
-.IP
-This flag is Linux-specific; define
-.B _GNU_SOURCE
-.\" Before glibc 2.16, defining _ATFILE_SOURCE sufficed
-to obtain its definition.
 .TP
 .B AT_SYMLINK_NOFOLLOW
 If
