@@ -52419,7 +52419,7 @@ uintN_t.3
 uintptr_t.3
 va_list.3
 void.3
-    Alejandro Colomar, Michael kerrisk
+    Alejandro Colomar, Michael Kerrisk
         New links to system_data_types(7)
 
 CIRCLEQ_ENTRY.3
@@ -54666,7 +54666,7 @@ futex.2
         Document FUTEX_LOCK_PI2
 
 ioctl_tty.2
-    Pali Rohár  [Alejandro Colomar, Michael kerrisk]
+    Pali Rohár  [Alejandro Colomar, Michael Kerrisk]
         Document ioctls: TCGETS2, TCSETS2, TCSETSW2, TCSETSF2
 
 pidfd_open.2
