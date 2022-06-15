@@ -72,58 +72,10 @@ functions both take an argument
 representing broken-down time, which is a representation
 separated into year, month, day, and so on.
 .PP
-Broken-down time is stored
-in the structure \fItm\fP, which is defined in \fI<time.h>\fP as follows:
-.PP
-.in +4n
-.EX
-struct tm {
-    int tm_sec;    /* Seconds (0\-60) */
-    int tm_min;    /* Minutes (0\-59) */
-    int tm_hour;   /* Hours (0\-23) */
-    int tm_mday;   /* Day of the month (1\-31) */
-    int tm_mon;    /* Month (0\-11) */
-    int tm_year;   /* Year \- 1900 */
-    int tm_wday;   /* Day of the week (0\-6, Sunday = 0) */
-    int tm_yday;   /* Day in the year (0\-365, 1 Jan = 0) */
-    int tm_isdst;  /* Daylight saving time */
-};
-.EE
-.in
-.PP
-The members of the \fItm\fP structure are:
-.TP 10
-.I tm_sec
-The number of seconds after the minute, normally in the range 0 to 59,
-but can be up to 60 to allow for leap seconds.
-.TP
-.I tm_min
-The number of minutes after the hour, in the range 0 to 59.
-.TP
-.I tm_hour
-The number of hours past midnight, in the range 0 to 23.
-.TP
-.I tm_mday
-The day of the month, in the range 1 to 31.
-.TP
-.I tm_mon
-The number of months since January, in the range 0 to 11.
-.TP
-.I tm_year
-The number of years since 1900.
-.TP
-.I tm_wday
-The number of days since Sunday, in the range 0 to 6.
-.TP
-.I tm_yday
-The number of days since January 1, in the range 0 to 365.
-.TP
-.I tm_isdst
-A flag that indicates whether daylight saving time is in effect at the
-time described.
-The value is positive if daylight saving time is in
-effect, zero if it is not, and negative if the information is not
-available.
+Broken-down time is stored in the structure
+.IR tm ,
+described in
+.BR tm (3type).
 .PP
 The call
 .BI ctime( t )
