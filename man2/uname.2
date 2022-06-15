@@ -29,8 +29,8 @@ struct is defined in
 .EX
 struct utsname {
     char sysname[];    /* Operating system name (e.g., "Linux") */
-    char nodename[];   /* Name within "some implementation\-defined
-                          network" */
+    char nodename[];   /* Name within communications network
+                          to which the node is attached, if any */
     char release[];    /* Operating system release
                           (e.g., "2.6.28") */
     char version[];    /* Operating system version */
@@ -73,9 +73,10 @@ So, four of the fields of the struct are meaningful.
 On the other hand, the field
 .I nodename
 is meaningless:
-it gives the name of the present machine in some undefined
-network, but typically machines are in more than one network
-and have several names.
+it gives the name of the present machine in some network
+to which it's attached,
+but typically machines are in more than one network
+and have several names by which they're reachable.
 Moreover, the kernel has no way of knowing
 about such things, so it has to be told what to answer here.
 The same holds for the additional
