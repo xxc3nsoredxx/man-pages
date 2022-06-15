@@ -62,11 +62,11 @@ flag in
 .BR open (2).
 .TP
 .B UFFD_USER_MODE_ONLY
-This is an userfaultfd specific flag that was introduced since Linux 5.11.
-When set, the userfaultfd object will only be able to handle page faults
-originated from the userspace on the registered regions.
-When a kernel originated fault was triggered on the registered range with
-this userfaultfd, a
+This is an userfaultfd-specific flag that was introduced in Linux 5.11.
+When set, the userfaultfd object will only be able to handle
+page faults originated from the user space on the registered regions.
+When a kernel-originated fault was triggered
+on the registered range with this userfaultfd, a
 .B SIGBUS
 signal will be delivered.
 .PP
@@ -277,8 +277,9 @@ ioctl against the feature bit
 .B UFFD_FEATURE_PAGEFAULT_FLAG_WP
 before using this feature.
 .PP
-Since Linux 5.19, the write-protection mode was also supported on shmem and hugetlbfs
-memory types.
+Since Linux 5.19,
+the write-protection mode was also supported on
+shmem and hugetlbfs memory types.
 It can be detected with the feature bit
 .BR UFFD_FEATURE_WP_HUGETLBFS_SHMEM .
 .PP
