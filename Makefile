@@ -65,11 +65,12 @@ man5dir     := $(mandir)/man5
 man6dir     := $(mandir)/man6
 man7dir     := $(mandir)/man7
 man8dir     := $(mandir)/man8
-manext      := \.[0-9]
+manext      := \.[0-9]\w*
 man0ext     := .0
 man1ext     := .1
 man2ext     := .2
 man3ext     := .3
+man3type_ext:= .3type
 man4ext     := .4
 man5ext     := .5
 man6ext     := .6
@@ -216,8 +217,8 @@ clean:
 ########################################################################
 # man
 
-MANPAGES   := $(sort $(shell find $(MANDIR)/man?/ -type f | grep '$(manext)$$'))
-LINTMAN    := $(sort $(shell find $(MANDIR)/man?/ -type f | grep '$(manext)$$' \
+MANPAGES   := $(sort $(shell find $(MANDIR)/man?/ -type f | grep '$(manext)'))
+LINTMAN    := $(sort $(shell find $(MANDIR)/man?/ -type f | grep '$(manext)' \
                              | xargs grep -l '^\.TH '))
 _HTMLPAGES  := $(patsubst $(MANDIR)/%,$(_HTMLDIR)/%.html,$(MANPAGES))
 _htmlpages  := $(patsubst $(_HTMLDIR)/%,$(_htmldir)/%,$(_HTMLPAGES))
@@ -226,6 +227,7 @@ _man0pages  := $(filter %$(man0ext),$(_manpages))
 _man1pages  := $(filter %$(man1ext),$(_manpages))
 _man2pages  := $(filter %$(man2ext),$(_manpages))
 _man3pages  := $(filter %$(man3ext),$(_manpages))
+_man3pages  += $(filter %$(man3type_ext),$(_manpages))
 _man4pages  := $(filter %$(man4ext),$(_manpages))
 _man5pages  := $(filter %$(man5ext),$(_manpages))
 _man6pages  := $(filter %$(man6ext),$(_manpages))
@@ -268,16 +270,15 @@ _man7dir  := $(filter %man7/.,$(_mandirs))
 _man8dir  := $(filter %man8/.,$(_mandirs))
 
 _htmlpages_rm := $(addsuffix -rm,$(wildcard $(_htmlpages)))
-_manpages_rm  := $(addsuffix -rm,$(wildcard $(_manpages)))
-_man0pages_rm := $(filter %$(man0ext)-rm,$(_manpages_rm))
-_man1pages_rm := $(filter %$(man1ext)-rm,$(_manpages_rm))
-_man2pages_rm := $(filter %$(man2ext)-rm,$(_manpages_rm))
-_man3pages_rm := $(filter %$(man3ext)-rm,$(_manpages_rm))
-_man4pages_rm := $(filter %$(man4ext)-rm,$(_manpages_rm))
-_man5pages_rm := $(filter %$(man5ext)-rm,$(_manpages_rm))
-_man6pages_rm := $(filter %$(man6ext)-rm,$(_manpages_rm))
-_man7pages_rm := $(filter %$(man7ext)-rm,$(_manpages_rm))
-_man8pages_rm := $(filter %$(man8ext)-rm,$(_manpages_rm))
+_man0pages_rm := $(addsuffix -rm,$(wildcard $(_man0pages)))
+_man1pages_rm := $(addsuffix -rm,$(wildcard $(_man1pages)))
+_man2pages_rm := $(addsuffix -rm,$(wildcard $(_man2pages)))
+_man3pages_rm := $(addsuffix -rm,$(wildcard $(_man3pages)))
+_man4pages_rm := $(addsuffix -rm,$(wildcard $(_man4pages)))
+_man5pages_rm := $(addsuffix -rm,$(wildcard $(_man5pages)))
+_man6pages_rm := $(addsuffix -rm,$(wildcard $(_man6pages)))
+_man7pages_rm := $(addsuffix -rm,$(wildcard $(_man7pages)))
+_man8pages_rm := $(addsuffix -rm,$(wildcard $(_man8pages)))
 
 _htmldirs_rmdir := $(addsuffix -rmdir,$(wildcard $(_htmldirs)))
 _mandirs_rmdir  := $(addsuffix -rmdir,$(wildcard $(_mandirs)))

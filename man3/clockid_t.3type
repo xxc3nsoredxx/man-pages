@@ -1,0 +1,27 @@
+.TH CLOCKID_T 3type 2021-11-02 Linux "Linux Programmer's Manual"
+.SH NAME
+clockid_t \- clock ID for the clock and timer functions
+.SH LIBRARY
+Standard C library
+.RI ( libc )
+.SH SYNOPSIS
+.nf
+.B #include <sys/types.h>
+.PP
+.BR typedef " /* ... */ " clockid_t;
+.fi
+.SH DESCRIPTION
+Used for clock ID type in the clock and timer functions.
+According to POSIX,
+it shall be defined as an arithmetic type.
+.SH CONFORMING TO
+POSIX.1-2001 and later.
+.SH NOTES
+The following header also provides this type:
+.IR <time.h> .
+.SH SEE ALSO
+.BR clock_adjtime (2),
+.BR clock_getres (2),
+.BR clock_nanosleep (2),
+.BR timer_create (2),
+.BR clock_getcpuclockid (3)

@@ -100,7 +100,7 @@ is specified by the file descriptor
 All of these system calls return a
 .I stat
 structure (see
-.BR stat-struct (3)).
+.BR stat (3type)).
 .PP
 .\" Background: inode attributes are modified with i_mutex held, but
 .\" read by stat() without taking the mutex.
@@ -531,7 +531,7 @@ main(int argc, char *argv[])
 .BR readlink (2),
 .BR statx (2),
 .BR utime (2),
-.BR stat-struct (3),
+.BR stat (3type),
 .BR capabilities (7),
 .BR inode (7),
 .BR symlink (7)
