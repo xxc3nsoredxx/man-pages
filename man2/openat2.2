@@ -85,22 +85,17 @@ and
 .I mode
 arguments to
 .BR openat (2).
-This argument is a pointer to a structure of the following form:
-.PP
-.in +4n
-.EX
-struct open_how {
-    u64 flags;    /* O_* flags */
-    u64 mode;     /* Mode for O_{CREAT,TMPFILE} */
-    u64 resolve;  /* RESOLVE_* flags */
-    /* ... */
-};
-.EE
-.in
+This argument is a pointer to an
+.I open_how
+structure,
+described in
+.BR open_how (2type).
 .PP
 Any future extensions to
 .BR openat2 ()
-will be implemented as new fields appended to the above structure,
+will be implemented as new fields appended to the
+.I open_how
+structure,
 with a zero value in a new field resulting in the kernel behaving
 as though that extension field was not present.
 Therefore, the caller
@@ -583,5 +578,6 @@ which doesn't produce an error of
 .BR E2BIG ).
 .SH SEE ALSO
 .BR openat (2),
+.BR open_how (2type),
 .BR path_resolution (7),
 .BR symlink (7)
