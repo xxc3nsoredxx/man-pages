@@ -177,11 +177,11 @@ values.
 C99 and later; POSIX.1-2001 and later.
 .PP
 .IR "See also" :
-the
+.BR ssize_t (3type)
+.PP
+See also the
 .I size_t
-and
-.I ssize_t
-types in this page.
+type in this page.
 .RE
 .\"------------------------------------- regex_t ----------------------/
 .TP
@@ -257,13 +257,13 @@ type.
 POSIX.1-2001 and later.
 .PP
 .IR "See also" :
-the
+.BR ssize_t (3type)
+.PP
+See also the
 .I regmatch_t
 structure and the
 .I ptrdiff_t
-and
-.I ssize_t
-types in this page.
+type in this page.
 .RE
 .\"------------------------------------- sigevent ---------------------/
 .TP
@@ -502,95 +502,16 @@ C99 and later; POSIX.1-2001 and later.
 .BR memcmp (3),
 .BR memcpy (3),
 .BR memset (3),
-.BR offsetof (3)
+.BR offsetof (3),
+.BR ssize_t (3type)
 .PP
 See also the
 .I ptrdiff_t
-and
-.I ssize_t
-types in this page.
+type in this page.
 .RE
 .\"------------------------------------- sockaddr ---------------------/
 .\"------------------------------------- socklen_t --------------------/
 .\"------------------------------------- ssize_t ----------------------/
-.TP
-.I ssize_t
-.RS
-.IR Include :
-.IR <sys/types.h> .
-Alternatively,
-.IR <aio.h> ,
-.IR <monetary.h> ,
-.IR <mqueue.h> ,
-.IR <stdio.h> ,
-.IR <sys/msg.h> ,
-.IR <sys/socket.h> ,
-.IR <sys/uio.h> ,
-or
-.IR <unistd.h> .
-.PP
-Used for a count of bytes or an error indication.
-According to POSIX, it shall be a signed integer type
-capable of storing values at least in the range [-1,
-.BR SSIZE_MAX ],
-and the implementation shall support one or more programming environments
-where the width of
-.I ssize_t
-is no greater than the width of the type
-.IR long .
-.PP
-Glibc and most other implementations provide a length modifier for
-.I ssize_t
-for the
-.BR printf (3)
-and the
-.BR scanf (3)
-families of functions, which is
-.BR z ;
-resulting commonly in
-.B %zd
-or
-.B %zi
-for printing
-.I ssize_t
-values.
-Although
-.B z
-works for
-.I ssize_t
-on most implementations,
-portable POSIX programs should avoid using it\(emfor example,
-by converting the value to
-.I intmax_t
-and using its length modifier
-.RB ( j ).
-.PP
-.IR Versions :
-.IR <aio.h> ,
-.IR <mqueue.h> ,
-and
-.I <sys/socket.h>
-define
-.I size_t
-since POSIX.1-2008.
-.PP
-.IR "Conforming to" :
-POSIX.1-2001 and later.
-.PP
-.IR "See also" :
-.BR read (2),
-.BR readlink (2),
-.BR readv (2),
-.BR recv (2),
-.BR send (2),
-.BR write (2)
-.PP
-See also the
-.I ptrdiff_t
-and
-.I size_t
-types in this page.
-.RE
 .\"------------------------------------- stat -------------------------/
 .TP
 .I stat

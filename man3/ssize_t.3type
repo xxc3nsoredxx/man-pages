@@ -1,1 +1,86 @@
-.so man7/system_data_types.7
+.\" Copyright (c) 2020-2022 by Alejandro Colomar <colomar.6.4.3@gmail.com>
+.\" and Copyright (c) 2020 by Michael Kerrisk <mtk.manpages@gmail.com>
+.\"
+.\" SPDX-License-Identifier: Linux-man-pages-copyleft
+.\"
+.\"
+.TH SSIZE_T 3type 2022-06-17 Linux "Linux Programmer's Manual"
+.SH NAME
+ssize_t \- count of bytes or an error indication
+.SH LIBRARY
+Standard C library
+.RI ( libc )
+.SH SYNOPSIS
+.nf
+.B #include <sys/types.h>
+.PP
+.BR typedef " /* ... */ " ssize_t;
+.fi
+.SH DESCRIPTION
+Used for a count of bytes or an error indication.
+According to POSIX,
+it shall be a signed integer type
+capable of storing values at least in the range
+.RB [ \-1 ,
+.BR SSIZE_MAX ],
+and the implementation shall support one or more programming environments
+where the width of
+.I ssize_t
+is no greater than the width of the type
+.IR long .
+.PP
+Glibc and most other implementations provide a length modifier for
+.I ssize_t
+for the
+.BR printf (3)
+and the
+.BR scanf (3)
+families of functions, which is
+.BR z ;
+resulting commonly in
+.B %zd
+or
+.B %zi
+for printing
+.I ssize_t
+values.
+Although
+.B z
+works for
+.I ssize_t
+on most implementations,
+portable POSIX programs should avoid using it\(emfor example,
+by converting the value to
+.I intmax_t
+and using its length modifier
+.RB ( j ).
+.SH VERSIONS
+.IR <aio.h> ,
+.IR <mqueue.h> ,
+and
+.I <sys/socket.h>
+define
+.I size_t
+since POSIX.1-2008.
+.SH CONFORMING TO
+POSIX.1-2001 and later.
+.SH NOTES
+The following headers also provide this type:
+.IR <aio.h> ,
+.IR <monetary.h> ,
+.IR <mqueue.h> ,
+.IR <stdio.h> ,
+.IR <sys/msg.h> ,
+.IR <sys/socket.h> ,
+.IR <sys/uio.h> ,
+and
+.IR <unistd.h> .
+.SH SEE ALSO
+.BR read (2),
+.BR readlink (2),
+.BR readv (2),
+.BR recv (2),
+.BR send (2),
+.BR write (2),
+.BR ptrdiff_t (3type),
+.BR size_t (3type)
