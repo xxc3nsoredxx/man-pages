@@ -60,7 +60,7 @@ and using its length modifier
 and
 .I <sys/socket.h>
 define
-.I size_t
+.I ssize_t
 since POSIX.1-2008.
 .SH CONFORMING TO
 POSIX.1-2001 and later.
