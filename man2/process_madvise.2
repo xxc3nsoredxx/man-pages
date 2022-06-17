@@ -51,28 +51,9 @@ The pointer
 .I iovec
 points to an array of
 .I iovec
-structures, defined in
-.I <sys/uio.h>
-as:
+structures, described in
+.BR iovec (3type).
 .PP
-.in +4n
-.EX
-struct iovec {
-    void  *iov_base;    /* Starting address */
-    size_t iov_len;     /* Length of region */
-};
-.EE
-.in
-.PP
-The
-.I iovec
-structure describes address ranges beginning at
-.I iov_base
-address and with the size of
-.I iov_len
-bytes.
-.PP
-The
 .I vlen
 specifies the number of elements in the
 .I iovec

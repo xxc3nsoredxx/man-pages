@@ -55,17 +55,8 @@ The pointer
 .I iov
 points to an array of
 .I iovec
-structures as defined in
-.IR <sys/uio.h> :
-.PP
-.in +4n
-.EX
-struct iovec {
-    void  *iov_base;        /* Starting address */
-    size_t iov_len;         /* Number of bytes */
-};
-.EE
-.in
+structures as described in
+.BR iovec (3type).
 .PP
 The
 .I flags

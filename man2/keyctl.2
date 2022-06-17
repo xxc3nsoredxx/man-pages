@@ -1277,16 +1277,8 @@ This operation is the same as
 .BR KEYCTL_INSTANTIATE ,
 but the payload data is specified as an array of
 .I iovec
-structures:
-.IP
-.in +4n
-.EX
-struct iovec {
-    void  *iov_base;    /* Starting address of buffer */
-    size_t iov_len;     /* Size of buffer (in bytes) */
-};
-.EE
-.in
+structures (see
+.BR iovec (3type)).
 .IP
 The pointer to the payload vector is specified in
 .I arg3

@@ -309,11 +309,6 @@ This structure is defined as follows in
 .PP
 .in +4n
 .EX
-struct iovec {                    /* Scatter/gather array items */
-    void  *iov_base;              /* Starting address */
-    size_t iov_len;               /* Number of bytes to transfer */
-};
-
 struct msghdr {
     void         *msg_name;       /* Optional address */
     socklen_t     msg_namelen;    /* Size of address */

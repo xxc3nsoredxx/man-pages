@@ -94,18 +94,8 @@ and
 .I remote_iov
 arguments point to an array of
 .I iovec
-structures, defined in
-.I <sys/uio.h>
-as:
-.PP
-.in +4n
-.EX
-struct iovec {
-    void  *iov_base;    /* Starting address */
-    size_t iov_len;     /* Number of bytes to transfer */
-};
-.EE
-.in
+structures, described in
+.BR iovec (3type).
 .PP
 Buffers are processed in array order.
 This means that
