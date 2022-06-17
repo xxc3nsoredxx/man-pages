@@ -228,6 +228,25 @@ struct fanotify_event_info_pidfd {
 .EE
 .in
 .PP
+In case of a
+.B FAN_FS_ERROR
+event,
+an additional information record describing the error that occurred
+is returned alongside the generic
+.I fanotify_event_metadata
+structure within the read buffer.
+This structure is defined as follows:
+.PP
+.in +4n
+.EX
+struct fanotify_event_info_error {
+    struct fanotify_event_info_header hdr;
+    __s32 error;
+    __u32 error_count;
+};
+.EE
+.in
+.PP
 All information records contain a nested structure of type
 .IR fanotify_event_info_header .
 This structure holds meta-information about the information record
@@ -368,6 +387,9 @@ A child file or directory was deleted in a watched parent.
 .TP
 .B FAN_DELETE_SELF
 A watched file or directory was deleted.
+.TP
+.B FAN_FS_ERROR
+A filesystem error was detected.
 .TP
 .B FAN_MOVED_FROM
 A file or directory has been moved from a watched parent directory.
@@ -643,6 +665,25 @@ and the pidfd is no longer required,
 the pidfd should be closed via
 .BR close (2).
 .PP
+The fields of the
+.I fanotify_event_info_error
+structure are as follows:
+.TP
+.I hdr
+This is a structure of type
+.IR fanotify_event_info_header .
+The
+.I info_type
+field is set to
+.BR FAN_EVENT_INFO_TYPE_ERROR .
+.TP
+.I error
+Identifies the type of error that occurred.
+.TP
+.I error_count
+This is a counter of the number of errors suppressed
+since the last error was read.
+.PP
 The following macros are provided to iterate over a buffer containing
 fanotify event metadata returned by a
 .BR read (2)
@@ -731,6 +772,36 @@ flag can be set in the
 field.
 In that case, the audit subsystem will log information about the access
 decision to the audit logs.
+.\"
+.SS Monitoring filesystems for errors
+A single
+.B FAN_FS_ERROR
+event is stored per filesystem at once.
+Extra error messages are suppressed and accounted for in the
+.I error_count
+field of the existing
+.B FAN_FS_ERROR
+event record,
+but details about the errors are lost.
+.PP
+Errors reported by
+.B FAN_FS_ERROR
+are generic
+.I errno
+values,
+but not all kinds of error types are reported by all filesystems.
+.PP
+Errors not directly related to a file (i.e. super block corruption)
+are reported with an invalid
+.IR file_handle .
+For these errors, the
+.I file_handle
+will have the field
+.I handle_type
+set to
+.BR FILEID_INVALID ,
+and the handle buffer size set to
+.BR 0 .
 .\"
 .SS Closing the fanotify file descriptor
 When all file descriptors referring to the fanotify notification group are
