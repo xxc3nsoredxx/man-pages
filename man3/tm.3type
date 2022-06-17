@@ -46,8 +46,8 @@ so it was limited to
 .B 60
 in C99.
 .SH CONFORMING TO
+C90 and later;
 POSIX.1-2001 and later.
-C90 and later.
 .SH NOTES
 .I tm_sec
 can represent a leap second with the value
