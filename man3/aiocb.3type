@@ -6,7 +6,7 @@
 .\"
 .TH AIOCB 3type 2021-11-02 Linux "Linux Programmer's Manual"
 .SH NAME
-aiocb-struct \- asynchronous I/O control block
+aiocb \- asynchronous I/O control block
 .SH LIBRARY
 Standard C library
 .RI ( libc )

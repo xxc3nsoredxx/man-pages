@@ -6,7 +6,7 @@
 .\"
 .TH LCONV 3type 2021-11-02 Linux "Linux Programmer's Manual"
 .SH NAME
-struct lconv \- numeric formatting information
+lconv \- numeric formatting information
 .SH LIBRARY
 Standard C library
 .RI ( libc )
