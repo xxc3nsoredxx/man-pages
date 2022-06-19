@@ -82,23 +82,8 @@ to return immediately, even if no events are available.
 .PP
 The
 .I struct epoll_event
-is defined as:
-.PP
-.in +4n
-.EX
-typedef union epoll_data {
-    void    *ptr;
-    int      fd;
-    uint32_t u32;
-    uint64_t u64;
-} epoll_data_t;
-
-struct epoll_event {
-    uint32_t     events;    /* Epoll events */
-    epoll_data_t data;      /* User data variable */
-};
-.EE
-.in
+is described in
+.BR epoll_event (3type).
 .PP
 The
 .I data
