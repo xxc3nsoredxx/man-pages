@@ -181,9 +181,7 @@ MAN_SECTIONS := 0 1 2 3 4 5 6 7 8
 
 
 .PHONY: all
-all:
-	$(MAKE) uninstall
-	$(MAKE) install
+all: build-html
 
 %/.:
 	$(info INSTALL	$(@D)/)
