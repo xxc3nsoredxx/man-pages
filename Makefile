@@ -28,7 +28,7 @@
 #
 ########################################################################
 
-SHELL := /bin/bash -Eeuo pipefail
+SHELL := /usr/bin/env bash -Eeuo pipefail
 
 
 MAKEFLAGS += --no-print-directory
