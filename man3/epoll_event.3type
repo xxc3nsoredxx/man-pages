@@ -5,7 +5,7 @@
 .\"
 .TH EPOLL_EVENT 3type 2022-06-19 Linux "Linux Programmer's Manual"
 .SH NAME
-epoll_event
+epoll_event, epoll_data, epoll_data_t
 \- epoll event
 .SH LIBRARY
 Standard C library
