@@ -158,8 +158,12 @@ used by
 to find manual pages, and so on.
 .TP
 .B PWD
-The current working directory.
-Set by some shells.
+Absolute path to the current working directory;
+required to be partially canonical (no
+.I .\&
+or
+.I ..\&
+components).
 .TP
 .B SHELL
 The absolute pathname of the user's login shell.
