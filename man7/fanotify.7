@@ -391,6 +391,9 @@ A watched file or directory was deleted.
 .B FAN_FS_ERROR
 A filesystem error was detected.
 .TP
+.B FAN_RENAME
+A file or directory has been moved to or from a watched parent directory.
+.TP
 .B FAN_MOVED_FROM
 A file or directory has been moved from a watched parent directory.
 .TP
@@ -556,8 +559,9 @@ identifying a child object.
 Note that for the directory entry modification events
 .BR FAN_CREATE ,
 .BR FAN_DELETE ,
-and
 .BR FAN_MOVE ,
+and
+.BR FAN_RENAME ,
 an information record identifying the created/deleted/moved child object
 is reported only if an fanotify group was initialized with the flag
 .BR FAN_REPORT_TARGET_FID .

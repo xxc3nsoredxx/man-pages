@@ -173,8 +173,9 @@ Additionally, it may be used for applications monitoring a directory or a
 filesystem that are interested in the directory entry modification events
 .BR FAN_CREATE ,
 .BR FAN_DELETE ,
-and
 .BR FAN_MOVE ,
+and
+.BR FAN_RENAME ,
 or in events such as
 .BR FAN_ATTRIB ,
 .BR FAN_DELETE_SELF ,
@@ -257,6 +258,15 @@ For the directory entry modification events
 and
 .BR FAN_MOVE ,
 the reported name is that of the created/deleted/moved directory entry.
+The event
+.B FAN_RENAME
+may contain two information records.
+One of type
+.B FAN_EVENT_INFO_TYPE_OLD_DFID_NAME
+identifying the old directory entry,
+and another of type
+.B FAN_EVENT_INFO_TYPE_NEW_DFID_NAME
+identifying the new directory entry.
 For other events that occur on a directory object, the reported file handle
 is that of the directory object itself and the reported name is '.'.
 For other events that occur on a non-directory object, the reported file handle
@@ -301,14 +311,17 @@ will be returned.
 For the directory entry modification events
 .BR FAN_CREATE ,
 .BR FAN_DELETE ,
-and
 .BR FAN_MOVE ,
+and
+.BR FAN_RENAME ,
 an additional record of type
 .BR FAN_EVENT_INFO_TYPE_FID ,
-is reported in addition to the information record of type
-.B FAN_EVENT_INFO_TYPE_DFID
-or
-.BR FAN_EVENT_INFO_TYPE_DFID_NAME .
+is reported in addition to the information records of type
+.BR FAN_EVENT_INFO_TYPE_DFID ,
+.BR FAN_EVENT_INFO_TYPE_DFID_NAME ,
+.BR FAN_EVENT_INFO_TYPE_OLD_DFID_NAME ,
+and
+.BR FAN_EVENT_INFO_TYPE_NEW_DFID_NAME .
 The additional record includes a file handle
 that identifies the filesystem child object
 that the directory entry is referring to.
