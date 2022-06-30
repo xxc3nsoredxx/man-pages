@@ -171,14 +171,14 @@ alongside the generic
 structure.
 For example,
 if a notification group is initialized with
-.B FAN_REPORT_FID
+.B FAN_REPORT_TARGET_FID
 and
 .BR FAN_REPORT_PIDFD ,
-then an event listener should also expect to receive both
+then an event listener should expect to receive up to two
 .I fanotify_event_info_fid
-and
+information records and one
 .I fanotify_event_info_pidfd
-structures alongside the generic
+information record alongside the generic
 .I fanotify_event_metadata
 structure.
 Importantly,
@@ -552,7 +552,15 @@ identifying a parent directory object, and one with
 .I info_type
 field value of
 .BR FAN_EVENT_INFO_TYPE_FID ,
-identifying a non-directory object.
+identifying a child object.
+Note that for the directory entry modification events
+.BR FAN_CREATE ,
+.BR FAN_DELETE ,
+and
+.BR FAN_MOVE ,
+an information record identifying the created/deleted/moved child object
+is reported only if an fanotify group was initialized with the flag
+.BR FAN_REPORT_TARGET_FID .
 .TP
 .I fsid
 This is a unique identifier of the filesystem containing the object
@@ -572,15 +580,6 @@ filesystem as returned by
 It can be used to uniquely identify a file on a filesystem and can be
 passed as an argument to
 .BR open_by_handle_at (2).
-Note that for the directory entry modification events
-.BR FAN_CREATE ,
-.BR FAN_DELETE ,
-and
-.BR FAN_MOVE ,
-the
-.I file_handle
-identifies the modified directory and not the created/deleted/moved child
-object.
 If the value of
 .I info_type
 field is

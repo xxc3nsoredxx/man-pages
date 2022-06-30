@@ -182,9 +182,11 @@ and
 .BR FAN_MOVE_SELF .
 All the events above require an fanotify group that identifies filesystem
 objects by file handles.
-Note that for the directory entry modification events the reported file handle
-identifies the modified directory and not the created/deleted/moved child
-object.
+Note that without the flag
+.BR FAN_REPORT_TARGET_FID ,
+for the directory entry modification events,
+there is an inforamtion record that identifies the modified directory
+and not the created/deleted/moved child object.
 The use of
 .B FAN_CLASS_CONTENT
 or
@@ -282,6 +284,38 @@ for additional details.
 .B FAN_REPORT_DFID_NAME
 This is a synonym for
 .RB ( FAN_REPORT_DIR_FID | FAN_REPORT_NAME ).
+.TP
+.BR FAN_REPORT_TARGET_FID " (since Linux 5.17)"
+.\" commit d61fd650e9d206a71fda789f02a1ced4b19944c4
+Events for fanotify groups initialized with this flag
+will contain additional information about the child
+correlated with directory entry modification events.
+This flag must be provided in conjunction with the flags
+.BR FAN_REPORT_FID ,
+.B FAN_REPORT_DIR_FID
+and
+.BR FAN_REPORT_NAME .
+or else the error
+.B EINVAL
+will be returned.
+For the directory entry modification events
+.BR FAN_CREATE ,
+.BR FAN_DELETE ,
+and
+.BR FAN_MOVE ,
+an additional record of type
+.BR FAN_EVENT_INFO_TYPE_FID ,
+is reported in addition to the information record of type
+.B FAN_EVENT_INFO_TYPE_DFID
+or
+.BR FAN_EVENT_INFO_TYPE_DFID_NAME .
+The additional record includes a file handle
+that identifies the filesystem child object
+that the directory entry is referring to.
+.TP
+.B FAN_REPORT_DFID_NAME_TARGET
+This is a synonym for
+.RB ( FAN_REPORT_DFID_NAME | FAN_REPORT_FID | FAN_REPORT_TARGET_FID ).
 .PP
 .TP
 .BR FAN_REPORT_PIDFD " (since Linux 5.15)"

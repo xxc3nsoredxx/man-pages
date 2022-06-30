@@ -473,6 +473,24 @@ and
 .I pathname
 do not specify a directory.
 .TP
+.B ENOTDIR
+The fanotify group was initialized with flag
+.BR FAN_REPORT_TARGET_FID ,
+.I mask
+contains directory entry modification events
+(e.g.,
+.BR FAN_CREATE ,
+.BR FAN_DELETE ),
+or directory event flags
+(e.g.,
+.BR FAN_ONDIR ,
+.BR FAN_EVENT_ON_CHILD ),
+and
+.I dirfd
+and
+.I pathname
+do not specify a directory.
+.TP
 .B EOPNOTSUPP
 The object indicated by
 .I pathname
