@@ -406,8 +406,7 @@ As a performance optimization, the
 fts functions change directories as they walk the file hierarchy.
 This has the side-effect that an application cannot rely on being
 in any particular directory during the traversal.
-The
-.B FTS_NOCHDIR
+This
 option turns off this optimization, and the
 fts functions will not change the current directory.
 Note that applications should not themselves change their current directory
