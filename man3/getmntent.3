@@ -126,10 +126,11 @@ The reentrant
 function is similar to
 .BR getmntent (),
 but stores the
-.I struct mount
+.I mntent
+structure
 in the provided
-.I *mntbuf
-and stores the strings pointed to by the entries in that struct
+.IR *mntbuf ,
+and stores the strings pointed to by the entries in that structure
 in the provided array
 .I buf
 of size
