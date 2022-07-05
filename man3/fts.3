@@ -398,14 +398,6 @@ field is obtained via
 .BR stat (2)
 with a fallback to
 .BR lstat (2).
-Either
-.B FTS_LOGICAL
-or
-.B FTS_PHYSICAL
-.I must
-be provided to the
-.BR fts_open ()
-function.
 .TP
 .B FTS_NOCHDIR
 As a performance optimization, the
@@ -452,14 +444,6 @@ the
 .I fts_statp
 field is obtained via
 .BR lstat (2).
-Either
-.B FTS_LOGICAL
-or
-.B FTS_PHYSICAL
-.I must
-be provided to the
-.BR fts_open ()
-function.
 .TP
 .B FTS_SEEDOT
 By default, unless they are specified as path arguments to
