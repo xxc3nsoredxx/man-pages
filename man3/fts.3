@@ -433,7 +433,7 @@ pathnames were provided as arguments to
 By default, returned
 .I FTSENT
 structures reference file characteristic information (the
-.I statp
+.I fts_statp
 field) for each file visited.
 This option relaxes that requirement as a performance optimization,
 allowing the
@@ -442,7 +442,7 @@ fts functions to set the
 field to
 .B FTS_NSOK
 and leave the contents of the
-.I statp
+.I fts_statp
 field undefined.
 .TP
 .B FTS_SEEDOT
