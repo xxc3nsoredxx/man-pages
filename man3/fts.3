@@ -376,12 +376,6 @@ The options are selected by ORing
 the following values:
 .\" .Bl -tag -width "FTS_PHYSICAL"
 .TP
-.B FTS_COMFOLLOW
-This option causes any symbolic link specified as a root path to be
-followed immediately, as if via
-.BR FTS_LOGICAL ,
-regardless of the primary mode.
-.TP
 .B FTS_LOGICAL
 This option causes the
 fts routines to return
@@ -398,6 +392,27 @@ field is obtained via
 .BR stat (2)
 with a fallback to
 .BR lstat (2).
+.TP
+.B FTS_PHYSICAL
+This option causes the
+fts routines to return
+.I FTSENT
+structures for symbolic links themselves instead
+of the target files they point to.
+If this option is set,
+.I FTSENT
+structures for all symbolic links in the
+hierarchy are returned to the application:
+the
+.I fts_statp
+field is obtained via
+.BR lstat (2).
+.TP
+.B FTS_COMFOLLOW
+This option causes any symbolic link specified as a root path to be
+followed immediately, as if via
+.BR FTS_LOGICAL ,
+regardless of the primary mode.
 .TP
 .B FTS_NOCHDIR
 As a performance optimization, the
@@ -429,21 +444,6 @@ field to
 and leave the contents of the
 .I statp
 field undefined.
-.TP
-.B FTS_PHYSICAL
-This option causes the
-fts routines to return
-.I FTSENT
-structures for symbolic links themselves instead
-of the target files they point to.
-If this option is set,
-.I FTSENT
-structures for all symbolic links in the
-hierarchy are returned to the application:
-the
-.I fts_statp
-field is obtained via
-.BR lstat (2).
 .TP
 .B FTS_SEEDOT
 By default, unless they are specified as path arguments to
