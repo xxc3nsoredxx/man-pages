@@ -104,7 +104,7 @@ typedef struct _ftsent {
     struct _ftsent *fts_parent;   /* parent directory */
     struct _ftsent *fts_link;     /* next file structure */
     struct _ftsent *fts_cycle;    /* cycle structure */
-    struct stat    *fts_statp;    /* stat(2) information */
+    struct stat    *fts_statp;    /* [l]stat(2) information */
 .\" Also:
 .\"     ino_t fts_ino;                  /* inode (only for directories)*/
 .\"     dev_t fts_dev;                  /* device (only for directories)*/
@@ -186,7 +186,7 @@ A regular file.
 .TP
 .B FTS_NS
 A file for which no
-.BR stat (2)
+.RB [ l ] stat (2)
 information was available.
 The contents of the
 .I fts_statp
@@ -197,7 +197,7 @@ field will be set to indicate what caused the error.
 .TP
 .B FTS_NSOK
 A file for which no
-.BR stat (2)
+.RB [ l ] stat (2)
 information was requested.
 The contents of the
 .I fts_statp
@@ -328,7 +328,7 @@ field are undefined.
 .TP
 .I fts_statp
 A pointer to
-.BR stat (2)
+.RB [ l ] stat (2)
 information for the file.
 .\" .El
 .PP
@@ -391,7 +391,13 @@ instead of the symbolic links themselves.
 If this option is set, the only symbolic links for which
 .I FTSENT
 structures
-are returned to the application are those referencing nonexistent files.
+are returned to the application are those referencing nonexistent files:
+the
+.I fts_statp
+field is obtained via
+.BR stat (2)
+with a fallback to
+.BR lstat (2).
 Either
 .B FTS_LOGICAL
 or
@@ -441,7 +447,11 @@ of the target files they point to.
 If this option is set,
 .I FTSENT
 structures for all symbolic links in the
-hierarchy are returned to the application.
+hierarchy are returned to the application:
+the
+.I fts_statp
+field is obtained via
+.BR lstat (2).
 Either
 .B FTS_LOGICAL
 or
@@ -748,7 +758,7 @@ for any of the errors specified for
 .BR opendir (3),
 .BR readdir (3),
 and
-.BR stat (2).
+.RB [ l ] stat (2).
 .PP
 In addition,
 .BR fts_children (),
@@ -810,6 +820,7 @@ a program using the LFS APIs (e.g., when compiling with
 .SH SEE ALSO
 .BR find (1),
 .BR chdir (2),
+.BR lstat (2),
 .BR stat (2),
 .BR ftw (3),
 .BR qsort (3)
