@@ -378,9 +378,9 @@ the following values:
 .TP
 .B FTS_COMFOLLOW
 This option causes any symbolic link specified as a root path to be
-followed immediately whether or not
-.B FTS_LOGICAL
-is also specified.
+followed immediately, as if via
+.BR FTS_LOGICAL ,
+regardless of the primary mode.
 .TP
 .B FTS_LOGICAL
 This option causes the
