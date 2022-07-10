@@ -76,17 +76,13 @@ man5ext     := .5
 man6ext     := .6
 man7ext     := .7
 man8ext     := .8
-htmldir     := $(docdir)
 htmlext     := .html
-
-htmldir_    := $(htmldir)/man
 
 _LINTDIR    := $(builddir)/lint
 _HTMLDIR    := $(builddir)/html
 _SRCDIR     := $(builddir)/src
 
 _mandir     := $(DESTDIR)$(mandir)
-_htmldir    := $(DESTDIR)$(htmldir_)
 
 
 DEFAULT_MAN2HTMLFLAGS :=
@@ -146,7 +142,6 @@ MANPAGES   := $(sort $(shell find $(MANDIR)/man?/ -type f | grep '$(manext)'))
 LINTMAN    := $(sort $(shell find $(MANDIR)/man?/ -type f | grep '$(manext)' \
                              | xargs grep -l '^\.TH '))
 _HTMLPAGES  := $(patsubst $(MANDIR)/%,$(_HTMLDIR)/%.html,$(MANPAGES))
-_htmlpages  := $(patsubst $(_HTMLDIR)/%,$(_htmldir)/%,$(_HTMLPAGES))
 _manpages   := $(patsubst $(MANDIR)/%,$(_mandir)/%,$(MANPAGES))
 _man0pages  := $(filter %$(man0ext),$(_manpages))
 _man1pages  := $(filter %$(man1ext),$(_manpages))
@@ -163,7 +158,6 @@ _man8pages  := $(filter %$(man8ext),$(_manpages))
 MANDIRS   := $(sort $(shell find $(MANDIR)/man? -type d))
 _HTMLDIRS  := $(patsubst $(MANDIR)/%,$(_HTMLDIR)/%/.,$(MANDIRS))
 _LINTDIRS  := $(patsubst $(MANDIR)/%,$(_LINTDIR)/%/.,$(MANDIRS))
-_htmldirs := $(patsubst $(_HTMLDIR)/%,$(_htmldir)/%,$(_HTMLDIRS))
 _mandirs  := $(patsubst $(MANDIR)/%,$(_mandir)/%/.,$(MANDIRS))
 _man0dir  := $(filter %man0/.,$(_mandirs))
 _man1dir  := $(filter %man1/.,$(_mandirs))
@@ -175,7 +169,6 @@ _man6dir  := $(filter %man6/.,$(_mandirs))
 _man7dir  := $(filter %man7/.,$(_mandirs))
 _man8dir  := $(filter %man8/.,$(_mandirs))
 
-_htmlpages_rm := $(addsuffix -rm,$(wildcard $(_htmlpages)))
 _man0pages_rm := $(addsuffix -rm,$(wildcard $(_man0pages)))
 _man1pages_rm := $(addsuffix -rm,$(wildcard $(_man1pages)))
 _man2pages_rm := $(addsuffix -rm,$(wildcard $(_man2pages)))
@@ -186,7 +179,6 @@ _man6pages_rm := $(addsuffix -rm,$(wildcard $(_man6pages)))
 _man7pages_rm := $(addsuffix -rm,$(wildcard $(_man7pages)))
 _man8pages_rm := $(addsuffix -rm,$(wildcard $(_man8pages)))
 
-_htmldirs_rmdir := $(addsuffix -rmdir,$(wildcard $(_htmldirs)))
 _mandirs_rmdir  := $(addsuffix -rmdir,$(wildcard $(_mandirs)))
 _man0dir_rmdir  := $(addsuffix -rmdir,$(wildcard $(_man0dir)))
 _man1dir_rmdir  := $(addsuffix -rmdir,$(wildcard $(_man1dir)))
@@ -198,7 +190,6 @@ _man6dir_rmdir  := $(addsuffix -rmdir,$(wildcard $(_man6dir)))
 _man7dir_rmdir  := $(addsuffix -rmdir,$(wildcard $(_man7dir)))
 _man8dir_rmdir  := $(addsuffix -rmdir,$(wildcard $(_man8dir)))
 _mandir_rmdir   := $(addsuffix -rmdir,$(wildcard $(_mandir)/.))
-_htmldir_rmdir  := $(addsuffix -rmdir,$(wildcard $(_htmldir)/.))
 
 install_manX     := $(foreach x,$(MAN_SECTIONS),install-man$(x))
 installdirs_manX := $(foreach x,$(MAN_SECTIONS),installdirs-man$(x))
@@ -270,12 +261,6 @@ $(_HTMLPAGES): $(_HTMLDIR)/%.html: $(MANDIR)/% | $$(@D)/.
 
 $(_HTMLDIRS): %/.: | $$(dir %). $(_HTMLDIR)/.
 
-$(_htmlpages): $(_htmldir)/%: $(_HTMLDIR)/% | $$(@D)/.
-	$(info INSTALL	$@)
-	$(INSTALL_DATA) -T $< $@
-
-$(_htmldirs): %/.: | $$(dir %). $(_htmldir)/.
-
 
 .PHONY: build-html html
 build-html html: $(_HTMLPAGES) | builddirs-html
@@ -285,22 +270,11 @@ build-html html: $(_HTMLPAGES) | builddirs-html
 builddirs-html: $(_HTMLDIRS)
 	@:
 
-.PHONY: install-html
-install-html: $(_htmlpages) | installdirs-html
-	@:
-
-.PHONY: installdirs-html
-installdirs-html: $(_htmldirs)
-	@:
-
-.PHONY: uninstall-html
-uninstall-html: $(_htmldir_rmdir) $(_htmldirs_rmdir) $(_htmlpages_rm)
-	@:
-
 
 ########################################################################
 include $(srcdir)/lib/build-src.mk
 include $(srcdir)/lib/dist.mk
+include $(srcdir)/lib/install-html.mk
 include $(srcdir)/lib/lint-c.mk
 include $(srcdir)/lib/lint-man.mk
 
