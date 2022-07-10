@@ -8,6 +8,9 @@ ifndef MAKEFILE_INSTALL_HTML_INCLUDED
 MAKEFILE_INSTALL_HTML_INCLUDED := 1
 
 
+include $(srcdir)/lib/build-html.mk
+
+
 htmldir  := $(docdir)
 htmldir_ := $(htmldir)/man
 _htmldir := $(DESTDIR)$(htmldir_)

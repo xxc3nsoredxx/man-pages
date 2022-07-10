@@ -76,18 +76,11 @@ man5ext     := .5
 man6ext     := .6
 man7ext     := .7
 man8ext     := .8
-htmlext     := .html
 
 _LINTDIR    := $(builddir)/lint
-_HTMLDIR    := $(builddir)/html
 _SRCDIR     := $(builddir)/src
 
 _mandir     := $(DESTDIR)$(mandir)
-
-
-DEFAULT_MAN2HTMLFLAGS :=
-EXTRA_MAN2HTMLFLAGS   :=
-MAN2HTMLFLAGS         := $(DEFAULT_MAN2HTMLFLAGS) $(EXTRA_MAN2HTMLFLAGS)
 
 
 INSTALL      := install
@@ -96,7 +89,6 @@ INSTALL_DIR  := $(INSTALL) -m 755 -d
 MKDIR        := mkdir -p
 RM           := rm
 RMDIR        := rmdir --ignore-fail-on-non-empty
-MAN2HTML     := man2html
 
 
 MAN_SECTIONS := 0 1 2 3 4 5 6 7 8
@@ -141,7 +133,6 @@ clean:
 MANPAGES   := $(sort $(shell find $(MANDIR)/man?/ -type f | grep '$(manext)'))
 LINTMAN    := $(sort $(shell find $(MANDIR)/man?/ -type f | grep '$(manext)' \
                              | xargs grep -l '^\.TH '))
-_HTMLPAGES  := $(patsubst $(MANDIR)/%,$(_HTMLDIR)/%.html,$(MANPAGES))
 _manpages   := $(patsubst $(MANDIR)/%,$(_mandir)/%,$(MANPAGES))
 _man0pages  := $(filter %$(man0ext),$(_manpages))
 _man1pages  := $(filter %$(man1ext),$(_manpages))
@@ -156,7 +147,6 @@ _man7pages  := $(filter %$(man7ext),$(_manpages))
 _man8pages  := $(filter %$(man8ext),$(_manpages))
 
 MANDIRS   := $(sort $(shell find $(MANDIR)/man? -type d))
-_HTMLDIRS  := $(patsubst $(MANDIR)/%,$(_HTMLDIR)/%/.,$(MANDIRS))
 _LINTDIRS  := $(patsubst $(MANDIR)/%,$(_LINTDIR)/%/.,$(MANDIRS))
 _mandirs  := $(patsubst $(MANDIR)/%,$(_mandir)/%/.,$(MANDIRS))
 _man0dir  := $(filter %man0/.,$(_mandirs))
@@ -250,28 +240,7 @@ lint: $(lint)
 
 
 ########################################################################
-# html
-
-# Use with
-#  make MAN2HTMLFLAGS=whatever html
-# The sed removes the lines "Content-type: text/html\n\n"
-$(_HTMLPAGES): $(_HTMLDIR)/%.html: $(MANDIR)/% | $$(@D)/.
-	$(info MAN2HTML	$@)
-	$(MAN2HTML) $(MAN2HTMLFLAGS) $< | sed -e 1,2d >$@
-
-$(_HTMLDIRS): %/.: | $$(dir %). $(_HTMLDIR)/.
-
-
-.PHONY: build-html html
-build-html html: $(_HTMLPAGES) | builddirs-html
-	@:
-
-.PHONY: builddirs-html
-builddirs-html: $(_HTMLDIRS)
-	@:
-
-
-########################################################################
+include $(srcdir)/lib/build-html.mk
 include $(srcdir)/lib/build-src.mk
 include $(srcdir)/lib/dist.mk
 include $(srcdir)/lib/install-html.mk
