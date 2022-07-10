@@ -233,8 +233,8 @@ _man5pages  := $(filter %$(man5ext),$(_manpages))
 _man6pages  := $(filter %$(man6ext),$(_manpages))
 _man7pages  := $(filter %$(man7ext),$(_manpages))
 _man8pages  := $(filter %$(man8ext),$(_manpages))
-_LINT_groff :=$(patsubst $(MANDIR)/%,$(_LINTDIR)/%.lint.groff.touch,$(LINTMAN))
-_LINT_mandoc:=$(patsubst $(MANDIR)/%,$(_LINTDIR)/%.lint.mandoc.touch,$(LINTMAN))
+_LINT_man_groff :=$(patsubst $(MANDIR)/%,$(_LINTDIR)/%.lint.man.groff.touch,$(LINTMAN))
+_LINT_man_mandoc:=$(patsubst $(MANDIR)/%,$(_LINTDIR)/%.lint.man.mandoc.touch,$(LINTMAN))
 _SRCPAGEDIRS:=$(patsubst $(MANDIR)/%,$(_SRCDIR)/%.d,$(LINTMAN))
 _UNITS_src  :=$(sort $(patsubst $(MANDIR)/%,$(_SRCDIR)/%,$(shell \
 		find $(MANDIR)/man?/ -type f \
@@ -248,10 +248,10 @@ _UNITS_h    := $(filter %.h,$(_UNITS_src))
 _UNITS_c    := $(filter %.c,$(_UNITS_src))
 _UNITS_o    := $(patsubst %.c,%.o,$(_UNITS_c))
 _UNITS_bin  := $(patsubst %.c,%,$(_UNITS_c))
-_LINT_checkpatch := $(patsubst %.c,%.lint.checkpatch.touch,$(_UNITS_c))
-_LINT_clang-tidy := $(patsubst %.c,%.lint.clang-tidy.touch,$(_UNITS_c))
-_LINT_cpplint    := $(patsubst %.c,%.lint.cpplint.touch,$(_UNITS_c))
-_LINT_iwyu       := $(patsubst %.c,%.lint.iwyu.touch,$(_UNITS_c))
+_LINT_c_checkpatch := $(patsubst %.c,%.lint.c.checkpatch.touch,$(_UNITS_c))
+_LINT_c_clang-tidy := $(patsubst %.c,%.lint.c.clang-tidy.touch,$(_UNITS_c))
+_LINT_c_cpplint    := $(patsubst %.c,%.lint.c.cpplint.touch,$(_UNITS_c))
+_LINT_c_iwyu       := $(patsubst %.c,%.lint.c.iwyu.touch,$(_UNITS_c))
 
 MANDIRS   := $(sort $(shell find $(MANDIR)/man? -type d))
 _HTMLDIRS  := $(patsubst $(MANDIR)/%,$(_HTMLDIR)/%/.,$(MANDIRS))
@@ -427,28 +427,28 @@ builddirs-src: $(_SRCDIRS)
 
 
 ########################################################################
-# lint
+# lint-c
 
-linters := checkpatch clang-tidy cpplint iwyu groff mandoc
-lint    := $(foreach x,$(linters),lint-$(x))
+linters_c := checkpatch clang-tidy cpplint iwyu
+lint_c    := $(foreach x,$(linters_c),lint-c-$(x))
 
-$(_LINT_checkpatch): %.lint.checkpatch.touch: %.c
+$(_LINT_c_checkpatch): %.lint.c.checkpatch.touch: %.c
 	$(info LINT (checkpatch)	$@)
 	$(CHECKPATCH) $(CHECKPATCHFLAGS) -f $<
 	touch $@
 
-$(_LINT_clang-tidy): %.lint.clang-tidy.touch: %.c
+$(_LINT_c_clang-tidy): %.lint.c.clang-tidy.touch: %.c
 	$(info LINT (clang-tidy)	$@)
 	$(CLANG-TIDY) $(CLANG-TIDYFLAGS) $< -- $(CPPFLAGS) $(CFLAGS) 2>&1 \
 	| sed '/generated\.$$/d'
 	touch $@
 
-$(_LINT_cpplint): %.lint.cpplint.touch: %.c
+$(_LINT_c_cpplint): %.lint.c.cpplint.touch: %.c
 	$(info LINT (cpplint)	$@)
 	$(CPPLINT) $(CPPLINTFLAGS) $< >/dev/null
 	touch $@
 
-$(_LINT_iwyu): %.lint.iwyu.touch: %.c
+$(_LINT_c_iwyu): %.lint.c.iwyu.touch: %.c
 	$(info LINT (iwyu)	$@)
 	$(IWYU) $(IWYUFLAGS) $(CPPFLAGS) $(CFLAGS) $< 2>&1 \
 	| tac \
@@ -456,22 +456,49 @@ $(_LINT_iwyu): %.lint.iwyu.touch: %.c
 	| tac
 	touch $@
 
-$(_LINT_groff): $(_LINTDIR)/%.lint.groff.touch: $(MANDIR)/% | $$(@D)/.
+
+.PHONY: $(lint_c)
+$(lint_c): lint-c-%: $$(_LINT_c_%) | lintdirs
+	@:
+
+.PHONY: lint-c
+lint-c: $(lint_c)
+	@:
+
+
+########################################################################
+# lint-man
+
+linters_man := groff mandoc
+lint_man    := $(foreach x,$(linters_man),lint-man-$(x))
+
+$(_LINT_man_groff): $(_LINTDIR)/%.lint.man.groff.touch: $(MANDIR)/% | $$(@D)/.
 	$(info LINT (groff)	$@)
 	$(GROFF) $(GROFFFLAGS) -z $<
 	touch $@
 
-$(_LINT_mandoc): $(_LINTDIR)/%.lint.mandoc.touch: $(MANDIR)/% | $$(@D)/.
+$(_LINT_man_mandoc): $(_LINTDIR)/%.lint.man.mandoc.touch: $(MANDIR)/% | $$(@D)/.
 	$(info LINT (mandoc)	$@)
 	$(MANDOC) $(MANDOCFLAGS) $<
 	touch $@
 
+
+.PHONY: $(lint_man)
+$(lint_man): lint-man-%: $$(_LINT_man_%) | lintdirs
+	@:
+
+.PHONY: lint-man
+lint-man: $(lint_man)
+	@:
+
+
+########################################################################
+# lint
+
 $(_LINTDIRS): %/.: | $$(dir %). $(_LINTDIR)/.
 
+lint: lint-c lint-man
 
-.PHONY: $(lint)
-$(lint): lint-%: $$(_LINT_%) | lintdirs
-	@:
 
 .PHONY: lintdirs
 lintdirs: $(_LINTDIRS) $(_SRCDIRS)
