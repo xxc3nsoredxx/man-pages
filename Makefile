@@ -89,33 +89,6 @@ _mandir     := $(DESTDIR)$(mandir)
 _htmldir    := $(DESTDIR)$(htmldir_)
 
 
-DEFAULT_CPPFLAGS :=
-EXTRA_CPPFLAGS   :=
-CPPFLAGS         := $(DEFAULT_CPPFLAGS) $(EXTRA_CPPFLAGS)
-
-DEFAULT_CFLAGS := -std=gnu17
-DEFAULT_CFLAGS += -Wall
-DEFAULT_CFLAGS += -Wextra
-DEAFULT_CFLAGS += -Wstrict-prototypes
-DEFAULT_CFLAGS += -Werror
-DEFAULT_CFLAGS += -Wno-error=unused-parameter
-DEFAULT_CFLAGS += -Wno-error=sign-compare
-DEFAULT_CFLAGS += -Wno-error=format
-DEFAULT_CFLAGS += -Wno-error=uninitialized
-EXTRA_CFLAGS   :=
-CFLAGS         := $(DEFAULT_CFLAGS) $(EXTRA_CFLAGS)
-
-DEFAULT_LDFLAGS := -Wl,--as-needed
-DEFAULT_LDFLAGS += -Wl,--no-allow-shlib-undefined
-DEFAULT_LDFLAGS += -Wl,--no-copy-dt-needed-entries
-DEFAULT_LDFLAGS += -Wl,--no-undefined
-EXTRA_LDFLAGS   :=
-LDFLAGS         := $(DEFAULT_LDFLAGS) $(EXTRA_LDFLAGS)
-
-DEFAULT_LDLIBS := -lc
-EXTRA_LDLIBS   :=
-LDLIBS         := $(DEFAULT_LDLIBS) $(EXTRA_LDLIBS)
-
 DEFAULT_MAN2HTMLFLAGS :=
 EXTRA_MAN2HTMLFLAGS   :=
 MAN2HTMLFLAGS         := $(DEFAULT_MAN2HTMLFLAGS) $(EXTRA_MAN2HTMLFLAGS)
@@ -127,9 +100,6 @@ INSTALL_DIR  := $(INSTALL) -m 755 -d
 MKDIR        := mkdir -p
 RM           := rm
 RMDIR        := rmdir --ignore-fail-on-non-empty
-CC           := cc
-LD           := $(CC) $(CFLAGS)
-MAN          := man
 MAN2HTML     := man2html
 
 
@@ -189,24 +159,10 @@ _man5pages  := $(filter %$(man5ext),$(_manpages))
 _man6pages  := $(filter %$(man6ext),$(_manpages))
 _man7pages  := $(filter %$(man7ext),$(_manpages))
 _man8pages  := $(filter %$(man8ext),$(_manpages))
-_SRCPAGEDIRS:=$(patsubst $(MANDIR)/%,$(_SRCDIR)/%.d,$(LINTMAN))
-_UNITS_src_src  :=$(sort $(patsubst $(MANDIR)/%,$(_SRCDIR)/%,$(shell \
-		find $(MANDIR)/man?/ -type f \
-		| grep '$(manext)$$' \
-		| xargs grep -l '^\.TH ' \
-		| while read m; do \
-			<$$m \
-			sed -n "s,^\... SRC BEGIN (\(.*.[ch]\))$$,$$m.d/\1,p"; \
-		done)))
-_UNITS_src_h    := $(filter %.h,$(_UNITS_src_src))
-_UNITS_src_c    := $(filter %.c,$(_UNITS_src_src))
-_UNITS_src_o    := $(patsubst %.c,%.o,$(_UNITS_src_c))
-_UNITS_src_bin  := $(patsubst %.c,%,$(_UNITS_src_c))
 
 MANDIRS   := $(sort $(shell find $(MANDIR)/man? -type d))
 _HTMLDIRS  := $(patsubst $(MANDIR)/%,$(_HTMLDIR)/%/.,$(MANDIRS))
 _LINTDIRS  := $(patsubst $(MANDIR)/%,$(_LINTDIR)/%/.,$(MANDIRS))
-_SRCDIRS   := $(patsubst $(MANDIR)/%,$(_SRCDIR)/%/.,$(MANDIRS))
 _htmldirs := $(patsubst $(_HTMLDIR)/%,$(_htmldir)/%,$(_HTMLDIRS))
 _mandirs  := $(patsubst $(MANDIR)/%,$(_mandir)/%/.,$(MANDIRS))
 _man0dir  := $(filter %man0/.,$(_mandirs))
@@ -327,59 +283,6 @@ dist: $(dist)
 
 
 ########################################################################
-# src
-
-$(_SRCPAGEDIRS): $(_SRCDIR)/%.d: $(MANDIR)/% | $$(@D)/.
-	$(info MKDIR	$@)
-	$(MKDIR) $@
-	touch $@
-
-$(_UNITS_src_src): $$(patsubst $(_SRCDIR)/%.d,$(MANDIR)/%,$$(@D)) | $$(@D)
-$(_UNITS_src_c):   $$(filter $$(@D)/%.h,$(_UNITS_src_h))
-$(_UNITS_src_src):
-	$(info SED	$@)
-	<$< \
-	sed -n \
-		-e '/^\.TH/,/^\.SH/{/^\.SH/!p}' \
-		-e '/^\.SH EXAMPLES/p' \
-		-e "/^\... SRC BEGIN ($(@F))$$/,/^\... SRC END$$/p" \
-	| $(MAN) -P cat -l - \
-	| sed '/^[^ ]/d' \
-	| sed 's/^       //' \
-	>$@
-
-$(_UNITS_src_o): $(_SRCDIR)/%.o: $(_SRCDIR)/%.c
-	$(info CC	$@)
-	$(CC) -c $(CPPFLAGS) $(CFLAGS) -o $@ $<
-
-$(_UNITS_src_bin): $(_SRCDIR)/%: $(_SRCDIR)/%.o
-	$(info LD	$@)
-	$(LD) $(LDFLAGS) -o $@ $< $(LDLIBS)
-
-$(_SRCDIRS): %/.: | $$(dir %). $(_SRCDIR)/.
-
-
-.PHONY: build-src-c
-build-src-c:   $(_UNITS_src_c) | builddirs-src
-	@:
-
-.PHONY: build-src-cc
-build-src-cc:  $(_UNITS_src_o)
-	@:
-
-.PHONY: build-src-ld
-build-src-ld:  $(_UNITS_src_bin)
-	@:
-
-.PHONY: builddirs-src
-builddirs-src: $(_SRCDIRS)
-	@:
-
-.PHONY: build-src
-build-src: build-src-ld
-
-
-########################################################################
 # lint
 
 $(_LINTDIRS): %/.: | $$(dir %). $(_LINTDIR)/.
@@ -437,6 +340,7 @@ uninstall-html: $(_htmldir_rmdir) $(_htmldirs_rmdir) $(_htmlpages_rm)
 
 
 ########################################################################
+include $(srcdir)/lib/build-src.mk
 include $(srcdir)/lib/lint-c.mk
 include $(srcdir)/lib/lint-man.mk
 
