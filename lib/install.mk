@@ -47,4 +47,4 @@ uninstall: uninstall-man
 	@:
 
 
-endif
+endif  # MAKEFILE_INSTALL_INCLUDED

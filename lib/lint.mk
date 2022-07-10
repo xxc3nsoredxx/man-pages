@@ -36,4 +36,4 @@ lint: $(lint)
 	@:
 
 
-endif
+endif  # MAKEFILE_LINT_INCLUDED
