@@ -242,47 +242,6 @@ uninstall-man: $(_mandir_rmdir) $(uninstall_manX)
 
 
 ########################################################################
-# dist
-
-DISTNAME    := $(shell git describe 2>/dev/null)
-DISTFILE    := $(builddir)/$(DISTNAME).tar
-compression := gz xz
-dist        := $(foreach x,$(compression),dist-$(x))
-
-
-$(DISTFILE): $(shell git ls-files 2>/dev/null) | $$(@D)/.
-	$(info TAR	$@)
-	tar cf $@ -T /dev/null
-	git ls-files \
-	| xargs tar rf $@
-
-$(DISTFILE).gz: %.gz: % | $$(@D)/.
-	$(info GZIP	$@)
-	gzip -knf $<
-
-$(DISTFILE).xz: %.xz: % | $$(@D)/.
-	$(info XZ	$@)
-	xz -kf $<
-
-
-.PHONY: dist-tar
-dist-tar: $(DISTFILE) | builddirs-dist
-	@:
-
-.PHONY: $(dist)
-$(dist): dist-%: $(DISTFILE).% | builddirs-dist
-	@:
-
-.PHONY: builddirs-dist
-builddirs-dist: $(builddir)/.
-	@:
-
-.PHONY: dist
-dist: $(dist)
-	@:
-
-
-########################################################################
 # lint
 
 $(_LINTDIRS): %/.: | $$(dir %). $(_LINTDIR)/.
@@ -341,6 +300,7 @@ uninstall-html: $(_htmldir_rmdir) $(_htmldirs_rmdir) $(_htmlpages_rm)
 
 ########################################################################
 include $(srcdir)/lib/build-src.mk
+include $(srcdir)/lib/dist.mk
 include $(srcdir)/lib/lint-c.mk
 include $(srcdir)/lib/lint-man.mk
 
