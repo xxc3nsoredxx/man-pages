@@ -9,6 +9,7 @@ MAKEFILE_INSTALL_HTML_INCLUDED := 1
 
 
 include $(srcdir)/lib/build-html.mk
+include $(srcdir)/lib/install.mk
 
 
 htmldir  := $(docdir)

@@ -8,6 +8,9 @@ ifndef MAKEFILE_INSTALL_MAN_INCLUDED
 MAKEFILE_INSTALL_MAN_INCLUDED := 1
 
 
+include $(srcdir)/lib/install.mk
+
+
 mandir       := $(datarootdir)/man
 man0dir      := $(mandir)/man0
 man1dir      := $(mandir)/man1

@@ -35,9 +35,7 @@ MAKEFLAGS += --no-print-directory
 MAKEFLAGS += --warn-undefined-variables
 
 
-srcdir  := .
-DESTDIR :=
-prefix  := /usr/local
+srcdir := .
 
 MANDIR  := $(srcdir)
 MAN0DIR := $(MANDIR)/man0
@@ -51,43 +49,9 @@ MAN7DIR := $(MANDIR)/man7
 MAN8DIR := $(MANDIR)/man8
 MANEXT  := \.[0-9]\w*
 
-datarootdir := $(prefix)/share
-docdir      := $(datarootdir)/doc
-
-
-INSTALL      := install
-INSTALL_DATA := $(INSTALL) -m 644
-INSTALL_DIR  := $(INSTALL) -m 755 -d
-RMDIR        := rmdir --ignore-fail-on-non-empty
-
 
 .PHONY: all
 all: build
-
-%/.:
-	$(info INSTALL	$(@D)/)
-	$(INSTALL_DIR) $(@D)
-
-%-rm:
-	$(info RM	$*)
-	$(RM) $*
-
-%-rmdir:
-	$(info RMDIR	$(@D))
-	$(RMDIR) $(@D)
-
-
-.PHONY: install
-install: install-man | installdirs
-	@:
-
-.PHONY: installdirs
-installdirs: | installdirs-man
-	@:
-
-.PHONY: uninstall remove
-uninstall remove: uninstall-man
-	@:
 
 
 ########################################################################
@@ -105,6 +69,7 @@ include $(srcdir)/lib/build.mk
 include $(srcdir)/lib/build-html.mk
 include $(srcdir)/lib/build-src.mk
 include $(srcdir)/lib/dist.mk
+include $(srcdir)/lib/install.mk
 include $(srcdir)/lib/install-html.mk
 include $(srcdir)/lib/install-man.mk
 include $(srcdir)/lib/lint.mk
