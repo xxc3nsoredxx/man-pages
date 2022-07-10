@@ -1,0 +1,13 @@
+Run `make help` to see a list of targets and a brief description.
+
+Normally, you'll want to run `make install`, which will copy these manual
+pages to <$(DESTDIR)$(mandir)/man*>, which by default is
+</usr/local/share/man/man*>.
+
+To install to a different path, modify the appropriate directory variables.
+See <https://www.gnu.org/prep/standards/html_node/Directory-Variables.html>.
+
+You can use multiple threads with this Makefile safely, which will run
+considerably faster: `make -j install`.
+
+The Makefile used by this project requires GNU make(1).

@@ -17,22 +17,7 @@ For further information on contributing, see the CONTRIBUTING file.
 
 Installing and uninstalling
 ===========================
-"make install" will copy these man pages to /usr/local/share/man/man[1-8].
-
-To install to a path different from /usr/local, use
-"make install prefix=/install/path".
-
-"make remove" or "make uninstall" will remove any man page in this
-distribution from its destination.  Use with caution, and remember to
-use "prefix" if desired, as with the "install" target.
-
-To install only a specific man section (mandir) such as man3, use
-"make install-man3".  Similar syntax can be used to uninstall a
-specific man section, such as man7: "make uninstall-man7".
-
-Consider using multiple threads (at least 2) when installing
-these man pages, as the Makefile is optimized for multiple threads:
-"make -j install".
+See the 'INSTALL' file.
 
 Copyrights
 ==========
