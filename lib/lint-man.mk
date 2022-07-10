@@ -8,6 +8,9 @@ ifndef MAKEFILE_LINT_MAN_INCLUDED
 MAKEFILE_LINT_MAN_INCLUDED := 1
 
 
+include $(srcdir)/lib/lint.mk
+
+
 TMACDIR := $(SYSCONFDIR)/groff/tmac
 
 

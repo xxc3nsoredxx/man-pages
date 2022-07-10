@@ -8,6 +8,9 @@ ifndef MAKEFILE_BUILD_SRC_INCLUDED
 MAKEFILE_BUILD_SRC_INCLUDED := 1
 
 
+include $(srcdir)/lib/lint.mk
+
+
 DEFAULT_CPPFLAGS :=
 EXTRA_CPPFLAGS   :=
 CPPFLAGS         := $(DEFAULT_CPPFLAGS) $(EXTRA_CPPFLAGS)
@@ -41,7 +44,6 @@ LD  := $(CC) $(CFLAGS)
 MAN := man
 
 
-_SRCDIRS       := $(patsubst $(MANDIR)/%,$(_SRCDIR)/%/.,$(MANDIRS))
 _SRCPAGEDIRS   := $(patsubst $(MANDIR)/%,$(_SRCDIR)/%.d,$(LINTMAN))
 
 _UNITS_src_src := $(sort $(patsubst $(MANDIR)/%,$(_SRCDIR)/%,$(shell \

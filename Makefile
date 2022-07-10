@@ -40,24 +40,20 @@ builddir := tmp
 DESTDIR  :=
 prefix   := /usr/local
 
-SYSCONFDIR  := $(srcdir)/etc
-MANDIR      := $(srcdir)
-MAN0DIR     := $(MANDIR)/man0
-MAN1DIR     := $(MANDIR)/man1
-MAN2DIR     := $(MANDIR)/man2
-MAN3DIR     := $(MANDIR)/man3
-MAN4DIR     := $(MANDIR)/man4
-MAN5DIR     := $(MANDIR)/man5
-MAN6DIR     := $(MANDIR)/man6
-MAN7DIR     := $(MANDIR)/man7
-MAN8DIR     := $(MANDIR)/man8
+MANDIR  := $(srcdir)
+MAN0DIR := $(MANDIR)/man0
+MAN1DIR := $(MANDIR)/man1
+MAN2DIR := $(MANDIR)/man2
+MAN3DIR := $(MANDIR)/man3
+MAN4DIR := $(MANDIR)/man4
+MAN5DIR := $(MANDIR)/man5
+MAN6DIR := $(MANDIR)/man6
+MAN7DIR := $(MANDIR)/man7
+MAN8DIR := $(MANDIR)/man8
 
 datarootdir := $(prefix)/share
 docdir      := $(datarootdir)/doc
 manext      := \.[0-9]\w*
-
-_LINTDIR    := $(builddir)/lint
-_SRCDIR     := $(builddir)/src
 
 
 INSTALL      := install
@@ -104,32 +100,11 @@ clean:
 ########################################################################
 # man
 
-MANPAGES   := $(sort $(shell find $(MANDIR)/man?/ -type f | grep '$(manext)'))
-LINTMAN    := $(sort $(shell find $(MANDIR)/man?/ -type f | grep '$(manext)' \
-                             | xargs grep -l '^\.TH '))
-
-MANDIRS   := $(sort $(shell find $(MANDIR)/man? -type d))
-_LINTDIRS  := $(patsubst $(MANDIR)/%,$(_LINTDIR)/%/.,$(MANDIRS))
+MANPAGES := $(sort $(shell find $(MANDIR)/man?/ -type f | grep '$(manext)'))
+MANDIRS  := $(sort $(shell find $(MANDIR)/man? -type d))
 
 
 .SECONDEXPANSION:
-
-
-########################################################################
-# lint
-
-$(_LINTDIRS): %/.: | $$(dir %). $(_LINTDIR)/.
-
-lint: lint-c lint-man
-
-
-.PHONY: lintdirs
-lintdirs: $(_LINTDIRS) $(_SRCDIRS)
-	@:
-
-.PHONY: lint
-lint: $(lint)
-	@:
 
 
 ########################################################################
@@ -138,6 +113,7 @@ include $(srcdir)/lib/build-src.mk
 include $(srcdir)/lib/dist.mk
 include $(srcdir)/lib/install-html.mk
 include $(srcdir)/lib/install-man.mk
+include $(srcdir)/lib/lint.mk
 include $(srcdir)/lib/lint-c.mk
 include $(srcdir)/lib/lint-man.mk
 

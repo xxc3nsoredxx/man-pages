@@ -9,6 +9,7 @@ MAKEFILE_LINT_C_INCLUDED := 1
 
 
 include $(srcdir)/lib/build-src.mk
+include $(srcdir)/lib/lint.mk
 
 
 DEFAULT_CHECKPATCHFLAGS :=
