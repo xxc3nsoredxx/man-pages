@@ -1,5 +1,5 @@
 ########################################################################
-# Copyright (C) 2021        Alejandro Colomar <alx.manpages@gmail.com>
+# Copyright (C) 2021, 2022  Alejandro Colomar <alx.manpages@gmail.com>
 # SPDX-License-Identifier:  GPL-2.0  OR  LGPL-2.0
 ########################################################################
 # Conventions:
@@ -41,7 +41,6 @@ DESTDIR  :=
 prefix   := /usr/local
 
 SYSCONFDIR  := $(srcdir)/etc
-TMACDIR     := $(SYSCONFDIR)/groff/tmac
 MANDIR      := $(srcdir)
 MAN0DIR     := $(MANDIR)/man0
 MAN1DIR     := $(MANDIR)/man1
@@ -117,23 +116,6 @@ DEFAULT_LDLIBS := -lc
 EXTRA_LDLIBS   :=
 LDLIBS         := $(DEFAULT_LDLIBS) $(EXTRA_LDLIBS)
 
-TMACFILES            := $(sort $(shell find $(TMACDIR) -not -type d))
-TMACNAMES            := $(basename $(notdir $(TMACFILES)))
-GROFF_CHECKSTYLE_LVL := 3
-DEFAULT_GROFFFLAGS   := -man
-DEFAULT_GROFFFLAGS   += -t
-DEFAULT_GROFFFLAGS   += -M $(TMACDIR)
-DEFAULT_GROFFFLAGS   += $(foreach x,$(TMACNAMES),-m $(x))
-DEFAULT_GROFFFLAGS   += -rCHECKSTYLE=$(GROFF_CHECKSTYLE_LVL)
-DEFAULT_GROFFFLAGS   += -ww
-EXTRA_GROFFFLAGS     :=
-GROFFFLAGS           := $(DEFAULT_GROFFFLAGS) $(EXTRA_GROFFFLAGS)
-
-DEFAULT_MANDOCFLAGS := -man
-DEFAULT_MANDOCFLAGS += -Tlint
-EXTRA_MANDOCFLAGS   :=
-MANDOCFLAGS         := $(DEFAULT_MANDOCFLAGS) $(EXTRA_MANDOCFLAGS)
-
 DEFAULT_MAN2HTMLFLAGS :=
 EXTRA_MAN2HTMLFLAGS   :=
 MAN2HTMLFLAGS         := $(DEFAULT_MAN2HTMLFLAGS) $(EXTRA_MAN2HTMLFLAGS)
@@ -147,9 +129,7 @@ RM           := rm
 RMDIR        := rmdir --ignore-fail-on-non-empty
 CC           := cc
 LD           := $(CC) $(CFLAGS)
-GROFF        := groff
 MAN          := man
-MANDOC       := mandoc
 MAN2HTML     := man2html
 
 
@@ -209,8 +189,6 @@ _man5pages  := $(filter %$(man5ext),$(_manpages))
 _man6pages  := $(filter %$(man6ext),$(_manpages))
 _man7pages  := $(filter %$(man7ext),$(_manpages))
 _man8pages  := $(filter %$(man8ext),$(_manpages))
-_LINT_man_groff :=$(patsubst $(MANDIR)/%,$(_LINTDIR)/%.lint.man.groff.touch,$(LINTMAN))
-_LINT_man_mandoc:=$(patsubst $(MANDIR)/%,$(_LINTDIR)/%.lint.man.mandoc.touch,$(LINTMAN))
 _SRCPAGEDIRS:=$(patsubst $(MANDIR)/%,$(_SRCDIR)/%.d,$(LINTMAN))
 _UNITS_src_src  :=$(sort $(patsubst $(MANDIR)/%,$(_SRCDIR)/%,$(shell \
 		find $(MANDIR)/man?/ -type f \
@@ -402,32 +380,6 @@ build-src: build-src-ld
 
 
 ########################################################################
-# lint-man
-
-linters_man := groff mandoc
-lint_man    := $(foreach x,$(linters_man),lint-man-$(x))
-
-$(_LINT_man_groff): $(_LINTDIR)/%.lint.man.groff.touch: $(MANDIR)/% | $$(@D)/.
-	$(info LINT (groff)	$@)
-	$(GROFF) $(GROFFFLAGS) -z $<
-	touch $@
-
-$(_LINT_man_mandoc): $(_LINTDIR)/%.lint.man.mandoc.touch: $(MANDIR)/% | $$(@D)/.
-	$(info LINT (mandoc)	$@)
-	$(MANDOC) $(MANDOCFLAGS) $<
-	touch $@
-
-
-.PHONY: $(lint_man)
-$(lint_man): lint-man-%: $$(_LINT_man_%) | lintdirs
-	@:
-
-.PHONY: lint-man
-lint-man: $(lint_man)
-	@:
-
-
-########################################################################
 # lint
 
 $(_LINTDIRS): %/.: | $$(dir %). $(_LINTDIR)/.
@@ -486,6 +438,7 @@ uninstall-html: $(_htmldir_rmdir) $(_htmldirs_rmdir) $(_htmlpages_rm)
 
 ########################################################################
 include $(srcdir)/lib/lint-c.mk
+include $(srcdir)/lib/lint-man.mk
 
 
 $(V).SILENT:
