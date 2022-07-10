@@ -8,6 +8,9 @@ ifndef MAKEFILE_DIST_INCLUDED
 MAKEFILE_DIST_INCLUDED := 1
 
 
+include $(srcdir)/lib/build.mk
+
+
 DISTNAME    := $(shell git describe 2>/dev/null)
 DISTFILE    := $(builddir)/$(DISTNAME).tar
 compression := gz xz

@@ -8,6 +8,7 @@ ifndef MAKEFILE_BUILD_SRC_INCLUDED
 MAKEFILE_BUILD_SRC_INCLUDED := 1
 
 
+include $(srcdir)/lib/build.mk
 include $(srcdir)/lib/lint.mk
 
 
@@ -48,7 +49,7 @@ _SRCPAGEDIRS   := $(patsubst $(MANDIR)/%,$(_SRCDIR)/%.d,$(LINTMAN))
 
 _UNITS_src_src := $(sort $(patsubst $(MANDIR)/%,$(_SRCDIR)/%,$(shell \
 		find $(MANDIR)/man?/ -type f \
-		| grep '$(manext)$$' \
+		| grep '$(MANEXT)$$' \
 		| xargs grep -l '^\.TH ' \
 		| while read m; do \
 			<$$m \
@@ -86,8 +87,6 @@ $(_UNITS_src_o): $(_SRCDIR)/%.o: $(_SRCDIR)/%.c
 $(_UNITS_src_bin): $(_SRCDIR)/%: $(_SRCDIR)/%.o
 	$(info LD	$@)
 	$(LD) $(LDFLAGS) -o $@ $< $(LDLIBS)
-
-$(_SRCDIRS): %/.: | $$(dir %). $(_SRCDIR)/.
 
 
 .PHONY: build-src-c

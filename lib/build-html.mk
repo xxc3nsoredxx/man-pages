@@ -8,6 +8,9 @@ ifndef MAKEFILE_BUILD_HTML_INCLUDED
 MAKEFILE_BUILD_HTML_INCLUDED := 1
 
 
+include $(srcdir)/lib/build.mk
+
+
 htmlext  := .html
 _HTMLDIR := $(builddir)/html
 
