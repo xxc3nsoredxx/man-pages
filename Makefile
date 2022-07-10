@@ -236,7 +236,7 @@ _man8pages  := $(filter %$(man8ext),$(_manpages))
 _LINT_man_groff :=$(patsubst $(MANDIR)/%,$(_LINTDIR)/%.lint.man.groff.touch,$(LINTMAN))
 _LINT_man_mandoc:=$(patsubst $(MANDIR)/%,$(_LINTDIR)/%.lint.man.mandoc.touch,$(LINTMAN))
 _SRCPAGEDIRS:=$(patsubst $(MANDIR)/%,$(_SRCDIR)/%.d,$(LINTMAN))
-_UNITS_src  :=$(sort $(patsubst $(MANDIR)/%,$(_SRCDIR)/%,$(shell \
+_UNITS_src_src  :=$(sort $(patsubst $(MANDIR)/%,$(_SRCDIR)/%,$(shell \
 		find $(MANDIR)/man?/ -type f \
 		| grep '$(manext)$$' \
 		| xargs grep -l '^\.TH ' \
@@ -244,14 +244,14 @@ _UNITS_src  :=$(sort $(patsubst $(MANDIR)/%,$(_SRCDIR)/%,$(shell \
 			<$$m \
 			sed -n "s,^\... SRC BEGIN (\(.*.[ch]\))$$,$$m.d/\1,p"; \
 		done)))
-_UNITS_h    := $(filter %.h,$(_UNITS_src))
-_UNITS_c    := $(filter %.c,$(_UNITS_src))
-_UNITS_o    := $(patsubst %.c,%.o,$(_UNITS_c))
-_UNITS_bin  := $(patsubst %.c,%,$(_UNITS_c))
-_LINT_c_checkpatch := $(patsubst %.c,%.lint.c.checkpatch.touch,$(_UNITS_c))
-_LINT_c_clang-tidy := $(patsubst %.c,%.lint.c.clang-tidy.touch,$(_UNITS_c))
-_LINT_c_cpplint    := $(patsubst %.c,%.lint.c.cpplint.touch,$(_UNITS_c))
-_LINT_c_iwyu       := $(patsubst %.c,%.lint.c.iwyu.touch,$(_UNITS_c))
+_UNITS_src_h    := $(filter %.h,$(_UNITS_src_src))
+_UNITS_src_c    := $(filter %.c,$(_UNITS_src_src))
+_UNITS_src_o    := $(patsubst %.c,%.o,$(_UNITS_src_c))
+_UNITS_src_bin  := $(patsubst %.c,%,$(_UNITS_src_c))
+_LINT_c_checkpatch := $(patsubst %.c,%.lint.c.checkpatch.touch,$(_UNITS_src_c))
+_LINT_c_clang-tidy := $(patsubst %.c,%.lint.c.clang-tidy.touch,$(_UNITS_src_c))
+_LINT_c_cpplint    := $(patsubst %.c,%.lint.c.cpplint.touch,$(_UNITS_src_c))
+_LINT_c_iwyu       := $(patsubst %.c,%.lint.c.iwyu.touch,$(_UNITS_src_c))
 
 MANDIRS   := $(sort $(shell find $(MANDIR)/man? -type d))
 _HTMLDIRS  := $(patsubst $(MANDIR)/%,$(_HTMLDIR)/%/.,$(MANDIRS))
@@ -384,9 +384,9 @@ $(_SRCPAGEDIRS): $(_SRCDIR)/%.d: $(MANDIR)/% | $$(@D)/.
 	$(MKDIR) $@
 	touch $@
 
-$(_UNITS_src): $$(patsubst $(_SRCDIR)/%.d,$(MANDIR)/%,$$(@D)) | $$(@D)
-$(_UNITS_c):   $$(filter $$(@D)/%.h,$(_UNITS_h))
-$(_UNITS_src):
+$(_UNITS_src_src): $$(patsubst $(_SRCDIR)/%.d,$(MANDIR)/%,$$(@D)) | $$(@D)
+$(_UNITS_src_c):   $$(filter $$(@D)/%.h,$(_UNITS_src_h))
+$(_UNITS_src_src):
 	$(info SED	$@)
 	<$< \
 	sed -n \
@@ -398,32 +398,35 @@ $(_UNITS_src):
 	| sed 's/^       //' \
 	>$@
 
-$(_UNITS_o): $(_SRCDIR)/%.o: $(_SRCDIR)/%.c
+$(_UNITS_src_o): $(_SRCDIR)/%.o: $(_SRCDIR)/%.c
 	$(info CC	$@)
 	$(CC) -c $(CPPFLAGS) $(CFLAGS) -o $@ $<
 
-$(_UNITS_bin): $(_SRCDIR)/%: $(_SRCDIR)/%.o
+$(_UNITS_src_bin): $(_SRCDIR)/%: $(_SRCDIR)/%.o
 	$(info LD	$@)
 	$(LD) $(LDFLAGS) -o $@ $< $(LDLIBS)
 
 $(_SRCDIRS): %/.: | $$(dir %). $(_SRCDIR)/.
 
 
-.PHONY: build-src src
-build-src src: $(_UNITS_c) | builddirs-src
+.PHONY: build-src-c
+build-src-c:   $(_UNITS_src_c) | builddirs-src
 	@:
 
-.PHONY: build-cc
-build-cc: $(_UNITS_o)
+.PHONY: build-src-cc
+build-src-cc:  $(_UNITS_src_o)
 	@:
 
-.PHONY: build-ld
-build-ld: $(_UNITS_bin)
+.PHONY: build-src-ld
+build-src-ld:  $(_UNITS_src_bin)
 	@:
 
 .PHONY: builddirs-src
 builddirs-src: $(_SRCDIRS)
 	@:
+
+.PHONY: build-src
+build-src: build-src-ld
 
 
 ########################################################################
