@@ -50,21 +50,17 @@ MAN8DIR := $(MANDIR)/man8
 MANEXT  := \.[0-9]\w*
 
 
-.PHONY: all
-all: build
-
-
-########################################################################
-# man
-
 MANPAGES := $(sort $(shell find $(MANDIR)/man?/ -type f | grep '$(MANEXT)'))
 MANDIRS  := $(sort $(shell find $(MANDIR)/man? -type d))
+
+
+.PHONY: all
+all: build
 
 
 .SECONDEXPANSION:
 
 
-########################################################################
 include $(srcdir)/lib/build.mk
 include $(srcdir)/lib/build-html.mk
 include $(srcdir)/lib/build-src.mk
