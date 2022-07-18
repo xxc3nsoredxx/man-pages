@@ -265,8 +265,11 @@ main(void)
 
     /* Code to deal with incoming connection(s)... */
 
-    /* When no longer required, the socket pathname, MY_SOCK_PATH
-       should be deleted using unlink(2) or remove(3). */
+    if (close(sfd) == -1)
+        handle_error("close");
+
+    if (unlink(MY_SOCK_PATH) == -1)
+        handle_error("unlink");
 }
 .EE
 .\" SRC END
