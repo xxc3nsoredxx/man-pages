@@ -26,7 +26,25 @@ Standard C library
 .BR "    int         tm_yday;" \
 "   /* Day of the year  [" 0 ", " 365 "] (Jan/01 = " 0 ") */"
 .BR "    int         tm_isdst;" "  /* Daylight savings flag */"
+.PP
+.BR "    long        tm_gmtoff;" " /* Seconds East of UTC */"
+.BR "    const char *tm_zone;" "   /* Timezone abbreviation */"
 .B };
+.fi
+.PP
+.RS -4
+Feature Test Macro Requirements for glibc (see
+.BR feature_test_macros (7)):
+.RE
+.PP
+.IR tm_gmtoff ,
+.IR tm_zone :
+.nf
+.\" Guarded with __USE_MISC:
+    Since glibc 2.20:
+        _DEFAULT_SOURCE
+    Glibc 2.20 and earlier:
+        _BSD_SOURCE
 .fi
 .SH DESCRIPTION
 Describes time, broken down into distinct components.
@@ -36,6 +54,17 @@ describes wether daylight saving time is in effect at the time described.
 The value is positive if daylight saving time is in effect,
 zero if it is not,
 and negative if the information is not available.
+.PP
+.I tm_gmtoff
+is the difference, in seconds,
+of the timezone represented by this broken-down time and UTC
+(this is the additive inverse of
+.BR timezone (3)).
+.PP
+.I tm_zone
+is the equivalent of
+.BR tzname (3)
+for the timezone represented by this broken-down time.
 .SH VERSIONS
 In C90,
 .I tm_sec
@@ -49,10 +78,32 @@ in C99.
 .SH CONFORMING TO
 C90 and later;
 POSIX.1-2001 and later.
+.PP
+.I tm_gmtoff
+and
+.I tm_zone
+originate from 4.3BSD-Tahoe (where
+.I tm_zone
+is a
+.IR "char *" ).
 .SH NOTES
 .I tm_sec
 can represent a leap second with the value
 .BR 60 .
+.PP
+.BR timezone (3),
+as a variable, is an XSI extension: some systems provide the V7-compatible
+.\" FreeBSD
+.BR timezone (3)
+function.
+The
+.I tm_gmtoff
+field provides an alternative (with the opposite sign) for those systems.
+.PP
+.I tm_zone
+points to static storage and may be overriden on subsequent calls to
+.BR localtime (3)
+and similar functions (however, this never happens under glibc).
 .SH SEE ALSO
 .BR ctime (3),
 .BR strftime (3),
