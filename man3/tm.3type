@@ -24,7 +24,7 @@ Standard C library
 "   /* Day of the week [" 0 ", " 6 "] (Sunday = " 0 ") */"
 .BR "    int  tm_yday;" \
 "   /* Day of the year [" 0 ", " 365 "] (Jan/01 = " 0 ") */"
-.BR "    int  tm_isdst;" "  /* Daylighgt savings flag */"
+.BR "    int  tm_isdst;" "  /* Daylight savings flag */"
 .B };
 .fi
 .SH DESCRIPTION
