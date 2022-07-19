@@ -27,6 +27,11 @@ Standard C library
 .BI "size_t strftime(char *restrict " s ", size_t " max ,
 .BI "                const char *restrict " format ,
 .BI "                const struct tm *restrict " tm );
+.PP
+.BI "size_t strftime_l(char *restrict " s ", size_t " max ,
+.BI "                const char *restrict " format ,
+.BI "                const struct tm *restrict " tm ,
+.BI "                locale_t " locale );
 .fi
 .SH DESCRIPTION
 The
@@ -471,6 +476,17 @@ as an argument to a
 One example of such alternative forms is the Japanese era calendar scheme in the
 .B ja_JP
 glibc locale.
+.PP
+.BR strftime_l ()
+is equivalent to
+.BR strftime (),
+except it uses the specified
+.I locale
+instead of the current locale.
+The behaviour is undefined if
+.I locale
+is invalid or
+.BR LC_GLOBAL_LOCALE .
 .SH RETURN VALUE
 Provided that the result string,
 including the terminating null byte, does not exceed
@@ -516,14 +532,22 @@ lbx lb lb
 l l l.
 Interface	Attribute	Value
 T{
-.BR strftime ()
+.BR strftime (),
+.BR strftime_l ()
 T}	Thread safety	MT-Safe env locale
 .TE
 .hy
 .ad
 .sp 1
 .SH CONFORMING TO
+.BR strftime ():
 SVr4, C89, C99.
+.PD 0
+.PP
+.PD
+.BR strftime_l ():
+POSIX.1-2008.
+.PP
 .\" FIXME strftime() is in POSIX.1-2001 and POSIX.1-2008, but the details
 .\" in the standards changed across versions. Investigate and
 .\" write up.
