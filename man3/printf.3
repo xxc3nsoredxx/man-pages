@@ -382,6 +382,11 @@ Note that many versions of
 cannot parse this option and will issue a warning.
 (SUSv2 did not
 include \fI%\(aqF\fP, but SUSv3 added it.)
+Note also that the default locale of a C program is "C"
+whose locale information indicates no thousands' grouping character.
+Therefore, without a prior call to
+.BR setlocale (3),
+no thousands' grouping characters will be printed.
 .PP
 glibc 2.2 adds one further flag character.
 .TP
