@@ -19,7 +19,7 @@ Standard C library
 .BR "    int  tm_hour;" "   /* Hour [" 0 ", " 23 "] */"
 .BR "    int  tm_mday;" "   /* Day of the month [" 1 ", " 31 "] */"
 .BR "    int  tm_mon;" "    /* Month [" 0 ", " 11 "] (January = " 0 ") */"
-.BR "    int  tm_year;" "   /* Years since 1900 */"
+.BR "    int  tm_year;" "   /* Year minus " 1900 " */"
 .BR "    int  tm_wday;" \
 "   /* Day of the week [" 0 ", " 6 "] (Sunday = " 0 ") */"
 .BR "    int  tm_yday;" \
