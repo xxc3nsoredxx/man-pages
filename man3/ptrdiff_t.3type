@@ -44,5 +44,4 @@ values.
 C99 and later.
 POSIX.1-2001 and later.
 .SH SEE ALSO
-.BR size_t (3type),
-.BR ssize_t (3type)
+.BR size_t (3type)

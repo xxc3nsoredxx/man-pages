@@ -6,7 +6,7 @@
 .\"
 .TH SIZE_T 3type 2022-07-20 Linux "Linux Programmer's Manual"
 .SH NAME
-size_t \- count of bytes
+size_t, ssize_t \- count of bytes
 .SH LIBRARY
 Standard C library
 .RI ( libc )
@@ -15,8 +15,14 @@ Standard C library
 .B #include <stddef.h>
 .PP
 .BR typedef " /* ... */  " size_t;
+.PP
+.B #include <sys/types.h>
+.PP
+.BR typedef " /* ... */  " ssize_t;
 .fi
 .SH DESCRIPTION
+.TP
+.I size_t
 Used for a count of bytes.
 It is the result of the
 .IR sizeof ()
@@ -26,13 +32,26 @@ it shall be an unsigned integer type
 capable of storing values in the range
 .RB [ 0 ,
 .BR SIZE_MAX ].
+.TP
+.I ssize_t
+Used for a cout of bytes or an error indication.
+According to POSIX,
+it shall be a signed integer type
+capable of storing values al least in the range
+.RB [ \-1 ,
+.BR SSIZE_MAX ].
+.PP
 According to POSIX,
 the implementation shall support one or more programming environments
 where the width of
 .I size_t
+and
+.I ssize_t
 is no greater than the width of the type
 .IR long .
-.PP
+.SS Use with printf(3) and scanf(3)
+.TP
+.I size_t
 The length modifier for
 .I size_t
 for the
@@ -48,7 +67,37 @@ or
 for printing
 .I size_t
 values.
+.TP
+.I ssize_t
+Glibc and most other implementations provide a length modifier for
+.I ssize_t
+for the
+.BR printf (3)
+and the
+.BR scanf (3)
+families of functions,
+which is
+.BR z ;
+resulting commonly in
+.B %zd
+or
+.B %zi
+for printing
+.I ssize_t
+values.
+Although
+.B z
+works for
+.I ssize_t
+on most implementations,
+portable POSIX programs should avoid using it\(emfor example,
+by converting the value to
+.I intmax_t
+and using its length modifier
+.RB ( j ).
 .SH VERSIONS
+.TP
+.I size_t
 .IR <aio.h> ,
 .IR <glob.h> ,
 .IR <grp.h> ,
@@ -61,11 +110,29 @@ and
 define
 .I size_t
 since POSIX.1-2008.
+.TP
+.I ssize_t
+.IR <aio.h> ,
+.IR <mqueue.h> ,
+and
+.I <sys/socket.h>
+define
+.I ssize_t
+since POSIX.1-2008.
 .SH CONFORMING TO
+.PD 0
+.IR size_t :
 C99 and later.
 POSIX.1-2001 and later.
+.PP
+.IR ssize_t :
+POSIX.1-2001 and later.
+.PD
 .SH NOTES
-The following headers also provide this type:
+.TP
+.I size_t
+The following headers also provide
+.IR size_t :
 .IR <aio.h> ,
 .IR <glob.h> ,
 .IR <grp.h> ,
@@ -93,8 +160,25 @@ The following headers also provide this type:
 .IR <wchar.h> ,
 and
 .IR <wordexp.h> .
+.TP
+.I ssize_t
+The following headers also provide
+.IR ssize_t :
+.IR <aio.h> ,
+.IR <monetary.h> ,
+.IR <mqueue.h> ,
+.IR <stdio.h> ,
+.IR <sys/msg.h> ,
+.IR <sys/socket.h> ,
+.IR <sys/uio.h> ,
+and
+.IR <unistd.h> .
 .SH SEE ALSO
 .BR read (2),
+.BR readlink (2),
+.BR readv (2),
+.BR recv (2),
+.BR send (2),
 .BR write (2),
 .BR fread (3),
 .BR fwrite (3),
@@ -102,5 +186,4 @@ and
 .BR memcpy (3),
 .BR memset (3),
 .BR offsetof (3),
-.BR ptrdiff_t (3type),
-.BR ssize_t (3type)
+.BR ptrdiff_t (3type)
