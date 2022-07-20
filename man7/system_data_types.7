@@ -431,74 +431,7 @@ then the nanosecond values are exposed with names of the form
 .BR inode (7)
 .RE
 .\"------------------------------------- suseconds_t ------------------/
-.TP
-.I suseconds_t
-.RS
-.IR Include :
-.IR <sys/types.h> .
-Alternatively,
-.IR <sys/select.h> ,
-or
-.IR <sys/time.h> .
-.PP
-Used for time in microseconds.
-According to POSIX, it shall be a signed integer type
-capable of storing values at least in the range [-1, 1000000],
-and the implementation shall support one or more programming environments
-where the width of
-.I suseconds_t
-is no greater than the width of the type
-.IR long .
-.PP
-.IR "Conforming to" :
-POSIX.1-2001 and later.
-.PP
-.IR "See also" :
-the
-.I timeval
-structure in this page.
-.RE
 .\"------------------------------------- time_t -----------------------/
-.TP
-.I time_t
-.RS
-.IR Include :
-.I <time.h>
-or
-.IR <sys/types.h> .
-Alternatively,
-.IR <sched.h> ,
-.IR <sys/msg.h> ,
-.IR <sys/select.h> ,
-.IR <sys/sem.h> ,
-.IR <sys/shm.h> ,
-.IR <sys/stat.h> ,
-.IR <sys/time.h> ,
-or
-.IR <utime.h> .
-.PP
-Used for time in seconds.
-According to POSIX, it shall be an integer type.
-.\" In POSIX.1-2001, the type was specified as being either an integer
-.\" type or a real-floating type. However, existing implementations
-.\" used an integer type, and POSIX.1-2008 tightened the specification
-.\" to reflect this.
-.PP
-.IR Versions :
-.I <sched.h>
-defines
-.I time_t
-since POSIX.1-2008.
-.PP
-.IR "Conforming to" :
-C99 and later; POSIX.1-2001 and later.
-.PP
-.IR "See also" :
-.BR stime (2),
-.BR time (2),
-.BR ctime (3),
-.BR difftime (3)
-.RE
 .\"------------------------------------- timer_t ----------------------/
 .TP
 .I timer_t
@@ -624,34 +557,6 @@ POSIX.1-2001 and later.
 .\"------------------------------------- uintN_t ----------------------/
 .\"------------------------------------- uintptr_t --------------------/
 .\"------------------------------------- useconds_t -------------------/
-.TP
-.I useconds_t
-.RS
-.IR Include :
-.IR <sys/types.h> .
-.PP
-Used for time in microseconds.
-According to POSIX, it shall be an unsigned integer type
-capable of storing values at least in the range [0, 1000000],
-and the implementation shall support one or more programming environments
-where the width of
-.I useconds_t
-is no greater than the width of the type
-.IR long .
-.PP
-.IR Versions :
-POSIX.1-2001 defined
-.I useconds_t
-in
-.I <unistd.h>
-too.
-.PP
-.IR "Conforming to" :
-POSIX.1-2001 and later.
-.PP
-.IR "See also" :
-.BR usleep (3)
-.RE
 .\"------------------------------------- va_list ----------------------/
 .TP
 .I va_list
