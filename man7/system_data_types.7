@@ -55,93 +55,7 @@ system_data_types \- overview of system data types
 .\"------------------------------------- lldiv_t ----------------------/
 .\"------------------------------------- mode_t -----------------------/
 .\"------------------------------------- off64_t ----------------------/
-.TP
-.I off64_t
-.RS
-.IR Include :
-.IR <sys/types.h> .
-.PP
-Used for file sizes.
-It is a 64-bit signed integer type.
-.PP
-.IR "Conforming to" :
-Present in glibc.
-It is not standardized by the C language standard nor POSIX.
-.PP
-.IR Notes :
-The feature test macro
-.B _LARGEFILE64_SOURCE
-has to be defined for this type to be available.
-.PP
-.IR "See also" :
-.BR copy_file_range (2),
-.BR readahead (2),
-.BR sync_file_range (2),
-.BR lseek64 (3),
-.BR feature_test_macros (7)
-.PP
-See also the
-.\" .I loff_t
-.\" and
-.I off_t
-type in this page.
-.RE
 .\"------------------------------------- off_t ------------------------/
-.TP
-.I off_t
-.RS
-.IR Include :
-.IR <sys/types.h> .
-Alternatively,
-.IR <aio.h> ,
-.IR <fcntl.h> ,
-.IR <stdio.h> ,
-.IR <sys/mman.h> ,
-.IR <sys/stat.h.h> ,
-or
-.IR <unistd.h> .
-.PP
-Used for file sizes.
-According to POSIX,
-this shall be a signed integer type.
-.PP
-.IR Versions :
-.I <aio.h>
-and
-.I <stdio.h>
-define
-.I off_t
-since POSIX.1-2008.
-.PP
-.IR "Conforming to" :
-POSIX.1-2001 and later.
-.PP
-.IR Notes :
-On some architectures,
-the width of this type can be controlled with the feature test macro
-.BR _FILE_OFFSET_BITS .
-.PP
-.IR "See also" :
-.\" .BR fallocate (2),
-.BR lseek (2),
-.BR mmap (2),
-.\" .BR mmap2 (2),
-.BR posix_fadvise (2),
-.BR pread (2),
-.\" .BR preadv (2),
-.BR truncate (2),
-.BR fseeko (3),
-.\" .BR getdirentries (3),
-.BR lockf (3),
-.BR posix_fallocate (3),
-.BR feature_test_macros (7)
-.PP
-See also the
-.\" .I loff_t
-.\" and
-.I off64_t
-type in this page.
-.RE
 .\"------------------------------------- pid_t ------------------------/
 .\"------------------------------------- ptrdiff_t --------------------/
 .TP
@@ -257,6 +171,7 @@ type.
 POSIX.1-2001 and later.
 .PP
 .IR "See also" :
+.BR off_t (3type),
 .BR ssize_t (3type)
 .PP
 See also the
