@@ -73,7 +73,7 @@ The following headers also provide
 .IR <stropts.h> ,
 .IR <sys/ipc.h> ,
 .IR <sys/stat.h> ,
-or
+and
 .IR <unistd.h> .
 .PP
 The following headers also provide
