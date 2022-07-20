@@ -91,11 +91,8 @@ values.
 C99 and later; POSIX.1-2001 and later.
 .PP
 .IR "See also" :
+.BR size_t (3type),
 .BR ssize_t (3type)
-.PP
-See also the
-.I size_t
-type in this page.
 .RE
 .\"------------------------------------- regex_t ----------------------/
 .TP
@@ -326,104 +323,6 @@ type
 in this page.
 .RE
 .\"------------------------------------- size_t -----------------------/
-.TP
-.I size_t
-.RS
-.IR Include :
-.I <stddef.h>
-or
-.IR <sys/types.h> .
-Alternatively,
-.IR <aio.h> ,
-.IR <glob.h> ,
-.IR <grp.h> ,
-.IR <iconv.h> ,
-.IR <monetary.h> ,
-.IR <mqueue.h> ,
-.IR <ndbm.h> ,
-.IR <pwd.h> ,
-.IR <regex.h> ,
-.IR <search.h> ,
-.IR <signal.h> ,
-.IR <stdio.h> ,
-.IR <stdlib.h> ,
-.IR <string.h> ,
-.IR <strings.h> ,
-.IR <sys/mman.h> ,
-.IR <sys/msg.h> ,
-.IR <sys/sem.h> ,
-.IR <sys/shm.h> ,
-.IR <sys/socket.h> ,
-.IR <sys/uio.h> ,
-.IR <time.h> ,
-.IR <unistd.h> ,
-.IR <wchar.h> ,
-or
-.IR <wordexp.h> .
-.PP
-Used for a count of bytes.
-It is the result of the
-.I sizeof
-operator.
-According to the C language standard,
-it shall be an unsigned integer type
-capable of storing values in the range [0,
-.BR SIZE_MAX ].
-According to POSIX,
-the implementation shall support one or more programming environments
-where the width of
-.I size_t
-is no greater than the width of the type
-.IR long .
-.PP
-The length modifier for
-.I size_t
-for the
-.BR printf (3)
-and the
-.BR scanf (3)
-families of functions is
-.BR z ;
-resulting commonly in
-.B %zu
-or
-.B %zx
-for printing
-.I size_t
-values.
-.PP
-.IR Versions :
-.IR <aio.h> ,
-.IR <glob.h> ,
-.IR <grp.h> ,
-.IR <iconv.h> ,
-.IR <mqueue.h> ,
-.IR <pwd.h> ,
-.IR <signal.h> ,
-and
-.I <sys/socket.h>
-define
-.I size_t
-since POSIX.1-2008.
-.PP
-.IR "Conforming to" :
-C99 and later; POSIX.1-2001 and later.
-.PP
-.IR "See also" :
-.BR read (2),
-.BR write (2),
-.BR fread (3),
-.BR fwrite (3),
-.BR memcmp (3),
-.BR memcpy (3),
-.BR memset (3),
-.BR offsetof (3),
-.BR ssize_t (3type)
-.PP
-See also the
-.I ptrdiff_t
-type in this page.
-.RE
 .\"------------------------------------- sockaddr ---------------------/
 .\"------------------------------------- socklen_t --------------------/
 .\"------------------------------------- ssize_t ----------------------/
