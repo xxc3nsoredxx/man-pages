@@ -58,42 +58,6 @@ system_data_types \- overview of system data types
 .\"------------------------------------- off_t ------------------------/
 .\"------------------------------------- pid_t ------------------------/
 .\"------------------------------------- ptrdiff_t --------------------/
-.TP
-.I ptrdiff_t
-.RS
-.IR Include :
-.IR <stddef.h> .
-.PP
-Used for a count of elements, and array indices.
-It is the result of subtracting two pointers.
-According to the C language standard, it shall be a signed integer type
-capable of storing values in the range
-.RB [ PTRDIFF_MIN ,
-.BR PTRDIFF_MAX ].
-.PP
-The length modifier for
-.I ptrdiff_t
-for the
-.BR printf (3)
-and the
-.BR scanf (3)
-families of functions is
-.BR t ;
-resulting commonly in
-.B %td
-or
-.B %ti
-for printing
-.I ptrdiff_t
-values.
-.PP
-.IR "Conforming to" :
-C99 and later; POSIX.1-2001 and later.
-.PP
-.IR "See also" :
-.BR size_t (3type),
-.BR ssize_t (3type)
-.RE
 .\"------------------------------------- regex_t ----------------------/
 .TP
 .I regex_t
@@ -169,13 +133,12 @@ POSIX.1-2001 and later.
 .PP
 .IR "See also" :
 .BR off_t (3type),
+.BR ptrdiff_t (3type),
 .BR ssize_t (3type)
 .PP
 See also the
 .I regmatch_t
-structure and the
-.I ptrdiff_t
-type in this page.
+structure in this page.
 .RE
 .\"------------------------------------- sigevent ---------------------/
 .TP
