@@ -37,21 +37,23 @@ MAKEFLAGS += --warn-undefined-variables
 
 srcdir := .
 
-MANDIR  := $(srcdir)
-MAN0DIR := $(MANDIR)/man0
-MAN1DIR := $(MANDIR)/man1
-MAN2DIR := $(MANDIR)/man2
-MAN3DIR := $(MANDIR)/man3
-MAN4DIR := $(MANDIR)/man4
-MAN5DIR := $(MANDIR)/man5
-MAN6DIR := $(MANDIR)/man6
-MAN7DIR := $(MANDIR)/man7
-MAN8DIR := $(MANDIR)/man8
-MANEXT  := \.[0-9]\w*
+MANDIR       := $(srcdir)
+MAN0DIR      := $(MANDIR)/man0
+MAN1DIR      := $(MANDIR)/man1
+MAN2DIR      := $(MANDIR)/man2
+MAN2TYPE_DIR := $(MANDIR)/man2type
+MAN3DIR      := $(MANDIR)/man3
+MAN3TYPE_DIR := $(MANDIR)/man3type
+MAN4DIR      := $(MANDIR)/man4
+MAN5DIR      := $(MANDIR)/man5
+MAN6DIR      := $(MANDIR)/man6
+MAN7DIR      := $(MANDIR)/man7
+MAN8DIR      := $(MANDIR)/man8
+MANEXT       := \.[0-9]\w*
 
 
-MANPAGES := $(sort $(shell find $(MANDIR)/man?/ -type f | grep '$(MANEXT)'))
-MANDIRS  := $(sort $(shell find $(MANDIR)/man? -type d))
+MANPAGES := $(sort $(shell find $(MANDIR)/man*/ -type f | grep '$(MANEXT)'))
+MANDIRS  := $(sort $(shell find $(MANDIR)/man* -type d))
 
 
 .PHONY: all
@@ -89,7 +91,9 @@ help:
 	$(info	[un]install-man0	[Un]install man pages in section 0)
 	$(info	[un]install-man1	[Un]install man pages in section 1)
 	$(info	[un]install-man2	[Un]install man pages in section 2)
+	$(info	[un]install-man2type	[Un]install man pages in section 2type)
 	$(info	[un]install-man3	[Un]install man pages in section 3)
+	$(info	[un]install-man3type	[Un]install man pages in section 3type)
 	$(info	[un]install-man4	[Un]install man pages in section 4)
 	$(info	[un]install-man5	[Un]install man pages in section 5)
 	$(info	[un]install-man6	[Un]install man pages in section 6)
@@ -113,7 +117,9 @@ help:
 	$(info	installdirs-man0	Create directories needed by "install-man0")
 	$(info	installdirs-man1	Create directories needed by "install-man1")
 	$(info	installdirs-man2	Create directories needed by "install-man2")
+	$(info	installdirs-man2type	Create directories needed by "install-man2type")
 	$(info	installdirs-man3	Create directories needed by "install-man3")
+	$(info	installdirs-man3type	Create directories needed by "install-man3type")
 	$(info	installdirs-man4	Create directories needed by "install-man4")
 	$(info	installdirs-man5	Create directories needed by "install-man5")
 	$(info	installdirs-man6	Create directories needed by "install-man6")

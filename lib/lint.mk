@@ -16,7 +16,7 @@ SYSCONFDIR := $(srcdir)/etc
 _LINTDIR   := $(builddir)/lint
 
 
-LINTMAN   := $(shell find $(MANDIR)/man?/ -type f | grep '$(MANEXT)' \
+LINTMAN   := $(shell find $(MANDIR)/man*/ -type f | grep '$(MANEXT)' \
                      | xargs grep -l '^\.TH ' | sort))
 _LINTDIRS := $(patsubst $(MANDIR)/%,$(_LINTDIR)/%/.,$(MANDIRS))
 
