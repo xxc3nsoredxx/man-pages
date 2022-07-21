@@ -433,28 +433,6 @@ then the nanosecond values are exposed with names of the form
 .\"------------------------------------- suseconds_t ------------------/
 .\"------------------------------------- time_t -----------------------/
 .\"------------------------------------- timer_t ----------------------/
-.TP
-.I timer_t
-.RS
-.IR Include :
-.IR <sys/types.h> .
-Alternatively,
-.IR <time.h> .
-.PP
-Used for timer ID returned by
-.BR timer_create (2).
-According to POSIX,
-there are no defined comparison or assignment operators for this type.
-.PP
-.IR "Conforming to" :
-POSIX.1-2001 and later.
-.PP
-.IR "See also" :
-.BR timer_create (2),
-.BR timer_delete (2),
-.BR timer_getoverrun (2),
-.BR timer_settime (2)
-.RE
 .\"------------------------------------- timespec ---------------------/
 .\"------------------------------------- timeval ----------------------/
 .\"------------------------------------- uid_t ----------------------/
