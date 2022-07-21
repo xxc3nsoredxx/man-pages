@@ -37,19 +37,8 @@ MAKEFLAGS += --warn-undefined-variables
 
 srcdir := .
 
-MANDIR       := $(srcdir)
-MAN0DIR      := $(MANDIR)/man0
-MAN1DIR      := $(MANDIR)/man1
-MAN2DIR      := $(MANDIR)/man2
-MAN2TYPE_DIR := $(MANDIR)/man2type
-MAN3DIR      := $(MANDIR)/man3
-MAN3TYPE_DIR := $(MANDIR)/man3type
-MAN4DIR      := $(MANDIR)/man4
-MAN5DIR      := $(MANDIR)/man5
-MAN6DIR      := $(MANDIR)/man6
-MAN7DIR      := $(MANDIR)/man7
-MAN8DIR      := $(MANDIR)/man8
-MANEXT       := \.[0-9]\w*
+MANDIR := $(srcdir)
+MANEXT := \.[0-9]\w*
 
 
 MANPAGES := $(sort $(shell find $(MANDIR)/man*/ -type f | grep '$(MANEXT)'))
