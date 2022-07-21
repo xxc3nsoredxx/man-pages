@@ -521,37 +521,6 @@ range, it's always safe to forcibly down-cast it to the standard type.
 .BR timer_gettime (2)
 .RE
 .\"------------------------------------- timeval ----------------------/
-.TP
-.I timeval
-.RS
-.IR Include :
-.IR <sys/time.h> .
-Alternatively,
-.IR <sys/resource.h> ,
-.IR <sys/select.h> ,
-or
-.IR <utmpx.h> .
-.PP
-.EX
-struct timeval {
-    time_t      tv_sec;  /* Seconds */
-    suseconds_t tv_usec; /* Microseconds */
-};
-.EE
-.PP
-Describes times in seconds and microseconds.
-.PP
-.IR "Conforming to" :
-POSIX.1-2001 and later.
-.PP
-.IR "See also" :
-.BR gettimeofday (2),
-.BR select (2),
-.BR utimes (2),
-.BR adjtime (3),
-.BR futimes (3),
-.BR timeradd (3)
-.RE
 .\"------------------------------------- uid_t ----------------------/
 .\"------------------------------------- uintmax_t --------------------/
 .\"------------------------------------- uintN_t ----------------------/
