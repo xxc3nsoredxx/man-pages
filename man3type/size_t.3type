@@ -34,7 +34,7 @@ capable of storing values in the range
 .BR SIZE_MAX ].
 .TP
 .I ssize_t
-Used for a cout of bytes or an error indication.
+Used for a count of bytes or an error indication.
 According to POSIX,
 it shall be a signed integer type
 capable of storing values al least in the range
