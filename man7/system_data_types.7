@@ -59,87 +59,8 @@ system_data_types \- overview of system data types
 .\"------------------------------------- pid_t ------------------------/
 .\"------------------------------------- ptrdiff_t --------------------/
 .\"------------------------------------- regex_t ----------------------/
-.TP
-.I regex_t
-.RS
-.IR Include :
-.IR <regex.h> .
-.PP
-.EX
-typedef struct {
-    size_t  re_nsub; /* Number of parenthesized subexpressions */
-} regex_t;
-.EE
-.PP
-This is a structure type used in regular expression matching.
-It holds a compiled regular expression, compiled with
-.BR regcomp (3).
-.PP
-.IR "Conforming to" :
-POSIX.1-2001 and later.
-.PP
-.IR "See also" :
-.BR regex (3)
-.RE
 .\"------------------------------------- regmatch_t -------------------/
-.TP
-.I regmatch_t
-.RS
-.IR Include :
-.IR <regex.h> .
-.PP
-.EX
-typedef struct {
-    regoff_t    rm_so; /* Byte offset from start of string
-                          to start of substring */
-    regoff_t    rm_eo; /* Byte offset from start of string of
-                          the first character after the end of
-                          substring */
-} regmatch_t;
-.EE
-.PP
-This is a structure type used in regular expression matching.
-.PP
-.IR "Conforming to" :
-POSIX.1-2001 and later.
-.PP
-.IR "See also" :
-.BR regexec (3)
-.RE
 .\"------------------------------------- regoff_t ---------------------/
-.TP
-.I regoff_t
-.RS
-.IR Include :
-.IR <regex.h> .
-.PP
-According to POSIX, it shall be a signed integer type
-capable of storing the largest value that can be stored in either a
-.I ptrdiff_t
-type or a
-.I ssize_t
-type.
-.PP
-.IR Versions :
-Prior to POSIX.1-2008, the type was capable of storing
-the largest value that can be stored in either an
-.I off_t
-type or a
-.I ssize_t
-type.
-.PP
-.IR "Conforming to" :
-POSIX.1-2001 and later.
-.PP
-.IR "See also" :
-.BR off_t (3type),
-.BR ptrdiff_t (3type),
-.BR ssize_t (3type)
-.PP
-See also the
-.I regmatch_t
-structure in this page.
-.RE
 .\"------------------------------------- sigevent ---------------------/
 .TP
 .I sigevent
