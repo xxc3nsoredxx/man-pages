@@ -75,7 +75,7 @@ UTC doesn't permit double leap seconds,
 so it was limited to
 .B 60
 in C99.
-.SH CONFORMING TO
+.SH STANDARDS
 C90 and later;
 POSIX.1-2001 and later.
 .PP

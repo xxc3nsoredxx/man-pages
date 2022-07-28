@@ -40,7 +40,7 @@ or
 for printing
 .I ptrdiff_t
 values.
-.SH CONFORMING TO
+.SH STANDARDS
 C99 and later.
 POSIX.1-2001 and later.
 .SH SEE ALSO

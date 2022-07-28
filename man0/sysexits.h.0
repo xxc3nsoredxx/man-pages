@@ -118,7 +118,7 @@ Something was found in an unconfigured or misconfigured state.
 .PP
 The numerical values corresponding to the symbolical ones
 are given in parenthesis for easy reference.
-.SH CONFORMING TO
+.SH STANDARDS
 Not in POSIX.1.
 Present on the BSDs.
 The

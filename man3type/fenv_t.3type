@@ -27,7 +27,7 @@ represents the floating-point status flags collectively.
 .PP
 For further details see
 .BR fenv (3).
-.SH CONFORMING TO
+.SH STANDARDS
 C99 and later; POSIX.1-2001 and later.
 .SH SEE ALSO
 .BR fenv (3)

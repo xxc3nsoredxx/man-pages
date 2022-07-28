@@ -81,7 +81,7 @@ or
 for printing
 .RI [ u ] intmax_t
 values.
-.SH CONFORMING TO
+.SH STANDARDS
 C99 and later; POSIX.1-2001 and later.
 .SH NOTES
 The following header also provides these types:

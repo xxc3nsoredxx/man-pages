@@ -46,7 +46,7 @@ and
 define
 .I off_t
 since POSIX.1-2008.
-.SH CONFORMING TO
+.SH STANDARDS
 .PD 0
 .IR off_t :
 POSIX.1-2001 and later.

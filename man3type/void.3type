@@ -65,7 +65,7 @@ The POSIX requirement about compatibility between
 .I void *
 and function pointers was added in
 POSIX.1-2008 Technical Corrigendum 1 (2013).
-.SH CONFORMING TO
+.SH STANDARDS
 C99 and later.
 POSIX.1-2001 and later.
 .SH SEE ALSO

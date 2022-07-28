@@ -27,7 +27,7 @@ which is used by the macros
 and
 .BR va_end (3)
 to traverse the list of arguments.
-.SH CONFORMING TO
+.SH STANDARDS
 C99 and later.
 POSIX.1-2001 and later.
 .SH NOTES

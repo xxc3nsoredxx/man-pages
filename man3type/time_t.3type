@@ -70,7 +70,7 @@ POSIX.1-2001 defined
 in
 .I <unistd.h>
 too.
-.SH CONFORMING TO
+.SH STANDARDS
 .PD 0
 .IR time_t :
 C99 and later.

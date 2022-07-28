@@ -21,7 +21,7 @@ Standard C library
 .fi
 .SH DESCRIPTION
 Describes times in seconds and nanoseconds.
-.SH CONFORMING TO
+.SH STANDARDS
 C11 and later;
 POSIX.1-2001 and later.
 .SH NOTES

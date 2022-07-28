@@ -93,7 +93,7 @@ grep_syscall_def()
 
 #  man_section()  prints specific manual page sections (DESCRIPTION, SYNOPSIS,
 # ...) of all manual pages in a directory (or in a single manual page file).
-# Usage example:  .../man-pages$ man_section man2 SYNOPSIS 'CONFORMING TO';
+# Usage example:  .../man-pages$ man_section man2 SYNOPSIS 'SEE ALSO';
 
 man_section()
 {

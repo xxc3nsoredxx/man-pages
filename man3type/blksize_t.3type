@@ -20,7 +20,7 @@ Standard C library
 Used for file block sizes.
 According to POSIX,
 it shall be a signed integer type.
-.SH CONFORMING TO
+.SH STANDARDS
 POSIX.1-2001 and later.
 .SH NOTES
 The following header also provides this type:

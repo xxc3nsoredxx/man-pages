@@ -46,7 +46,7 @@ the types of
 and
 .I double_t
 are implementation-defined.
-.SH CONFORMING TO
+.SH STANDARDS
 C99 and later; POSIX.1-2001 and later.
 .SH SEE ALSO
 .BR float.h (0p),

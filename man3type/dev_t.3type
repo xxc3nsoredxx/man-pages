@@ -22,7 +22,7 @@ According to POSIX,
 it shall be an integer type.
 For further details of this type, see
 .BR makedev (3).
-.SH CONFORMING TO
+.SH STANDARDS
 POSIX.1-2001 and later.
 .SH NOTES
 The following header also provides this type:

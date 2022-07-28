@@ -20,7 +20,7 @@ Standard C library
 Used for terminal special characters.
 According to POSIX,
 it shall be an unsigned integer type.
-.SH CONFORMING TO
+.SH STANDARDS
 POSIX.1-2001 and later.
 .SH SEE ALSO
 .BR termios (3)

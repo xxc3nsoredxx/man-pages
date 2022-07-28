@@ -37,7 +37,7 @@ is limited by
 .IR <limits.h> ,
 or accessible via the call
 .IR sysconf(_SC_IOV_MAX) ).
-.SH CONFORMING TO
+.SH STANDARDS
 POSIX.1-2001 and later.
 .SH NOTES
 The following header also provides this type:

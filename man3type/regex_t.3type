@@ -56,7 +56,7 @@ capable of storing the largest value that can be stored in either an
 type or a
 .I ssize_t
 type.
-.SH CONFORMING TO
+.SH STANDARDS
 POSIX.1-2001 and later.
 .SH SEE ALSO
 .BR regex (3)

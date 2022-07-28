@@ -156,7 +156,7 @@ or
 for scanning
 .I uint8_t
 values.
-.SH CONFORMING TO
+.SH STANDARDS
 C99 and later;
 POSIX.1-2001 and later.
 .SH NOTES

@@ -27,7 +27,7 @@ Standard C library
 .SH DESCRIPTION
 For further information about this structure, see
 .BR aio (7).
-.SH CONFORMING TO
+.SH STANDARDS
 POSIX.1-2001 and later.
 .SH SEE ALSO
 .BR aio_cancel (3),

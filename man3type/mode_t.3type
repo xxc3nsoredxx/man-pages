@@ -20,7 +20,7 @@ Standard C library
 Used for some file attributes (e.g., file mode).
 According to POSIX,
 it shall be an integer type.
-.SH CONFORMING TO
+.SH STANDARDS
 POSIX.1-2001 and later.
 .SH NOTES
 The following headers also provide this type:

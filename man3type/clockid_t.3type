@@ -14,7 +14,7 @@ Standard C library
 Used for clock ID type in the clock and timer functions.
 According to POSIX,
 it shall be defined as an arithmetic type.
-.SH CONFORMING TO
+.SH STANDARDS
 POSIX.1-2001 and later.
 .SH NOTES
 The following header also provides this type:

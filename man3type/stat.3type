@@ -150,7 +150,7 @@ is defined.
 If none of the aforementioned macros are defined,
 then the nanosecond values are exposed with names of the form
 .IR st_atimensec .
-.SH CONFORMING TO
+.SH STANDARDS
 POSIX.1-2001 and later.
 .SH NOTES
 The following header also provides this type:

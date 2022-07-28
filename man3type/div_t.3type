@@ -47,7 +47,7 @@ function.
 is the type of the value returned by the
 .BR imaxdiv (3)
 function.
-.SH CONFORMING TO
+.SH STANDARDS
 C99 and later; POSIX.1-2001 and later.
 .SH SEE ALSO
 .BR div (3),

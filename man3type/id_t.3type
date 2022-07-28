@@ -47,7 +47,7 @@ it shall be an integer type that can be used to contain a
 .IR uid_t ,
 or
 .IR gid_t .
-.SH CONFORMING TO
+.SH STANDARDS
 POSIX.1-2001 and later.
 .SH NOTES
 The following headers also provide

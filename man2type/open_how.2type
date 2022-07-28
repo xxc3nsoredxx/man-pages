@@ -45,7 +45,7 @@ the kernel behaving as though that extension field was not present.
 Therefore, a user
 .I must
 zero-fill this structure on initialization.
-.SH CONFORMING TO
+.SH STANDARDS
 This type is Linux-specific.
 .SH SEE ALSO
 .BR openat2 (2)
