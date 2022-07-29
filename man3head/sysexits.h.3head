@@ -10,6 +10,9 @@
 .TH sysexits.h 3head 2022-07-29 GNU "Linux Programmer's Manual"
 .SH NAME
 sysexits.h \- exit codes for programs
+.SH LIBRARY
+Standard C library
+.RI ( libc )
 .SH SYNOPSIS
 .nf
 .B #include <sysexits.h>
