@@ -452,14 +452,14 @@ and
 .PP
 If the
 .I new_limit
-argument is a not NULL, then the
+argument is not NULL, then the
 .I rlimit
 structure to which it points is used to set new values for
 the soft and hard limits for
 .IR resource .
 If the
 .I old_limit
-argument is a not NULL, then a successful call to
+argument is not NULL, then a successful call to
 .BR prlimit ()
 places the previous soft and hard limits for
 .I resource
