@@ -99,6 +99,11 @@ condition).
 In the event of a failure,
 .I errno
 is set to indicate the error.
+.PP
+If
+.I *lineptr
+was set to NULL before the call, then the buffer should be freed by the
+user program even on failure.
 .SH ERRORS
 .TP
 .B EINVAL
