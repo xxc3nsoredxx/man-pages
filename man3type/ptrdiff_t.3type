@@ -40,7 +40,7 @@ for printing
 .I ptrdiff_t
 values.
 .SH STANDARDS
-C99 and later.
+C99 and later;
 POSIX.1-2001 and later.
 .SH SEE ALSO
 .BR size_t (3type)

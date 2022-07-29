@@ -62,12 +62,10 @@ too.
 .SH STANDARDS
 .PD 0
 .IR time_t :
-C99 and later.
+C99 and later;
 POSIX.1-2001 and later.
 .PP
-.IR suseconds_t :
-POSIX.1-2001 and later.
-.PP
+.IR suseconds_t ,
 .IR useconds_t :
 POSIX.1-2001 and later.
 .PD

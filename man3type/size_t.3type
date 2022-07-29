@@ -111,7 +111,7 @@ since POSIX.1-2008.
 .SH STANDARDS
 .PD 0
 .IR size_t :
-C99 and later.
+C99 and later;
 POSIX.1-2001 and later.
 .PP
 .IR ssize_t :

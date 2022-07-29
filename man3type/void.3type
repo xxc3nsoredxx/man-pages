@@ -66,7 +66,7 @@ The POSIX requirement about compatibility between
 and function pointers was added in
 POSIX.1-2008 Technical Corrigendum 1 (2013).
 .SH STANDARDS
-C99 and later.
+C99 and later;
 POSIX.1-2001 and later.
 .SH SEE ALSO
 .BR malloc (3),

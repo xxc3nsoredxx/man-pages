@@ -28,7 +28,7 @@ and
 .BR va_end (3)
 to traverse the list of arguments.
 .SH STANDARDS
-C99 and later.
+C99 and later;
 POSIX.1-2001 and later.
 .SH NOTES
 The following headers also provide
