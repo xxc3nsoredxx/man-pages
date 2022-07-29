@@ -26,6 +26,7 @@ Standard C library
 .B };
 .PP
 .BR typedef " /* ... */ " socklen_t;
+.BR typedef " /* ... */ " sa_family_t;
 .PP
 .fi
 .SS Internet domain sockets
@@ -83,6 +84,10 @@ structures and used to access its fields.
 .I socklen_t
 Describes the length of a socket address.
 This is an integer type of at least 32 bits.
+.TP
+.I sa_family_t
+Describes a socket's protocol family.
+This is an unsigned integer type.
 .SS Internet domain sockets
 .TP
 .I sockaddr_in
@@ -109,6 +114,12 @@ POSIX.1-2001 and later.
 .I socklen_t
 is also defined in
 .IR <netdb.h> .
+.PP
+.I sa_family_t
+is also defined in
+.I <netinet/in.h>
+and
+.IR <sys/un.h> .
 .SH SEE ALSO
 .BR accept (2),
 .BR bind (2),
