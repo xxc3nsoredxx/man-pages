@@ -41,8 +41,7 @@ compiled with
 This is a structure type used in regular expression matching.
 .TP
 .I regoff_t
-According to POSIX,
-it shall be a signed integer type
+It is a signed integer type
 capable of storing the largest value that can be stored in either an
 .I ptrdiff_t
 type or a

@@ -22,27 +22,19 @@ Standard C library
 .SH DESCRIPTION
 .I pid_t
 is a type used for storing process IDs, process group IDs, and session IDs.
-According to POSIX, it shall be a signed integer type,
-and the implementation shall support one or more programming environments
-where the width of
-.I pid_t
-is no greater than the width of the type
-.IR long .
+It is a signed integer type.
 .PP
 .I uid_t
 is a type used to hold user IDs.
-According to POSIX,
-it shall be an integer type.
+It is an integer type.
 .PP
 .I gid_t
 is a type used to hold group IDs.
-According to POSIX,
-it shall be an integer type.
+It is an integer type.
 .PP
 .I id_t
 is a type used to hold a general identifier.
-According to POSIX,
-it shall be an integer type that can be used to contain a
+It is an integer type that can be used to contain a
 .IR pid_t ,
 .IR uid_t ,
 or

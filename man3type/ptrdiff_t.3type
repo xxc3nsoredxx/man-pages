@@ -19,8 +19,7 @@ Standard C library
 .SH DESCRIPTION
 Used for a count of elements, or an array index.
 It is the result of subtracting two pointers.
-According to ISO C,
-it shall be a signed integer type
+It is a signed integer type
 capable of storing values in the range
 .RB [ PTRDIFF_MAX ,
 .BR PTRDIFF_MAX ].

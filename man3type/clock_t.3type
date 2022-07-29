@@ -22,7 +22,7 @@ Used for system time in clock ticks or
 (defined in
 .IR <time.h> ).
 According to POSIX,
-it shall be an integer type or a real-floating type.
+it is an integer type or a real-floating type.
 .SH STANDARDS
 C99 and later; POSIX.1-2001 and later.
 .SH NOTES

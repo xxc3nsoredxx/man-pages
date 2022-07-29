@@ -29,8 +29,7 @@ Standard C library
 .SH DESCRIPTION
 .I off_t
 is used for describing file sizes.
-According to POSIX,
-it shall be a signed integer type.
+It is a signed integer type.
 .PP
 .I off64_t
 is a 64-bit version of the type,

@@ -68,8 +68,7 @@ signed integer types
 of a fixed width of exactly N bits,
 .I N
 being the value specified in its type name.
-According to the C language standard, they shall be
-capable of storing values in the range
+They are be capable of storing values in the range
 .RB [ INT \fIN\fP _MIN ,
 .BR INT \fIN\fP _MAX ],
 substituting
@@ -81,8 +80,8 @@ are
 unsigned integer types
 of a fixed width of exactly N bits,
 N being the value specified in its type name.
-According to the C language standard, they shall be
-capable of storing values in the range [0,
+They are capable of storing values in the range
+.RB [ 0 ,
 .BR UINT \fIN\fP _MAX ],
 substituting
 .I N

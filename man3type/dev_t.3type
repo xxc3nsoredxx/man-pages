@@ -18,8 +18,7 @@ Standard C library
 .fi
 .SH DESCRIPTION
 Used for device IDs.
-According to POSIX,
-it shall be an integer type.
+It is an integer type.
 For further details of this type, see
 .BR makedev (3).
 .SH STANDARDS

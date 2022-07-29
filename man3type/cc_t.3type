@@ -18,8 +18,7 @@ Standard C library
 .fi
 .SH DESCRIPTION
 Used for terminal special characters.
-According to POSIX,
-it shall be an unsigned integer type.
+It is an unsigned integer type.
 .SH STANDARDS
 POSIX.1-2001 and later.
 .SH SEE ALSO

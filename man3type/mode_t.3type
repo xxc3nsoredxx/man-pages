@@ -18,8 +18,7 @@ Standard C library
 .fi
 .SH DESCRIPTION
 Used for some file attributes (e.g., file mode).
-According to POSIX,
-it shall be an integer type.
+It is an integer type.
 .SH STANDARDS
 POSIX.1-2001 and later.
 .SH NOTES

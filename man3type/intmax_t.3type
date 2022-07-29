@@ -32,8 +32,7 @@ Standard C library
 is a signed integer type
 capable of representing any value of any basic signed integer type
 supported by the implementation.
-According to the C language standard, it shall be
-capable of storing values in the range
+It is capable of storing values in the range
 .RB [ INTMAX_MIN ,
 .BR INTMAX_MAX ].
 .PP
@@ -41,8 +40,8 @@ capable of storing values in the range
 is an unsigned integer type
 capable of representing any value of any basic unsigned integer type
 supported by the implementation.
-According to the C language standard, it shall be
-capable of storing values in the range [0,
+It is capable of storing values in the range
+.RB [ 0 ,
 .BR UINTMAX_MAX ].
 .PP
 The macros

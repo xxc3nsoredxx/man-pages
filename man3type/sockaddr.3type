@@ -84,7 +84,7 @@ structures and used to access its fields.
 .I socklen_t
 Describes the length of a socket address.
 According to POSIX,
-this shall be an integer type of at least 32 bits.
+this is an integer type of at least 32 bits.
 .SS Internet domain sockets
 .TP
 .I sockaddr_in

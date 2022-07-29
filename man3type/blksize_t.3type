@@ -18,8 +18,7 @@ Standard C library
 .fi
 .SH DESCRIPTION
 Used for file block sizes.
-According to POSIX,
-it shall be a signed integer type.
+It is a signed integer type.
 .SH STANDARDS
 POSIX.1-2001 and later.
 .SH NOTES

@@ -30,8 +30,7 @@ is a signed integer type
 such that any valid
 .RI ( "void *" )
 value can be converted to this type and then converted back.
-According to the C language standard, it shall be
-capable of storing values in the range
+It is capable of storing values in the range
 .RB [ INTPTR_MIN ,
 .BR INTPTR_MAX ].
 .PP
@@ -40,8 +39,7 @@ is an unsigned integer type
 such that any valid
 .RI ( "void *" )
 value can be converted to this type and then converted back.
-According to the C language standard, it shall be
-capable of storing values in the range
+It is capable of storing values in the range
 .RB [ 0 ,
 .BR INTPTR_MAX ].
 .PP
