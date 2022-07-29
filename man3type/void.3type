@@ -12,8 +12,7 @@ void \- abstract type
 .B void *
 .fi
 .SH DESCRIPTION
-According to ISO C,
-a pointer to any object type may be converted to a pointer to
+A pointer to any object type may be converted to a pointer to
 .I void
 and back.
 POSIX further requires that any pointer,

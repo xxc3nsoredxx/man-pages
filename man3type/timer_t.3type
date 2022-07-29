@@ -19,8 +19,6 @@ Standard C library
 .SH DESCRIPTION
 Used for timer ID returned by
 .BR timer_create (2).
-According to POSIX,
-there are no defined comparison or assignment operators for this type.
 .SH STANDARDS
 POSIX.1-2001 and later.
 .SH NOTES

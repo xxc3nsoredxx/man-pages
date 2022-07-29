@@ -72,8 +72,7 @@ Standard C library
 Describes a socket address.
 .TP
 .I sockaddr_storage
-According to POSIX,
-a structure large enough to accomodate all supported
+A structure at least as large as any other
 .IR sockaddr_ *
 address structures.
 It's aligned so that a pointer to it can be cast
@@ -83,21 +82,20 @@ structures and used to access its fields.
 .TP
 .I socklen_t
 Describes the length of a socket address.
-According to POSIX,
-this is an integer type of at least 32 bits.
+This is an integer type of at least 32 bits.
 .SS Internet domain sockets
 .TP
 .I sockaddr_in
 Describes an IPv4 Internet domain socket address.
-According to POSIX, the
+The
 .I sin_port
 and
 .I sin_addr
-members shall be in network byte order.
+members are stored in network byte order.
 .TP
 .I sockaddr_in6
 Describes an IPv6 Internet domain socket address.
-According to POSIX, the
+The
 .I sin6_addr.s6_addr
 array is used to contain a 128-bit IPv6 address,
 stored in network byte order.
