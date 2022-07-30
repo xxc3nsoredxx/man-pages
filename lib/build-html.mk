@@ -10,6 +10,7 @@ MAKEFILE_BUILD_HTML_INCLUDED := 1
 
 include $(srcdir)/lib/build.mk
 include $(srcdir)/lib/cmd.mk
+include $(srcdir)/lib/src.mk
 
 
 htmlext  := .html

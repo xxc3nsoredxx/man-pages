@@ -41,17 +41,6 @@ srcdir := .
 include $(srcdir)/lib/cmd.mk
 
 
-MANDIR := $(srcdir)
-MANEXT := \.[0-9]\w*
-
-
-MANPAGES := $(shell $(FIND) $(MANDIR)/man*/ -type f \
-		| $(GREP) '$(MANEXT)' \
-		| $(SORT))
-MANDIRS  := $(shell $(FIND) $(MANDIR)/man* -type d \
-		| $(SORT))
-
-
 .PHONY: all
 all: build
 	@:

@@ -11,6 +11,7 @@ MAKEFILE_BUILD_SRC_INCLUDED := 1
 include $(srcdir)/lib/build.mk
 include $(srcdir)/lib/cmd.mk
 include $(srcdir)/lib/lint.mk
+include $(srcdir)/lib/src.mk
 
 
 DEFAULT_CPPFLAGS :=

@@ -10,6 +10,7 @@ MAKEFILE_LINT_INCLUDED := 1
 
 include $(srcdir)/lib/build.mk
 include $(srcdir)/lib/cmd.mk
+include $(srcdir)/lib/src.mk
 
 
 SYSCONFDIR := $(srcdir)/etc

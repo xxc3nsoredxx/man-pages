@@ -9,6 +9,7 @@ MAKEFILE_INSTALL_MAN_INCLUDED := 1
 
 
 include $(srcdir)/lib/install.mk
+include $(srcdir)/lib/src.mk
 
 
 mandir      := $(datarootdir)/man

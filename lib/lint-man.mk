@@ -10,6 +10,7 @@ MAKEFILE_LINT_MAN_INCLUDED := 1
 
 include $(srcdir)/lib/cmd.mk
 include $(srcdir)/lib/lint.mk
+include $(srcdir)/lib/src.mk
 
 
 TMACDIR := $(SYSCONFDIR)/groff/tmac

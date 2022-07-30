@@ -8,6 +8,9 @@ ifndef MAKEFILE_BUILD_INCLUDED
 MAKEFILE_BUILD_INCLUDED := 1
 
 
+include $(srcdir)/lib/src.mk
+
+
 builddir := tmp
 
 _SRCDIR := $(builddir)/src
