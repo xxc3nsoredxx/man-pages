@@ -21,7 +21,8 @@ $(DISTFILE): $(shell git ls-files 2>/dev/null) | $$(@D)/.
 	$(info TAR	$@)
 	tar cf $@ -T /dev/null
 	git ls-files \
-	| xargs tar rf $@
+	| sed 's,^,./,' \
+	| xargs tar rf $@ -C $(srcdir) --transform 's,^\.,$(DISTNAME),'
 
 $(DISTFILE).gz: %.gz: % | $$(@D)/.
 	$(info GZIP	$@)
