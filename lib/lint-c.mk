@@ -9,6 +9,7 @@ MAKEFILE_LINT_C_INCLUDED := 1
 
 
 include $(srcdir)/lib/build-src.mk
+include $(srcdir)/lib/cmd.mk
 include $(srcdir)/lib/lint.mk
 
 
@@ -55,7 +56,7 @@ $(_LINT_c_checkpatch): %.lint-c.checkpatch.touch: %.c
 $(_LINT_c_clang-tidy): %.lint-c.clang-tidy.touch: %.c
 	$(info LINT (clang-tidy)	$@)
 	$(CLANG-TIDY) $(CLANG-TIDYFLAGS) $< -- $(CPPFLAGS) $(CFLAGS) 2>&1 \
-	| sed '/generated\.$$/d'
+	| $(SED) '/generated\.$$/d'
 	touch $@
 
 $(_LINT_c_cpplint): %.lint-c.cpplint.touch: %.c
@@ -66,9 +67,9 @@ $(_LINT_c_cpplint): %.lint-c.cpplint.touch: %.c
 $(_LINT_c_iwyu): %.lint-c.iwyu.touch: %.c
 	$(info LINT (iwyu)	$@)
 	$(IWYU) $(IWYUFLAGS) $(CPPFLAGS) $(CFLAGS) $< 2>&1 \
-	| tac \
-	| sed '/correct/{N;d}' \
-	| tac
+	| $(TAC) \
+	| $(SED) '/correct/{N;d}' \
+	| $(TAC)
 	touch $@
 
 

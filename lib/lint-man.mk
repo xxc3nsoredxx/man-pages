@@ -8,13 +8,14 @@ ifndef MAKEFILE_LINT_MAN_INCLUDED
 MAKEFILE_LINT_MAN_INCLUDED := 1
 
 
+include $(srcdir)/lib/cmd.mk
 include $(srcdir)/lib/lint.mk
 
 
 TMACDIR := $(SYSCONFDIR)/groff/tmac
 
 
-TMACFILES            := $(sort $(shell find $(TMACDIR) -not -type d))
+TMACFILES            := $(shell $(FIND) $(TMACDIR) -not -type d | $(SORT))
 TMACNAMES            := $(basename $(notdir $(TMACFILES)))
 GROFF_CHECKSTYLE_LVL := 3
 DEFAULT_GROFFFLAGS   := -man

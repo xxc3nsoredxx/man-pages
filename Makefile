@@ -37,12 +37,19 @@ MAKEFLAGS += --warn-undefined-variables
 
 srcdir := .
 
+
+include $(srcdir)/lib/cmd.mk
+
+
 MANDIR := $(srcdir)
 MANEXT := \.[0-9]\w*
 
 
-MANPAGES := $(sort $(shell find $(MANDIR)/man*/ -type f | grep '$(MANEXT)'))
-MANDIRS  := $(sort $(shell find $(MANDIR)/man* -type d))
+MANPAGES := $(shell $(FIND) $(MANDIR)/man*/ -type f \
+		| $(GREP) '$(MANEXT)' \
+		| $(SORT))
+MANDIRS  := $(shell $(FIND) $(MANDIR)/man* -type d \
+		| $(SORT))
 
 
 .PHONY: all

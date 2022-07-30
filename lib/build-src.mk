@@ -9,6 +9,7 @@ MAKEFILE_BUILD_SRC_INCLUDED := 1
 
 
 include $(srcdir)/lib/build.mk
+include $(srcdir)/lib/cmd.mk
 include $(srcdir)/lib/lint.mk
 
 
@@ -47,14 +48,15 @@ MAN := man
 
 _SRCPAGEDIRS   := $(patsubst $(MANDIR)/%,$(_SRCDIR)/%.d,$(LINTMAN))
 
-_UNITS_src_src := $(sort $(patsubst $(MANDIR)/%,$(_SRCDIR)/%,$(shell \
-		find $(MANDIR)/man*/ -type f \
-		| grep '$(MANEXT)$$' \
-		| xargs grep -l '^\.TH ' \
+_UNITS_src_src := $(patsubst $(MANDIR)/%,$(_SRCDIR)/%,$(shell \
+		$(FIND) $(MANDIR)/man*/ -type f \
+		| $(GREP) '$(MANEXT)$$' \
+		| $(XARGS) $(GREP) -l '^\.TH ' \
 		| while read m; do \
-			<$$m \
-			sed -n "s,^\... SRC BEGIN (\(.*.[ch]\))$$,$$m.d/\1,p"; \
-		done)))
+		    <$$m \
+		    $(SED) -n "s,^\... SRC BEGIN (\(.*.[ch]\))$$,$$m.d/\1,p"; \
+		done \
+		| $(SORT)))
 _UNITS_src_h   := $(filter %.h,$(_UNITS_src_src))
 _UNITS_src_c   := $(filter %.c,$(_UNITS_src_src))
 _UNITS_src_o   := $(patsubst %.c,%.o,$(_UNITS_src_c))
@@ -71,13 +73,13 @@ $(_UNITS_src_c):   $$(filter $$(@D)/%.h,$(_UNITS_src_h))
 $(_UNITS_src_src):
 	$(info SED	$@)
 	<$< \
-	sed -n \
+	$(SED) -n \
 		-e '/^\.TH/,/^\.SH/{/^\.SH/!p}' \
 		-e '/^\.SH EXAMPLES/p' \
 		-e "/^\... SRC BEGIN ($(@F))$$/,/^\... SRC END$$/p" \
 	| $(MAN) -P cat -l - \
-	| sed '/^[^ ]/d' \
-	| sed 's/^       //' \
+	| $(SED) '/^[^ ]/d' \
+	| $(SED) 's/^       //' \
 	>$@
 
 $(_UNITS_src_o): $(_SRCDIR)/%.o: $(_SRCDIR)/%.c

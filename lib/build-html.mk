@@ -9,6 +9,7 @@ MAKEFILE_BUILD_HTML_INCLUDED := 1
 
 
 include $(srcdir)/lib/build.mk
+include $(srcdir)/lib/cmd.mk
 
 
 htmlext  := .html
@@ -30,7 +31,8 @@ _HTMLDIRS  := $(patsubst $(MANDIR)/%,$(_HTMLDIR)/%/.,$(MANDIRS))
 # The sed removes the lines "Content-type: text/html\n\n"
 $(_HTMLPAGES): $(_HTMLDIR)/%.html: $(MANDIR)/% | $$(@D)/.
 	$(info MAN2HTML	$@)
-	$(MAN2HTML) $(MAN2HTMLFLAGS) $< | sed -e 1,2d >$@
+	$(MAN2HTML) $(MAN2HTMLFLAGS) $< \
+	| $(SED) -e 1,2d >$@
 
 $(_HTMLDIRS): %/.: | $$(dir %). $(_HTMLDIR)/.
 

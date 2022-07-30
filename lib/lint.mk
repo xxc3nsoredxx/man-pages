@@ -9,6 +9,7 @@ MAKEFILE_LINT_INCLUDED := 1
 
 
 include $(srcdir)/lib/build.mk
+include $(srcdir)/lib/cmd.mk
 
 
 SYSCONFDIR := $(srcdir)/etc
@@ -16,8 +17,10 @@ SYSCONFDIR := $(srcdir)/etc
 _LINTDIR   := $(builddir)/lint
 
 
-LINTMAN   := $(shell find $(MANDIR)/man*/ -type f | grep '$(MANEXT)' \
-                     | xargs grep -l '^\.TH ' | sort))
+LINTMAN   := $(shell $(FIND) $(MANDIR)/man*/ -type f \
+		| $(GREP) '$(MANEXT)' \
+		| $(XARGS) $(GREP) -l '^\.TH ' \
+		| $(SORT))
 _LINTDIRS := $(patsubst $(MANDIR)/%,$(_LINTDIR)/%/.,$(MANDIRS))
 
 

@@ -9,28 +9,29 @@ MAKEFILE_DIST_INCLUDED := 1
 
 
 include $(srcdir)/lib/build.mk
+include $(srcdir)/lib/cmd.mk
 
 
-DISTNAME    := $(shell git describe 2>/dev/null)
+DISTNAME    := $(shell $(GIT) describe 2>/dev/null)
 DISTFILE    := $(builddir)/$(DISTNAME).tar
 compression := gz xz
 dist        := $(foreach x,$(compression),dist-$(x))
 
 
-$(DISTFILE): $(shell git ls-files 2>/dev/null) | $$(@D)/.
+$(DISTFILE): $(shell $(GIT) ls-files 2>/dev/null) | $$(@D)/.
 	$(info TAR	$@)
-	tar cf $@ -T /dev/null
-	git ls-files \
-	| sed 's,^,./,' \
-	| xargs tar rf $@ -C $(srcdir) --transform 's,^\.,$(DISTNAME),'
+	$(TAR) cf $@ -T /dev/null
+	$(GIT) ls-files \
+	| $(SED) 's,^,./,' \
+	| $(XARGS) $(TAR) rf $@ -C $(srcdir) --transform 's,^\.,$(DISTNAME),'
 
 $(DISTFILE).gz: %.gz: % | $$(@D)/.
 	$(info GZIP	$@)
-	gzip -knf $<
+	$(GZIP) -knf $<
 
 $(DISTFILE).xz: %.xz: % | $$(@D)/.
 	$(info XZ	$@)
-	xz -kf $<
+	$(XZ) -kf $<
 
 
 .PHONY: dist-tar
