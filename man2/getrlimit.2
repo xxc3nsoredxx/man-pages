@@ -247,7 +247,7 @@ against this limit according to the formula:
 .IP
 .EX
         bytes = attr.mq_maxmsg * sizeof(struct msg_msg) +
-                min(attr.mq_maxmsg, MQ_PRIO_MAX) *
+                MIN(attr.mq_maxmsg, MQ_PRIO_MAX) *
                       sizeof(struct posix_msg_tree_node)+
                                 /* For overhead */
                 attr.mq_maxmsg * attr.mq_msgsize;
