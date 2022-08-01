@@ -96,15 +96,18 @@ run from the Smart Array's option ROM at boot time.
 The device naming scheme is as follows:
 .PP
 Major numbers:
-.PP
-    104     cciss0
-    105     cciss1
-    106     cciss2
-    105     cciss3
-    108     cciss4
-    109     cciss5
-    110     cciss6
-    111     cciss7
+.IP
+.TS
+r r.
+104	cciss0
+105	cciss1
+106	cciss2
+105	cciss3
+108	cciss4
+109	cciss5
+110	cciss6
+111	cciss7
+.TE
 .PP
 Minor numbers:
 .PP
@@ -277,8 +280,8 @@ This may be done via the
 .I /proc
 filesystem.
 For example:
-.PP
-    echo "rescan" > /proc/scsi/cciss0/1
+.IP
+echo "rescan" > /proc/scsi/cciss0/1
 .PP
 This causes the driver to:
 .RS
