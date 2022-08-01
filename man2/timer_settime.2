@@ -42,16 +42,8 @@ structure that specifies the new initial value and
 the new interval for the timer.
 The
 .I itimerspec
-structure is defined as follows:
-.PP
-.in +4n
-.EX
-struct itimerspec {
-    struct timespec it_interval;  /* Timer interval */
-    struct timespec it_value;     /* Initial expiration */
-};
-.EE
-.in
+structure is described in
+.BR itimerspec (3type).
 .PP
 Each of the substructures of the
 .I itimerspec

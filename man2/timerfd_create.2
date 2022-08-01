@@ -140,19 +140,8 @@ The
 argument specifies the initial expiration and interval for the timer.
 The
 .I itimerspec
-structure used for this argument contains two fields,
-each of which is in turn a
-.BR timespec (3)
-structure:
-.PP
-.in +4n
-.EX
-struct itimerspec {
-    struct timespec it_interval;  /* Interval for periodic timer */
-    struct timespec it_value;     /* Initial expiration */
-};
-.EE
-.in
+structure used for this argument is described in
+.BR itimerspec (3type).
 .PP
 .I new_value.it_value
 specifies the initial expiration of the timer,
