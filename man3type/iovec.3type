@@ -16,7 +16,7 @@ Standard C library
 .B struct iovec {
 .BR "    void   *iov_base;" "  /* Starting address */"
 .BR "    size_t  iov_len;" "   /* Size of the memory pointed to by "\c
-.IR iov_base ". */
+.IR iov_base ". */"
 .B };
 .fi
 .SH DESCRIPTION

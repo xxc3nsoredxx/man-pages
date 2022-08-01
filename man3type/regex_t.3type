@@ -20,9 +20,9 @@ Standard C library
 .B } regex_t;
 .PP
 .B typedef struct {
-.BR "    regoff_t  rm_so;" "    /* Byte offset from start of string
+.BR "    regoff_t  rm_so;" "    /* Byte offset from start of string"
                            to start of substring */
-.BR "    regoff_t  rm_eo;" "    /* Byte offset from start of string of
+.BR "    regoff_t  rm_eo;" "    /* Byte offset from start of string of"
                            the first character after the end of
                            substring */
 .B } regmatch_t;
