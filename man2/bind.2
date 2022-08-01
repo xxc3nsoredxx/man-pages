@@ -265,10 +265,10 @@ main(void)
 
     /* Code to deal with incoming connection(s)... */
 
-    if (close(sfd) == -1)
+    if (close(sfd) == \-1)
         handle_error("close");
 
-    if (unlink(MY_SOCK_PATH) == -1)
+    if (unlink(MY_SOCK_PATH) == \-1)
         handle_error("unlink");
 }
 .EE

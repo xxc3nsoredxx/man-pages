@@ -940,13 +940,13 @@ move_mount(int from_dirfd, const char *from_pathname,
 }
 
 static const struct option longopts[] = {
-    {"map\-mount",       required_argument,  NULL,  'a'},
-    {"recursive",       no_argument,        NULL,  'b'},
-    {"read\-only",       no_argument,        NULL,  'c'},
-    {"block\-setid",     no_argument,        NULL,  'd'},
-    {"block\-devices",   no_argument,        NULL,  'e'},
-    {"block\-exec",      no_argument,        NULL,  'f'},
-    {"no\-access\-time",  no_argument,        NULL,  'g'},
+    {"map\-mount",       required_argument,  NULL,  \(aqa\(aq},
+    {"recursive",       no_argument,        NULL,  \(aqb\(aq},
+    {"read\-only",       no_argument,        NULL,  \(aqc\(aq},
+    {"block\-setid",     no_argument,        NULL,  \(aqd\(aq},
+    {"block\-devices",   no_argument,        NULL,  \(aqe\(aq},
+    {"block\-exec",      no_argument,        NULL,  \(aqf\(aq},
+    {"no\-access\-time",  no_argument,        NULL,  \(aqg\(aq},
     { NULL,             0,                  NULL,   0 },
 };
 
@@ -968,27 +968,27 @@ main(int argc, char *argv[])
     while ((ret = getopt_long_only(argc, argv, "",
                                    longopts, &index)) != \-1) {
         switch (ret) {
-        case 'a':
+        case \(aqa\(aq:
             fd_userns = open(optarg, O_RDONLY | O_CLOEXEC);
             if (fd_userns == \-1)
                 exit_log("%m \- Failed top open %s\en", optarg);
             break;
-        case 'b':
+        case \(aqb\(aq:
             recursive = true;
             break;
-        case 'c':
+        case \(aqc\(aq:
             attr\->attr_set |= MOUNT_ATTR_RDONLY;
             break;
-        case 'd':
+        case \(aqd\(aq:
             attr\->attr_set |= MOUNT_ATTR_NOSUID;
             break;
-        case 'e':
+        case \(aqe\(aq:
             attr\->attr_set |= MOUNT_ATTR_NODEV;
             break;
-        case 'f':
+        case \(aqf\(aq:
             attr\->attr_set |= MOUNT_ATTR_NOEXEC;
             break;
-        case 'g':
+        case \(aqg\(aq:
             attr\->attr_set |= MOUNT_ATTR_NOATIME;
             attr\->attr_clr |= MOUNT_ATTR__ATIME;
             break;

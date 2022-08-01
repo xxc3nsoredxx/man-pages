@@ -1546,7 +1546,7 @@ sigchldHandler(int sig)
 {
     char msg[] = "\etS: target has terminated; bye\en";
 
-    write(STDOUT_FILENO, msg, sizeof(msg) - 1);
+    write(STDOUT_FILENO, msg, sizeof(msg) \- 1);
     _exit(EXIT_SUCCESS);
 }
 
@@ -1878,9 +1878,9 @@ handleNotifications(int notifyFd)
            location. */
 
         if (!pathOK) {
-            resp->error = -EINVAL;
+            resp\->error = \-EINVAL;
             printf("\etS: spoofing error for invalid pathname (%s)\en",
-                   strerror(-resp->error));
+                   strerror(\-resp\->error));
         } else if (strncmp(path, "/tmp/", strlen("/tmp/")) == 0) {
             printf("\etS: executing: mkdir(\e"%s\e", %#llo)\en",
                    path, req\->data.args[1]);
