@@ -1,3 +1,4 @@
+--ignore AVOID_EXTERNS
 --ignore BLOCK_COMMENT_STYLE
 --ignore BRACES
 --ignore CAMELCASE
