@@ -242,26 +242,32 @@ This limit is enforced for
 .BR mq_open (3).
 Each message queue that the user creates counts (until it is removed)
 against this limit according to the formula:
+.RS 4
 .IP
-    Since Linux 3.5:
+Since Linux 3.5:
 .IP
+.in +4n
 .EX
-        bytes = attr.mq_maxmsg * sizeof(struct msg_msg) +
-                MIN(attr.mq_maxmsg, MQ_PRIO_MAX) *
-                      sizeof(struct posix_msg_tree_node)+
-                                /* For overhead */
-                attr.mq_maxmsg * attr.mq_msgsize;
-                                /* For message data */
+bytes = attr.mq_maxmsg * sizeof(struct msg_msg) +
+        MIN(attr.mq_maxmsg, MQ_PRIO_MAX) *
+              sizeof(struct posix_msg_tree_node)+
+                        /* For overhead */
+        attr.mq_maxmsg * attr.mq_msgsize;
+                        /* For message data */
 .EE
+.in
 .IP
-    Linux 3.4 and earlier:
+Linux 3.4 and earlier:
 .IP
+.in +4n
 .EX
-        bytes = attr.mq_maxmsg * sizeof(struct msg_msg *) +
-                                /* For overhead */
-                attr.mq_maxmsg * attr.mq_msgsize;
-                                /* For message data */
+bytes = attr.mq_maxmsg * sizeof(struct msg_msg *) +
+                        /* For overhead */
+        attr.mq_maxmsg * attr.mq_msgsize;
+                        /* For message data */
 .EE
+.in
+.RE
 .IP
 where
 .I attr
