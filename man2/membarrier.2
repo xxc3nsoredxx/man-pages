@@ -219,10 +219,15 @@ and
 .IR smp_mb() .
 The pair ordering is detailed as (O: ordered, X: not ordered):
 .PP
-                       barrier()  smp_mb()  membarrier()
-       barrier()          X          X          O
-       smp_mb()           X          O          O
-       membarrier()       O          O          O
+.RS
+.TS
+l c c c.
+\&	barrier()	smp_mb()	membarrier()
+barrier()	X	X	O
+smp_mb()	X	O	O
+membarrier()	O	O	O
+.TE
+.RE
 .SH RETURN VALUE
 On success, the
 .B MEMBARRIER_CMD_QUERY
