@@ -2006,39 +2006,44 @@ configuration option (since Linux 4.6).
 The "VmFlags" line (available since Linux 3.8)
 represents the kernel flags associated with the virtual memory area,
 encoded using the following two-letter codes:
+.RS
 .IP
-    rd  - readable
-    wr  - writable
-    ex  - executable
-    sh  - shared
-    mr  - may read
-    mw  - may write
-    me  - may execute
-    ms  - may share
-    gd  - stack segment grows down
-    pf  - pure PFN range
-    dw  - disabled write to the mapped file
-    lo  - pages are locked in memory
-    io  - memory mapped I/O area
-    sr  - sequential read advise provided
-    rr  - random read advise provided
-    dc  - do not copy area on fork
-    de  - do not expand area on remapping
-    ac  - area is accountable
-    nr  - swap space is not reserved for the area
-    ht  - area uses huge tlb pages
-    sf  - perform synchronous page faults (since Linux 4.15)
-    nl  - non-linear mapping (removed in Linux 4.0)
-    ar  - architecture specific flag
-    wf  - wipe on fork (since Linux 4.14)
-    dd  - do not include area into core dump
-    sd  - soft-dirty flag (since Linux 3.13)
-    mm  - mixed map area
-    hg  - huge page advise flag
-    nh  - no-huge page advise flag
-    mg  - mergeable advise flag
-    um  - userfaultfd missing pages tracking (since Linux 4.3)
-    uw  - userfaultfd wprotect pages tracking (since Linux 4.3)
+.TS
+l l l.
+rd	-	readable
+wr	-	writable
+ex	-	executable
+sh	-	shared
+mr	-	may read
+mw	-	may write
+me	-	may execute
+ms	-	may share
+gd	-	stack segment grows down
+pf	-	pure PFN range
+dw	-	disabled write to the mapped file
+lo	-	pages are locked in memory
+io	-	memory mapped I/O area
+sr	-	sequential read advise provided
+rr	-	random read advise provided
+dc	-	do not copy area on fork
+de	-	do not expand area on remapping
+ac	-	area is accountable
+nr	-	swap space is not reserved for the area
+ht	-	area uses huge tlb pages
+sf	-	perform synchronous page faults (since Linux 4.15)
+nl	-	non-linear mapping (removed in Linux 4.0)
+ar	-	architecture specific flag
+wf	-	wipe on fork (since Linux 4.14)
+dd	-	do not include area into core dump
+sd	-	soft-dirty flag (since Linux 3.13)
+mm	-	mixed map area
+hg	-	huge page advise flag
+nh	-	no-huge page advise flag
+mg	-	mergeable advise flag
+um	-	userfaultfd missing pages tracking (since Linux 4.3)
+uw	-	userfaultfd wprotect pages tracking (since Linux 4.3)
+.TE
+.RE
 .IP
 The
 .IR /proc/ pid /smaps
@@ -3328,36 +3333,41 @@ This file contains 64-bit masks corresponding to each physical page frame;
 it is indexed by page frame number (see the discussion of
 .IR /proc/ pid /pagemap ).
 The bits are as follows:
+.RS
 .IP
-     0 - KPF_LOCKED
-     1 - KPF_ERROR
-     2 - KPF_REFERENCED
-     3 - KPF_UPTODATE
-     4 - KPF_DIRTY
-     5 - KPF_LRU
-     6 - KPF_ACTIVE
-     7 - KPF_SLAB
-     8 - KPF_WRITEBACK
-     9 - KPF_RECLAIM
-    10 - KPF_BUDDY
-    11 - KPF_MMAP           (since Linux 2.6.31)
-    12 - KPF_ANON           (since Linux 2.6.31)
-    13 - KPF_SWAPCACHE      (since Linux 2.6.31)
-    14 - KPF_SWAPBACKED     (since Linux 2.6.31)
-    15 - KPF_COMPOUND_HEAD  (since Linux 2.6.31)
-    16 - KPF_COMPOUND_TAIL  (since Linux 2.6.31)
-    17 - KPF_HUGE           (since Linux 2.6.31)
-    18 - KPF_UNEVICTABLE    (since Linux 2.6.31)
-    19 - KPF_HWPOISON       (since Linux 2.6.31)
-    20 - KPF_NOPAGE         (since Linux 2.6.31)
-    21 - KPF_KSM            (since Linux 2.6.32)
-    22 - KPF_THP            (since Linux 3.4)
-    23 - KPF_BALLOON        (since Linux 3.18)
+.TS
+r l l l.
+0	-	KPF_LOCKED
+1	-	KPF_ERROR
+2	-	KPF_REFERENCED
+3	-	KPF_UPTODATE
+4	-	KPF_DIRTY
+5	-	KPF_LRU
+6	-	KPF_ACTIVE
+7	-	KPF_SLAB
+8	-	KPF_WRITEBACK
+9	-	KPF_RECLAIM
+10	-	KPF_BUDDY
+11	-	KPF_MMAP	(since Linux 2.6.31)
+12	-	KPF_ANON	(since Linux 2.6.31)
+13	-	KPF_SWAPCACHE	(since Linux 2.6.31)
+14	-	KPF_SWAPBACKED	(since Linux 2.6.31)
+15	-	KPF_COMPOUND_HEAD	(since Linux 2.6.31)
+16	-	KPF_COMPOUND_TAIL	(since Linux 2.6.31)
+17	-	KPF_HUGE	(since Linux 2.6.31)
+18	-	KPF_UNEVICTABLE	(since Linux 2.6.31)
+19	-	KPF_HWPOISON	(since Linux 2.6.31)
+20	-	KPF_NOPAGE	(since Linux 2.6.31)
+21	-	KPF_KSM	(since Linux 2.6.32)
+22	-	KPF_THP	(since Linux 3.4)
+23	-	KPF_BALLOON	(since Linux 3.18)
 .\" KPF_BALLOON: commit 09316c09dde33aae14f34489d9e3d243ec0d5938
-    24 - KPF_ZERO_PAGE      (since Linux 4.0)
+24	-	KPF_ZERO_PAGE	(since Linux 4.0)
 .\" KPF_ZERO_PAGE: commit 56873f43abdcd574b25105867a990f067747b2f4
-    25 - KPF_IDLE           (since Linux 4.3)
+25	-	KPF_IDLE	(since Linux 4.3)
 .\" KPF_IDLE: commit f074a8f49eb87cde95ac9d040ad5e7ea4f029738
+.TE
+.RE
 .IP
 For further details on the meanings of these bits,
 see the kernel source file
