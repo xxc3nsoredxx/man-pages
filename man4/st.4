@@ -712,57 +712,61 @@ and
 reports generic (device independent) status information.
 The header file defines macros for testing these status bits:
 .RS
-.HP 4
-\fBGMT_EOF\fP(\fIx\fP):
+.TP
+\fBGMT_EOF\fP(\fIx\fP)
 The tape is positioned just after a filemark
 (always false after an
 .B MTSEEK
 operation).
-.HP
-\fBGMT_BOT\fP(\fIx\fP):
+.TP
+\fBGMT_BOT\fP(\fIx\fP)
 The tape is positioned at the beginning of the first file (always false
 after an
 .B MTSEEK
 operation).
-.HP
-\fBGMT_EOT\fP(\fIx\fP):
+.TP
+\fBGMT_EOT\fP(\fIx\fP)
 A tape operation has reached the physical End Of Tape.
-.HP
-\fBGMT_SM\fP(\fIx\fP):
+.TP
+\fBGMT_SM\fP(\fIx\fP)
 The tape is currently positioned at a setmark
 (always false after an
 .B MTSEEK
 operation).
-.HP
-\fBGMT_EOD\fP(\fIx\fP):
+.TP
+\fBGMT_EOD\fP(\fIx\fP)
 The tape is positioned at the end of recorded data.
-.HP
-\fBGMT_WR_PROT\fP(\fIx\fP):
+.TP
+\fBGMT_WR_PROT\fP(\fIx\fP)
 The drive is write-protected.
 For some drives this can also mean that the drive does not support
 writing on the current medium type.
-.HP
-\fBGMT_ONLINE\fP(\fIx\fP):
+.TP
+\fBGMT_ONLINE\fP(\fIx\fP)
 The last
 .BR open (2)
 found the drive with a tape in place and ready for operation.
-.HP
-\fBGMT_D_6250\fP(\fIx\fP), \fBGMT_D_1600\fP(\fIx\fP), \fBGMT_D_800\fP(\fIx\fP):
+.TP
+\fBGMT_D_6250\fP(\fIx\fP)
+.TQ
+\fBGMT_D_1600\fP(\fIx\fP)
+.TQ
+\fBGMT_D_800\fP(\fIx\fP)
 This \(lqgeneric\(rq status information reports the current
 density setting for 9-track \(12" tape drives only.
-.HP
-\fBGMT_DR_OPEN\fP(\fIx\fP):
+.TP
+\fBGMT_DR_OPEN\fP(\fIx\fP)
 The drive does not have a tape in place.
-.HP
-\fBGMT_IM_REP_EN\fP(\fIx\fP):
+.TP
+\fBGMT_IM_REP_EN\fP(\fIx\fP)
 Immediate report mode.
 This bit is set if there are no guarantees that
 the data has been physically written to the tape when the write call
 returns.
 It is set zero only when the driver does not buffer data and
 the drive is set not to buffer data.
-.HP
-\fBGMT_CLN\fP(\fIx\fP):
+.TP
+\fBGMT_CLN\fP(\fIx\fP)
 The drive has requested cleaning.
 Implemented in kernels since 2.4.19 and 2.5.43.
 .RE
