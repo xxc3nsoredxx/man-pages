@@ -237,6 +237,7 @@ The owning user namespace is outside your namespace scope
 */
 #include <errno.h>
 #include <fcntl.h>
+#include <linux/nsfs.h>
 #include <stdint.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -245,12 +246,6 @@ The owning user namespace is outside your namespace scope
 #include <sys/stat.h>
 #include <sys/sysmacros.h>
 #include <unistd.h>
-
-#ifndef NS_GET_USERNS
-#define NSIO    0xb7
-#define NS_GET_USERNS   _IO(NSIO, 0x1)
-#define NS_GET_PARENT   _IO(NSIO, 0x2)
-#endif
 
 int
 main(int argc, char *argv[])
