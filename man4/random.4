@@ -68,7 +68,12 @@ high quality randomness, and can afford indeterminate delays.
 .PP
 When the entropy pool is empty, reads from \fI/dev/random\fP will block
 until additional environmental noise is gathered.
-If
+Since Linux 5.6, the
+.B O_NONBLOCK
+flag is ignored as
+.I /dev/random
+will no longer block except during early boot process.
+In eariler versions, if
 .BR open (2)
 is called for
 .I /dev/random
