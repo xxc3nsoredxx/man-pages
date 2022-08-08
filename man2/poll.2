@@ -351,7 +351,7 @@ value.
 .B EINVAL
 .RB ( ppoll ())
 The timeout value expressed in
-.I *ip
+.I *tmo_p
 is invalid (negative).
 .TP
 .B ENOMEM
@@ -468,7 +468,7 @@ field in a human-readable form;
 if the file descriptor is readable, reads some data from it,
 and displays that data on standard output; and
 .IP \(bu
-if the file descriptors was not readable,
+if the file descriptor was not readable,
 but some other event occurred (presumably
 .BR POLLHUP ),
 closes the file descriptor.
