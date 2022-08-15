@@ -743,12 +743,16 @@ Reading this file gives an ASCII hex string representing the object ID
 for this SPU context.
 .RE
 .SH EXAMPLES
-.TP
-.IR /etc/fstab "  entry"
-.TS
-l l l l l l.
-none	/spu	spufs	gid=spu	0	0
-.TE
+To automatically
+.BR mount 8
+the SPU filesystem when booting, at the location
+.I /spu
+chosen by the user, put this line into the
+.BR fstab 5
+configuration file:
+.EX
+none /spu spufs gid=spu 0 0
+.EE
 .\" .SH AUTHORS
 .\" Arnd Bergmann <arndb@de.ibm.com>, Mark Nutter <mnutter@us.ibm.com>,
 .\" Ulrich Weigand <Ulrich.Weigand@de.ibm.com>, Jeremy Kerr <jk@ozlabs.org>
