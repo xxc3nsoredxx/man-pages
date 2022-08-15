@@ -323,8 +323,8 @@ The program might be used like this:
 .PP
 .in +4n
 .EX
-$ \fB./a.out ftp.us.kernel.org enoent.linuxfoundation.org gnu.cz\fP
-ftp.us.kernel.org: 128.30.2.36
+$ \fB./a.out mirrors.kernel.org enoent.linuxfoundation.org gnu.cz\fP
+mirrors.kernel.org: 139.178.88.99
 enoent.linuxfoundation.org: Name or service not known
 gnu.org: 209.51.188.116
 .EE
@@ -403,17 +403,17 @@ An example session might look like this:
 .in +4n
 .EX
 $ \fB./a.out\fP
-> a ftp.us.kernel.org enoent.linuxfoundation.org gnu.cz
+> a mirrors.kernel.org enoent.linuxfoundation.org gnu.cz
 > c 2
 [2] gnu.org: Request not canceled
 > w 0 1
-[00] ftp.us.kernel.org: Finished
+[00] mirrors.kernel.org: Finished
 > l
-[00] ftp.us.kernel.org: 216.165.129.139
+[00] mirrors.kernel.org: 139.178.88.99
 [01] enoent.linuxfoundation.org: Processing request in progress
 [02] gnu.org: 209.51.188.116
 > l
-[00] ftp.us.kernel.org: 216.165.129.139
+[00] mirrors.kernel.org: 139.178.88.99
 [01] enoent.linuxfoundation.org: Name or service not known
 [02] gnu.org: 209.51.188.116
 .EE
