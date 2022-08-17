@@ -25,6 +25,7 @@ Checks: >
     -llvmlibc-restrict-system-libc-headers,
     -readability-braces-around-statements,
     -readability-function-cognitive-complexity,
+    -readability-identifier-length,
     -readability-isolate-declaration,
 
 WarningsAsErrors: >
