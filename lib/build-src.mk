@@ -21,7 +21,7 @@ CPPFLAGS         := $(DEFAULT_CPPFLAGS) $(EXTRA_CPPFLAGS)
 DEFAULT_CFLAGS := -std=gnu17
 DEFAULT_CFLAGS += -Wall
 DEFAULT_CFLAGS += -Wextra
-DEAFULT_CFLAGS += -Wstrict-prototypes
+DEFAULT_CFLAGS += -Wstrict-prototypes
 DEFAULT_CFLAGS += -Werror
 DEFAULT_CFLAGS += -Wno-error=unused-parameter
 DEFAULT_CFLAGS += -Wno-error=sign-compare
