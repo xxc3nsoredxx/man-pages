@@ -12,7 +12,7 @@ Standard C library
 .fi
 .SH DESCRIPTION
 Used for clock ID type in the clock and timer functions.
-It is be defined as an arithmetic type.
+It is defined as an arithmetic type.
 .SH STANDARDS
 POSIX.1-2001 and later.
 .SH NOTES
