@@ -53,7 +53,7 @@ In reality, the field ends up being defined as:
 .EE
 .in
 .PP
-This is a long-stansing and long-enshrined glibc bug
+This is a long-standing and long-enshrined glibc bug
 .UR https://sourceware.org/bugzilla/show_bug.cgi?id=16437
 .I #16437
 .UE ,
