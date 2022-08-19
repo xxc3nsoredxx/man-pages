@@ -50,7 +50,7 @@ Feature Test Macro Requirements for glibc (see
 Describes time, broken down into distinct components.
 .PP
 .I tm_isdst
-describes wether daylight saving time is in effect at the time described.
+describes whether daylight saving time is in effect at the time described.
 The value is positive if daylight saving time is in effect,
 zero if it is not,
 and negative if the information is not available.
@@ -101,7 +101,7 @@ The
 field provides an alternative (with the opposite sign) for those systems.
 .PP
 .I tm_zone
-points to static storage and may be overriden on subsequent calls to
+points to static storage and may be overridden on subsequent calls to
 .BR localtime (3)
 and similar functions (however, this never happens under glibc).
 .SH SEE ALSO
