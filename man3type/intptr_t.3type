@@ -4,7 +4,7 @@
 .\" SPDX-License-Identifier: Linux-man-pages-copyleft
 .\"
 .\"
-.TH INTPTR_T 3type 2022-02-25 Linux "Linux Programmer's Manual"
+.TH INTPTR_T 3type 2022-02-25 "Linux man-pages (unreleased)" "Linux Programmer's Manual"
 .SH NAME
 intptr_t, uintptr_t \- integer types wide enough to hold pointers
 .SH LIBRARY

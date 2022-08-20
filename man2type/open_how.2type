@@ -3,7 +3,7 @@
 .\" SPDX-License-Identifier: Linux-man-pages-copyleft
 .\"
 .\"
-.TH OPEN_HOW 2type 2022-06-16 Linux "Linux Programmer's Manual"
+.TH OPEN_HOW 2type 2022-06-16 "Linux man-pages (unreleased)" "Linux Programmer's Manual"
 .SH NAME
 open_how \- how to open a pathname
 .SH LIBRARY

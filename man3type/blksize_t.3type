@@ -4,7 +4,7 @@
 .\" SPDX-License-Identifier: Linux-man-pages-copyleft
 .\"
 .\"
-.TH BLKSIZE_T 3type 2021-11-02 Linux "Linux Programmer's Manual"
+.TH BLKSIZE_T 3type 2021-11-02 "Linux man-pages (unreleased)" "Linux Programmer's Manual"
 .SH NAME
 blksize_t \- file block sizes
 .SH LIBRARY

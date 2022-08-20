@@ -4,7 +4,7 @@
 .\" SPDX-License-Identifier: Linux-man-pages-copyleft
 .\"
 .\"
-.TH PTRDIFF_T 3type 2022-07-20 Linux "Linux Programmer's Manual"
+.TH PTRDIFF_T 3type 2022-07-20 "Linux man-pages (unreleased)" "Linux Programmer's Manual"
 .SH NAME
 ptrdiff_t \- count of elements or array index
 .SH LIBRARY

@@ -4,7 +4,7 @@
 .\" SPDX-License-Identifier: Linux-man-pages-copyleft
 .\"
 .\"
-.TH regex_t 3type 2022-07-22 Linux "Linux Programmer's Manual"
+.TH regex_t 3type 2022-07-22 "Linux man-pages (unreleased)" "Linux Programmer's Manual"
 .SH NAME
 regex_t, regmatch_t, regoff_t
 \- regular expression matching
