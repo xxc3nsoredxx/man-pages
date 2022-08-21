@@ -40,7 +40,6 @@ seamlessly upgrading to the widest available type.
 #include <stdlib.h>
 
 #define my_imaxabs(j)  _Generic((intmax_t) 0,  \e
-    int:            abs(j),                    \e
     long:           labs(j),                   \e
     long long:      llabs(j)                   \e
  /* long long long: lllabs(j) */               \e
