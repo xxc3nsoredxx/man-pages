@@ -3,7 +3,7 @@
 .\" SPDX-License-Identifier: Linux-man-pages-copyleft
 .\"
 .\"
-.TH EPOLL_EVENT 3type 2022-06-19 "Linux man-pages (unreleased)" "Linux Programmer's Manual"
+.TH EPOLL_EVENT 3type 2022-06-19 "Linux man-pages (unreleased)"
 .SH NAME
 epoll_event, epoll_data, epoll_data_t
 \- epoll event

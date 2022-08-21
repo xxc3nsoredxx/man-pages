@@ -4,7 +4,7 @@
 .\" SPDX-License-Identifier: Linux-man-pages-copyleft
 .\"
 .\"
-.TH INTMAX_T 3type 2021-11-02 "Linux man-pages (unreleased)" "Linux Programmer's Manual"
+.TH INTMAX_T 3type 2021-11-02 "Linux man-pages (unreleased)"
 .SH NAME
 intmax_t, uintmax_t \- greatest-width basic integer types
 .SH LIBRARY

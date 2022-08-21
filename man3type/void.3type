@@ -4,7 +4,7 @@
 .\" SPDX-License-Identifier: Linux-man-pages-copyleft
 .\"
 .\"
-.TH VOID 3type 2022-07-20 "Linux man-pages (unreleased)" "Linux Programmer's Manual"
+.TH VOID 3type 2022-07-20 "Linux man-pages (unreleased)"
 .SH NAME
 void \- abstract type
 .SH SYNOPSIS

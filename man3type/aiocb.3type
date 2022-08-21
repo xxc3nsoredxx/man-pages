@@ -4,7 +4,7 @@
 .\" SPDX-License-Identifier: Linux-man-pages-copyleft
 .\"
 .\"
-.TH AIOCB 3type 2021-11-02 "Linux man-pages (unreleased)" "Linux Programmer's Manual"
+.TH AIOCB 3type 2021-11-02 "Linux man-pages (unreleased)"
 .SH NAME
 aiocb \- asynchronous I/O control block
 .SH LIBRARY

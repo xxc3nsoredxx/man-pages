@@ -2,7 +2,7 @@
 .\"
 .\" SPDX-License-Identifier: Linux-man-pages-copyleft
 .\"
-.TH _Generic 3 2022-08-20 "Linux man-pages (unreleased)" "Linux Programmer's Manual"
+.TH _Generic 3 2022-08-20 "Linux man-pages (unreleased)"
 .SH NAME
 _Generic \- type-generic selection
 .SH SYNOPSIS
@@ -49,7 +49,7 @@ seamlessly upgrading to the widest available type.
 int
 main(void)
 {
-    off_t a;
+    off_t  a;
 
     a = \-42;
     printf("imaxabs(%jd) == %jd\en", (intmax_t) a, my_imaxabs(a));
