@@ -88,7 +88,7 @@ command:
 .PP
 .RS
 .B \&.TH
-.I "title section date source manual"
+.I "title section date source manual-section"
 .RE
 .PP
 The arguments of the command are as follows:
@@ -111,35 +111,12 @@ them as part of a patch.)
 Dates should be written in the form YYYY-MM-DD.
 .TP
 .I source
-The source of the command, function, or system call.
-.IP
-For those few \fIman-pages\fP pages in Sections 1 and 8,
-probably you just want to write
-.IR GNU .
-.IP
-For system calls, just write
-.IR "Linux" .
-(An earlier practice was to write the version number
-of the kernel from which the manual page was being written/checked.
-However, this was never done consistently, and so was
-probably worse than including no version number.
-Henceforth, avoid including a version number.)
-.IP
-For library calls that are part of glibc or one of the
-other common GNU libraries, just use
-.IR "GNU C Library" ", " GNU ,
-or an empty string.
-.IP
-For Section 4 pages, use
-.IR "Linux" .
-.IP
-In cases of doubt, just write
-.IR Linux ", or " GNU .
+The name and version of the project that provides the manual page
+(not necessarily the package that provides the functionality).
 .TP
-.I manual
-The title of the manual (e.g., for Section 2 and 3 pages in
-the \fIman-pages\fP package, use
-.IR "Linux Programmer's Manual" ).
+.I manual-section
+Normally, this should be empty,
+since the default value will be good.
 .\"
 .SS Sections within a manual page
 The list below shows conventional or suggested sections.
