@@ -46,7 +46,7 @@ with a slightly different definition:
 
 struct epoll_event {
     __poll_t  events;
-    __u64     data;
+    uint64_t  data;
 };
 .EE
 .in

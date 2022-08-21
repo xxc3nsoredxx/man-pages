@@ -13,9 +13,9 @@ Linux kernel headers
 .B #include <linux/openat2.h>
 .PP
 .B struct open_how {
-.BR "    u64  flags;" "    /* " O_ "* flags */"
-.BR "    u64  mode;" "     /* Mode for " O_ { CREAT , TMPFILE "} */"
-.BR "    u64  resolve;" "  /* " RESOLVE_ "* flags */"
+.BR "    uint64_t  flags;" "    /* " O_ "* flags */"
+.BR "    uint64_t  mode;" "     /* Mode for " O_ { CREAT , TMPFILE "} */"
+.BR "    uint64_t  resolve;" "  /* " RESOLVE_ "* flags */"
     /* ... */
 .B };
 .fi

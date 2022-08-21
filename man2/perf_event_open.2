@@ -195,88 +195,88 @@ for the event being created.
 .in +4n
 .EX
 struct perf_event_attr {
-    __u32 type;                 /* Type of event */
-    __u32 size;                 /* Size of attribute structure */
-    __u64 config;               /* Type\-specific configuration */
+    uint32_t  type;               /* Type of event */
+    uint32_t  size;               /* Size of attribute structure */
+    uint64_t  config;             /* Type\-specific configuration */
 
     union {
-        __u64 sample_period;    /* Period of sampling */
-        __u64 sample_freq;      /* Frequency of sampling */
+        uint64_t  sample_period;  /* Period of sampling */
+        uint64_t  sample_freq;    /* Frequency of sampling */
     };
 
-    __u64 sample_type;  /* Specifies values included in sample */
-    __u64 read_format;  /* Specifies values returned in read */
+    uint64_t  sample_type;  /* Specifies values included in sample */
+    uint64_t  read_format;  /* Specifies values returned in read */
 
-    __u64 disabled       : 1,   /* off by default */
-          inherit        : 1,   /* children inherit it */
-          pinned         : 1,   /* must always be on PMU */
-          exclusive      : 1,   /* only group on PMU */
-          exclude_user   : 1,   /* don\(aqt count user */
-          exclude_kernel : 1,   /* don\(aqt count kernel */
-          exclude_hv     : 1,   /* don\(aqt count hypervisor */
-          exclude_idle   : 1,   /* don\(aqt count when idle */
-          mmap           : 1,   /* include mmap data */
-          comm           : 1,   /* include comm data */
-          freq           : 1,   /* use freq, not period */
-          inherit_stat   : 1,   /* per task counts */
-          enable_on_exec : 1,   /* next exec enables */
-          task           : 1,   /* trace fork/exit */
-          watermark      : 1,   /* wakeup_watermark */
-          precise_ip     : 2,   /* skid constraint */
-          mmap_data      : 1,   /* non\-exec mmap data */
-          sample_id_all  : 1,   /* sample_type all events */
-          exclude_host   : 1,   /* don\(aqt count in host */
-          exclude_guest  : 1,   /* don\(aqt count in guest */
-          exclude_callchain_kernel : 1,
-                                /* exclude kernel callchains */
-          exclude_callchain_user   : 1,
-                                /* exclude user callchains */
-          mmap2          :  1,  /* include mmap with inode data */
-          comm_exec      :  1,  /* flag comm events that are
-                                   due to exec */
-          use_clockid    :  1,  /* use clockid for time fields */
-          context_switch :  1,  /* context switch data */
-          write_backward :  1,  /* Write ring buffer from end
-                                   to beginning */
-          namespaces     :  1,  /* include namespaces data */
-          ksymbol        :  1,  /* include ksymbol events */
-          bpf_event      :  1,  /* include bpf events */
-          aux_output     :  1,  /* generate AUX records
-                                   instead of events */
-          cgroup         :  1,  /* include cgroup events */
-          text_poke      :  1,  /* include text poke events */
+    uint64_t  disabled       : 1,  /* off by default */
+              inherit        : 1,  /* children inherit it */
+              pinned         : 1,  /* must always be on PMU */
+              exclusive      : 1,  /* only group on PMU */
+              exclude_user   : 1,  /* don\(aqt count user */
+              exclude_kernel : 1,  /* don\(aqt count kernel */
+              exclude_hv     : 1,  /* don\(aqt count hypervisor */
+              exclude_idle   : 1,  /* don\(aqt count when idle */
+              mmap           : 1,  /* include mmap data */
+              comm           : 1,  /* include comm data */
+              freq           : 1,  /* use freq, not period */
+              inherit_stat   : 1,  /* per task counts */
+              enable_on_exec : 1,  /* next exec enables */
+              task           : 1,  /* trace fork/exit */
+              watermark      : 1,  /* wakeup_watermark */
+              precise_ip     : 2,  /* skid constraint */
+              mmap_data      : 1,  /* non\-exec mmap data */
+              sample_id_all  : 1,  /* sample_type all events */
+              exclude_host   : 1,  /* don\(aqt count in host */
+              exclude_guest  : 1,  /* don\(aqt count in guest */
+              exclude_callchain_kernel : 1,
+                                   /* exclude kernel callchains */
+              exclude_callchain_user   : 1,
+                                   /* exclude user callchains */
+              mmap2          : 1,  /* include mmap with inode data */
+              comm_exec      : 1,  /* flag comm events that are
+                                      due to exec */
+              use_clockid    : 1,  /* use clockid for time fields */
+              context_switch : 1,  /* context switch data */
+              write_backward : 1,  /* Write ring buffer from end
+                                      to beginning */
+              namespaces     : 1,  /* include namespaces data */
+              ksymbol        : 1,  /* include ksymbol events */
+              bpf_event      : 1,  /* include bpf events */
+              aux_output     : 1,  /* generate AUX records
+                                      instead of events */
+              cgroup         : 1,  /* include cgroup events */
+              text_poke      : 1,  /* include text poke events */
 
-          __reserved_1   : 30;
+              __reserved_1   :30;
 
     union {
-        __u32 wakeup_events;    /* wakeup every n events */
-        __u32 wakeup_watermark; /* bytes before wakeup */
+        uint32_t wakeup_events;    /* wakeup every n events */
+        uint32_t wakeup_watermark; /* bytes before wakeup */
     };
 
-    __u32     bp_type;          /* breakpoint type */
-
-    union {
-        __u64 bp_addr;          /* breakpoint address */
-        __u64 kprobe_func;      /* for perf_kprobe */
-        __u64 uprobe_path;      /* for perf_uprobe */
-        __u64 config1;          /* extension of config */
-    };
+    uint32_t     bp_type;          /* breakpoint type */
 
     union {
-        __u64 bp_len;           /* breakpoint length */
-        __u64 kprobe_addr;      /* with kprobe_func == NULL */
-        __u64 probe_offset;     /* for perf_[k,u]probe */
-        __u64 config2;          /* extension of config1 */
+        uint64_t bp_addr;          /* breakpoint address */
+        uint64_t kprobe_func;      /* for perf_kprobe */
+        uint64_t uprobe_path;      /* for perf_uprobe */
+        uint64_t config1;          /* extension of config */
     };
-    __u64 branch_sample_type;   /* enum perf_branch_sample_type */
-    __u64 sample_regs_user;     /* user regs to dump on samples */
-    __u32 sample_stack_user;    /* size of stack to dump on
-                                   samples */
-    __s32 clockid;              /* clock to use for time fields */
-    __u64 sample_regs_intr;     /* regs to dump on samples */
-    __u32 aux_watermark;        /* aux bytes before wakeup */
-    __u16 sample_max_stack;     /* max frames in callchain */
-    __u16 __reserved_2;         /* align to u64 */
+
+    union {
+        uint64_t bp_len;           /* breakpoint length */
+        uint64_t kprobe_addr;      /* with kprobe_func == NULL */
+        uint64_t probe_offset;     /* for perf_[k,u]probe */
+        uint64_t config2;          /* extension of config1 */
+    };
+    uint64_t  branch_sample_type;  /* enum perf_branch_sample_type */
+    uint64_t  sample_regs_user;    /* user regs to dump on samples */
+    uint32_t  sample_stack_user;   /* size of stack to dump on
+                                      samples */
+    int32_t   clockid;             /* clock to use for time fields */
+    uint64_t  sample_regs_intr;    /* regs to dump on samples */
+    uint32_t  aux_watermark;       /* aux bytes before wakeup */
+    uint16_t  sample_max_stack;    /* max frames in callchain */
+    uint16_t  __reserved_2;        /* align to uint64_t  */
 
 };
 .EE
@@ -1121,12 +1121,12 @@ The layout is described by this pseudo-structure:
 .in +4n
 .EX
 struct sample_id {
-    { u32 pid, tid; }   /* if PERF_SAMPLE_TID set */
-    { u64 time;     }   /* if PERF_SAMPLE_TIME set */
-    { u64 id;       }   /* if PERF_SAMPLE_ID set */
-    { u64 stream_id;}   /* if PERF_SAMPLE_STREAM_ID set  */
-    { u32 cpu, res; }   /* if PERF_SAMPLE_CPU set */
-    { u64 id;       }   /* if PERF_SAMPLE_IDENTIFIER set */
+    { uint32_t  pid, tid; } /* if PERF_SAMPLE_TID set */
+    { uint64_t  time;     } /* if PERF_SAMPLE_TIME set */
+    { uint64_t  id;       } /* if PERF_SAMPLE_ID set */
+    { uint64_t  stream_id;} /* if PERF_SAMPLE_STREAM_ID set */
+    { uint32_t  cpu, res; } /* if PERF_SAMPLE_CPU set */
+    { uint64_t  id;       } /* if PERF_SAMPLE_IDENTIFIER set*/
 };
 .EE
 .in
@@ -1492,12 +1492,12 @@ was specified to allow reading all events in a group at once:
 .in +4n
 .EX
 struct read_format {
-    u64 nr;            /* The number of events */
-    u64 time_enabled;  /* if PERF_FORMAT_TOTAL_TIME_ENABLED */
-    u64 time_running;  /* if PERF_FORMAT_TOTAL_TIME_RUNNING */
+    uint64_t  nr;           /* The number of events */
+    uint64_t  time_enabled; /* if PERF_FORMAT_TOTAL_TIME_ENABLED */
+    uint64_t  time_running; /* if PERF_FORMAT_TOTAL_TIME_RUNNING */
     struct {
-        u64 value;     /* The value of the event */
-        u64 id;        /* if PERF_FORMAT_ID */
+        uint64_t  value;    /* The value of the event */
+        uint64_t  id;       /* if PERF_FORMAT_ID */
     } values[nr];
 };
 .EE
@@ -1512,10 +1512,10 @@ specified:
 .in +4n
 .EX
 struct read_format {
-    u64 value;         /* The value of the event */
-    u64 time_enabled;  /* if PERF_FORMAT_TOTAL_TIME_ENABLED */
-    u64 time_running;  /* if PERF_FORMAT_TOTAL_TIME_RUNNING */
-    u64 id;            /* if PERF_FORMAT_ID */
+    uint64_t  value;        /* The value of the event */
+    uint64_t  time_enabled; /* if PERF_FORMAT_TOTAL_TIME_ENABLED */
+    uint64_t  time_running; /* if PERF_FORMAT_TOTAL_TIME_RUNNING */
+    uint64_t  id;           /* if PERF_FORMAT_ID */
 };
 .EE
 .in
@@ -1572,36 +1572,36 @@ The structure of the first metadata mmap page is as follows:
 .in +4n
 .EX
 struct perf_event_mmap_page {
-    __u32 version;        /* version number of this structure */
-    __u32 compat_version; /* lowest version this is compat with */
-    __u32 lock;           /* seqlock for synchronization */
-    __u32 index;          /* hardware counter identifier */
-    __s64 offset;         /* add to hardware counter value */
-    __u64 time_enabled;   /* time event active */
-    __u64 time_running;   /* time event on CPU */
+    uint32_t  version;        /* version number of this structure */
+    uint32_t  compat_version; /* lowest version this is compat with*/
+    uint32_t  lock;           /* seqlock for synchronization */
+    uint32_t  index;          /* hardware counter identifier */
+    int64_t   offset;         /* add to hardware counter value */
+    uint64_t  time_enabled;   /* time event active */
+    uint64_t  time_running;   /* time event on CPU */
     union {
-        __u64   capabilities;
+        uint64_t     capabilities;
         struct {
-            __u64 cap_usr_time / cap_usr_rdpmc / cap_bit0 : 1,
-                  cap_bit0_is_deprecated : 1,
-                  cap_user_rdpmc         : 1,
-                  cap_user_time          : 1,
-                  cap_user_time_zero     : 1,
+            uint64_t cap_usr_time / cap_usr_rdpmc / cap_bit0 : 1,
+                     cap_bit0_is_deprecated : 1,
+                     cap_user_rdpmc         : 1,
+                     cap_user_time          : 1,
+                     cap_user_time_zero     : 1,
         };
     };
-    __u16 pmc_width;
-    __u16 time_shift;
-    __u32 time_mult;
-    __u64 time_offset;
-    __u64 __reserved[120];   /* Pad to 1 k */
-    __u64 data_head;         /* head in the data section */
-    __u64 data_tail;         /* user\-space written tail */
-    __u64 data_offset;       /* where the buffer starts */
-    __u64 data_size;         /* data buffer size */
-    __u64 aux_head;
-    __u64 aux_tail;
-    __u64 aux_offset;
-    __u64 aux_size;
+    uint16_t  pmc_width;
+    uint16_t  time_shift;
+    uint32_t  time_mult;
+    uint64_t  time_offset;
+    uint64_t  __reserved[120];   /* Pad to 1 k */
+    uint64_t  data_head;         /* head in the data section */
+    uint64_t  data_tail;         /* user\-space written tail */
+    uint64_t  data_offset;       /* where the buffer starts */
+    uint64_t  data_size;         /* data buffer size */
+    uint64_t  aux_head;
+    uint64_t  aux_tail;
+    uint64_t  aux_offset;
+    uint64_t  aux_size;
 
 }
 .EE
@@ -1681,9 +1681,9 @@ the following code can be used to do a read:
 .IP
 .in +4n
 .EX
-u32 seq, time_mult, time_shift, idx, width;
-u64 count, enabled, running;
-u64 cyc, time_offset;
+uint32_t  seq, time_mult, time_shift, idx, width;
+uint64_t  count, enabled, running;
+uint64_t  cyc, time_offset;
 
 do {
     seq = pc\->lock;
@@ -1749,11 +1749,11 @@ delta since
 .IP
 .in +4n
 .EX
-u64 quot, rem;
-u64 delta;
+uint64_t  quot, rem;
+uint64_t  delta;
 
 quot  = cyc >> time_shift;
-rem   = cyc & (((u64)1 << time_shift) \- 1);
+rem   = cyc & (((uint64_t) 1 << time_shift) \- 1);
 delta = time_offset + quot * time_mult +
         ((rem * time_mult) >> time_shift);
 .EE
@@ -1808,7 +1808,7 @@ And vice versa:
 .in +4n
 .EX
 quot = cyc >> time_shift;
-rem  = cyc & (((u64)1 << time_shift) \- 1);
+rem  = cyc & (((uint64_t) 1 << time_shift) \- 1);
 timestamp = time_zero + quot * time_mult +
             ((rem * time_mult) >> time_shift);
 .EE
@@ -1910,9 +1910,9 @@ The mmap values start with a header:
 .in +4n
 .EX
 struct perf_event_header {
-    __u32   type;
-    __u16   misc;
-    __u16   size;
+    uint32_t  type;
+    uint16_t  misc;
+    uint16_t  size;
 };
 .EE
 .in
@@ -2031,12 +2031,12 @@ They have the following structure:
 .in +4n
 .EX
 struct {
-    struct perf_event_header header;
-    u32    pid, tid;
-    u64    addr;
-    u64    len;
-    u64    pgoff;
-    char   filename[];
+    struct perf_event_header  header;
+    uint32_t  pid, tid;
+    uint64_t  addr;
+    uint64_t  len;
+    uint64_t  pgoff;
+    char      filename[];
 };
 .EE
 .in
@@ -2064,10 +2064,10 @@ This record indicates when events are lost.
 .in +4n
 .EX
 struct {
-    struct perf_event_header header;
-    u64    id;
-    u64    lost;
-    struct sample_id sample_id;
+    struct perf_event_header  header;
+    uint64_t  id;
+    uint64_t  lost;
+    struct sample_id  sample_id;
 };
 .EE
 .in
@@ -2086,11 +2086,11 @@ This record indicates a change in the process name.
 .in +4n
 .EX
 struct {
-    struct perf_event_header header;
-    u32    pid;
-    u32    tid;
-    char   comm[];
-    struct sample_id sample_id;
+    struct perf_event_header  header;
+    uint32_t  pid;
+    uint32_t  tid;
+    char      comm[];
+    struct sample_id  sample_id;
 };
 .EE
 .in
@@ -2112,11 +2112,11 @@ This record indicates a process exit event.
 .in +4n
 .EX
 struct {
-    struct perf_event_header header;
-    u32    pid, ppid;
-    u32    tid, ptid;
-    u64    time;
-    struct sample_id sample_id;
+    struct perf_event_header  header;
+    uint32_t  pid, ppid;
+    uint32_t  tid, ptid;
+    uint64_t  time;
+    struct sample_id  sample_id;
 };
 .EE
 .in
@@ -2127,11 +2127,11 @@ This record indicates a throttle/unthrottle event.
 .in +4n
 .EX
 struct {
-    struct perf_event_header header;
-    u64    time;
-    u64    id;
-    u64    stream_id;
-    struct sample_id sample_id;
+    struct perf_event_header  header;
+    uint64_t  time;
+    uint64_t  id;
+    uint64_t  stream_id;
+    struct sample_id  sample_id;
 };
 .EE
 .in
@@ -2142,11 +2142,11 @@ This record indicates a fork event.
 .in +4n
 .EX
 struct {
-    struct perf_event_header header;
-    u32    pid, ppid;
-    u32    tid, ptid;
-    u64    time;
-    struct sample_id sample_id;
+    struct perf_event_header  header;
+    uint32_t  pid, ppid;
+    uint32_t  tid, ptid;
+    uint64_t  time;
+    struct sample_id  sample_id;
 };
 .EE
 .in
@@ -2157,10 +2157,10 @@ This record indicates a read event.
 .in +4n
 .EX
 struct {
-    struct perf_event_header header;
-    u32    pid, tid;
-    struct read_format values;
-    struct sample_id sample_id;
+    struct perf_event_header  header;
+    uint32_t  pid, tid;
+    struct read_format  values;
+    struct sample_id    sample_id;
 };
 .EE
 .in
@@ -2172,39 +2172,39 @@ This record indicates a sample.
 .EX
 struct {
     struct perf_event_header header;
-    u64    sample_id;   /* if PERF_SAMPLE_IDENTIFIER */
-    u64    ip;          /* if PERF_SAMPLE_IP */
-    u32    pid, tid;    /* if PERF_SAMPLE_TID */
-    u64    time;        /* if PERF_SAMPLE_TIME */
-    u64    addr;        /* if PERF_SAMPLE_ADDR */
-    u64    id;          /* if PERF_SAMPLE_ID */
-    u64    stream_id;   /* if PERF_SAMPLE_STREAM_ID */
-    u32    cpu, res;    /* if PERF_SAMPLE_CPU */
-    u64    period;      /* if PERF_SAMPLE_PERIOD */
+    uint64_t  sample_id;  /* if PERF_SAMPLE_IDENTIFIER */
+    uint64_t  ip;         /* if PERF_SAMPLE_IP */
+    uint32_t  pid, tid;   /* if PERF_SAMPLE_TID */
+    uint64_t  time;       /* if PERF_SAMPLE_TIME */
+    uint64_t  addr;       /* if PERF_SAMPLE_ADDR */
+    uint64_t  id;         /* if PERF_SAMPLE_ID */
+    uint64_t  stream_id;  /* if PERF_SAMPLE_STREAM_ID */
+    uint32_t  cpu, res;   /* if PERF_SAMPLE_CPU */
+    uint64_t  period;     /* if PERF_SAMPLE_PERIOD */
     struct read_format v;
-                        /* if PERF_SAMPLE_READ */
-    u64    nr;          /* if PERF_SAMPLE_CALLCHAIN */
-    u64    ips[nr];     /* if PERF_SAMPLE_CALLCHAIN */
-    u32    size;        /* if PERF_SAMPLE_RAW */
-    char   data[size];  /* if PERF_SAMPLE_RAW */
-    u64    bnr;         /* if PERF_SAMPLE_BRANCH_STACK */
+                          /* if PERF_SAMPLE_READ */
+    uint64_t  nr;         /* if PERF_SAMPLE_CALLCHAIN */
+    uint64_t  ips[nr];    /* if PERF_SAMPLE_CALLCHAIN */
+    uint32_t  size;       /* if PERF_SAMPLE_RAW */
+    char      data[size]; /* if PERF_SAMPLE_RAW */
+    uint64_t  bnr;        /* if PERF_SAMPLE_BRANCH_STACK*/
     struct perf_branch_entry lbr[bnr];
-                        /* if PERF_SAMPLE_BRANCH_STACK */
-    u64    abi;         /* if PERF_SAMPLE_REGS_USER */
-    u64    regs[weight(mask)];
-                        /* if PERF_SAMPLE_REGS_USER */
-    u64    size;        /* if PERF_SAMPLE_STACK_USER */
-    char   data[size];  /* if PERF_SAMPLE_STACK_USER */
-    u64    dyn_size;    /* if PERF_SAMPLE_STACK_USER &&
-                           size != 0 */
-    u64    weight;      /* if PERF_SAMPLE_WEIGHT */
-    u64    data_src;    /* if PERF_SAMPLE_DATA_SRC */
-    u64    transaction; /* if PERF_SAMPLE_TRANSACTION */
-    u64    abi;         /* if PERF_SAMPLE_REGS_INTR */
-    u64    regs[weight(mask)];
-                        /* if PERF_SAMPLE_REGS_INTR */
-    u64    phys_addr;   /* if PERF_SAMPLE_PHYS_ADDR */
-    u64    cgroup;      /* if PERF_SAMPLE_CGROUP */
+                          /* if PERF_SAMPLE_BRANCH_STACK*/
+    uint64_t  abi;        /* if PERF_SAMPLE_REGS_USER */
+    uint64_t  regs[weight(mask)];
+                          /* if PERF_SAMPLE_REGS_USER */
+    uint64_t  size;       /* if PERF_SAMPLE_STACK_USER */
+    char      data[size]; /* if PERF_SAMPLE_STACK_USER */
+    uint64_t  dyn_size;   /* if PERF_SAMPLE_STACK_USER &&
+                             size != 0 */
+    uint64_t  weight;     /* if PERF_SAMPLE_WEIGHT */
+    uint64_t  data_src;   /* if PERF_SAMPLE_DATA_SRC */
+    uint64_t  transaction;/* if PERF_SAMPLE_TRANSACTION */
+    uint64_t  abi;        /* if PERF_SAMPLE_REGS_INTR */
+    uint64_t  regs[weight(mask)];
+                          /* if PERF_SAMPLE_REGS_INTR */
+    uint64_t  phys_addr;  /* if PERF_SAMPLE_PHYS_ADDR */
+    uint64_t  cgroup;     /* if PERF_SAMPLE_CGROUP */
 };
 .EE
 .in
@@ -2654,20 +2654,20 @@ shared mappings.
 .in +4n
 .EX
 struct {
-    struct perf_event_header header;
-    u32    pid;
-    u32    tid;
-    u64    addr;
-    u64    len;
-    u64    pgoff;
-    u32    maj;
-    u32    min;
-    u64    ino;
-    u64    ino_generation;
-    u32    prot;
-    u32    flags;
-    char   filename[];
-    struct sample_id sample_id;
+    struct perf_event_header  header;
+    uint32_t  pid;
+    uint32_t  tid;
+    uint64_t  addr;
+    uint64_t  len;
+    uint64_t  pgoff;
+    uint32_t  maj;
+    uint32_t  min;
+    uint64_t  ino;
+    uint64_t  ino_generation;
+    uint32_t  prot;
+    uint32_t  flags;
+    char      filename[];
+    struct sample_id  sample_id;
 };
 .EE
 .in
@@ -2718,11 +2718,11 @@ AUX buffer region.
 .in +4n
 .EX
 struct {
-    struct perf_event_header header;
-    u64    aux_offset;
-    u64    aux_size;
-    u64    flags;
-    struct sample_id sample_id;
+    struct perf_event_header  header;
+    uint64_t  aux_offset;
+    uint64_t  aux_size;
+    uint64_t  flags;
+    struct sample_id  sample_id;
 };
 .EE
 .in
@@ -2757,9 +2757,9 @@ addresses in the AUX buffer with the proper executable.
 .in +4n
 .EX
 struct {
-    struct perf_event_header header;
-    u32    pid;
-    u32    tid;
+    struct perf_event_header  header;
+    uint32_t  pid;
+    uint32_t  tid;
 };
 .EE
 .in
@@ -2780,9 +2780,9 @@ indicates some number of samples that may have been lost.
 .in +4n
 .EX
 struct {
-    struct perf_event_header header;
-    u64    lost;
-    struct sample_id sample_id;
+    struct perf_event_header  header;
+    uint64_t  lost;
+    struct sample_id  sample_id;
 };
 .EE
 .in
@@ -2829,10 +2829,10 @@ or away from the current process.
 .in +4n
 .EX
 struct {
-    struct perf_event_header header;
-    u32 next_prev_pid;
-    u32 next_prev_tid;
-    struct sample_id sample_id;
+    struct perf_event_header  header;
+    uint32_t  next_prev_pid;
+    uint32_t  next_prev_tid;
+    struct sample_id  sample_id;
 };
 .EE
 .in
@@ -2854,12 +2854,12 @@ This record includes various namespace information of a process.
 .in +4n
 .EX
 struct {
-    struct perf_event_header header;
-    u32    pid;
-    u32    tid;
-    u64    nr_namespaces;
-    struct { u64 dev, inode } [nr_namespaces];
-    struct sample_id sample_id;
+    struct perf_event_header  header;
+    uint32_t  pid;
+    uint32_t  tid;
+    uint64_t  nr_namespaces;
+    struct { uint64_t dev, inode } [nr_namespaces];
+    struct sample_id  sample_id;
 };
 .EE
 .in
@@ -2912,13 +2912,13 @@ This record indicates kernel symbol register/unregister events.
 .in +4n
 .EX
 struct {
-    struct perf_event_header header;
-    u64    addr;
-    u32    len;
-    u16    ksym_type;
-    u16    flags;
-    char   name[];
-    struct sample_id sample_id;
+    struct perf_event_header  header;
+    uint64_t  addr;
+    uint32_t  len;
+    uint16_t  ksym_type;
+    uint16_t  flags;
+    char      name[];
+    struct sample_id  sample_id;
 };
 .EE
 .in
@@ -2952,12 +2952,12 @@ This record indicates BPF program is loaded or unloaded.
 .in +4n
 .EX
 struct {
-    struct perf_event_header header;
-    u16 type;
-    u16 flags;
-    u32 id;
-    u8 tag[BPF_TAG_SIZE];
-    struct sample_id sample_id;
+    struct perf_event_header  header;
+    uint16_t  type;
+    uint16_t  flags;
+    uint32_t  id;
+    uint8_t   tag[BPF_TAG_SIZE];
+    struct sample_id  sample_id;
 };
 .EE
 .in
@@ -2991,10 +2991,10 @@ This record indicates a new cgroup is created and activated.
 .in +4n
 .EX
 struct {
-    struct perf_event_header header;
-    u64    id;
-    char   path[];
-    struct sample_id sample_id;
+    struct perf_event_header  header;
+    uint64_t  id;
+    char      path[];
+    struct sample_id  sample_id;
 };
 .EE
 .in
@@ -3019,12 +3019,12 @@ and the corresponding length is zero in this case.
 .in +4n
 .EX
 struct {
-    struct perf_event_header header;
-    u64    addr;
-    u16    old_len;
-    u16    new_len;
-    u8     bytes[];
-    struct sample_id sample_id;
+    struct perf_event_header  header;
+    uint64_t  addr;
+    uint16_t  old_len;
+    uint16_t  new_len;
+    uint8_t   bytes[];
+    struct sample_id  sample_id;
 };
 .EE
 .in
@@ -3282,9 +3282,9 @@ The argument is a pointer to a structure
 .in +4n
 .EX
 struct perf_event_query_bpf {
-    __u32    ids_len;
-    __u32    prog_cnt;
-    __u32    ids[0];
+    uint32_t  ids_len;
+    uint32_t  prog_cnt;
+    uint32_t  ids[0];
 };
 .EE
 .in
