@@ -37,6 +37,7 @@ build: build-html
 
 .PHONY: clean
 clean:
+	$(info RM -rf	$(builddir))
 	$(RM) -rf $(builddir)
 
 
