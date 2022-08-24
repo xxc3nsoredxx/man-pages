@@ -101,6 +101,9 @@ If
 .I times
 is NULL, then both timestamps are set to the current time.
 .\"
+.PP
+The status change time (ctime) will be set to the current time, even if the
+other time stamps don't actually change.
 .SS Permissions requirements
 To set both file timestamps to the current time (i.e.,
 .I times
