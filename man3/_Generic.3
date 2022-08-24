@@ -39,10 +39,10 @@ seamlessly upgrading to the widest available type.
 #include <stdio.h>
 #include <stdlib.h>
 
-#define my_imaxabs(j)  _Generic((intmax_t) 0,  \e
-    long:           labs(j),                   \e
-    long long:      llabs(j)                   \e
- /* long long long: lllabs(j) */               \e
+#define my_imaxabs(j)  _Generic(INTMAX_C(0),  \e
+    long:           labs(j),                  \e
+    long long:      llabs(j)                  \e
+ /* long long long: lllabs(j) */              \e
 )
 
 int
