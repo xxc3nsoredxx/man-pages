@@ -25,6 +25,7 @@ DEFAULT_GROFFFLAGS   += -M $(TMACDIR)
 DEFAULT_GROFFFLAGS   += $(foreach x,$(TMACNAMES),-m $(x))
 DEFAULT_GROFFFLAGS   += -rCHECKSTYLE=$(GROFF_CHECKSTYLE_LVL)
 DEFAULT_GROFFFLAGS   += -ww
+DEFAULT_GROFFFLAGS   += -Tascii
 EXTRA_GROFFFLAGS     :=
 GROFFFLAGS           := $(DEFAULT_GROFFFLAGS) $(EXTRA_GROFFFLAGS)
 GROFF                := groff
@@ -46,7 +47,9 @@ lint_man    := $(foreach x,$(linters_man),lint-man-$(x))
 
 $(_LINT_man_groff): $(_LINTDIR)/%.lint-man.groff.touch: $(MANDIR)/% | $$(@D)/.
 	$(info LINT (groff)	$@)
-	$(GROFF) $(GROFFFLAGS) -z $<
+	$(GROFF) $(GROFFFLAGS) $< \
+	| sed 's/\x1b\[[^@-~]*[@-~]//g' \
+	| (! grep -n '.\{80\}.')
 	touch $@
 
 $(_LINT_man_mandoc): $(_LINTDIR)/%.lint-man.mandoc.touch: $(MANDIR)/% | $$(@D)/.
