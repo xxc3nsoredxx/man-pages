@@ -23,7 +23,7 @@ Standard C library
 .BI "          struct seccomp_notif *" req );
 .BI "int ioctl(int " fd ", SECCOMP_IOCTL_NOTIF_SEND,"
 .BI "          struct seccomp_notif_resp *" resp );
-.BI "int ioctl(int " fd ", SECCOMP_IOCTL_NOTIF_ID_VALID, uint64_t *" id );
+.BI "int ioctl(int " fd ", SECCOMP_IOCTL_NOTIF_ID_VALID, __u64 *" id );
 .BI "int ioctl(int " fd ", SECCOMP_IOCTL_NOTIF_ADDFD,"
 .BI "          struct seccomp_notif_addfd *" addfd );
 .fi
@@ -321,10 +321,10 @@ This structure must be zeroed out before the call.
 .in +4n
 .EX
 struct seccomp_notif {
-    uint64_t  id;              /* Cookie */
-    uint32_t  pid;             /* TID of target thread */
-    uint32_t  flags;           /* Currently unused (0) */
-    struct seccomp_data data;  /* See seccomp(2) */
+    __u64  id;              /* Cookie */
+    __u32  pid;             /* TID of target thread */
+    __u32  flags;           /* Currently unused (0) */
+    struct seccomp_data data;   /* See seccomp(2) */
 };
 .EE
 .in
@@ -503,10 +503,10 @@ argument of this structure is a pointer to a structure of the following form:
 .in +4n
 .EX
 struct seccomp_notif_resp {
-    uint64_t  id;     /* Cookie value */
-    int64_t   val;    /* Success return value */
-    int32_t   error;  /* 0 (success) or negative error number */
-    uint32_t  flags;  /* See below */
+    __u64 id;           /* Cookie value */
+    __s64 val;          /* Success return value */
+    __s32 error;        /* 0 (success) or negative error number */
+    __u32 flags;        /* See below */
 };
 .EE
 .in
@@ -694,13 +694,13 @@ argument is a pointer to a structure of the following form:
 .in +4n
 .EX
 struct seccomp_notif_addfd {
-    uint64_t  id;           /* Cookie value */
-    uint32_t  flags;        /* Flags */
-    uint32_t  srcfd;        /* Local file descriptor number */
-    uint32_t  newfd;        /* 0 or desired file descriptor
-                               number in target */
-    uint32_t  newfd_flags;  /* Flags to set on target file
-                               descriptor */
+    __u64 id;           /* Cookie value */
+    __u32 flags;        /* Flags */
+    __u32 srcfd;        /* Local file descriptor number */
+    __u32 newfd;        /* 0 or desired file descriptor
+                           number in target */
+    __u32 newfd_flags;  /* Flags to set on target file
+                           descriptor */
 };
 .EE
 .in

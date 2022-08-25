@@ -53,8 +53,8 @@ points to the following structure:
 .in +4n
 .EX
 struct landlock_path_beneath_attr {
-    uint64_t  allowed_access;
-    int32_t   parent_fd;
+    __u64 allowed_access;
+    __s32 parent_fd;
 } __attribute__((packed));
 .EE
 .in

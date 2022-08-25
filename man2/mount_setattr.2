@@ -130,10 +130,10 @@ is a structure of the following form:
 .in +4n
 .EX
 struct mount_attr {
-    uint64_t  attr_set;     /* Mount properties to set */
-    uint64_t  attr_clr;     /* Mount properties to clear */
-    uint64_t  propagation;  /* Mount propagation type */
-    uint64_t  userns_fd;    /* User namespace file descriptor */
+    __u64 attr_set;     /* Mount properties to set */
+    __u64 attr_clr;     /* Mount properties to clear */
+    __u64 propagation;  /* Mount propagation type */
+    __u64 userns_fd;    /* User namespace file descriptor */
 };
 .EE
 .in
