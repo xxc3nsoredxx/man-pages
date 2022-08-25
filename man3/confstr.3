@@ -20,7 +20,7 @@ Standard C library
 .nf
 .B #include <unistd.h>
 .PP
-.BI "size_t confstr(int " "name" ", char *" buf ", size_t " len );
+.BI "size_t confstr(int " "name" ", char *" buf ", size_t " size );
 .fi
 .PP
 .RS -4
@@ -58,21 +58,21 @@ be found.
 If
 .I buf
 is not NULL and
-.I len
+.I size
 is not zero,
 .BR confstr ()
 copies the value of the string to
 .I buf
 truncated to
-.I len \- 1
+.I size \- 1
 bytes if necessary, with a null byte (\(aq\e0\(aq) as terminator.
 This can be detected by comparing the return value of
 .BR confstr ()
 against
-.IR len .
+.IR size .
 .PP
 If
-.I len
+.I size
 is zero and
 .I buf
 is NULL,
@@ -86,7 +86,7 @@ is a valid configuration variable,
 returns the number of bytes (including the terminating null byte)
 that would be required to hold the entire value of that variable.
 This value may be greater than
-.IR len ,
+.IR size ,
 which means that the value in
 .I buf
 is truncated.
