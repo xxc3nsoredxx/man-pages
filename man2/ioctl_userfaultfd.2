@@ -769,9 +769,10 @@ structure as shown below:
 .in +4n
 .EX
 struct uffdio_continue {
-    struct uffdio_range range; /* Range to install PTEs for and continue */
-    __u64 mode;                /* Flags controlling the behavior of continue */
-    __s64 mapped;              /* Number of bytes mapped, or negated error */
+    struct uffdio_range range;
+                   /* Range to install PTEs for and continue */
+    __u64 mode;    /* Flags controlling the behavior of continue */
+    __s64 mapped;  /* Number of bytes mapped, or negated error */
 };
 .EE
 .in

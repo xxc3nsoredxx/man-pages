@@ -225,10 +225,10 @@ See below for the description of filesystem actions.
 .PP
 .in +4n
 .EX
-struct landlock_ruleset_attr ruleset_attr = {0};
+struct landlock_ruleset_attr attr = {0};
 int ruleset_fd;
 
-ruleset_attr.handled_access_fs =
+attr.handled_access_fs =
         LANDLOCK_ACCESS_FS_EXECUTE |
         LANDLOCK_ACCESS_FS_WRITE_FILE |
         LANDLOCK_ACCESS_FS_READ_FILE |
@@ -243,7 +243,7 @@ ruleset_attr.handled_access_fs =
         LANDLOCK_ACCESS_FS_MAKE_BLOCK |
         LANDLOCK_ACCESS_FS_MAKE_SYM;
 
-ruleset_fd = landlock_create_ruleset(&ruleset_attr, sizeof(ruleset_attr), 0);
+ruleset_fd = landlock_create_ruleset(&attr, sizeof(attr), 0);
 if (ruleset_fd == -1) {
     perror("Failed to create a ruleset");
     exit(EXIT_FAILURE);

@@ -1336,7 +1336,8 @@ Here is the typical call flow with this new option:
 s = socket();
 setsockopt(s, IPPROTO_TCP, TCP_FASTOPEN_CONNECT, 1, ...);
 connect(s);
-write(s); // write() should always follow connect() in order to trigger SYN to go out
+write(s); /* write() should always follow connect()
+           * in order to trigger SYN to go out. */
 read(s)/write(s);
 /* ... */
 close(s);

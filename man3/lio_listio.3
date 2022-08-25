@@ -12,8 +12,8 @@ Real-time library
 .nf
 .B "#include <aio.h>"
 .PP
-.BI "int lio_listio(int " mode \
-", struct aiocb *restrict const " aiocb_list [restrict],
+.BI "int lio_listio(int " mode ,
+.BI "               struct aiocb *restrict const " aiocb_list [restrict],
 .BI "               int " nitems ", struct sigevent *restrict " sevp );
 .fi
 .SH DESCRIPTION
