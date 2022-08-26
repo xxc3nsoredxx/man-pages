@@ -33,7 +33,7 @@ Standard C library
 ", size_t " n ,
 .BI "                      FILE *restrict " stream );
 .PP
-.BI "char *fgets_unlocked(char *restrict " s ", int " n \
+.BI "char *fgets_unlocked(char " s "[restrict ." n "], int " n \
 ", FILE *restrict " stream );
 .BI "int fputs_unlocked(const char *restrict " s ", FILE *restrict " stream );
 .PP
@@ -47,7 +47,7 @@ Standard C library
 .BI "wint_t putwc_unlocked(wchar_t " wc ", FILE *" stream );
 .BI "wint_t putwchar_unlocked(wchar_t " wc );
 .PP
-.BI "wchar_t *fgetws_unlocked(wchar_t *restrict " ws ", int " n ,
+.BI "wchar_t *fgetws_unlocked(wchar_t " ws "[restrict ." n "], int " n ,
 .BI "                      FILE *restrict " stream );
 .BI "int fputws_unlocked(const wchar_t *restrict " ws ,
 .BI "                      FILE *restrict " stream );

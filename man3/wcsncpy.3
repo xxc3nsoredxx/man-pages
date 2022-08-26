@@ -18,8 +18,8 @@ Standard C library
 .nf
 .B #include <wchar.h>
 .PP
-.BI "wchar_t *wcsncpy(wchar_t *restrict " dest \
-", const wchar_t *restrict " src ,
+.BI "wchar_t *wcsncpy(wchar_t " dest "[restrict ." n ],
+.BI "                 const wchar_t " src "[restrict ." n ],
 .BI "                 size_t " n );
 .fi
 .SH DESCRIPTION

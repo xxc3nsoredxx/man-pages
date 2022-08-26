@@ -17,9 +17,10 @@ Standard C library
 .nf
 .B #include <wchar.h>
 .PP
-.BI "size_t wcsnrtombs(char *restrict " dest ", const wchar_t **restrict " src ,
-.BI "                  size_t " nwc ", size_t " len \
-", mbstate_t *restrict " ps );
+.BI "size_t wcsnrtombs(char " dest "[restrict ." len "], \
+const wchar_t **restrict " src ,
+.BI "                  size_t " nwc ", size_t " len ", \
+mbstate_t *restrict " ps );
 .fi
 .PP
 .RS -4

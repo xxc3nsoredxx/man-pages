@@ -23,8 +23,9 @@ Standard C library
 .B #include <string.h>
 .PP
 .BI "char *strcpy(char *restrict " dest ", const char *restrict " src );
-.BI "char *strncpy(char *restrict " dest ", const char *restrict " src \
-", size_t " n );
+.BI "char *strncpy(char " dest "[restrict ." n "], \
+const char " src "[restrict ." n ],
+.BI "              size_t " n );
 .fi
 .SH DESCRIPTION
 The

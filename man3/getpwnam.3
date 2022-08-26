@@ -28,12 +28,12 @@ Standard C library
 .BI "struct passwd *getpwnam(const char *" name );
 .BI "struct passwd *getpwuid(uid_t " uid );
 .PP
-.BI "int getpwnam_r(const char *restrict " name \
-", struct passwd *restrict " pwd ,
-.BI "               char *restrict " buf ", size_t " buflen ,
+.BI "int getpwnam_r(const char *restrict " name ", \
+struct passwd *restrict " pwd ,
+.BI "               char " buf "[restrict ." buflen "], size_t " buflen ,
 .BI "               struct passwd **restrict " result );
 .BI "int getpwuid_r(uid_t " uid ", struct passwd *restrict " pwd ,
-.BI "               char *restrict " buf ", size_t " buflen ,
+.BI "               char " buf "[restrict ." buflen "], size_t " buflen ,
 .BI "               struct passwd **restrict " result );
 .fi
 .PP

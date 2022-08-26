@@ -74,7 +74,7 @@ This is the default authentication used by RPC.
 .PP
 .nf
 .BI "AUTH *authunix_create(char *" host ", uid_t " uid ", gid_t " gid ,
-.BI "                      int " len ", gid_t *" aup_gids );
+.BI "                      int " len ", gid_t " aup_gids [. len ]);
 .fi
 .IP
 Create and return an RPC authentication handle that contains

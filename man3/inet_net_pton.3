@@ -15,7 +15,7 @@ Resolver library
 .BI "int inet_net_pton(int " af ", const char *" pres ,
 .BI "                    void *" netp ", size_t " nsize );
 .BI "char *inet_net_ntop(int " af ", const void *" netp ", int " bits ,
-.BI "                    char *" pres ", size_t " psize );
+.BI "                    char " pres [. psize "], size_t " psize );
 .fi
 .PP
 .RS -4

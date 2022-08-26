@@ -14,7 +14,7 @@ Standard C library
 .B #include <arpa/inet.h>
 .PP
 .BI "const char *inet_ntop(int " af ", const void *restrict " src ,
-.BI "                      char *restrict " dst ", socklen_t " size );
+.BI "                      char " dst "[restrict ." size "], socklen_t " size );
 .fi
 .SH DESCRIPTION
 This function converts the network address structure

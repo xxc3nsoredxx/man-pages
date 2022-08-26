@@ -35,34 +35,35 @@ Resolver library
 .PP
 .BI "int res_nquery(res_state " statep ,
 .BI "           const char *" dname ", int " class ", int " type ,
-.BI "           unsigned char *" answer ", int " anslen );
+.BI "           unsigned char " answer [. anslen "], int " anslen );
 .PP
 .BI "int res_nsearch(res_state " statep ,
 .BI "           const char *" dname ", int " class ", int " type ,
-.BI "           unsigned char *" answer ", int " anslen );
+.BI "           unsigned char " answer [. anslen "], int " anslen );
 .PP
 .BI "int res_nquerydomain(res_state " statep ,
 .BI "           const char *" name ", const char *" domain ,
-.BI "           int " class ", int " type ", unsigned char *" answer ,
+.BI "           int " class ", int " type ", unsigned char " answer [. anslen ],
 .BI "           int " anslen );
 .PP
 .BI "int res_nmkquery(res_state " statep ,
 .BI "           int " op ", const char *" dname ", int " class ,
-.BI "           int " type ", const unsigned char *" data ", int " datalen ,
+.BI "           int " type ", const unsigned char " data [. datalen "], \
+int " datalen ,
 .BI "           const unsigned char *" newrr ,
-.BI "           unsigned char *" buf ", int " buflen );
+.BI "           unsigned char " buf [. buflen "], int " buflen );
 .PP
 .BI "int res_nsend(res_state " statep ,
-.BI "           const unsigned char *" msg ", int " msglen ,
-.BI "           unsigned char *" answer ", int " anslen );
+.BI "           const unsigned char " msg [. msglen "], int " msglen ,
+.BI "           unsigned char " answer [. anslen "], int " anslen );
 .PP
-.BI "int dn_comp(const char *" exp_dn ", unsigned char *" comp_dn ,
+.BI "int dn_comp(const char *" exp_dn ", unsigned char " comp_dn [. length ],
 .BI "           int " length ", unsigned char **" dnptrs ,
 .BI "           unsigned char **" lastdnptr );
 .PP
 .BI "int dn_expand(const unsigned char *" msg ,
 .BI "           const unsigned char *" eomorig ,
-.BI "           const unsigned char *" comp_dn ", char *" exp_dn ,
+.BI "           const unsigned char *" comp_dn ", char " exp_dn [. length ],
 .BI "           int " length );
 .PP
 .B [[deprecated]] extern struct __res_state _res;
@@ -71,26 +72,27 @@ Resolver library
 .PP
 .B [[deprecated]]
 .BI "int res_query(const char *" dname ", int " class ", int " type ,
-.BI "           unsigned char *" answer ", int " anslen );
+.BI "           unsigned char " answer [. anslen "], int " anslen );
 .PP
 .B [[deprecated]]
 .BI "int res_search(const char *" dname ", int " class ", int " type ,
-.BI "           unsigned char *" answer ", int " anslen );
+.BI "           unsigned char " answer [. anslen "], int " anslen );
 .PP
 .B [[deprecated]]
 .BI "int res_querydomain(const char *" name ", const char *" domain ,
-.BI "           int " class ", int " type ", unsigned char *" answer ,
+.BI "           int " class ", int " type ", unsigned char " answer [. anslen ],
 .BI "           int " anslen );
 .PP
 .B [[deprecated]]
 .BI "int res_mkquery(int " op ", const char *" dname ", int " class ,
-.BI "           int " type ", const unsigned char *" data ", int " datalen ,
+.BI "           int " type ", const unsigned char " data [. datalen "], \
+int " datalen ,
 .BI "           const unsigned char *" newrr ,
-.BI "           unsigned char *" buf ", int " buflen );
+.BI "           unsigned char " buf [. buflen "], int " buflen );
 .PP
 .B [[deprecated]]
-.BI "int res_send(const unsigned char *" msg ", int " msglen ,
-.BI "           unsigned char *" answer ", int " anslen );
+.BI "int res_send(const unsigned char " msg [. msglen "], int " msglen ,
+.BI "           unsigned char " answer [. anslen "], int " anslen );
 .fi
 .SH DESCRIPTION
 .B Note:

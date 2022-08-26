@@ -26,10 +26,10 @@ Standard C library
 .PP
 .BI "int getgrnam_r(const char *restrict " name \
 ", struct group *restrict " grp ,
-.BI "               char *restrict " buf ", size_t " buflen ,
+.BI "               char " buf "[restrict ." buflen "], size_t " buflen ,
 .BI "               struct group **restrict " result );
 .BI "int getgrgid_r(gid_t " gid ", struct group *restrict " grp ,
-.BI "               char *restrict " buf ", size_t " buflen ,
+.BI "               char " buf "[restrict ." buflen "], size_t " buflen ,
 .BI "               struct group **restrict " result );
 .fi
 .PP

@@ -15,15 +15,15 @@ Standard C library
 .B #include <netdb.h>
 .PP
 .BI "int getprotoent_r(struct protoent *restrict " result_buf ,
-.BI "                  char *restrict " buf ", size_t " buflen ,
+.BI "                  char " buf "[restrict ." buflen "], size_t " buflen ,
 .BI "                  struct protoent **restrict " result );
 .BI "int getprotobyname_r(const char *restrict " name ,
 .BI "                  struct protoent *restrict " result_buf ,
-.BI "                  char *restrict " buf ", size_t " buflen ,
+.BI "                  char " buf "[restrict ." buflen "], size_t " buflen ,
 .BI "                  struct protoent **restrict " result );
 .BI "int getprotobynumber_r(int " proto ,
 .BI "                  struct protoent *restrict " result_buf ,
-.BI "                  char *restrict " buf ", size_t " buflen ,
+.BI "                  char " buf "[restrict ." buflen "], size_t " buflen ,
 .BI "                  struct protoent **restrict " result );
 .PP
 .fi

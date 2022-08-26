@@ -23,7 +23,7 @@ Standard C library
 .BI "            char **restrict " user ", char **restrict " domain );
 .BI "int getnetgrent_r(char **restrict " host ,
 .BI "            char **restrict " user ", char **restrict " domain ,
-.BI "            char *restrict " buf ", size_t " buflen );
+.BI "            char " buf "[restrict ." buflen "], size_t " buflen );
 .PP
 .BI "int innetgr(const char *" netgroup ", const char *" host ,
 .BI "            const char *" user ", const char *" domain );

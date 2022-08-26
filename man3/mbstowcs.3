@@ -19,7 +19,8 @@ Standard C library
 .nf
 .B #include <stdlib.h>
 .PP
-.BI "size_t mbstowcs(wchar_t *restrict " dest ", const char *restrict " src ,
+.BI "size_t mbstowcs(wchar_t " dest "[restrict ." n "], \
+const char *restrict " src ,
 .BI "                size_t " n );
 .fi
 .SH DESCRIPTION

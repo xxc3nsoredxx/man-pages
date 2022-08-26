@@ -12,13 +12,13 @@ Real-time library
 .nf
 .B #include <mqueue.h>
 .PP
-.BI "int mq_send(mqd_t " mqdes ", const char *" msg_ptr ,
+.BI "int mq_send(mqd_t " mqdes ", const char " msg_ptr [. msg_len ],
 .BI "              size_t " msg_len ", unsigned int " msg_prio );
 .PP
 .B #include <time.h>
 .B #include <mqueue.h>
 .PP
-.BI "int mq_timedsend(mqd_t " mqdes ", const char *" msg_ptr ,
+.BI "int mq_timedsend(mqd_t " mqdes ", const char " msg_ptr [. msg_len ],
 .BI "              size_t " msg_len ", unsigned int " msg_prio ,
 .BI "              const struct timespec *" abs_timeout );
 .fi

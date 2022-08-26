@@ -37,7 +37,7 @@ Standard C library
 .PP
 .BI "struct mntent *getmntent_r(FILE *restrict " streamp ,
 .BI "              struct mntent *restrict " mntbuf ,
-.BI "              char *restrict " buf ", int " buflen );
+.BI "              char " buf "[restrict ." buflen "], int " buflen );
 .fi
 .PP
 .RS -4

@@ -17,7 +17,8 @@ Standard C library
 .nf
 .B #include <string.h>
 .PP
-.BI "size_t strxfrm(char *restrict " dest ", const char *restrict " src ,
+.BI "size_t strxfrm(char " dest "[restrict ." n "], \
+const char " src "[restrict ." n ],
 .BI "               size_t " n );
 .fi
 .SH DESCRIPTION

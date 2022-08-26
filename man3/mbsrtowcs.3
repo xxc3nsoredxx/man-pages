@@ -18,7 +18,7 @@ Standard C library
 .nf
 .B #include <wchar.h>
 .PP
-.BI "size_t mbsrtowcs(wchar_t *restrict " dest ", const char **restrict " src ,
+.BI "size_t mbsrtowcs(wchar_t " dest "[restrict ." len "], const char **restrict " src ,
 .BI "                 size_t " len ", mbstate_t *restrict " ps );
 .fi
 .SH DESCRIPTION

@@ -31,10 +31,10 @@ Standard C library
 .BI "const char *strerrorname_np(int " errnum );
 .BI "const char *strerrordesc_np(int " errnum );
 .PP
-.BI "int strerror_r(int " errnum ", char *" buf ", size_t " buflen );
+.BI "int strerror_r(int " errnum ", char " buf [. buflen "], size_t " buflen );
                /* XSI-compliant */
 .PP
-.BI "char *strerror_r(int " errnum ", char *" buf ", size_t " buflen );
+.BI "char *strerror_r(int " errnum ", char " buf [. buflen "], size_t " buflen );
                /* GNU-specific */
 .PP
 .BI "char *strerror_l(int " errnum ", locale_t " locale );

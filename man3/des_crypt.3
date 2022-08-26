@@ -22,9 +22,11 @@ Standard C library
 .\" .B #include <des_crypt.h>
 .B #include <rpc/des_crypt.h>
 .PP
-.BI "int ecb_crypt(char *" key ", char *" data ", unsigned int " datalen ,
+.BI "int ecb_crypt(char *" key ", char " data [. datalen "], \
+unsigned int " datalen ,
 .BI "              unsigned int " mode );
-.BI "int cbc_crypt(char *" key ", char *" data ", unsigned int " datalen ,
+.BI "int cbc_crypt(char *" key ", char " data [. datalen "], \
+unsigned int " datalen ,
 .BI "              unsigned int " mode ", char *" ivec );
 .PP
 .BI "void des_setparity(char *" key );

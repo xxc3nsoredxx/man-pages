@@ -16,8 +16,9 @@ Standard C library
 .nf
 .B #include <string.h>
 .PP
-.BI "char *stpncpy(char *restrict " dest ", const char *restrict " src \
-", size_t " n );
+.BI "char *stpncpy(char " dest "[restrict ." n "], \
+const char " src "[restrict ." n ],
+.BI "              size_t " n );
 .fi
 .PP
 .RS -4

@@ -18,7 +18,8 @@ Standard C library
 .nf
 .B #include <stdlib.h>
 .PP
-.BI "size_t wcstombs(char *restrict " dest ", const wchar_t *restrict " src ,
+.BI "size_t wcstombs(char " dest "[restrict ." n "], \
+const wchar_t *restrict " src ,
 .BI "                size_t " n );
 .fi
 .SH DESCRIPTION

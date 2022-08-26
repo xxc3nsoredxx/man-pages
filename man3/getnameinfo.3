@@ -20,9 +20,9 @@ Standard C library
 .PP
 .BI "int getnameinfo(const struct sockaddr *restrict " addr \
 ", socklen_t " addrlen ,
-.BI "                char *restrict " host ", socklen_t " hostlen ,
-.BI "                char *restrict " serv ", socklen_t " servlen \
-", int " flags );
+.BI "                char " host "[restrict ." hostlen "], socklen_t " hostlen ,
+.BI "                char " serv "[restrict ." servlen "], socklen_t " servlen ,
+.BI "                int " flags );
 .fi
 .PP
 .RS -4

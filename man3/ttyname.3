@@ -16,7 +16,7 @@ Standard C library
 .B #include <unistd.h>
 .PP
 .BI "char *ttyname(int " fd );
-.BI "int ttyname_r(int " fd ", char *" buf ", size_t " buflen );
+.BI "int ttyname_r(int " fd ", char " buf [. buflen "], size_t " buflen );
 .fi
 .SH DESCRIPTION
 The function
