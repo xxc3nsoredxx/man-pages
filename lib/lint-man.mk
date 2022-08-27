@@ -16,20 +16,29 @@ include $(srcdir)/lib/src.mk
 TMACDIR := $(SYSCONFDIR)/groff/tmac
 
 
+TBL := tbl
+
+DEFAULT_EQNFLAGS := -Tutf8
+EXTRA_EQNFLAGS   :=
+EQNFLAGS         := $(DEFAULT_EQNFLAGS) $(EXTRA_EQNFLAGS)
+EQN              := eqn
+
 TMACFILES            := $(shell $(FIND) $(TMACDIR) -not -type d | $(SORT))
 TMACNAMES            := $(basename $(notdir $(TMACFILES)))
-GROFF_CHECKSTYLE_LVL := 3
-DEFAULT_GROFFFLAGS   := -man
-DEFAULT_GROFFFLAGS   += -t
-DEFAULT_GROFFFLAGS   += -M $(TMACDIR)
-DEFAULT_GROFFFLAGS   += $(foreach x,$(TMACNAMES),-m $(x))
-DEFAULT_GROFFFLAGS   += -rCHECKSTYLE=$(GROFF_CHECKSTYLE_LVL)
-DEFAULT_GROFFFLAGS   += -ww
-DEFAULT_GROFFFLAGS   += -Tutf8
-DEFAULT_GROFFFLAGS   += -rLL=80n
-EXTRA_GROFFFLAGS     :=
-GROFFFLAGS           := $(DEFAULT_GROFFFLAGS) $(EXTRA_GROFFFLAGS)
-GROFF                := groff
+TROFF_CHECKSTYLE_LVL := 3
+DEFAULT_TROFFFLAGS   := -man
+DEFAULT_TROFFFLAGS   += -t
+DEFAULT_TROFFFLAGS   += -M $(TMACDIR)
+DEFAULT_TROFFFLAGS   += $(foreach x,$(TMACNAMES),-m $(x))
+DEFAULT_TROFFFLAGS   += -rCHECKSTYLE=$(TROFF_CHECKSTYLE_LVL)
+DEFAULT_TROFFFLAGS   += -ww
+DEFAULT_TROFFFLAGS   += -Tutf8
+DEFAULT_TROFFFLAGS   += -rLL=80n
+EXTRA_TROFFFLAGS     :=
+TROFFFLAGS           := $(DEFAULT_TROFFFLAGS) $(EXTRA_TROFFFLAGS)
+TROFF                := troff
+
+GROTTY := grotty
 
 DEFAULT_MANDOCFLAGS := -man
 DEFAULT_MANDOCFLAGS += -Tlint
@@ -48,7 +57,10 @@ lint_man    := $(foreach x,$(linters_man),lint-man-$(x))
 
 $(_LINT_man_groff): $(_LINTDIR)/%.lint-man.groff.touch: $(MANDIR)/% | $$(@D)/.
 	$(info LINT (groff)	$@)
-	$(GROFF) $(GROFFFLAGS) $< \
+	$(TBL) $< \
+	| $(EQN) $(EQNFLAGS) \
+	| $(TROFF) $(TROFFFLAGS) \
+	| $(GROTTY) \
 	| sed 's/\x1b\[[^@-~]*[@-~]//g' \
 	| (! grep -n '.\{80\}.')
 	touch $@
