@@ -16,7 +16,7 @@ include $(srcdir)/lib/src.mk
 TMACDIR := $(SYSCONFDIR)/groff/tmac
 
 
-TROFF_OUT_DEVICE := utf8
+TROFF_OUT_DEVICE := ascii
 
 TBL := tbl
 
