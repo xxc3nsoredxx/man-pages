@@ -40,7 +40,16 @@ EXTRA_TROFFFLAGS     :=
 TROFFFLAGS           := $(DEFAULT_TROFFFLAGS) $(EXTRA_TROFFFLAGS)
 TROFF                := troff
 
-GROTTY := grotty
+DEFAULT_GROTTYFLAGS := -c
+EXTRA_GROTTYFLAGS   :=
+GROTTYFLAGS         := $(DEFAULT_GROTTYFLAGS) $(EXTRA_GROTTYFLAGS)
+GROTTY              := grotty
+
+DEFAULT_COLFLAGS := -b
+DEFAULT_COLFLAGS += -x
+EXTRA_COLFLAGS   :=
+COLFLAGS         := $(DEFAULT_COLFLAGS) $(EXTRA_COLFLAGS)
+COL              := col
 
 DEFAULT_MANDOCFLAGS := -man
 DEFAULT_MANDOCFLAGS += -Tlint
@@ -62,8 +71,8 @@ $(_LINT_man_groff): $(_LINTDIR)/%.lint-man.groff.touch: $(MANDIR)/% | $$(@D)/.
 	$(TBL) $< \
 	| $(EQN) $(EQNFLAGS) \
 	| $(TROFF) $(TROFFFLAGS) \
-	| $(GROTTY) \
-	| sed 's/\x1b\[[^@-~]*[@-~]//g' \
+	| $(GROTTY) $(GROTTYFLAGS) \
+	| $(COL) $(COLFLAGS) \
 	| (! grep -n '.\{80\}.')
 	touch $@
 
