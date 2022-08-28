@@ -16,7 +16,9 @@ include $(srcdir)/lib/src.mk
 TMACDIR := $(SYSCONFDIR)/groff/tmac
 
 
-TROFF_OUT_DEVICE := ascii
+MANWIDTH          ?= 80
+TROFF_LINE_LENGTH := $(shell echo $(MANWIDTH)-2 | $(BC))
+TROFF_OUT_DEVICE  := ascii
 
 TBL := tbl
 
@@ -35,7 +37,7 @@ DEFAULT_TROFFFLAGS   += $(foreach x,$(TMACNAMES),-m $(x))
 DEFAULT_TROFFFLAGS   += -rCHECKSTYLE=$(TROFF_CHECKSTYLE_LVL)
 DEFAULT_TROFFFLAGS   += -ww
 DEFAULT_TROFFFLAGS   += -T$(TROFF_OUT_DEVICE)
-DEFAULT_TROFFFLAGS   += -rLL=80n
+DEFAULT_TROFFFLAGS   += -rLL=$(TROFF_LINE_LENGTH)n
 EXTRA_TROFFFLAGS     :=
 TROFFFLAGS           := $(DEFAULT_TROFFFLAGS) $(EXTRA_TROFFFLAGS)
 TROFF                := troff
@@ -73,7 +75,7 @@ $(_LINT_man_groff): $(_LINTDIR)/%.lint-man.groff.touch: $(MANDIR)/% | $$(@D)/.
 	| $(TROFF) $(TROFFFLAGS) \
 	| $(GROTTY) $(GROTTYFLAGS) \
 	| $(COL) $(COLFLAGS) \
-	| (! $(GREP) -n '.\{80\}.')
+	| (! $(GREP) -n '.\{$(MANWIDTH)\}.')
 	touch $@
 
 $(_LINT_man_mandoc): $(_LINTDIR)/%.lint-man.mandoc.touch: $(MANDIR)/% | $$(@D)/.
