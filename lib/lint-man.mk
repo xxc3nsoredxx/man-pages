@@ -73,7 +73,7 @@ $(_LINT_man_groff): $(_LINTDIR)/%.lint-man.groff.touch: $(MANDIR)/% | $$(@D)/.
 	| $(TROFF) $(TROFFFLAGS) \
 	| $(GROTTY) $(GROTTYFLAGS) \
 	| $(COL) $(COLFLAGS) \
-	| (! grep -n '.\{80\}.')
+	| (! $(GREP) -n '.\{80\}.')
 	touch $@
 
 $(_LINT_man_mandoc): $(_LINTDIR)/%.lint-man.mandoc.touch: $(MANDIR)/% | $$(@D)/.
