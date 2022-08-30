@@ -481,9 +481,9 @@ main(int argc, char *argv[])
         exit(EXIT_FAILURE);
     }
 
-    printf("ID of containing device:  [%jx,%jx]\en",
-           (uintmax_t) major(sb.st_dev),
-           (uintmax_t) minor(sb.st_dev));
+    printf("ID of containing device:  [%x,%x]\en",
+           major(sb.st_dev),
+           minor(sb.st_dev));
 
     printf("File type:                ");
 
