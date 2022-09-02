@@ -787,8 +787,49 @@ blank_timer times out, then you choose this option.
 Powering down frequently will damage the monitor.)
 (Since Linux 1.1.76.)
 .RE
+.TP
+.BR TIOCLINUX ", " subcode = TIOCL_SETKMSGREDIRECT
+Change target of kernel messages ("console"):
+by default, and if this is set to
+.BR 0 ,
+messages are written to the currently active VT.
+The VT to write to is a single byte following
+.BR subcode .
+(Since Linux 2.5.36.)
+.TP
+.BR TIOCLINUX ", " subcode = TIOCL_GETFGCONSOLE
+Returns the number of VT currently in foreground.
+(Since Linux 2.5.36.)
+.TP
+.BR TIOCLINUX ", " subcode = TIOCL_SCROLLCONSOLE
+Scroll the foreground VT by the specified amount of
+.I lines
+down,
+or half the screen if
+.BR 0 .
+.I lines
+is *(((int32_t *)&subcode) + 1).
+(Since Linux 2.5.67.)
+.TP
+.BR TIOCLINUX ", " subcode = TIOCL_BLANKSCREEN
+Blank the foreground VT, ignoring "pokes" (typing):
+can only be unblanked explicitly (by switching VTs, to text mode, etc.).
+(Since Linux 2.5.71.)
+.TP
+.BR TIOCLINUX ", " subcode = TIOCL_BLANKEDSCREEN
+Returns the number of VT currently blanked,
+.B 0
+if none.
+(Since Linux 2.5.71.)
+.TP
+.BR TIOCLINUX ", " subcode = 16
+Never used.
+.TP
+.BR TIOCLINUX ", " subcode = TIOCL_GETKMSGREDIRECT
+Returns target of kernel messages.
+(Since Linux 2.6.17.)
 .SH RETURN VALUE
-On success, 0 is returned.
+On success, 0 is returned (except where indicated).
 On failure, \-1 is returned, and
 .I errno
 is set to indicate the error.
