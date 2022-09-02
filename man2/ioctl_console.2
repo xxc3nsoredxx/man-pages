@@ -663,8 +663,14 @@ pointed to by
 referred to here as the
 .IR subcode .
 These are legal only for the superuser or the owner of the current terminal.
+Symbolic
+.IR subcode s
+are available in
+.I <linux/tiocl.h>
+since
+Linux 2.5.71.
 .TP
-.BR TIOCLINUX ", " subcode=0
+.BR TIOCLINUX ", " subcode = 0
 Dump the screen.
 Disappeared in Linux 1.1.92.
 (With kernel 1.1.92 or later, read from
@@ -673,11 +679,11 @@ or
 .I /dev/vcsaN
 instead.)
 .TP
-.BR TIOCLINUX ", " subcode=1
+.BR TIOCLINUX ", " subcode = 1
 Get task information.
 Disappeared in Linux 1.1.92.
 .TP
-.BR TIOCLINUX ", " subcode=2
+.BR TIOCLINUX ", " subcode = TIOCL_SETSEL
 Set selection.
 .I argp
 points to a
@@ -710,35 +716,35 @@ The indicated screen characters are highlighted and saved
 in the static array sel_buffer in
 .IR devices/char/console.c .
 .TP
-.BR TIOCLINUX ", " subcode=3
+.BR TIOCLINUX ", " subcode = TIOCL_PASTESEL
 Paste selection.
 The characters in the selection buffer are
 written to
 .IR fd .
 .TP
-.BR TIOCLINUX ", " subcode=4
+.BR TIOCLINUX ", " subcode = TIOCL_UNBLANKSCREEN
 Unblank the screen.
 .TP
-.BR TIOCLINUX ", " subcode=5
+.BR TIOCLINUX ", " subcode = TIOCL_SELLOADLUT
 Sets contents of a 256-bit look up table defining characters in a "word",
 for word-by-word selection.
 (Since Linux 1.1.32.)
 .TP
-.BR TIOCLINUX ", " subcode=6
+.BR TIOCLINUX ", " subcode = TIOCL_GETSHIFTSTATE
 .I argp
 points to a char which is set to the value of the kernel
 variable
 .IR shift_state .
 (Since Linux 1.1.32.)
 .TP
-.BR TIOCLINUX ", " subcode=7
+.BR TIOCLINUX ", " subcode = TIOCL_GETMOUSEREPORTING
 .I argp
 points to a char which is set to the value of the kernel
 variable
 .IR report_mouse .
 (Since Linux 1.1.33.)
 .TP
-.BR TIOCLINUX ", " subcode=8
+.BR TIOCLINUX ", " subcode = 8
 Dump screen width and height, cursor position, and all the
 character-attribute pairs.
 (Kernels 1.1.67 through 1.1.91 only.
@@ -746,7 +752,7 @@ With kernel 1.1.92 or later, read from
 .I /dev/vcsa*
 instead.)
 .TP
-.BR TIOCLINUX ", " subcode=9
+.BR TIOCLINUX ", " subcode = 9
 Restore screen width and height, cursor position, and all the
 character-attribute pairs.
 (Kernels 1.1.67 through 1.1.91 only.
@@ -754,7 +760,7 @@ With kernel 1.1.92 or later, write to
 .I /dev/vcsa*
 instead.)
 .TP
-.BR TIOCLINUX ", " subcode=10
+.BR TIOCLINUX ", " subcode = TIOCL_SETVESABLANK
 Handles the Power Saving
 feature of the new generation of monitors.
 VESA screen blanking mode is set to
