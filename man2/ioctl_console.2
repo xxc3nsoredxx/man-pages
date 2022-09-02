@@ -713,8 +713,7 @@ is 0 for character-by-character selection,
 1 for word-by-word selection,
 or 2 for line-by-line selection.
 The indicated screen characters are highlighted and saved
-in the static array sel_buffer in
-.IR devices/char/console.c .
+in a kernel buffer.
 .TP
 .BR TIOCLINUX ", " subcode = TIOCL_PASTESEL
 Paste selection.
