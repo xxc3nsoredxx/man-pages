@@ -11,7 +11,7 @@ stat \- file status
 Standard C library
 .RI ( libc )
 .SH SYNOPSIS
-.nf
+.EX
 .B #include <sys/stat.h>
 .PP
 .B struct stat {
@@ -38,7 +38,7 @@ Standard C library
 .B "#define st_mtine  st_mtim.tv_sec"
 .B "#define st_ctime  st_ctim.tv_sec"
 .B };
-.fi
+.EE
 .PP
 .RS -4
 Feature Test Macro Requirements for glibc (see

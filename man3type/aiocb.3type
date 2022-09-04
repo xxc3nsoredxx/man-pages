@@ -11,7 +11,7 @@ aiocb \- asynchronous I/O control block
 Standard C library
 .RI ( libc )
 .SH SYNOPSIS
-.nf
+.EX
 .B #include <aio.h>
 .PP
 .B struct aiocb {
@@ -23,7 +23,7 @@ Standard C library
 .BR "    struct sigevent aio_sigevent;" "   /* Signal number and value */"
 .BR "    int             aio_lio_opcode;" " /* Operation to be performed */"
 .B };
-.fi
+.EE
 .SH DESCRIPTION
 For further information about this structure, see
 .BR aio (7).

@@ -12,7 +12,7 @@ regex_t, regmatch_t, regoff_t
 Standard C library
 .RI ( libc )
 .SH SYNOPSIS
-.nf
+.EX
 .B #include <regex.h>
 .PP
 .B typedef struct {
@@ -28,7 +28,7 @@ Standard C library
 .B } regmatch_t;
 .PP
 .BR typedef " /* ... */  " regoff_t;
-.fi
+.EE
 .SH DESCRIPTION
 .TP
 .I regex_t

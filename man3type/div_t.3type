@@ -12,7 +12,7 @@ quotient and remainder of an integer division
 Standard C library
 .RI ( libc )
 .SH SYNOPSIS
-.nf
+.EX
 .B #include <stdlib.h>
 .PP
 .B typedef struct {
@@ -36,7 +36,7 @@ Standard C library
 .BR "    intmax_t quot;" " /* Quotient */"
 .BR "    intmax_t rem;" "  /* Remainder */"
 .B } imaxdiv_t;
-.fi
+.EE
 .SH DESCRIPTION
 .RI [[ l ] l ] div_t
 is the type of the value returned by the

@@ -10,14 +10,14 @@ timespec \- interval for a timer with nanosecond precision
 Standard C library
 .RI ( libc )
 .SH SYNOPSIS
-.nf
+.EX
 .B #include <time.h>
 .PP
 .B struct itimerspec {
 .BR "    struct timespec  it_interval;" "  /* Interval for periodic timer */"
 .BR "    struct timespec  it_value;" "     /* Initial expiration */"
 .B };
-.fi
+.EE
 .SH DESCRIPTION
 Describes the initial expiration of a timer,
 and its interval,

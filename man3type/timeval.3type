@@ -11,14 +11,14 @@ timeval \- time in seconds and microseconds
 Standard C library
 .RI ( libc )
 .SH SYNOPSIS
-.nf
+.EX
 .B #include <sys/time.h>
 .PP
 .B struct timeval {
 .BR "    time_t       tv_sec;" "   /* Seconds */"
 .BR "    suseconds_t  tv_usec;" "  /* Microseconds */"
 .B };
-.fi
+.EE
 .SH DESCRIPTION
 Describes times in seconds and microseconds.
 .SH STANDARDS

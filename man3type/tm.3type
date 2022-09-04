@@ -10,7 +10,7 @@ tm \- broken-down time
 Standard C library
 .RI ( libc )
 .SH SYNOPSIS
-.nf
+.EX
 .B #include <time.h>
 .PP
 .B struct tm {
@@ -30,7 +30,7 @@ Standard C library
 .BR "    long        tm_gmtoff;" " /* Seconds East of UTC */"
 .BR "    const char *tm_zone;" "   /* Timezone abbreviation */"
 .B };
-.fi
+.EE
 .PP
 .RS -4
 Feature Test Macro Requirements for glibc (see

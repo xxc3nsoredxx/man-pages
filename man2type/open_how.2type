@@ -9,7 +9,7 @@ open_how \- how to open a pathname
 .SH LIBRARY
 Linux kernel headers
 .SH SYNOPSIS
-.nf
+.EX
 .B #include <linux/openat2.h>
 .PP
 .B struct open_how {
@@ -18,7 +18,7 @@ Linux kernel headers
 .BR "    u64  resolve;" "  /* " RESOLVE_ "* flags */"
     /* ... */
 .B };
-.fi
+.EE
 .SH DESCRIPTION
 Specifies how a pathname should be open.
 .PP

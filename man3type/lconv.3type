@@ -11,7 +11,7 @@ lconv \- numeric formatting information
 Standard C library
 .RI ( libc )
 .SH SYNOPSIS
-.nf
+.EX
 .B #include <locale.h>
 .PP
 .BR "struct lconv {" "                /* Values in the \(dqC\(dq locale: */"
@@ -40,7 +40,7 @@ Standard C library
 .BR "    char  int_p_sign_posn;" "    /* CHAR_MAX */"
 .BR "    char  int_n_sign_posn;" "    /* CHAR_MAX */"
 .B };
-.fi
+.EE
 .SH DESCRIPTION
 Contains members related to the formatting of numeric values.
 In the "C" locale, its members have the values

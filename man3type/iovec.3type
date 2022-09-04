@@ -10,7 +10,7 @@ iovec \- Vector I/O data structure
 Standard C library
 .RI ( libc )
 .SH SYNOPSIS
-.nf
+.EX
 .B #include <sys/uio.h>
 .PP
 .B struct iovec {
@@ -18,7 +18,7 @@ Standard C library
 .BR "    size_t  iov_len;" "   /* Size of the memory pointed to by "\c
 .IR iov_base ". */"
 .B };
-.fi
+.EE
 .SH DESCRIPTION
 Describes a region of memory, beginning at
 .I iov_base

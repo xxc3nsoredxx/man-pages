@@ -13,7 +13,7 @@ in_addr, in6_addr, in_addr_t, in_port_t,
 Standard C library
 .RI ( libc )
 .SH SYNOPSIS
-.nf
+.EX
 .B #include <sys/socket.h>
 .PP
 .B struct sockaddr {
@@ -28,9 +28,9 @@ Standard C library
 .BR typedef " /* ... */ " socklen_t;
 .BR typedef " /* ... */ " sa_family_t;
 .PP
-.fi
+.EE
 .SS Internet domain sockets
-.nf
+.EX
 .B #include <netinet/in.h>
 .PP
 .B struct sockaddr_in {
@@ -57,16 +57,16 @@ Standard C library
 .PP
 .B typedef uint32_t in_addr_t;
 .B typedef uint16_t in_port_t;
-.fi
+.EE
 .SS UNIX domain sockets
-.nf
+.EX
 .B #include <sys/un.h>
 .PP
 .B struct sockaddr_un {
 .BR "    sa_family_t     sun_family;" "     /* Address family */"
 .BR "    char            sun_path[];" "     /* Socket pathname */"
 .B };
-.fi
+.EE
 .SH DESCRIPTION
 .TP
 .I sockaddr
