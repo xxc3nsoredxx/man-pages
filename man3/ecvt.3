@@ -19,10 +19,10 @@ Standard C library
 .nf
 .B #include <stdlib.h>
 .PP
-.BI "char *ecvt(double " number ", int " ndigits ", int *restrict " decpt ,
-.BI "           int *restrict " sign );
-.BI "char *fcvt(double " number ", int " ndigits ", int *restrict " decpt ,
-.BI "           int *restrict " sign );
+.BI "[[deprecated]] char *ecvt(double " number ", int " ndigits ,
+.BI "                          int *restrict " decpt ", int *restrict " sign );
+.BI "[[deprecated]] char *fcvt(double " number ", int " ndigits ,
+.BI "                          int *restrict " decpt ", int *restrict " sign );
 .fi
 .PP
 .RS -4
