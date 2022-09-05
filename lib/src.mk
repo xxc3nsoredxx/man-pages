@@ -11,7 +11,7 @@ MAKEFILE_SRC_INCLUDED := 1
 include $(srcdir)/lib/cmd.mk
 
 
-MANDIR := $(srcdir)
+MANDIR := $(srcdir)/man
 MANEXT := \.[0-9]\w*
 
 
