@@ -18,7 +18,7 @@ TMACDIR := $(SYSCONFDIR)/groff/tmac
 
 MANWIDTH          ?= 80
 TROFF_LINE_LENGTH := $(shell echo $(MANWIDTH)-2 | $(BC))
-TROFF_OUT_DEVICE  := ascii
+TROFF_OUT_DEVICE  := utf8
 
 TBL := tbl
 
