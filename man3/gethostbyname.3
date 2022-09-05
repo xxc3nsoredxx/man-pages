@@ -30,14 +30,14 @@ Standard C library
 .nf
 .B #include <netdb.h>
 .PP
+.BI "void sethostent(int " stayopen );
+.B void endhostent(void);
+.PP
 .B [[deprecated]] extern int h_errno;
 .PP
 .BI "[[deprecated]] struct hostent *gethostbyname(const char *" name );
 .BI "[[deprecated]] struct hostent *gethostbyaddr(const void *" addr ,
 .BI "                                      socklen_t " len ", int " type );
-.PP
-.BI "void sethostent(int " stayopen );
-.B void endhostent(void);
 .PP
 .BI "[[deprecated]] void herror(const char *" s );
 .BI "[[deprecated]] const char *hstrerror(int " err );
@@ -128,6 +128,18 @@ and
 instead.
 .PP
 The
+.BR sethostent ()
+function specifies, if \fIstayopen\fP is true (1),
+that a connected TCP socket should be used for the name server queries and
+that the connection should remain open during successive queries.
+Otherwise, name server queries will use UDP datagrams.
+.PP
+The
+.BR endhostent ()
+function ends the use of a TCP connection for name
+server queries.
+.PP
+The
 .BR gethostbyname ()
 function returns a structure of type
 .I hostent
@@ -183,18 +195,6 @@ obtained via a call to
 .BR inet_addr (3))
 for address type
 .BR AF_INET .
-.PP
-The
-.BR sethostent ()
-function specifies, if \fIstayopen\fP is true (1),
-that a connected TCP socket should be used for the name server queries and
-that the connection should remain open during successive queries.
-Otherwise, name server queries will use UDP datagrams.
-.PP
-The
-.BR endhostent ()
-function ends the use of a TCP connection for name
-server queries.
 .PP
 The (obsolete)
 .BR herror ()
