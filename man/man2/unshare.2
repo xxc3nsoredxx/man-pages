@@ -461,6 +461,17 @@ Such functionality may be added in the future, if required.
 .\"be incrementally added to unshare without affecting legacy
 .\"applications using unshare.
 .\"
+.PP
+Creating all kinds of namespace, except user namespaces, requires the
+.B CAP_SYS_ADMIN
+capability.
+However, since creating a user namespace automatically confers a full set of
+capabilities,
+creating both a user namespace and any other type of namespace in the same
+.BR unshare ()
+call does not require the
+.B CAP_SYS_ADMIN
+capability in the original namespace.
 .SH EXAMPLES
 The program below provides a simple implementation of the
 .BR unshare (1)
