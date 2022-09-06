@@ -152,6 +152,47 @@ The ignore mask shall survive modify events.
 If this flag is not set,
 the ignore mask is cleared when a modify event occurs
 for the ignored file or directory.
+.TP
+.BR FAN_MARK_EVICTABLE " (since Linux 5.19)"
+.\" commit 5f9d3bd520261fd7a850818c71809fd580e0f30c
+When an inode mark is created with this flag,
+the inode object will not be pinned to the inode cache,
+therefore,
+allowing the inode object to be evicted from the inode cache
+when the memory pressure on the system is high.
+The eviction of the inode object
+results in the evictable mark also being lost.
+When the mask of an evictable inode mark is updated
+without using the
+.B FAN_MARK_EVICATBLE
+flag,
+the marked inode is pinned to inode cache
+and the mark is no longer evictable.
+When the mask of a non-evictable inode mark is updated
+with the
+.B FAN_MARK_EVICTABLE
+flag,
+the inode mark remains non-evictable
+and the update fails with
+.B EEXIST
+error.
+Mounts and filesystems are not evictable objects,
+therefore,
+an attempt to create a mount mark or a filesystem mark
+with the
+.B FAN_MARK_EVICTABLE
+flag,
+will result in the error
+.BR EINVAL .
+For example,
+inode marks can be used in combination with mount marks
+to reduce the amount of events from noninteresting paths.
+The event listener reads events,
+checks if the path reported in the event is of interest,
+and if it is not,
+the listener sets a mark with an ignore mask on the directory.
+Evictable inode marks allow using this method for a large number of directories
+without the concern of pinning all inodes and exhausting the system's memory.
 .PP
 .I mask
 defines which events shall be listened for (or which shall be ignored).
@@ -408,6 +449,18 @@ is relative but
 is neither
 .B AT_FDCWD
 nor a valid file descriptor.
+.TP
+.B EEXIST
+The filesystem object indicated by
+.I dirfd
+and
+.I pathname
+has a mark that was updated without the
+.B FAN_MARK_EVICTABLE
+flag,
+and the user attempted to update the mark with
+.B FAN_MARK_EVICTABLE
+flag.
 .TP
 .B EINVAL
 An invalid value was passed in
