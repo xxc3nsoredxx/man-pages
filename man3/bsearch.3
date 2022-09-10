@@ -88,6 +88,8 @@ then retrieves desired elements using
 #include <stdlib.h>
 #include <string.h>
 
+#define ARRAY_SIZE(arr)  (sizeof((arr)) / sizeof((arr)[0]))
+
 struct mi {
     int         nr;
     const char  *name;
@@ -98,8 +100,6 @@ static struct mi  months[] = {
     { 5, "may" }, { 6, "jun" }, { 7, "jul" }, { 8, "aug" },
     { 9, "sep" }, {10, "oct" }, {11, "nov" }, {12, "dec" }
 };
-
-#define nr_of_months (sizeof(months)/sizeof(months[0]))
 
 static int
 compmi(const void *m1, const void *m2)
@@ -112,13 +112,13 @@ compmi(const void *m1, const void *m2)
 int
 main(int argc, char *argv[])
 {
-    qsort(months, nr_of_months, sizeof(months[0]), compmi);
+    qsort(months, ARRAY_SIZE(months), sizeof(months[0]), compmi);
     for (int i = 1; i < argc; i++) {
         struct mi key;
         struct mi *res;
 
         key.name = argv[i];
-        res = bsearch(&key, months, nr_of_months,
+        res = bsearch(&key, months, ARRAY_SIZE(months),
                       sizeof(months[0]), compmi);
         if (res == NULL)
             printf("\(aq%s\(aq: unknown month\en", argv[i]);
