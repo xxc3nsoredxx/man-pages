@@ -284,6 +284,7 @@ Name: "/lib64/ld\-linux\-x86\-64.so.2" (7 segments)
 .in
 .SS Program source
 \&
+.\" SRC BEGIN (dl_iterate_phdr.c)
 .EX
 #define _GNU_SOURCE
 #include <link.h>
@@ -334,6 +335,7 @@ main(int argc, char *argv[])
     exit(EXIT_SUCCESS);
 }
 .EE
+.\" SRC END
 .SH SEE ALSO
 .BR ldd (1),
 .BR objdump (1),

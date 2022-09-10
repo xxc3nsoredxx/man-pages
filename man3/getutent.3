@@ -293,6 +293,7 @@ should check the return values of
 and
 .BR ttyname (3).
 .PP
+.\" SRC BEGIN (getutent.c)
 .EX
 #include <string.h>
 #include <stdlib.h>
@@ -335,6 +336,7 @@ main(int argc, char *argv[])
     exit(EXIT_SUCCESS);
 }
 .EE
+.\" SRC END
 .SH SEE ALSO
 .BR getutmp (3),
 .BR utmp (5)

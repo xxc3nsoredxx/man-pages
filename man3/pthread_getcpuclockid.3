@@ -96,6 +96,7 @@ Subthread CPU time:        0.992
 .in
 .SS Program source
 \&
+.\" SRC BEGIN (pthread_getcpuclockid.c)
 .EX
 /* Link with "\-lrt" */
 
@@ -169,6 +170,7 @@ main(int argc, char *argv[])
     exit(EXIT_SUCCESS);         /* Terminates both threads */
 }
 .EE
+.\" SRC END
 .SH SEE ALSO
 .BR clock_gettime (2),
 .BR clock_settime (2),

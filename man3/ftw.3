@@ -444,6 +444,7 @@ argument when calling
 .BR nftw ().
 .SS Program source
 \&
+.\" SRC BEGIN (ftw.c)
 .EX
 #define _XOPEN_SOURCE 500
 #include <ftw.h>
@@ -493,6 +494,7 @@ main(int argc, char *argv[])
     exit(EXIT_SUCCESS);
 }
 .EE
+.\" SRC END
 .SH SEE ALSO
 .BR stat (2),
 .BR fts (3),

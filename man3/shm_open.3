@@ -289,6 +289,7 @@ Its primary purpose is to define a structure that will be imposed
 on the memory object that is shared between the two programs.
 .PP
 .in +4n
+.\" SRC BEGIN (pshm_ucase.h)
 .EX
 #include <sys/mman.h>
 #include <fcntl.h>
@@ -313,6 +314,7 @@ struct shmbuf {
     char   buf[BUF_SIZE];   /* Data being transferred */
 };
 .EE
+.\" SRC END
 .in
 .\"
 .SS Program source: pshm_ucase_bounce.c
@@ -330,6 +332,7 @@ in the memory by the "send" program and then posts the second semaphore
 to tell the "send" program that it may now access the shared memory.
 .PP
 .in +4n
+.\" SRC BEGIN (pshm_ucase_bounce.c)
 .EX
 /* pshm_ucase_bounce.c
 
@@ -400,6 +403,7 @@ main(int argc, char *argv[])
     exit(EXIT_SUCCESS);
 }
 .EE
+.\" SRC END
 .in
 .\"
 .SS Program source: pshm_ucase_send.c
@@ -418,6 +422,7 @@ the "send" program prints the contents of the shared memory
 on standard output.
 .PP
 .in +4n
+.\" SRC BEGIN (pshm_ucase_send.c)
 .EX
 /* pshm_ucase_send.c
 
@@ -480,6 +485,7 @@ main(int argc, char *argv[])
     exit(EXIT_SUCCESS);
 }
 .EE
+.\" SRC END
 .in
 .SH SEE ALSO
 .BR close (2),

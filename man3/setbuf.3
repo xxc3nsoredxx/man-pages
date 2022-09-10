@@ -197,6 +197,7 @@ points to still exists by the time
 is closed, which also happens at program termination.
 For example, the following is invalid:
 .PP
+.\" SRC BEGIN (setbuf.c)
 .EX
 #include <stdio.h>
 
@@ -209,6 +210,7 @@ main(void)
     return 0;
 }
 .EE
+.\" SRC END
 .SH SEE ALSO
 .BR stdbuf (1),
 .BR fclose (3),

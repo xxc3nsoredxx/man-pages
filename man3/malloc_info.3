@@ -165,6 +165,7 @@ glibc 2.13
 .EE
 .in
 .SS Program source
+.\" SRC BEGIN (malloc_info.c)
 .EX
 #include <unistd.h>
 #include <stdlib.h>
@@ -250,6 +251,7 @@ main(int argc, char *argv[])
     exit(EXIT_SUCCESS);
 }
 .EE
+.\" SRC END
 .SH SEE ALSO
 .BR mallinfo (3),
 .BR malloc (3),

@@ -218,6 +218,7 @@ POSIX.1-2001, POSIX.1-2008.
 The output of the following example program
 is approximately that of "ls [a-c]*.c".
 .PP
+.\" SRC BEGIN (wordexp.c)
 .EX
 #include <stdio.h>
 #include <stdlib.h>
@@ -237,6 +238,7 @@ main(int argc, char *argv[])
     exit(EXIT_SUCCESS);
 }
 .EE
+.\" SRC END
 .SH SEE ALSO
 .BR fnmatch (3),
 .BR glob (3)

@@ -61,6 +61,7 @@ GNU libc release: stable
 .in
 .SS Program source
 \&
+.\" SRC BEGIN (gnu_get_libc_version.c)
 .EX
 #include <gnu/libc\-version.h>
 #include <stdlib.h>
@@ -74,5 +75,6 @@ main(int argc, char *argv[])
     exit(EXIT_SUCCESS);
 }
 .EE
+.\" SRC END
 .SH SEE ALSO
 .BR confstr (3)

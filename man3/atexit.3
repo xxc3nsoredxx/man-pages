@@ -131,6 +131,7 @@ Since glibc 2.2.3,
 can be used within a shared library to establish functions
 that are called when the shared library is unloaded.
 .SH EXAMPLES
+.\" SRC BEGIN (atexit.c)
 .EX
 #include <stdio.h>
 #include <stdlib.h>
@@ -160,6 +161,7 @@ main(void)
     exit(EXIT_SUCCESS);
 }
 .EE
+.\" SRC END
 .SH SEE ALSO
 .BR _exit (2),
 .BR dlopen (3),

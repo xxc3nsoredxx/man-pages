@@ -427,6 +427,7 @@ with no associated value; and
 .IR "\-t val" ,
 which expects an associated value.
 .PP
+.\" SRC BEGIN (getopt.c)
 .EX
 #include <unistd.h>
 #include <stdlib.h>
@@ -472,11 +473,13 @@ main(int argc, char *argv[])
     exit(EXIT_SUCCESS);
 }
 .EE
+.\" SRC END
 .SS getopt_long()
 The following example program illustrates the use of
 .BR getopt_long ()
 with most of its features.
 .PP
+.\" SRC BEGIN (getopt_long.c)
 .EX
 #include <stdio.h>     /* for printf */
 #include <stdlib.h>    /* for exit */
@@ -557,6 +560,7 @@ main(int argc, char *argv[])
     exit(EXIT_SUCCESS);
 }
 .EE
+.\" SRC END
 .SH SEE ALSO
 .BR getopt (1),
 .BR getsubopt (3)

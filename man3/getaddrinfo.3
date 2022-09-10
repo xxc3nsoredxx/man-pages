@@ -642,6 +642,7 @@ and
 The programs are an echo server and client for UDP datagrams.
 .SS Server program
 \&
+.\" SRC BEGIN (server.c)
 .EX
 #include <sys/types.h>
 #include <stdio.h>
@@ -735,8 +736,10 @@ main(int argc, char *argv[])
     }
 }
 .EE
+.\" SRC END
 .SS Client program
 \&
+.\" SRC BEGIN (client.c)
 .EX
 #include <sys/types.h>
 #include <sys/socket.h>
@@ -831,6 +834,7 @@ main(int argc, char *argv[])
     exit(EXIT_SUCCESS);
 }
 .EE
+.\" SRC END
 .SH SEE ALSO
 .\" .BR getipnodebyaddr (3),
 .\" .BR getipnodebyname (3),

@@ -251,6 +251,7 @@ The following program inserts twelve random numbers into a binary
 tree, where duplicate numbers are collapsed, then prints the numbers
 in order.
 .PP
+.\" SRC BEGIN (tsearch.c)
 .EX
 #define _GNU_SOURCE     /* Expose declaration of tdestroy() */
 #include <search.h>
@@ -323,6 +324,7 @@ main(void)
     exit(EXIT_SUCCESS);
 }
 .EE
+.\" SRC END
 .SH SEE ALSO
 .BR bsearch (3),
 .BR hsearch (3),

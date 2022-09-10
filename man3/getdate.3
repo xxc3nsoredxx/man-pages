@@ -269,6 +269,7 @@ Call 3 ("12:22:33") succeeded:
 .in
 .SS Program source
 \&
+.\" SRC BEGIN (getdate.c)
 .EX
 #define _GNU_SOURCE
 #include <time.h>
@@ -304,6 +305,7 @@ main(int argc, char *argv[])
     exit(EXIT_SUCCESS);
 }
 .EE
+.\" SRC END
 .SH SEE ALSO
 .BR time (2),
 .BR localtime (3),

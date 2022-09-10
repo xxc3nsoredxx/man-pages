@@ -245,6 +245,7 @@ dls_serpath[1].dls_name = /usr/lib64
 .in
 .SS Program source
 \&
+.\" SRC BEGIN (dlinfo.c)
 .EX
 #define _GNU_SOURCE
 #include <dlfcn.h>
@@ -310,6 +311,7 @@ main(int argc, char *argv[])
     exit(EXIT_SUCCESS);
 }
 .EE
+.\" SRC END
 .SH SEE ALSO
 .BR dl_iterate_phdr (3),
 .BR dladdr (3),

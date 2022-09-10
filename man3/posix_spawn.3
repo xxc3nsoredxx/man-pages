@@ -663,6 +663,7 @@ Child status: exited, status=127
 .in
 .SS Program source
 \&
+.\" SRC BEGIN (posix_spawn.c)
 .EX
 #include <spawn.h>
 #include <stdint.h>
@@ -788,6 +789,7 @@ main(int argc, char *argv[])
     exit(EXIT_SUCCESS);
 }
 .EE
+.\" SRC END
 .SH SEE ALSO
 .nh \" Disable hyphenation
 .ad l

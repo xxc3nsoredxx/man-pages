@@ -45,6 +45,7 @@ Due to the usual arithmetic conversions,
 the result of these macros may be very different from either of the arguments.
 To avoid this, ensure that both arguments have the same type.
 .SH EXAMPLES
+.\" SRC BEGIN (MAX.c)
 .EX
 #include <stdio.h>
 #include <stdlib.h>
@@ -68,6 +69,7 @@ main(int argc, char *argv[])
     exit(EXIT_SUCCESS);
 }
 .EE
+.\" SRC END
 .SH SEE ALSO
 .BR fmax (3),
 .BR fmin (3)

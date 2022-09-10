@@ -130,6 +130,7 @@ htobe32(x.u32) = 0x11223344
 .in
 .SS Program source
 \&
+.\" SRC BEGIN (endian.c)
 .EX
 #include <endian.h>
 #include <stdint.h>
@@ -156,6 +157,7 @@ main(int argc, char *argv[])
     exit(EXIT_SUCCESS);
 }
 .EE
+.\" SRC END
 .SH SEE ALSO
 .BR bswap (3),
 .BR byteorder (3)

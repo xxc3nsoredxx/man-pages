@@ -323,6 +323,7 @@ The following program sets the character type and the numeric locale
 according to the environment and queries the terminal character set and
 the radix character.
 .PP
+.\" SRC BEGIN (nl_langinfo.c)
 .EX
 #include <langinfo.h>
 #include <locale.h>
@@ -341,6 +342,7 @@ main(int argc, char *argv[])
     exit(EXIT_SUCCESS);
 }
 .EE
+.\" SRC END
 .SH SEE ALSO
 .BR locale (1),
 .BR localeconv (3),

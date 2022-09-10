@@ -145,6 +145,7 @@ Wide character string is: Grüße! (6 characters)
 .in
 .SS Program source
 \&
+.\" SRC BEGIN (mbstowcs.c)
 .EX
 #include <wctype.h>
 #include <locale.h>
@@ -230,6 +231,7 @@ main(int argc, char *argv[])
     exit(EXIT_SUCCESS);
 }
 .EE
+.\" SRC END
 .SH SEE ALSO
 .BR mblen (3),
 .BR mbsrtowcs (3),

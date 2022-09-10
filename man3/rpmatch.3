@@ -141,6 +141,7 @@ The following program displays the results when
 .BR rpmatch ()
 is applied to the string given in the program's command-line argument.
 .PP
+.\" SRC BEGIN (rpmatch.c)
 .EX
 #define _SVID_SOURCE
 #include <locale.h>
@@ -161,6 +162,7 @@ main(int argc, char *argv[])
     exit(EXIT_SUCCESS);
 }
 .EE
+.\" SRC END
 .SH SEE ALSO
 .BR fgets (3),
 .BR getline (3),

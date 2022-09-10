@@ -332,6 +332,7 @@ gnu.org: 209.51.188.116
 .PP
 Here is the program source code
 .PP
+.\" SRC BEGIN (sync.c)
 .EX
 #define _GNU_SOURCE
 #include <netdb.h>
@@ -392,6 +393,7 @@ main(int argc, char *argv[])
     exit(EXIT_SUCCESS);
 }
 .EE
+.\" SRC END
 .SS Asynchronous example
 This example shows a simple interactive
 .BR getaddrinfo_a ()
@@ -421,6 +423,7 @@ $ \fB./a.out\fP
 .PP
 The program source is as follows:
 .PP
+.\" SRC BEGIN (async.c)
 .EX
 #define _GNU_SOURCE
 #include <netdb.h>
@@ -597,6 +600,7 @@ main(int argc, char *argv[])
     exit(EXIT_SUCCESS);
 }
 .EE
+.\" SRC END
 .SH SEE ALSO
 .BR getaddrinfo (3),
 .BR inet (3),

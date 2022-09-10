@@ -228,6 +228,7 @@ the clean-up handler was executed, because the argument given to
 was nonzero.
 .SS Program source
 \&
+.\" SRC BEGIN (pthread_cleanup_push.c)
 .EX
 #include <pthread.h>
 #include <sys/types.h>
@@ -310,6 +311,7 @@ main(int argc, char *argv[])
     exit(EXIT_SUCCESS);
 }
 .EE
+.\" SRC END
 .SH SEE ALSO
 .BR pthread_cancel (3),
 .BR pthread_cleanup_push_defer_np (3),

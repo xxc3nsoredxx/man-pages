@@ -179,6 +179,7 @@ $ \fBcat /proc/sys/fs/mqueue/msgsize_default\fP
 .in
 .SS Program source
 \&
+.\" SRC BEGIN (mq_getattr.c)
 .EX
 #include <mqueue.h>
 #include <sys/stat.h>
@@ -217,6 +218,7 @@ main(int argc, char *argv[])
     exit(EXIT_SUCCESS);
 }
 .EE
+.\" SRC END
 .SH SEE ALSO
 .BR mq_close (3),
 .BR mq_notify (3),

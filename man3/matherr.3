@@ -359,6 +359,7 @@ x=12345.000000
 .in
 .SS Program source
 \&
+.\" SRC BEGIN (matherr.c)
 .EX
 #define _SVID_SOURCE
 #include <errno.h>
@@ -422,6 +423,7 @@ main(int argc, char *argv[])
     exit(EXIT_SUCCESS);
 }
 .EE
+.\" SRC END
 .SH SEE ALSO
 .BR fenv (3),
 .BR math_error (7),

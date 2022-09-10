@@ -153,6 +153,7 @@ See
 .SS Features in glibc
 In glibc 2.2, these functions use the DES algorithm.
 .SH EXAMPLES
+.\" SRC BEGIN (encrypt.c)
 .EX
 #define _XOPEN_SOURCE
 #include <stdio.h>
@@ -200,6 +201,7 @@ main(void)
     exit(EXIT_SUCCESS);
 }
 .EE
+.\" SRC END
 .SH SEE ALSO
 .BR cbc_crypt (3),
 .BR crypt (3),

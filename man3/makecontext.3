@@ -168,6 +168,7 @@ main: exiting
 .in
 .SS Program source
 \&
+.\" SRC BEGIN (makecontext.c)
 .EX
 #include <ucontext.h>
 #include <stdio.h>
@@ -227,6 +228,7 @@ main(int argc, char *argv[])
     exit(EXIT_SUCCESS);
 }
 .EE
+.\" SRC END
 .SH SEE ALSO
 .BR sigaction (2),
 .BR sigaltstack (2),

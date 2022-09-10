@@ -155,6 +155,7 @@ and then calls
 .BR pthread_getaffinity_np ()
 to check the resulting CPU affinity mask of the thread.
 .PP
+.\" SRC BEGIN (pthread_setaffinity_np.c)
 .EX
 #define _GNU_SOURCE
 #include <pthread.h>
@@ -198,6 +199,7 @@ main(int argc, char *argv[])
     exit(EXIT_SUCCESS);
 }
 .EE
+.\" SRC END
 .SH SEE ALSO
 .BR sched_setaffinity (2),
 .BR CPU_SET (3),

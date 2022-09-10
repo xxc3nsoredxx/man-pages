@@ -38,6 +38,7 @@ $ \fB./a.out 0x0123456789abcdef\fP
 .in
 .SS Program source
 \&
+.\" SRC BEGIN (bswap.c)
 .EX
 #include <stdio.h>
 #include <stdint.h>
@@ -61,6 +62,7 @@ main(int argc, char *argv[])
     exit(EXIT_SUCCESS);
 }
 .EE
+.\" SRC END
 .SH SEE ALSO
 .BR byteorder (3),
 .BR endian (3)

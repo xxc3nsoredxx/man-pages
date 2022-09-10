@@ -300,6 +300,7 @@ size=11; ptr=1 529 1849
 .in
 .SS Program source
 \&
+.\" SRC BEGIN (fmemopen.c)
 .EX
 #define _GNU_SOURCE
 #include <string.h>
@@ -349,6 +350,7 @@ main(int argc, char *argv[])
     exit(EXIT_SUCCESS);
 }
 .EE
+.\" SRC END
 .SH SEE ALSO
 .BR fopen (3),
 .BR fopencookie (3),

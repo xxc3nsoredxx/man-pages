@@ -167,6 +167,7 @@ The function
 is not really reentrant since it shares the reading position
 in the stream with all other threads.
 .SH EXAMPLES
+.\" SRC BEGIN (getgrent_r.c)
 .EX
 #define _GNU_SOURCE
 #include <grp.h>
@@ -209,6 +210,7 @@ main(void)
 .\"               printf("getgrent_r: %s", strerror(i));
 .\"               exit(EXIT_FAILURE);
 .\"         }
+.\" SRC END
 .SH SEE ALSO
 .BR fgetgrent (3),
 .BR getgrent (3),

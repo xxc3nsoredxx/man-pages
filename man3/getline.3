@@ -143,6 +143,7 @@ and
 were originally GNU extensions.
 They were standardized in POSIX.1-2008.
 .SH EXAMPLES
+.\" SRC BEGIN (getline.c)
 .EX
 #define _GNU_SOURCE
 #include <stdio.h>
@@ -177,6 +178,7 @@ main(int argc, char *argv[])
     exit(EXIT_SUCCESS);
 }
 .EE
+.\" SRC END
 .SH SEE ALSO
 .BR read (2),
 .BR fgets (3),

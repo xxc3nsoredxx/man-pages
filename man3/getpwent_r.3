@@ -171,6 +171,7 @@ The function
 is not really reentrant since it shares the reading position
 in the stream with all other threads.
 .SH EXAMPLES
+.\" SRC BEGIN (getpwent_r.c)
 .EX
 #define _GNU_SOURCE
 #include <pwd.h>
@@ -207,6 +208,7 @@ main(void)
 .\"               printf("getpwent_r: %s", strerror(i));
 .\"               exit(EXIT_SUCCESS);
 .\"         }
+.\" SRC END
 .SH SEE ALSO
 .BR fgetpwent (3),
 .BR getpw (3),

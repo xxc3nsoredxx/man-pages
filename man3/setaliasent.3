@@ -142,6 +142,7 @@ The following example compiles with
 .IR "gcc example.c \-o example" .
 It will dump all names in the alias database.
 .PP
+.\" SRC BEGIN (setaliasent.c)
 .EX
 #include <aliases.h>
 #include <stdio.h>
@@ -167,6 +168,7 @@ main(void)
     exit(EXIT_SUCCESS);
 }
 .EE
+.\" SRC END
 .SH SEE ALSO
 .BR getgrent (3),
 .BR getpwent (3),

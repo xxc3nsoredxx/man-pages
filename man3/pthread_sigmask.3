@@ -94,6 +94,7 @@ Signal handling thread got signal 10
 .in
 .SS Program source
 \&
+.\" SRC BEGIN (pthread_sigmask.c)
 .EX
 #include <pthread.h>
 #include <stdio.h>
@@ -148,6 +149,7 @@ main(int argc, char *argv[])
     pause();            /* Dummy pause so we can test program */
 }
 .EE
+.\" SRC END
 .SH SEE ALSO
 .BR sigaction (2),
 .BR sigpending (2),

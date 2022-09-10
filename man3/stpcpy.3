@@ -85,6 +85,7 @@ to produce
 .BR foobar ,
 which it then prints.
 .PP
+.\" SRC BEGIN (stpcpy.c)
 .EX
 #define _GNU_SOURCE
 #include <string.h>
@@ -101,6 +102,7 @@ main(void)
     printf("%s\en", buffer);
 }
 .EE
+.\" SRC END
 .SH SEE ALSO
 .BR bcopy (3),
 .BR memccpy (3),

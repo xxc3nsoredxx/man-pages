@@ -125,8 +125,9 @@ command in a program that has memory leaks at two different locations.
 The demonstration uses the following program:
 .PP
 .in +4n
-.EX
 .RB "$ " "cat t_mtrace.c"
+.\" SRC BEGIN (t_mtrace.c)
+.EX
 #include <mcheck.h>
 #include <stdlib.h>
 #include <stdio.h>
@@ -143,6 +144,7 @@ main(int argc, char *argv[])
     exit(EXIT_SUCCESS);
 }
 .EE
+.\" SRC END
 .in
 .PP
 When we run the program as follows, we see that

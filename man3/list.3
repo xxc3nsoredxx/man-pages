@@ -249,6 +249,7 @@ fixes this limitation by allowing
 to safely be removed from the list and freed from within the loop
 without interfering with the traversal.
 .SH EXAMPLES
+.\" SRC BEGIN (list.c)
 .EX
 #include <stddef.h>
 #include <stdio.h>
@@ -301,6 +302,7 @@ main(void)
     exit(EXIT_SUCCESS);
 }
 .EE
+.\" SRC END
 .SH SEE ALSO
 .BR insque (3),
 .BR queue (7)

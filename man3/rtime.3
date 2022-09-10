@@ -106,6 +106,7 @@ The program connects to a computer called "linux".
 Using "localhost" does not work.
 The result is the localtime of the computer "linux".
 .PP
+.\" SRC BEGIN (rtime.c)
 .EX
 #include <stdio.h>
 #include <stdlib.h>
@@ -143,6 +144,7 @@ main(void)
     exit(EXIT_SUCCESS);
 }
 .EE
+.\" SRC END
 .SH SEE ALSO
 .\" .BR netdate (1),
 .BR ntpdate (1),

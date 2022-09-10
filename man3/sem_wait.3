@@ -163,6 +163,7 @@ sem_timedwait() timed out
 .in
 .SS Program source
 \&
+.\" SRC BEGIN (sem_wait.c)
 .EX
 #include <unistd.h>
 #include <stdio.h>
@@ -239,6 +240,7 @@ main(int argc, char *argv[])
     exit((s == 0) ? EXIT_SUCCESS : EXIT_FAILURE);
 }
 .EE
+.\" SRC END
 .SH SEE ALSO
 .BR clock_gettime (2),
 .BR sem_getvalue (3),

@@ -217,6 +217,7 @@ backtrace() returned 8 addresses
 .in
 .SS Program source
 \&
+.\" SRC BEGIN (backtrace.c)
 .EX
 #include <execinfo.h>
 #include <stdio.h>
@@ -277,6 +278,7 @@ main(int argc, char *argv[])
     exit(EXIT_SUCCESS);
 }
 .EE
+.\" SRC END
 .SH SEE ALSO
 .BR addr2line (1),
 .BR gcc (1),

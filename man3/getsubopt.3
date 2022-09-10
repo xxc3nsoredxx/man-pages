@@ -156,6 +156,7 @@ that string must be writable; it cannot be a string constant.
 .SH EXAMPLES
 The following program expects suboptions following a "\-o" option.
 .PP
+.\" SRC BEGIN (getsubopt.c)
 .EX
 #define _XOPEN_SOURCE 500
 #include <stdlib.h>
@@ -242,5 +243,6 @@ main(int argc, char *argv[])
     exit(EXIT_SUCCESS);
 }
 .EE
+.\" SRC END
 .SH SEE ALSO
 .BR getopt (3)
