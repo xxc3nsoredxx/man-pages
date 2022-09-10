@@ -273,11 +273,11 @@ static void
 display_sched_attr(int policy, struct sched_param *param)
 {
     printf("    policy=%s, priority=%d\en",
-            (policy == SCHED_FIFO)  ? "SCHED_FIFO" :
-            (policy == SCHED_RR)    ? "SCHED_RR" :
-            (policy == SCHED_OTHER) ? "SCHED_OTHER" :
-            "???",
-            param\->sched_priority);
+           (policy == SCHED_FIFO)  ? "SCHED_FIFO" :
+           (policy == SCHED_RR)    ? "SCHED_RR" :
+           (policy == SCHED_OTHER) ? "SCHED_OTHER" :
+           "???",
+           param\->sched_priority);
 }
 
 static void
@@ -329,9 +329,11 @@ main(int argc, char *argv[])
         }
     }
 
-    if (use_null_attrib &&
-            (inheritsched_str != NULL || attr_sched_str != NULL))
+    if (use_null_attrib
+        && (inheritsched_str != NULL || attr_sched_str != NULL))
+    {
         usage(argv[0], "Can\(aqt specify \-A with \-i or \-a\en");
+    }
 
     /* Optionally set scheduling attributes of main thread,
        and display the attributes. */
@@ -375,8 +377,7 @@ main(int argc, char *argv[])
 
     if (attr_sched_str != NULL) {
         if (!get_policy(attr_sched_str[0], &policy))
-            usage(argv[0],
-                    "Bad policy for \(aqattr\(aq (\-a)\en");
+            usage(argv[0], "Bad policy for \(aqattr\(aq (\-a)\en");
         param.sched_priority = strtol(&attr_sched_str[1], NULL, 0);
 
         s = pthread_attr_setschedpolicy(&attr, policy);
@@ -403,9 +404,9 @@ main(int argc, char *argv[])
 
         s = pthread_attr_getinheritsched(&attr, &inheritsched);
         printf("    inheritsched is %s\en",
-                (inheritsched == PTHREAD_INHERIT_SCHED)  ? "INHERIT" :
-                (inheritsched == PTHREAD_EXPLICIT_SCHED) ? "EXPLICIT" :
-                "???");
+               (inheritsched == PTHREAD_INHERIT_SCHED)  ? "INHERIT" :
+               (inheritsched == PTHREAD_EXPLICIT_SCHED) ? "EXPLICIT" :
+               "???");
         printf("\en");
     }
 

@@ -377,12 +377,12 @@ int
 matherr(struct exception *exc)
 {
     fprintf(stderr, "matherr %s exception in %s() function\en",
-           (exc\->type == DOMAIN) ?    "DOMAIN" :
-           (exc\->type == OVERFLOW) ?  "OVERFLOW" :
-           (exc\->type == UNDERFLOW) ? "UNDERFLOW" :
-           (exc\->type == SING) ?      "SING" :
-           (exc\->type == TLOSS) ?     "TLOSS" :
-           (exc\->type == PLOSS) ?     "PLOSS" : "???",
+            (exc\->type == DOMAIN) ?    "DOMAIN" :
+            (exc\->type == OVERFLOW) ?  "OVERFLOW" :
+            (exc\->type == UNDERFLOW) ? "UNDERFLOW" :
+            (exc\->type == SING) ?      "SING" :
+            (exc\->type == TLOSS) ?     "TLOSS" :
+            (exc\->type == PLOSS) ?     "PLOSS" : "???",
             exc\->name);
     fprintf(stderr, "        args:   %f, %f\en",
             exc\->arg1, exc\->arg2);

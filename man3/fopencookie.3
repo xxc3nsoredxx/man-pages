@@ -343,7 +343,7 @@ memfile_read(void *c, char *buf, size_t size)
     if (cookie\->offset + size > cookie\->endpos)
         xbytes = cookie\->endpos \- cookie\->offset;
     if (xbytes < 0)     /* offset may be past endpos */
-       xbytes = 0;
+        xbytes = 0;
 
     memcpy(buf, cookie\->buf + cookie\->offset, xbytes);
 

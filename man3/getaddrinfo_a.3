@@ -377,8 +377,8 @@ main(int argc, char *argv[])
             res = reqs[i]\->ar_result;
 
             ret = getnameinfo(res\->ai_addr, res\->ai_addrlen,
-                    host, sizeof(host),
-                    NULL, 0, NI_NUMERICHOST);
+                              host, sizeof(host),
+                              NULL, 0, NI_NUMERICHOST);
             if (ret != 0) {
                 fprintf(stderr, "getnameinfo() failed: %s\en",
                         gai_strerror(ret));

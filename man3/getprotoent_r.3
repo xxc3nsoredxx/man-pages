@@ -202,7 +202,7 @@ main(int argc, char *argv[])
     erange_cnt = 0;
     do {
         s = getprotobyname_r(argv[1], &result_buf,
-                     buf, buflen, &result);
+                             buf, buflen, &result);
         if (s == ERANGE) {
             if (erange_cnt == 0)
                 printf("ERANGE! Retrying with larger buffer\en");
@@ -221,8 +221,8 @@ main(int argc, char *argv[])
     } while (s == ERANGE);
 
     printf("getprotobyname_r() returned: %s  (buflen=%d)\en",
-            (s == 0) ? "0 (success)" : (s == ENOENT) ? "ENOENT" :
-            strerror(s), buflen);
+           (s == 0) ? "0 (success)" : (s == ENOENT) ? "ENOENT" :
+           strerror(s), buflen);
 
     if (s != 0 || result == NULL) {
         printf("Call failed/record not found\en");
@@ -230,7 +230,7 @@ main(int argc, char *argv[])
     }
 
     printf("p_name=%s; p_proto=%d; aliases=",
-                result_buf.p_name, result_buf.p_proto);
+           result_buf.p_name, result_buf.p_proto);
     for (char **p = result_buf.p_aliases; *p != NULL; p++)
         printf("%s ", *p);
     printf("\en");

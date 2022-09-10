@@ -207,7 +207,7 @@ main(int argc, char *argv[])
     erange_cnt = 0;
     do {
         s = getservbyport_r(port, protop, &result_buf,
-                     buf, buflen, &result);
+                            buf, buflen, &result);
         if (s == ERANGE) {
             if (erange_cnt == 0)
                 printf("ERANGE! Retrying with larger buffer\en");
@@ -226,8 +226,8 @@ main(int argc, char *argv[])
     } while (s == ERANGE);
 
     printf("getservbyport_r() returned: %s  (buflen=%d)\en",
-            (s == 0) ? "0 (success)" : (s == ENOENT) ? "ENOENT" :
-            strerror(s), buflen);
+           (s == 0) ? "0 (success)" : (s == ENOENT) ? "ENOENT" :
+           strerror(s), buflen);
 
     if (s != 0 || result == NULL) {
         printf("Call failed/record not found\en");
@@ -235,8 +235,8 @@ main(int argc, char *argv[])
     }
 
     printf("s_name=%s; s_proto=%s; s_port=%d; aliases=",
-                result_buf.s_name, result_buf.s_proto,
-                ntohs(result_buf.s_port));
+           result_buf.s_name, result_buf.s_proto,
+           ntohs(result_buf.s_port));
     for (char **p = result_buf.s_aliases; *p != NULL; p++)
         printf("%s ", *p);
     printf("\en");
