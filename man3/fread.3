@@ -122,15 +122,17 @@ Class: 0x02
 int
 main(void)
 {
-    FILE *fp = fopen("/bin/sh", "rb");
+    FILE           *fp;
+    size_t         ret;
+    unsigned char  buffer[4];
+
+    fp = fopen("/bin/sh", "rb");
     if (!fp) {
         perror("fopen");
         return EXIT_FAILURE;
     }
 
-    unsigned char buffer[4];
-
-    size_t ret = fread(buffer, sizeof(*buffer), ARRAY_SIZE(buffer), fp);
+    ret = fread(buffer, sizeof(*buffer), ARRAY_SIZE(buffer), fp);
     if (ret != ARRAY_SIZE(buffer)) {
         fprintf(stderr, "fread() failed: %zu\en", ret);
         exit(EXIT_FAILURE);

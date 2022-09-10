@@ -69,8 +69,9 @@ int
 main(void)
 {
     uint64_t tb1, tb2, diff;
+    uint64_t freq;
 
-    uint64_t freq = __ppc_get_timebase_freq();
+    freq = __ppc_get_timebase_freq();
     printf("Time Base frequency = %"PRIu64" Hz\en", freq);
 
     tb1 = __ppc_get_timebase();

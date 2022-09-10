@@ -165,7 +165,9 @@ struct element {
 static struct element *
 new_element(void)
 {
-    struct element *e = malloc(sizeof(*e));
+    struct element *e;
+
+    e = malloc(sizeof(*e));
     if (e == NULL) {
         fprintf(stderr, "malloc() failed\en");
         exit(EXIT_FAILURE);

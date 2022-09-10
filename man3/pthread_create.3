@@ -311,10 +311,11 @@ thread_start(void *arg)
 int
 main(int argc, char *argv[])
 {
-    int s, opt, num_threads;
-    pthread_attr_t attr;
-    ssize_t stack_size;
-    void *res;
+    int                 s, opt, num_threads;
+    void                *res;
+    ssize_t             stack_size;
+    pthread_attr_t      attr;
+    struct thread_info  *tinfo;
 
     /* The "\-s" option specifies a stack size for our threads. */
 
@@ -348,7 +349,7 @@ main(int argc, char *argv[])
 
     /* Allocate memory for pthread_create() arguments. */
 
-    struct thread_info *tinfo = calloc(num_threads, sizeof(*tinfo));
+    tinfo = calloc(num_threads, sizeof(*tinfo));
     if (tinfo == NULL)
         handle_error("calloc");
 
