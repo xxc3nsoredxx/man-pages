@@ -182,21 +182,21 @@ static ucontext_t uctx_main, uctx_func1, uctx_func2;
 static void
 func1(void)
 {
-    printf("func1: started\en");
-    printf("func1: swapcontext(&uctx_func1, &uctx_func2)\en");
+    printf("%s: started\en", __func__);
+    printf("%s: swapcontext(&uctx_func1, &uctx_func2)\en", __func__);
     if (swapcontext(&uctx_func1, &uctx_func2) == \-1)
         handle_error("swapcontext");
-    printf("func1: returning\en");
+    printf("%s: returning\en", __func__);
 }
 
 static void
 func2(void)
 {
-    printf("func2: started\en");
-    printf("func2: swapcontext(&uctx_func2, &uctx_func1)\en");
+    printf("%s: started\en", __func__);
+    printf("%s: swapcontext(&uctx_func2, &uctx_func1)\en", __func__);
     if (swapcontext(&uctx_func2, &uctx_func1) == \-1)
         handle_error("swapcontext");
-    printf("func2: returning\en");
+    printf("%s: returning\en", __func__);
 }
 
 int
@@ -220,11 +220,11 @@ main(int argc, char *argv[])
     uctx_func2.uc_link = (argc > 1) ? NULL : &uctx_func1;
     makecontext(&uctx_func2, func2, 0);
 
-    printf("main: swapcontext(&uctx_main, &uctx_func2)\en");
+    printf("%s: swapcontext(&uctx_main, &uctx_func2)\en", __func__);
     if (swapcontext(&uctx_main, &uctx_func2) == \-1)
         handle_error("swapcontext");
 
-    printf("main: exiting\en");
+    printf("%s: exiting\en", __func__);
     exit(EXIT_SUCCESS);
 }
 .EE

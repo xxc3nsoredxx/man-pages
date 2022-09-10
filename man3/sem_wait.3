@@ -223,7 +223,7 @@ main(int argc, char *argv[])
 
     ts.tv_sec += atoi(argv[2]);
 
-    printf("main() about to call sem_timedwait()\en");
+    printf("%s() about to call sem_timedwait()\en", __func__);
     while ((s = sem_timedwait(&sem, &ts)) == \-1 && errno == EINTR)
         continue;       /* Restart if interrupted by handler. */
 
