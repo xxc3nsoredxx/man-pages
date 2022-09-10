@@ -117,7 +117,7 @@ The result is the localtime of the computer "linux".
 #include <netdb.h>
 
 static int use_tcp = 0;
-static char *servername = "linux";
+static const char servername[] = "linux";
 
 int
 main(void)
