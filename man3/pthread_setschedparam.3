@@ -243,7 +243,7 @@ usage(char *prog_name, char *msg)
 
     fprintf(stderr, "Usage: %s [options]\en", prog_name);
     fprintf(stderr, "Options are:\en");
-#define fpe(msg) fprintf(stderr, "\et%s", msg);          /* Shorter */
+#define fpe(msg) fprintf(stderr, "\et%s", msg)          /* Shorter */
     fpe("\-a<policy><prio> Set scheduling policy and priority in\en");
     fpe("                 thread attributes object\en");
     fpe("                 <policy> can be\en");
