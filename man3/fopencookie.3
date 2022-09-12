@@ -314,12 +314,10 @@ memfile_write(void *c, const char *buf, size_t size)
 
     while (size + cookie\->offset > cookie\->allocated) {
         new_buff = realloc(cookie\->buf, cookie\->allocated * 2);
-        if (new_buff == NULL) {
+        if (new_buff == NULL)
             return \-1;
-        } else {
-            cookie\->allocated *= 2;
-            cookie\->buf = new_buff;
-        }
+        cookie\->allocated *= 2;
+        cookie\->buf = new_buff;
     }
 
     memcpy(cookie\->buf + cookie\->offset, buf, size);
