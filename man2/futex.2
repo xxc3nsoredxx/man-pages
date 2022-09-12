@@ -1805,6 +1805,7 @@ Child  (18535) 4
    writing messages.
 */
 #define _GNU_SOURCE
+#include <err.h>
 #include <errno.h>
 #include <linux/futex.h>
 #include <stdatomic.h>
@@ -1816,9 +1817,6 @@ Child  (18535) 4
 #include <sys/time.h>
 #include <sys/wait.h>
 #include <unistd.h>
-
-#define errExit(msg)    do { perror(msg); exit(EXIT_FAILURE); \e
-                        } while (0)
 
 static uint32_t *futex1, *futex2, *iaddr;
 
@@ -1857,7 +1855,7 @@ fwait(uint32_t *futexp)
 
         s = futex(futexp, FUTEX_WAIT, 0, NULL, NULL, 0);
         if (s == \-1 && errno != EAGAIN)
-            errExit("futex\-FUTEX_WAIT");
+            err(EXIT_FAILURE, "futex\-FUTEX_WAIT");
     }
 }
 
@@ -1877,7 +1875,7 @@ fpost(uint32_t *futexp)
     if (atomic_compare_exchange_strong(futexp, &zero, 1)) {
         s = futex(futexp, FUTEX_WAKE, 1, NULL, NULL, 0);
         if (s  == \-1)
-            errExit("futex\-FUTEX_WAKE");
+            err(EXIT_FAILURE, "futex\-FUTEX_WAKE");
     }
 }
 
@@ -1899,7 +1897,7 @@ main(int argc, char *argv[])
     iaddr = mmap(NULL, sizeof(*iaddr) * 2, PROT_READ | PROT_WRITE,
                  MAP_ANONYMOUS | MAP_SHARED, \-1, 0);
     if (iaddr == MAP_FAILED)
-        errExit("mmap");
+        err(EXIT_FAILURE, "mmap");
 
     futex1 = &iaddr[0];
     futex2 = &iaddr[1];
@@ -1912,7 +1910,7 @@ main(int argc, char *argv[])
 
     childPid = fork();
     if (childPid == \-1)
-        errExit("fork");
+        err(EXIT_FAILURE, "fork");
 
     if (childPid == 0) {        /* Child */
         for (int j = 0; j < nloops; j++) {

@@ -904,6 +904,7 @@ with a structure which has every byte nonzero
  * and set various properties on it.
  */
 #define _GNU_SOURCE
+#include <err.h>
 #include <errno.h>
 #include <fcntl.h>
 #include <getopt.h>
@@ -949,12 +950,6 @@ static const struct option longopts[] = {
     { NULL,             0,                  NULL,   0 },
 };
 
-#define exit_log(format, ...)  do           \e
-{                                           \e
-    fprintf(stderr, format, ##__VA_ARGS__); \e
-    exit(EXIT_FAILURE);                     \e
-} while (0)
-
 int
 main(int argc, char *argv[])
 {
@@ -970,7 +965,7 @@ main(int argc, char *argv[])
         case \(aqa\(aq:
             fd_userns = open(optarg, O_RDONLY | O_CLOEXEC);
             if (fd_userns == \-1)
-                exit_log("%m \- Failed top open %s\en", optarg);
+                err(EXIT_FAILURE, "open(%s)", optarg);
             break;
         case \(aqb\(aq:
             recursive = true;
@@ -992,12 +987,12 @@ main(int argc, char *argv[])
             attr\->attr_clr |= MOUNT_ATTR__ATIME;
             break;
         default:
-            exit_log("Invalid argument specified");
+            errx(EXIT_FAILURE, "Invalid argument specified");
         }
     }
 
     if ((argc \- optind) < 2)
-        exit_log("Missing source or target mount point\en");
+        errx(EXIT_FAILURE, "Missing source or target mount point");
 
     const char *source = argv[optind];
     const char *target = argv[optind + 1];
@@ -1021,7 +1016,7 @@ main(int argc, char *argv[])
                        OPEN_TREE_CLONE | OPEN_TREE_CLOEXEC |
                        AT_EMPTY_PATH | (recursive ? AT_RECURSIVE : 0));
     if (fd_tree == \-1)
-        exit_log("%m \- Failed to open %s\en", source);
+        err(EXIT_FAILURE, "open(%s)", source);
 
     if (fd_userns >= 0) {
         attr\->attr_set  |= MOUNT_ATTR_IDMAP;
@@ -1032,7 +1027,7 @@ main(int argc, char *argv[])
                         AT_EMPTY_PATH | (recursive ? AT_RECURSIVE : 0),
                         attr, sizeof(struct mount_attr));
     if (ret == \-1)
-        exit_log("%m \- Failed to change mount attributes\en");
+        err(EXIT_FAILURE, "mount_setattr");
 
     close(fd_userns);
 
@@ -1042,7 +1037,7 @@ main(int argc, char *argv[])
     ret = move_mount(fd_tree, "", \-1, target,
                      MOVE_MOUNT_F_EMPTY_PATH);
     if (ret == \-1)
-        exit_log("%m \- Failed to attach mount to %s\en", target);
+        err(EXIT_FAILURE, "move_mount() to %s", target);
 
     close(fd_tree);
 

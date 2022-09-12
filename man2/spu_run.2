@@ -205,15 +205,13 @@ system call.
 .PP
 .\" SRC BEGIN (spu_run.c)
 .EX
+#include <err.h>
 #include <fcntl.h>
 #include <stdint.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <sys/types.h>
 #include <unistd.h>
-
-#define handle_error(msg) \e
-    do { perror(msg); exit(EXIT_FAILURE); } while (0)
 
 int main(void)
 {
@@ -222,7 +220,7 @@ int main(void)
 
     context = syscall(SYS_spu_create, "/spu/example\-context", 0, 0755);
     if (context == \-1)
-        handle_error("spu_create");
+        err(EXIT_FAILURE, "spu_create");
 
     /*
      * Write a \(aqstop 0x1234\(aq instruction to the SPU\(aqs
@@ -232,7 +230,7 @@ int main(void)
 
     fd = open("/spu/example\-context/mem", O_RDWR);
     if (fd == \-1)
-        handle_error("open");
+        err(EXIT_FAILURE, "open");
     write(fd, &instruction, sizeof(instruction));
 
     /*
@@ -244,7 +242,7 @@ int main(void)
 
     spu_status = syscall(SYS_spu_run, context, &npc, NULL);
     if (spu_status == \-1)
-        handle_error("open");
+        err(EXIT_FAILURE, "open");
 
     /*
      * We should see a status code of 0x1234002:

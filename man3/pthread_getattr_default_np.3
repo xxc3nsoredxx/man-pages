@@ -103,14 +103,11 @@ Inherit scheduler:   INHERIT
 .\" SRC BEGIN (pthread_getattr_default_np.c)
 .EX
 #define _GNU_SOURCE
+#include <err.h>
 #include <errno.h>
 #include <pthread.h>
 #include <stdio.h>
 #include <stdlib.h>
-
-#define errExitEN(en, msg) \e
-                        do { errno = en; perror(msg); \e
-                             exit(EXIT_FAILURE); } while (0)
 
 static void
 display_pthread_attr(pthread_attr_t *attr)
@@ -125,17 +122,17 @@ display_pthread_attr(pthread_attr_t *attr)
 
     s = pthread_attr_getstacksize(attr, &stacksize);
     if (s != 0)
-        errExitEN(s, "pthread_attr_getstacksize");
+        errc(EXIT_FAILURE, s, "pthread_attr_getstacksize");
     printf("Stack size:          %zd\en", stacksize);
 
     s = pthread_attr_getguardsize(attr, &guardsize);
     if (s != 0)
-        errExitEN(s, "pthread_attr_getguardsize");
+        errc(EXIT_FAILURE, s, "pthread_attr_getguardsize");
     printf("Guard size:          %zd\en", guardsize);
 
     s = pthread_attr_getschedpolicy(attr, &policy);
     if (s != 0)
-        errExitEN(s, "pthread_attr_getschedpolicy");
+        errc(EXIT_FAILURE, s, "pthread_attr_getschedpolicy");
     printf("Scheduling policy:   %s\en",
            (policy == SCHED_FIFO) ? "SCHED_FIFO" :
            (policy == SCHED_RR) ? "SCHED_RR" :
@@ -143,12 +140,12 @@ display_pthread_attr(pthread_attr_t *attr)
 
     s = pthread_attr_getschedparam(attr, &schedparam);
     if (s != 0)
-        errExitEN(s, "pthread_attr_getschedparam");
+        errc(EXIT_FAILURE, s, "pthread_attr_getschedparam");
     printf("Scheduling priority: %d\en", schedparam.sched_priority);
 
     s = pthread_attr_getdetachstate(attr, &detachstate);
     if (s != 0)
-        errExitEN(s, "pthread_attr_getdetachstate");
+        errc(EXIT_FAILURE, s, "pthread_attr_getdetachstate");
     printf("Detach state:        %s\en",
            (detachstate == PTHREAD_CREATE_DETACHED) ? "DETACHED" :
            (detachstate == PTHREAD_CREATE_JOINABLE) ? "JOINABLE" :
@@ -156,7 +153,7 @@ display_pthread_attr(pthread_attr_t *attr)
 
     s = pthread_attr_getinheritsched(attr, &inheritsched);
     if (s != 0)
-        errExitEN(s, "pthread_attr_getinheritsched");
+        errc(EXIT_FAILURE, s, "pthread_attr_getinheritsched");
     printf("Inherit scheduler:   %s\en",
            (inheritsched == PTHREAD_INHERIT_SCHED) ? "INHERIT" :
            (inheritsched == PTHREAD_EXPLICIT_SCHED) ? "EXPLICIT" :
@@ -171,7 +168,7 @@ main(void)
 
     s = pthread_getattr_default_np(&attr);
     if (s != 0)
-        errExitEN(s, "pthread_getattr_default_np");
+        errc(EXIT_FAILURE, s, "pthread_getattr_default_np");
 
     display_pthread_attr(&attr);
 

@@ -1143,6 +1143,7 @@ CapEff:	0000001fffffffff
    creating a user namespace.
 */
 #define _GNU_SOURCE
+#include <err.h>
 #include <sched.h>
 #include <unistd.h>
 #include <stdint.h>
@@ -1154,12 +1155,6 @@ CapEff:	0000001fffffffff
 #include <string.h>
 #include <limits.h>
 #include <errno.h>
-
-/* A simple error\-handling function: print an error message based
-   on the value in \(aqerrno\(aq and terminate the calling process. */
-
-#define errExit(msg)    do { perror(msg); exit(EXIT_FAILURE); \e
-                        } while (0)
 
 struct child_args {
     char **argv;        /* Command to be executed by child, with args */
@@ -1315,7 +1310,7 @@ childFunc(void *arg)
 
     printf("About to exec %s\en", args\->argv[0]);
     execvp(args\->argv[0], args\->argv);
-    errExit("execvp");
+    err(EXIT_FAILURE, "execvp");
 }
 
 #define STACK_SIZE (1024 * 1024)
@@ -1381,14 +1376,14 @@ main(int argc, char *argv[])
        transformation of a process\(aqs capabilities during execve()). */
 
     if (pipe(args.pipe_fd) == \-1)
-        errExit("pipe");
+        err(EXIT_FAILURE, "pipe");
 
     /* Create the child in new namespace(s). */
 
     child_pid = clone(childFunc, child_stack + STACK_SIZE,
                       flags | SIGCHLD, &args);
     if (child_pid == \-1)
-        errExit("clone");
+        err(EXIT_FAILURE, "clone");
 
     /* Parent falls through to here. */
 
@@ -1428,7 +1423,7 @@ main(int argc, char *argv[])
     close(args.pipe_fd[1]);
 
     if (waitpid(child_pid, NULL, 0) == \-1)      /* Wait for child */
-        errExit("waitpid");
+        err(EXIT_FAILURE, "waitpid");
 
     if (verbose)
         printf("%s: terminating\en", argv[0]);

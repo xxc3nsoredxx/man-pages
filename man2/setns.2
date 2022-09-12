@@ -380,14 +380,12 @@ bizarro
 .\" SRC BEGIN (setns.c)
 .EX
 #define _GNU_SOURCE
+#include <err.h>
 #include <fcntl.h>
 #include <sched.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
-
-#define errExit(msg)    do { perror(msg); exit(EXIT_FAILURE); \e
-                        } while (0)
 
 int
 main(int argc, char *argv[])
@@ -405,13 +403,13 @@ main(int argc, char *argv[])
 
     fd = open(argv[1], O_RDONLY | O_CLOEXEC);
     if (fd == \-1)
-        errExit("open");
+        err(EXIT_FAILURE, "open");
 
     if (setns(fd, 0) == \-1)       /* Join that namespace */
-        errExit("setns");
+        err(EXIT_FAILURE, "setns");
 
     execvp(argv[2], &argv[2]);    /* Execute a command in namespace */
-    errExit("execvp");
+    err(EXIT_FAILURE, "execvp");
 }
 .EE
 .\" SRC END

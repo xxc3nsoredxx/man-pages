@@ -158,13 +158,11 @@ to check the resulting CPU affinity mask of the thread.
 .\" SRC BEGIN (pthread_setaffinity_np.c)
 .EX
 #define _GNU_SOURCE
+#include <err.h>
 #include <errno.h>
 #include <pthread.h>
 #include <stdio.h>
 #include <stdlib.h>
-
-#define handle_error_en(en, msg) \e
-        do { errno = en; perror(msg); exit(EXIT_FAILURE); } while (0)
 
 int
 main(void)
@@ -183,13 +181,13 @@ main(void)
 
     s = pthread_setaffinity_np(thread, sizeof(cpuset), &cpuset);
     if (s != 0)
-        handle_error_en(s, "pthread_setaffinity_np");
+        errc(EXIT_FAILURE, s, "pthread_setaffinity_np");
 
     /* Check the actual affinity mask assigned to the thread. */
 
     s = pthread_getaffinity_np(thread, sizeof(cpuset), &cpuset);
     if (s != 0)
-        handle_error_en(s, "pthread_getaffinity_np");
+        errc(EXIT_FAILURE, s, "pthread_getaffinity_np");
 
     printf("Set returned by pthread_getaffinity_np() contained:\en");
     for (int j = 0; j < CPU_SETSIZE; j++)

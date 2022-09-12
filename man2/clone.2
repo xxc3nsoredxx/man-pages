@@ -1827,6 +1827,7 @@ so we should include it for portability.
 .\" SRC BEGIN (clone.c)
 .EX
 #define _GNU_SOURCE
+#include <err.h>
 #include <sched.h>
 #include <signal.h>
 #include <stdint.h>
@@ -1838,9 +1839,6 @@ so we should include it for portability.
 #include <sys/wait.h>
 #include <unistd.h>
 
-#define errExit(msg)    do { perror(msg); exit(EXIT_FAILURE); \e
-                        } while (0)
-
 static int              /* Start function for cloned child */
 childFunc(void *arg)
 {
@@ -1849,12 +1847,12 @@ childFunc(void *arg)
     /* Change hostname in UTS namespace of child. */
 
     if (sethostname(arg, strlen(arg)) == \-1)
-        errExit("sethostname");
+        err(EXIT_FAILURE, "sethostname");
 
     /* Retrieve and display hostname. */
 
     if (uname(&uts) == \-1)
-        errExit("uname");
+        err(EXIT_FAILURE, "uname");
     printf("uts.nodename in child:  %s\en", uts.nodename);
 
     /* Keep the namespace open for a while, by sleeping.
@@ -1886,7 +1884,7 @@ main(int argc, char *argv[])
     stack = mmap(NULL, STACK_SIZE, PROT_READ | PROT_WRITE,
                  MAP_PRIVATE | MAP_ANONYMOUS | MAP_STACK, \-1, 0);
     if (stack == MAP_FAILED)
-        errExit("mmap");
+        err(EXIT_FAILURE, "mmap");
 
     stackTop = stack + STACK_SIZE;  /* Assume stack grows downward */
 
@@ -1895,7 +1893,7 @@ main(int argc, char *argv[])
 
     pid = clone(childFunc, stackTop, CLONE_NEWUTS | SIGCHLD, argv[1]);
     if (pid == \-1)
-        errExit("clone");
+        err(EXIT_FAILURE, "clone");
     printf("clone() returned %jd\en", (intmax_t) pid);
 
     /* Parent falls through to here */
@@ -1906,11 +1904,11 @@ main(int argc, char *argv[])
        different from hostname in child\(aqs UTS namespace. */
 
     if (uname(&uts) == \-1)
-        errExit("uname");
+        err(EXIT_FAILURE, "uname");
     printf("uts.nodename in parent: %s\en", uts.nodename);
 
     if (waitpid(pid, NULL, 0) == \-1)    /* Wait for child */
-        errExit("waitpid");
+        err(EXIT_FAILURE, "waitpid");
     printf("child has terminated\en");
 
     exit(EXIT_SUCCESS);

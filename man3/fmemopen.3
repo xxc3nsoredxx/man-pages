@@ -303,12 +303,10 @@ size=11; ptr=1 529 1849
 .\" SRC BEGIN (fmemopen.c)
 .EX
 #define _GNU_SOURCE
+#include <err.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-
-#define handle_error(msg) \e
-    do { perror(msg); exit(EXIT_FAILURE); } while (0)
 
 int
 main(int argc, char *argv[])
@@ -325,11 +323,11 @@ main(int argc, char *argv[])
 
     in = fmemopen(argv[1], strlen(argv[1]), "r");
     if (in == NULL)
-        handle_error("fmemopen");
+        err(EXIT_FAILURE, "fmemopen");
 
     out = open_memstream(&ptr, &size);
     if (out == NULL)
-        handle_error("open_memstream");
+        err(EXIT_FAILURE, "open_memstream");
 
     for (;;) {
         s = fscanf(in, "%d", &v);
@@ -338,7 +336,7 @@ main(int argc, char *argv[])
 
         s = fprintf(out, "%d ", v * v);
         if (s == \-1)
-            handle_error("fprintf");
+            err(EXIT_FAILURE, "fprintf");
     }
 
     fclose(in);

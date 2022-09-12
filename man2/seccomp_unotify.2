@@ -1394,6 +1394,7 @@ T: terminating
 .\" SRC BEGIN (seccomp_unotify.c)
 .EX
 #define _GNU_SOURCE
+#include <err.h>
 #include <errno.h>
 #include <fcntl.h>
 #include <limits.h>
@@ -1417,9 +1418,6 @@ T: terminating
 #include <unistd.h>
 
 #define ARRAY_SIZE(arr)  (sizeof(arr) / sizeof((arr)[0]))
-
-#define errExit(msg)    do { perror(msg); exit(EXIT_FAILURE); \e
-                        } while (0)
 
 /* Send the file descriptor \(aqfd\(aq over the connected UNIX domain socket
    \(aqsockfd\(aq. Returns 0 on success, or \-1 on error. */
@@ -1608,7 +1606,7 @@ installNotifyFilter(void)
     int notifyFd = seccomp(SECCOMP_SET_MODE_FILTER,
                            SECCOMP_FILTER_FLAG_NEW_LISTENER, &prog);
     if (notifyFd == \-1)
-        errExit("seccomp\-install\-notify\-filter");
+        err(EXIT_FAILURE, "seccomp\-install\-notify\-filter");
 
     return notifyFd;
 }
@@ -1619,9 +1617,9 @@ static void
 closeSocketPair(int sockPair[2])
 {
     if (close(sockPair[0]) == \-1)
-        errExit("closeSocketPair\-close\-0");
+        err(EXIT_FAILURE, "closeSocketPair\-close\-0");
     if (close(sockPair[1]) == \-1)
-        errExit("closeSocketPair\-close\-1");
+        err(EXIT_FAILURE, "closeSocketPair\-close\-1");
 }
 
 /* Implementation of the target process; create a child process that:
@@ -1644,7 +1642,7 @@ targetProcess(int sockPair[2], char *argv[])
     targetPid = fork();
 
     if (targetPid == \-1)
-        errExit("fork");
+        err(EXIT_FAILURE, "fork");
 
     if (targetPid > 0)          /* In parent, return PID of child */
         return targetPid;
@@ -1656,7 +1654,7 @@ targetProcess(int sockPair[2], char *argv[])
     /* Install seccomp filter(s) */
 
     if (prctl(PR_SET_NO_NEW_PRIVS, 1, 0, 0, 0))
-        errExit("prctl");
+        err(EXIT_FAILURE, "prctl");
 
     notifyFd = installNotifyFilter();
 
@@ -1664,12 +1662,12 @@ targetProcess(int sockPair[2], char *argv[])
        a UNIX domain socket */
 
     if (sendfd(sockPair[0], notifyFd) == \-1)
-        errExit("sendfd");
+        err(EXIT_FAILURE, "sendfd");
 
     /* Notification and socket FDs are no longer needed in target */
 
     if (close(notifyFd) == \-1)
-        errExit("close\-target\-notify\-fd");
+        err(EXIT_FAILURE, "close\-target\-notify\-fd");
 
     closeSocketPair(sockPair);
 
@@ -1793,11 +1791,11 @@ allocSeccompNotifBuffers(struct seccomp_notif **req,
        buffers of those sizes. */
 
     if (seccomp(SECCOMP_GET_NOTIF_SIZES, 0, sizes) == \-1)
-        errExit("seccomp\-SECCOMP_GET_NOTIF_SIZES");
+        err(EXIT_FAILURE, "seccomp\-SECCOMP_GET_NOTIF_SIZES");
 
     *req = malloc(sizes\->seccomp_notif);
     if (*req == NULL)
-        errExit("malloc\-seccomp_notif");
+        err(EXIT_FAILURE, "malloc\-seccomp_notif");
 
     /* When allocating the response buffer, we must allow for the fact
        that the user\-space binary may have been built with user\-space
@@ -1814,7 +1812,7 @@ allocSeccompNotifBuffers(struct seccomp_notif **req,
 
     *resp = malloc(resp_size);
     if (resp == NULL)
-        errExit("malloc\-seccomp_notif_resp");
+        err(EXIT_FAILURE, "malloc\-seccomp_notif_resp");
 
 }
 
@@ -1842,7 +1840,7 @@ handleNotifications(int notifyFd)
         if (ioctl(notifyFd, SECCOMP_IOCTL_NOTIF_RECV, req) == \-1) {
             if (errno == EINTR)
                 continue;
-            errExit("\etS: ioctl\-SECCOMP_IOCTL_NOTIF_RECV");
+            err(EXIT_FAILURE, "\etS: ioctl\-SECCOMP_IOCTL_NOTIF_RECV");
         }
 
         printf("\etS: got notification (ID %#llx) for PID %d\en",
@@ -1952,7 +1950,7 @@ supervisor(int sockPair[2])
     notifyFd = recvfd(sockPair[1]);
 
     if (notifyFd == \-1)
-        errExit("recvfd");
+        err(EXIT_FAILURE, "recvfd");
 
     closeSocketPair(sockPair);  /* We no longer need the socket pair */
 
@@ -1977,7 +1975,7 @@ main(int argc, char *argv[])
        supervisor process. */
 
     if (socketpair(AF_UNIX, SOCK_STREAM, 0, sockPair) == \-1)
-        errExit("socketpair");
+        err(EXIT_FAILURE, "socketpair");
 
     /* Create a child process\-\-the "target"\-\-that installs seccomp
        filtering. The target process writes the seccomp notification
@@ -1993,7 +1991,7 @@ main(int argc, char *argv[])
     sa.sa_flags = 0;
     sigemptyset(&sa.sa_mask);
     if (sigaction(SIGCHLD, &sa, NULL) == \-1)
-        errExit("sigaction");
+        err(EXIT_FAILURE, "sigaction");
 
     supervisor(sockPair);
 

@@ -167,6 +167,7 @@ glibc 2.13
 .SS Program source
 .\" SRC BEGIN (malloc_info.c)
 .EX
+#include <err.h>
 #include <errno.h>
 #include <malloc.h>
 #include <pthread.h>
@@ -175,9 +176,6 @@ glibc 2.13
 
 static size_t blockSize;
 static int numThreads, numBlocks;
-
-#define errExit(msg)    do { perror(msg); exit(EXIT_FAILURE); \e
-                        } while (0)
 
 static void *
 thread_func(void *arg)
@@ -189,7 +187,7 @@ thread_func(void *arg)
 
     for (int j = 0; j < numBlocks; j++)
         if (malloc(blockSize * (2 + tn)) == NULL)
-            errExit("malloc\-thread");
+            err(EXIT_FAILURE, "malloc\-thread");
 
     sleep(100);         /* Sleep until main thread terminates. */
     return NULL;
@@ -215,7 +213,7 @@ main(int argc, char *argv[])
 
     thr = calloc(numThreads, sizeof(*thr));
     if (thr == NULL)
-        errExit("calloc");
+        err(EXIT_FAILURE, "calloc");
 
     printf("============ Before allocating blocks ============\en");
     malloc_info(0, stdout);
@@ -226,7 +224,7 @@ main(int argc, char *argv[])
         errno = pthread_create(&thr[tn], NULL, thread_func,
                                (void *) tn);
         if (errno != 0)
-            errExit("pthread_create");
+            err(EXIT_FAILURE, "pthread_create");
 
         /* If we add a sleep interval after the start\-up of each
            thread, the threads likely won\(aqt contend for malloc
@@ -241,7 +239,7 @@ main(int argc, char *argv[])
 
     for (int j = 0; j < numBlocks; j++)
         if (malloc(blockSize) == NULL)
-            errExit("malloc");
+            err(EXIT_FAILURE, "malloc");
 
     sleep(2);           /* Give all threads a chance to
                            complete allocations. */

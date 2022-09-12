@@ -304,6 +304,7 @@ hello world
 /* pivot_root_demo.c */
 
 #define _GNU_SOURCE
+#include <err.h>
 #include <limits.h>
 #include <sched.h>
 #include <signal.h>
@@ -315,9 +316,6 @@ hello world
 #include <sys/syscall.h>
 #include <sys/wait.h>
 #include <unistd.h>
-
-#define errExit(msg)    do { perror(msg); exit(EXIT_FAILURE); \e
-                        } while (0)
 
 static int
 pivot_root(const char *new_root, const char *put_old)
@@ -341,28 +339,28 @@ child(void *arg)
        events to the initial mount namespace. */
 
     if (mount(NULL, "/", NULL, MS_REC | MS_PRIVATE, NULL) == \-1)
-        errExit("mount\-MS_PRIVATE");
+        err(EXIT_FAILURE, "mount\-MS_PRIVATE");
 
     /* Ensure that \(aqnew_root\(aq is a mount point. */
 
     if (mount(new_root, new_root, NULL, MS_BIND, NULL) == \-1)
-        errExit("mount\-MS_BIND");
+        err(EXIT_FAILURE, "mount\-MS_BIND");
 
     /* Create directory to which old root will be pivoted. */
 
     snprintf(path, sizeof(path), "%s/%s", new_root, put_old);
     if (mkdir(path, 0777) == \-1)
-        errExit("mkdir");
+        err(EXIT_FAILURE, "mkdir");
 
     /* And pivot the root filesystem. */
 
     if (pivot_root(new_root, path) == \-1)
-        errExit("pivot_root");
+        err(EXIT_FAILURE, "pivot_root");
 
     /* Switch the current working directory to "/". */
 
     if (chdir("/") == \-1)
-        errExit("chdir");
+        err(EXIT_FAILURE, "chdir");
 
     /* Unmount old root and remove mount point. */
 
@@ -374,7 +372,7 @@ child(void *arg)
     /* Execute the command specified in argv[1]... */
 
     execv(args[1], &args[1]);
-    errExit("execv");
+    err(EXIT_FAILURE, "execv");
 }
 
 int
@@ -385,16 +383,16 @@ main(int argc, char *argv[])
     char *stack = mmap(NULL, STACK_SIZE, PROT_READ | PROT_WRITE,
                        MAP_PRIVATE | MAP_ANONYMOUS | MAP_STACK, \-1, 0);
     if (stack == MAP_FAILED)
-        errExit("mmap");
+        err(EXIT_FAILURE, "mmap");
 
     if (clone(child, stack + STACK_SIZE,
               CLONE_NEWNS | SIGCHLD, &argv[1]) == \-1)
-        errExit("clone");
+        err(EXIT_FAILURE, "clone");
 
     /* Parent falls through to here; wait for child. */
 
     if (wait(NULL) == \-1)
-        errExit("wait");
+        err(EXIT_FAILURE, "wait");
 
     exit(EXIT_SUCCESS);
 }

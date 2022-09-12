@@ -505,16 +505,11 @@ commands shows that the two shells are in different mount namespaces.
    namespaces and execute a command.
 */
 #define _GNU_SOURCE
+#include <err.h>
 #include <sched.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
-
-/* A simple error\-handling function: print an error message based
-   on the value in \(aqerrno\(aq and terminate the calling process. */
-
-#define errExit(msg)    do { perror(msg); exit(EXIT_FAILURE); \e
-                        } while (0)
 
 static void
 usage(char *pname)
@@ -557,10 +552,10 @@ main(int argc, char *argv[])
         usage(argv[0]);
 
     if (unshare(flags) == \-1)
-        errExit("unshare");
+        err(EXIT_FAILURE, "unshare");
 
     execvp(argv[optind], &argv[optind]);
-    errExit("execvp");
+    err(EXIT_FAILURE, "execvp");
 }
 .EE
 .\" SRC END

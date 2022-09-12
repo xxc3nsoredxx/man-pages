@@ -528,13 +528,11 @@ open_by_handle_at: Stale NFS file handle
 .\" SRC BEGIN (t_name_to_handle_at.c)
 .EX
 #define _GNU_SOURCE
+#include <err.h>
 #include <errno.h>
 #include <fcntl.h>
 #include <stdio.h>
 #include <stdlib.h>
-
-#define errExit(msg)    do { perror(msg); exit(EXIT_FAILURE); \e
-                        } while (0)
 
 int
 main(int argc, char *argv[])
@@ -555,7 +553,7 @@ main(int argc, char *argv[])
     fhsize = sizeof(*fhp);
     fhp = malloc(fhsize);
     if (fhp == NULL)
-        errExit("malloc");
+        err(EXIT_FAILURE, "malloc");
 
     /* Make an initial call to name_to_handle_at() to discover
        the size required for file handle. */
@@ -576,12 +574,12 @@ main(int argc, char *argv[])
     fhsize = sizeof(*fhp) + fhp\->handle_bytes;
     fhp = realloc(fhp, fhsize);         /* Copies fhp\->handle_bytes */
     if (fhp == NULL)
-        errExit("realloc");
+        err(EXIT_FAILURE, "realloc");
 
     /* Get file handle from pathname supplied on command line. */
 
     if (name_to_handle_at(dirfd, pathname, fhp, &mount_id, flags) == \-1)
-        errExit("name_to_handle_at");
+        err(EXIT_FAILURE, "name_to_handle_at");
 
     /* Write mount ID, file handle size, and file handle to stdout,
        for later reuse by t_open_by_handle_at.c. */
@@ -601,15 +599,13 @@ main(int argc, char *argv[])
 .\" SRC BEGIN (t_open_by_handle_at.c)
 .EX
 #define _GNU_SOURCE
+#include <err.h>
 #include <fcntl.h>
 #include <limits.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <unistd.h>
-
-#define errExit(msg)    do { perror(msg); exit(EXIT_FAILURE); \e
-                        } while (0)
 
 /* Scan /proc/self/mountinfo to find the line whose mount ID matches
    \(aqmount_id\(aq. (An easier way to do this is to install and use the
@@ -629,7 +625,7 @@ open_mount_path_by_id(int mount_id)
 
     fp = fopen("/proc/self/mountinfo", "r");
     if (fp == NULL)
-        errExit("fopen");
+        err(EXIT_FAILURE, "fopen");
 
     found = 0;
     linep = NULL;
@@ -697,7 +693,7 @@ main(int argc, char *argv[])
 
     fhp = malloc(sizeof(*fhp) + handle_bytes);
     if (fhp == NULL)
-        errExit("malloc");
+        err(EXIT_FAILURE, "malloc");
 
     fhp\->handle_bytes = handle_bytes;
 
@@ -717,19 +713,19 @@ main(int argc, char *argv[])
         mount_fd = open_mount_path_by_id(mount_id);
 
     if (mount_fd == \-1)
-        errExit("opening mount fd");
+        err(EXIT_FAILURE, "opening mount fd");
 
     /* Open file using handle and mount point. */
 
     fd = open_by_handle_at(mount_fd, fhp, O_RDONLY);
     if (fd == \-1)
-        errExit("open_by_handle_at");
+        err(EXIT_FAILURE, "open_by_handle_at");
 
     /* Try reading a few bytes from the file. */
 
     nread = read(fd, buf, sizeof(buf));
     if (nread == \-1)
-        errExit("read");
+        err(EXIT_FAILURE, "read");
 
     printf("Read %zd bytes\en", nread);
 

@@ -344,14 +344,12 @@ sys 12.07
 .\" SRC BEGIN (sched_setaffinity.c)
 .EX
 #define _GNU_SOURCE
+#include <err.h>
 #include <sched.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <sys/wait.h>
 #include <unistd.h>
-
-#define errExit(msg)    do { perror(msg); exit(EXIT_FAILURE); \e
-                        } while (0)
 
 int
 main(int argc, char *argv[])
@@ -374,13 +372,13 @@ main(int argc, char *argv[])
 
     switch (fork()) {
     case \-1:            /* Error */
-        errExit("fork");
+        err(EXIT_FAILURE, "fork");
 
     case 0:             /* Child */
         CPU_SET(childCPU, &set);
 
         if (sched_setaffinity(getpid(), sizeof(set), &set) == \-1)
-            errExit("sched_setaffinity");
+            err(EXIT_FAILURE, "sched_setaffinity");
 
         for (int j = 0; j < nloops; j++)
             getppid();
@@ -391,7 +389,7 @@ main(int argc, char *argv[])
         CPU_SET(parentCPU, &set);
 
         if (sched_setaffinity(getpid(), sizeof(set), &set) == \-1)
-            errExit("sched_setaffinity");
+            err(EXIT_FAILURE, "sched_setaffinity");
 
         for (int j = 0; j < nloops; j++)
             getppid();

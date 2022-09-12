@@ -462,14 +462,12 @@ $
 \&
 .\" SRC BEGIN (signalfd.c)
 .EX
+#include <err.h>
 #include <signal.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <sys/signalfd.h>
 #include <unistd.h>
-
-#define handle_error(msg) \e
-    do { perror(msg); exit(EXIT_FAILURE); } while (0)
 
 int
 main(void)
@@ -487,16 +485,16 @@ main(void)
        according to their default dispositions. */
 
     if (sigprocmask(SIG_BLOCK, &mask, NULL) == \-1)
-        handle_error("sigprocmask");
+        err(EXIT_FAILURE, "sigprocmask");
 
     sfd = signalfd(\-1, &mask, 0);
     if (sfd == \-1)
-        handle_error("signalfd");
+        err(EXIT_FAILURE, "signalfd");
 
     for (;;) {
         s = read(sfd, &fdsi, sizeof(fdsi));
         if (s != sizeof(fdsi))
-            handle_error("read");
+            err(EXIT_FAILURE, "read");
 
         if (fdsi.ssi_signo == SIGINT) {
             printf("Got SIGINT\en");

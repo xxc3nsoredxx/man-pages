@@ -748,6 +748,7 @@ Read address 0x7fd30106ec0f in main(): C
    Licensed under the GNU General Public License version 2 or later.
 */
 #define _GNU_SOURCE
+#include <err.h>
 #include <errno.h>
 #include <fcntl.h>
 #include <inttypes.h>
@@ -761,9 +762,6 @@ Read address 0x7fd30106ec0f in main(): C
 #include <sys/mman.h>
 #include <sys/syscall.h>
 #include <unistd.h>
-
-#define errExit(msg)    do { perror(msg); exit(EXIT_FAILURE); \e
-                        } while (0)
 
 static int page_size;
 
@@ -787,7 +785,7 @@ fault_handler_thread(void *arg)
         page = mmap(NULL, page_size, PROT_READ | PROT_WRITE,
                     MAP_PRIVATE | MAP_ANONYMOUS, \-1, 0);
         if (page == MAP_FAILED)
-            errExit("mmap");
+            err(EXIT_FAILURE, "mmap");
     }
 
     /* Loop, handling incoming events on the userfaultfd
@@ -801,7 +799,7 @@ fault_handler_thread(void *arg)
         pollfd.events = POLLIN;
         nready = poll(&pollfd, 1, \-1);
         if (nready == \-1)
-            errExit("poll");
+            err(EXIT_FAILURE, "poll");
 
         printf("\enfault_handler_thread():\en");
         printf("    poll() returns: nready = %d; "
@@ -818,7 +816,7 @@ fault_handler_thread(void *arg)
         }
 
         if (nread == \-1)
-            errExit("read");
+            err(EXIT_FAILURE, "read");
 
         /* We expect only one kind of event; verify that assumption. */
 
@@ -851,7 +849,7 @@ fault_handler_thread(void *arg)
         uffdio_copy.mode = 0;
         uffdio_copy.copy = 0;
         if (ioctl(uffd, UFFDIO_COPY, &uffdio_copy) == \-1)
-            errExit("ioctl\-UFFDIO_COPY");
+            err(EXIT_FAILURE, "ioctl\-UFFDIO_COPY");
 
         printf("        (uffdio_copy.copy returned %"PRId64")\en",
                uffdio_copy.copy);
@@ -883,12 +881,12 @@ main(int argc, char *argv[])
 
     uffd = syscall(SYS_userfaultfd, O_CLOEXEC | O_NONBLOCK);
     if (uffd == \-1)
-        errExit("userfaultfd");
+        err(EXIT_FAILURE, "userfaultfd");
 
     uffdio_api.api = UFFD_API;
     uffdio_api.features = 0;
     if (ioctl(uffd, UFFDIO_API, &uffdio_api) == \-1)
-        errExit("ioctl\-UFFDIO_API");
+        err(EXIT_FAILURE, "ioctl\-UFFDIO_API");
 
     /* Create a private anonymous mapping. The memory will be
        demand\-zero paged\-\-that is, not yet allocated. When we
@@ -898,7 +896,7 @@ main(int argc, char *argv[])
     addr = mmap(NULL, len, PROT_READ | PROT_WRITE,
                 MAP_PRIVATE | MAP_ANONYMOUS, \-1, 0);
     if (addr == MAP_FAILED)
-        errExit("mmap");
+        err(EXIT_FAILURE, "mmap");
 
     printf("Address returned by mmap() = %p\en", addr);
 
@@ -910,14 +908,13 @@ main(int argc, char *argv[])
     uffdio_register.range.len = len;
     uffdio_register.mode = UFFDIO_REGISTER_MODE_MISSING;
     if (ioctl(uffd, UFFDIO_REGISTER, &uffdio_register) == \-1)
-        errExit("ioctl\-UFFDIO_REGISTER");
+        err(EXIT_FAILURE, "ioctl\-UFFDIO_REGISTER");
 
     /* Create a thread that will process the userfaultfd events. */
 
     s = pthread_create(&thr, NULL, fault_handler_thread, (void *) uffd);
     if (s != 0) {
-        errno = s;
-        errExit("pthread_create");
+        errc(EXIT_FAILURE, s, "pthread_create");
     }
 
     /* Main thread now touches memory in the mapping, touching

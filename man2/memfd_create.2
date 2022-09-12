@@ -410,6 +410,7 @@ Existing seals: WRITE SHRINK
 .\" SRC BEGIN (t_memfd_create.c)
 .EX
 #define _GNU_SOURCE
+#include <err.h>
 #include <fcntl.h>
 #include <stdint.h>
 #include <stdio.h>
@@ -417,9 +418,6 @@ Existing seals: WRITE SHRINK
 #include <string.h>
 #include <sys/mman.h>
 #include <unistd.h>
-
-#define errExit(msg)    do { perror(msg); exit(EXIT_FAILURE); \e
-                        } while (0)
 
 int
 main(int argc, char *argv[])
@@ -450,12 +448,12 @@ main(int argc, char *argv[])
 
     fd = memfd_create(name, MFD_ALLOW_SEALING);
     if (fd == \-1)
-        errExit("memfd_create");
+        err(EXIT_FAILURE, "memfd_create");
 
     /* Size the file as specified on the command line. */
 
     if (ftruncate(fd, len) == \-1)
-        errExit("truncate");
+        err(EXIT_FAILURE, "truncate");
 
     printf("PID: %jd; fd: %d; /proc/%jd/fd/%d\en",
            (intmax_t) getpid(), fd, (intmax_t) getpid(), fd);
@@ -481,7 +479,7 @@ main(int argc, char *argv[])
             seals |= F_SEAL_SEAL;
 
         if (fcntl(fd, F_ADD_SEALS, seals) == \-1)
-            errExit("fcntl");
+            err(EXIT_FAILURE, "fcntl");
     }
 
     /* Keep running, so that the file created by memfd_create()
@@ -498,12 +496,10 @@ main(int argc, char *argv[])
 .\" SRC BEGIN (t_get_seals.c)
 .EX
 #define _GNU_SOURCE
+#include <err.h>
 #include <fcntl.h>
 #include <stdio.h>
 #include <stdlib.h>
-
-#define errExit(msg)    do { perror(msg); exit(EXIT_FAILURE); \e
-                        } while (0)
 
 int
 main(int argc, char *argv[])
@@ -518,11 +514,11 @@ main(int argc, char *argv[])
 
     fd = open(argv[1], O_RDWR);
     if (fd == \-1)
-        errExit("open");
+        err(EXIT_FAILURE, "open");
 
     seals = fcntl(fd, F_GET_SEALS);
     if (seals == \-1)
-        errExit("fcntl");
+        err(EXIT_FAILURE, "fcntl");
 
     printf("Existing seals:");
     if (seals & F_SEAL_SEAL)
