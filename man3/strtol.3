@@ -238,10 +238,10 @@ strtol: Numerical result out of range
 \&
 .\" SRC BEGIN (strtol.c)
 .EX
-#include <stdlib.h>
+#include <errno.h>
 #include <limits.h>
 #include <stdio.h>
-#include <errno.h>
+#include <stdlib.h>
 
 int
 main(int argc, char *argv[])

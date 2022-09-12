@@ -156,10 +156,10 @@ In glibc 2.2, these functions use the DES algorithm.
 .\" SRC BEGIN (encrypt.c)
 .EX
 #define _XOPEN_SOURCE
+#include <crypt.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
-#include <crypt.h>
 
 int
 main(void)

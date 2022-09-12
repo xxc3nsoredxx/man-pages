@@ -103,10 +103,10 @@ Inherit scheduler:   INHERIT
 .\" SRC BEGIN (pthread_getattr_default_np.c)
 .EX
 #define _GNU_SOURCE
+#include <errno.h>
 #include <pthread.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include <errno.h>
 
 #define errExitEN(en, msg) \e
                         do { errno = en; perror(msg); \e

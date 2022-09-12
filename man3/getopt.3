@@ -429,9 +429,9 @@ which expects an associated value.
 .PP
 .\" SRC BEGIN (getopt.c)
 .EX
-#include <unistd.h>
-#include <stdlib.h>
 #include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
 
 int
 main(int argc, char *argv[])
@@ -481,9 +481,9 @@ with most of its features.
 .PP
 .\" SRC BEGIN (getopt_long.c)
 .EX
+#include <getopt.h>
 #include <stdio.h>     /* for printf */
 #include <stdlib.h>    /* for exit */
-#include <getopt.h>
 
 int
 main(int argc, char *argv[])

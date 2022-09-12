@@ -279,12 +279,12 @@ supplied as a command-line argument.
 .PP
 .\" SRC BEGIN (getpwnam.c)
 .EX
+#include <errno.h>
 #include <pwd.h>
 #include <stdint.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
-#include <errno.h>
 
 int
 main(int argc, char *argv[])

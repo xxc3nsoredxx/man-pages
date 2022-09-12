@@ -158,10 +158,10 @@ to check the resulting CPU affinity mask of the thread.
 .\" SRC BEGIN (pthread_setaffinity_np.c)
 .EX
 #define _GNU_SOURCE
+#include <errno.h>
 #include <pthread.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include <errno.h>
 
 #define handle_error_en(en, msg) \e
         do { errno = en; perror(msg); exit(EXIT_FAILURE); } while (0)

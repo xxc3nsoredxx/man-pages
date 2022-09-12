@@ -165,14 +165,15 @@ sem_timedwait() timed out
 \&
 .\" SRC BEGIN (sem_wait.c)
 .EX
-#include <unistd.h>
+#include <errno.h>
+#include <semaphore.h>
+#include <signal.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include <semaphore.h>
 #include <time.h>
+#include <unistd.h>
+
 #include <assert.h>
-#include <errno.h>
-#include <signal.h>
 
 sem_t sem;
 

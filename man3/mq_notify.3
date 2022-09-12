@@ -202,12 +202,12 @@ queue and then terminates the process.
 .SS Program source
 .\" SRC BEGIN (mq_notify.c)
 .EX
-#include <pthread.h>
 #include <mqueue.h>
+#include <pthread.h>
+#include <signal.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
-#include <signal.h>
 
 #define handle_error(msg) \e
     do { perror(msg); exit(EXIT_FAILURE); } while (0)

@@ -226,11 +226,11 @@ is the default for the inherit scheduler attribute.
 .EX
 /* pthreads_sched_test.c */
 
+#include <errno.h>
 #include <pthread.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
-#include <errno.h>
 
 #define handle_error_en(en, msg) \e
         do { errno = en; perror(msg); exit(EXIT_FAILURE); } while (0)

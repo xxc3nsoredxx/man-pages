@@ -179,11 +179,11 @@ Attributes of created thread:
 .\" SRC BEGIN (pthread_getattr_np.c)
 .EX
 #define _GNU_SOURCE     /* To get pthread_getattr_np() declaration */
+#include <errno.h>
 #include <pthread.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
-#include <errno.h>
 
 #define handle_error_en(en, msg) \e
         do { errno = en; perror(msg); exit(EXIT_FAILURE); } while (0)

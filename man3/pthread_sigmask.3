@@ -96,12 +96,12 @@ Signal handling thread got signal 10
 \&
 .\" SRC BEGIN (pthread_sigmask.c)
 .EX
+#include <errno.h>
 #include <pthread.h>
+#include <signal.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
-#include <signal.h>
-#include <errno.h>
 
 /* Simple error handling functions */
 

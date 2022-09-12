@@ -289,11 +289,11 @@ closing a stream that has already been closed).
 .\" SRC BEGIN (fopencookie.c)
 .EX
 #define _GNU_SOURCE
-#include <sys/types.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include <unistd.h>
 #include <string.h>
+#include <sys/types.h>
+#include <unistd.h>
 
 #define INIT_BUF_SIZE 4
 

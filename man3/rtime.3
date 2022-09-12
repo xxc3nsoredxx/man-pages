@@ -108,13 +108,14 @@ The result is the localtime of the computer "linux".
 .PP
 .\" SRC BEGIN (rtime.c)
 .EX
+#include <errno.h>
+#include <netdb.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include <errno.h>
 #include <string.h>
 #include <time.h>
+
 #include <rpc/auth_des.h>
-#include <netdb.h>
 
 static int use_tcp = 0;
 static const char servername[] = "linux";

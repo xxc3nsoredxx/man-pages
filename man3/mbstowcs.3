@@ -147,12 +147,12 @@ Wide character string is: Grüße! (6 characters)
 \&
 .\" SRC BEGIN (mbstowcs.c)
 .EX
-#include <wctype.h>
 #include <locale.h>
-#include <wchar.h>
 #include <stdio.h>
-#include <string.h>
 #include <stdlib.h>
+#include <string.h>
+#include <wchar.h>
+#include <wctype.h>
 
 int
 main(int argc, char *argv[])

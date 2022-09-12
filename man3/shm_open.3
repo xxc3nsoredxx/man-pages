@@ -291,12 +291,12 @@ on the memory object that is shared between the two programs.
 .in +4n
 .\" SRC BEGIN (pshm_ucase.h)
 .EX
-#include <sys/mman.h>
 #include <fcntl.h>
 #include <semaphore.h>
-#include <sys/stat.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <sys/mman.h>
+#include <sys/stat.h>
 #include <unistd.h>
 
 #define errExit(msg)    do { perror(msg); exit(EXIT_FAILURE); \e
@@ -339,6 +339,7 @@ to tell the "send" program that it may now access the shared memory.
    Licensed under GNU General Public License v2 or later.
 */
 #include <ctype.h>
+
 #include "pshm_ucase.h"
 
 int
@@ -431,6 +432,7 @@ on standard output.
    Licensed under GNU General Public License v2 or later.
 */
 #include <string.h>
+
 #include "pshm_ucase.h"
 
 int

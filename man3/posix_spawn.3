@@ -665,14 +665,14 @@ Child status: exited, status=127
 \&
 .\" SRC BEGIN (posix_spawn.c)
 .EX
+#include <errno.h>
 #include <spawn.h>
 #include <stdint.h>
 #include <stdio.h>
-#include <unistd.h>
 #include <stdlib.h>
 #include <string.h>
+#include <unistd.h>
 #include <wait.h>
-#include <errno.h>
 
 #define errExit(msg)    do { perror(msg); \e
                              exit(EXIT_FAILURE); } while (0)

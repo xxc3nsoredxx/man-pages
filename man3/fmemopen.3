@@ -303,9 +303,9 @@ size=11; ptr=1 529 1849
 .\" SRC BEGIN (fmemopen.c)
 .EX
 #define _GNU_SOURCE
-#include <string.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 #define handle_error(msg) \e
     do { perror(msg); exit(EXIT_FAILURE); } while (0)

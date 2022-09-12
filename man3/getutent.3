@@ -295,12 +295,12 @@ and
 .PP
 .\" SRC BEGIN (getutent.c)
 .EX
-#include <string.h>
-#include <stdlib.h>
 #include <pwd.h>
+#include <stdlib.h>
+#include <string.h>
+#include <time.h>
 #include <unistd.h>
 #include <utmp.h>
-#include <time.h>
 
 int
 main(int argc, char *argv[])

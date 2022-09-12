@@ -266,13 +266,13 @@ Joined with thread 3; returned value was SERVUS
 \&
 .\" SRC BEGIN (pthread_create.c)
 .EX
+#include <ctype.h>
+#include <errno.h>
 #include <pthread.h>
-#include <string.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include <unistd.h>
-#include <errno.h>
-#include <ctype.h>
 
 #define handle_error_en(en, msg) \e
         do { errno = en; perror(msg); exit(EXIT_FAILURE); } while (0)

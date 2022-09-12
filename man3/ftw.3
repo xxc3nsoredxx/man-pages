@@ -448,10 +448,10 @@ argument when calling
 .EX
 #define _XOPEN_SOURCE 500
 #include <ftw.h>
+#include <stdint.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <stdint.h>
 
 static int
 display_info(const char *fpath, const struct stat *sb,

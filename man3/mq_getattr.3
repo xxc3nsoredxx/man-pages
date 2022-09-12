@@ -181,11 +181,11 @@ $ \fBcat /proc/sys/fs/mqueue/msgsize_default\fP
 \&
 .\" SRC BEGIN (mq_getattr.c)
 .EX
-#include <mqueue.h>
-#include <sys/stat.h>
 #include <fcntl.h>
+#include <mqueue.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <sys/stat.h>
 #include <unistd.h>
 
 #define errExit(msg)    do { perror(msg); exit(EXIT_FAILURE); \e
