@@ -167,7 +167,7 @@ to check the resulting CPU affinity mask of the thread.
         do { errno = en; perror(msg); exit(EXIT_FAILURE); } while (0)
 
 int
-main(int argc, char *argv[])
+main(void)
 {
     int s;
     cpu_set_t cpuset;

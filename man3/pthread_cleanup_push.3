@@ -254,13 +254,13 @@ cleanup_handler(void *arg)
 static void *
 thread_start(void *arg)
 {
-    time_t start, curr;
+    time_t curr;
 
     printf("New thread started\en");
 
     pthread_cleanup_push(cleanup_handler, NULL);
 
-    curr = start = time(NULL);
+    curr = time(NULL);
 
     while (!done) {
         pthread_testcancel();           /* A cancelation point */
