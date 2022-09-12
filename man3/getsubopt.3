@@ -193,39 +193,41 @@ main(int argc, char *argv[])
             subopts = optarg;
             while (*subopts != \(aq\e0\(aq && !errfnd) {
 
-            switch (getsubopt(&subopts, token, &value)) {
-            case RO_OPT:
-                readonly = 1;
-                break;
+                switch (getsubopt(&subopts, token, &value)) {
+                case RO_OPT:
+                    readonly = 1;
+                    break;
 
-            case RW_OPT:
-                readwrite = 1;
-                break;
+                case RW_OPT:
+                    readwrite = 1;
+                    break;
 
-            case NAME_OPT:
-                if (value == NULL) {
-                    fprintf(stderr, "Missing value for "
-                            "suboption \(aq%s\(aq\en", token[NAME_OPT]);
+                case NAME_OPT:
+                    if (value == NULL) {
+                        fprintf(stderr,
+                                "Missing value for suboption \(aq%s\(aq\en",
+                                token[NAME_OPT]);
+                        errfnd = 1;
+                        continue;
+                    }
+
+                    name = value;
+                    break;
+
+                default:
+                    fprintf(stderr,
+                            "No match found for token: /%s/\en", value);
                     errfnd = 1;
-                    continue;
+                    break;
                 }
-
-                name = value;
-                break;
-
-            default:
-                fprintf(stderr, "No match found "
-                        "for token: /%s/\en", value);
-                errfnd = 1;
-                break;
             }
-        }
-        if (readwrite && readonly) {
-            fprintf(stderr, "Only one of \(aq%s\(aq and \(aq%s\(aq can be "
-                    "specified\en", token[RO_OPT], token[RW_OPT]);
-            errfnd = 1;
-        }
-        break;
+            if (readwrite && readonly) {
+                fprintf(stderr,
+                        "Only one of \(aq%s\(aq and \(aq%s\(aq can be specified\en",
+                        token[RO_OPT], token[RW_OPT]);
+                errfnd = 1;
+            }
+            break;
 
         default:
             errfnd = 1;
@@ -234,8 +236,8 @@ main(int argc, char *argv[])
 
     if (errfnd || argc == 1) {
         fprintf(stderr, "\enUsage: %s \-o <suboptstring>\en", argv[0]);
-        fprintf(stderr, "suboptions are \(aqro\(aq, \(aqrw\(aq, "
-                "and \(aqname=<value>\(aq\en");
+        fprintf(stderr,
+                "suboptions are \(aqro\(aq, \(aqrw\(aq, and \(aqname=<value>\(aq\en");
         exit(EXIT_FAILURE);
     }
 
