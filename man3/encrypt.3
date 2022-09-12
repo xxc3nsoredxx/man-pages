@@ -19,19 +19,19 @@ Encryption and decryption library
 .BR "#define _XOPEN_SOURCE" "       /* See feature_test_macros(7) */"
 .B #include <unistd.h>
 .PP
-.BI "void encrypt(char " block "[64], int " edflag );
+.BI "[[deprecated]] void encrypt(char " block "[64], int " edflag );
 .PP
 .BR "#define _XOPEN_SOURCE" "       /* See feature_test_macros(7) */"
 .B #include <stdlib.h>
 .PP
-.BI "void setkey(const char *" key );
+.BI "[[deprecated]] void setkey(const char *" key );
 .PP
 .BR "#define _GNU_SOURCE" "         /* See feature_test_macros(7) */"
 .B #include <crypt.h>
 .PP
-.BI "void setkey_r(const char *" key ", struct crypt_data *" data );
-.BI "void encrypt_r(char *" block ", int " edflag \
-", struct crypt_data *" data );
+.BI "[[deprecated]] void setkey_r(const char *" key ", struct crypt_data *" data );
+.BI "[[deprecated]] void encrypt_r(char *" block ", int " edflag ,
+.BI "                              struct crypt_data *" data );
 .fi
 .SH DESCRIPTION
 These functions encrypt and decrypt 64-bit messages.
@@ -153,7 +153,7 @@ See
 .SS Features in glibc
 In glibc 2.2, these functions use the DES algorithm.
 .SH EXAMPLES
-.\" SRC BEGIN (encrypt.c)
+.\" [[deprecated]] SRC BEGIN (encrypt.c)
 .EX
 #define _XOPEN_SOURCE
 #include <crypt.h>
