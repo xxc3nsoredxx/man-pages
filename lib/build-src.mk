@@ -14,11 +14,15 @@ include $(srcdir)/lib/lint.mk
 include $(srcdir)/lib/src.mk
 
 
-DEFAULT_CPPFLAGS :=
+PKG-CONFIG_LIBS := libbsd-overlay
+
+
+DEFAULT_CPPFLAGS := $(shell $(PKG-CONFIG) --cflags-only-I $(PKG-CONFIG_LIBS))
 EXTRA_CPPFLAGS   :=
 CPPFLAGS         := $(DEFAULT_CPPFLAGS) $(EXTRA_CPPFLAGS)
 
-DEFAULT_CFLAGS := -std=gnu17
+DEFAULT_CFLAGS := $(shell $(PKG-CONFIG) --cflags-only-other $(PKG-CONFIG_LIBS))
+DEFAULT_CFLAGS += -std=gnu17
 DEFAULT_CFLAGS += -Wall
 DEFAULT_CFLAGS += -Wextra
 DEFAULT_CFLAGS += -Wstrict-prototypes
@@ -34,10 +38,13 @@ DEFAULT_LDFLAGS := -Wl,--as-needed
 DEFAULT_LDFLAGS += -Wl,--no-allow-shlib-undefined
 DEFAULT_LDFLAGS += -Wl,--no-copy-dt-needed-entries
 DEFAULT_LDFLAGS += -Wl,--no-undefined
+DEFAULT_LDFLAGS += $(shell $(PKG-CONFIG) --libs-only-L $(PKG-CONFIG_LIBS))
+DEFAULT_LDFLAGS += $(shell $(PKG-CONFIG) --libs-only-other $(PKG-CONFIG_LIBS))
 EXTRA_LDFLAGS   :=
 LDFLAGS         := $(DEFAULT_LDFLAGS) $(EXTRA_LDFLAGS)
 
 DEFAULT_LDLIBS := -lc
+DEFAULT_LDLIBS += $(shell $(PKG-CONFIG) --libs-only-l $(PKG-CONFIG_LIBS))
 EXTRA_LDLIBS   :=
 LDLIBS         := $(DEFAULT_LDLIBS) $(EXTRA_LDLIBS)
 

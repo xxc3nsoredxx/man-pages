@@ -8,18 +8,19 @@ ifndef MAKEFILE_CMD_INCLUDED
 MAKEFILE_CMD_INCLUDED := 1
 
 
-BC    := bc
-ECHO  := echo
-FIND  := find
-GIT   := git
-GREP  := grep
-GZIP  := gzip
-SED   := sed
-SORT  := sort
-TAC   := tac
-TAR   := tar
-XARGS := xargs
-XZ    := xz
+BC         := bc
+ECHO       := echo
+FIND       := find
+GIT        := git
+GREP       := grep
+GZIP       := gzip
+PKG-CONFIG := pkg-config
+SED        := sed
+SORT       := sort
+TAC        := tac
+TAR        := tar
+XARGS      := xargs
+XZ         := xz
 
 
 endif  # MAKEFILE_CMD_INCLUDED
