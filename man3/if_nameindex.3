@@ -138,7 +138,7 @@ main(void)
         exit(EXIT_FAILURE);
     }
 
-    for (i = if_ni; ! (i\->if_index == 0 && i\->if_name == NULL); i++)
+    for (i = if_ni; !(i\->if_index == 0 && i\->if_name == NULL); i++)
         printf("%u: %s\en", i\->if_index, i\->if_name);
 
     if_freenameindex(if_ni);
