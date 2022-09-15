@@ -354,9 +354,9 @@ sys 12.07
 int
 main(int argc, char *argv[])
 {
-    cpu_set_t set;
-    int parentCPU, childCPU;
-    unsigned int nloops;
+    int           parentCPU, childCPU;
+    cpu_set_t     set;
+    unsigned int  nloops;
 
     if (argc != 4) {
         fprintf(stderr, "Usage: %s parent\-cpu child\-cpu num\-loops\en",

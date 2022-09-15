@@ -265,9 +265,9 @@ reports a size of zero.
 int
 main(int argc, char *argv[])
 {
-    struct stat sb;
-    char *buf;
-    ssize_t nbytes, bufsiz;
+    char         *buf;
+    ssize_t      nbytes, bufsiz;
+    struct stat  sb;
 
     if (argc != 2) {
         fprintf(stderr, "Usage: %s <pathname>\en", argv[0]);

@@ -429,9 +429,9 @@ to perform a lookup in the system password file).
 int
 main(int argc, char *argv[])
 {
-    uid_t uid;
-    struct passwd *pwd;
-    char *endptr;
+    char           *endptr;
+    uid_t          uid;
+    struct passwd  *pwd;
 
     if (argc != 3 || argv[1][0] == \(aq\e0\(aq) {
         fprintf(stderr, "%s <owner> <file>\en", argv[0]);

@@ -472,10 +472,10 @@ $
 int
 main(void)
 {
-    sigset_t mask;
-    int sfd;
-    struct signalfd_siginfo fdsi;
-    ssize_t s;
+    int                      sfd;
+    ssize_t                  s;
+    sigset_t                 mask;
+    struct signalfd_siginfo  fdsi;
 
     sigemptyset(&mask);
     sigaddset(&mask, SIGINT);

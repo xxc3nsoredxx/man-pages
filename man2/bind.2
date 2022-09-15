@@ -235,9 +235,9 @@ domain, and accept connections:
 int
 main(void)
 {
-    int sfd, cfd;
-    struct sockaddr_un my_addr, peer_addr;
-    socklen_t peer_addr_size;
+    int                 sfd, cfd;
+    socklen_t           peer_addr_size;
+    struct sockaddr_un  my_addr, peer_addr;
 
     sfd = socket(AF_UNIX, SOCK_STREAM, 0);
     if (sfd == \-1)

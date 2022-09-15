@@ -537,9 +537,9 @@ open_by_handle_at: Stale NFS file handle
 int
 main(int argc, char *argv[])
 {
-    struct file_handle *fhp;
-    int mount_id, fhsize, flags, dirfd;
-    char *pathname;
+    int                 mount_id, fhsize, flags, dirfd;
+    char                *pathname;
+    struct file_handle  *fhp;
 
     if (argc != 2) {
         fprintf(stderr, "Usage: %s pathname\en", argv[0]);
@@ -616,12 +616,12 @@ main(int argc, char *argv[])
 static int
 open_mount_path_by_id(int mount_id)
 {
-    char *linep;
-    size_t lsize;
-    char mount_path[PATH_MAX];
-    int mi_mount_id, found;
-    ssize_t nread;
-    FILE *fp;
+    int      mi_mount_id, found;
+    char     mount_path[PATH_MAX];
+    char     *linep;
+    FILE     *fp;
+    size_t   lsize;
+    ssize_t  nread;
 
     fp = fopen("/proc/self/mountinfo", "r");
     if (fp == NULL)
@@ -659,13 +659,13 @@ open_mount_path_by_id(int mount_id)
 int
 main(int argc, char *argv[])
 {
-    struct file_handle *fhp;
-    int mount_id, fd, mount_fd, handle_bytes;
-    ssize_t nread;
-    char buf[1000];
+    int                 mount_id, fd, mount_fd, handle_bytes;
+    char                buf[1000];
 #define LINE_SIZE 100
-    char line1[LINE_SIZE], line2[LINE_SIZE];
-    char *nextp;
+    char                line1[LINE_SIZE], line2[LINE_SIZE];
+    char                *nextp;
+    ssize_t             nread;
+    struct file_handle  *fhp;
 
     if ((argc > 1 && strcmp(argv[1], "\-\-help") == 0) || argc > 2) {
         fprintf(stderr, "Usage: %s [mount\-path]\en", argv[0]);

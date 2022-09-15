@@ -718,9 +718,9 @@ to a local variable and passing that variable to the system call.
 int
 main(void)
 {
-    fd_set rfds;
-    struct timeval tv;
-    int retval;
+    int             retval;
+    fd_set          rfds;
+    struct timeval  tv;
 
     /* Watch stdin (fd 0) to see when it has input. */
 

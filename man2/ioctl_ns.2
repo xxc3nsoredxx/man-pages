@@ -250,8 +250,8 @@ The owning user namespace is outside your namespace scope
 int
 main(int argc, char *argv[])
 {
-    int fd, userns_fd, parent_fd;
-    struct stat sb;
+    int          fd, userns_fd, parent_fd;
+    struct stat  sb;
 
     if (argc < 2) {
         fprintf(stderr, "Usage: %s /proc/[pid]/ns/[file] [p|u]\en",

@@ -248,9 +248,9 @@ and echoes it on standard output.
 int
 main(int argc, char *argv[])
 {
-    int pipefd[2];
-    pid_t cpid;
-    char buf;
+    int    pipefd[2];
+    char   buf;
+    pid_t  cpid;
 
     if (argc != 2) {
         fprintf(stderr, "Usage: %s <string>\en", argv[0]);

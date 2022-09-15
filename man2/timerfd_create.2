@@ -606,10 +606,10 @@ a.out 3 1 100
 static void
 print_elapsed_time(void)
 {
-    static struct timespec start;
-    struct timespec curr;
-    static int first_call = 1;
-    int secs, nsecs;
+    int                     secs, nsecs;
+    static int              first_call = 1;
+    struct timespec         curr;
+    static struct timespec  start;
 
     if (first_call) {
         first_call = 0;
@@ -632,11 +632,11 @@ print_elapsed_time(void)
 int
 main(int argc, char *argv[])
 {
-    struct itimerspec new_value;
-    int fd;
-    struct timespec now;
-    uint64_t exp, tot_exp, max_exp;
-    ssize_t s;
+    int                fd;
+    ssize_t            s;
+    uint64_t           exp, tot_exp, max_exp;
+    struct timespec    now;
+    struct itimerspec  new_value;
 
     if (argc != 2 && argc != 4) {
         fprintf(stderr, "%s init\-secs [interval\-secs max\-exp]\en",

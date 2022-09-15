@@ -328,10 +328,10 @@ pivot_root(const char *new_root, const char *put_old)
 static int              /* Startup function for cloned child */
 child(void *arg)
 {
-    char **args = arg;
-    char *new_root = args[0];
-    const char *put_old = "/oldrootfs";
-    char path[PATH_MAX];
+    char        path[PATH_MAX];
+    char        **args = arg;
+    char        *new_root = args[0];
+    const char  *put_old = "/oldrootfs";
 
     /* Ensure that \(aqnew_root\(aq and its parent mount don\(aqt have
        shared propagation (which would cause pivot_root() to
@@ -378,10 +378,12 @@ child(void *arg)
 int
 main(int argc, char *argv[])
 {
+    char *stack;
+
     /* Create a child process in a new mount namespace. */
 
-    char *stack = mmap(NULL, STACK_SIZE, PROT_READ | PROT_WRITE,
-                       MAP_PRIVATE | MAP_ANONYMOUS | MAP_STACK, \-1, 0);
+    stack = mmap(NULL, STACK_SIZE, PROT_READ | PROT_WRITE,
+                 MAP_PRIVATE | MAP_ANONYMOUS | MAP_STACK, \-1, 0);
     if (stack == MAP_FAILED)
         err(EXIT_FAILURE, "mmap");
 

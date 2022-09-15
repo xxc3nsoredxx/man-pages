@@ -422,10 +422,10 @@ Existing seals: WRITE SHRINK
 int
 main(int argc, char *argv[])
 {
-    int fd;
-    unsigned int seals;
-    char *name, *seals_arg;
-    ssize_t len;
+    int           fd;
+    char          *name, *seals_arg;
+    ssize_t       len;
+    unsigned int  seals;
 
     if (argc < 3) {
         fprintf(stderr, "%s name size [seals]\en", argv[0]);
@@ -504,8 +504,8 @@ main(int argc, char *argv[])
 int
 main(int argc, char *argv[])
 {
-    int fd;
-    unsigned int seals;
+    int           fd;
+    unsigned int  seals;
 
     if (argc != 2) {
         fprintf(stderr, "%s /proc/PID/fd/FD\en", argv[0]);

@@ -223,12 +223,12 @@ main(void)
 #define VLEN 10
 #define BUFSIZE 200
 #define TIMEOUT 1
-    int sockfd, retval;
-    struct sockaddr_in addr;
-    struct mmsghdr msgs[VLEN];
-    struct iovec iovecs[VLEN];
-    char bufs[VLEN][BUFSIZE+1];
-    struct timespec timeout;
+    int                 sockfd, retval;
+    char                bufs[VLEN][BUFSIZE+1];
+    struct iovec        iovecs[VLEN];
+    struct mmsghdr      msgs[VLEN];
+    struct timespec     timeout;
+    struct sockaddr_in  addr;
 
     sockfd = socket(AF_INET, SOCK_DGRAM, 0);
     if (sockfd == \-1) {

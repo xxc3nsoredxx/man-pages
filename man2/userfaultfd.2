@@ -768,14 +768,15 @@ static int page_size;
 static void *
 fault_handler_thread(void *arg)
 {
-    int nready;
-    struct pollfd pollfd;
-    static struct uffd_msg msg;   /* Data read from userfaultfd */
-    static int fault_cnt = 0;     /* Number of faults so far handled */
-    long uffd;                    /* userfaultfd file descriptor */
-    static char *page = NULL;
-    struct uffdio_copy uffdio_copy;
-    ssize_t nread;
+    int                 nready;
+    long                uffd;   /* userfaultfd file descriptor */
+    ssize_t             nread;
+    struct pollfd       pollfd;
+    struct uffdio_copy  uffdio_copy;
+
+    static int      fault_cnt = 0; /* Number of faults so far handled */
+    static char     *page = NULL;
+    static struct uffd_msg  msg;  /* Data read from userfaultfd */
 
     uffd = (long) arg;
 
@@ -859,14 +860,14 @@ fault_handler_thread(void *arg)
 int
 main(int argc, char *argv[])
 {
-    char c;
-    long uffd;          /* userfaultfd file descriptor */
-    char *addr;         /* Start of region handled by userfaultfd */
-    size_t len, l;      /* Length of region handled by userfaultfd */
-    pthread_t thr;      /* ID of thread that handles page faults */
-    struct uffdio_api uffdio_api;
-    struct uffdio_register uffdio_register;
-    int s;
+    int        s;
+    char       c;
+    char       *addr;   /* Start of region handled by userfaultfd */
+    long       uffd;    /* userfaultfd file descriptor */
+    size_t     len, l;  /* Length of region handled by userfaultfd */
+    pthread_t  thr;     /* ID of thread that handles page faults */
+    struct uffdio_api       uffdio_api;
+    struct uffdio_register  uffdio_register;
 
     if (argc != 2) {
         fprintf(stderr, "Usage: %s num\-pages\en", argv[0]);

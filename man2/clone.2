@@ -1869,10 +1869,10 @@ childFunc(void *arg)
 int
 main(int argc, char *argv[])
 {
-    char *stack;                    /* Start of stack buffer */
-    char *stackTop;                 /* End of stack buffer */
-    pid_t pid;
-    struct utsname uts;
+    char            *stack;         /* Start of stack buffer */
+    char            *stackTop;      /* End of stack buffer */
+    pid_t           pid;
+    struct utsname  uts;
 
     if (argc < 2) {
         fprintf(stderr, "Usage: %s <child\-hostname>\en", argv[0]);

@@ -945,12 +945,12 @@ to output the desired bytes.
 int
 main(int argc, char *argv[])
 {
-    char *addr;
-    int fd;
-    struct stat sb;
-    off_t offset, pa_offset;
-    size_t length;
-    ssize_t s;
+    int          fd;
+    char         *addr;
+    off_t        offset, pa_offset;
+    size_t       length;
+    ssize_t      s;
+    struct stat  sb;
 
     if (argc < 3 || argc > 4) {
         fprintf(stderr, "%s file offset [length]\en", argv[0]);

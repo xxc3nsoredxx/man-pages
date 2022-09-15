@@ -181,11 +181,11 @@ The contents of the first datagram originates from a pair of buffers.
 int
 main(void)
 {
-    int sockfd;
-    struct sockaddr_in addr;
-    struct mmsghdr msg[2];
-    struct iovec msg1[2], msg2;
-    int retval;
+    int                 retval;
+    int                 sockfd;
+    struct iovec        msg1[2], msg2;
+    struct mmsghdr      msg[2];
+    struct sockaddr_in  addr;
 
     sockfd = socket(AF_INET, SOCK_DGRAM, 0);
     if (sockfd == \-1) {

@@ -215,8 +215,8 @@ system call.
 
 int main(void)
 {
-    int context, fd, spu_status;
-    uint32_t instruction, npc;
+    int       context, fd, spu_status;
+    uint32_t  instruction, npc;
 
     context = syscall(SYS_spu_create, "/spu/example\-context", 0, 0755);
     if (context == \-1)

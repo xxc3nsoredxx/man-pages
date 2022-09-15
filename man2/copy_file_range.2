@@ -241,9 +241,9 @@ the call failed to copy, while still reporting success.
 int
 main(int argc, char *argv[])
 {
-    int fd_in, fd_out;
-    struct stat stat;
-    off64_t len, ret;
+    int          fd_in, fd_out;
+    off64_t      len, ret;
+    struct stat  stat;
 
     if (argc != 3) {
         fprintf(stderr, "Usage: %s <source> <destination>\en", argv[0]);

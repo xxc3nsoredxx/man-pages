@@ -388,8 +388,8 @@ usage(const char *pname)
 int
 main(int argc, char *argv[])
 {
-    int semid, nsems, flags, opt;
-    key_t key;
+    int    semid, nsems, flags, opt;
+    key_t  key;
 
     flags = 0;
     while ((opt = getopt(argc, argv, "cx")) != \-1) {

@@ -591,8 +591,8 @@ usage(char *prog_name, char *msg)
 static void
 send_msg(int qid, int msgtype)
 {
-    struct msgbuf msg;
-    time_t t;
+    time_t         t;
+    struct msgbuf  msg;
 
     msg.mtype = msgtype;
 
@@ -629,10 +629,10 @@ get_msg(int qid, int msgtype)
 int
 main(int argc, char *argv[])
 {
-    int qid, opt;
-    int mode = 0;               /* 1 = send, 2 = receive */
-    int msgtype = 1;
-    int msgkey = 1234;
+    int  qid, opt;
+    int  mode = 0;               /* 1 = send, 2 = receive */
+    int  msgtype = 1;
+    int  msgkey = 1234;
 
     while ((opt = getopt(argc, argv, "srt:k:")) != \-1) {
         switch (opt) {

@@ -227,8 +227,8 @@ pidfd_open(pid_t pid, unsigned int flags)
 int
 main(int argc, char *argv[])
 {
-    struct pollfd pollfd;
-    int pidfd, ready;
+    int            pidfd, ready;
+    struct pollfd  pollfd;
 
     if (argc != 2) {
         fprintf(stderr, "Usage: %s <pid>\en", argv[0]);

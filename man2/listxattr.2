@@ -204,8 +204,8 @@ user.empty: <no value>
 int
 main(int argc, char *argv[])
 {
-    ssize_t buflen, keylen, vallen;
-    char *buf, *key, *val;
+    char     *buf, *key, *val;
+    ssize_t  buflen, keylen, vallen;
 
     if (argc != 2) {
         fprintf(stderr, "Usage: %s path\en", argv[0]);

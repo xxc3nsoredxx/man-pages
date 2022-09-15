@@ -132,10 +132,10 @@ int _sysctl(struct __sysctl_args *args);
 int
 main(void)
 {
-    struct __sysctl_args args;
-    char osname[OSNAMESZ];
-    size_t osnamelth;
-    int name[] = { CTL_KERN, KERN_OSTYPE };
+    int                   name[] = { CTL_KERN, KERN_OSTYPE };
+    char                  osname[OSNAMESZ];
+    size_t                osnamelth;
+    struct __sysctl_args  args;
 
     memset(&args, 0, sizeof(args));
     args.name = name;

@@ -189,9 +189,9 @@ pidfd_send_signal(int pidfd, int sig, siginfo_t *info,
 int
 main(int argc, char *argv[])
 {
-    siginfo_t info;
-    char path[PATH_MAX];
-    int pidfd, sig;
+    int        pidfd, sig;
+    char       path[PATH_MAX];
+    siginfo_t  info;
 
     if (argc != 3) {
         fprintf(stderr, "Usage: %s <pid> <signal>\en", argv[0]);

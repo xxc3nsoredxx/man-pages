@@ -369,8 +369,8 @@ Caught signal 34
 static void
 print_siginfo(siginfo_t *si)
 {
-    timer_t *tidp;
-    int or;
+    int      or;
+    timer_t  *tidp;
 
     tidp = si\->si_value.sival_ptr;
 
@@ -401,12 +401,12 @@ handler(int sig, siginfo_t *si, void *uc)
 int
 main(int argc, char *argv[])
 {
-    timer_t timerid;
-    struct sigevent sev;
-    struct itimerspec its;
-    long long freq_nanosecs;
-    sigset_t mask;
-    struct sigaction sa;
+    timer_t            timerid;
+    sigset_t           mask;
+    long long          freq_nanosecs;
+    struct sigevent    sev;
+    struct sigaction   sa;
+    struct itimerspec  its;
 
     if (argc != 3) {
         fprintf(stderr, "Usage: %s <sleep\-secs> <freq\-nanosecs>\en",

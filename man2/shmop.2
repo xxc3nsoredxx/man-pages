@@ -368,10 +368,10 @@ shared memory segment by the "writer".
 int
 main(void)
 {
-    int semid, shmid;
-    union semun arg, dummy;
-    struct sembuf sop;
-    char *addr;
+    int            semid, shmid;
+    char           *addr;
+    union semun    arg, dummy;
+    struct sembuf  sop;
 
     /* Create shared memory and semaphore set containing one
        semaphore. */
@@ -450,10 +450,10 @@ and then decrements the semaphore value to 0 in order to inform the
 int
 main(int argc, char *argv[])
 {
-    int semid, shmid;
-    struct sembuf sop;
-    char *addr;
-    size_t len;
+    int            semid, shmid;
+    char           *addr;
+    size_t         len;
+    struct sembuf  sop;
 
     if (argc != 4) {
         fprintf(stderr, "Usage: %s shmid semid string\en", argv[0]);

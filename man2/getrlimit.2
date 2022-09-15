@@ -787,9 +787,9 @@ The program below demonstrates the use of
 int
 main(int argc, char *argv[])
 {
-    struct rlimit old, new;
-    struct rlimit *newp;
-    pid_t pid;
+    pid_t          pid;
+    struct rlimit  old, new;
+    struct rlimit  *newp;
 
     if (!(argc == 2 || argc == 4)) {
         fprintf(stderr, "Usage: %s <pid> [<new\-soft\-limit> "

@@ -952,11 +952,11 @@ static const struct option longopts[] = {
 int
 main(int argc, char *argv[])
 {
-    struct mount_attr *attr = &(struct mount_attr){};
-    int fd_userns = \-1;
-    bool recursive = false;
-    int index = 0;
-    int ret;
+    int                fd_userns = \-1;
+    int                index = 0;
+    int                ret;
+    bool               recursive = false;
+    struct mount_attr  *attr = &(struct mount_attr){};
 
     while ((ret = getopt_long_only(argc, argv, "",
                                    longopts, &index)) != \-1) {

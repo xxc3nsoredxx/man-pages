@@ -3749,9 +3749,9 @@ perf_event_open(struct perf_event_attr *hw_event, pid_t pid,
 int
 main(void)
 {
-    struct perf_event_attr pe;
-    long long count;
-    int fd;
+    int                     fd;
+    long long               count;
+    struct perf_event_attr  pe;
 
     memset(&pe, 0, sizeof(pe));
     pe.type = PERF_TYPE_HARDWARE;

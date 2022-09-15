@@ -1425,10 +1425,10 @@ T: terminating
 static int
 sendfd(int sockfd, int fd)
 {
-    struct msghdr msgh;
-    struct iovec iov;
-    int data;
-    struct cmsghdr *cmsgp;
+    int             data;
+    struct iovec    iov;
+    struct msghdr   msgh;
+    struct cmsghdr  *cmsgp;
 
     /* Allocate a char array of suitable size to hold the ancillary data.
        However, since this buffer is in reality a \(aqstruct cmsghdr\(aq, use a
@@ -1483,10 +1483,10 @@ sendfd(int sockfd, int fd)
 static int
 recvfd(int sockfd)
 {
-    struct msghdr msgh;
-    struct iovec iov;
-    int data, fd;
-    ssize_t nr;
+    int            data, fd;
+    ssize_t        nr;
+    struct iovec   iov;
+    struct msghdr  msgh;
 
     /* Allocate a char buffer for the ancillary data. See the comments
        in sendfd() */
@@ -1582,6 +1582,8 @@ seccomp(unsigned int operation, unsigned int flags, void *args)
 static int
 installNotifyFilter(void)
 {
+    int notifyFd;
+
     struct sock_filter filter[] = {
         X86_64_CHECK_ARCH_AND_LOAD_SYSCALL_NR,
 
@@ -1603,8 +1605,8 @@ installNotifyFilter(void)
     /* Install the filter with the SECCOMP_FILTER_FLAG_NEW_LISTENER flag;
        as a result, seccomp() returns a notification file descriptor. */
 
-    int notifyFd = seccomp(SECCOMP_SET_MODE_FILTER,
-                           SECCOMP_FILTER_FLAG_NEW_LISTENER, &prog);
+    notifyFd = seccomp(SECCOMP_SET_MODE_FILTER,
+                       SECCOMP_FILTER_FLAG_NEW_LISTENER, &prog);
     if (notifyFd == \-1)
         err(EXIT_FAILURE, "seccomp\-install\-notify\-filter");
 

@@ -316,8 +316,8 @@ handler(int sig, siginfo_t *si, void *unused)
 int
 main(void)
 {
-    int pagesize;
-    struct sigaction sa;
+    int               pagesize;
+    struct sigaction  sa;
 
     sa.sa_flags = SA_SIGINFO;
     sigemptyset(&sa.sa_mask);
