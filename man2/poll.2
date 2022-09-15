@@ -561,8 +561,9 @@ at which point the file descriptor was closed and the program terminated.
 int
 main(int argc, char *argv[])
 {
-    int            nfds, num_open_fds, ready;
+    int            ready;
     char           buf[10];
+    nfds_t         num_open_fds, nfds;
     ssize_t        s;
     struct pollfd  *pfds;
 
@@ -578,7 +579,7 @@ main(int argc, char *argv[])
 
     /* Open each file on command line, and add it \(aqpfds\(aq array. */
 
-    for (int j = 0; j < nfds; j++) {
+    for (nfds_t j = 0; j < nfds; j++) {
         pfds[j].fd = open(argv[j + 1], O_RDONLY);
         if (pfds[j].fd == \-1)
             errExit("open");
@@ -601,7 +602,7 @@ main(int argc, char *argv[])
 
         /* Deal with array returned by poll(). */
 
-        for (int j = 0; j < nfds; j++) {
+        for (nfds_t j = 0; j < nfds; j++) {
             if (pfds[j].revents != 0) {
                 printf("  fd=%d; events: %s%s%s\en", pfds[j].fd,
                        (pfds[j].revents & POLLIN)  ? "POLLIN "  : "",

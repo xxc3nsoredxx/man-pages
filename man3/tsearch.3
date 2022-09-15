@@ -311,7 +311,7 @@ main(void)
     int **val;
 
     srand(time(NULL));
-    for (int i = 0; i < 12; i++) {
+    for (unsigned int i = 0; i < 12; i++) {
         int *ptr = xmalloc(sizeof(*ptr));
         *ptr = rand() & 0xff;
         val = tsearch(ptr, &root, compare);

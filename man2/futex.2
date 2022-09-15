@@ -1882,8 +1882,8 @@ fpost(uint32_t *futexp)
 int
 main(int argc, char *argv[])
 {
-    pid_t childPid;
-    int nloops;
+    pid_t         childPid;
+    unsigned int  nloops;
 
     setbuf(stdout, NULL);
 
@@ -1913,9 +1913,9 @@ main(int argc, char *argv[])
         err(EXIT_FAILURE, "fork");
 
     if (childPid == 0) {        /* Child */
-        for (int j = 0; j < nloops; j++) {
+        for (unsigned int j = 0; j < nloops; j++) {
             fwait(futex1);
-            printf("Child  (%jd) %d\en", (intmax_t) getpid(), j);
+            printf("Child  (%jd) %u\en", (intmax_t) getpid(), j);
             fpost(futex2);
         }
 
@@ -1924,9 +1924,9 @@ main(int argc, char *argv[])
 
     /* Parent falls through to here. */
 
-    for (int j = 0; j < nloops; j++) {
+    for (unsigned int j = 0; j < nloops; j++) {
         fwait(futex2);
-        printf("Parent (%jd) %d\en", (intmax_t) getpid(), j);
+        printf("Parent (%jd) %u\en", (intmax_t) getpid(), j);
         fpost(futex1);
     }
 

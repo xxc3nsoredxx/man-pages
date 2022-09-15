@@ -293,7 +293,7 @@ main(void)
     SLIST_REMOVE_HEAD(&head, entries);      /* Deletion from the head */
     free(n3);
 
-    for (int i = 0; i < 5; i++) {
+    for (unsigned int i = 0; i < 5; i++) {
         n1 = malloc(sizeof(struct entry));
         SLIST_INSERT_HEAD(&head, n1, entries);
         n1\->data = i;

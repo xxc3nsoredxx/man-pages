@@ -285,8 +285,7 @@ main(int argc, char *argv[])
 {
 #define MAX_ALLOCS 2000000
     char *alloc[MAX_ALLOCS];
-    int numBlocks, freeBegin, freeEnd, freeStep;
-    size_t blockSize;
+    size_t blockSize, numBlocks, freeBegin, freeEnd, freeStep;
 
     if (argc < 3 || strcmp(argv[1], "\-\-help") == 0) {
         fprintf(stderr, "%s num\-blocks block\-size [free\-step "
@@ -303,7 +302,7 @@ main(int argc, char *argv[])
     printf("============== Before allocating blocks ==============\en");
     display_mallinfo2();
 
-    for (int j = 0; j < numBlocks; j++) {
+    for (size_t j = 0; j < numBlocks; j++) {
         if (numBlocks >= MAX_ALLOCS) {
             fprintf(stderr, "Too many allocations\en");
             exit(EXIT_FAILURE);
@@ -319,7 +318,7 @@ main(int argc, char *argv[])
     printf("\en============== After allocating blocks ==============\en");
     display_mallinfo2();
 
-    for (int j = freeBegin; j < freeEnd; j += freeStep)
+    for (size_t j = freeBegin; j < freeEnd; j += freeStep)
         free(alloc[j]);
 
     printf("\en============== After freeing blocks ==============\en");

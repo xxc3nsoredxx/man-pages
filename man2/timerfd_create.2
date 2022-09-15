@@ -633,9 +633,9 @@ int
 main(int argc, char *argv[])
 {
     struct itimerspec new_value;
-    int max_exp, fd;
+    int fd;
     struct timespec now;
-    uint64_t exp, tot_exp;
+    uint64_t exp, tot_exp, max_exp;
     ssize_t s;
 
     if (argc != 2 && argc != 4) {

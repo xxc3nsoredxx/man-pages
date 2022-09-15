@@ -245,7 +245,7 @@ myfunc3(void)
         exit(EXIT_FAILURE);
     }
 
-    for (int j = 0; j < nptrs; j++)
+    for (size_t j = 0; j < nptrs; j++)
         printf("%s\en", strings[j]);
 
     free(strings);

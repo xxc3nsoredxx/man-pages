@@ -808,13 +808,13 @@ main(int argc, char *argv[])
     /* Send remaining command\-line arguments as separate
        datagrams, and read responses from server. */
 
-    for (int j = 3; j < argc; j++) {
+    for (size_t j = 3; j < argc; j++) {
         len = strlen(argv[j]) + 1;
                 /* +1 for terminating null byte */
 
         if (len > BUF_SIZE) {
             fprintf(stderr,
-                    "Ignoring long message in argument %d\en", j);
+                    "Ignoring long message in argument %zu\en", j);
             continue;
         }
 

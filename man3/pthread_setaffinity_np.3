@@ -176,7 +176,7 @@ main(void)
     /* Set affinity mask to include CPUs 0 to 7. */
 
     CPU_ZERO(&cpuset);
-    for (int j = 0; j < 8; j++)
+    for (size_t j = 0; j < 8; j++)
         CPU_SET(j, &cpuset);
 
     s = pthread_setaffinity_np(thread, sizeof(cpuset), &cpuset);
@@ -190,9 +190,9 @@ main(void)
         errc(EXIT_FAILURE, s, "pthread_getaffinity_np");
 
     printf("Set returned by pthread_getaffinity_np() contained:\en");
-    for (int j = 0; j < CPU_SETSIZE; j++)
+    for (size_t j = 0; j < CPU_SETSIZE; j++)
         if (CPU_ISSET(j, &cpuset))
-            printf("    CPU %d\en", j);
+            printf("    CPU %zu\en", j);
 
     exit(EXIT_SUCCESS);
 }

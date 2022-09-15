@@ -245,7 +245,7 @@ main(void)
     }
 
     memset(msgs, 0, sizeof(msgs));
-    for (int i = 0; i < VLEN; i++) {
+    for (size_t i = 0; i < VLEN; i++) {
         iovecs[i].iov_base         = bufs[i];
         iovecs[i].iov_len          = BUFSIZE;
         msgs[i].msg_hdr.msg_iov    = &iovecs[i];
@@ -262,9 +262,9 @@ main(void)
     }
 
     printf("%d messages received\en", retval);
-    for (int i = 0; i < retval; i++) {
+    for (size_t i = 0; i < retval; i++) {
         bufs[i][msgs[i].msg_len] = 0;
-        printf("%d %s", i+1, bufs[i]);
+        printf("%zu %s", i+1, bufs[i]);
     }
     exit(EXIT_SUCCESS);
 }

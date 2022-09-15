@@ -199,8 +199,8 @@ when given a particular seed.
 int
 main(int argc, char *argv[])
 {
-    int r, nloops;
-    unsigned int seed;
+    int           r;
+    unsigned int  seed, nloops;
 
     if (argc != 3) {
         fprintf(stderr, "Usage: %s <seed> <nloops>\en", argv[0]);
@@ -211,7 +211,7 @@ main(int argc, char *argv[])
     nloops = atoi(argv[2]);
 
     srand(seed);
-    for (int j = 0; j < nloops; j++) {
+    for (unsigned int j = 0; j < nloops; j++) {
         r =  rand();
         printf("%d\en", r);
     }

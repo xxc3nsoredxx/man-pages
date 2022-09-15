@@ -652,8 +652,8 @@ main(int argc, char *argv[])
        pipe program. */
 
     fprintf(fp, "argc=%d\en", argc);
-    for (int j = 0; j < argc; j++)
-        fprintf(fp, "argc[%d]=<%s>\en", j, argv[j]);
+    for (size_t j = 0; j < argc; j++)
+        fprintf(fp, "argc[%zu]=<%s>\en", j, argv[j]);
 
     /* Count bytes in standard input (the core dump). */
 

@@ -1220,7 +1220,7 @@ update_map(char *mapping, char *map_file)
     /* Replace commas in mapping string with newlines. */
 
     map_len = strlen(mapping);
-    for (int j = 0; j < map_len; j++)
+    for (size_t j = 0; j < map_len; j++)
         if (mapping[j] == \(aq,\(aq)
             mapping[j] = \(aq\en\(aq;
 

@@ -169,12 +169,12 @@ main(void)
     char buf[64];
     char txt[9];
 
-    for (int i = 0; i < 64; i++) {
+    for (size_t i = 0; i < 64; i++) {
         key[i] = rand() & 1;
     }
 
-    for (int i = 0; i < 8; i++) {
-        for (int j = 0; j < 8; j++) {
+    for (size_t i = 0; i < 8; i++) {
+        for (size_t j = 0; j < 8; j++) {
             buf[i * 8 + j] = orig[i] >> j & 1;
         }
         setkey(key);
@@ -182,8 +182,8 @@ main(void)
     printf("Before encrypting: %s\en", orig);
 
     encrypt(buf, 0);
-    for (int i = 0; i < 8; i++) {
-        for (int j = 0, txt[i] = \(aq\e0\(aq; j < 8; j++) {
+    for (size_t i = 0; i < 8; i++) {
+        for (size_t j = 0, txt[i] = \(aq\e0\(aq; j < 8; j++) {
             txt[i] |= buf[i * 8 + j] << j;
         }
         txt[8] = \(aq\e0\(aq;
@@ -191,8 +191,8 @@ main(void)
     printf("After encrypting:  %s\en", txt);
 
     encrypt(buf, 1);
-    for (int i = 0; i < 8; i++) {
-        for (int j = 0, txt[i] = \(aq\e0\(aq; j < 8; j++) {
+    for (size_t i = 0; i < 8; i++) {
+        for (size_t j = 0, txt[i] = \(aq\e0\(aq; j < 8; j++) {
             txt[i] |= buf[i * 8 + j] << j;
         }
         txt[8] = \(aq\e0\(aq;

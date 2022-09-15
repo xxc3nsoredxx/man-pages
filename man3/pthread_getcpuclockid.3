@@ -149,7 +149,7 @@ main(void)
     sleep(1);
 
     printf("Main thread consuming some CPU time...\en");
-    for (int j = 0; j < 2000000; j++)
+    for (unsigned int j = 0; j < 2000000; j++)
         getppid();
 
     pclock("Process total CPU time: ", CLOCK_PROCESS_CPUTIME_ID);

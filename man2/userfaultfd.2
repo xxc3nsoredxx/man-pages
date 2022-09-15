@@ -859,11 +859,10 @@ fault_handler_thread(void *arg)
 int
 main(int argc, char *argv[])
 {
-    int l;
     char c;
     long uffd;          /* userfaultfd file descriptor */
     char *addr;         /* Start of region handled by userfaultfd */
-    uint64_t len;       /* Length of region handled by userfaultfd */
+    size_t len, l;      /* Length of region handled by userfaultfd */
     pthread_t thr;      /* ID of thread that handles page faults */
     struct uffdio_api uffdio_api;
     struct uffdio_register uffdio_register;

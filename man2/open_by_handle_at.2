@@ -586,7 +586,7 @@ main(int argc, char *argv[])
 
     printf("%d\en", mount_id);
     printf("%u %d   ", fhp\->handle_bytes, fhp\->handle_type);
-    for (int j = 0; j < fhp\->handle_bytes; j++)
+    for (size_t j = 0; j < fhp\->handle_bytes; j++)
         printf(" %02x", fhp\->f_handle[j]);
     printf("\en");
 
@@ -699,7 +699,7 @@ main(int argc, char *argv[])
 
     fhp\->handle_type = strtoul(nextp, &nextp, 0);
 
-    for (int j = 0; j < fhp\->handle_bytes; j++)
+    for (size_t j = 0; j < fhp\->handle_bytes; j++)
         fhp\->f_handle[j] = strtoul(nextp, &nextp, 16);
 
     /* Obtain file descriptor for mount point, either by opening

@@ -312,7 +312,7 @@ main(int argc, char *argv[])
     /* Open each file specified on the command line, and queue
        a read request on the resulting file descriptor. */
 
-    for (int j = 0; j < numReqs; j++) {
+    for (size_t j = 0; j < numReqs; j++) {
         ioList[j].reqNum = j;
         ioList[j].status = EINPROGRESS;
         ioList[j].aiocbp = &aiocbList[j];
@@ -355,9 +355,9 @@ main(int argc, char *argv[])
 
             printf("got SIGQUIT; canceling I/O requests: \en");
 
-            for (int j = 0; j < numReqs; j++) {
+            for (size_t j = 0; j < numReqs; j++) {
                 if (ioList[j].status == EINPROGRESS) {
-                    printf("    Request %d on descriptor %d:", j,
+                    printf("    Request %zu on descriptor %d:", j,
                             ioList[j].aiocbp\->aio_fildes);
                     s = aio_cancel(ioList[j].aiocbp\->aio_fildes,
                             ioList[j].aiocbp);
@@ -379,9 +379,9 @@ main(int argc, char *argv[])
            in progress. */
 
         printf("aio_error():\en");
-        for (int j = 0; j < numReqs; j++) {
+        for (size_t j = 0; j < numReqs; j++) {
             if (ioList[j].status == EINPROGRESS) {
-                printf("    for request %d (descriptor %d): ",
+                printf("    for request %zu (descriptor %d): ",
                         j, ioList[j].aiocbp\->aio_fildes);
                 ioList[j].status = aio_error(ioList[j].aiocbp);
 
@@ -411,11 +411,11 @@ main(int argc, char *argv[])
     /* Check status return of all I/O requests. */
 
     printf("aio_return():\en");
-    for (int j = 0; j < numReqs; j++) {
+    for (size_t j = 0; j < numReqs; j++) {
         ssize_t s;
 
         s = aio_return(ioList[j].aiocbp);
-        printf("    for request %d (descriptor %d): %zd\en",
+        printf("    for request %zu (descriptor %d): %zd\en",
                 j, ioList[j].aiocbp\->aio_fildes, s);
     }
 

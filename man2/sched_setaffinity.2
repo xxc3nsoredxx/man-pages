@@ -356,7 +356,7 @@ main(int argc, char *argv[])
 {
     cpu_set_t set;
     int parentCPU, childCPU;
-    int nloops;
+    unsigned int nloops;
 
     if (argc != 4) {
         fprintf(stderr, "Usage: %s parent\-cpu child\-cpu num\-loops\en",
@@ -380,7 +380,7 @@ main(int argc, char *argv[])
         if (sched_setaffinity(getpid(), sizeof(set), &set) == \-1)
             err(EXIT_FAILURE, "sched_setaffinity");
 
-        for (int j = 0; j < nloops; j++)
+        for (unsigned int j = 0; j < nloops; j++)
             getppid();
 
         exit(EXIT_SUCCESS);
@@ -391,7 +391,7 @@ main(int argc, char *argv[])
         if (sched_setaffinity(getpid(), sizeof(set), &set) == \-1)
             err(EXIT_FAILURE, "sched_setaffinity");
 
-        for (int j = 0; j < nloops; j++)
+        for (unsigned int j = 0; j < nloops; j++)
             getppid();
 
         wait(NULL);     /* Wait for child to terminate */

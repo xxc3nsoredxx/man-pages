@@ -965,7 +965,7 @@ handle_events(int fd, int *wd, int argc, char* argv[])
 
             /* Print the name of the watched directory. */
 
-            for (int i = 1; i < argc; ++i) {
+            for (size_t i = 1; i < argc; ++i) {
                 if (wd[i] == event\->wd) {
                     printf("%s/", argv[i]);
                     break;

@@ -405,7 +405,7 @@ main(int argc, char *argv[])
 
     switch (fork()) {
     case 0:
-        for (int j = 1; j < argc; j++) {
+        for (size_t j = 1; j < argc; j++) {
             printf("Child writing %s to efd\en", argv[j]);
             u = strtoull(argv[j], NULL, 0);
                     /* strtoull() allows various bases */

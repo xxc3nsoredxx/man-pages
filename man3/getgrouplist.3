@@ -181,7 +181,7 @@ main(int argc, char *argv[])
     /* Display list of retrieved groups, along with group names. */
 
     fprintf(stderr, "ngroups = %d\en", ngroups);
-    for (int j = 0; j < ngroups; j++) {
+    for (size_t j = 0; j < ngroups; j++) {
         printf("%d", groups[j]);
         gr = getgrgid(groups[j]);
         if (gr != NULL)

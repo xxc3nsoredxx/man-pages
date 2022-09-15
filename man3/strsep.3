@@ -141,8 +141,8 @@ main(int argc, char *argv[])
         exit(EXIT_FAILURE);
     }
 
-    for (int j = 1; (token = strsep(&argv[1], argv[2])); j++) {
-        printf("%d: %s\en", j, token);
+    for (unsigned int j = 1; (token = strsep(&argv[1], argv[2])); j++) {
+        printf("%u: %s\en", j, token);
 
         while ((subtoken = strsep(&token, argv[3])))
             printf("\et \-\-> %s\en", subtoken);

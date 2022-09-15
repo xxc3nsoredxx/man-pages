@@ -137,7 +137,7 @@ main(int argc, char *argv[])
 
     qsort(&argv[1], argc \- 1, sizeof(char *), cmpstringp);
 
-    for (int j = 1; j < argc; j++)
+    for (size_t j = 1; j < argc; j++)
         puts(argv[j]);
     exit(EXIT_SUCCESS);
 }

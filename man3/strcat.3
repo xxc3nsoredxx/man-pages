@@ -208,9 +208,9 @@ main(void)
     base = time(NULL);
     p[0] = \(aq\e0\(aq;
 
-    for (int j = 0; j < LIM; j++) {
+    for (unsigned int j = 0; j < LIM; j++) {
         if ((j % 10000) == 0)
-            printf("%d %jd\en", j, (intmax_t) (time(NULL) \- base));
+            printf("%u %jd\en", j, (intmax_t) (time(NULL) \- base));
         strcat(p, "a");
     }
 }

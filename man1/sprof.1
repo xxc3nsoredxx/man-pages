@@ -96,27 +96,27 @@ $ \fBcat libdemo.c\fP
 void
 consumeCpu1(int lim)
 {
-    for (int j = 0; j < lim; j++)
+    for (unsigned int j = 0; j < lim; j++)
 	getppid();
 }
 
 void
 x1(void) {
-    for (int j = 0; j < 100; j++)
+    for (unsigned int j = 0; j < 100; j++)
 	consumeCpu1(200000);
 }
 
 void
 consumeCpu2(int lim)
 {
-    for (int j = 0; j < lim; j++)
+    for (unsigned int j = 0; j < lim; j++)
 	getppid();
 }
 
 void
 x2(void)
 {
-    for (int j = 0; j < 1000; j++)
+    for (unsigned int j = 0; j < 1000; j++)
 	consumeCpu2(10000);
 }
 .EE

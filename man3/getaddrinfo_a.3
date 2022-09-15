@@ -353,7 +353,7 @@ main(int argc, char *argv[])
         exit(EXIT_FAILURE);
     }
 
-    for (int i = 0; i < argc \- 1; i++) {
+    for (size_t i = 0; i < argc \- 1; i++) {
         reqs[i] = malloc(sizeof(*reqs[0]));
         if (reqs[i] == NULL) {
             perror("malloc");
@@ -370,7 +370,7 @@ main(int argc, char *argv[])
         exit(EXIT_FAILURE);
     }
 
-    for (int i = 0; i < argc \- 1; i++) {
+    for (size_t i = 0; i < argc \- 1; i++) {
         printf("%s: ", reqs[i]\->ar_name);
         ret = gai_error(reqs[i]);
         if (ret == 0) {
@@ -432,7 +432,7 @@ The program source is as follows:
 #include <string.h>
 
 static struct gaicb **reqs = NULL;
-static int nreqs = 0;
+static size_t nreqs = 0;
 
 static char *
 getcmd(void)
@@ -453,7 +453,7 @@ getcmd(void)
 static void
 add_requests(void)
 {
-    int nreqs_base = nreqs;
+    size_t nreqs_base = nreqs;
     char *host;
     int ret;
 
@@ -481,7 +481,8 @@ static void
 wait_requests(void)
 {
     char *id;
-    int ret, n;
+    int ret;
+    size_t n;
     struct gaicb const **wait_reqs = calloc(nreqs, sizeof(*wait_reqs));
                 /* NULL elements are ignored by gai_suspend(). */
 
@@ -502,7 +503,7 @@ wait_requests(void)
         return;
     }
 
-    for (int i = 0; i < nreqs; i++) {
+    for (size_t i = 0; i < nreqs; i++) {
         if (wait_reqs[i] == NULL)
             continue;
 
@@ -510,7 +511,7 @@ wait_requests(void)
         if (ret == EAI_INPROGRESS)
             continue;
 
-        printf("[%02d] %s: %s\en", i, reqs[i]\->ar_name,
+        printf("[%02zu] %s: %s\en", i, reqs[i]\->ar_name,
                ret == 0 ? "Finished" : gai_strerror(ret));
     }
 }
@@ -520,7 +521,8 @@ static void
 cancel_requests(void)
 {
     char *id;
-    int ret, n;
+    int ret;
+    size_t n;
 
     while ((id = strtok(NULL, " ")) != NULL) {
         n = atoi(id);
@@ -544,8 +546,8 @@ list_requests(void)
     char host[NI_MAXHOST];
     struct addrinfo *res;
 
-    for (int i = 0; i < nreqs; i++) {
-        printf("[%02d] %s: ", i, reqs[i]\->ar_name);
+    for (size_t i = 0; i < nreqs; i++) {
+        printf("[%02zu] %s: ", i, reqs[i]\->ar_name);
         ret = gai_error(reqs[i]);
 
         if (!ret) {

@@ -281,7 +281,7 @@ main(int argc, char *argv[])
 {
     struct tm *tmp;
 
-    for (int j = 1; j < argc; j++) {
+    for (size_t j = 1; j < argc; j++) {
         tmp = getdate(argv[j]);
 
         if (tmp == NULL) {
@@ -290,7 +290,7 @@ main(int argc, char *argv[])
             continue;
         }
 
-        printf("Call %d (\e"%s\e") succeeded:\en", j, argv[j]);
+        printf("Call %zu (\e"%s\e") succeeded:\en", j, argv[j]);
         printf("    tm_sec   = %d\en", tmp\->tm_sec);
         printf("    tm_min   = %d\en", tmp\->tm_min);
         printf("    tm_hour  = %d\en", tmp\->tm_hour);

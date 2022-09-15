@@ -306,7 +306,7 @@ main(void)
 
     hcreate(30);
 
-    for (int i = 0; i < 24; i++) {
+    for (size_t i = 0; i < 24; i++) {
         e.key = data[i];
         /* data is just an integer, instead of a
            pointer to something */
@@ -319,7 +319,7 @@ main(void)
         }
     }
 
-    for (int i = 22; i < 26; i++) {
+    for (size_t i = 22; i < 26; i++) {
         /* print two entries from the table, and
            show that two are not in the table */
         e.key = data[i];
