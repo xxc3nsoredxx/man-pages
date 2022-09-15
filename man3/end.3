@@ -76,7 +76,7 @@ extern char etext, edata, end; /* The symbols must have some type,
                                    or "gcc \-Wall" complains */
 
 int
-main(int argc, char *argv[])
+main(void)
 {
     printf("First address past:\en");
     printf("    program text (etext)      %10p\en", &etext);
