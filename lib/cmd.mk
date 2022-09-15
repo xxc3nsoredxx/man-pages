@@ -14,6 +14,7 @@ FIND       := find
 GIT        := git
 GREP       := grep
 GZIP       := gzip
+LOCALE     := locale
 PKG-CONFIG := pkg-config
 SED        := sed
 SORT       := sort

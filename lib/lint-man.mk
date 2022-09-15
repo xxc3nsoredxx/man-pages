@@ -17,11 +17,11 @@ TMACDIR := $(SYSCONFDIR)/groff/tmac
 
 
 MANWIDTH          ?= 80
-TROFF_LINE_LENGTH := $(shell echo $(MANWIDTH)-2 | $(BC))
-TROFF_OUT_DEVICE  := $(shell locale charmap \
-                             | grep -i 'utf-*8' >/dev/null \
-                                 && echo utf8 \
-                                 || echo ascii)
+TROFF_LINE_LENGTH := $(shell $(ECHO) $(MANWIDTH)-2 | $(BC))
+TROFF_OUT_DEVICE  := $(shell $(LOCALE) charmap \
+                             | $(GREP) -i 'utf-*8' >/dev/null \
+                                 && $(ECHO) utf8 \
+                                 || $(ECHO) ascii)
 
 TBL := tbl
 
