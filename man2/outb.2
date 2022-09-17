@@ -30,17 +30,17 @@ Standard C library
 .BI "void outl(unsigned int " value ", unsigned short " port );
 .BI "void outl_p(unsigned int " value ", unsigned short " port );
 .PP
-.BI "void insb(unsigned short " port ", void *" addr ,
+.BI "void insb(unsigned short " port ", void " addr [. count ],
 .BI "           unsigned long " count );
-.BI "void insw(unsigned short " port ", void *" addr ,
+.BI "void insw(unsigned short " port ", void " addr [. count ],
 .BI "           unsigned long " count );
-.BI "void insl(unsigned short " port ", void *" addr ,
+.BI "void insl(unsigned short " port ", void " addr [. count ],
 .BI "           unsigned long " count );
-.BI "void outsb(unsigned short " port ", const void *" addr ,
+.BI "void outsb(unsigned short " port ", const void " addr [. count ],
 .BI "           unsigned long " count );
-.BI "void outsw(unsigned short " port ", const void *" addr ,
+.BI "void outsw(unsigned short " port ", const void " addr [. count ],
 .BI "           unsigned long " count );
-.BI "void outsl(unsigned short " port ", const void *" addr ,
+.BI "void outsl(unsigned short " port ", const void " addr [. count ],
 .BI "           unsigned long " count );
 .fi
 .SH DESCRIPTION

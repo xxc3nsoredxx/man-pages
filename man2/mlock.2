@@ -14,9 +14,10 @@ Standard C library
 .nf
 .B #include <sys/mman.h>
 .PP
-.BI "int mlock(const void *" addr ", size_t " len );
-.BI "int mlock2(const void *" addr ", size_t " len ", unsigned int " flags );
-.BI "int munlock(const void *" addr ", size_t " len );
+.BI "int mlock(const void " addr [. len "], size_t " len );
+.BI "int mlock2(const void " addr [. len "], size_t " len ", \
+unsigned int " flags );
+.BI "int munlock(const void " addr [. len "], size_t " len );
 .PP
 .BI "int mlockall(int " flags );
 .B int munlockall(void);

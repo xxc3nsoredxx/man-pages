@@ -14,7 +14,8 @@ Standard C library
 .nf
 .B #include <sys/random.h>
 .PP
-.BI "ssize_t getrandom(void *"buf ", size_t " buflen ", unsigned int " flags );
+.BI "ssize_t getrandom(void " buf [. buflen "], size_t " buflen ", \
+unsigned int " flags );
 .fi
 .SH DESCRIPTION
 The

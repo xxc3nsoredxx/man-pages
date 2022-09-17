@@ -15,7 +15,7 @@ Standard C library
 .B #include <keyutils.h>
 .PP
 .BI "key_serial_t add_key(const char *" type ", const char *" description ,
-.BI "                     const void *" payload ", size_t " plen ,
+.BI "                     const void " payload [. plen "], size_t " plen ,
 .BI "                     key_serial_t " keyring ");"
 .fi
 .PP

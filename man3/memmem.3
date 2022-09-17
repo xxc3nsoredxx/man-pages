@@ -18,8 +18,8 @@ Standard C library
 .BR "#define _GNU_SOURCE" "         /* See feature_test_macros(7) */"
 .B #include <string.h>
 .PP
-.BI "void *memmem(const void *" haystack ", size_t " haystacklen ,
-.BI "             const void *" needle ", size_t " needlelen  );
+.BI "void *memmem(const void " haystack [. haystacklen "], size_t " haystacklen ,
+.BI "             const void " needle [. needlelen "], size_t " needlelen  );
 .fi
 .SH DESCRIPTION
 The

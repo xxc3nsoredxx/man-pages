@@ -35,10 +35,11 @@ Standard C library
 .nf
 .B #include <execinfo.h>
 .PP
-.BI "int backtrace(void **" buffer ", int " size );
+.BI "int backtrace(void *" buffer [. size "], int " size );
 .PP
-.BI "char **backtrace_symbols(void *const *" buffer ", int " size );
-.BI "void backtrace_symbols_fd(void *const *" buffer ", int " size ", int " fd );
+.BI "char **backtrace_symbols(void *const " buffer [. size "], int " size );
+.BI "void backtrace_symbols_fd(void *const " buffer [. size "], int " size ", \
+int " fd );
 .fi
 .SH DESCRIPTION
 .BR backtrace ()

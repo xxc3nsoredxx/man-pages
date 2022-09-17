@@ -19,8 +19,8 @@ Standard C library
 .BR "#define _XOPEN_SOURCE" "       /* See feature_test_macros(7) */"
 .B #include <unistd.h>
 .PP
-.BI "void swab(const void *restrict " from ", void *restrict " to \
-", ssize_t " n );
+.BI "void swab(const void " from "[restrict ." n "], void " to "[restrict ." n ],
+.BI "          ssize_t " n );
 .fi
 .SH DESCRIPTION
 The

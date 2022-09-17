@@ -27,10 +27,10 @@ Standard C library
 .nf
 .B #include <sys/msg.h>
 .PP
-.BI "int msgsnd(int " msqid ", const void *" msgp ", size_t " msgsz \
-", int " msgflg );
+.BI "int msgsnd(int " msqid ", const void " msgp [. msgsz "], size_t " msgsz ,
+.BI "               int " msgflg );
 .PP
-.BI "ssize_t msgrcv(int " msqid ", void *" msgp ", size_t " msgsz \
+.BI "ssize_t msgrcv(int " msqid ", void " msgp [. msgsz "], size_t " msgsz \
 ", long " msgtyp ,
 .BI "               int " msgflg );
 .fi

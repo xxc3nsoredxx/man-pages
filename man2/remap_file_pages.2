@@ -16,9 +16,9 @@ Standard C library
 .BR "#define _GNU_SOURCE" "         /* See feature_test_macros(7) */"
 .B #include <sys/mman.h>
 .PP
-.BI "[[deprecated]] int remap_file_pages(void *" addr ", size_t " size \
-", int " prot ,
-.BI "                                    size_t " pgoff ", int " flags );
+.BI "[[deprecated]] int remap_file_pages(void " addr [. size "], size_t " size ,
+.BI "                                    int " prot ", size_t " pgoff ", \
+int " flags );
 .fi
 .SH DESCRIPTION
 .BR Note :

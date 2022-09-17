@@ -25,10 +25,11 @@ Standard C library
 .nf
 .B #include <stdio.h>
 .PP
-.BI "size_t fread(void *restrict " ptr ", size_t " size ", size_t " nmemb ,
+.BI "size_t fread(void " ptr "[restrict ." size " * ." nmemb ],
+.BI "             size_t " size ", size_t " nmemb ,
 .BI "             FILE *restrict " stream );
-.BI "size_t fwrite(const void *restrict " ptr ", size_t " size \
-", size_t " nmemb ,
+.BI "size_t fwrite(const void " ptr "[restrict ." size " * ." nmemb ],
+.BI "             size_t " size ", size_t " nmemb ,
 .BI "             FILE *restrict " stream );
 .fi
 .SH DESCRIPTION

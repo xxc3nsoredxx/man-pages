@@ -19,7 +19,7 @@ Standard C library
 .BR "#define _GNU_SOURCE" "         /* See feature_test_macros(7) */"
 .B #include <sys/mman.h>
 .PP
-.BI "void *mremap(void *" old_address ", size_t " old_size ,
+.BI "void *mremap(void " old_address [. old_size "], size_t " old_size ,
 .BI "             size_t " new_size ", int " flags ", ... /* void *" new_address " */);"
 .fi
 .SH DESCRIPTION

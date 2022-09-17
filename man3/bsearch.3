@@ -18,9 +18,11 @@ Standard C library
 .nf
 .B #include <stdlib.h>
 .PP
-.BI "void *bsearch(const void *" key ", const void *" base ,
+.BI "void *bsearch(const void " key [. size "], \
+const void " base [. size " * ." nmemb ],
 .BI "              size_t " nmemb ", size_t " size ,
-.BI "              int (*" compar ")(const void *, const void *));"
+.BI "              int (*" compar ")(const void [." size "], \
+const void [." size ]));
 .fi
 .SH DESCRIPTION
 The

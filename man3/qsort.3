@@ -24,10 +24,14 @@ Standard C library
 .nf
 .B #include <stdlib.h>
 .PP
-.BI "void qsort(void *" base ", size_t " nmemb ", size_t " size ,
-.BI "           int (*" compar ")(const void *, const void *));"
-.BI "void qsort_r(void *" base ", size_t " nmemb ", size_t " size ,
-.BI "           int (*" compar ")(const void *, const void *, void *),"
+.BI "void qsort(void " base [. size " * ." nmemb "], size_t " nmemb ", \
+size_t " size ,
+.BI "           int (*" compar ")(const void [." size "], \
+const void [." size ]));
+.BI "void qsort_r(void " base [. size " * ." nmemb "], size_t " nmemb ", \
+size_t " size ,
+.BI "           int (*" compar ")(const void [." size "], \
+const void [." size "], void *),"
 .BI "           void *" arg ");"
 .fi
 .PP

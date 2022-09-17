@@ -14,11 +14,11 @@ Standard C library
 .B #include <sys/xattr.h>
 .PP
 .BI "ssize_t getxattr(const char *" path ", const char *" name ,
-.BI "                 void *" value ", size_t " size );
+.BI "                 void " value [. size "], size_t " size );
 .BI "ssize_t lgetxattr(const char *" path ", const char *" name ,
-.BI "                 void *" value ", size_t " size );
+.BI "                 void " value [. size "], size_t " size );
 .BI "ssize_t fgetxattr(int " fd ", const char *" name ,
-.BI "                 void *" value ", size_t " size );
+.BI "                 void " value [. size "], size_t " size );
 .fi
 .SH DESCRIPTION
 Extended attributes are

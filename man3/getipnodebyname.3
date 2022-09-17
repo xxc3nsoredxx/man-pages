@@ -18,7 +18,7 @@ Standard C library
 .PP
 .BI "[[deprecated]] struct hostent *getipnodebyname(const char *" name ", int " af ,
 .BI "                                            int " flags ", int *" error_num );
-.BI "[[deprecated]] struct hostent *getipnodebyaddr(const void *" addr ,
+.BI "[[deprecated]] struct hostent *getipnodebyaddr(const void " addr [. len ],
 .BI "                                            size_t " len ", int " af ,
 .BI "                                            int *" "error_num" );
 .BI "[[deprecated]] void freehostent(struct hostent *" "ip" );

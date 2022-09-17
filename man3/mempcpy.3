@@ -16,8 +16,8 @@ Standard C library
 .BR "#define _GNU_SOURCE" "         /* See feature_test_macros(7) */"
 .B #include <string.h>
 .PP
-.BI "void *mempcpy(void *restrict " dest ", const void *restrict " src \
-", size_t " n );
+.BI "void *mempcpy(void " dest "[restrict ." n "], const void " src "[restrict ." n ],
+.BI "              size_t " n );
 .PP
 .BR "#define _GNU_SOURCE" "         /* See feature_test_macros(7) */"
 .B #include <wchar.h>

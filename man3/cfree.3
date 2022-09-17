@@ -20,10 +20,12 @@ Standard C library
 .BI "void cfree(void *" ptr );
 .PP
 /* In SCO OpenServer */
-.BI "void cfree(char *" ptr ", unsigned int " num ", unsigned int " size );
+.BI "void cfree(char " ptr [. size " * ." num "], unsigned int " num ", \
+unsigned int " size );
 .PP
 /* In Solaris watchmalloc.so.1 */
-.BI "void cfree(void *" ptr ", size_t " nelem ", size_t " elsize );
+.BI "void cfree(void " ptr [. elsize " * ." nelem "], size_t " nelem ", \
+size_t " elsize );
 .fi
 .PP
 .RS -4

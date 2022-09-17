@@ -27,10 +27,10 @@ Standard C library
 .nf
 .B #include <sys/mman.h>
 .PP
-.BI "void *mmap(void *" addr ", size_t " length \
+.BI "void *mmap(void " addr [. length "], size_t " length \
 ", int " prot ", int " flags ,
 .BI "           int " fd ", off_t " offset );
-.BI "int munmap(void *" addr ", size_t " length );
+.BI "int munmap(void " addr [. length "], size_t " length );
 .fi
 .PP
 See NOTES for information on feature test macro requirements.
