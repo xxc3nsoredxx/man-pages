@@ -43,8 +43,9 @@ NUMA (Non-Uniform Memory Access) policy library
 .B "#include <numaif.h>"
 .PP
 .BI "long mbind(void *" addr ", unsigned long " len  ", int " mode ,
-.BI "           const unsigned long *" nodemask  ", unsigned long " maxnode ,
-.BI "           unsigned int " flags );
+.BI "           const unsigned long " nodemask [(. maxnode " + ULONG_WIDTH - 1)"
+.B "                                        / ULONG_WIDTH],"
+.BI "           unsigned long " maxnode ", unsigned int " flags );
 .fi
 .SH DESCRIPTION
 .BR mbind ()
