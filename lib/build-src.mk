@@ -17,12 +17,11 @@ include $(srcdir)/lib/src.mk
 PKG-CONFIG_LIBS := libbsd-overlay
 
 
-DEFAULT_CPPFLAGS := $(shell $(PKG-CONFIG) --cflags-only-I $(PKG-CONFIG_LIBS))
+DEFAULT_CPPFLAGS := $(shell $(PKG-CONFIG) --cflags $(PKG-CONFIG_LIBS))
 EXTRA_CPPFLAGS   :=
 CPPFLAGS         := $(DEFAULT_CPPFLAGS) $(EXTRA_CPPFLAGS)
 
-DEFAULT_CFLAGS := $(shell $(PKG-CONFIG) --cflags-only-other $(PKG-CONFIG_LIBS))
-DEFAULT_CFLAGS += -std=gnu17
+DEFAULT_CFLAGS := -std=gnu17
 DEFAULT_CFLAGS += -Wall
 DEFAULT_CFLAGS += -Wextra
 DEFAULT_CFLAGS += -Wstrict-prototypes
