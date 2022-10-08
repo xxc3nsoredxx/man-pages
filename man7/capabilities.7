@@ -1040,7 +1040,7 @@ Therefore, when assigning capabilities to a file
 if we specify the effective flag as being enabled for any capability,
 then the effective flag must also be specified as enabled
 for all other capabilities for which the corresponding permitted or
-inheritable flags is enabled.
+inheritable flag is enabled.
 .\"
 .SS File capability extended attribute versioning
 To allow extensibility,
@@ -1271,7 +1271,7 @@ file permitted capabilities, then
 fails with the error
 .BR EPERM .
 This prevents possible security risks that could arise when
-a capability-dumb application is executed with less privilege that it needs.
+a capability-dumb application is executed with less privilege than it needs.
 Note that, by definition,
 the application could not itself recognize this problem,
 since it does not employ the
