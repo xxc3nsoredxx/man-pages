@@ -1,17 +1,12 @@
 RELEASE
 The Linux man page maintainer proudly announces. . .
 
-    man-pages-5.14.tar.gz - man pages for Linux
+    man-pages-6.00.tar.gz - man pages for Linux
 
 Differences from the previous manual pages release are listed in
 the file "Changes".
 
 For further information, visit http://www.kernel.org/doc/man-pages/
-
-POSIX PAGES
-This package used to contains a copy of the POSIX 1003.1-2003
-man pages.  The POSIX pages are now distributed in the separate
-man-pages-posix package.
 
 THE PAGES
 These pages are most of the section 2, 3, 4, 5, 7 man pages
@@ -29,7 +24,11 @@ Here is a breakdown of what this distribution contains:
 
     Section 1 = user commands (intro, plus a few other pages)
     Section 2 = system calls
-    Section 3 = libc calls
+        Subsection 2type  = types provided by the kernel
+    Section 3 = library calls
+        Subsection 3const = library constants
+        Subsection 3head  = library header files
+        Subsection 3type  = library types
     Section 4 = devices (e.g., hd, sd)
     Section 5 = file formats and configuration files (e.g., wtmp, /etc/passwd)
     Section 6 = games (intro only)
