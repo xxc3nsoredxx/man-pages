@@ -3,7 +3,7 @@
 .\" SPDX-License-Identifier: Linux-man-pages-copyleft
 .\"
 .\"
-.TH IOVEC 3type 2022-09-09 "Linux man-pages (unreleased)"
+.TH IOVEC 3type (date) "Linux man-pages (unreleased)"
 .SH NAME
 iovec \- Vector I/O data structure
 .SH LIBRARY

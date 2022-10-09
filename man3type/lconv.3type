@@ -4,7 +4,7 @@
 .\" SPDX-License-Identifier: Linux-man-pages-copyleft
 .\"
 .\"
-.TH LCONV 3type 2022-09-09 "Linux man-pages (unreleased)"
+.TH LCONV 3type (date) "Linux man-pages (unreleased)"
 .SH NAME
 lconv \- numeric formatting information
 .SH LIBRARY

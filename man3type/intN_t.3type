@@ -4,7 +4,7 @@
 .\" SPDX-License-Identifier: Linux-man-pages-copyleft
 .\"
 .\"
-.TH INTN_T 3type 2022-09-09 "Linux man-pages (unreleased)"
+.TH INTN_T 3type (date) "Linux man-pages (unreleased)"
 .SH NAME
 intN_t, int8_t, int16_t, int32_t, int64_t,
 uintN_t, uint8_t, uint16_t, uint32_t, uint64_t
