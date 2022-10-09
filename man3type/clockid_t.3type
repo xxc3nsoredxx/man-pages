@@ -1,4 +1,4 @@
-.TH CLOCKID_T 3type 2021-11-02 "Linux man-pages (unreleased)"
+.TH CLOCKID_T 3type 2022-09-09 "Linux man-pages (unreleased)"
 .SH NAME
 clockid_t \- clock ID for the clock and timer functions
 .SH LIBRARY

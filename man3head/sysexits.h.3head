@@ -7,7 +7,7 @@
 .\"
 .\" Rewritten for the Linux man-pages by Alejandro Colomar
 .\"
-.TH sysexits.h 3head 2022-07-29 "Linux man-pages (unreleased)"
+.TH sysexits.h 3head 2022-09-09 "Linux man-pages (unreleased)"
 .SH NAME
 sysexits.h \- exit codes for programs
 .SH LIBRARY

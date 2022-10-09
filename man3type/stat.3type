@@ -4,7 +4,7 @@
 .\" SPDX-License-Identifier: Linux-man-pages-copyleft
 .\"
 .\"
-.TH stat 3type 2022-07-22 "Linux man-pages (unreleased)"
+.TH stat 3type 2022-09-09 "Linux man-pages (unreleased)"
 .SH NAME
 stat \- file status
 .SH LIBRARY
