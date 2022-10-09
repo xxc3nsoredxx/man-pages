@@ -10,6 +10,7 @@
 
 
 git diff --name-only $(git describe --abbrev=0)..HEAD \
+|xargs find 2>/dev/null \
 |while read f; do
 	date="$(git log --format=%ci -1 -- $f | cut -f1 -d' ')";
 
