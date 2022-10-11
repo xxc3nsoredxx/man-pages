@@ -54953,3 +54953,393 @@ vdso.7
         Update CLOCK_REALTIME_COARSE + CLOCK_MONOTONIC_COARSE info for powerpc
     Alejandro Colomar  [Christophe Leroy]
         Add y2038 compliant gettime for ppc/32
+
+
+==================== Changes in man-pages-6.00 ====================
+
+Released: 2022-10-09, València
+
+
+Contributors
+------------
+
+The following people contributed patches/fixes, reports, notes,
+ideas, and discussions that have been incorporated in changes in
+this release:
+
+
+"Darrick J. Wong" <darrick.wong@oracle.com>
+"Dr. Jürgen Sauermann" <mail@xn--jrgen-sauermann-zvb.de>
+"Dr. Wolfgang Armbruster" <dr.w.e.armbruster@gmail.com>
+"G. Branden Robinson" <g.branden.robinson@gmail.com>
+"M. Welinder" <mwelinder@gmail.com>
+"Theodore Ts'o" <tytso@mit.edu>
+"Todd C. Miller" <Todd.Miller@sudo.ws>
+"Valentin V. Bartenev" <vbart@nginx.com>
+<pellucida@tutanota.com>
+Adhemerval Zanella <adhemerval.zanella@linaro.org>
+Ahelenia Ziemiańska (наб) <nabijaczleweli@nabijaczleweli.xyz>
+Alejandro Colomar <alx@kernel.org>
+Aleksander Baranowski <alex@euro-linux.com>
+Alexander Viro <viro@zeniv.linux.org.uk>
+Alexei Starovoitov <ast@kernel.org>
+Amir Goldstein <amir73il@gmail.com>
+Andrea Cervesato <andrea.cervesato@suse.com>
+Andreas Dilger <adilger@dilger.ca>
+Andrew Morton <akpm@linux-foundation.org>
+Andrew Morton <akpm@osdl.org>
+Andrew Persons <andrewscottpersons@gmail.com>
+Andrew Wock <ajwock@gmail.com>
+Anna Schumaker <anna.schumaker@netapp.com>
+Arnd Bergmann <arnd@arndb.de>
+Avinash Sonawane <rootkea@gmail.com>
+Axel Rasmussen <axelrasmussen@google.com>
+Benjamin Peterson <benjamin@python.org>
+Benoit Lecocq <benoit@openbsd.org>
+Bjarni Ingi Gislason <bjarniig@vortex.is>
+Brett Holman <bholman.devel@gmail.com>
+CIFS <linux-cifs@vger.kernel.org>
+Carlos O'Donell <carlos@redhat.com>
+Charan Teja Reddy <quic_charante@quicinc.com>
+Christian Aistleitner <christian@quelltextlich.at>
+Christian Brauner <brauner@kernel.org>
+Christoph Hellwig <hch@infradead.org>
+Cyril Hrubis <chrubis@suse.cz>
+Daniel Borkmann <daniel@iogearbox.net>
+Dave Chinner <dchinner@redhat.com>
+Dave Kemper <saint.snit@gmail.com>
+David Hildenbrand <david@redhat.com>
+David Howells <dhowells@redhat.com>
+David Laight <David.Laight@ACULAB.COM>
+David Sletten <david.paul.sletten@gmail.com>
+David Ward <david.ward@gatech.edu>
+Davide Benini <davide.benini@gmail.com>
+Donald Buczek <buczek@molgen.mpg.de>
+Elliott Hughes <enh@google.com>
+Eric Biggers <ebiggers@kernel.org>
+Eric Dumazet <edumazet@google.com>
+Eugene Syromyatnikov <evgsyr@gmail.com>
+Fabian <fabian@ritter-vogt.de>
+Florian Weimer <fweimer@redhat.com>
+GUO Zihua <guozihua@huawei.com>
+Gabriel Krisman Bertazi <krisman@collabora.com>
+Greg Banks <gbanks@linkedin.com>
+Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Grzegorz Szpetkowski <gszpetkowski@gmail.com>
+Günther Noack <guenther@unix-ag.uni-kl.de>
+Heinrich Schuchardt <xypron.glpk@gmx.de>
+Huang Pei <huangpei@loongson.cn>
+Ian Abbott <abbotti@mev.co.uk>
+Ian Lance Taylor <iant@google.com>
+Ingo Schwarze <schwarze@openbsd.org>
+Jakub Sitnicki <jakub@cloudflare.com>
+Jakub Wilk <jwilk@jwilk.net>
+Jan Kara <jack@suse.cz>
+Jann Horn <jannh@google.com>
+Jayprakash Ray <r.jay3283@gmail.com>
+JeanHeyd Meneide <wg14@soasis.org>
+Jeff Layton <jlayton@kernel.org>
+Jens Gustedt <jens.gustedt@inria.fr>
+Jeremy Kerr <jk@codeconstruct.com.au>
+Jesse Rosenstock <jmr@google.com>
+Joseph Myers <joseph@codesourcery.com>
+Kir Kolyshkin <kolyshkin@gmail.com>
+Klemens Nanni <kn@openbsd.org>
+Kuniyuki Iwashima <kuniyu@amazon.co.jp>
+Linus Torvalds <torvalds@linuxfoundation.org>
+Lucien Gentis <lucien.gentis@waika9.com>
+Luis Henriques <lhenriques@suse.de>
+Luis Lozano <llozano@chromium.org>
+Marco Bonelli <marco@mebeim.net>
+Masatake YAMATO <yamato@redhat.com>
+Matheus Tavares <matheus.bernardino@usp.br>
+Mathnerd314 <mathnerd314.gph@gmail.com>
+Matthew Bobrowski <repnop@google.com>
+Matthew Wilcox <willy@infradead.org>
+Melker Narikka <meklu@meklu.org>
+Michael Kearney <mikekearney85@hotmail.com>
+Michael Kerrisk <mtk.manpages@gmail.com>
+Michal Hocko <mhocko@suse.com>
+Mickaël Salaün <mic@linux.microsoft.com>
+Mike Frysinger <vapier@gentoo.org>
+Mike Kravetz <mike.kravetz@oracle.com>
+Mike Rapoport <rppt@linux.ibm.com>
+Miklos Szeredi <miklos@szeredi.hu>
+Nadav Amit <nadav.amit@gmail.com>
+NeilBrown <neilb@suse.de>
+Nicolas Boichat <drinkcat@chromium.org>
+Nikola Forró <nforro@redhat.com>
+Olga Kornievskaia <aglo@umich.edu>
+Oscar Salvador <osalvador@suse.de>
+Pali Rohár <pali@kernel.org>
+Pankaj Gupta <pankaj.gupta@ionos.com>
+Patrick Reader <_@pxeger.com>
+Paul Eggert <eggert@cs.ucla.edu>
+Peter Xu <peterx@redhat.com>
+Petr Vorel <pvorel@suse.cz>
+Pádraig Brady <P@draigBrady.com>
+Quentin Monnet <quentin.monnet@netronome.com>
+Ralf Baechle <ralf@linux-mips.org>
+Ralph Corderoy <ralph@inputplus.co.uk>
+Randall <rsbecker@nexbridge.com>
+Rich Felker <dalias@libc.org>
+Robert Schneider <robert.schneider03@sap.com>
+Rumen Telbizov <rumen.telbizov@menlosecurity.com>
+Sam James <sam@gentoo.org>
+Samanta Navarro <ferivoz@riseup.net>
+Sean Young <sean@mess.org>
+Simon Branch <simonmbranch@gmail.com>
+Stefan Puiu <stefan.puiu@gmail.com>
+Stephen Kitt <steve@sk2.org>
+Steve French <sfrench@samba.org>
+Suren Baghdasaryan <surenb@google.com>
+Theo de Raadt <deraadt@openbsd.org>
+Theodore Dubois <tbodt@google.com>
+Tilman Schmidt <tilman@imap.cc>
+Tobias Stoeckmann <tobias@stoeckmann.org>
+Topi Miettinen <toiwoton@gmail.com>
+Trevor Woerner <twoerner@gmail.com>
+Trond Myklebust <trond.myklebust@hammerspace.com>
+Vincent Lefevre <vincent@vinc17.net>
+Vito Caputo <vcaputo@pengaru.com>
+Walter Harms <wharms@bfs.de>
+Wei Wang <weiwan@google.com>
+Yang Xu <xuyang2018.jy@fujitsu.com>
+Yuchung Cheng <ycheng@google.com>
+Zack Weinberg <zack@owlfolio.org>
+enh <enh@google.com>
+glibg10b <pugonfireyt@gmail.com>
+nick black <nickblack@linux.com>
+zhangkui <zhangkui@oppo.com>
+Ævar Arnfjörð Bjarmason <avarab@gmail.com>
+Štěpán Němec <stepnem@smrk.net>
+
+Apologies if I missed anyone!
+
+
+New and rewritten pages
+-----------------------
+
+man2/
+    landlock_add_rule.2
+    landlock_create_ruleset.2
+    landlock_restrict_self.2
+    memfd_secret.2
+
+man2type/
+    open_how.2type
+
+man3/
+    _Generic.3
+
+man3const/
+    NULL.3const
+
+man3head/
+    sysexits.h.3head
+
+man3type/
+    aiocb.3type
+    blkcnt_t.3type
+    blksize_t.3type
+    cc_t.3type
+    clock_t.3type
+    clockid_t.3type
+    dev_t.3type
+    div_t.3type
+    double_t.3type
+    epoll_event.3type
+    fenv_t.3type
+    id_t.3type
+    intN_t.3type
+    intmax_t.3type
+    intptr_t.3type
+    iovec.3type
+    itimerspec.3type
+    lconv.3type
+    mode_t.3type
+    off_t.3type
+    ptrdiff_t.3type
+    regex_t.3type
+    size_t.3type
+    sockaddr.3type
+    stat.3type
+    time_t.3type
+    timer_t.3type
+    timespec.3type
+    timeval.3type
+    tm.3type
+    va_list.3type
+    void.3type
+
+man7/
+    landlock.7
+
+
+Newly documented interfaces in existing pages
+---------------------------------------------
+
+epoll_wait.2
+    epoll_pwait2(2)
+
+fanotify_init.2
+    FAN_REPORT_PIDFD
+
+fanotify_mark.2
+    FAN_FS_ERROR
+    FAN_MARK_EVICTABLE
+    FAN_RENAME
+    FAN_REPORT_TARGET_FID
+
+madvise.2
+    MADV_POPULATE_READ
+    MADV_POPULATE_WRITE
+
+pipe.2
+    O_NOTIFICATION_PIPE
+
+process_madvise.2
+    MADV_WILLNEED
+
+send.2
+    MSG_FASTOPEN
+
+userfaultfd.2
+    UFFD_USER_MODE_ONLY
+
+proc.5
+    /proc/[pid]/pagemap    bit 57
+
+fanotify.7
+    /proc/sys/fs/fanotify/max_queued_events
+    /proc/sys/fs/fanotify/max_user_group
+    /proc/sys/fs/fanotify/max_user_marks
+
+tcp.7
+    TCP_FASTOPEN
+    TCP_FASTOPEN_CONNECT
+
+
+New and changed links
+---------------------
+
+man3/
+    strftime_l.3
+
+man3type/
+    epoll_data.3type
+    epoll_data_t.3type
+    fexcept_t.3type
+    float_t.3type
+    gid_t.3type
+    imaxdiv_t.3type
+    in6_addr.3type
+    in_addr.3type
+    in_addr_t.3type
+    in_port_t.3type
+    int16_t.3type
+    int32_t.3type
+    int64_t.3type
+    int8_t.3type
+    ldiv_t.3type
+    lldiv_t.3type
+    loff_t.3type
+    off64_t.3type
+    pid_t.3type
+    regmatch_t.3type
+    regoff_t.3type
+    sa_family_t.3type
+    sockaddr_in.3type
+    sockaddr_in6.3type
+    sockaddr_storage.3type
+    sockaddr_un.3type
+    socklen_t.3type
+    speed_t.3type
+    ssize_t.3type
+    suseconds_t.3type
+    tcflag_t.3type
+    uid_t.3type
+    uint16_t.3type
+    uint32_t.3type
+    uint64_t.3type
+    uint8_t.3type
+    uintN_t.3type
+    uintmax_t.3type
+    uintptr_t.3type
+    useconds_t.3type
+
+
+Global changes
+--------------
+
+- Man dirs:
+
+  - Move definitions of types to separate pages in man2type/ and
+    man3type/.  Previously, they were spreaded (and duplicated) in other
+    pages, or in system_data_types.7 (with links in man3/).
+
+  - Add man3head/ for pages that document header files.
+
+  - Add man3const/ for pages that document constants.
+
+- Licenses:
+
+  - Use SPDX-License-Indentiffier for licenses specified by SPDX
+    (including the newly-added Linux-man-pages-copyleft).  This reduces
+    the overhead text at the top of most manual page source files.
+    License texts have been moved to LICENSES/.
+
+- Build system:
+
+  - Add several make(1) targets to lint the manual pages, and also lint
+    and build the C programs contained in them.  Use of these targets
+    requires unreleased versions of software, such as groff-1.23.0, so
+    it's not yet intended to be used by the public.
+
+  - Add targets to build tarballs of the repository.
+
+- man(7) source:
+
+  - Improve consistency of man(7) source.  Also, reduce the number of
+    warnings that groff(1) and mandoc(7) emit when parsing the pages
+    with the highest warning level.  Most of these fixes were found
+    thanks to the new `make lint-man` target.
+
+- Manual pages sections:
+
+  - Title (.TH):
+
+    - Remove 5th argument to TH (middle-header).
+
+    - Specify "Linux man-pages" and the version in the 4th argument
+      (left-footer).
+
+  - Add the LIBRARY section.  This section standardizes a way to
+    document the library that provides a given interface.
+
+  - Add the CAVEATS section.  BUGS and NOTES were serving that purpose
+    before, but CAVEATS is more appropriate.
+
+  - Rename the CONFORMING TO section to STANDARDS for consistency with
+    other projects, such as the BSDs.
+
+  - SYNOPSIS:  Add the ISO C2X [[deprecated]] attribute for functions
+    that have been deprecated or removed.
+
+  - EXAMPLES:  Improve consistency of C source code.  Also, reduce the
+    number of warnings that several linting tools emit.
+
+  - COLOPHON:  Remove section (its purpose is now served by the title).
+
+- Repository:
+
+  - CONTRIBUTING, README, INSTALL:  Document important changes in the
+    project organization.
+
+
+Changes to individual pages
+---------------------------
+
+The manual pages (and other files in the repository) have been improved
+beyond what this changelog covers.  To learn more about changes applied
+to individual pages, use git(1).
