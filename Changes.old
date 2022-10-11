@@ -55275,7 +55275,7 @@ Global changes
 - Man dirs:
 
   - Move definitions of types to separate pages in man2type/ and
-    man3type/.  Previously, they were spreaded (and duplicated) in other
+    man3type/.  Previously, they were spread (and duplicated) in other
     pages, or in system_data_types.7 (with links in man3/).
 
   - Add man3head/ for pages that document header files.
