@@ -634,9 +634,25 @@ and result in compiler warnings;
 other checks take place at run time,
 and result in a run-time error if the check fails.
 .IP
+With
+.B _FORTIFY_SOURCE
+set to 3, additional checking is added to intercept
+some function calls used with an argument of variable size
+where the compiler can deduce an upper bound for its value.
+For example, a program where
+.BR malloc (3)'s
+size argument is variable
+can now be fortified.
+.IP
 Use of this macro requires compiler support, available with
 .BR gcc (1)
 since version 4.0.
+.IP
+Use of
+.B _FORTIFY_SOURCE
+set to 3 requires
+.BR gcc (1)
+version 12.0 or later.
 .SS Default definitions, implicit definitions, and combining definitions
 If no feature test macros are explicitly defined,
 then the following feature test macros are defined by default:
