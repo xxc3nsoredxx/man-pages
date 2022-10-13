@@ -412,6 +412,17 @@ large files with only a recompilation being required.)
 64-bit systems naturally permit file sizes greater than 2 Gigabytes,
 and on those systems this macro has no effect.
 .TP
+.B _TIME_BITS
+Defining this macro with the value 64
+changes the width of
+.BR time_t (3type)
+to 64-bit which allows handling of timestamps beyond
+2038.
+It is closely related to
+.B _FILE_OFFSET_BITS
+and depending on implementation, may require it set.
+This macro is available as of glibc 2.34.
+.TP
 .BR _BSD_SOURCE " (deprecated since glibc 2.20)"
 Defining this macro with any value causes header files to expose
 BSD-derived definitions.
@@ -868,6 +879,10 @@ main(int argc, char *argv[])
 
 #ifdef _FILE_OFFSET_BITS
     printf("_FILE_OFFSET_BITS defined: %d\en", _FILE_OFFSET_BITS);
+#endif
+
+#ifdef _TIME_BITS
+    printf("_TIME_BITS defined: %d\en", _TIME_BITS);
 #endif
 
 #ifdef _BSD_SOURCE
