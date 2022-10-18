@@ -20,7 +20,7 @@ docdir      := $(datarootdir)/doc
 
 %/.:
 	$(info INSTALL	$(@D)/)
-	$(INSTALL_DIR) $(@D)
+	$(TEST) -d $(@D) || $(INSTALL_DIR) $(@D)
 
 %-rm:
 	$(info RM	$*)

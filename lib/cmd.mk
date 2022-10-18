@@ -21,6 +21,7 @@ SED        := sed
 SORT       := sort
 TAC        := tac
 TAR        := tar
+TEST       := test
 XARGS      := xargs
 XZ         := xz
 
