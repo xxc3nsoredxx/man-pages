@@ -49,6 +49,8 @@ all: build
 
 .PHONY: help
 help:
+	$(info	Targets:)
+	$(info	)
 	$(info	all			Alias for "build")
 	$(info	)
 	$(info	clean			Remove $$(builddir))
@@ -116,6 +118,11 @@ help:
 	$(info	installdirs-man8	Create directories needed by "install-man8")
 	$(info	)
 	$(info	help			Print this help)
+	$(info	)
+	$(info	Variables:)
+	$(info	)
+	$(info	V			Define to non-empty string for verbose output)
+
 
 .SECONDEXPANSION:
 
