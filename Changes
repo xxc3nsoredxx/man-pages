@@ -1,6 +1,6 @@
-==================== Changes in man-pages-6.01 ====================
+==================== Changes in man-pages-?.?? ====================
 
-Released: 2022-10-18, Aldaya
+Released: ????-??-??, Aldaya
 
 
 Contributors
@@ -10,22 +10,6 @@ The following people contributed patches/fixes, reports, notes,
 ideas, and discussions that have been incorporated in changes in
 this release:
 
-"G. Branden Robinson" <g.branden.robinson@gmail.com>
-Agostino Sarubbo <ago@gentoo.org>
-Alejandro Colomar <alx@kernel.org>
-Amir Goldstein <amir73il@gmail.com>
-Darrick J. Wong <djwong@kernel.org>
-Eric Biggers <ebiggers@google.com>
-Grigoriy <grigoriyremvar@protonmail.com>
-Jakub Wilk <jwilk@jwilk.net>
-Jan Kara <jack@suse.cz>
-Matthew Bobrowski <repnop@google.com>
-Michael Tokarev <mjt@tls.msk.ru>
-Mike Gilbert <floppym@gentoo.org>
-Nicolás A. Ortega Froysa <nicolas@ortegas.org>
-Pierre Labastie <pierre.labastie@neuf.fr>
-Sam James <sam@gentoo.org>
-Steve Izma <sizma@golden.net>
 
 Apologies if I missed anyone!
 
@@ -33,41 +17,17 @@ Apologies if I missed anyone!
 New and rewritten pages
 -----------------------
 
-EOF.3const
-
 
 Newly documented interfaces in existing pages
 ---------------------------------------------
 
-fanotify_mark.2
-	FAN_MARK_IGNORE
 
-open.2, statx.2
-	STATX_DIOALIGN
-
-feature_test_macros.7
-	_FORTIFY_SOURCE=3
-	_TIME_BITS
+New and changed links
+---------------------
 
 
 Global changes
 --------------
-
-- Build system:
-
-  - Update manual page dates (TH 3rd argument) when creating the tarball
-    with 'make dist'.  this removes the need for a tstamp commit before
-    each release.
-
-  - Don't print spurious errors from the Makefile that are not relevant.
-
-- Manual pages' sections:
-
-  - Title (.TH):
-
-    - Remove the hardcoded date (TH 3rd argument), and replace it by a
-      placeholder that should be changed when creating the tarball.
-      This removes the need for a tstamp commit before each release.
 
 
 Changes to individual pages
