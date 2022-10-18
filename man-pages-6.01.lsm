@@ -1,14 +1,14 @@
 Begin4
 Title:          Section 2, 3, 4, 5 and 7 man pages for Linux
-Version:        6.00
-Entered-date:   2022-10-09
+Version:        6.01
+Entered-date:   2022-10-18
 Description:    Linux manual pages
 Keywords:       man pages
 Author:         several
 Maintained-by:  Alejandro Colomar <alx.manpages@gmail.com>,
                 Michael Kerrisk <mtk.manpages@gmail.com>
 Primary-site:   http://www.kernel.org/pub/linux/docs/man-pages
-                2.6M  man-pages-6.00.tar.gz
+                2.6M  man-pages-6.01.tar.gz
 Copying-policy: several; the pages are all freely distributable as long as
 		nroff source is provided
 End
