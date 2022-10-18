@@ -8,17 +8,14 @@ ifndef MAKEFILE_INSTALL_INCLUDED
 MAKEFILE_INSTALL_INCLUDED := 1
 
 
+include $(srcdir)/lib/cmd.mk
+
+
 DESTDIR :=
 prefix  := /usr/local
 
 datarootdir := $(prefix)/share
 docdir      := $(datarootdir)/doc
-
-
-INSTALL      := install
-INSTALL_DATA := $(INSTALL) -m 644
-INSTALL_DIR  := $(INSTALL) -m 755 -d
-RMDIR        := rmdir --ignore-fail-on-non-empty
 
 
 %/.:

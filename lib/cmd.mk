@@ -14,6 +14,7 @@ FIND       := find
 GIT        := git
 GREP       := grep
 GZIP       := gzip
+INSTALL    := install
 LOCALE     := locale
 PKG-CONFIG := pkg-config
 SED        := sed
@@ -22,6 +23,10 @@ TAC        := tac
 TAR        := tar
 XARGS      := xargs
 XZ         := xz
+
+INSTALL_DATA := $(INSTALL) -m 644
+INSTALL_DIR  := $(INSTALL) -m 755 -d
+RMDIR        := rmdir --ignore-fail-on-non-empty
 
 
 endif  # MAKEFILE_CMD_INCLUDED
