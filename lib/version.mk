@@ -9,9 +9,10 @@ MAKEFILE_VERSION_INCLUDED := 1
 
 
 include $(srcdir)/lib/cmd.mk
+include $(srcdir)/lib/verbose.mk
 
 
-DISTNAME    := $(shell $(GIT) describe 2>/dev/null)
+DISTNAME    := $(shell $(GIT) describe $(HIDE_ERR))
 DISTVERSION := $(patsubst man-pages-%,%,$(DISTNAME))
 
 

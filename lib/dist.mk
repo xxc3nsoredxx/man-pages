@@ -12,12 +12,13 @@ include $(srcdir)/lib/build.mk
 include $(srcdir)/lib/cmd.mk
 include $(srcdir)/lib/install.mk
 include $(srcdir)/lib/version.mk
+include $(srcdir)/lib/verbose.mk
 
 
 
 _DISTDIR := $(builddir)/dist
 
-DISTFILES   := $(shell $(GIT) ls-files 2>/dev/null | $(SED) 's,^,$(srcdir)/,')
+DISTFILES   := $(shell $(GIT) ls-files $(HIDE_ERR) | $(SED) 's,^,$(srcdir)/,')
 _DISTFILES  := $(patsubst $(srcdir)/%,$(_DISTDIR)/%,$(DISTFILES))
 _DISTPAGES  := $(filter     $(_DISTDIR)/man%,$(_DISTFILES))
 _DISTOTHERS := $(filter-out $(_DISTDIR)/man%,$(_DISTFILES))

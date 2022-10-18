@@ -130,7 +130,7 @@ include $(srcdir)/lib/install-man.mk
 include $(srcdir)/lib/lint.mk
 include $(srcdir)/lib/lint-c.mk
 include $(srcdir)/lib/lint-man.mk
+include $(srcdir)/lib/verbose.mk
 
 
-$(V).SILENT:
 FORCE:

@@ -12,12 +12,13 @@ include $(srcdir)/lib/build.mk
 include $(srcdir)/lib/cmd.mk
 include $(srcdir)/lib/lint.mk
 include $(srcdir)/lib/src.mk
+include $(srcdir)/lib/verbose.mk
 
 
 PKG-CONFIG_LIBS := libbsd-overlay
 
 
-DEFAULT_CPPFLAGS := $(shell $(PKG-CONFIG) --cflags $(PKG-CONFIG_LIBS))
+DEFAULT_CPPFLAGS := $(shell $(PKG-CONFIG) --cflags $(PKG-CONFIG_LIBS) $(HIDE_ERR))
 EXTRA_CPPFLAGS   :=
 CPPFLAGS         := $(DEFAULT_CPPFLAGS) $(EXTRA_CPPFLAGS)
 
@@ -37,13 +38,13 @@ DEFAULT_LDFLAGS := -Wl,--as-needed
 DEFAULT_LDFLAGS += -Wl,--no-allow-shlib-undefined
 DEFAULT_LDFLAGS += -Wl,--no-copy-dt-needed-entries
 DEFAULT_LDFLAGS += -Wl,--no-undefined
-DEFAULT_LDFLAGS += $(shell $(PKG-CONFIG) --libs-only-L $(PKG-CONFIG_LIBS))
-DEFAULT_LDFLAGS += $(shell $(PKG-CONFIG) --libs-only-other $(PKG-CONFIG_LIBS))
+DEFAULT_LDFLAGS += $(shell $(PKG-CONFIG) --libs-only-L $(PKG-CONFIG_LIBS) $(HIDE_ERR))
+DEFAULT_LDFLAGS += $(shell $(PKG-CONFIG) --libs-only-other $(PKG-CONFIG_LIBS) $(HIDE_ERR))
 EXTRA_LDFLAGS   :=
 LDFLAGS         := $(DEFAULT_LDFLAGS) $(EXTRA_LDFLAGS)
 
 DEFAULT_LDLIBS := -lc
-DEFAULT_LDLIBS += $(shell $(PKG-CONFIG) --libs-only-l $(PKG-CONFIG_LIBS))
+DEFAULT_LDLIBS += $(shell $(PKG-CONFIG) --libs-only-l $(PKG-CONFIG_LIBS) $(HIDE_ERR))
 EXTRA_LDLIBS   :=
 LDLIBS         := $(DEFAULT_LDLIBS) $(EXTRA_LDLIBS)
 
