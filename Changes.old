@@ -55403,7 +55403,7 @@ Global changes
 - Build system:
 
   - Update manual page dates (TH 3rd argument) when creating the tarball
-    with 'make dist'.  this removes the need for a tstamp commit before
+    with 'make dist'.  This removes the need for a tstamp commit before
     each release.
 
   - Don't print spurious errors from the Makefile that are not relevant.
