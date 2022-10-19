@@ -1,0 +1,162 @@
+Instructions for releasing a new version.
+=========================================
+
+This are the instructions to release a new official version of the
+project.  However, these should also be useful for those who simply want
+to package a random commit (this is done for example by Gentoo).  For
+packaging a random commit without an official release, you only need
+step 5 "Tarball".
+
+
+1) Version
+----------
+
+Decide the version number:
+
+    $ old=6.01
+    $ new=6.02
+
+
+2) Changes
+----------
+
+Fill the Changes file.  For that you can check older commits, like
+d4e80a7748 "Changes: Ready for 6.01".  It needs manual intervention,
+but in that commit log you can check a few commands that will help.
+
+- Remember to change the version number, the date, and the location.
+
+- Remove any headers not used for a specific release (usually happens
+  with "New and changed links").
+
+- The structure is a bit freestyle, but keep it organized.
+  man-pages-6.00 was a huge release, so it might help to check it:
+  51228378bec7 "Changes: Ready for 6.00".
+
+- Commit:
+
+    $ git add Changes
+    $ git commit -sm "Changes: Ready for ${new}"
+
+
+3) Announce
+-----------
+
+Rename the file with the version that will be released, and update the
+contents.  Check old commits, like c11cb1ca844d "Ready for 6.01".
+
+- Update the version number in the tarball name.
+
+- Rename the file:
+
+    $ mv man-pages-${old}.Announce man-pages-${new}.Announce
+
+- Commit:
+
+    $ git add man-pages-${old}.Announce
+    $ git add man-pages-${new}.Announce
+    $ git commit -sm "Announce: Ready for ${new}"
+
+
+4) Tag
+------
+
+Create a signed tag.  The tag message should note the most important
+changes in the version being released, since it will be read by users
+and packagers.  It should include any information that is especially
+relevant for them.  Check old tags such as 'man-pages-6.00' or
+'man-pages-6.01'.
+
+- Tag:
+
+    $ git tag -s man-pages-${new}
+
+
+5) Tarball
+----------
+
+Creating the tarball will embed in the manual pages both the version
+number, and the date of last modification (in the git repository, the
+pages have placeholders for the date and the version).
+
+You need to create a set of tarballs, sign the .tar archive, and upload
+the compressed tarballs to <kernel.org>.
+
+In case you're creating a tarball for distributing a random commit, it
+might be interesting to tweak a few parameters; check the variables
+available at <lib/dist.mk>, and any makefiles included by that one.
+
+- Create the tarball:
+
+    $ make dist
+
+- Sign the tarball:
+
+    $ cd tmp/
+    $ gpg --detach-sign --armor man-pages-${new}.tar
+
+- Upload the tarball:
+
+    $ kup put man-pages-${new}.tar.xz man-pages-${new}.tar.asc \
+              /pub/linux/docs/man-pages/
+
+
+6) lsm
+------
+
+Rename the file with the version that has been released, and update the
+contents.  Check old commits, like c11cb1ca844d "Ready for 6.01".
+
+- Update the version number (and also in the tarball name).
+
+- Update the release date.
+
+- Update the tarball size.
+
+- Rename the file:
+
+    $ mv man-pages-${old}.lsm man-pages-${new}.lsm
+
+- Commit:
+
+    $ git add man-pages-${old}.lsm
+    $ git add man-pages-${new}.lsm
+    $ git commit -sm "lsm: Released ${new}"
+
+- Send (email) the .lsm file to <lsm@qqx.org> with the subject "add".
+
+
+7) Email
+--------
+
+Send an announce email to linux-man, LKML, libc-alpha, and possibly
+others that might be interested in the release, such as distribution
+maintainers, or those who have contributed to the release.
+
+The email should contain a mix of the git tag message, the contents of
+Changes, and anything else that might be relevant.  Check old emails
+such as
+<https://lore.kernel.org/linux-man/4ba6c215-6d28-1769-52d3-04941b962ff3@kernel.org/T/#u>.
+
+The subject of the email should be "man-pages-${new} released".
+
+
+8) Changes.old
+--------------
+
+Move the contents of Changes to Changes.old, and prepare for the next
+release.
+
+- Copy contents of Changes to Changes.old:
+
+    $ (echo; echo) >> Changes.old
+    $ cat Changes >> Changes.old
+
+- Empty Changes:
+
+    $ git checkout man-pages-${new}^^ -- Changes
+
+- Commit:
+
+    $ git add Changes Changes.old
+    $ git commit -sm "Start of man-pages-NEXT: Move Changes to Changes.old"

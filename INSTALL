@@ -1,3 +1,9 @@
+If you're an end user or a distributor, make sure you do this from a
+tarball, and not from the git repository.  The manual pages in the
+repository have placeholders for the version and last modified date,
+which are filled when creating the tarball.  You can create your own
+tarball, for which you need to read the RELEASE file.
+
 Run `make help` to see a list of targets and a brief description.
 
 Normally, you'll want to run `make install`, which will copy these manual
