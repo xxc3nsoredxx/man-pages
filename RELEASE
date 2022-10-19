@@ -161,3 +161,14 @@ release.
 
     $ git add Changes Changes.old
     $ git commit -sm "Start of man-pages-NEXT: Move Changes to Changes.old"
+
+
+9) Push
+-------
+
+You've finished.  When you confirm it's good, push to the git repository.
+
+- Push:
+
+    $ git push
+    $ git push man-pages-${new}
