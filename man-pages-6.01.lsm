@@ -1,8 +1,11 @@
 Begin4
-Title:          Section 2, 3, 4, 5 and 7 man pages for Linux
+Title:          Linux man-pages
 Version:        6.01
 Entered-date:   2022-10-18
-Description:    Linux manual pages
+Description:    Manual pages for GNU/Linux.  This package contains
+                manual pages for sections 2, 3, 4, 5, and 7, and
+                subsections of those.  Only a few pages are provided in
+                sections 1, 6, and 8, and none in 9.
 Keywords:       man pages
 Maintained-by:  Alejandro Colomar <alx.manpages@gmail.com>,
                 Michael Kerrisk <mtk.manpages@gmail.com>
