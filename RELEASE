@@ -99,6 +99,7 @@ available at <lib/dist.mk>, and any makefiles included by that one.
 
     $ kup put man-pages-${new}.tar.xz man-pages-${new}.tar.asc \
               /pub/linux/docs/man-pages/
+    $ cd ..
 
 
 6) lsm
