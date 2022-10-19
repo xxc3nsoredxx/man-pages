@@ -4,7 +4,6 @@ Version:        6.01
 Entered-date:   2022-10-18
 Description:    Linux manual pages
 Keywords:       man pages
-Author:         several
 Maintained-by:  Alejandro Colomar <alx.manpages@gmail.com>,
                 Michael Kerrisk <mtk.manpages@gmail.com>
 Primary-site:   http://www.kernel.org/pub/linux/docs/man-pages
