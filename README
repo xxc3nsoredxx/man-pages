@@ -37,7 +37,7 @@ Files
    Makefile, lib/*.mk
        Build system.  For help, consult the <INSTALL> file, and run 'make help'.
 
-   man-pages-<version>.lsm
+   man-pages.lsm
        Linux software map.  See also <https://lsm.qqx.org/>.
 
    LICENSES/*.txt
