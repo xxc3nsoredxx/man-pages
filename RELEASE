@@ -83,27 +83,22 @@ available at <lib/dist.mk>, and any makefiles included by that one.
     $ cd ..
 
 
-5) lsm
+5) LSM
 ------
 
 Rename the file with the version that has been released, and update the
 contents.  Check old commits, like c11cb1ca844d "Ready for 6.01".
 
-- Update the version number (and also in the tarball name).
+- Update the project version number.
 
 - Update the release date.
 
-- Update the tarball size.
-
-- Rename the file:
-
-    $ mv man-pages-${old}.lsm man-pages-${new}.lsm
+- Update the tarball name and size.
 
 - Commit:
 
-    $ git add man-pages-${old}.lsm
-    $ git add man-pages-${new}.lsm
-    $ git commit -sm "lsm: Released ${new}"
+    $ git add man-pages.lsm
+    $ git commit -sm "man-pages.lsm: Released ${new}"
 
 - Send (email) the .lsm file to <lsm@qqx.org> with the subject "add".
 
