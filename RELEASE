@@ -86,8 +86,8 @@ available at <lib/dist.mk>, and any makefiles included by that one.
 5) LSM
 ------
 
-Rename the file with the version that has been released, and update the
-contents.  Check old commits, like c11cb1ca844d "Ready for 6.01".
+Update the <lsm> file.  Check old commits, like
+c11cb1ca844d "Ready for 6.01".
 
 - Update the project version number.
 
@@ -97,10 +97,10 @@ contents.  Check old commits, like c11cb1ca844d "Ready for 6.01".
 
 - Commit:
 
-    $ git add man-pages.lsm
-    $ git commit -sm "man-pages.lsm: Released ${new}"
+    $ git add lsm
+    $ git commit -sm "lsm: Released ${new}"
 
-- Send (email) the .lsm file to <lsm@qqx.org> with the subject "add".
+- Send (email) the lsm file to <lsm@qqx.org> with the subject "add".
 
 
 6) Email
