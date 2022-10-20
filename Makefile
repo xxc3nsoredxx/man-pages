@@ -40,9 +40,6 @@ MAKEFLAGS += --warn-undefined-variables
 srcdir := .
 
 
-include $(srcdir)/lib/cmd.mk
-
-
 .PHONY: all
 all: build
 	@:
