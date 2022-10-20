@@ -39,26 +39,7 @@ but in that commit log you can check a few commands that will help.
     $ git commit -sm "Changes: Ready for ${new}"
 
 
-3) Announce
------------
-
-Rename the file with the version that will be released, and update the
-contents.  Check old commits, like c11cb1ca844d "Ready for 6.01".
-
-- Update the version number in the tarball name.
-
-- Rename the file:
-
-    $ mv man-pages-${old}.Announce man-pages-${new}.Announce
-
-- Commit:
-
-    $ git add man-pages-${old}.Announce
-    $ git add man-pages-${new}.Announce
-    $ git commit -sm "Announce: Ready for ${new}"
-
-
-4) Tag
+3) Tag
 ------
 
 Create a signed tag.  The tag message should note the most important
@@ -72,7 +53,7 @@ relevant for them.  Check old tags such as 'man-pages-6.00' or
     $ git tag -s man-pages-${new}
 
 
-5) Tarball
+4) Tarball
 ----------
 
 Creating the tarball will embed in the manual pages both the version
@@ -102,7 +83,7 @@ available at <lib/dist.mk>, and any makefiles included by that one.
     $ cd ..
 
 
-6) lsm
+5) lsm
 ------
 
 Rename the file with the version that has been released, and update the
@@ -127,7 +108,7 @@ contents.  Check old commits, like c11cb1ca844d "Ready for 6.01".
 - Send (email) the .lsm file to <lsm@qqx.org> with the subject "add".
 
 
-7) Email
+6) Email
 --------
 
 Send an announce email to linux-man, LKML, libc-alpha, and possibly
@@ -142,7 +123,7 @@ such as
 The subject of the email should be "man-pages-${new} released".
 
 
-8) Changes.old
+7) Changes.old
 --------------
 
 Move the contents of Changes to Changes.old, and prepare for the next
@@ -163,7 +144,7 @@ release.
     $ git commit -sm "Start of man-pages-NEXT: Move Changes to Changes.old"
 
 
-9) Push
+8) Push
 -------
 
 You've finished.  When you confirm it's good, push to the git repository.
