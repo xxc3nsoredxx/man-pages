@@ -5,7 +5,7 @@ This are the instructions to release a new official version of the
 project.  However, these should also be useful for those who simply want
 to package a random commit (this is done for example by Gentoo).  For
 packaging a random commit without an official release, you only need
-step 5 "Tarball".
+step 4 "Tarball".
 
 
 1) Version
