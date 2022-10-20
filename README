@@ -1,19 +1,93 @@
-This package contains Linux man pages for sections 1 through 8.
-Some more information is given in the <man-pages-x.y.Announce> file.
+Name
+       Linux man-pages - manual pages for GNU/Linux
 
-Homepage
-========
-For information about the Linux man-pages project, see
-<http://www.kernel.org/doc/man-pages/index.html>.
+Synopsis
+       This package contains GNU/Linux manual pages for sections 1 through 8.
 
-Bug reports and contributing
-============================
-See the <CONTRIBUTING> file.
+Description
+       The manual pages in this project document primarily the Linux kernel
+       and the GNU C library, but also consider relevant differences in other
+       kernels or C libraries.
 
-Installing and uninstalling
-===========================
-See the <INSTALL> file.
+       These pages are most of the section 2, 3, 4, 5, 7 man pages for
+       GNU/Linux.  A few pages are provided in sections 1 and 8 for commands
+       that are not documented in other packages, and there are a few pages in
+       sections 5 and 8 for the timezone utilities.
 
-Copyrights
-==========
-See the <man-pages-x.y.Announce> file.
+Files
+   CONTRIBUTING
+       Instructions for reporting bugs and contributing.
+
+   INSTALL
+       Instructions for installing and uninstalling.
+
+   MAINTAINER_NOTES
+       Notes for maintainers.
+
+   README
+       Main information about the project and the repository.
+
+   RELEASE
+       Instructions for releasing and distributing new versions.
+
+   Changes, Changes.old
+       Change log.  Includes most relevant changes.  However, it's not as
+       complete as the git(1) log.
+
+   Makefile, lib/*.mk
+       Build system.  For help, consult the <INSTALL> file, and run 'make help'.
+
+   man-pages-<version>.lsm
+       Linux software map.  See also <https://lsm.qqx.org/>.
+
+   LICENSES/*.txt
+       Licenses in use by the project.
+
+   etc/*
+       Configuration files for (linter) programs called by the build system.
+
+   man*/*
+       Manual pages.
+
+   scripts/*
+       Useful scripts for maintainers.
+
+   tmp/
+       Default directory for files created by the build system.
+
+Versions
+       Tarballs of releases starting from 2.00 are available at
+       <https://mirrors.edge.kernel.org/pub/linux/docs/man-pages/>.
+
+       The git(1) repository covers the development since 1.70:
+       <git://git.kernel.org/pub/scm/docs/man-pages/man-pages.git>
+
+       A secondary git(1) repository can be found at:
+       <git://www.alejandro-colomar.es/src/alx/linux/man-pages/man-pages.git>
+
+Caveats
+       Some projects provide their own manual pages, not related to the Linux
+       man-pages project.
+
+Bugs
+       See the <CONTRIBUTING> file.
+
+Maintainers
+       Alejandro Colomar <alx@kernel.org> <http://www.alejandro-colomar.es/>
+             2020 - present (5.10 - HEAD)
+       Michael Kerrisk <mtk.manpages@gmail.com> <https://man7.org/>
+             2004 - present (2.00 - 5.13)
+       Andries Brower <aeb@cwi.nl> <https://www.win.tue.nl/~aeb>
+             1995 - 2004    (1.6  - 1.70)
+       Rik Faith <https://www.cs.unc.edu/~faith/>
+             1993 - 1995    (1.0  - 1.5)
+
+Copyright
+       Several free/open source licenses.  See the <LICENSES/> directory, and
+       the comment at the top of each source file.
+
+See also
+       man-pages(7)
+
+   Website
+       <http://www.kernel.org/doc/man-pages/index.html>.
