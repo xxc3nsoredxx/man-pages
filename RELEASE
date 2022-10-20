@@ -20,7 +20,7 @@ Decide the version number:
 2) Changes
 ----------
 
-Fill the Changes file.  For that you can check older commits, like
+Fill the <Changes> file.  For that you can check older commits, like
 d4e80a7748 "Changes: Ready for 6.01".  It needs manual intervention,
 but in that commit log you can check a few commands that will help.
 
@@ -121,15 +121,15 @@ The subject of the email should be "man-pages-${new} released".
 7) Changes.old
 --------------
 
-Move the contents of Changes to Changes.old, and prepare for the next
-release.
+Move the contents of <Changes> to <Changes.old>, and prepare for the
+next release.
 
-- Copy contents of Changes to Changes.old:
+- Copy contents of <Changes> to <Changes.old>:
 
     $ (echo; echo) >> Changes.old
     $ cat Changes >> Changes.old
 
-- Empty Changes:
+- Empty <Changes>:
 
     $ git checkout man-pages-${new}^^ -- Changes
 
