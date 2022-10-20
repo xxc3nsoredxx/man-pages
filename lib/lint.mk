@@ -31,10 +31,6 @@ lint := lint-c lint-man
 $(_LINTDIRS): %/.: | $$(dir %). $(_LINTDIR)/.
 
 
-.PHONY: lintdirs
-lintdirs: $(_LINTDIRS) $(_SRCDIRS)
-	@:
-
 .PHONY: lint
 lint: $(lint)
 	@:

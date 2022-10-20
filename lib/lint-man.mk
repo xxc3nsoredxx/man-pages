@@ -89,7 +89,7 @@ $(_LINT_man_mandoc): $(_LINTDIR)/%.lint-man.mandoc.touch: $(MANDIR)/% | $$(@D)/.
 
 
 .PHONY: $(lint_man)
-$(lint_man): lint-man-%: $$(_LINT_man_%) | lintdirs
+$(lint_man): lint-man-%: $$(_LINT_man_%)
 	@:
 
 .PHONY: lint-man

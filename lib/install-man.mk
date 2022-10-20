@@ -112,19 +112,11 @@ $(_mandir_rmdir): $(uninstall_manX) FORCE
 
 
 .PHONY: $(install_manX)
-$(install_manX): install-man%: $$(_man%pages) | installdirs-man%
+$(install_manX): install-man%: $$(_man%pages)
 	@:
 
 .PHONY: install-man
 install-man: $(install_manX)
-	@:
-
-.PHONY: $(installdirs_manX)
-$(installdirs_manX): installdirs-man%: $$(_man%dir)
-	@:
-
-.PHONY: installdirs-man
-installdirs-man: $(installdirs_manX)
 	@:
 
 .PHONY: $(uninstall_manX)

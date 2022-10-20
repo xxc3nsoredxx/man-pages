@@ -32,11 +32,7 @@ $(_htmldirs): %/.: | $$(dir %). $(_htmldir)/.
 
 
 .PHONY: install-html
-install-html: $(_htmlpages) | installdirs-html
-	@:
-
-.PHONY: installdirs-html
-installdirs-html: $(_htmldirs)
+install-html: $(_htmlpages)
 	@:
 
 .PHONY: uninstall-html

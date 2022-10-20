@@ -100,7 +100,7 @@ $(_UNITS_src_bin): $(_SRCDIR)/%: $(_SRCDIR)/%.o
 
 
 .PHONY: build-src-c
-build-src-c:   $(_UNITS_src_c) | builddirs-src
+build-src-c:   $(_UNITS_src_c)
 	@:
 
 .PHONY: build-src-cc
@@ -109,10 +109,6 @@ build-src-cc:  $(_UNITS_src_o)
 
 .PHONY: build-src-ld
 build-src-ld:  $(_UNITS_src_bin)
-	@:
-
-.PHONY: builddirs-src
-builddirs-src: $(_SRCDIRS)
 	@:
 
 .PHONY: build-src

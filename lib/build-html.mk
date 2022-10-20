@@ -39,11 +39,7 @@ $(_HTMLDIRS): %/.: | $$(dir %). $(_HTMLDIR)/.
 
 
 .PHONY: build-html html
-build-html html: $(_HTMLPAGES) | builddirs-html
-	@:
-
-.PHONY: builddirs-html
-builddirs-html: $(_HTMLDIRS)
+build-html html: $(_HTMLPAGES)
 	@:
 
 

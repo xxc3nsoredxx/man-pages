@@ -57,15 +57,11 @@ $(DISTFILE).xz: %.xz: % | $$(@D)/.
 
 
 .PHONY: dist-tar
-dist-tar: $(DISTFILE) | builddirs-dist
+dist-tar: $(DISTFILE)
 	@:
 
 .PHONY: $(dist)
-$(dist): dist-%: $(DISTFILE).% | builddirs-dist
-	@:
-
-.PHONY: builddirs-dist
-builddirs-dist: $(builddir)/.
+$(dist): dist-%: $(DISTFILE).%
 	@:
 
 .PHONY: dist

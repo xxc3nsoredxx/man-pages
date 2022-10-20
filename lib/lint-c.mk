@@ -74,7 +74,7 @@ $(_LINT_c_iwyu): %.lint-c.iwyu.touch: %.c
 
 
 .PHONY: $(lint_c)
-$(lint_c): lint-c-%: $$(_LINT_c_%) | lintdirs
+$(lint_c): lint-c-%: $$(_LINT_c_%)
 	@:
 
 .PHONY: lint-c

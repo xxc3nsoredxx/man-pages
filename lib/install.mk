@@ -32,11 +32,7 @@ docdir      := $(datarootdir)/doc
 
 
 .PHONY: install
-install: install-man | installdirs
-	@:
-
-.PHONY: installdirs
-installdirs: | installdirs-man
+install: install-man
 	@:
 
 .PHONY: uninstall
