@@ -28,7 +28,7 @@ compression := gz xz
 dist        := $(foreach x,$(compression),dist-$(x))
 
 
-$(_DISTPAGES): $(_DISTDIR)/man%: $(srcdir)/man% | $$(@D)/.
+$(_DISTPAGES): $(_DISTDIR)/man%: $(srcdir)/man% FORCE | $$(@D)/.
 	$(info INSTALL	$@)
 	$(INSTALL_DATA) -T $< $@
 	$(SED) -i '/^.TH/s/(unreleased)/$(DISTVERSION)/' $@
