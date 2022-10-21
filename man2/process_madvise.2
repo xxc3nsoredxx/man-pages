@@ -105,16 +105,20 @@ remote process.
 No further elements will be processed beyond that point.
 (See the discussion regarding partial advice in RETURN VALUE.)
 .PP
-Permission to apply advice to another process is governed by a
+.\" commit 96cfe2c0fd23ea7c2368d14f769d287e7ae1082e
+Starting in Linux 5.12,
+permission to apply advice to another process is governed by
 ptrace access mode
-.B PTRACE_MODE_READ_REALCREDS
+.B PTRACE_MODE_READ_FSCREDS
 check (see
 .BR ptrace (2));
 in addition,
 because of the performance implications of applying the advice,
 the caller must have the
-.B CAP_SYS_ADMIN
-capability.
+.B CAP_SYS_NICE
+capability
+(see
+.BR capabilities (7)).
 .SH RETURN VALUE
 On success,
 .BR process_madvise ()
@@ -180,6 +184,15 @@ configuration option.
 The
 .BR process_madvise ()
 system call is Linux-specific.
+.SH NOTES
+When this system call first appeared in Linux 5.10,
+permission to apply advice to another process was entirely governed by
+ptrace access mode
+.B PTRACE_MODE_ATTACH_FSCREDS
+check (see
+.BR ptrace (2)).
+This requirement was relaxed in Linux 5.12 so that the caller didn't require
+full control over the target process.
 .SH SEE ALSO
 .BR madvise (2),
 .BR pidfd_open (2),
