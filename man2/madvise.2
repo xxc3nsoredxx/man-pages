@@ -791,6 +791,11 @@ that are not mapped, the Linux version of
 ignores them and applies the call to the rest (but returns
 .B ENOMEM
 from the system call, as it should).
+.PP
+.IR madvise(0,\ 0,\ advice)
+will return zero iff
+.I advice
+is supported by the kernel and can be relied on to probe for support.
 .\" .SH HISTORY
 .\" The
 .\" .BR madvise ()
