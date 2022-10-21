@@ -1,38 +1,175 @@
-Mailing list
-============
-The main discussion regarding development of the project, patches,
-bugs, news, doubts, etc. happens on the mailing list.  To send
-mail to the project, send an email to both maintainers and CCing
-the mailing list:
+Name
+       Contributing - instructions for contributing to the project
 
-    To: Alejandro Colomar <alx.manpages@gmail.com>
-    To: Michael Kerrisk <mtk.manpages@gmail.com>
-    Cc: <linux-man@vger.kernel.org>
+Synopsis
+       Mailing list, patches, and bug reports.
 
-For consulting the archives of the mailing list, see:
-<https://lore.kernel.org/linux-man/>
+Description
+   Mailing list
+       The main discussions regarding development of the project, patches,
+       bugs, news, doubts, etc. happen on the mailing list.  To send an email
+       to the project, send it to both maintainers and CC the mailing list:
 
-Patches
-=======
-For information on how to send patches, see:
-<https://www.kernel.org/doc/man-pages/patches.html>
+           To: Alejandro Colomar <alx@kernel.org>
+           To: Michael Kerrisk <mtk.manpages@gmail.com>
+           Cc: <linux-man@vger.kernel.org>
 
-Conventions
-===========
-For a description of the preferred layout of manual pages,
-as well as some style guide notes, see:
+       Please CC any relevant developers and mailing lists that may know about
+       or be interestend in the discussion.  If your email discusses a feature
+       or change, and you know which developers added the feature or made the
+       change that your email discusses, please CC them on the email; with
+       luck they may review and comment on it.  If you don't know who the
+       developers are, you may be able to discover that information from
+       mailing list archives or from git(1) logs or logs in other version
+       control systems.  Obviously, if you are the developer of the feature
+       being discussed in a man-pages email, please identify yourself as such.
+       Relevant mailing lists may include:
 
-    $ man 7 man-pages
+           Cc: LKML <linux-kernel@vger.kernel.org>
+           Cc: Glibc <libc-alpha@sourceware.org>
+
+       For other kernel mailing lists and maintainers, check the <MAINTAINERS>
+       file in the Linux kernel repository.
+
+       Please don't send HTML email; it will be discarded by the list.
+
+       Archives:
+             <https://lore.kernel.org/linux-man/>
+             <https://marc.info/?l=linux-man>
+
+       Subscription:
+             Send a message to <majordomo@vger.kernel.org> containing the
+             following body:
+
+                 subscribe linux-man
+
+             Unsubscribing:
+
+                 unsubscribe linux-man
+
+             Help:
+
+                 help
+
+   Patches
+       If you know how to fix a problem in a manual page (if not, see
+       "Reporting bugs" below), then send a patch in an email.
+
+       -  Follow the instructions for sending mail to the mailing list above.
+
+       -  The subject of the email should contain "[patch]" in the subject line.
+
+       The above is the minimum needed so that someone might respond to your
+       patch.  If you did that and someone does not respond within a few days,
+       then ping the email thread, "replying to all".  Make sure to send it to
+       the maintainers in addition to the mailing list.
+
+       To make your patch even more useful, please note the following points:
+
+       -  Write a suitable subject line.  Make sure to mention the name(s) of
+          the page(s) being patched.  Example:
+
+             [patch] shmop.2: Add "(void *)" cast to RETURN VALUE
+
+       -  Sign your patch with "Signed-opff-by:".  Read about the "Developer's
+          Certificate of Origin" at
+          <https://www.kernel.org/doc/Documentation/process/submitting-patches.rst>.
+          When appropriate, other tags documented in that file, such as
+          "Reported-by:", "Reviewed-by:", "Acked-by:", and "Suggested-by:" can
+          be added to the patch.  The man-pages project also uses a
+          "Cowritten-by:" tag with the obvious meaning.  Example:
+
+              Signed-off-by: Alejandro Colomar <alx@kernel.org>
+
+       -  Describe how you obtained the information in your patch.  For
+          example, was it:
+
+          -  by reading (or writing) the relevant kernel or (g)libc source
+             code?  Please provide a pointer to the following code.
+
+          -  from a commit message in the kernel or (g)libc source code
+             repository?  Please provide a commit ID.
+
+          -  by writing a test program?  Send it with the patch, but please
+             make sure it's as simple as possible, and provide instructions on
+             how to use it and/or a demo run.
+
+          -  from a standards document?  Please name the standard, and quote
+             the relevant text.
+
+          -  from other documentation?  Please provide a pointer to that
+             documentation.
+
+          -  from a mailing list or online forum?  Please provide a URL if
+             possible.
+
+       -  Send patches in diff -u format, inline inside the email message.  If
+          you're worried about your mailer breaking the patch, the send it
+          both inline and as an attachment.  You may find it useful to employ
+          git-send-email(1) and git-format-patch(1).
+
+       -  Where relevant, include source code comments that cite commit hashes
+          for relevant kernel or glibc changes:
+
+              .\" commit <40-character-git-hash>
+
+       -  For trivial patches, you can use subject tags:
+
+          -  ffix: Formatting fix.
+          -  tfix: Typo fix.
+          -  wfix: Minor wording fix.
+          -  srcfix: Change to manual page source that doesn't affect output.
+
+          Example:
+
+              [patch] tcp.7: tfix
+
+       -  Send logically separate patches.  For unrelated pages, or for
+          logically-separate issues in the same page, send separate emails.
+
+       -  Make patches against the latest version of the manual page.  Use
+          git(1) for getting the latest version.
 
 Reporting bugs
-==============
-For information about reporting bugs, see:
-<https://www.kernel.org/doc/man-pages/reporting_bugs.html>
+       Report bugs to the mailing list, following the instructions above for
+       sending mails to the list.  If you can write a patch (see instructions
+       for sending patches above), it's preferred.
 
-Other
-=====
+       If you're unsure if the bug is in the manual page or in the code being
+       documented (kernel, glibc, ...), it's best to send the report to both
+       at the same time, that is, CC all the mailing lists that may be
+       concerned by the report.
 
-For more information about how to contribute, see
-<http://www.kernel.org/doc/man-pages/contributing.html>.
-(Although there is a mirror of this repository on GitHub,
-please don't report issues via the GitHub issue tracker!)
+       Some distributions (for example Debian) apply patches to the upstream
+       manual pages.  If you suspect the bug is in one of those patches,
+       report it to your distribution maintainer.
+
+       Send logically separate reports.  For unrelated pages, or for
+       logically-separate issues in the same page, send separate emails.
+
+       There's also a bugzilla, but we don't use it as much as the mailing list.
+
+Notes
+       For a description of the preferred layout of manual pages, as well as
+       some style guide notes, see:
+
+           $ man 7 man-pages
+
+       It will also be interesting to consult groff_man(7) and
+       groff_man_style(7) for understanding and writing good man(7) source code.
+
+Bugs
+   Bugzilla:
+       <https://bugzilla.kernel.org/buglist.cgi?component=man-pages>
+
+See also
+       man-pages(7)
+
+       <https://www.kernel.org/doc/man-pages/contributing.html>
+       <https://www.kernel.org/doc/man-pages/linux-man-ml.html>
+       <https://www.kernel.org/doc/man-pages/patches.html>
+       <https://www.kernel.org/doc/man-pages/reporting_bugs.html>
+       <https://www.kernel.org/doc/man-pages/reporting_code_bugs.html>
+       <https://www.kernel.org/doc/man-pages/missing_pages.html>
+       <https://www.kernel.org/doc/man-pages/code_of_conduct.html>
+       <https://www.kernel.org/doc/Documentation/process/submitting-patches.rst>
