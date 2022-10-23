@@ -36,16 +36,21 @@ the signal.
 .PP
 The entries in the "Action" column of the table below specify
 the default disposition for each signal, as follows:
-.IP Term
+.TP
+Term
 Default action is to terminate the process.
-.IP Ign
+.TP
+Ign
 Default action is to ignore the signal.
-.IP Core
+.TP
+Core
 Default action is to terminate the process and dump core (see
 .BR core (5)).
-.IP Stop
+.TP
+Stop
 Default action is to stop the process.
-.IP Cont
+.TP
+Cont
 Default action is to continue the process if it is currently stopped.
 .PP
 A process can change the disposition of a signal using

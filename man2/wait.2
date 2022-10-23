@@ -113,17 +113,21 @@ argument, as described below.
 The value of
 .I pid
 can be:
-.IP "< \-1"
+.TP
+.RB "< " \-1
 meaning wait for any child process whose process group ID is
 equal to the absolute value of
 .IR pid .
-.IP \-1
+.TP
+.B \-1
 meaning wait for any child process.
-.IP 0
+.TP
+.B 0
 meaning wait for any child process whose process group ID is
 equal to that of the calling process at the time of the call to
 .BR waitpid ().
-.IP "> 0"
+.TP
+.RB "> " 0
 meaning wait for the child whose process ID is equal to the
 value of
 .IR pid .
@@ -235,17 +239,20 @@ The
 and
 .I id
 arguments select the child(ren) to wait for, as follows:
-.IP "\fIidtype\fP == \fBP_PID\fP"
+.TP
+.IR idtype " == " \fBP_PID\fP
 Wait for the child whose process ID matches
 .IR id .
-.IP "\fIidtype\fP == \fBP_PIDFD\fP (since Linux 5.4)"
+.TP
+.IR idtype " == " \fBP_PIDFD\fP " (since Linux 5.4)"
 .\" commit 3695eae5fee0605f316fbaad0b9e3de791d7dfaf
 Wait for the child referred to by the PID file descriptor specified in
 .IR id .
 (See
 .BR pidfd_open (2)
 for further information on PID file descriptors.)
-.IP "\fIidtype\fP == \fBP_PGID\fP"
+.TP
+.IR idtype " == " \fBP_PGID\fP
 Wait for any child whose process group ID matches
 .IR id .
 Since Linux 5.4,
@@ -254,7 +261,8 @@ if
 .I id
 is zero, then wait for any child that is in the same process group
 as the caller's process group at the time of the call.
-.IP "\fIidtype\fP == \fBP_ALL\fP"
+.TP
+.IR idtype " == " \fBP_ALL\fP
 Wait for any child;
 .I id
 is ignored.

@@ -669,15 +669,18 @@ sets the parameters associated with the terminal (unless support is
 required from the underlying hardware that is not available) from the
 \fItermios\fP structure referred to by \fItermios_p\fP.
 \fIoptional_actions\fP specifies when the changes take effect:
-.IP \fBTCSANOW\fP
+.TP
+.B TCSANOW
 the change occurs immediately.
-.IP \fBTCSADRAIN\fP
+.TP
+.B TCSADRAIN
 the change occurs after all output written to
 .I fd
 has been transmitted.
 This option should be used when changing
 parameters that affect output.
-.IP \fBTCSAFLUSH\fP
+.TP
+.B TCSAFLUSH
 the change occurs after all output written to the object referred by
 .I fd
 has been transmitted, and all input that has been received but not read
@@ -866,11 +869,14 @@ discards data written to the object referred to by
 but not transmitted, or data received but not read, depending on the
 value of
 .IR queue_selector :
-.IP \fBTCIFLUSH\fP
+.TP
+.B TCIFLUSH
 flushes data received but not read.
-.IP \fBTCOFLUSH\fP
+.TP
+.B TCOFLUSH
 flushes data written but not transmitted.
-.IP \fBTCIOFLUSH\fP
+.TP
+.B TCIOFLUSH
 flushes both data received but not read, and data written but not
 transmitted.
 .PP
@@ -879,14 +885,18 @@ suspends transmission or reception of data on the object referred to by
 .IR fd ,
 depending on the value of
 .IR action :
-.IP \fBTCOOFF\fP
+.TP
+.B TCOOFF
 suspends output.
-.IP \fBTCOON\fP
+.TP
+.B TCOON
 restarts suspended output.
-.IP \fBTCIOFF\fP
+.TP
+.B TCIOFF
 transmits a STOP character, which stops the terminal device from
 transmitting data to the system.
-.IP \fBTCION\fP
+.TP
+.B TCION
 transmits a START character, which starts the terminal device
 transmitting data to the system.
 .PP
@@ -1058,9 +1068,11 @@ structure.
 returns the output baud rate stored in the \fItermios\fP structure.
 .PP
 All other functions return:
-.IP 0
+.TP
+.B 0
 on success.
-.IP \-1
+.TP
+.B \-1
 on failure and set
 .I errno
 to indicate the error.

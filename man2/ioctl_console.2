@@ -767,16 +767,19 @@ VESA screen blanking mode is set to
 which governs what
 screen blanking does:
 .RS
-.IP 0: 3
+.TP
+.B 0
 Screen blanking is disabled.
-.IP 1:
+.TP
+.B 1
 The current video adapter
 register settings are saved, then the controller is programmed to turn off
 the vertical synchronization pulses.
 This puts the monitor into "standby" mode.
 If your monitor has an Off_Mode timer, then
 it will eventually power down by itself.
-.IP 2:
+.TP
+.B 2
 The current settings are saved, then both the vertical and horizontal
 synchronization pulses are turned off.
 This puts the monitor into "off" mode.

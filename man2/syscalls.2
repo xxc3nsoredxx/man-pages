@@ -1135,27 +1135,27 @@ s390x is the only 64-bit architecture that has
 .\"
 .\"
 .SS "Architecture-specific details: Alpha"
-.IP * 3
+.TP
 .BR getxgid (2)
 returns a pair of GID and effective GID via registers
 \fBr0\fP and \fBr20\fP; it is provided
 instead of
 \fBgetgid\fP(2) and \fBgetegid\fP(2).
-.IP *
+.TP
 .BR getxpid (2)
 returns a pair of PID and parent PID via registers
 \fBr0\fP and \fBr20\fP; it is provided instead of
 \fBgetpid\fP(2) and \fBgetppid\fP(2).
-.IP *
+.TP
 .BR old_adjtimex (2)
 is a variant of \fBadjtimex\fP(2) that uses \fIstruct timeval32\fP,
 for compatibility with OSF/1.
-.IP *
+.TP
 .BR getxuid (2)
 returns a pair of GID and effective GID via registers
 \fBr0\fP and \fBr20\fP; it is provided instead of
 \fBgetuid\fP(2) and \fBgeteuid\fP(2).
-.IP *
+.TP
 .BR sethae (2)
 is used for configuring the Host Address Extension register on
 low-cost Alphas in order to access address space beyond first 27 bits.

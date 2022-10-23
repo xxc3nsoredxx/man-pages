@@ -136,14 +136,14 @@ struct sockaddr_ll {
 .in
 .PP
 The fields of this structure are as follows:
-.IP * 3
+.TP
 .I sll_protocol
 is the standard ethernet protocol type in network byte order as defined
 in the
 .I <linux/if_ether.h>
 include file.
 It defaults to the socket's protocol.
-.IP *
+.TP
 .I sll_ifindex
 is the interface index of the interface
 (see
@@ -153,7 +153,7 @@ is the interface index of the interface
 is an ARP type as defined in the
 .I <linux/if_arp.h>
 include file.
-.IP *
+.TP
 .I sll_pkttype
 contains the packet type.
 Valid types are
@@ -170,9 +170,9 @@ in promiscuous mode, and
 for a packet originating from the local host that is looped back to a packet
 socket.
 These types make sense only for receiving.
-.IP *
+.TP
 .I sll_addr
-and
+.TQ
 .I sll_halen
 contain the physical-layer (e.g., IEEE 802.3) address and its length.
 The exact interpretation depends on the device.

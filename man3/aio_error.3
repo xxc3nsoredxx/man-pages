@@ -27,16 +27,18 @@ for a description of the
 structure.)
 .SH RETURN VALUE
 This function returns one of the following:
-.IP * 3
-.BR EINPROGRESS ,
+.TP
+.B EINPROGRESS
 if the request has not been
 completed yet.
-.IP *
-.BR ECANCELED ,
+.TP
+.B ECANCELED
 if the request was canceled.
-.IP *
-0, if the request completed successfully.
-.IP *
+.TP
+.B 0
+if the request completed successfully.
+.TP
+.RB "> " 0
 A positive error number, if the asynchronous I/O operation failed.
 This is the same value that would have been stored in the
 .I errno

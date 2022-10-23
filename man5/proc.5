@@ -2095,45 +2095,58 @@ This is visible whether or not the executable is swapped out.
 (3) \fIstate\fP \ %c
 One of the following characters, indicating process state:
 .RS
-.IP R 3
+.TP
+R
 Running
-.IP S
+.TP
+S
 Sleeping in an interruptible wait
-.IP D
+.TP
+D
 Waiting in uninterruptible
 disk sleep
-.IP Z
+.TP
+Z
 Zombie
-.IP T
+.TP
+T
 Stopped (on a signal) or (before Linux 2.6.33) trace stopped
-.IP t
+.TP
+t
 .\" commit 44d90df6b757c59651ddd55f1a84f28132b50d29
 Tracing stop (Linux 2.6.33 onward)
-.IP W
+.TP
+W
 Paging (only before Linux 2.6.0)
-.IP X
+.TP
+X
 Dead (from Linux 2.6.0 onward)
-.IP x
+.TP
+x
 .\" commit 44d90df6b757c59651ddd55f1a84f28132b50d29
 Dead (Linux 2.6.33 to
 .\" commit 74e37200de8e9c4e09b70c21c3f13c2071e77457
 3.13 only)
-.IP K
+.TP
+K
 .\" commit 44d90df6b757c59651ddd55f1a84f28132b50d29
 Wakekill (Linux 2.6.33 to
 .\" commit 74e37200de8e9c4e09b70c21c3f13c2071e77457
 3.13 only)
-.IP W
+.TP
+W
 .\" commit 44d90df6b757c59651ddd55f1a84f28132b50d29
 Waking (Linux 2.6.33 to
 .\" commit 74e37200de8e9c4e09b70c21c3f13c2071e77457
 3.13 only)
-.IP P
+.TP
+P
 .\" commit f2530dc71cf0822f90bb63ea4600caaef33a66bb
 Parked (Linux 3.9 to
 .\" commit 74e37200de8e9c4e09b70c21c3f13c2071e77457
 3.13 only)
-.IP I
+.TP
+I
 .\" commit 06eb61844d841d0032a9950ce7f8e783ee49c0d0
 Idle (Linux 4.14 onward)
 .RE
@@ -5218,13 +5231,15 @@ Select the address space layout randomization (ASLR) policy for the system
 (on architectures that support ASLR).
 Three values are supported for this file:
 .RS
-.IP 0 3
+.TP
+.B 0
 Turn ASLR off.
 This is the default for architectures that don't support ASLR,
 and when the kernel is booted with the
 .I norandmaps
 parameter.
-.IP 1
+.TP
+.B 1
 Make the addresses of
 .BR mmap (2)
 allocations, the stack, and the VDSO page randomized.
@@ -5234,7 +5249,8 @@ The text segment of PIE-linked binaries will also be loaded
 at a randomized address.
 This value is the default if the kernel was configured with
 .BR CONFIG_COMPAT_BRK .
-.IP 2
+.TP
+.B 2
 (Since Linux 2.6.25)
 .\" commit c1d171a002942ea2d93b4fbd0c9583c56fce0772
 Also support heap randomization.
@@ -5305,15 +5321,19 @@ for further details.
 This file contains 4 numbers defining limits for System V IPC semaphores.
 These fields are, in order:
 .RS
-.IP SEMMSL 8
+.TP
+SEMMSL
 The maximum semaphores per semaphore set.
-.IP SEMMNS 8
+.TP
+SEMMNS
 A system-wide limit on the number of semaphores in all semaphore sets.
-.IP SEMOPM 8
+.TP
+SEMOPM
 The maximum number of operations that may be specified in a
 .BR semop (2)
 call.
-.IP SEMMNI 8
+.TP
+SEMMNI
 A system-wide limit on the maximum number of semaphore identifiers.
 .RE
 .TP
@@ -5684,13 +5704,15 @@ it will kill processes to prevent any data corruptions from propagating.
 .IP
 The file has one of the following values:
 .RS
-.IP 1: 4
+.TP
+.B 1
 Kill all processes that have the corrupted-and-not-reloadable page mapped
 as soon as the corruption is detected.
 Note that this is not supported for a few types of pages,
 such as kernel internally
 allocated data or the swap cache, but works for the majority of user pages.
-.IP 0: 4
+.TP
+.B 0
 Unmap the corrupted page from all processes and kill a process
 only if it tries to access the page.
 .RE
@@ -5722,9 +5744,11 @@ Present only if the kernel was configured with
 .\" The following is based on the text in Documentation/sysctl/vm.txt
 Enable memory failure recovery (when supported by the platform).
 .RS
-.IP 1: 4
+.TP
+.B 1
 Attempt recovery.
-.IP 0: 4
+.TP
+.B 0
 Always panic on a memory failure.
 .RE
 .IP

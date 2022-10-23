@@ -365,28 +365,33 @@ RFC\ 2255
 .UE
 for more information on the LDAP URL scheme.
 The components of this URL are:
-.IP hostport 12
+.TP
+hostport
 the LDAP server to query, written as a hostname optionally followed by
 a colon and the port number.
 The default LDAP port is TCP port 389.
 If empty, the client determines which the LDAP server to use.
-.IP dn
+.TP
+dn
 the LDAP Distinguished Name, which identifies
 the base object of the LDAP search (see
 .UR http://www.ietf.org\:/rfc\:/rfc2253.txt
 RFC\ 2253
 .UE
 section 3).
-.IP attributes
+.TP
+attributes
 a comma-separated list of attributes to be returned;
 see RFC\ 2251 section 4.1.5.
 If omitted, all attributes should be returned.
-.IP scope
+.TP
+scope
 specifies the scope of the search, which can be one of
 "base" (for a base object search), "one" (for a one-level search),
 or "sub" (for a subtree search).
 If scope is omitted, "base" is assumed.
-.IP filter
+.TP
+filter
 specifies the search filter (subset of entries
 to return).
 If omitted, all entries should be returned.
@@ -395,7 +400,8 @@ See
 RFC\ 2254
 .UE
 section 4.
-.IP extensions
+.TP
+extensions
 a comma-separated list of type=value
 pairs, where the =value portion may be omitted for options not
 requiring it.

@@ -803,18 +803,23 @@ As of this writing, when this capability was introduced in Linux
 have the following meanings.
 .PP
 .PD 0
-.IP \fB(1)\fR 4
+.TP
+.B 1
 Perform immediate load balancing across Hyper-Thread
 siblings on the same core.
-.IP \fB(2)\fR
+.TP
+.B 2
 Perform immediate load balancing across other cores in the same package.
-.IP \fB(3)\fR
+.TP
+.B 3
 Perform immediate load balancing across other CPUs
 on the same node or blade.
-.IP \fB(4)\fR
+.TP
+.B 4
 Perform immediate load balancing across over several
 (implementation detail) nodes [On NUMA systems].
-.IP \fB(5)\fR
+.TP
+.B 5
 Perform immediate load balancing across over all CPUs
 in system [On NUMA systems].
 .PD

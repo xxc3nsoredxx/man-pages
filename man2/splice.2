@@ -193,14 +193,14 @@ provide user-space programs with full control over an arbitrary
 kernel buffer, implemented within the kernel using the same type
 of buffer that is used for a pipe.
 In overview, these system calls perform the following tasks:
-.IP \(bu 2
+.TP
 .BR splice ()
 moves data from the buffer to an arbitrary file descriptor, or vice versa,
 or from one buffer to another.
-.IP \(bu
+.TP
 .BR tee (2)
 "copies" the data from one buffer to another.
-.IP \(bu
+.TP
 .BR vmsplice (2)
 "copies" data from user space into the buffer.
 .PP

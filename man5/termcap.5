@@ -385,33 +385,43 @@ f Form feed (12)
 0 Null character.
 A \exxx specifies the octal character xxx.
 .RE
-.IP i
+.TP
+i
 Increments parameters by one.
-.IP r
+.TP
+r
 Single parameter capability
-.IP +
+.TP
++
 Add value of next character to this parameter and do binary output
-.IP 2
+.TP
+2
 Do ASCII output of this parameter with a field with of 2
-.IP d
+.TP
+d
 Do ASCII output of this parameter with a field with of 3
-.IP %
+.TP
+%
 Print a \(aq%\(aq
 .PP
 If you use binary output, then you should avoid the null character (\(aq\e0\(aq)
 because it terminates the string.
 You should reset tabulator expansion
 if a tabulator can be the binary output of a parameter.
-.IP Warning:
+.TP
+Warning:
 The above metacharacters for parameters may be wrong: they document Minix
 termcap which may not be compatible with Linux termcap.
 .PP
 The block graphic characters can be specified by three string capabilities:
-.IP as
+.TP
+as
 start the alternative charset
-.IP ae
+.TP
+ae
 end the alternative charset
-.IP ac
+.TP
+ac
 pairs of characters.
 The first character is the name of the block graphic
 symbol and the second characters is its definition.

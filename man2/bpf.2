@@ -1121,11 +1121,14 @@ the JIT compiler is disabled by default,
 but its operation can be controlled by writing one of the
 following integer strings to the file
 .IR /proc/sys/net/core/bpf_jit_enable :
-.IP 0 3
+.TP
+.B 0
 Disable JIT compilation (default).
-.IP 1
+.TP
+.B 1
 Normal compilation.
-.IP 2
+.TP
+.B 2
 Debugging mode.
 The generated opcodes are dumped in hexadecimal into the kernel log.
 These opcodes can then be disassembled using the program

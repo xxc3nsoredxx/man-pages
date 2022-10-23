@@ -71,7 +71,7 @@ The sequence of
 .I cmsghdr
 structures should never be accessed directly.
 Instead, use only the following macros:
-.IP * 3
+.TP
 .BR CMSG_FIRSTHDR ()
 returns a pointer to the first
 .I cmsghdr
@@ -81,7 +81,7 @@ data buffer associated with the passed
 It returns NULL if there isn't enough space for a
 .I cmsghdr
 in the buffer.
-.IP *
+.TP
 .BR CMSG_NXTHDR ()
 returns the next valid
 .I cmsghdr
@@ -96,17 +96,17 @@ structures (e.g., to be sent with
 that buffer should first be zero-initialized
 to ensure the correct operation of
 .BR CMSG_NXTHDR ().
-.IP *
+.TP
 .BR CMSG_ALIGN (),
 given a length, returns it including the required alignment.
 This is a
 constant expression.
-.IP *
+.TP
 .BR CMSG_SPACE ()
 returns the number of bytes an ancillary element with payload of the
 passed data length occupies.
 This is a constant expression.
-.IP *
+.TP
 .BR CMSG_DATA ()
 returns a pointer to the data portion of a
 .IR cmsghdr .
@@ -116,7 +116,7 @@ Applications should not cast it to a pointer type matching the payload,
 but should instead use
 .BR memcpy (3)
 to copy data to or from a suitably declared object.
-.IP *
+.TP
 .BR CMSG_LEN ()
 returns the value to store in the
 .I cmsg_len

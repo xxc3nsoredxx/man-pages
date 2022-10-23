@@ -96,8 +96,8 @@ return an argument of this type.
 Three types of address are distinguished in the
 .I sockaddr_un
 structure:
-.IP * 3
-.IR pathname :
+.TP
+pathname
 a UNIX domain socket can be bound to a null-terminated
 filesystem pathname using
 .BR bind (2).
@@ -125,8 +125,8 @@ so the
 expression more portably describes the size of the address structure.)
 .IP
 For further details of pathname sockets, see below.
-.IP *
-.IR unnamed :
+.TP
+unnamed
 A stream socket that has not been bound to a pathname using
 .BR bind (2)
 has no name.
@@ -141,8 +141,8 @@ and
 should not be inspected.
 .\" There is quite some variation across implementations: FreeBSD
 .\" says the length is 16 bytes, HP-UX 11 says it's zero bytes.
-.IP *
-.IR abstract :
+.TP
+abstract
 an abstract socket address is distinguished (from a pathname socket)
 by the fact that
 .I sun_path[0]

@@ -207,21 +207,25 @@ and
 .I v2
 are the addresses of appropriate resources, then the return value
 is one of the following:
-.RS 4
-.IP 0 4
+.RS
+.TP
+.B 0
 .I v1
 is equal to
 .IR v2 ;
 in other words, the two processes share the resource.
-.IP 1
+.TP
+.B 1
 .I v1
 is less than
 .IR v2 .
-.IP 2
+.TP
+.B 2
 .I v1
 is greater than
 .IR v2 .
-.IP 3
+.TP
+.B 3
 .I v1
 is not equal to
 .IR v2 ,

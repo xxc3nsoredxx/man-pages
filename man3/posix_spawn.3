@@ -85,15 +85,13 @@ with the understanding that
 differs only on the point just described.
 .PP
 The remaining arguments to these two functions are as follows:
-.IP * 3
-The
+.TP
 .I pid
-argument points to a buffer that is used to return the process ID
+points to a buffer that is used to return the process ID
 of the new child process.
-.IP *
-The
+.TP
 .I file_actions
-argument points to a
+points to a
 .I "spawn file actions object"
 that specifies file-related actions to be performed in the child
 between the
@@ -108,10 +106,9 @@ call using
 and the
 .BR posix_spawn_file_actions_* ()
 functions.
-.IP *
-The
+.TP
 .I attrp
-argument points to an
+points to an
 .I attributes objects
 that specifies various attributes of the created child process.
 This object is initialized and populated before the
@@ -121,12 +118,11 @@ call using
 and the
 .BR posix_spawnattr_* ()
 functions.
-.IP *
-The
+.TP
 .I argv
-and
+.TQ
 .I envp
-arguments specify the argument list and environment for the program
+specify the argument list and environment for the program
 that is executed in the child process, as for
 .BR execve (2).
 .PP

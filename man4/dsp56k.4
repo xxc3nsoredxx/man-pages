@@ -46,14 +46,16 @@ The following
 .BR ioctl (2)
 calls are used to control the
 \fIdsp56k\fP device:
-.IP \fBDSP56K_UPLOAD\fP
+.TP
+.B DSP56K_UPLOAD
 resets the DSP56001 and uploads a program.
 The third
 .BR ioctl (2)
 argument must be a pointer to a \fIstruct dsp56k_upload\fP with members
 \fIbin\fP pointing to a DSP56001 binary program, and \fIlen\fP set to
 the length of the program, counted in 24-bit words.
-.IP \fBDSP56K_SET_TX_WSIZE\fP
+.TP
+.B DSP56K_SET_TX_WSIZE
 sets the transmit word size.
 Allowed values are in the range 1 to 4,
 and is the number of bytes that will be sent at a time to the
@@ -61,14 +63,16 @@ DSP56001.
 These data quantities will either be padded with bytes containing zero,
 or truncated to fit the native 24-bit data format of the
 DSP56001.
-.IP \fBDSP56K_SET_RX_WSIZE\fP
+.TP
+.B DSP56K_SET_RX_WSIZE
 sets the receive word size.
 Allowed values are in the range 1 to 4,
 and is the number of bytes that will be received at a time from the
 DSP56001.
 These data quantities will either truncated, or padded with
 a null byte (\(aq\e0\(aq) to fit the native 24-bit data format of the DSP56001.
-.IP \fBDSP56K_HOST_FLAGS\fP
+.TP
+.B DSP56K_HOST_FLAGS
 read and write the host flags.
 The host flags are four
 general-purpose bits that can be read by both the hosting computer and
@@ -85,7 +89,8 @@ If bit 0 or 1 is set in the
 to the host flags.
 The state of all host flags will be returned in
 the lower four bits of the \fIstatus\fP member.
-.IP \fBDSP56K_HOST_CMD\fP
+.TP
+.B DSP56K_HOST_CMD
 sends a host command.
 Allowed values are in the range 0 to 31, and is a
 user-defined command handled by the program running in the DSP56001.

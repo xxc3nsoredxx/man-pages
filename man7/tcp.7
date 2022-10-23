@@ -267,15 +267,18 @@ ABC is a way of increasing the congestion window
 more slowly in response to partial acknowledgements.
 Possible values are:
 .RS
-.IP 0 3
+.TP
+.B 0
 increase
 .I cwnd
 once per acknowledgement (no ABC)
-.IP 1
+.TP
+.B 1
 increase
 .I cwnd
 once per acknowledgement of full sized segment
-.IP 2
+.TP
+.B 2
 allow increase
 .I cwnd
 by two if acknowledgement is
@@ -456,14 +459,17 @@ Enable RFC\ 3168 Explicit Congestion Notification.
 .IP
 This file can have one of the following values:
 .RS
-.IP 0
+.TP
+.B 0
 Disable ECN.
 Neither initiate nor accept ECN.
 This was the default up to and including Linux 2.6.30.
-.IP 1
+.TP
+.B 1
 Enable ECN when requested by incoming connections and also
 request ECN on outgoing connection attempts.
-.IP 2
+.TP
+.B 2
 .\" commit 255cac91c3c9ce7dca7713b93ab03c75b7902e0e
 Enable ECN when requested by incoming connections,
 but do not request ECN on outgoing connections.
@@ -510,12 +516,15 @@ See RFC 4138 for more details.
 .IP
 This file can have one of the following values:
 .RS
-.IP 0 3
+.TP
+.B 0
 Disabled.
 This was the default up to and including Linux 2.6.23.
-.IP 1
+.TP
+.B 1
 The basic version F-RTO algorithm is enabled.
-.IP 2
+.TP
+.B 2
 .\" commit c96fd3d461fa495400df24be3b3b66f0e0b152f9
 Enable SACK-enhanced F-RTO if flow uses SACK.
 The basic version can be used also when
@@ -534,21 +543,24 @@ longer retransmission timeout),
 TCP has several options concerning what to do next.
 Possible values are:
 .RS
-.IP 0 3
+.TP
+.B 0
 Rate halving based; a smooth and conservative response,
 results in halved congestion window
 .RI ( cwnd )
 and slow-start threshold
 .RI ( ssthresh )
 after one RTT.
-.IP 1
+.TP
+.B 1
 Very conservative response; not recommended because even
 though being valid, it interacts poorly with the rest of Linux TCP; halves
 .I cwnd
 and
 .I ssthresh
 immediately.
-.IP 2
+.TP
+.B 2
 Aggressive response; undoes congestion-control measures
 that are now known to be unnecessary
 (ignoring the possibility of a lost retransmission that would require
@@ -697,11 +709,14 @@ This value overrides any other limits imposed by the kernel.
 This parameter controls TCP Packetization-Layer Path MTU Discovery.
 The following values may be assigned to the file:
 .RS
-.IP 0 3
+.TP
+.B 0
 Disabled
-.IP 1
+.TP
+.B 1
 Disabled by default, enabled when an ICMP black hole detected
-.IP 2
+.TP
+.B 2
 Always enabled, use initial MSS of
 .IR tcp_base_mss .
 .RE
@@ -885,11 +900,14 @@ and
 .IR tcp_abort_on_overflow .
 Set to one of the following values:
 .RS
-.IP 0 3
+.TP
+.B 0
 Disable TCP syncookies.
-.IP 1
+.TP
+.B 1
 Send out syncookies when the syn backlog queue of a socket overflows.
-.IP 2
+.TP
+.B 2
 (since Linux 3.12)
 .\" commit 5ad37d5deee1ff7150a2d0602370101de158ad86
 Send out syncookies unconditionally.
@@ -901,12 +919,15 @@ This can be useful for network testing.
 Set to one of the following values to enable or disable RFC\ 1323
 TCP timestamps:
 .RS
-.IP 0 3
+.TP
+.B 0
 Disable timestamps.
-.IP 1
+.TP
+.B 1
 Enable timestamps as defined in RFC1323 and use random offset for
 each connection rather than only using the current time.
-.IP 2
+.TP
+.B 2
 As for the value 1, but without random offsets.
 .\" commit 25429d7b7dca01dc4f17205de023a30ca09390d0
 Setting

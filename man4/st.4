@@ -410,18 +410,21 @@ Booleans counted as one item.)
 A value having zeros in the high-order 4 bits will be used to set the
 drive's buffering mode.
 The buffering modes are:
-.RS 12
-.IP 0 4
+.RS
+.TP
+.B 0
 The drive will not report
 .B GOOD
 status on write commands until the data
 blocks are actually written to the medium.
-.IP 1
+.TP
+.B 1
 The drive may report
 .B GOOD
 status on write commands as soon as all the
 data has been transferred to the drive's internal buffer.
-.IP 2
+.TP
+.B 2
 The drive may report
 .B GOOD
 status on write commands as soon as (a) all

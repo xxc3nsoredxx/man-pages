@@ -181,20 +181,25 @@ Keyrings may be considered as analogous to UNIX directories
 where each directory contains a set of hard links to files.
 .PP
 Various operations (system calls) may be applied only to keyrings:
-.IP Adding
+.TP
+Adding
 A key may be added to a keyring by system calls that create keys.
 This prevents the new key from being immediately deleted
 when the system call releases its last reference to the key.
-.IP Linking
+.TP
+Linking
 A link may be added to a keyring pointing to a key that is already known,
 provided this does not create a self-referential cycle.
-.IP Unlinking
+.TP
+Unlinking
 A link may be removed from a keyring.
 When the last link to a key is removed,
 that key will be scheduled for deletion by the garbage collector.
-.IP Clearing
+.TP
+Clearing
 All the links may be removed from a keyring.
-.IP Searching
+.TP
+Searching
 A keyring may be considered the root of a tree or subtree in which keyrings
 form the branches and non-keyrings the leaves.
 This tree may be searched for a key matching
@@ -361,19 +366,23 @@ The permissions mask contains four sets of rights.
 The first three sets are mutually exclusive.
 One and only one will be in force for a particular access check.
 In order of descending priority, these three sets are:
-.IP \fIuser\fR
+.TP
+.I user
 The set specifies the rights granted
 if the key's user ID matches the caller's filesystem user ID.
-.IP \fIgroup\fR
+.TP
+.I group
 The set specifies the rights granted
 if the user ID didn't match and the key's group ID matches the caller's
 filesystem GID or one of the caller's supplementary group IDs.
-.IP \fIother\fR
+.TP
+.I other
 The set specifies the rights granted
 if neither the key's user ID nor group ID matched.
 .PP
 The fourth set of rights is:
-.IP \fIpossessor\fR
+.TP
+.I possessor
 The set specifies the rights granted
 if a key is determined to be possessed by the caller.
 .PP
@@ -566,29 +575,36 @@ The ID (serial number) of the key, expressed in hexadecimal.
 Flags (2)
 A set of flags describing the state of the key:
 .RS
-.IP I 4
+.TP
+I
 .\" KEY_FLAG_INSTANTIATED
 The key has been instantiated.
-.IP R
+.TP
+R
 .\" KEY_FLAG_REVOKED
 The key has been revoked.
-.IP D
+.TP
+D
 .\" KEY_FLAG_DEAD
 The key is dead (i.e., the key type has been unregistered).
 .\" unregister_key_type() in the kernel source
 (A key may be briefly in this state during garbage collection.)
-.IP Q
+.TP
+Q
 .\" KEY_FLAG_IN_QUOTA
 The key contributes to the user's quota.
-.IP U
+.TP
+U
 .\" KEY_FLAG_USER_CONSTRUCT
 The key is under construction via a callback to user space;
 see
 .BR request\-key (2).
-.IP N
+.TP
+N
 .\" KEY_FLAG_NEGATIVE
 The key is negatively instantiated.
-.IP i
+.TP
+i
 .\" KEY_FLAG_INVALIDATED
 The key has been invalidated.
 .RE

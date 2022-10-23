@@ -245,21 +245,21 @@ The timers created by
 .BR timer_create ()
 are commonly known as "POSIX (interval) timers".
 The POSIX timers API consists of the following interfaces:
-.IP * 3
-.BR timer_create ():
+.TP
+.BR timer_create ()
 Create a timer.
-.IP *
-.BR timer_settime (2):
+.TP
+.BR timer_settime (2)
 Arm (start) or disarm (stop) a timer.
-.IP *
-.BR timer_gettime (2):
+.TP
+.BR timer_gettime (2)
 Fetch the time remaining until the next expiration of a timer,
 along with the interval setting of the timer.
-.IP *
-.BR timer_getoverrun (2):
+.TP
+.BR timer_getoverrun (2)
 Return the overrun count for the last timer expiration.
-.IP *
-.BR timer_delete (2):
+.TP
+.BR timer_delete (2)
 Disarm and delete a timer.
 .PP
 Since Linux 3.10, the

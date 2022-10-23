@@ -31,20 +31,20 @@ By adjusting the PPR value the programmer may improve system
 throughput by causing system resources to be used more
 efficiently, especially in contention situations.
 The available unprivileged states are covered by the following functions:
-.IP * 3
+.TP
 .BR __ppc_set_ppr_med ()
 sets the Program Priority Register value to
 .I medium
 (default).
-.IP *
+.TP
 .BR __ppc_set_ppr_very_low ()
 sets the Program Priority Register value to
 .IR "very low" .
-.IP *
+.TP
 .BR __ppc_set_ppr_low ()
 sets the Program Priority Register value to
 .IR low .
-.IP *
+.TP
 .BR __ppc_set_ppr_med_low ()
 sets the Program Priority Register value to
 .IR "medium low" .
@@ -53,7 +53,7 @@ The privileged state
 .I medium high
 may also be set during certain time intervals by problem-state (unprivileged)
 programs, with the following function:
-.IP * 3
+.TP
 .BR __ppc_set_ppr_med_high ()
 sets the Program Priority to
 .IR "medium high" .
