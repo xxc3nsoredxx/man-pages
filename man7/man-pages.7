@@ -519,8 +519,8 @@ This provides a nicer rendering in PDF output
 (because the SYNOPSIS uses a variable width font where
 spaces render narrower than most characters).
 As an example:
-.PP
-.RS
+.IP
+.in +4n
 .nf
 .BI "int getopt(int " argc ", char * const " argv[] ,
 .BI "           const char *" optstring );
@@ -528,7 +528,7 @@ As an example:
 .BI "           const char *" optstring ,
 .BI "           const struct option *" longopts ", int *" longindex );
 .fi
-.RE
+.in
 .SS RETURN VALUE
 The preferred wording to describe how
 .I errno
@@ -736,9 +736,11 @@ except where English usage (e.g., proper nouns) or programming
 language requirements (e.g., identifier names) dictate otherwise.
 For example:
 .PP
+.in +4n
 .EX
-    .SS Unicode under Linux
+\&.SS Unicode under Linux
 .EE
+.in
 .\"
 .SS Indentation of structure definitions, shell session logs, and so on
 When structure definitions, shell session logs, and so on are included
@@ -758,17 +760,17 @@ For example:
 .PP
 .in +4n
 .EX
-    .PP
-    .in +4n
-    .EX
-    int
-    main(int argc, char *argv[])
-    {
-        return 0;
-    }
-    .EE
-    .in
-    .PP
+\&.PP
+\&.in +4n
+\&.EX
+int
+main(int argc, char *argv[])
+{
+    return 0;
+}
+\&.EE
+\&.in
+\&.PP
 .EE
 .in
 .SS Preferred terms
