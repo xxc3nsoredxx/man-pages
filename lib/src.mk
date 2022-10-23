@@ -12,7 +12,7 @@ include $(srcdir)/lib/cmd.mk
 
 
 MANDIR := $(srcdir)
-MANEXT := \.[0-9]\w*
+MANEXT := \.[0-9]\w*$
 
 
 MANPAGES := $(shell $(FIND) $(MANDIR)/man*/ -type f \
