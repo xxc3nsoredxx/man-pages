@@ -501,13 +501,13 @@ The filesystem object to be marked is determined by the file descriptor
 .I dirfd
 and the pathname specified in
 .IR pathname :
-.IP * 3
+.IP \(bu 3
 If
 .I pathname
 is NULL,
 .I dirfd
 defines the filesystem object to be marked.
-.IP *
+.IP \(bu
 If
 .I pathname
 is NULL, and
@@ -515,13 +515,13 @@ is NULL, and
 takes the special value
 .BR AT_FDCWD ,
 the current working directory is to be marked.
-.IP *
+.IP \(bu
 If
 .I pathname
 is absolute, it defines the filesystem object to be marked, and
 .I dirfd
 is ignored.
-.IP *
+.IP \(bu
 If
 .I pathname
 is relative, and
@@ -532,7 +532,7 @@ then the filesystem object to be marked is determined by interpreting
 .I pathname
 relative the directory referred to by
 .IR dirfd .
-.IP *
+.IP \(bu
 If
 .I pathname
 is relative, and
@@ -815,7 +815,7 @@ events for both the ELF binary and interpreter, respectively:
 .in
 .SH BUGS
 The following bugs were present in Linux kernels before version 3.16:
-.IP * 3
+.IP \(bu 3
 .\" Fixed by commit 0a8dd2db579f7a0ac7033d6b857c3d5dbaa77563
 If
 .I flags
@@ -825,13 +825,13 @@ contains
 and
 .I pathname
 must specify a valid filesystem object, even though this object is not used.
-.IP *
+.IP \(bu
 .\" Fixed by commit d4c7cf6cffb1bc711a833b5e304ba5bcfe76398b
 .BR readdir (2)
 does not generate a
 .B FAN_ACCESS
 event.
-.IP *
+.IP \(bu
 .\" Fixed by commit cc299a98eb13a9853675a9cbb90b30b4011e1406
 If
 .BR fanotify_mark ()

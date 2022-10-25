@@ -159,17 +159,17 @@ These functions are GNU extensions.
 These functions make some assumptions about how a function's return
 address is stored on the stack.
 Note the following:
-.IP * 3
+.IP \(bu 3
 Omission of the frame pointers (as
 implied by any of
 .BR gcc (1)'s
 nonzero optimization levels) may cause these assumptions to be
 violated.
-.IP *
+.IP \(bu
 Inlined functions do not have stack frames.
-.IP *
+.IP \(bu
 Tail-call optimization causes one stack frame to replace another.
-.IP *
+.IP \(bu
 .BR backtrace ()
 and
 .BR backtrace_symbols_fd ()

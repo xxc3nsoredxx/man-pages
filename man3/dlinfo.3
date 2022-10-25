@@ -102,7 +102,7 @@ The
 request described below allows applications to size the buffer suitably.
 The caller must perform the following steps:
 .RS
-.IP 1. 3
+.IP (1) 5
 Use a
 .B RTLD_DI_SERINFOSIZE
 request to populate a
@@ -112,12 +112,12 @@ structure with the size
 of the structure needed for the subsequent
 .B RTLD_DI_SERINFO
 request.
-.IP 2.
+.IP (2)
 Allocate a
 .I Dl_serinfo
 buffer of the correct size
 .RI ( dls_size ).
-.IP 3.
+.IP (3)
 Use a further
 .B RTLD_DI_SERINFOSIZE
 request to populate the
@@ -125,7 +125,7 @@ request to populate the
 and
 .I dls_cnt
 fields of the buffer allocated in the previous step.
-.IP 4.
+.IP (4)
 Use a
 .B RTLD_DI_SERINFO
 to obtain the library search paths.

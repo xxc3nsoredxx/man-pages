@@ -196,7 +196,7 @@ xtensa	syscall	a2	a2	-	-
 .TE
 .PP
 Notes:
-.IP [1] 4
+.IP \(bu 3
 On a few architectures,
 a register is used as a boolean
 (0 indicating no error, and \-1 indicating an error) to signal that the
@@ -212,20 +212,20 @@ On powerpc64, the summary overflow bit
 in field 0 of the condition register
 .RI ( cr0 )
 is used.
-.IP [2]
+.IP \(bu
 .I NR
 is the system call number.
-.IP [3]
+.IP \(bu
 For s390 and s390x,
 .I NR
 (the system call number) may be passed directly with
 .I "svc\ NR"
 if it is less than 256.
-.IP [4]
+.IP \(bu
 On SuperH additional trap numbers are supported for historic reasons, but
 .BR trapa #31
 is the recommended "unified" ABI.
-.IP [5]
+.IP \(bu
 The x32 ABI shares syscall table with x86-64 ABI, but there are some
 nuances:
 .RS
@@ -265,7 +265,7 @@ but passes an 8-byte
 .I pos
 argument in a single register and not two, as is done in every other ABI.
 .RE
-.IP [6]
+.IP \(bu
 Some architectures
 (namely, Alpha, IA-64, MIPS, SuperH, sparc/32, and sparc/64)
 use an additional register ("Retval2" in the above table)
@@ -322,7 +322,7 @@ xtensa	a6	a3	a4	a5	a8	a9	-
 .TE
 .PP
 Notes:
-.IP [1] 4
+.IP \(bu 3
 The mips/o32 system call convention passes
 arguments 5 through 8 on the user stack.
 .if t \{\

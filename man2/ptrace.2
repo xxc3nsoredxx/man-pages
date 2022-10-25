@@ -2189,7 +2189,7 @@ at completion of the call, it appears as though the
 occurred in the thread group leader, regardless of which thread did the
 .BR execve (2).)
 This resetting of the thread ID looks very confusing to tracers:
-.IP * 3
+.IP \(bu 3
 All other threads stop in
 .B PTRACE_EVENT_EXIT
 stop, if the
@@ -2199,7 +2199,7 @@ Then all other threads except the thread group leader report
 death as if they exited via
 .BR _exit (2)
 with exit code 0.
-.IP *
+.IP \(bu
 The execing tracee changes its thread ID while it is in the
 .BR execve (2).
 (Remember, under ptrace, the "pid" returned from
@@ -2207,13 +2207,13 @@ The execing tracee changes its thread ID while it is in the
 or fed into ptrace calls, is the tracee's thread ID.)
 That is, the tracee's thread ID is reset to be the same as its process ID,
 which is the same as the thread group leader's thread ID.
-.IP *
+.IP \(bu
 Then a
 .B PTRACE_EVENT_EXEC
 stop happens, if the
 .B PTRACE_O_TRACEEXEC
 option was turned on.
-.IP *
+.IP \(bu
 If the thread group leader has reported its
 .B PTRACE_EVENT_EXIT
 stop by this time,
@@ -2353,7 +2353,7 @@ Many of these bugs have been fixed, but as of Linux 2.6.38 several still
 exist; see BUGS below.
 .PP
 As of Linux 2.6.38, the following is believed to work correctly:
-.IP * 3
+.IP \(bu 3
 exit/death by signal is reported first to the tracer, then,
 when the tracer consumes the
 .BR waitpid (2)
@@ -2600,10 +2600,10 @@ on the target process.
 files, the "calling process" is the one opening the file,
 and the process with the corresponding PID is the "target process".)
 The algorithm is as follows:
-.IP 1. 3
+.IP (1) 5
 If the calling thread and the target thread are in the same
 thread group, access is always allowed.
-.IP 2.
+.IP (2)
 If the access mode specifies
 .BR PTRACE_MODE_FSCREDS ,
 then, for the check in the next step,
@@ -2620,12 +2620,12 @@ so use the caller's real UID and GID for the checks in the next step.
 For historical reasons, the
 .B PTRACE_MODE_REALCREDS
 check uses the real IDs instead.)
-.IP 3.
+.IP (3)
 Deny access if
 .I neither
 of the following is true:
 .RS
-.IP \(bu 2
+.IP \(bu 3
 The real, effective, and saved-set user IDs of the target
 match the caller's user ID,
 .I and
@@ -2636,7 +2636,7 @@ The caller has the
 .B CAP_SYS_PTRACE
 capability in the user namespace of the target.
 .RE
-.IP 4.
+.IP (4)
 Deny access if the target process "dumpable" attribute has a value other than 1
 .RB ( SUID_DUMP_USER ;
 see the discussion of
@@ -2646,7 +2646,7 @@ in
 and the caller does not have the
 .B CAP_SYS_PTRACE
 capability in the user namespace of the target process.
-.IP 5.
+.IP (5)
 The kernel LSM
 .IR security_ptrace_access_check ()
 interface is invoked to see if ptrace access is permitted.
@@ -2655,7 +2655,7 @@ The implementation of this interface in the commoncap LSM performs
 the following steps:
 .\" (in cap_ptrace_access_check()):
 .RS
-.IP a) 3
+.IP (5.1) 7
 If the access mode includes
 .BR PTRACE_MODE_FSCREDS ,
 then use the caller's
@@ -2667,12 +2667,12 @@ otherwise (the access mode specifies
 so) use the caller's
 .I permitted
 capability set.
-.IP b)
+.IP (5.2)
 Deny access if
 .I neither
 of the following is true:
 .RS
-.IP \(bu 2
+.IP \(bu 3
 The caller and the target process are in the same user namespace,
 and the caller's capabilities are a superset of the target process's
 .I permitted
@@ -2688,7 +2688,7 @@ Note that the commoncap LSM does not distinguish between
 and
 .BR PTRACE_MODE_ATTACH .
 .RE
-.IP 6.
+.IP (6)
 If access has not been denied by any of the preceding steps,
 then access is allowed.
 .\"
@@ -2715,14 +2715,14 @@ to gain additional credentials that may exist in memory
 and thus expand the scope of the attack.
 .PP
 More precisely, the Yama LSM limits two types of operations:
-.IP * 3
+.IP \(bu 3
 Any operation that performs a ptrace access mode
 .B PTRACE_MODE_ATTACH
 check\(emfor example,
 .BR ptrace ()
 .BR PTRACE_ATTACH .
 (See the "Ptrace access mode checking" discussion above.)
-.IP *
+.IP \(bu
 .BR ptrace ()
 .BR PTRACE_TRACEME .
 .PP

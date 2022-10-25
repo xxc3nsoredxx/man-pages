@@ -112,15 +112,15 @@ is NULL, or both
 fields specify
 .BR UTIME_NOW ),
 either:
-.IP 1. 3
+.IP \(bu 3
 the caller must have write access to the file;
 .\" 2.6.22 was broken here -- for futimens() the check is
 .\" based on whether or not the file descriptor is writable,
 .\" not on whether the caller's effective UID has write
 .\" permission for the file referred to by the descriptor.
-.IP 2.
+.IP \(bu
 the caller's effective user ID must match the owner of the file; or
-.IP 3.
+.IP \(bu
 the caller must have appropriate privileges.
 .PP
 To make any change other than setting both timestamps to the
@@ -339,13 +339,13 @@ field is
 .BR UTIME_OMIT )
 and either:
 .RS
-.IP * 3
+.IP \(bu 3
 the caller's effective user ID does not match the owner of file,
 and the caller is not privileged
 (Linux: does not have the
 .B CAP_FOWNER
 capability); or,
-.IP *
+.IP \(bu
 .\" Linux 2.6.22 was broken here:
 .\" it was not consistent with the old utimes() implementation,
 .\" since the case when both tv_nsec fields are UTIME_NOW, was not
@@ -462,7 +462,7 @@ and
 on kernels before 2.6.26.
 These bugs are either nonconformances with the POSIX.1 draft specification
 or inconsistencies with historical Linux behavior.
-.IP * 3
+.IP \(bu 3
 POSIX.1 specifies that if one of the
 .I tv_nsec
 fields has the value
@@ -477,7 +477,7 @@ Instead, the value of the
 field is required to be 0 (or the error
 .B EINVAL
 results).
-.IP *
+.IP \(bu
 Various bugs mean that for the purposes of permission checking,
 the case where both
 .I tv_nsec
@@ -579,7 +579,7 @@ value is returned in case of an error.
 .\" .BR UTIME_NOW .
 .\" Instead, the call fails with the error
 .\" .BR EPERM .
-.IP *
+.IP \(bu
 POSIX.1 says that a process that has \fIwrite access to the file\fP
 can make a call with
 .I times

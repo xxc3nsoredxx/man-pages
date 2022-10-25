@@ -96,20 +96,20 @@ first appeared in 4.2BSD).
 .SH NOTES
 To accept connections, the following steps are performed:
 .RS 4
-.IP 1. 4
+.IP (1) 5
 A socket is created with
 .BR socket (2).
-.IP 2.
+.IP (2)
 The socket is bound to a local address using
 .BR bind (2),
 so that other sockets may be
 .BR connect (2)ed
 to it.
-.IP 3.
+.IP (3)
 A willingness to accept incoming connections and a queue limit for incoming
 connections are specified with
 .BR listen ().
-.IP 4.
+.IP (4)
 Connections are accepted with
 .BR accept (2).
 .RE

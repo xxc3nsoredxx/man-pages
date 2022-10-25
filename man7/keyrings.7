@@ -314,7 +314,7 @@ has been defined for this keyring.
 The concept of possession is important to understanding the keyrings
 security model.
 Whether a thread possesses a key is determined by the following rules:
-.IP (1) 4
+.IP (1) 5
 Any key or keyring that does not grant
 .I search
 permission to the caller is ignored in all the following rules.
@@ -353,13 +353,13 @@ thus making the user keyring and anything it contains possessed by default.
 .\"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 .SS Access rights
 Each key has the following security-related attributes:
-.IP * 3
+.IP \(bu 3
 The owning user ID
-.IP *
+.IP \(bu
 The ID of a group that is permitted to access the key
-.IP *
+.IP \(bu
 A security label
-.IP *
+.IP \(bu
 A permissions mask
 .PP
 The permissions mask contains four sets of rights.
@@ -449,7 +449,7 @@ access for user-space applications to find a key.
 for use by internal components that make use of keys.)
 .PP
 The search algorithm works as follows:
-.IP (1) 4
+.IP (1) 5
 The process keyrings are searched in the following order: the thread
 .BR thread\-keyring (7)
 if it exists, the

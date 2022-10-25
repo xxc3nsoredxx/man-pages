@@ -89,7 +89,7 @@ is the IP protocol in the IP header to be received or sent.
 Valid values for
 .I protocol
 include:
-.IP \(bu 2
+.IP \(bu 3
 0 and
 .B IPPROTO_TCP
 for
@@ -1147,16 +1147,16 @@ is, the range used for
 .IR "ephemeral ports" .
 An ephemeral port is allocated to a socket in the following circumstances:
 .RS
-.IP * 3
+.IP \(bu 3
 the port number in a socket address is specified as 0 when calling
 .BR bind (2);
-.IP *
+.IP \(bu
 .BR listen (2)
 is called on a stream socket that was not previously bound;
-.IP *
+.IP \(bu
 .BR connect (2)
 was called on a socket that was not previously bound;
-.IP *
+.IP \(bu
 .BR sendto (2)
 is called on a datagram socket that was not previously bound.
 .RE

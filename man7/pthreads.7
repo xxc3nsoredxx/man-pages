@@ -15,44 +15,44 @@ but each thread has its own stack (automatic variables).
 .PP
 POSIX.1 also requires that threads share a range of other attributes
 (i.e., these attributes are process-wide rather than per-thread):
-.IP \- 3
+.IP \(bu 3
 process ID
-.IP \- 3
+.IP \(bu
 parent process ID
-.IP \- 3
+.IP \(bu
 process group ID and session ID
-.IP \- 3
+.IP \(bu
 controlling terminal
-.IP \- 3
+.IP \(bu
 user and group IDs
-.IP \- 3
+.IP \(bu
 open file descriptors
-.IP \- 3
+.IP \(bu
 record locks (see
 .BR fcntl (2))
-.IP \- 3
+.IP \(bu
 signal dispositions
-.IP \- 3
+.IP \(bu
 file mode creation mask
 .RB ( umask (2))
-.IP \- 3
+.IP \(bu
 current directory
 .RB ( chdir (2))
 and
 root directory
 .RB ( chroot (2))
-.IP \- 3
+.IP \(bu
 interval timers
 .RB ( setitimer (2))
 and POSIX timers
 .RB ( timer_create (2))
-.IP \- 3
+.IP \(bu
 nice value
 .RB ( setpriority (2))
-.IP \- 3
+.IP \(bu
 resource limits
 .RB ( setrlimit (2))
-.IP \- 3
+.IP \(bu
 measurements of the consumption of CPU time
 .RB ( times (2))
 and resources
@@ -60,29 +60,29 @@ and resources
 .PP
 As well as the stack, POSIX.1 specifies that various other
 attributes are distinct for each thread, including:
-.IP \- 3
+.IP \(bu 3
 thread ID (the
 .I pthread_t
 data type)
-.IP \- 3
+.IP \(bu
 signal mask
 .RB ( pthread_sigmask (3))
-.IP \- 3
+.IP \(bu
 the
 .I errno
 variable
-.IP \- 3
+.IP \(bu
 alternate signal stack
 .RB ( sigaltstack (2))
-.IP \- 3
+.IP \(bu
 real-time scheduling policy and priority
 .RB ( sched (7))
 .PP
 The following Linux-specific features are also per-thread:
-.IP \- 3
+.IP \(bu 3
 capabilities (see
 .BR capabilities (7))
-.IP \- 3
+.IP \(bu
 CPU affinity
 .RB ( sched_setaffinity (2))
 .SS Pthreads function return values
@@ -681,14 +681,14 @@ thread joining, and so on) are implemented using the Linux
 system call.
 .SS LinuxThreads
 The notable features of this implementation are the following:
-.IP \- 3
+.IP \(bu 3
 In addition to the main (initial) thread,
 and the threads that the program creates using
 .BR pthread_create (3),
 the implementation creates a "manager" thread.
 This thread handles thread creation and termination.
 (Problems can result if this thread is inadvertently killed.)
-.IP \- 3
+.IP \(bu
 Signals are used internally by the implementation.
 On Linux 2.2 and later, the first three real-time signals are used
 (see also
@@ -700,7 +700,7 @@ and
 are used.
 Applications must avoid the use of whichever set of signals is
 employed by the implementation.
-.IP \- 3
+.IP \(bu
 Threads do not share process IDs.
 (In effect, LinuxThreads threads are implemented as processes which share
 more information than usual, but which do not share a common process ID.)
@@ -710,11 +710,11 @@ are visible as separate processes using
 .PP
 The LinuxThreads implementation deviates from the POSIX.1
 specification in a number of ways, including the following:
-.IP \- 3
+.IP \(bu 3
 Calls to
 .BR getpid (2)
 return a different value in each thread.
-.IP \- 3
+.IP \(bu
 Calls to
 .BR getppid (2)
 in threads other than the main thread return the process ID of the
@@ -723,7 +723,7 @@ manager thread; instead
 in these threads should return the same value as
 .BR getppid (2)
 in the main thread.
-.IP \- 3
+.IP \(bu
 When one thread creates a new child process using
 .BR fork (2),
 any thread should be able to
@@ -733,39 +733,39 @@ However, the implementation allows only the thread that
 created the child to
 .BR wait (2)
 on it.
-.IP \- 3
+.IP \(bu
 When a thread calls
 .BR execve (2),
 all other threads are terminated (as required by POSIX.1).
 However, the resulting process has the same PID as the thread that called
 .BR execve (2):
 it should have the same PID as the main thread.
-.IP \- 3
+.IP \(bu
 Threads do not share user and group IDs.
 This can cause complications with set-user-ID programs and
 can cause failures in Pthreads functions if an application
 changes its credentials using
 .BR seteuid (2)
 or similar.
-.IP \- 3
+.IP \(bu
 Threads do not share a common session ID and process group ID.
-.IP \- 3
+.IP \(bu
 Threads do not share record locks created using
 .BR fcntl (2).
-.IP \- 3
+.IP \(bu
 The information returned by
 .BR times (2)
 and
 .BR getrusage (2)
 is per-thread rather than process-wide.
-.IP \- 3
+.IP \(bu
 Threads do not share semaphore undo values (see
 .BR semop (2)).
-.IP \- 3
+.IP \(bu
 Threads do not share interval timers.
-.IP \- 3
+.IP \(bu
 Threads do not share a common nice value.
-.IP \- 3
+.IP \(bu
 POSIX.1 distinguishes the notions of signals that are directed
 to the process as a whole and signals that are directed to individual
 threads.
@@ -775,7 +775,7 @@ for example) should be handled by a single,
 arbitrarily selected thread within the process.
 LinuxThreads does not support the notion of process-directed signals:
 signals may be sent only to specific threads.
-.IP \- 3
+.IP \(bu
 Threads have distinct alternate signal stack settings.
 However, a new thread's alternate signal stack settings
 are copied from the thread that created it, so that
@@ -797,7 +797,7 @@ See
 for further details.
 .PP
 NPTL still has at least one nonconformance with POSIX.1:
-.IP \- 3
+.IP \(bu 3
 Threads do not share a common nice value.
 .\" FIXME . bug report filed for NPTL nice nonconformance
 .\" http://bugzilla.kernel.org/show_bug.cgi?id=6258
@@ -806,26 +806,26 @@ Threads do not share a common nice value.
 .\" Monitor this to see if it makes it into mainline.
 .PP
 Some NPTL nonconformances occur only with older kernels:
-.IP \- 3
+.IP \(bu 3
 The information returned by
 .BR times (2)
 and
 .BR getrusage (2)
 is per-thread rather than process-wide (fixed in kernel 2.6.9).
-.IP \- 3
+.IP \(bu
 Threads do not share resource limits (fixed in kernel 2.6.10).
-.IP \- 3
+.IP \(bu
 Threads do not share interval timers (fixed in kernel 2.6.12).
-.IP \- 3
+.IP \(bu
 Only the main thread is permitted to start a new session using
 .BR setsid (2)
 (fixed in kernel 2.6.16).
-.IP \- 3
+.IP \(bu
 Only the main thread is permitted to make the process into a
 process group leader using
 .BR setpgid (2)
 (fixed in kernel 2.6.16).
-.IP \- 3
+.IP \(bu
 Threads have distinct alternate signal stack settings.
 However, a new thread's alternate signal stack settings
 are copied from the thread that created it, so that
@@ -833,7 +833,7 @@ the threads initially share an alternate signal stack
 (fixed in kernel 2.6.16).
 .PP
 Note the following further points about the NPTL implementation:
-.IP \- 3
+.IP \(bu 3
 If the stack size soft resource limit (see the description of
 .B RLIMIT_STACK
 in

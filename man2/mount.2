@@ -73,17 +73,17 @@ The choice of which operation to perform is determined by
 testing the bits set in
 .IR mountflags ,
 with the tests being conducted in the order listed here:
-.IP * 3
+.IP \(bu 3
 Remount an existing mount:
 .I mountflags
 includes
 .BR MS_REMOUNT .
-.IP *
+.IP \(bu
 Create a bind mount:
 .I mountflags
 includes
 .BR MS_BIND .
-.IP *
+.IP \(bu
 Change the propagation type of an existing mount:
 .I mountflags
 includes one of
@@ -92,12 +92,12 @@ includes one of
 .BR MS_SLAVE ,
 or
 .BR MS_UNBINDABLE .
-.IP *
+.IP \(bu
 Move an existing mount to a new location:
 .I mountflags
 includes
 .BR MS_MOVE .
-.IP *
+.IP \(bu
 Create a new mount:
 .I mountflags
 includes none of the above flags.
@@ -134,17 +134,17 @@ Reduce on-disk updates of inode timestamps (atime, mtime, ctime)
 by maintaining these changes only in memory.
 The on-disk timestamps are updated only when:
 .RS
-.IP (a) 4
+.IP \(bu 3
 the inode needs to be updated for some change unrelated to file timestamps;
-.IP (b)
+.IP \(bu
 the application employs
 .BR fsync (2),
 .BR syncfs (2),
 or
 .BR sync (2);
-.IP (c)
+.IP \(bu
 an undeleted inode is evicted from memory; or
-.IP (d)
+.IP \(bu
 more than 24 hours have passed since the inode was written to disk.
 .RE
 .IP
@@ -292,16 +292,16 @@ meaning that all mounts of the same filesystem share those flags.
 (Previously, all of the flags were per-superblock.)
 .PP
 The per-mount-point flags are as follows:
-.IP * 3
+.IP \(bu 3
 Since Linux 2.4:
 .BR MS_NODEV ", " MS_NOEXEC ", and " MS_NOSUID
 flags are settable on a per-mount-point basis.
-.IP *
+.IP \(bu
 Additionally, since Linux 2.6.16:
 .B MS_NOATIME
 and
 .BR MS_NODIRATIME .
-.IP *
+.IP \(bu
 Additionally, since Linux 2.6.20:
 .BR MS_RELATIME .
 .PP

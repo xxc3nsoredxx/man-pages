@@ -39,7 +39,7 @@ to the address space of the calling process.
 The attaching address is specified by
 .I shmaddr
 with one of the following criteria:
-.IP \(bu 2
+.IP \(bu 3
 If
 .I shmaddr
 is NULL,
@@ -107,7 +107,7 @@ call updates the members of the
 structure (see
 .BR shmctl (2))
 associated with the shared memory segment as follows:
-.IP \(bu 2
+.IP \(bu 3
 .I shm_atime
 is set to the current time.
 .IP \(bu
@@ -134,7 +134,7 @@ On a successful
 call, the system updates the members of the
 .I shmid_ds
 structure associated with the shared memory segment as follows:
-.IP \(bu 2
+.IP \(bu 3
 .I shm_dtime
 is set to the current time.
 .IP \(bu

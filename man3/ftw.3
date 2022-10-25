@@ -306,7 +306,7 @@ is never called for a directory that would be a descendant of itself.
 is an older function that offers a subset of the functionality of
 .BR nftw ().
 The notable differences are as follows:
-.IP * 3
+.IP \(bu 3
 .BR ftw ()
 has no
 .I flags
@@ -316,11 +316,11 @@ It behaves the same as when
 is called with
 .I flags
 specified as zero.
-.IP *
+.IP \(bu
 The callback function,
 .IR fn (),
 is not supplied with a fourth argument.
-.IP *
+.IP \(bu
 The range of values that is passed via the
 .I typeflag
 argument supplied to

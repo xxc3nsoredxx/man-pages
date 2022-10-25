@@ -38,15 +38,15 @@ as described below.
 This system call requires privilege.
 .PP
 Module removal is attempted according to the following rules:
-.IP 1. 4
+.IP (1) 5
 If there are other loaded modules that depend on
 (i.e., refer to symbols defined in) this module,
 then the call fails.
-.IP 2.
+.IP (2)
 Otherwise, if the reference count for the module
 (i.e., the number of processes currently using the module)
 is zero, then the module is immediately unloaded.
-.IP 3.
+.IP (3)
 If a module has a nonzero reference count,
 then the behavior depends on the bits set in
 .IR flags .
@@ -61,7 +61,7 @@ flag may additionally be specified.
 The various combinations for
 .I flags
 have the following effect:
-.RS 4
+.RS
 .TP
 .B flags == O_NONBLOCK
 The call returns immediately, with an error.
@@ -77,14 +77,14 @@ does not specify
 .BR O_NONBLOCK ,
 the following steps occur:
 .RS
-.IP * 3
+.IP \(bu 3
 The module is marked so that no new references are permitted.
-.IP *
+.IP \(bu
 If the module's reference count is nonzero,
 the caller is placed in an uninterruptible sleep state
 .RB ( TASK_UNINTERRUPTIBLE )
 until the reference count is zero, at which point the call unblocks.
-.IP *
+.IP \(bu
 The module is unloaded in the usual way.
 .RE
 .RE

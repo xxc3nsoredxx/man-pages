@@ -26,10 +26,10 @@ which might interfere with the operation of the NPTL implementation,
 various glibc library functions and system call wrapper functions
 attempt to hide these signals from applications,
 as follows:
-.IP * 3
+.IP \(bu 3
 .B SIGRTMIN
 is defined with the value 34 (rather than 32).
-.IP *
+.IP \(bu
 The
 .BR sigwaitinfo (2),
 .BR sigtimedwait (2),
@@ -37,13 +37,13 @@ and
 .BR sigwait (3)
 interfaces silently ignore requests to wait for these two signals
 if they are specified in the signal set argument of these calls.
-.IP *
+.IP \(bu
 The
 .BR sigprocmask (2)
 and
 .BR pthread_sigmask (3)
 interfaces silently ignore attempts to block these two signals.
-.IP *
+.IP \(bu
 The
 .BR sigaction (2),
 .BR pthread_kill (3),
@@ -52,7 +52,7 @@ and
 interfaces fail with the error
 .B EINVAL
 (indicating an invalid signal number) if these signals are specified.
-.IP *
+.IP \(bu
 .BR sigfillset (3)
 does not include these two signals when it creates a full signal set.
 .\"

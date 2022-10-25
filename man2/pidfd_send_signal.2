@@ -53,20 +53,20 @@ implicitly supplied when a signal is sent using
 .BR kill (2):
 .PP
 .PD 0
-.IP * 3
+.IP \(bu 3
 .I si_signo
 is set to the signal number;
-.IP *
+.IP \(bu
 .I si_errno
 is set to 0;
-.IP *
+.IP \(bu
 .I si_code
 is set to
 .BR SI_USER ;
-.IP *
+.IP \(bu
 .I si_pid
 is set to the caller's PID; and
-.IP *
+.IP \(bu
 .I si_uid
 is set to the caller's real user ID.
 .PD
@@ -132,15 +132,15 @@ The
 argument is a PID file descriptor,
 a file descriptor that refers to  process.
 Such a file descriptor can be obtained in any of the following ways:
-.IP * 3
+.IP \(bu 3
 by opening a
 .IR /proc/ pid
 directory;
-.IP *
+.IP \(bu
 using
 .BR pidfd_open (2);
 or
-.IP *
+.IP \(bu
 via the PID file descriptor that is returned by a call to
 .BR clone (2)
 or

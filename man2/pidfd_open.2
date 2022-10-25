@@ -107,7 +107,7 @@ call, its PID will not have been recycled and the returned
 file descriptor will refer to the resulting zombie process.
 Note, however, that this is guaranteed only if the following
 conditions hold true:
-.IP \(bu 2
+.IP \(bu 3
 the disposition of
 .B SIGCHLD
 has not been explicitly set to
@@ -146,7 +146,7 @@ A PID file descriptor returned by
 with the
 .B CLONE_PID
 flag) can be used for the following purposes:
-.IP \(bu 2
+.IP \(bu 3
 The
 .BR pidfd_send_signal (2)
 system call can be used to send a signal to the process referred to by

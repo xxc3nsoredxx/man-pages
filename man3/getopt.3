@@ -174,14 +174,14 @@ can detect two kinds of errors:
 and (2) a missing option argument
 (i.e., an option at the end of the command line without an expected argument).
 Such errors are handled and reported as follows:
-.IP * 3
+.IP \(bu 3
 By default,
 .BR getopt ()
 prints an error message on standard error,
 places the erroneous option character in
 .IR optopt ,
 and returns \(aq?\(aq as the function result.
-.IP *
+.IP \(bu
 If the caller has set the global variable
 .I opterr
 to zero, then
@@ -192,7 +192,7 @@ the function return value is \(aq?\(aq.
 (By default,
 .I opterr
 has a nonzero value.)
-.IP *
+.IP \(bu
 If the first character
 (following any optional \(aq+\(aq or \(aq\-\(aq described above)
 of \fIoptstring\fP

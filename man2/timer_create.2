@@ -281,7 +281,7 @@ option.
 Part of the implementation of the POSIX timers API is provided by glibc.
 .\" See nptl/sysdeps/unix/sysv/linux/timer_create.c
 In particular:
-.IP * 3
+.IP \(bu 3
 Much of the functionality for
 .B SIGEV_THREAD
 is implemented within glibc, rather than the kernel.
@@ -295,14 +295,14 @@ value of
 .B SIGEV_THREAD_ID
 along with a real-time signal that is reserved by the implementation (see
 .BR nptl (7)).
-.IP *
+.IP \(bu
 The implementation of the default case where
 .I evp
 is NULL is handled inside glibc,
 which invokes the underlying system call with a suitably populated
 .I sigevent
 structure.
-.IP *
+.IP \(bu
 The timer IDs presented at user level are maintained by glibc,
 which maps these IDs to the timer IDs employed by the kernel.
 .\" See the glibc source file kernel-posix-timers.h for the structure

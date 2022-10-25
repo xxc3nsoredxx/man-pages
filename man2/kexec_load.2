@@ -128,7 +128,7 @@ If these checks pass, the kernel copies the segment data to kernel memory.
 Each segment specified in
 .I segments
 is copied as follows:
-.IP * 3
+.IP \(bu 3
 .I buf
 and
 .I bufsz
@@ -139,14 +139,14 @@ The value in
 may not exceed the value in the
 .I memsz
 field.
-.IP *
+.IP \(bu
 .I mem
 and
 .I memsz
 specify a physical address range that is the target of the copy.
 The values specified in both fields must be multiples of
 the system page size.
-.IP *
+.IP \(bu
 .I bufsz
 bytes are copied from the source buffer to the target kernel buffer.
 If

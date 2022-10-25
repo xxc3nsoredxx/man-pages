@@ -203,7 +203,7 @@ structure (shown below) that specifies the interval that
 should block waiting for a file descriptor to become ready.
 The call will block until either:
 .RS
-.IP \(bu 2
+.IP \(bu 3
 a file descriptor becomes ready;
 .IP \(bu
 the call is interrupted by a signal handler; or
@@ -241,7 +241,7 @@ The operation of
 and
 .BR pselect ()
 is identical, other than these three differences:
-.IP \(bu 2
+.IP \(bu 3
 .BR select ()
 uses a timeout that is a
 .I struct timeval

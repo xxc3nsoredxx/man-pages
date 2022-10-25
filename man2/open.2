@@ -502,11 +502,11 @@ when the file is
 .IP
 This flag can be employed only if one of the following conditions is true:
 .RS
-.IP * 3
+.IP \(bu 3
 The effective UID of the process
 .\" Strictly speaking: the filesystem UID
 matches the owner UID of the file.
-.IP *
+.IP \(bu
 The calling process has the
 .B CAP_FOWNER
 capability in its user namespace and
@@ -617,40 +617,40 @@ The following operations
 .I can
 be performed on the resulting file descriptor:
 .RS
-.IP * 3
+.IP \(bu 3
 .BR close (2).
-.IP *
+.IP \(bu
 .BR fchdir (2),
 if the file descriptor refers to a directory
 (since Linux 3.5).
 .\" commit 332a2e1244bd08b9e3ecd378028513396a004a24
-.IP *
+.IP \(bu
 .BR fstat (2)
 (since Linux 3.6).
-.IP *
+.IP \(bu
 .\" fstat(): commit 55815f70147dcfa3ead5738fd56d3574e2e3c1c2
 .BR fstatfs (2)
 (since Linux 3.12).
 .\" fstatfs(): commit 9d05746e7b16d8565dddbe3200faa1e669d23bbf
-.IP *
+.IP \(bu
 Duplicating the file descriptor
 .RB ( dup (2),
 .BR fcntl (2)
 .BR F_DUPFD ,
 etc.).
-.IP *
+.IP \(bu
 Getting and setting file descriptor flags
 .RB ( fcntl (2)
 .B F_GETFD
 and
 .BR F_SETFD ).
-.IP *
+.IP \(bu
 Retrieving open file status flags using the
 .BR fcntl (2)
 .B F_GETFL
 operation: the returned flags will include the bit
 .BR O_PATH .
-.IP *
+.IP \(bu
 Passing the file descriptor as the
 .I dirfd
 argument of
@@ -663,7 +663,7 @@ with
 (or via procfs using
 .BR AT_SYMLINK_FOLLOW )
 even if the file is not a directory.
-.IP *
+.IP \(bu
 Passing the file descriptor to another process via a UNIX domain socket
 (see
 .B SCM_RIGHTS
@@ -843,7 +843,7 @@ There are two main use cases for
 .\" Inspired by http://lwn.net/Articles/559147/
 .BR O_TMPFILE :
 .RS
-.IP * 3
+.IP \(bu 3
 Improved
 .BR tmpfile (3)
 functionality: race-free creation of temporary files that
@@ -851,7 +851,7 @@ functionality: race-free creation of temporary files that
 (2) can never be reached via any pathname;
 (3) are not subject to symlink attacks; and
 (4) do not require the caller to devise unique names.
-.IP *
+.IP \(bu
 Creating a file that is initially invisible, which is then populated
 with data and adjusted to have appropriate filesystem attributes
 .RB ( fchown (2),
@@ -914,13 +914,13 @@ The
 argument is used in conjunction with the
 .I pathname
 argument as follows:
-.IP * 3
+.IP \(bu 3
 If the pathname given in
 .I pathname
 is absolute, then
 .I dirfd
 is ignored.
-.IP *
+.IP \(bu
 If the pathname given in
 .I pathname
 is relative and
@@ -932,7 +932,7 @@ then
 is interpreted relative to the current working
 directory of the calling process (like
 .BR open ()).
-.IP *
+.IP \(bu
 If the pathname given in
 .I pathname
 is relative, then it is interpreted relative to the directory
@@ -1678,10 +1678,10 @@ and
 The use of the
 .I dirfd
 file descriptor also has other benefits:
-.IP * 3
+.IP \(bu 3
 the file descriptor is a stable reference to the directory,
 even if the directory is renamed; and
-.IP *
+.IP \(bu
 the open file descriptor prevents the underlying filesystem from
 being dismounted,
 just as when a process has a current working directory on a filesystem.

@@ -57,17 +57,17 @@ and the shared object is loaded using that pathname.
 .PP
 If a shared object dependency does not contain a slash,
 then it is searched for in the following order:
-.IP o 3
+.IP (1) 5
 Using the directories specified in the
 DT_RPATH dynamic section attribute
 of the binary if present and DT_RUNPATH attribute does not exist.
 Use of DT_RPATH is deprecated.
-.IP o
+.IP (2)
 Using the environment variable
 .BR LD_LIBRARY_PATH ,
 unless the executable is being run in secure-execution mode (see below),
 in which case this variable is ignored.
-.IP o
+.IP (3)
 Using the directories specified in the
 DT_RUNPATH dynamic section attribute
 of the binary if present.
@@ -77,7 +77,7 @@ and do not apply to those objects' children,
 which must themselves have their own DT_RUNPATH entries.
 This is unlike DT_RPATH, which is applied
 to searches for all children in the dependency tree.
-.IP o
+.IP (4)
 From the cache file
 .IR /etc/ld.so.cache ,
 which contains a compiled list of candidate shared objects previously found
@@ -87,7 +87,7 @@ If, however, the binary was linked with the
 linker option, shared objects in the default paths are skipped.
 Shared objects installed in hardware capability directories (see below)
 are preferred to other shared objects.
-.IP o
+.IP (5)
 In the default path
 .IR /lib ,
 and then
@@ -102,13 +102,13 @@ linker option, this step is skipped.
 .\"
 .SS Dynamic string tokens
 In several places, the dynamic linker expands dynamic string tokens:
-.IP o 3
+.IP \(bu 3
 In the environment variables
 .BR LD_LIBRARY_PATH ,
 .BR LD_PRELOAD ,
 and
 .BR LD_AUDIT ,
-.IP o 3
+.IP \(bu
 inside the values of the dynamic section tags
 .BR DT_NEEDED ,
 .BR DT_RPATH ,
@@ -117,7 +117,7 @@ inside the values of the dynamic section tags
 and
 .B DT_DEPAUDIT
 of ELF binaries,
-.IP o 3
+.IP \(bu
 in the arguments to the
 .B ld.so
 command line options
@@ -126,7 +126,7 @@ command line options
 and
 .B \-\-preload
 (see below), and
-.IP o 3
+.IP \(bu
 in the filename arguments to the
 .BR dlopen (3)
 and
@@ -296,15 +296,15 @@ entry in the auxiliary vector (see
 .BR getauxval (3))
 has a nonzero value.
 This entry may have a nonzero value for various reasons, including:
-.IP * 3
+.IP \(bu 3
 The process's real and effective user IDs differ,
 or the real and effective group IDs differ.
 This typically occurs as a result of executing
 a set-user-ID or set-group-ID program.
-.IP *
+.IP \(bu
 A process with a non-root user ID executed a binary that
 conferred capabilities to the process.
-.IP *
+.IP \(bu
 A nonzero value may have been set by a Linux Security Module.
 .\"
 .SS Environment variables
@@ -438,7 +438,7 @@ as described above in
 There are various methods of specifying libraries to be preloaded,
 and these are handled in the following order:
 .RS
-.IP (1) 4
+.IP (1) 5
 The
 .B LD_PRELOAD
 environment variable.

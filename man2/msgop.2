@@ -95,7 +95,7 @@ bytes, but this limit can be modified using
 .BR msgctl (2).
 A message queue is considered to be full if either of the following
 conditions is true:
-.IP \(bu 2
+.IP \(bu 3
 Adding a new message to the queue would cause the total number of bytes
 in the queue to exceed the queue's maximum size (the
 .I msg_qbytes
@@ -124,7 +124,7 @@ then the call instead fails with the error
 A blocked
 .BR msgsnd ()
 call may also fail if:
-.IP \(bu 2
+.IP \(bu 3
 the queue is removed,
 in which case the system call fails with
 .I errno
@@ -146,7 +146,7 @@ flag when establishing a signal handler.)
 .PP
 Upon successful completion the message queue data structure is updated
 as follows:
-.IP \(bu 2
+.IP \(bu 3
 .I msg_lspid
 is set to the process ID of the calling process.
 .IP \(bu
@@ -198,7 +198,7 @@ is specified in
 the
 .I msgtyp
 argument specifies the type of message requested, as follows:
-.IP \(bu 2
+.IP \(bu 3
 If
 .I msgtyp
 is 0,
@@ -285,7 +285,7 @@ If no message of the requested type is available and
 isn't specified in
 .IR msgflg ,
 the calling process is blocked until one of the following conditions occurs:
-.IP \(bu 2
+.IP \(bu 3
 A message of the desired type is placed in the queue.
 .IP \(bu
 The message queue is removed from the system.

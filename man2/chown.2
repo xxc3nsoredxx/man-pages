@@ -65,16 +65,16 @@ The
 and
 .BR lchown ()
 system calls differ only in how the file is specified:
-.IP * 2
+.IP \(bu 3
 .BR chown ()
 changes the ownership of the file specified by
 .IR pathname ,
 which is dereferenced if it is a symbolic link.
-.IP *
+.IP \(bu
 .BR fchown ()
 changes the ownership of the file referred to by the open file descriptor
 .IR fd .
-.IP *
+.IP \(bu
 .BR lchown ()
 is like
 .BR chown (),
@@ -321,18 +321,18 @@ and
 .BR "\-o\ sysvgroups" )
 .BR mount (8)
 options, then the rules are as follows:
-.IP * 2
+.IP \(bu 3
 If the filesystem is mounted with
 .BR "\-o\ grpid" ,
 then the group of a new file is made
 the same as that of the parent directory.
-.IP *
+.IP \(bu
 If the filesystem is mounted with
 .B \-o\ nogrpid
 and the set-group-ID bit is disabled on the parent directory,
 then the group of a new file is made the same as the
 process's filesystem GID.
-.IP *
+.IP \(bu
 If the filesystem is mounted with
 .B \-o\ nogrpid
 and the set-group-ID bit is enabled on the parent directory,

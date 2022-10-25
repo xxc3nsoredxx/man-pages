@@ -30,13 +30,13 @@ CIRCLEQ
 doubly linked circular queues
 .PP
 All structures support the following functionality:
-.IP * 3
+.IP \(bu 3
 Insertion of a new entry at the head of the list.
-.IP *
+.IP \(bu
 Insertion of a new entry after any element in the list.
-.IP *
+.IP \(bu
 O(1) removal of an entry from the head of the list.
-.IP *
+.IP \(bu
 Forward traversal through the list.
 .\".IP *
 .\" Swapping the contents of two lists.
@@ -51,21 +51,21 @@ Singly linked lists are ideal for applications with
 large datasets and few or no removals,
 or for implementing a LIFO queue.
 Singly linked lists add the following functionality:
-.IP * 3
+.IP \(bu 3
 O(n) removal of any entry in the list.
 .SS Singly linked tail queues (STAILQ)
 Singly linked tail queues add the following functionality:
-.IP * 3
+.IP \(bu 3
 Entries can be added at the end of a list.
-.IP *
+.IP \(bu
 O(n) removal of any entry in the list.
-.IP *
+.IP \(bu
 They may be concatenated.
 .PP
 However:
-.IP * 3
+.IP \(bu 3
 All list insertions must specify the head of the list.
-.IP *
+.IP \(bu
 Each head entry requires two pointers rather than one.
 .PP
 Singly linked tail queues are ideal for applications with
@@ -74,45 +74,45 @@ or for implementing a FIFO queue.
 .SS Doubly linked data structures
 All doubly linked types of data structures (lists and tail queues)
 additionally allow:
-.IP * 3
+.IP \(bu 3
 Insertion of a new entry before any element in the list.
-.IP *
+.IP \(bu
 O(1) removal of any entry in the list.
 .PP
 However:
-.IP * 3
+.IP \(bu 3
 Each element requires two pointers rather than one.
 .SS Doubly linked lists (LIST)
 Linked lists are the simplest of the doubly linked data structures.
 They add the following functionality over the above:
-.IP * 3
+.IP \(bu 3
 They may be traversed backwards.
 .PP
 However:
-.IP * 3
+.IP \(bu 3
 To traverse backwards, an entry to begin the traversal and the list in
 which it is contained must be specified.
 .SS Doubly linked tail queues (TAILQ)
 Tail queues add the following functionality:
-.IP * 3
+.IP \(bu 3
 Entries can be added at the end of a list.
-.IP *
+.IP \(bu
 They may be traversed backwards, from tail to head.
-.IP *
+.IP \(bu
 They may be concatenated.
 .PP
 However:
-.IP * 3
+.IP \(bu 3
 All list insertions and removals must specify the head of the list.
-.IP *
+.IP \(bu
 Each head entry requires two pointers rather than one.
 .SS Doubly linked circular queues (CIRCLEQ)
 Circular queues add the following functionality over the above:
-.IP * 3
+.IP \(bu 3
 The first and last entries are connected.
 .PP
 However:
-.IP * 3
+.IP \(bu 3
 The termination condition for traversal is more complex.
 .SH STANDARDS
 Not in POSIX.1, POSIX.1-2001, or POSIX.1-2008.

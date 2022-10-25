@@ -113,13 +113,13 @@ Some further details of the purpose of this field can be found in
 specifies the action to be associated with
 .I signum
 and can be one of the following:
-.IP * 2
+.IP \(bu 3
 .B SIG_DFL
 for the default action.
-.IP *
+.IP \(bu
 .B SIG_IGN
 to ignore this signal.
-.IP *
+.IP \(bu
 A pointer to a signal handling function.
 This function receives the signal number as its only argument.
 .PP
@@ -386,7 +386,7 @@ are defined for all signals.
 is generally unused on Linux.)
 The rest of the struct may be a union, so that one should
 read only the fields that are meaningful for the given signal:
-.IP * 2
+.IP \(bu 3
 Signals sent with
 .BR kill (2)
 and
@@ -401,7 +401,7 @@ with the values specified by the sender of the signal;
 see
 .BR sigqueue (3)
 for more details.
-.IP *
+.IP \(bu
 Signals sent by POSIX.1b timers (since Linux 2.6) fill in
 .I si_overrun
 and
@@ -417,7 +417,7 @@ field is the timer overrun count;
 this is the same information as is obtained by a call to
 .BR timer_getoverrun (2).
 These fields are nonstandard Linux extensions.
-.IP *
+.IP \(bu
 Signals sent for message queue notification (see the description of
 .B SIGEV_SIGNAL
 in
@@ -432,7 +432,7 @@ supplied to
 with the process ID of the message sender; and
 .IR si_uid ,
 with the real user ID of the message sender.
-.IP *
+.IP \(bu
 .B SIGCHLD
 fills in
 .IR si_pid ", " si_uid ", " si_status ", " si_utime ", and " si_stime ,
@@ -479,7 +479,7 @@ of the (configurable) system jiffy (see
 .\" But note that these fields still don't return the times of
 .\" waited-for children (as is done by getrusage() and times()
 .\" and wait4()).  Solaris 8 does include child times.
-.IP *
+.IP \(bu
 .BR SIGILL ,
 .BR SIGFPE ,
 .BR SIGSEGV ,
@@ -543,7 +543,7 @@ suberror of
 .B SIGSEGV
 populates
 .IR si_pkey .
-.IP *
+.IP \(bu
 .BR SIGIO / SIGPOLL
 (the two names are synonyms on Linux)
 fills in
@@ -563,7 +563,7 @@ for further details, see the description of
 .B F_SETSIG
 in
 .BR fcntl (2).
-.IP *
+.IP \(bu
 .BR SIGSYS ,
 generated (since Linux 3.5)
 .\" commit a0727e8ce513fe6890416da960181ceb10fbfae6
@@ -612,15 +612,15 @@ the definitions of most of these symbols are obtained from
 by defining feature test macros (before including
 .I any
 header file) as follows:
-.IP * 3
+.IP \(bu 3
 .B _XOPEN_SOURCE
 with the value 500 or greater;
-.IP *
+.IP \(bu
 .B _XOPEN_SOURCE
 and
 .BR _XOPEN_SOURCE_EXTENDED ;
 or
-.IP *
+.IP \(bu
 .B _POSIX_C_SOURCE
 with the value 200809L or greater.
 .PP

@@ -58,32 +58,32 @@ provided locale definition file should be used as a reference to follow
 common glibc conventions.
 .SS Locale category sections
 The following category sections are defined by POSIX:
-.IP * 3
+.IP \(bu 3
 .B LC_CTYPE
-.IP *
+.IP \(bu
 .B LC_COLLATE
-.IP *
+.IP \(bu
 .B LC_MESSAGES
-.IP *
+.IP \(bu
 .B LC_MONETARY
-.IP *
+.IP \(bu
 .B LC_NUMERIC
-.IP *
+.IP \(bu
 .B LC_TIME
 .PP
 In addition, since version 2.2,
 the GNU C library supports the following nonstandard categories:
-.IP * 3
+.IP \(bu 3
 .B LC_ADDRESS
-.IP *
+.IP \(bu
 .B LC_IDENTIFICATION
-.IP *
+.IP \(bu
 .B LC_MEASUREMENT
-.IP *
+.IP \(bu
 .B LC_NAME
-.IP *
+.IP \(bu
 .B LC_PAPER
-.IP *
+.IP \(bu
 .B LC_TELEPHONE
 .PP
 See
@@ -600,11 +600,11 @@ In addition, for each of the categories defined by the document,
 there should be a line starting with the keyword
 .IR category ,
 followed by:
-.IP * 3
+.IP (1) 5
 a string that identifies this locale category definition,
-.IP *
+.IP (2)
 a semicolon, and
-.IP *
+.IP (3)
 one of the
 .B LC_*
 identifiers.
@@ -1262,7 +1262,7 @@ and
 states at
 https://sourceware.org/glibc/wiki/Locales
 the following:
-.IP * 3
+.IP \(bu 3
 The value of the second
 .I week
 list item specifies the base of the
@@ -1270,14 +1270,14 @@ list item specifies the base of the
 and
 .I day
 lists.
-.IP *
+.IP \(bu
 .I first_weekday
 specifies the offset of the first day-of-week in the
 .I abday
 and
 .I day
 lists.
-.IP *
+.IP \(bu
 For compatibility reasons, all glibc locales should set the value of the
 second
 .I week

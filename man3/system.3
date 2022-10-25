@@ -61,23 +61,23 @@ returns a status indicating whether a shell is available on the system.
 The return value of
 .BR system ()
 is one of the following:
-.IP * 3
+.IP \(bu 3
 If
 .I command
 is NULL, then a nonzero value if a shell is available,
 or 0 if no shell is available.
-.IP *
+.IP \(bu
 If a child process could not be created,
 or its status could not be retrieved,
 the return value is \-1 and
 .I errno
 is set to indicate the error.
-.IP *
+.IP \(bu
 If a shell could not be executed in the child process,
 then the return value is as though the child shell terminated by calling
 .BR _exit (2)
 with the status 127.
-.IP *
+.IP \(bu
 If all system calls succeed,
 then the return value is the termination status of the child shell
 used to execute

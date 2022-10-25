@@ -2079,15 +2079,15 @@ The desc field will be 4 words:
 .IP
 .PD 0
 .RS
-.IP \(bu 2
-word 0: OS descriptor
+.IP [0] 5
+OS descriptor
 (\fBELF_NOTE_OS_LINUX\fR, \fBELF_NOTE_OS_GNU\fR, and so on)`
-.IP \(bu
-word 1: major version of the ABI
-.IP \(bu
-word 2: minor version of the ABI
-.IP \(bu
-word 3: subminor version of the ABI
+.IP [1]
+major version of the ABI
+.IP [2]
+minor version of the ABI
+.IP [3]
+subminor version of the ABI
 .RE
 .PD
 .TP
@@ -2097,10 +2097,10 @@ The desc field begins with two words:
 .IP
 .PD 0
 .RS
-.IP \(bu 2
-word 0: number of entries
-.IP \(bu
-word 1: bit mask of enabled entries
+.IP [0] 5
+number of entries
+.IP [1]
+bit mask of enabled entries
 .RE
 .PD
 .IP

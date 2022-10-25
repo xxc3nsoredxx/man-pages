@@ -480,7 +480,7 @@ or
 .B CLOCK_REALTIME_ALARM
 timer that was created with
 .BR timerfd_create ():
-.IP (a) 4
+.IP (1) 5
 The timer has been started
 .RB ( timerfd_settime ())
 with the
@@ -488,13 +488,13 @@ with the
 and
 .B TFD_TIMER_CANCEL_ON_SET
 flags;
-.IP (b)
+.IP (2)
 A discontinuous change (e.g.,
 .BR settimeofday (2))
 is subsequently made to the
 .B CLOCK_REALTIME
 clock; and
-.IP (c)
+.IP (3)
 the caller once more calls
 .BR timerfd_settime ()
 to rearm the timer (without first doing a
@@ -502,7 +502,7 @@ to rearm the timer (without first doing a
 on the file descriptor).
 .PP
 In this case the following occurs:
-.IP \(bu 2
+.IP \(bu 3
 The
 .BR timerfd_settime ()
 returns \-1 with

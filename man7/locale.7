@@ -219,16 +219,16 @@ If the second argument to
 is an empty string,
 .IR \(dq\(dq ,
 for the default locale, it is determined using the following steps:
-.IP 1. 3
+.IP (1) 5
 If there is a non-null environment variable
 .BR LC_ALL ,
 the value of
 .B LC_ALL
 is used.
-.IP 2.
+.IP (2)
 If an environment variable with the same name as one of the categories
 above exists and is non-null, its value is used for that category.
-.IP 3.
+.IP (3)
 If there is a non-null environment variable
 .BR LANG ,
 the value of

@@ -85,12 +85,12 @@ capability.
 .\" commit 124ea650d3072b005457faed69909221c2905a1f
 .PD 0
 .RS
-.IP * 2
+.IP \(bu 3
 Update
 .I /proc/sys/kernel/ns_last_pid
 (see
 .BR pid_namespaces (7));
-.IP *
+.IP \(bu
 employ the
 .I set_tid
 feature of
@@ -98,7 +98,7 @@ feature of
 .\" FIXME There is also some use case relating to
 .\" prctl_set_mm_exe_file(); in the 5.9 sources, see
 .\" prctl_set_mm_map().
-.IP *
+.IP \(bu
 read the contents of the symbolic links in
 .IR /proc/ pid /map_files
 for other processes.
@@ -121,13 +121,13 @@ Bypass file read, write, and execute permission checks.
 .B CAP_DAC_READ_SEARCH
 .PD 0
 .RS
-.IP * 2
+.IP \(bu 3
 Bypass file read permission checks and
 directory read and execute permission checks;
-.IP *
+.IP \(bu
 invoke
 .BR open_by_handle_at (2);
-.IP *
+.IP \(bu
 use the
 .BR linkat (2)
 .B AT_EMPTY_PATH
@@ -138,7 +138,7 @@ flag to create a link to a file referred to by a file descriptor.
 .B CAP_FOWNER
 .PD 0
 .RS
-.IP * 2
+.IP \(bu 3
 Bypass permission checks on operations that normally
 require the filesystem UID of the process to match the UID of
 the file (e.g.,
@@ -148,19 +148,19 @@ excluding those operations covered by
 .B CAP_DAC_OVERRIDE
 and
 .BR CAP_DAC_READ_SEARCH ;
-.IP *
+.IP \(bu
 set inode flags (see
 .BR ioctl_iflags (2))
 on arbitrary files;
-.IP *
+.IP \(bu
 set Access Control Lists (ACLs) on arbitrary files;
-.IP *
+.IP \(bu
 ignore directory sticky bit on file deletion;
-.IP *
+.IP \(bu
 modify
 .I user
 extended attributes on sticky directory owned by any user;
-.IP *
+.IP \(bu
 specify
 .B O_NOATIME
 for arbitrary files in
@@ -173,10 +173,10 @@ and
 .B CAP_FSETID
 .PD 0
 .RS
-.IP * 2
+.IP \(bu 3
 Don't clear set-user-ID and set-group-ID mode
 bits when a file is modified;
-.IP *
+.IP \(bu
 set the set-group-ID bit for a file whose GID does not match
 the filesystem or any of the supplementary GIDs of the calling process.
 .RE
@@ -187,13 +187,13 @@ the filesystem or any of the supplementary GIDs of the calling process.
 .\" in other places; they probably should be replaced with something else.
 .PD 0
 .RS
-.IP * 2
+.IP \(bu 3
 Lock memory
 .RB ( mlock (2),
 .BR mlockall (2),
 .BR mmap (2),
 .BR shmctl (2));
-.IP *
+.IP \(bu
 Allocate memory using huge pages
 .RB ( memfd_create (2),
 .BR mmap (2),
@@ -245,23 +245,23 @@ Create special files using
 Perform various network-related operations:
 .PD 0
 .RS
-.IP * 2
+.IP \(bu 3
 interface configuration;
-.IP *
+.IP \(bu
 administration of IP firewall, masquerading, and accounting;
-.IP *
+.IP \(bu
 modify routing tables;
-.IP *
+.IP \(bu
 bind to any address for transparent proxying;
-.IP *
+.IP \(bu
 set type-of-service (TOS);
-.IP *
+.IP \(bu
 clear driver statistics;
-.IP *
+.IP \(bu
 set promiscuous mode;
-.IP *
+.IP \(bu
 enabling multicasting;
-.IP *
+.IP \(bu
 use
 .BR setsockopt (2)
 to set the following socket options:
@@ -287,9 +287,9 @@ Bind a socket to Internet domain privileged ports
 .B CAP_NET_RAW
 .PD 0
 .RS
-.IP * 2
+.IP \(bu 3
 Use RAW and PACKET sockets;
-.IP *
+.IP \(bu
 bind to any address for transparent proxying.
 .RE
 .PD
@@ -298,11 +298,11 @@ bind to any address for transparent proxying.
 .BR CAP_PERFMON " (since Linux 5.8)"
 Employ various performance-monitoring mechanisms, including:
 .RS
-.IP * 2
+.IP \(bu 3
 .PD 0
 call
 .BR perf_event_open (2);
-.IP *
+.IP \(bu
 employ various BPF operations that have performance implications.
 .RE
 .PD
@@ -317,11 +317,11 @@ See also the kernel source file
 .B CAP_SETGID
 .RS
 .PD 0
-.IP * 2
+.IP \(bu 3
 Make arbitrary manipulations of process GIDs and supplementary GID list;
-.IP *
+.IP \(bu
 forge GID when passing socket credentials via UNIX domain sockets;
-.IP *
+.IP \(bu
 write a group ID mapping in a user namespace (see
 .BR user_namespaces (7)).
 .PD
@@ -360,15 +360,15 @@ has entirely different semantics for such kernels.)
 .B CAP_SETUID
 .RS
 .PD 0
-.IP * 2
+.IP \(bu 3
 Make arbitrary manipulations of process UIDs
 .RB ( setuid (2),
 .BR setreuid (2),
 .BR setresuid (2),
 .BR setfsuid (2));
-.IP *
+.IP \(bu
 forge UID when passing socket credentials via UNIX domain sockets;
-.IP *
+.IP \(bu
 write a user ID mapping in a user namespace (see
 .BR user_namespaces (7)).
 .PD
@@ -383,7 +383,7 @@ below.
 .IP
 .PD 0
 .RS
-.IP * 2
+.IP \(bu 3
 Perform a range of system administration operations including:
 .BR quotactl (2),
 .BR mount (2),
@@ -394,53 +394,53 @@ Perform a range of system administration operations including:
 .BR sethostname (2),
 and
 .BR setdomainname (2);
-.IP *
+.IP \(bu
 perform privileged
 .BR syslog (2)
 operations (since Linux 2.6.37,
 .B CAP_SYSLOG
 should be used to permit such operations);
-.IP *
+.IP \(bu
 perform
 .B VM86_REQUEST_IRQ
 .BR vm86 (2)
 command;
-.IP *
+.IP \(bu
 access the same checkpoint/restore functionality that is governed by
 .B CAP_CHECKPOINT_RESTORE
 (but the latter, weaker capability is preferred for accessing
 that functionality).
-.IP *
+.IP \(bu
 perform the same BPF operations as are governed by
 .B CAP_BPF
 (but the latter, weaker capability is preferred for accessing
 that functionality).
-.IP *
+.IP \(bu
 employ the same performance monitoring mechanisms as are governed by
 .B CAP_PERFMON
 (but the latter, weaker capability is preferred for accessing
 that functionality).
-.IP *
+.IP \(bu
 perform
 .B IPC_SET
 and
 .B IPC_RMID
 operations on arbitrary System V IPC objects;
-.IP *
+.IP \(bu
 override
 .B RLIMIT_NPROC
 resource limit;
-.IP *
+.IP \(bu
 perform operations on
 .I trusted
 and
 .I security
 extended attributes (see
 .BR xattr (7));
-.IP *
+.IP \(bu
 use
 .BR lookup_dcookie (2);
-.IP *
+.IP \(bu
 use
 .BR ioprio_set (2)
 to assign
@@ -448,9 +448,9 @@ to assign
 and (before Linux 2.6.25)
 .B IOPRIO_CLASS_IDLE
 I/O scheduling classes;
-.IP *
+.IP \(bu
 forge PID when passing socket credentials via UNIX domain sockets;
-.IP *
+.IP \(bu
 exceed
 .IR /proc/sys/fs/file\-max ,
 the system-wide limit on the number of open files,
@@ -459,7 +459,7 @@ in system calls that open files (e.g.,
 .BR execve (2),
 .BR open (2),
 .BR pipe (2));
-.IP *
+.IP \(bu
 employ
 .B CLONE_*
 flags that create new namespaces with
@@ -468,11 +468,11 @@ and
 .BR unshare (2)
 (but, since Linux 3.8,
 creating user namespaces does not require any capability);
-.IP *
+.IP \(bu
 access privileged
 .I perf
 event information;
-.IP *
+.IP \(bu
 call
 .BR setns (2)
 (requires
@@ -480,73 +480,73 @@ call
 in the
 .I target
 namespace);
-.IP *
+.IP \(bu
 call
 .BR fanotify_init (2);
-.IP *
+.IP \(bu
 perform privileged
 .B KEYCTL_CHOWN
 and
 .B KEYCTL_SETPERM
 .BR keyctl (2)
 operations;
-.IP *
+.IP \(bu
 perform
 .BR madvise (2)
 .B MADV_HWPOISON
 operation;
-.IP *
+.IP \(bu
 employ the
 .B TIOCSTI
 .BR ioctl (2)
 to insert characters into the input queue of a terminal other than
 the caller's controlling terminal;
-.IP *
+.IP \(bu
 employ the obsolete
 .BR nfsservctl (2)
 system call;
-.IP *
+.IP \(bu
 employ the obsolete
 .BR bdflush (2)
 system call;
-.IP *
+.IP \(bu
 perform various privileged block-device
 .BR ioctl (2)
 operations;
-.IP *
+.IP \(bu
 perform various privileged filesystem
 .BR ioctl (2)
 operations;
-.IP *
+.IP \(bu
 perform privileged
 .BR ioctl (2)
 operations on the
 .I /dev/random
 device (see
 .BR random (4));
-.IP *
+.IP \(bu
 install a
 .BR seccomp (2)
 filter without first having to set the
 .I no_new_privs
 thread attribute;
-.IP *
+.IP \(bu
 modify allow/deny rules for device control groups;
-.IP *
+.IP \(bu
 employ the
 .BR ptrace (2)
 .B PTRACE_SECCOMP_GET_FILTER
 operation to dump tracee's seccomp filters;
-.IP *
+.IP \(bu
 employ the
 .BR ptrace (2)
 .B PTRACE_SETOPTIONS
 operation to suspend the tracee's seccomp protections (i.e., the
 .B PTRACE_O_SUSPEND_SECCOMP
 flag);
-.IP *
+.IP \(bu
 perform administrative operations on many device drivers;
-.IP *
+.IP \(bu
 modify autogroup nice values by writing to
 .IR /proc/ pid /autogroup
 (see
@@ -563,10 +563,10 @@ and
 .B CAP_SYS_CHROOT
 .RS
 .PD 0
-.IP * 2
+.IP \(bu 3
 Use
 .BR chroot (2);
-.IP *
+.IP \(bu
 change mount namespaces using
 .BR setns (2).
 .PD
@@ -575,13 +575,13 @@ change mount namespaces using
 .B CAP_SYS_MODULE
 .RS
 .PD 0
-.IP * 2
+.IP \(bu 3
 Load and unload kernel modules
 (see
 .BR init_module (2)
 and
 .BR delete_module (2));
-.IP *
+.IP \(bu
 in kernels before 2.6.25:
 drop capabilities from the system-wide capability bounding set.
 .PD
@@ -590,24 +590,24 @@ drop capabilities from the system-wide capability bounding set.
 .B CAP_SYS_NICE
 .PD 0
 .RS
-.IP * 2
+.IP \(bu 3
 Lower the process nice value
 .RB ( nice (2),
 .BR setpriority (2))
 and change the nice value for arbitrary processes;
-.IP *
+.IP \(bu
 set real-time scheduling policies for calling process,
 and set scheduling policies and priorities for arbitrary processes
 .RB ( sched_setscheduler (2),
 .BR sched_setparam (2),
 .BR sched_setattr (2));
-.IP *
+.IP \(bu
 set CPU affinity for arbitrary processes
 .RB ( sched_setaffinity (2));
-.IP *
+.IP \(bu
 set I/O scheduling class and priority for arbitrary processes
 .RB ( ioprio_set (2));
-.IP *
+.IP \(bu
 apply
 .BR migrate_pages (2)
 to arbitrary processes and allow processes
@@ -618,11 +618,11 @@ to be migrated to arbitrary nodes;
 .\"         capable(CAP_SYS_NICE) ? MPOL_MF_MOVE_ALL : MPOL_MF_MOVE);
 .\"
 .\" Document this.
-.IP *
+.IP \(bu
 apply
 .BR move_pages (2)
 to arbitrary processes;
-.IP *
+.IP \(bu
 use the
 .B MPOL_MF_MOVE_ALL
 flag with
@@ -639,19 +639,19 @@ Use
 .B CAP_SYS_PTRACE
 .PD 0
 .RS
-.IP * 2
+.IP \(bu 3
 Trace arbitrary processes using
 .BR ptrace (2);
-.IP *
+.IP \(bu
 apply
 .BR get_robust_list (2)
 to arbitrary processes;
-.IP *
+.IP \(bu
 transfer data to or from the memory of arbitrary processes using
 .BR process_vm_readv (2)
 and
 .BR process_vm_writev (2);
-.IP *
+.IP \(bu
 inspect processes using
 .BR kcmp (2).
 .RE
@@ -660,45 +660,45 @@ inspect processes using
 .B CAP_SYS_RAWIO
 .PD 0
 .RS
-.IP * 2
+.IP \(bu 3
 Perform I/O port operations
 .RB ( iopl (2)
 and
 .BR ioperm (2));
-.IP *
+.IP \(bu
 access
 .IR /proc/kcore ;
-.IP *
+.IP \(bu
 employ the
 .B FIBMAP
 .BR ioctl (2)
 operation;
-.IP *
+.IP \(bu
 open devices for accessing x86 model-specific registers (MSRs, see
 .BR msr (4));
-.IP *
+.IP \(bu
 update
 .IR /proc/sys/vm/mmap_min_addr ;
-.IP *
+.IP \(bu
 create memory mappings at addresses below the value specified by
 .IR /proc/sys/vm/mmap_min_addr ;
-.IP *
+.IP \(bu
 map files in
 .IR /proc/bus/pci ;
-.IP *
+.IP \(bu
 open
 .I /dev/mem
 and
 .IR /dev/kmem ;
-.IP *
+.IP \(bu
 perform various SCSI device commands;
-.IP *
+.IP \(bu
 perform certain operations on
 .BR hpsa (4)
 and
 .BR cciss (4)
 devices;
-.IP *
+.IP \(bu
 perform a range of device-specific operations on other devices.
 .RE
 .PD
@@ -706,28 +706,28 @@ perform a range of device-specific operations on other devices.
 .B CAP_SYS_RESOURCE
 .PD 0
 .RS
-.IP * 2
+.IP \(bu 3
 Use reserved space on ext2 filesystems;
-.IP *
+.IP \(bu
 make
 .BR ioctl (2)
 calls controlling ext3 journaling;
-.IP *
+.IP \(bu
 override disk quota limits;
-.IP *
+.IP \(bu
 increase resource limits (see
 .BR setrlimit (2));
-.IP *
+.IP \(bu
 override
 .B RLIMIT_NPROC
 resource limit;
-.IP *
+.IP \(bu
 override maximum number of consoles on console allocation;
-.IP *
+.IP \(bu
 override maximum number of keymaps;
-.IP *
+.IP \(bu
 allow more than 64hz interrupts from the real-time clock;
-.IP *
+.IP \(bu
 raise
 .I msg_qbytes
 limit for a System V message queue above the limit in
@@ -736,26 +736,26 @@ limit for a System V message queue above the limit in
 .BR msgop (2)
 and
 .BR msgctl (2));
-.IP *
+.IP \(bu
 allow the
 .B RLIMIT_NOFILE
 resource limit on the number of "in-flight" file descriptors
 to be bypassed when passing file descriptors to another process
 via a UNIX domain socket (see
 .BR unix (7));
-.IP *
+.IP \(bu
 override the
 .I /proc/sys/fs/pipe\-size\-max
 limit when setting the capacity of a pipe using the
 .B F_SETPIPE_SZ
 .BR fcntl (2)
 command;
-.IP *
+.IP \(bu
 use
 .B F_SETPIPE_SZ
 to increase the capacity of a pipe above the limit specified by
 .IR /proc/sys/fs/pipe\-max\-size ;
-.IP *
+.IP \(bu
 override
 .IR /proc/sys/fs/mqueue/queues_max ,
 .IR /proc/sys/fs/mqueue/msg_max ,
@@ -763,12 +763,12 @@ and
 .I /proc/sys/fs/mqueue/msgsize_max
 limits when creating POSIX message queues (see
 .BR mq_overview (7));
-.IP *
+.IP \(bu
 employ the
 .BR prctl (2)
 .B PR_SET_MM
 operation;
-.IP *
+.IP \(bu
 set
 .IR /proc/ pid /oom_score_adj
 to a value lower than the value last set by a process with
@@ -793,14 +793,14 @@ operations on virtual terminals.
 .BR CAP_SYSLOG " (since Linux 2.6.37)"
 .RS
 .PD 0
-.IP * 2
+.IP \(bu 3
 Perform privileged
 .BR syslog (2)
 operations.
 See
 .BR syslog (2)
 for information on which operations require privilege.
-.IP *
+.IP \(bu
 View kernel addresses exposed via
 .I /proc
 and other interfaces when
@@ -822,14 +822,14 @@ timers).
 .\"
 .SS Past and current implementation
 A full implementation of capabilities requires that:
-.IP 1. 3
+.IP \(bu 3
 For all privileged operations,
 the kernel must check whether the thread has the required
 capability in its effective set.
-.IP 2.
+.IP \(bu
 The kernel must provide system calls allowing a thread's capability sets to
 be changed and retrieved.
-.IP 3.
+.IP \(bu
 The filesystem must support attaching capabilities to an executable file,
 so that a process gains those capabilities when the file is executed.
 .PP
@@ -839,12 +839,12 @@ since kernel 2.6.24, all three requirements are met.
 .SS Notes to kernel developers
 When adding a new kernel feature that should be governed by a capability,
 consider the following points.
-.IP * 3
+.IP \(bu 3
 The goal of capabilities is divide the power of superuser into pieces,
 such that if a program that has one or more capabilities is compromised,
 its power to do damage to the system would be less than the same program
 running with root privilege.
-.IP *
+.IP \(bu
 You have the choice of either creating a new capability for your new feature,
 or associating the feature with one of the existing capabilities.
 In order to keep the set of capabilities to a manageable size,
@@ -852,7 +852,7 @@ the latter option is preferable,
 unless there are compelling reasons to take the former option.
 (There is also a technical limit:
 the size of capability sets is currently limited to 64 bits.)
-.IP *
+.IP \(bu
 To determine which existing capability might best be associated
 with your new feature, review the list of capabilities above in order
 to find a "silo" into which your new feature best fits.
@@ -860,7 +860,7 @@ One approach to take is to determine if there are other features
 requiring capabilities that will always be used along with the new feature.
 If the new feature is useless without these other features,
 you should use the same capability as the other features.
-.IP *
+.IP \(bu
 .I Don't
 choose
 .B CAP_SYS_ADMIN
@@ -878,7 +878,7 @@ The only new features that should be associated with
 are ones that
 .I closely
 match existing uses in that silo.
-.IP *
+.IP \(bu
 If you have determined that it really is necessary to create
 a new capability for your feature,
 don't make or name it as a "single-use" capability.
@@ -1102,11 +1102,11 @@ extended attribute is automatically created as (or converted to)
 a version 3
 .RB ( VFS_CAP_REVISION_3 )
 attribute if both of the following are true:
-.IP (1) 4
+.IP \(bu 3
 The thread writing the attribute resides in a noninitial user namespace.
 (More precisely: the thread resides in a user namespace other
 than the one from which the underlying filesystem was mounted.)
-.IP (2)
+.IP \(bu
 The thread has the
 .B CAP_SETFCAP
 capability over the file inode,
@@ -1209,13 +1209,13 @@ denotes a file capability set
 .PP
 Note the following details relating to the above capability
 transformation rules:
-.IP * 3
+.IP \(bu 3
 The ambient capability set is present only since Linux 4.3.
 When determining the transformation of the ambient set during
 .BR execve (2),
 a privileged file is one that has capabilities or
 has the set-user-ID or set-group-ID bit set.
-.IP *
+.IP \(bu
 Prior to Linux 2.6.25,
 the bounding set was a system-wide attribute shared by all threads.
 That system-wide value was employed to calculate the new permitted set during
@@ -1294,7 +1294,7 @@ were triggered by the set-user-ID mode bit of the binary\(eme.g.,
 switching the effective user ID to 0 (root) because
 a set-user-ID-root program was executed\(emthe
 kernel calculates the file capability sets as follows:
-.IP 1. 3
+.IP (1) 5
 If the real or effective user ID of the process is 0 (root),
 then the file inheritable and permitted sets are ignored;
 instead they are notionally considered to be all ones
@@ -1302,7 +1302,7 @@ instead they are notionally considered to be all ones
 (There is one exception to this behavior, described in
 .I Set-user-ID-root programs that have file capabilities
 below.)
-.IP 2.
+.IP (2)
 If the effective user ID of the process is 0 (root) or
 the file effective bit is in fact enabled,
 then the file effective bit is notionally defined to be one (enabled).
@@ -1370,7 +1370,7 @@ The capability bounding set is a security mechanism that can be used
 to limit the capabilities that can be gained during an
 .BR execve (2).
 The bounding set is used in the following ways:
-.IP * 2
+.IP \(bu 3
 During an
 .BR execve (2),
 the capability bounding set is ANDed with the file permitted
@@ -1378,7 +1378,7 @@ capability set, and the result of this operation is assigned to the
 thread's permitted capability set.
 The capability bounding set thus places a limit on the permitted
 capabilities that may be granted by an executable file.
-.IP *
+.IP \(bu
 (Since Linux 2.6.25)
 The capability bounding set acts as a limiting superset for
 the capabilities that a thread can add to its inheritable set using
@@ -1491,19 +1491,19 @@ and filesystem user IDs (using
 .BR setuid (2),
 .BR setresuid (2),
 or similar):
-.IP 1. 3
+.IP \(bu 3
 If one or more of the real, effective, or saved set user IDs
 was previously 0, and as a result of the UID changes all of these IDs
 have a nonzero value,
 then all capabilities are cleared from the permitted, effective, and ambient
 capability sets.
-.IP 2.
+.IP \(bu
 If the effective user ID is changed from 0 to nonzero,
 then all capabilities are cleared from the effective set.
-.IP 3.
+.IP \(bu
 If the effective user ID is changed from nonzero to 0,
 then the permitted set is copied to the effective set.
-.IP 4.
+.IP \(bu
 If the filesystem user ID is changed from 0 to nonzero (see
 .BR setfsuid (2)),
 then the following capabilities are cleared from the effective set:
@@ -1544,21 +1544,21 @@ both provided in the
 package,
 is preferred for this purpose.
 The following rules govern changes to the thread capability sets:
-.IP 1. 3
+.IP \(bu 3
 If the caller does not have the
 .B CAP_SETPCAP
 capability,
 the new inheritable set must be a subset of the combination
 of the existing inheritable and permitted sets.
-.IP 2.
+.IP \(bu
 (Since Linux 2.6.25)
 The new inheritable set must be a subset of the combination of the
 existing inheritable set and the capability bounding set.
-.IP 3.
+.IP \(bu
 The new permitted set must be a subset of the existing permitted set
 (i.e., it is not possible to acquire permitted capabilities
 that the thread does not currently have).
-.IP 4.
+.IP \(bu
 The new effective set must be a subset of the new permitted set.
 .SS The securebits flags: establishing a capabilities-only environment
 .\" For some background:
@@ -1824,14 +1824,14 @@ However, this is only theoretically possible,
 since no thread ever has
 .B CAP_SETPCAP
 in either of these cases:
-.IP * 2
+.IP \(bu 3
 In the pre-2.6.25 implementation the system-wide capability bounding set,
 .IR /proc/sys/kernel/cap\-bound ,
 always masks out the
 .B CAP_SETPCAP
 capability, and this can not be changed
 without modifying the kernel source and rebuilding the kernel.
-.IP *
+.IP \(bu
 If file capabilities are disabled (i.e., the kernel
 .B CONFIG_SECURITY_FILE_CAPABILITIES
 option is disabled), then

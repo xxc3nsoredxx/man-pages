@@ -285,10 +285,10 @@ echo "rescan" > /proc/scsi/cciss0/1
 .PP
 This causes the driver to:
 .RS
-.IP 1. 3
+.IP (1) 5
 query the adapter about changes to the
 physical SCSI buses and/or fiber channel arbitrated loop, and
-.IP 2.
+.IP (2)
 make note of any new or removed sequential access devices
 or medium changers.
 .RE
@@ -331,13 +331,13 @@ The
 .B cciss
 driver participates in this protocol to some extent.
 The normal protocol is a four-step process:
-.IP * 3
+.IP (1) 5
 First, the device is told to abort the command.
-.IP *
+.IP (2)
 If that doesn't work, the device is reset.
-.IP *
+.IP (3)
 If that doesn't work, the SCSI bus is reset.
-.IP *
+.IP (4)
 If that doesn't work, the host bus adapter is reset.
 .PP
 The

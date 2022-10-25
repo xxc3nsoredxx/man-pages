@@ -168,13 +168,13 @@ The definition of
 .B HARD_MSGMAX
 has changed across kernel versions:
 .RS
-.IP * 3
+.IP \(bu 3
 Up to Linux 2.6.32:
 .I 131072\~/\~sizeof(void\~*)
-.IP *
+.IP \(bu
 Linux 2.6.33 to 3.4:
 .I (32768\~*\~sizeof(void\~*) / 4)
-.IP *
+.IP \(bu
 Since Linux 3.5:
 .\" commit 5b5c4d1a1440e94994c73dddbad7be0676cd8b9a
 65,536
@@ -222,12 +222,12 @@ The upper limit for
 .I msgsize_max
 has varied across kernel versions:
 .RS
-.IP * 3
+.IP \(bu 3
 Before Linux 2.6.28, the upper limit is
 .BR INT_MAX .
-.IP *
+.IP \(bu
 From Linux 2.6.28 to 3.4, the limit is 1,048,576.
-.IP *
+.IP \(bu
 Since Linux 3.5, the limit is 16,777,216
 .RB ( HARD_MSGSIZEMAX ).
 .RE

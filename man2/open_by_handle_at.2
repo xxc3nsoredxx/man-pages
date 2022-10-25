@@ -126,7 +126,7 @@ and
 .I dirfd
 arguments identify the file for which a handle is to be obtained.
 There are four distinct cases:
-.IP * 3
+.IP \(bu 3
 If
 .I pathname
 is a nonempty string containing an absolute pathname,
@@ -134,7 +134,7 @@ then a handle is returned for the file referred to by that pathname.
 In this case,
 .I dirfd
 is ignored.
-.IP *
+.IP \(bu
 If
 .I pathname
 is a nonempty string containing a relative pathname and
@@ -145,7 +145,7 @@ then
 .I pathname
 is interpreted relative to the current working directory of the caller,
 and a handle is returned for the file to which it refers.
-.IP *
+.IP \(bu
 If
 .I pathname
 is a nonempty string containing a relative pathname and
@@ -158,7 +158,7 @@ and a handle is returned for the file to which it refers.
 (See
 .BR openat (2)
 for an explanation of why "directory file descriptors" are useful.)
-.IP *
+.IP \(bu
 If
 .I pathname
 is an empty string and

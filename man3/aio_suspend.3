@@ -21,13 +21,13 @@ Real-time library
 The
 .BR aio_suspend ()
 function suspends the calling thread until one of the following occurs:
-.IP * 3
+.IP \(bu 3
 One or more of the asynchronous I/O requests in the list
 .I aiocb_list
 has completed.
-.IP *
+.IP \(bu
 A signal is delivered.
-.IP *
+.IP \(bu
 .I timeout
 is not NULL and the specified time interval has passed.
 (For details of the

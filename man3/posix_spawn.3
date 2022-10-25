@@ -168,7 +168,7 @@ Before glibc 2.24, the child process is created using
 instead of
 .BR fork (2)
 when either of the following is true:
-.IP * 3
+.IP \(bu 3
 the
 .I spawn-flags
 element of the attributes object pointed to by
@@ -176,7 +176,7 @@ element of the attributes object pointed to by
 contains the GNU-specific flag
 .BR POSIX_SPAWN_USEVFORK ;
 or
-.IP *
+.IP \(bu
 .I file_actions
 is NULL and the
 .I spawn-flags
@@ -214,20 +214,20 @@ These operations are controlled by the attributes object pointed to by
 and the file actions object pointed to by
 .IR file_actions .
 In the child, processing is done in the following sequence:
-.IP 1. 3
+.IP (1) 5
 Process attribute actions: signal mask, signal default handlers,
 scheduling algorithm and parameters,
 process group, and effective user and group IDs
 are changed as specified by the attributes object pointed to by
 .IR attrp .
-.IP 2.
+.IP (2)
 File actions, as specified in the
 .I file_actions
 argument,
 are performed in the order that they were specified using calls to the
 .BR posix_spawn_file_actions_add* ()
 functions.
-.IP 3.
+.IP (3)
 File descriptors with the
 .B FD_CLOEXEC
 flag set are closed.
@@ -306,7 +306,7 @@ of the object pointed to by
 Set the scheduling policy algorithm and parameters of the child,
 as follows:
 .RS
-.IP * 3
+.IP \(bu 3
 The scheduling policy is set to the value specified in the
 .I spawn-schedpolicy
 attribute
@@ -315,7 +315,7 @@ attribute
 .\" .BR posix_spawnattr_setpolicy (3))
 of the object pointed to by
 .IR attrp .
-.IP *
+.IP \(bu
 The scheduling parameters are set to the value specified in the
 .I spawn-schedparam
 attribute

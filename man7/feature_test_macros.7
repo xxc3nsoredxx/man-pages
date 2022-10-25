@@ -129,7 +129,7 @@ in glibc 2.\fIx\fP,
 > 0.
 .PP
 First, though, a summary of a few details for the impatient:
-.IP * 3
+.IP \(bu 3
 The macros that you most likely need to use in modern source code are
 .B _POSIX_C_SOURCE
 (for definitions from various versions of POSIX.1),
@@ -139,13 +139,13 @@ The macros that you most likely need to use in modern source code are
 (for GNU and/or Linux specific stuff), and
 .B _DEFAULT_SOURCE
 (to get definitions that would normally be provided by default).
-.IP *
+.IP \(bu
 Certain macros are defined with default values.
 Thus, although one or more macros may be indicated as being
 required in the SYNOPSIS of a man page,
 it may not be necessary to define them explicitly.
 Full details of the defaults are given later in this man page.
-.IP *
+.IP \(bu
 Defining
 .B _XOPEN_SOURCE
 with a value of 600 or greater produces the same effects as defining
@@ -167,7 +167,7 @@ it is implicit that the following has the same effect:
 _XOPEN_SOURCE >= 600
 .EE
 .in
-.IP *
+.IP \(bu
 Defining
 .B _XOPEN_SOURCE
 with a value of 700 or greater produces the same effects as defining
@@ -712,10 +712,10 @@ and either
 is not defined or
 .B _XOPEN_SOURCE
 is defined with a value of 500 or more, then
-.IP * 3
+.IP \(bu 3
 .B _POSIX_SOURCE
 is defined with the value 1; and
-.IP *
+.IP \(bu
 .B _POSIX_C_SOURCE
 is defined with one of the following values:
 .RS 3

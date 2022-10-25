@@ -38,13 +38,13 @@ returning a reference to the new or modified object as the function result.
 Whether the call creates a new object or modifies an existing object
 is determined by the value of
 .IR base :
-.IP * 3
+.IP \(bu 3
 If
 .I base
 is
 .IR "(locale_t)\ 0" ,
 a new object is created.
-.IP *
+.IP \(bu
 If
 .I base
 refers to valid existing locale object
@@ -211,7 +211,7 @@ Having created and initialized the locale object,
 the program then applies it using
 .BR uselocale (3),
 and then tests the effect of the locale changes by:
-.IP 1. 3
+.IP (1) 5
 Displaying a floating-point number with a fractional part.
 This output will be affected by the
 .B LC_NUMERIC
@@ -219,7 +219,7 @@ setting.
 In many European-language locales,
 the fractional part of the number is separated from the integer part
 using a comma, rather than a period.
-.IP 2.
+.IP (2)
 Displaying the date.
 The format and language of the output will be affected by the
 .B LC_TIME

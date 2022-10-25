@@ -559,20 +559,20 @@ under both the v1 and the v2 hierarchies.
 .PP
 The new behaviors in cgroups v2 are summarized here,
 and in some cases elaborated in the following subsections.
-.IP 1. 3
+.IP \(bu 3
 Cgroups v2 provides a unified hierarchy against
 which all controllers are mounted.
-.IP 2.
+.IP \(bu
 "Internal" processes are not permitted.
 With the exception of the root cgroup, processes may reside
 only in leaf nodes (cgroups that do not themselves contain child cgroups).
 The details are somewhat more subtle than this, and are described below.
-.IP 3.
+.IP \(bu
 Active cgroups must be specified via the files
 .I cgroup.controllers
 and
 .IR cgroup.subtree_control .
-.IP 4.
+.IP \(bu
 The
 .I tasks
 file has been removed.
@@ -581,7 +581,7 @@ In addition, the
 file that is employed by the
 .I cpuset
 controller has been removed.
-.IP 5.
+.IP \(bu
 An improved mechanism for notification of empty cgroups is provided by the
 .I cgroup.events
 file.
@@ -920,14 +920,14 @@ The cgroups v2 release-notification mechanism
 offers the following advantages over the cgroups v1
 .I release_agent
 mechanism:
-.IP * 3
+.IP \(bu 3
 It allows for cheaper notification,
 since a single process can monitor multiple
 .I cgroup.events
 files (using the techniques described earlier).
 By contrast, the cgroups v1 mechanism requires the expense of creating
 a process for each notification.
-.IP *
+.IP \(bu
 Notification for different cgroup subhierarchies can be delegated
 to different processes.
 By contrast, the cgroups v1 mechanism allows only one release agent
@@ -1114,7 +1114,7 @@ The effect of this mount option is to cause cgroup namespaces
 to automatically become delegation boundaries.
 More specifically,
 the following restrictions apply for processes inside the cgroup namespace:
-.IP * 3
+.IP \(bu 3
 Writes to controller interface files in the root directory of the namespace
 will fail with the error
 .BR EPERM .
@@ -1124,7 +1124,7 @@ files in the root directory of the cgroup namespace such as
 and
 .IR cgroup.subtree_control ,
 and can create subhierarchy underneath the root directory.
-.IP *
+.IP \(bu
 Attempts to migrate processes across the namespace boundary are denied
 (with the error
 .BR ENOENT ).
@@ -1151,7 +1151,7 @@ Even if a cgroup namespace was employed,
 because both hierarchies are owned by the unprivileged user
 .IR cecilia ,
 the following illegitimate actions could be performed:
-.IP * 3
+.IP \(bu 3
 A process in the inferior hierarchy could change the
 resource controller settings in the root directory of that hierarchy.
 (These resource controller settings are intended to allow control to
@@ -1159,7 +1159,7 @@ be exercised from the
 .I parent
 cgroup;
 a process inside the child cgroup should not be allowed to modify them.)
-.IP *
+.IP \(bu
 A process inside the inferior hierarchy could move processes
 into and out of the inferior hierarchy if the cgroups in the
 superior hierarchy were somehow visible.
@@ -1208,11 +1208,11 @@ A nonprivileged process (i.e., the delegatee) can write the PID of
 a "target" process into a
 .I cgroup.procs
 file only if all of the following are true:
-.IP * 3
+.IP \(bu 3
 The writer has write permission on the
 .I cgroup.procs
 file in the destination cgroup.
-.IP *
+.IP \(bu
 The writer has write permission on the
 .I cgroup.procs
 file in the nearest common ancestor of the source and destination cgroups.
@@ -1222,12 +1222,12 @@ This requirement is not enforced for cgroups v1 hierarchies,
 with the consequence that containment in v1 is less strict than in v2.
 (For example, in cgroups v1 the user that owns two distinct
 delegated subhierarchies can move a process between the hierarchies.)
-.IP *
+.IP \(bu
 If the cgroup v2 filesystem was mounted with the
 .I nsdelegate
 option, the writer must be able to see the source and destination cgroups
 from its cgroup namespace.
-.IP *
+.IP \(bu
 In cgroups v1:
 the effective UID of the writer (i.e., the delegatee) matches the
 real user ID or the saved set-user-ID of the target process.
@@ -1248,10 +1248,10 @@ instead, the delegater must place the first process
 .SH CGROUPS VERSION 2 THREAD MODE
 Among the restrictions imposed by cgroups v2 that were not present
 in cgroups v1 are the following:
-.IP * 3
+.IP \(bu 3
 .IR "No thread-granularity control" :
 all of the threads of a process must be in the same cgroup.
-.IP *
+.IP \(bu
 .IR "No internal processes" :
 a cgroup can't both have member processes and
 exercise controllers on child cgroups.
@@ -1278,17 +1278,17 @@ To accommodate such use cases, Linux 4.14 added
 for cgroups v2.
 .PP
 Thread mode allows the following:
-.IP * 3
+.IP \(bu 3
 The creation of
 .I threaded subtrees
 in which the threads of a process may
 be spread across cgroups inside the tree.
 (A threaded subtree may contain multiple multithreaded processes.)
-.IP *
+.IP \(bu
 The concept of
 .IR "threaded controllers" ,
 which can distribute resources across the cgroups in a threaded subtree.
-.IP *
+.IP \(bu
 A relaxation of the "no internal processes rule",
 so that, within a threaded subtree,
 a cgroup can both contain member threads and
@@ -1343,7 +1343,7 @@ possible future extensions to the thread mode model
 .SS Threaded versus domain controllers
 With the addition of threads mode,
 cgroups v2 now distinguishes two types of resource controllers:
-.IP * 3
+.IP \(bu 3
 .I Threaded
 .\" In the kernel source, look for ".threaded[ \t]*= true" in
 .\" initializations of struct cgroup_subsys
@@ -1356,7 +1356,7 @@ As at Linux 4.19, the following controllers are threaded:
 .IR perf_event ,
 and
 .IR pids .
-.IP *
+.IP \(bu
 .I Domain
 controllers: these controllers support only process granularity
 for resource control.
@@ -1367,7 +1367,7 @@ Domain controllers can't be enabled inside a threaded subtree.
 .SS Creating a threaded subtree
 There are two pathways that lead to the creation of a threaded subtree.
 The first pathway proceeds as follows:
-.IP 1. 3
+.IP (1) 5
 We write the string
 .I """threaded"""
 to the
@@ -1378,19 +1378,19 @@ that currently has the type
 .IR domain .
 This has the following effects:
 .RS
-.IP * 3
+.IP \(bu 3
 The type of the cgroup
 .I y/z
 becomes
 .IR threaded .
-.IP *
+.IP \(bu
 The type of the parent cgroup,
 .IR y ,
 becomes
 .IR "domain threaded" .
 The parent cgroup is the root of a threaded subtree
 (also known as the "threaded root").
-.IP *
+.IP \(bu
 All other cgroups under
 .I y
 that were not already of type
@@ -1404,7 +1404,7 @@ Any subsequently created cgroups under
 will also have the type
 .IR "domain invalid" .
 .RE
-.IP 2.
+.IP (2)
 We write the string
 .I """threaded"""
 to each of the
@@ -1423,23 +1423,23 @@ to each of these cgroups is somewhat cumbersome,
 but allows for possible future extensions to the thread-mode model.
 .PP
 The second way of creating a threaded subtree is as follows:
-.IP 1. 3
+.IP (1) 5
 In an existing cgroup,
 .IR z ,
 that currently has the type
 .IR domain ,
-we (1) enable one or more threaded controllers and
-(2) make a process a member of
+we (1.1) enable one or more threaded controllers and
+(1.2) make a process a member of
 .IR z .
 (These two steps can be done in either order.)
 This has the following consequences:
 .RS
-.IP * 3
+.IP \(bu 3
 The type of
 .I z
 becomes
 .IR "domain threaded" .
-.IP *
+.IP \(bu
 All of the descendant cgroups of
 .I x
 that were not already of type
@@ -1447,7 +1447,7 @@ that were not already of type
 are converted to type
 .IR "domain invalid" .
 .RE
-.IP 2.
+.IP (2)
 As before, we make the threaded subtree usable by writing the string
 .I """threaded"""
 to each of the
@@ -1498,17 +1498,17 @@ As with writing to
 some containment rules apply when writing to the
 .I cgroup.threads
 file:
-.IP * 3
+.IP \(bu 3
 The writer must have write permission on the
 cgroup.threads
 file in the destination cgroup.
-.IP *
+.IP \(bu
 The writer must have write permission on the
 .I cgroup.procs
 file in the common ancestor of the source and destination cgroups.
 (In some cases,
 the common ancestor may be the source or destination cgroup itself.)
-.IP *
+.IP \(bu
 The source and destination cgroups must be in the same threaded subtree.
 (Outside a threaded subtree, an attempt to move a thread by writing
 its thread ID to the
@@ -1551,7 +1551,7 @@ and exercise controllers on child cgroups.
 A number of rules apply when writing to the
 .I cgroup.type
 file:
-.IP * 3
+.IP \(bu 3
 Only the string
 .I """threaded"""
 may be written.
@@ -1559,7 +1559,7 @@ In other words, the only explicit transition that is possible is to convert a
 .I domain
 cgroup to type
 .IR threaded .
-.IP *
+.IP \(bu
 The effect of writing
 .I """threaded"""
 depends on the current value in
@@ -1582,7 +1582,7 @@ state;
 .IR threaded :
 no effect (a "no-op").
 .RE
-.IP *
+.IP \(bu
 We can't write to a
 .I cgroup.type
 file if the parent's type is
@@ -1594,13 +1594,13 @@ state in a top-down manner.
 There are also some constraints that must be satisfied
 in order to create a threaded subtree rooted at the cgroup
 .IR x :
-.IP * 3
+.IP \(bu 3
 There can be no member processes in the descendant cgroups of
 .IR x .
 (The cgroup
 .I x
 can itself have member processes.)
-.IP *
+.IP \(bu
 No domain controllers may be enabled in
 .IR x 's
 .I cgroup.subtree_control
@@ -1618,11 +1618,11 @@ According to the pathways described above,
 the type of a cgroup can change to
 .I domain threaded
 in either of the following cases:
-.IP * 3
+.IP \(bu 3
 The string
 .I """threaded"""
 is written to a child cgroup.
-.IP *
+.IP \(bu
 A threaded controller is enabled inside the cgroup and
 a process is made a member of the cgroup.
 .PP
@@ -1647,14 +1647,14 @@ cgroup
 .I x
 reverts to the type
 .IR domain :
-.IP * 3
+.IP \(bu 3
 All
 .I domain invalid
 descendants of
 .I x
 that are not in lower-level threaded subtrees revert to the type
 .IR domain .
-.IP *
+.IP \(bu
 The root cgroups in any lower-level threaded subtrees revert to the type
 .IR "domain threaded" .
 .\"
@@ -1670,10 +1670,10 @@ If the string
 is written to the
 .I cgroup.type
 file of one of the children of the root cgroup, then
-.IP * 3
+.IP \(bu 3
 The type of that cgroup becomes
 .IR threaded .
-.IP *
+.IP \(bu
 The type of any descendants of that cgroup that
 are not part of lower-level threaded subtrees changes to
 .IR "domain invalid" .
@@ -1772,24 +1772,24 @@ pids            2              1              1
 .IP
 The fields in this file are, from left to right:
 .RS
-.IP 1. 3
+.IP [1] 5
 The name of the controller.
-.IP 2.
+.IP [2]
 The unique ID of the cgroup hierarchy on which this controller is mounted.
 If multiple cgroups v1 controllers are bound to the same hierarchy,
 then each will show the same hierarchy ID in this field.
 The value in this field will be 0 if:
-.RS 5
-.IP a) 3
+.RS
+.IP \(bu 3
 the controller is not mounted on a cgroups v1 hierarchy;
-.IP b)
+.IP \(bu
 the controller is bound to the cgroups v2 single unified hierarchy; or
-.IP c)
+.IP \(bu
 the controller is disabled (see below).
 .RE
-.IP 3.
+.IP [3]
 The number of control groups in this hierarchy using this controller.
-.IP 4.
+.IP [4]
 This field contains the value 1 if this controller is enabled,
 or 0 if it has been disabled (via the
 .I cgroup_disable
@@ -1821,18 +1821,18 @@ For example:
 .IP
 The colon-separated fields are, from left to right:
 .RS
-.IP 1. 3
+.IP [1] 5
 For cgroups version 1 hierarchies,
 this field contains a unique hierarchy ID number
 that can be matched to a hierarchy ID in
 .IR /proc/cgroups .
 For the cgroups version 2 hierarchy, this field contains the value 0.
-.IP 2.
+.IP [2]
 For cgroups version 1 hierarchies,
 this field contains a comma-separated list of the controllers
 bound to the hierarchy.
 For the cgroups version 2 hierarchy, this field is empty.
-.IP 3.
+.IP [3]
 This field contains the pathname of the control group in the hierarchy
 to which the process belongs.
 This pathname is relative to the mount point of the hierarchy.

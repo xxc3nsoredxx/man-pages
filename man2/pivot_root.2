@@ -47,29 +47,29 @@ and thus it should be followed by a
 \fBchdir("/")\fP call.
 .PP
 The following restrictions apply:
-.IP \- 3
+.IP \(bu 3
 .I new_root
 and
 .I put_old
 must be directories.
-.IP \-
+.IP \(bu
 .I new_root
 and
 .I put_old
 must not be on the same mount as the current root.
-.IP \-
+.IP \(bu
 \fIput_old\fP must be at or underneath \fInew_root\fP;
 that is, adding some nonnegative
 number of "\fI/..\fP" suffixes to the pathname pointed to by
 .I put_old
 must yield the same directory as \fInew_root\fP.
-.IP \-
+.IP \(bu
 .I new_root
 must be a path to a mount point, but can't be
 .IR """/""" .
 A path that is not already a mount point can be converted into one by
 bind mounting the path onto itself.
-.IP \-
+.IP \(bu
 The propagation type of the parent mount of
 .I new_root
 and the parent mount of the current root directory must not be
@@ -81,7 +81,7 @@ is an existing mount point, its propagation type must not be
 These restrictions ensure that
 .BR pivot_root ()
 never propagates any changes to another mount namespace.
-.IP \-
+.IP \(bu
 The current root directory must be a mount point.
 .SH RETURN VALUE
 On success, zero is returned.

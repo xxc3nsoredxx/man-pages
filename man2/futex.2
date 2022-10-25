@@ -604,20 +604,20 @@ In other words,
 .B FUTEX_WAKE_OP
 does the following:
 .RS
-.IP * 3
+.IP \(bu 3
 saves the original value of the futex word at
 .I uaddr2
 and performs an operation to modify the value of the futex at
 .IR uaddr2 ;
 this is an atomic read-modify-write memory access (i.e., using atomic
 machine instructions of the respective architecture)
-.IP *
+.IP \(bu
 wakes up a maximum of
 .I val
 waiters on the futex for the futex word at
 .IR uaddr ;
 and
-.IP *
+.IP \(bu
 dependent on the results of a test of the original value of the
 futex word at
 .IR uaddr2 ,
@@ -876,15 +876,15 @@ for the implementation of very specific IPC mechanisms.)
 The PI-futex operations described below differ from the other
 futex operations in that they impose policy on the use of the value of the
 futex word:
-.IP * 3
+.IP \(bu 3
 If the lock is not acquired, the futex word's value shall be 0.
-.IP *
+.IP \(bu
 If the lock is acquired, the futex word's value shall
 be the thread ID (TID;
 see
 .BR gettid (2))
 of the owning thread.
-.IP *
+.IP \(bu
 If the lock is owned and there are threads contending for the lock,
 then the
 .B FUTEX_WAITERS
@@ -974,7 +974,7 @@ PI futexes are operated on by specifying one of the values listed below in
 .IR futex_op .
 Note that the PI futex operations must be used as paired operations
 and are subject to some additional requirements:
-.IP * 3
+.IP \(bu 3
 .BR FUTEX_LOCK_PI ,
 .BR FUTEX_LOCK_PI2 ,
 and
@@ -986,7 +986,7 @@ must be called only on a futex owned by the calling thread,
 as defined by the value policy, otherwise the error
 .B EPERM
 results.
-.IP *
+.IP \(bu
 .B FUTEX_WAIT_REQUEUE_PI
 pairs with
 .BR FUTEX_CMP_REQUEUE_PI .
@@ -1056,15 +1056,15 @@ user space atomically by setting the futex value to 0.
 .\"
 After that, the kernel:
 .RS
-.IP 1. 3
+.IP (1) 5
 Tries to find the thread which is associated with the owner TID.
-.IP 2.
+.IP (2)
 Creates or reuses kernel state on behalf of the owner.
 (If this is the first waiter, there is no kernel state for this
 futex, so kernel state is created by locking the RT-mutex
 and the futex owner is made the owner of the RT-mutex.
 If there are existing waiters, then the existing state is reused.)
-.IP 3.
+.IP (3)
 Attaches the waiter to the futex
 (i.e., the waiter is enqueued on the RT-mutex waiter list).
 .RE
@@ -1945,15 +1945,15 @@ main(int argc, char *argv[])
 .BR sched (7)
 .PP
 The following kernel source files:
-.IP * 2
+.IP \(bu 3
 .I Documentation/pi\-futex.txt
-.IP *
+.IP \(bu
 .I Documentation/futex\-requeue\-pi.txt
-.IP *
+.IP \(bu
 .I Documentation/locking/rt\-mutex.txt
-.IP *
+.IP \(bu
 .I Documentation/locking/rt\-mutex\-design.txt
-.IP *
+.IP \(bu
 .I Documentation/robust\-futex\-ABI.txt
 .PP
 Franke, H., Russell, R., and Kirwood, M., 2002.

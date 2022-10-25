@@ -8,7 +8,7 @@
 time_namespaces \- overview of Linux time namespaces
 .SH DESCRIPTION
 Time namespaces virtualize the values of two system clocks:
-.IP \(bu 2
+.IP \(bu 3
 .B CLOCK_MONOTONIC
 (and likewise
 .B CLOCK_MONOTONIC_COARSE
@@ -147,7 +147,7 @@ An
 value is out of range.
 In particular;
 .RS
-.IP \(bu 2
+.IP \(bu 3
 .I offset-secs
 can't be set to a value which would make the current
 time on the corresponding clock inside the namespace a negative value; and

@@ -484,24 +484,24 @@ The limitations imposed on an event listener created by a user without the
 .B CAP_SYS_ADMIN
 capability are as follows:
 .RS
-.IP * 3
+.IP \(bu 3
 The user cannot request for an unlimited event queue by using
 .BR FAN_UNLIMITED_QUEUE .
-.IP * 3
+.IP \(bu
 The user cannot request for an unlimited number of marks by using
 .BR FAN_UNLIMITED_MARKS .
-.IP * 3
+.IP \(bu
 The user cannot request to use either notification classes
 .B FAN_CLASS_CONTENT
 or
 .BR FAN_CLASS_PRE_CONTENT .
 This means that user cannot request permission events.
-.IP * 3
+.IP \(bu
 The user is required to create a group that identifies filesystem objects by
 file handles, for example, by providing the
 .B FAN_REPORT_FID
 flag.
-.IP * 3
+.IP \(bu
 The user is limited to only mark inodes.
 The ability to mark a mount or filesystem via
 .BR fanotify_mark ()
@@ -510,7 +510,7 @@ through the use of
 or
 .B FAN_MARK_FILESYSTEM
 is not permitted.
-.IP * 3
+.IP \(bu
 The event object in the event queue is limited in terms of the information
 that is made available to the unprivileged user.
 A user will also not receive the pid that generated the event, unless the
@@ -520,7 +520,7 @@ listening process itself generated the event.
 This system call is Linux-specific.
 .SH BUGS
 The following bug was present in Linux kernels before version 3.18:
-.IP * 3
+.IP \(bu 3
 .\" Fixed by commit 0b37e097a648aa71d4db1ad108001e95b69a2da4
 The
 .B O_CLOEXEC
@@ -528,7 +528,7 @@ is ignored when passed in
 .IR event_f_flags .
 .PP
 The following bug was present in Linux kernels before version 3.14:
-.IP * 3
+.IP \(bu 3
 .\" Fixed by commit 48149e9d3a7e924010a0daab30a6197b7d7b6580
 The
 .I event_f_flags

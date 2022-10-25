@@ -37,12 +37,12 @@ with the
 flag.
 When a new mount namespace is created,
 its mount list is initialized as follows:
-.IP * 3
+.IP \(bu 3
 If the namespace is created using
 .BR clone (2),
 the mount list of the child's namespace is a copy
 of the mount list in the parent process's mount namespace.
-.IP *
+.IP \(bu
 If the namespace is created using
 .BR unshare (2),
 the mount list of the new namespace is a copy of
@@ -144,9 +144,9 @@ of the mount.
 Members are added to a
 .I peer group
 when a mount is marked as shared and either:
-.IP * 3
+.IP (a) 5
 the mount is replicated during the creation of a new mount namespace; or
-.IP *
+.IP (b)
 a new bind mount is created from the mount.
 .PP
 In both of these cases, the new mount joins the peer group

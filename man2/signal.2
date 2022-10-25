@@ -219,11 +219,11 @@ sa.sa_flags = SA_RESTART;
 .in
 .PP
 The situation on Linux is as follows:
-.IP * 2
+.IP \(bu 3
 The kernel's
 .BR signal ()
 system call provides System\ V semantics.
-.IP *
+.IP \(bu
 By default, in glibc 2 and later, the
 .BR signal ()
 wrapper function does not invoke the kernel system call.

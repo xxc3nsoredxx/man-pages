@@ -211,13 +211,13 @@ They allow sharing of data between eBPF kernel programs,
 and also between kernel and user-space applications.
 .PP
 Each map type has the following attributes:
-.IP * 3
+.IP \(bu 3
 type
-.IP *
+.IP \(bu
 maximum number of elements
-.IP *
+.IP \(bu
 key size in bytes
-.IP *
+.IP \(bu
 value size in bytes
 .PP
 The following wrapper functions demonstrate how various
@@ -578,20 +578,20 @@ The following map types are supported:
 .\" commit 0f8e4bd8a1fc8c4185f1630061d0a1f2d197a475
 Hash-table maps have the following characteristics:
 .RS
-.IP * 3
+.IP \(bu 3
 Maps are created and destroyed by user-space programs.
 Both user-space and eBPF programs
 can perform lookup, update, and delete operations.
-.IP *
+.IP \(bu
 The kernel takes care of allocating and freeing key/value pairs.
-.IP *
+.IP \(bu
 The
 .BR map_update_elem ()
 helper will fail to insert new element when the
 .I max_entries
 limit is reached.
 (This ensures that eBPF programs cannot exhaust memory.)
-.IP *
+.IP \(bu
 .BR map_update_elem ()
 replaces existing elements atomically.
 .RE
@@ -603,7 +603,7 @@ optimized for speed of lookup.
 .\" commit 28fbcfa08d8ed7c5a50d41a0433aad222835e8e3
 Array maps have the following characteristics:
 .RS
-.IP * 3
+.IP \(bu 3
 Optimized for fastest possible lookup.
 In the future the verifier/JIT compiler
 may recognize lookup() operations that employ a constant key
@@ -616,16 +616,16 @@ In other words,
 .BR array_map_lookup_elem ()
 may be 'inlined' by the verifier/JIT compiler
 while preserving concurrent access to this map from user space.
-.IP *
+.IP \(bu
 All array elements pre-allocated and zero initialized at init time
-.IP *
+.IP \(bu
 The key is an array index, and must be exactly four bytes.
-.IP *
+.IP \(bu
 .BR map_delete_elem ()
 fails with the error
 .BR EINVAL ,
 since elements cannot be deleted.
-.IP *
+.IP \(bu
 .BR map_update_elem ()
 replaces elements in a
 .B nonatomic
@@ -644,13 +644,13 @@ This is quite often useful for aggregation and accounting of events.
 .IP
 Among the uses for array maps are the following:
 .RS
-.IP * 3
+.IP \(bu 3
 As "global" eBPF variables: an array of 1 element whose key is (index) 0
 and where the value is a collection of 'global' variables which
 eBPF programs can use to keep state between events.
-.IP *
+.IP \(bu
 Aggregation of tracing events into a fixed set of buckets.
-.IP *
+.IP \(bu
 Accounting of networking events, for example, number of packets and packet
 sizes.
 .RE
@@ -775,23 +775,23 @@ For further details of eBPF program types, see below.
 The remaining fields of
 .I bpf_attr
 are set as follows:
-.IP * 3
+.IP \(bu 3
 .I insns
 is an array of
 .I "struct bpf_insn"
 instructions.
-.IP *
+.IP \(bu
 .I insn_cnt
 is the number of instructions in the program referred to by
 .IR insns .
-.IP *
+.IP \(bu
 .I license
 is a license string, which must be GPL compatible to call helper functions
 marked
 .IR gpl_only .
 (The licensing rules are the same as for kernel modules,
 so that also dual licenses, such as "Dual BSD/GPL", may be used.)
-.IP *
+.IP \(bu
 .I log_buf
 is a pointer to a caller-allocated buffer in which the in-kernel
 verifier can store the verification log.
@@ -799,7 +799,7 @@ This log is a multi-line string that can be checked by
 the program author in order to understand how the verifier came to
 the conclusion that the eBPF program is unsafe.
 The format of the output can change at any time as the verifier evolves.
-.IP *
+.IP \(bu
 .I log_size
 size of the buffer pointed to by
 .IR log_buf .
@@ -808,7 +808,7 @@ verifier messages, \-1 is returned and
 .I errno
 is set to
 .BR ENOSPC .
-.IP *
+.IP \(bu
 .I log_level
 verbosity level of the verifier.
 A value of zero means that the verifier will not provide a log;
@@ -1075,16 +1075,16 @@ However they may not store kernel pointers within
 the maps and are presently limited to the following helper functions:
 .\" [Linux 5.6] mtk: The list of available functions is, I think, governed
 .\" by the check in net/core/filter.c::bpf_base_func_proto().
-.IP * 3
+.IP \(bu 3
 get_random
 .PD 0
-.IP *
+.IP \(bu
 get_smp_processor_id
-.IP *
+.IP \(bu
 tail_call
-.IP *
+.IP \(bu
 ktime_get_ns
-.PD 1
+.PD
 .PP
 Unprivileged access may be blocked by writing the value 1 to the file
 .IR /proc/sys/kernel/unprivileged_bpf_disabled .
@@ -1151,37 +1151,37 @@ The JIT compiler for eBPF is currently
 .\" and by checking the documentation for bpf_jit_enable in
 .\" Documentation/sysctl/net.txt
 available for the following architectures:
-.IP * 3
+.IP \(bu 3
 x86-64 (since Linux 3.18; cBPF since Linux 3.0);
 .\" commit 0a14842f5a3c0e88a1e59fac5c3025db39721f74
 .PD 0
-.IP *
+.IP \(bu
 ARM32 (since Linux 3.18; cBPF since Linux 3.4);
 .\" commit ddecdfcea0ae891f782ae853771c867ab51024c2
-.IP *
+.IP \(bu
 SPARC 32 (since Linux 3.18; cBPF since Linux 3.5);
 .\" commit 2809a2087cc44b55e4377d7b9be3f7f5d2569091
-.IP *
+.IP \(bu
 ARM-64 (since Linux 3.18);
 .\" commit e54bcde3d69d40023ae77727213d14f920eb264a
-.IP *
+.IP \(bu
 s390 (since Linux 4.1; cBPF since Linux 3.7);
 .\" commit c10302efe569bfd646b4c22df29577a4595b4580
-.IP *
+.IP \(bu
 PowerPC 64 (since Linux 4.8; cBPF since Linux 3.1);
 .\" commit 0ca87f05ba8bdc6791c14878464efc901ad71e99
 .\" commit 156d0e290e969caba25f1851c52417c14d141b24
-.IP *
+.IP \(bu
 SPARC 64 (since Linux 4.12);
 .\" commit 7a12b5031c6b947cc13918237ae652b536243b76
-.IP *
+.IP \(bu
 x86-32 (since Linux 4.18);
 .\" commit 03f5781be2c7b7e728d724ac70ba10799cc710d7
-.IP *
+.IP \(bu
 MIPS 64 (since Linux 4.18; cBPF since Linux 3.16);
 .\" commit c6610de353da5ca6eee5b8960e838a87a90ead0c
 .\" commit f381bf6d82f032b7410185b35d000ea370ac706b
-.IP *
+.IP \(bu
 riscv (since Linux 5.1).
 .\" commit 2353ecc6f91fd15b893fa01bf85a1c7a823ee4f2
 .PD

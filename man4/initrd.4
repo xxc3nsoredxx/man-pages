@@ -74,11 +74,11 @@ different device.
 When booting up with
 .BR initrd ,
 the system boots as follows:
-.IP 1. 3
+.IP (1) 5
 The boot loader loads the kernel program and
 .IR /dev/initrd 's
 contents into memory.
-.IP 2.
+.IP (2)
 On kernel startup,
 the kernel uncompresses and copies the contents of the device
 .I /dev/initrd
@@ -86,16 +86,16 @@ onto device
 .I /dev/ram0
 and then frees the memory used by
 .IR /dev/initrd .
-.IP 3.
+.IP (3)
 The kernel then read-write mounts the device
 .I /dev/ram0
 as the initial root filesystem.
-.IP 4.
+.IP (4)
 If the indicated normal root filesystem is also the initial
 root filesystem (e.g.,
 .IR /dev/ram0 )
 then the kernel skips to the last step for the usual boot sequence.
-.IP 5.
+.IP (5)
 If the executable file
 .I /linuxrc
 is present in the initial root filesystem,
@@ -107,7 +107,7 @@ must have executable permission.
 The file
 .I /linuxrc
 can be any valid executable, including a shell script.)
-.IP 6.
+.IP (6)
 If
 .I /linuxrc
 is not executed or when
@@ -119,7 +119,7 @@ exits with any filesystems mounted on the initial root
 filesystem, then the behavior of the kernel is
 .BR UNSPECIFIED .
 See the NOTES section for the current kernel behavior.)
-.IP 7.
+.IP (7)
 If the normal root filesystem has a directory
 .IR /initrd ,
 the device
@@ -150,7 +150,7 @@ when
 exits, the behavior of the kernel is
 .BR UNSPECIFIED .
 See the NOTES section for the current kernel behavior.)
-.IP 8.
+.IP (8)
 The usual boot sequence (e.g., invocation of
 .IR /sbin/init )
 is performed on the normal root filesystem.
@@ -312,7 +312,7 @@ The main motivation for implementing
 was to allow for modular kernel configuration at system installation.
 .PP
 A possible system installation scenario is as follows:
-.IP 1. 3
+.IP (1) 5
 The loader program boots from floppy or other media with a minimal kernel
 (e.g., support for
 .IR /dev/ram ,
@@ -320,7 +320,7 @@ The loader program boots from floppy or other media with a minimal kernel
 and the ext2 filesystem) and loads
 .I /dev/initrd
 with a gzipped version of the initial filesystem.
-.IP 2.
+.IP (2)
 The executable
 .I /linuxrc
 determines what is needed to (1) mount the normal root filesystem
@@ -328,17 +328,17 @@ determines what is needed to (1) mount the normal root filesystem
 distribution media (e.g., CD-ROM, network, tape, ...).
 This can be done by asking the user, by auto-probing,
 or by using a hybrid approach.
-.IP 3.
+.IP (3)
 The executable
 .I /linuxrc
 loads the necessary modules from the initial root filesystem.
-.IP 4.
+.IP (4)
 The executable
 .I /linuxrc
 creates and populates the root filesystem.
 (At this stage the normal root filesystem does not have to be a
 completed system yet.)
-.IP 5.
+.IP (5)
 The executable
 .I /linuxrc
 sets
@@ -347,12 +347,12 @@ unmounts
 .IR /proc ,
 the normal root filesystem and any other filesystems
 it has mounted, and then terminates.
-.IP 6.
+.IP (6)
 The kernel then mounts the normal root filesystem.
-.IP 7.
+.IP (7)
 Now that the filesystem is accessible and intact,
 the boot loader can be installed.
-.IP 8.
+.IP (8)
 The boot loader is configured to load into
 .I /dev/initrd
 a filesystem with the set of modules that was used to bring up the system.
@@ -361,7 +361,7 @@ a filesystem with the set of modules that was used to bring up the system.
 can be modified, then unmounted, and finally, the image is written from
 .I /dev/ram0
 to a file.)
-.IP 9.
+.IP (9)
 The system is now bootable and additional installation tasks can be
 performed.
 .PP
@@ -419,7 +419,7 @@ from the CD-ROM.
 .\"
 .\"
 .SH NOTES
-.IP 1. 3
+.IP \(bu 3
 With the current kernel, any filesystems that remain mounted when
 .I /dev/ram0
 is moved from
@@ -430,7 +430,7 @@ continue to be accessible.
 However, the
 .I /proc/mounts
 entries are not updated.
-.IP 2.
+.IP \(bu
 With the current kernel, if directory
 .I /initrd
 does not exist, then
@@ -447,7 +447,7 @@ is
 fully unmounted, then
 .I /dev/ram0
 will remain in memory.
-.IP 3.
+.IP \(bu
 Users of
 .I /dev/initrd
 should not depend on the behavior given in the above notes.

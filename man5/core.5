@@ -26,7 +26,7 @@ for details.
 .PP
 There are various circumstances in which a core dump file is
 not produced:
-.IP * 3
+.IP \(bu 3
 The process does not have permission to write the core file.
 (By default, the core file is called
 .I core
@@ -43,18 +43,18 @@ or if a file with the same name exists and
 is not writable
 or is not a regular file
 (e.g., it is a directory or a symbolic link).
-.IP *
+.IP \(bu
 A (writable, regular) file with the same name as would be used for the
 core dump already exists, but there is more than one hard link to that
 file.
-.IP *
+.IP \(bu
 The filesystem where the core dump file would be created is full;
 or has run out of inodes; or is mounted read-only;
 or the user has reached their quota for the filesystem.
-.IP *
+.IP \(bu
 The directory in which the core dump file is to be created does
 not exist.
-.IP *
+.IP \(bu
 The
 .B RLIMIT_CORE
 (core file size) or
@@ -67,14 +67,14 @@ command
 .RI ( limit
 in
 .BR csh (1)).
-.IP *
+.IP \(bu
 The binary being executed by the process does not have read
 permission enabled.
 (This is a security measure to
 ensure that an executable whose contents are not readable
 does not produce a\(empossibly readable\(emcore dump containing
 an image of the executable.)
-.IP *
+.IP \(bu
 The process is executing a set-user-ID (set-group-ID) program
 that is owned by a user (group) other than the real user (group)
 ID of the process,
@@ -89,7 +89,7 @@ operation, and the description of the
 .\" and PR_SET_DUMPABLE to this page?
 file in
 .BR proc (5).)
-.IP *
+.IP \(bu
 .I /proc/sys/kernel/core_pattern
 is empty and
 .I /proc/sys/kernel/core_uses_pid
@@ -106,7 +106,7 @@ and such files are hidden unless one uses the
 .BR ls (1)
 .I \-a
 option.
-.IP *
+.IP \(bu
 (Since Linux 3.7)
 .\" commit 046d662f481830e652ac34cd112249adde16452a
 The kernel was configured without the
@@ -284,33 +284,33 @@ the executable name.
 Instead of being written to a file, the core dump is given as
 standard input to the program.
 Note the following points:
-.IP * 3
+.IP \(bu 3
 The program must be specified using an absolute pathname (or a
 pathname relative to the root directory, \fI/\fP),
 and must immediately follow the '|' character.
-.IP *
+.IP \(bu
 The command-line arguments can include any of
 the % specifiers listed above.
 For example, to pass the PID of the process that is being dumped, specify
 .I %p
 in an argument.
-.IP *
+.IP \(bu
 The process created to run the program runs as user and group
 .IR root .
-.IP *
+.IP \(bu
 Running as
 .I root
 does not confer any exceptional security bypasses.
 Namely, LSMs (e.g., SELinux) are still active and may prevent the handler
 from accessing details about the crashed process via
 .IR /proc/ pid.
-.IP *
+.IP \(bu
 The program pathname is interpreted with respect to the initial mount namespace
 as it is always executed there.
 It is not affected by the settings
 (e.g., root directory, mount namespace, current working directory)
 of the crashing process.
-.IP *
+.IP \(bu
 The process runs in the initial namespaces
 (PID, mount, user, and so on)
 and not in the namespaces of the crashing process.
@@ -319,7 +319,7 @@ One can utilize specifiers such as
 to find the right
 .IR /proc/ pid
 directory and probe/enter the crashing process's namespaces if needed.
-.IP *
+.IP \(bu
 The process starts with its current working directory
 as the root directory.
 If desired, it is possible change to the working directory of
@@ -327,11 +327,11 @@ the dumping process by employing the value provided by the
 .I %P
 specifier to change to the location of the dumping process via
 .IR /proc/ pid /cwd .
-.IP *
+.IP \(bu
 Command-line arguments can be supplied to the
 program (since Linux 2.6.24),
 delimited by white space (up to a total line length of 128 bytes).
-.IP *
+.IP \(bu
 The
 .B RLIMIT_CORE
 limit is not enforced for core dumps that are piped to a program

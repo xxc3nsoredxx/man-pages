@@ -95,14 +95,14 @@ and
 below.
 .PP
 This page describes the following interfaces:
-.IP * 3
+.IP \(bu 3
 The glibc
 .BR clone ()
 wrapper function and the underlying system call on which it is based.
 The main text describes the wrapper function;
 the differences for the raw system call
 are described toward the end of this page.
-.IP *
+.IP \(bu
 The newer
 .BR clone3 ()
 system call.
@@ -571,7 +571,7 @@ Among the possible use cases for
 .B CLONE_INTO_CGROUP
 are the following:
 .RS
-.IP * 3
+.IP \(bu 3
 Spawning a process into a cgroup different from the parent's cgroup
 makes it possible for a service manager to directly spawn new
 services into dedicated cgroups.
@@ -582,7 +582,7 @@ moved into the target cgroup.
 Furthermore, spawning the child process directly into a target cgroup
 is significantly cheaper than moving the child process into
 the target cgroup after it has been created.
-.IP *
+.IP \(bu
 The
 .B CLONE_INTO_CGROUP
 flag also allows the creation of
@@ -590,7 +590,7 @@ frozen child processes by spawning them into a frozen cgroup.
 (See
 .BR cgroups (7)
 for a description of the freezer controller.)
-.IP *
+.IP \(bu
 For threaded applications (or even thread implementations which
 make use of cgroups to limit individual threads), it is possible to
 establish a fixed cgroup layout before spawning each thread
@@ -872,12 +872,12 @@ The close-on-exec flag is set on this new file descriptor.
 PID file descriptors can be used for the purposes described in
 .BR pidfd_open (2).
 .RS
-.IP * 3
+.IP \(bu 3
 When using
 .BR clone3 (),
 the PID file descriptor is placed at the location pointed to by
 .IR cl_args.pidfd .
-.IP *
+.IP \(bu
 When using
 .BR clone (),
 the PID file descriptor is placed at the location pointed to by
@@ -1808,7 +1808,7 @@ be used for the child's stack using
 rather than
 .BR malloc (3)
 for the following reasons:
-.IP * 3
+.IP \(bu 3
 .BR mmap (2)
 allocates a block of memory that starts on a page
 boundary and is a multiple of the page size.
@@ -1816,7 +1816,7 @@ This is useful if we want to establish a guard page (a page with protection
 .BR PROT_NONE )
 at the end of the stack using
 .BR mprotect (2).
-.IP *
+.IP \(bu
 We can specify the
 .B MAP_STACK
 flag to request a mapping that is suitable for a stack.

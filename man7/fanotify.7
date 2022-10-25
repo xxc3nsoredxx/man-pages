@@ -968,7 +968,7 @@ events.
 .PP
 As of Linux 3.17,
 the following bugs exist:
-.IP * 3
+.IP \(bu 3
 On Linux, a filesystem object may be accessible through multiple paths,
 for example, a part of a filesystem may be remounted using the
 .I \-\-bind
@@ -977,7 +977,7 @@ option of
 A listener that marked a mount will be notified only of events that were
 triggered for a filesystem object using the same mount.
 Any other event will pass unnoticed.
-.IP *
+.IP \(bu
 .\" FIXME . A patch was proposed.
 When an event is generated,
 no check is made to see whether the user ID of the
@@ -986,7 +986,7 @@ before passing a file descriptor for that file.
 This poses a security risk, when the
 .B CAP_SYS_ADMIN
 capability is set for programs executed by unprivileged users.
-.IP *
+.IP \(bu
 If a call to
 .BR read (2)
 processes multiple events from the fanotify queue and an error occurs,

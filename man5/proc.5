@@ -244,12 +244,12 @@ things work as expected for the container "root" user.
 .IP
 The process's "dumpable" attribute may change for the following reasons:
 .RS
-.IP * 3
+.IP \(bu 3
 The attribute was explicitly set via the
 .BR prctl (2)
 .B PR_SET_DUMPABLE
 operation.
-.IP *
+.IP \(bu
 The attribute was reset to the value in the file
 .I /proc/sys/fs/suid_dumpable
 (described below), for the reasons described in
@@ -1638,7 +1638,7 @@ with increases (+) or decreases (\-) for factors including:
 .\" See mm/oom_kill.c::oom_badness() after 2.6.36
 .\" commit a63d83f427fbce97a6cea0db2e64b0eb8435cd10
 .RS
-.IP * 2
+.IP \(bu 3
 whether the process is privileged (\-).
 .\" More precisely, if it has CAP_SYS_ADMIN or (pre 2.6.36) CAP_SYS_RESOURCE
 .RE
@@ -1646,16 +1646,16 @@ whether the process is privileged (\-).
 Before kernel 2.6.36
 the following factors were also used in the calculation of oom_score:
 .RS
-.IP * 2
+.IP \(bu 3
 whether the process creates a lot of children using
 .BR fork (2)
 (+);
-.IP *
+.IP \(bu
 whether the process has been running a long time,
 or has used a lot of CPU time (\-);
-.IP *
+.IP \(bu
 whether the process has a low nice value (i.e., > 0) (+); and
-.IP *
+.IP \(bu
 whether the process is making direct hardware access (\-).
 .\" More precisely, if it has CAP_SYS_RAWIO
 .RE
@@ -3444,9 +3444,9 @@ An example of the content shown in this file is the following:
 .IP
 The fields shown in each line are as follows:
 .RS
-.IP (1) 4
+.IP [1] 5
 The ordinal position of the lock in the list.
-.IP (2)
+.IP [2]
 The lock type.
 Values that may appear here include:
 .RS
@@ -3463,7 +3463,7 @@ This is an open file description (OFD) lock created using
 This is a POSIX byte-range lock created using
 .BR fcntl (2).
 .RE
-.IP (3)
+.IP [3]
 Among the strings that can appear here are the following:
 .RS
 .TP
@@ -3473,7 +3473,7 @@ This is an advisory lock.
 .B MANDATORY
 This is a mandatory lock.
 .RE
-.IP (4)
+.IP [4]
 The type of lock.
 Values that can appear here are:
 .RS
@@ -3484,7 +3484,7 @@ This is a POSIX or OFD read lock, or a BSD shared lock.
 .B WRITE
 This is a POSIX or OFD write lock, or a BSD exclusive lock.
 .RE
-.IP (5)
+.IP [5]
 The PID of the process that owns the lock.
 .IP
 Because OFD locks are not owned by a single process
@@ -3495,14 +3495,14 @@ the value \-1 is displayed in this field for OFD locks.
 .\" commit 9d5b86ac13c573795525ecac6ed2db39ab23e2a8
 a bug meant that the PID of the process that
 initially acquired the lock was displayed instead of the value \-1.)
-.IP (6)
+.IP [6]
 Three colon-separated subfields that identify the major and minor device
 ID of the device containing the filesystem where the locked file resides,
 followed by the inode number of the locked file.
-.IP (7)
+.IP [7]
 The byte offset of the first byte of the lock.
 For BSD locks, this value is always 0.
-.IP (8)
+.IP [8]
 The byte offset of the last byte of the lock.
 .B EOF
 in this field means that the lock extends to the end of the file.
@@ -4301,16 +4301,16 @@ pseudo-file.
 This value is not reliable, for the following reasons:
 .\" See kernel commit 9c240d757658a3ae9968dd309e674c61f07c7f48
 .RS
-.IP 1. 3
+.IP \(bu 3
 The CPU will not wait for I/O to complete;
 iowait is the time that a task is waiting for I/O to complete.
 When a CPU goes into idle state for outstanding task I/O,
 another task will be scheduled on this CPU.
-.IP 2.
+.IP \(bu
 On a multi-core CPU,
 the task waiting for I/O to complete is not running on any CPU,
 so the iowait of each CPU is difficult to calculate.
-.IP 3.
+.IP \(bu
 The value in this field may
 .I decrease
 in certain conditions.
@@ -4469,19 +4469,19 @@ The file contains six numbers,
 .I want_pages
 (pages requested by system) and two dummy values.
 .RS
-.IP * 2
+.IP \(bu 3
 .I nr_dentry
 is the number of allocated dentries (dcache entries).
 This field is unused in Linux 2.2.
-.IP *
+.IP \(bu
 .I nr_unused
 is the number of unused dentries.
-.IP *
+.IP \(bu
 .I age_limit
 .\" looks like this is unused in kernels 2.2 to 2.6
 is the age in seconds after which dcache entries
 can be reclaimed when memory is short.
-.IP *
+.IP \(bu
 .I want_pages
 .\" looks like this is unused in kernels 2.2 to 2.6
 is nonzero when the kernel has called shrink_dcache_pages() and the
@@ -4710,18 +4710,18 @@ When the value in this file is 1,
 a hard link can be created to a target file
 only if one of the following conditions is true:
 .RS
-.IP * 3
+.IP \(bu 3
 The calling process has the
 .B CAP_FOWNER
 capability in its user namespace
 and the file UID has a mapping in the namespace.
-.IP *
+.IP \(bu
 The filesystem UID of the process creating the link matches
 the owner (UID) of the target file
 (as described in
 .BR credentials (7),
 a process's filesystem UID is normally the same as its effective UID).
-.IP *
+.IP \(bu
 All of the following conditions are true:
 .RS 4
 .IP \(bu 3
@@ -4786,15 +4786,15 @@ no restrictions are placed on following symbolic links
 When the value in this file is 1, symbolic links are followed only
 in the following circumstances:
 .RS
-.IP * 3
+.IP \(bu 3
 the filesystem UID of the process following the link matches
 the owner (UID) of the symbolic link
 (as described in
 .BR credentials (7),
 a process's filesystem UID is normally the same as its effective UID);
-.IP *
+.IP \(bu
 the link is not in a sticky world-writable directory; or
-.IP *
+.IP \(bu
 the symbolic link and its parent directory have the same owner (UID)
 .RE
 .IP
@@ -5874,19 +5874,19 @@ CommitLimit = (total_RAM \- total_huge_TLB) *
 .in
 .IP
 where:
-.RS 12
-.IP * 3
+.RS
+.IP \(bu 3
 .I total_RAM
 is the total amount of RAM on the system;
-.IP *
+.IP \(bu
 .I total_huge_TLB
 is the amount of memory set aside for huge pages;
-.IP *
+.IP \(bu
 .I overcommit_ratio
 is the value in
 .IR /proc/sys/vm/overcommit_ratio ;
 and
-.IP *
+.IP \(bu
 .I total_swap
 is the amount of swap space.
 .RE
@@ -6127,18 +6127,17 @@ Collection: active
 .IP
 The output columns are:
 .RS
-.IP * 3
+.IP [1] 5
 a count of the number of events,
 optionally (since Linux 2.6.23) followed by the letter \(aqD\(aq
 .\" commit c5c061b8f9726bc2c25e19dec227933a13d1e6b7 deferrable timers
 if this is a deferrable timer;
-.IP *
+.IP [2]
 the PID of the process that initialized the timer;
-.IP *
+.IP [3]
 the name of the process that initialized the timer;
-.IP *
+.IP [4]
 the function where the timer was initialized; and
-.IP *
 (in parentheses)
 the callback function that is associated with the timer.
 .RE

@@ -39,13 +39,13 @@ then the second call to
 will operate on inconsistent data, with unpredictable results.
 .PP
 To avoid problems with unsafe functions, there are two possible choices:
-.IP 1. 3
+.IP (a) 5
 Ensure that
-(a) the signal handler calls only async-signal-safe functions,
+(1) the signal handler calls only async-signal-safe functions,
 and
-(b) the signal handler itself is reentrant
+(2) the signal handler itself is reentrant
 with respect to global variables in the main program.
-.IP 2.
+.IP (b)
 Block signal delivery in the main program when calling functions
 that are unsafe or operating on global data that is also accessed
 by the signal handler.
@@ -273,14 +273,14 @@ T}
 .TE
 .PP
 Notes:
-.IP * 3
+.IP \(bu 3
 POSIX.1-2001 and POSIX.1-2001 TC2 required the functions
 .BR fpathconf (3),
 .BR pathconf (3),
 and
 .BR sysconf (3)
 to be async-signal-safe, but this requirement was removed in POSIX.1-2008.
-.IP *
+.IP \(bu
 If a signal handler interrupts the execution of an unsafe function,
 and the handler terminates via a call to
 .BR longjmp (3)
@@ -288,7 +288,7 @@ or
 .BR siglongjmp (3)
 and the program subsequently calls an unsafe function,
 then the behavior of the program is undefined.
-.IP *
+.IP \(bu
 POSIX.1-2001 TC1 clarified
 that if an application calls
 .BR fork (2)
@@ -301,7 +301,7 @@ is likely to remove
 .BR fork (2)
 from the list of async-signal-safe functions.
 .\"
-.IP * 3
+.IP \(bu
 Asynchronous signal handlers that call functions which are cancelation
 points and nest over regions of deferred cancelation may trigger
 cancelation whose behavior is as if asynchronous cancelation had
@@ -317,7 +317,7 @@ on entry and restores its value before returning.
 .SS Deviations in the GNU C library
 The following known deviations from the standard occur in
 the GNU C library:
-.IP * 3
+.IP \(bu 3
 Before glibc 2.24,
 .BR execl (3)
 and
@@ -327,7 +327,7 @@ employed
 internally and were consequently not async-signal-safe.
 .\" https://sourceware.org/bugzilla/show_bug.cgi?id=19534
 This was fixed in glibc 2.24.
-.IP *
+.IP \(bu
 .\" FIXME . https://sourceware.org/bugzilla/show_bug.cgi?id=13172
 The glibc implementation of
 .BR aio_suspend (3)

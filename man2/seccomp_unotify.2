@@ -73,11 +73,11 @@ is running on a virtual machine inside the kernel.)
 An overview of the steps performed by the target and the supervisor
 is as follows:
 .\"-------------------------------------
-.IP 1. 3
+.IP (1) 5
 The target establishes a seccomp filter in the usual manner,
 but with two differences:
 .RS
-.IP \(bu 2
+.IP \(bu 3
 The
 .BR seccomp (2)
 .I flags
@@ -107,7 +107,7 @@ In cases where it is appropriate, the seccomp filter returns the action value
 This return value will trigger a notification event.
 .RE
 .\"-------------------------------------
-.IP 2.
+.IP (2)
 In order that the supervisor can obtain notifications
 using the listening file descriptor,
 (a duplicate of) that file descriptor must be passed from
@@ -130,7 +130,7 @@ Another way to do this is through the use of
 .\"     I'm not sure whether that'd look better or worse in the
 .\"     end though, so maybe just ignore this comment.
 .\"-------------------------------------
-.IP 3.
+.IP (3)
 The supervisor will receive notification events
 on the listening file descriptor.
 These events are returned as structures of type
@@ -152,7 +152,7 @@ bytes for the response (a
 structure)
 that it will provide to the kernel (and thus the target).
 .\"-------------------------------------
-.IP 4.
+.IP (4)
 The target then performs its workload,
 which includes system calls that will be controlled by the seccomp filter.
 Whenever one of these system calls causes the filter to return the
@@ -164,7 +164,7 @@ instead, execution of the target is temporarily blocked inside
 the kernel (in a sleep state that is interruptible by signals)
 and a notification event is generated on the listening file descriptor.
 .\"-------------------------------------
-.IP 5.
+.IP (5)
 The supervisor can now repeatedly monitor the
 listening file descriptor for
 .BR SECCOMP_RET_USER_NOTIF -triggered
@@ -196,7 +196,7 @@ or
 .\" behavior of SECCOMP_IOCTL_NOTIF_RECV.
 .
 .\"-------------------------------------
-.IP 6.
+.IP (6)
 The
 .I seccomp_notif
 structure returned by the
@@ -235,7 +235,7 @@ In addition,
 the supervisor can access other system information that is visible
 in user space but which is not accessible from a seccomp filter.
 .\"-------------------------------------
-.IP 7.
+.IP (7)
 Having obtained information as per the previous step,
 the supervisor may then choose to perform an action in response
 to the target's system call
@@ -250,7 +250,7 @@ in the container's mount namespace.
 However, the supervisor may be a more privileged process that
 does have sufficient capabilities to perform the mount operation.
 .\"-------------------------------------
-.IP 8.
+.IP (8)
 The supervisor then sends a response to the notification.
 The information in this response is used by the kernel to construct
 a return value for the target's system call and provide
@@ -279,7 +279,7 @@ structure returned by the
 operation;
 the cookie allows the kernel to associate the response with the target.
 .\"-------------------------------------
-.IP 9.
+.IP (9)
 Once the notification has been sent,
 the system call in the target thread unblocks,
 returning the information that was provided by the supervisor
@@ -336,7 +336,7 @@ This is a cookie for the notification.
 Each such cookie is guaranteed to be unique for the corresponding
 seccomp filter.
 .RS
-.IP \(bu 2
+.IP \(bu 3
 The cookie can be used with the
 .B SECCOMP_IOCTL_NOTIF_ID_VALID
 .BR ioctl (2)
@@ -438,19 +438,19 @@ returned by the
 .B SECCOMP_IOCTL_NOTIF_RECV
 operation terminates, and that process ID is reused by another process.
 An example of this kind of race is the following
-.IP 1. 3
+.IP (1) 5
 A notification is generated on the listening file descriptor.
 The returned
 .I seccomp_notif
 contains the TID of the target thread (in the
 .I pid
 field of the structure).
-.IP 2.
+.IP (2)
 The target terminates.
-.IP 3.
+.IP (3)
 Another thread or process is created on the system that by chance reuses the
 TID that was freed when the target terminated.
-.IP 4.
+.IP (4)
 The supervisor
 .BR open (2)s
 the
@@ -539,7 +539,7 @@ Tell the kernel to execute the target's system call.
 .RE
 .PP
 Two kinds of response are possible:
-.IP \(bu 2
+.IP \(bu 3
 A response to the kernel telling it to execute the
 target's system call.
 In this case, the
@@ -906,7 +906,7 @@ flag can be monitored using
 and
 .BR select (2).
 These interfaces indicate that the file descriptor is ready as follows:
-.IP \(bu 2
+.IP \(bu 3
 When a notification is pending,
 these interfaces indicate that the file descriptor is readable.
 Following such an indication, a subsequent
@@ -999,35 +999,35 @@ Consider the following scenario, where the supervisor
 tries to read the pathname argument of a target's blocked
 .BR mount (2)
 system call:
-.IP \(bu 2
+.IP (1) 5
 From one of its functions
 .RI ( func() ),
 the target calls
 .BR mount (2),
 which triggers a user-space notification and causes the target to block.
-.IP \(bu
+.IP (2)
 The supervisor receives the notification, opens
 .IR /proc/ tid /mem ,
 and (successfully) performs the
 .B SECCOMP_IOCTL_NOTIF_ID_VALID
 check.
-.IP \(bu
+.IP (3)
 The target receives a signal, which causes the
 .BR mount (2)
 to abort.
-.IP \(bu
+.IP (4)
 The signal handler executes in the target, and returns.
-.IP \(bu
+.IP (5)
 Upon return from the handler, the execution of
 .I func()
 resumes, and it returns (and perhaps other functions are called,
 overwriting the memory that had been used for the stack frame of
 .IR func() ).
-.IP \(bu
+.IP (6)
 Using the address provided in the notification information,
 the supervisor reads from the target's memory location that used to
 contain the pathname.
-.IP \(bu
+.IP (7)
 The supervisor now calls
 .BR mount (2)
 with some arbitrary bytes obtained in the previous step.
@@ -1102,19 +1102,19 @@ that it acquired on behalf of the target.
 .\"
 .SS Interaction with SA_RESTART signal handlers
 Consider the following scenario:
-.IP \(bu 2
+.IP (1) 5
 The target process has used
 .BR sigaction (2)
 to install a signal handler with the
 .B SA_RESTART
 flag.
-.IP \(bu
+.IP (2)
 The target has made a system call that triggered a seccomp
 user-space notification and the target is currently blocked
 until the supervisor sends a notification response.
-.IP \(bu
+.IP (3)
 A signal is delivered to the target and the signal handler is executed.
-.IP \(bu
+.IP (4)
 When (if) the supervisor attempts to send a notification response, the
 .B SECCOMP_IOCTL_NOTIF_SEND
 .BR ioctl (2))
@@ -1205,7 +1205,7 @@ the supervisor examines the memory of the target process (using
 to discover the pathname argument that was supplied to the
 .BR mkdir (2)
 call, and performs one of the following actions:
-.IP \(bu 2
+.IP \(bu 3
 If the pathname begins with the prefix "/tmp/",
 then the supervisor attempts to create the specified directory,
 and then spoofs a return for the target process based on the return

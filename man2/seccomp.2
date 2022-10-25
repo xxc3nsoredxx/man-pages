@@ -565,23 +565,23 @@ structure (see
 .BR sigaction (2))
 associated with signal:
 .RS
-.IP * 3
+.IP \(bu 3
 .I si_signo
 will contain
 .BR SIGSYS .
-.IP *
+.IP \(bu
 .I si_call_addr
 will show the address of the system call instruction.
-.IP *
+.IP \(bu
 .I si_syscall
 and
 .I si_arch
 will indicate which system call was attempted.
-.IP *
+.IP \(bu
 .I si_code
 will contain
 .BR SYS_SECCOMP .
-.IP *
+.IP \(bu
 .I si_errno
 will contain the
 .B SECCOMP_RET_DATA
@@ -742,11 +742,11 @@ file, and whether kernel auditing is enabled
 .IR audit=1 ).
 .\" or auditing could be enabled via the netlink API (AUDIT_SET)
 The rules are as follows:
-.IP * 3
+.IP \(bu 3
 If the action is
 .BR SECCOMP_RET_ALLOW ,
 the action is not logged.
-.IP *
+.IP \(bu
 Otherwise, if the action is either
 .B SECCOMP_RET_KILL_PROCESS
 or
@@ -754,18 +754,18 @@ or
 and that action appears in the
 .I actions_logged
 file, the action is logged.
-.IP *
+.IP \(bu
 Otherwise, if the filter has requested logging (the
 .B SECCOMP_FILTER_FLAG_LOG
 flag)
 and the action appears in the
 .I actions_logged
 file, the action is logged.
-.IP *
+.IP \(bu
 Otherwise, if kernel auditing is enabled and the process is being audited
 .RB ( autrace (8)),
 the action is logged.
-.IP *
+.IP \(bu
 Otherwise, the action is not logged.
 .SH RETURN VALUE
 On success,
@@ -900,22 +900,22 @@ Architecture support for seccomp BPF filtering
 .\" Check by grepping for HAVE_ARCH_SECCOMP_FILTER in Kconfig files in
 .\" kernel source. Last checked in Linux 4.16-rc source.
 is available on the following architectures:
-.IP * 3
+.IP \(bu 3
 x86-64, i386, x32 (since Linux 3.5)
 .PD 0
-.IP *
+.IP \(bu
 ARM (since Linux 3.8)
-.IP *
+.IP \(bu
 s390 (since Linux 3.8)
-.IP *
+.IP \(bu
 MIPS (since Linux 3.16)
-.IP *
+.IP \(bu
 ARM-64 (since Linux 3.19)
-.IP *
+.IP \(bu
 PowerPC (since Linux 4.3)
-.IP *
+.IP \(bu
 Tile (since Linux 4.3)
-.IP *
+.IP \(bu
 PA-RISC (since Linux 4.6)
 .\" User mode Linux since Linux 4.6
 .PD
@@ -923,7 +923,7 @@ PA-RISC (since Linux 4.6)
 .SS Caveats
 There are various subtleties to consider when applying seccomp filters
 to a program, including the following:
-.IP * 3
+.IP \(bu 3
 Some traditional system calls have user-space implementations in the
 .BR vdso (7)
 on many architectures.
@@ -938,7 +938,7 @@ seccomp filtering for these system calls will have no effect.
 .BR vdso (7)
 implementations may fall back to invoking the true system call,
 in which case seccomp filters would see the system call.)
-.IP *
+.IP \(bu
 Seccomp filtering is based on system call numbers.
 However, applications typically do not directly invoke system calls,
 but instead call wrapper functions in the C library which
@@ -987,7 +987,7 @@ filters if the bugs occur in rarely used application code paths.
 .\"
 .SS Seccomp-specific BPF details
 Note the following BPF details specific to seccomp filters:
-.IP * 3
+.IP \(bu 3
 The
 .B BPF_H
 and
@@ -995,13 +995,13 @@ and
 size modifiers are not supported: all operations must load and store
 (4-byte) words
 .RB ( BPF_W ).
-.IP *
+.IP \(bu
 To access the contents of the
 .I seccomp_data
 buffer, use the
 .B BPF_ABS
 addressing mode modifier.
-.IP *
+.IP \(bu
 The
 .B BPF_LEN
 addressing mode modifier yields an immediate mode operand
@@ -1014,11 +1014,11 @@ The first three arguments are a system call number,
 a numeric architecture identifier, and an error number.
 The program uses these values to construct a BPF filter
 that is used at run time to perform the following checks:
-.IP [1] 4
+.IP \(bu 3
 If the program is not running on the specified architecture,
 the BPF filter causes system calls to fail with the error
 .BR ENOSYS .
-.IP [2]
+.IP \(bu
 If the program attempts to execute the system call with the specified number,
 the BPF filter causes the system call to fail, with
 .I errno

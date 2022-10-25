@@ -21,13 +21,13 @@ Thus, making a system call looks the same as invoking a normal
 library function.
 .PP
 In many cases, the C library wrapper function does nothing more than:
-.IP * 3
+.IP \(bu 3
 copying arguments and the unique system call number to the
 registers where the kernel expects them;
-.IP *
+.IP \(bu
 trapping to kernel mode,
 at which point the kernel does the real work of the system call;
-.IP *
+.IP \(bu
 setting
 .I errno
 if the system call returns an error number when the kernel returns the
