@@ -618,15 +618,14 @@ mt_cmd.mt_count = MT_ST_BOOLEANS |
 ioctl(fd, MTIOCTOP, mt_cmd);
 .EE
 .in
-.RE
-.IP ""
+.PP
 The default block size for a device can be set with
 .B MT_ST_DEF_BLKSIZE
 and the default density code can be set with
 .BR MT_ST_DEFDENSITY .
 The values for the parameters are or'ed
 with the operation code.
-.IP ""
+.PP
 With kernels 2.1.x and later, the timeout values can be set with the
 subcommand
 .B MT_ST_SET_TIMEOUT
@@ -643,7 +642,7 @@ These commands can be used to set more
 practical values for a specific drive.
 The timeouts set for one device
 apply for all devices linked to the same drive.
-.IP ""
+.PP
 Starting from kernels 2.4.19 and 2.5.43, the driver supports a status
 bit which indicates whether the drive requests cleaning.
 The method used by the
@@ -664,6 +663,7 @@ If the bit pattern is zero, one or more bits under the mask indicate
 the cleaning request.
 If the pattern is nonzero, the pattern must match
 the masked sense data byte.
+.RE
 .SS MTIOCGET \(em get status
 This request takes an argument of type
 .IR "(struct mtget\ *)" .
