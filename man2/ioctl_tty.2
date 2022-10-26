@@ -309,6 +309,21 @@ for the argument values
 .BR TCIFLUSH ,
 .BR TCOFLUSH ,
 .BR TCIOFLUSH .
+.TP
+.B TIOCSERGETLSR
+Argument:
+.BI "int\~*" argp
+.IP
+Get line status register. Status register has
+.B TIOCSER_TEMT
+bit set when output buffer is empty and also hardware transmitter is physically empty.
+.IP
+Does not have to be supported by all serial tty drivers.
+.IP
+.BR tcdrain (3)
+does not wait and returns immediately when
+.B TIOCSER_TEMT
+bit is set.
 .SS Faking input
 .TP
 .B TIOCSTI
@@ -890,7 +905,6 @@ main(int argc, char *argv[])
 .\" TIOCSERGWILD		int *
 .\" TIOCSERSWILD		const int *
 .\" TIOCSERGSTRUCT		struct async_struct *
-.\" TIOCSERGETLSR		int *
 .\" TIOCSERGETMULTI		struct serial_multiport_struct *
 .\" TIOCSERSETMULTI		const struct serial_multiport_struct *
 .\" TIOCGSERIAL, TIOCSSERIAL (see above)
