@@ -620,6 +620,64 @@ makes it easier to see the effect of patches,
 which often operate at the level of
 individual sentences, clauses, or phrases.
 .\"
+.SS Lists
+There are different kinds of lists:
+.TP
+Tagged paragraphs
+These are used for a list of tags and their descriptions.
+When the tags are constants (either macros or numbers)
+they are in bold.
+Use the
+.B .TP
+macro.
+.IP
+An example is this "Tagged paragraphs" subsection is itself.
+.TP
+Ordered lists
+Elements are preceeded by a number in parentheses (1), (2).
+These represent a set of steps that have an order.
+.IP
+When there are substeps,
+they will be numbered like (4.2).
+.TP
+Positional lists
+Elements are preceeded by a number (index) in square brackets [4], [5].
+These represent fields in a set.
+The first index will be:
+.IP
+.RS
+.PD 0
+.TP
+.B 0
+When it represents fields of a C data structure,
+to be consistent with arrays.
+.TP
+.B 1
+When it represents fields of a file,
+to be consistent with tools like
+.BR cut (1).
+.PD
+.RE
+.TP
+Alternatives list
+Elements are preceeded by a letter in parentheses (a), (b).
+These represent a set of (normally) exclusive alternatives.
+.TP
+Bullet lists
+Elements are preceeded by bullet symbols
+.RB ( \e(bu ).
+Anything that doesn't fit elsewhere is
+usually covered by this type of list.
+.TP
+Numbered notes
+Not really a list,
+but the syntax is identical to "positional lists".
+.PP
+There should always be exactly
+2 spaces between the list symbol and the elements.
+This doesn't apply to "tagged paragraphs",
+which use the default indentation rules.
+.\"
 .SS Formatting conventions (general)
 Paragraphs should be separated by suitable markers (usually either
 .I .PP
