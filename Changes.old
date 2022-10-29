@@ -50582,7 +50582,7 @@ The following people contributed patches/fixes or (noted in brackets
 in the changelog below) reports, notes, and ideas that have been
 incorporated in changes in this release:
 
-Alejandro Colomar <colomar.6.4.3@gmail.com>
+Alejandro Colomar <alx@kernel.org>
 Aleksa Sarai <cyphar@cyphar.com>
 Alexander Miller <alex.miller@gmx.de>
 Andrea Arcangeli <aarcange@redhat.com>
@@ -51881,7 +51881,7 @@ The following people contributed patches/fixes or (noted in brackets
 in the changelog below) reports, notes, and ideas that have been
 incorporated in changes in this release:
 
-Alejandro Colomar <colomar.6.4.3@gmail.com>
+Alejandro Colomar <alx@kernel.org>
 Aleksa Sarai <cyphar@cyphar.com>
 Alyssa Ross <hi@alyssa.is>
 Andrew Price <anprice@redhat.com>
@@ -52221,7 +52221,7 @@ The following people contributed patches/fixes or (noted in brackets
 in the changelog below) reports, notes, and ideas that have been
 incorporated in changes in this release:
 
-Alejandro Colomar <colomar.6.4.3@gmail.com>
+Alejandro Colomar <alx@kernel.org>
 Aleksa Sarai <cyphar@cyphar.com>
 Alexey Budankov <alexey.budankov@linux.intel.com>
 Amir Goldstein <amir73il@gmail.com>
@@ -53002,7 +53002,7 @@ in the changelog below) reports, notes, and ideas that have been
 incorporated in changes in this release:
 
 Ahelenia Ziemiańska <nabijaczleweli@nabijaczleweli.xyz>
-Alejandro Colomar <alx.manpages@gmail.com>
+Alejandro Colomar <alx@kernel.org>
 Amir Goldstein <amir73il@gmail.com>
 Arusekk <arek_koz@o2.pl>
 Baruch Siach <baruch@tkos.co.il>
@@ -53353,7 +53353,7 @@ The following people contributed patches/fixes or (noted in brackets
 in the changelog below) reports, notes, and ideas that have been
 incorporated in changes in this release:
 
-Alejandro Colomar <alx.manpages@gmail.com>
+Alejandro Colomar <alx@kernel.org>
 Alessandro Bono <alessandro.bono369@gmail.com>
 Alyssa Ross <hi@alyssa.is>
 Bastien Roucariès <rouca@debian.org>
@@ -54207,7 +54207,7 @@ incorporated in changes in this release:
 
 Ahelenia Ziemiańska <nabijaczleweli@nabijaczleweli.xyz>
 Akihiro Motoki <amotoki@gmail.com>
-Alejandro Colomar <alx.manpages@gmail.com>
+Alejandro Colomar <alx@kernel.org>
 Alyssa Ross <hi@alyssa.is>
 Aurelien Aptel <aaptel@suse.com>
 Borislav Petkov <bp@suse.de>
@@ -54599,7 +54599,7 @@ incorporated in changes in this release:
 
 Ahelenia Ziemiańska (наб) <nabijaczleweli@nabijaczleweli.xyz>
 Alan Peakall <Alan.Peakall@helpsystems.com>
-Alejandro Colomar <alx.manpages@gmail.com>
+Alejandro Colomar <alx@kernel.org>
 Alexis Wilke <alexis@m2osw.com>
 Askar Safin <safinaskar@mail.ru>
 Christian Brauner <christian.brauner@ubuntu.com>

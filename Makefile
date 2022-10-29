@@ -1,5 +1,5 @@
 ########################################################################
-# Copyright (C) 2021, 2022  Alejandro Colomar <alx.manpages@gmail.com>
+# Copyright (C) 2021, 2022  Alejandro Colomar <alx@kernel.org>
 # SPDX-License-Identifier:  GPL-2.0  OR  LGPL-2.0
 ########################################################################
 # Conventions:
