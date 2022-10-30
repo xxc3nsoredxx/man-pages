@@ -11,6 +11,31 @@ Description
        For packaging a random commit without an official release, you only
        need step (4) "Tarball".
 
+   Dependencies
+       The following list of dependencies states what the build system (the
+       makefiles) need to perform the relevant (dist) targets:
+
+       -  bc(1)
+       -  echo(1)
+       -  find(1)
+       -  git(1)
+       -  grep(1)
+       -  gzip(1)
+       -  install(1)
+       -  locale(1)
+       -  make(1) - GNU Make is required.
+       -  sed(1)
+       -  sort(1)
+       -  tar(1) - GNU tar is required.
+       -  xargs(1)
+       -  xz(1)
+
+       Apart from that, the following commands are also needed for other tasks
+       shown below:
+
+       -  gpg(1)
+       -  kup(1)
+
    Steps
        (1)  Version
 
@@ -155,3 +180,34 @@ Description
 
                    $ git push
                    $ git push man-pages-${new}
+
+Files
+   Changes, Changes.old
+       Change log.  Includes most relevant changes.
+
+   Makefile, lib/dist.mk, lib/version.mk
+       Main makefiles used for releasing (however, others may also be used by
+       inclusion).
+
+   lsm
+       Linux software map.  See also <https://lsm.qqx.org/>.
+
+   tmp/man-pages-<version>.tar{,.xz,.gz}
+       Generated tarballs.  You can generate all with 'make dist', or generate
+       only some of them, with 'make dist-tar', 'make dist-xz', or
+       'make dist-gz'.
+
+Versions
+       Use the DISTVERSION variable when running make(1) to specify a version
+       different than the default, which is generated with git-describe(1).
+       This needs to be done from the git repository, and won't work from an
+       extracted tarball.
+
+           $ make dist-xz DISTVERSION=6.01+43
+
+Caveats
+       The version and date of last modification for each page is hardcoded
+       by the Makefile into the pages when the tarball is generated.  This
+       means that it's not possible to generate a valid tarball from another
+       extracted tarball, since the version and date will not be updated.
+       Tarballs need to be created from the git(1) repository.
