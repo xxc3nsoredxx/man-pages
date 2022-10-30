@@ -4,7 +4,7 @@
 .\" SPDX-License-Identifier: Linux-man-pages-copyleft
 .\"
 .\"
-.TH ID_T 3type (date) "Linux man-pages (unreleased)"
+.TH id_t 3type (date) "Linux man-pages (unreleased)"
 .SH NAME
 pid_t, uid_t, gid_t, id_t \- process/user/group identifier
 .SH LIBRARY

@@ -4,7 +4,7 @@
 .\" SPDX-License-Identifier: Linux-man-pages-copyleft
 .\"
 .\"
-.TH SIZE_T 3type (date) "Linux man-pages (unreleased)"
+.TH size_t 3type (date) "Linux man-pages (unreleased)"
 .SH NAME
 size_t, ssize_t \- count of bytes
 .SH LIBRARY

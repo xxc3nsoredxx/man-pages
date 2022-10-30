@@ -4,7 +4,7 @@
 .\" SPDX-License-Identifier: Linux-man-pages-copyleft
 .\"
 .\"
-.TH FENV_T 3type (date) "Linux man-pages (unreleased)"
+.TH fenv_t 3type (date) "Linux man-pages (unreleased)"
 .SH NAME
 fenv_t, fexcept_t \- floating-point environment
 .SH LIBRARY

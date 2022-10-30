@@ -3,7 +3,7 @@
 .\" SPDX-License-Identifier: Linux-man-pages-copyleft
 .\"
 .\"
-.TH TM 3type (date) "Linux man-pages (unreleased)"
+.TH tm 3type (date) "Linux man-pages (unreleased)"
 .SH NAME
 tm \- broken-down time
 .SH LIBRARY
