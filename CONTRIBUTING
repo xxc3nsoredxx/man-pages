@@ -147,7 +147,7 @@ Description
             which warnings you'll still see from that page that are not your
             fault.
 
-                $ touch man2/membarrier  # replace by the page you'll modify
+                $ touch man2/membarrier.2  # replace by the page you'll modify
                 $ make -k lint
 
        (3)  Apply your changes, and then run make(1) again.  You can ignore
@@ -155,7 +155,7 @@ Description
             please fix them if you know how, or at least note them in your
             patch email.
 
-                $ vi man2/membarrier  # do your work
+                $ vi man2/membarrier.2  # do your work
                 $ make -k lint
 
        See <INSTALL> for a list of dependencies that this feature requires.
