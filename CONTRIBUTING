@@ -130,6 +130,38 @@ Description
        -  Make patches against the latest version of the manual page.  Use
           git(1) for getting the latest version.
 
+   Lint
+       If you plan to patch a manual page, consider running the linters
+       configured in the build system, to make sure your change doesn't add
+       new warnings.  However, you might still get warnings that are not your
+       fault.  To minimize that, do the following steps:
+
+       (1)  Lint first all of the pages, so that make(1) knows that it only
+            needs to lint again pages that you will touch.  This example is
+            shown with '-j' because it would take a long time (around a couple
+            of minutes) to run without parallel execution.
+
+                $ make -ij lint >/dev/null 2>&1
+
+       (2)  Touch the page that you'll edit, and run make(1) again, to see
+            which warnings you'll still see from that page that are not your
+            fault.
+
+                $ touch man2/membarrier  # replace by the page you'll modify
+                $ make -k lint
+
+       (3)  Apply your changes, and then run make(1) again.  You can ignore
+            warnings that you saw in step (2), but if you see any new ones,
+            please fix them if you know how, or at least note them in your
+            patch email.
+
+                $ vi man2/membarrier  # do your work
+                $ make -k lint
+
+       See <INSTALL> for a list of dependencies that this feature requires.
+       If you can't meet them all, don't worry; it will still run the linters
+       that you have available.
+
 Reporting bugs
        Report bugs to the mailing list, following the instructions above for
        sending mails to the list.  If you can write a patch (see instructions
