@@ -58,7 +58,7 @@ _SRCPAGEDIRS   := $(patsubst $(MANDIR)/%,$(_SRCDIR)/%.d,$(LINTMAN))
 
 _UNITS_src_src := $(patsubst $(MANDIR)/%,$(_SRCDIR)/%,$(shell \
 		$(FIND) $(MANDIR)/man*/ -type f \
-		| $(GREP) '$(MANEXT)$$' \
+		| $(GREP) '$(MANEXT)' \
 		| $(XARGS) $(GREP) -l '^\.TH ' \
 		| while read m; do \
 		    <$$m \
