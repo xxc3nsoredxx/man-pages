@@ -402,11 +402,13 @@ for respective databases:
 .PD
 .RE
 .SH NOTES
-Within each process that uses
-.BR nsswitch.conf ,
-the entire file is read only once.
-If the file is later changed, the
-process will continue using the old configuration.
+Starting with glibc 2.33,
+.\" https://sourceware.org/bugzilla/show_bug.cgi?id=12459
+.B nsswitch.conf
+is automatically reloaded if the file is changed.
+In earlier versions, the entire file was read only once within each process.
+If the file was later changed,
+the process would continue using the old configuration.
 .PP
 Traditionally, there was only a single source for service information,
 often in the form of a single configuration
