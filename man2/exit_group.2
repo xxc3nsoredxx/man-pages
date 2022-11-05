@@ -13,7 +13,7 @@ Standard C library
 .BR "#include <sys/syscall.h>" "       /* Definition of " SYS_* " constants */"
 .B #include <unistd.h>
 .PP
-.BI "noreturn void syscall(SYS_exit_group, int " status );
+.BI "[[noreturn]] void syscall(SYS_exit_group, int " status );
 .fi
 .PP
 .IR Note :
