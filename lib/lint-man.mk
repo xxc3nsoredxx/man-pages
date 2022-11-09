@@ -86,6 +86,7 @@ $(_LINT_man_mandoc): $(_LINTDIR)/%.lint-man.mandoc.touch: $(MANDIR)/% | $$(@D)/.
 	$(info LINT (mandoc)	$@)
 	! ($(MANDOC) $(MANDOCFLAGS) $< 2>&1 \
 	   | $(GREP) -v 'STYLE: lower case character in document title:' \
+	   | $(GREP) -v 'UNSUPP: ignoring macro in table:' \
 	   | $(GREP) -v 'WARNING: cannot parse date, using it verbatim: TH (date)' \
 	   | $(GREP) -v 'WARNING: empty block: UR' \
 	   ||:; \
