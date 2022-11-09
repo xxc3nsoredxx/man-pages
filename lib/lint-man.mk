@@ -79,7 +79,7 @@ $(_LINT_man_groff): $(_LINTDIR)/%.lint-man.groff.touch: $(MANDIR)/% | $$(@D)/.
 	| $(TROFF) $(TROFFFLAGS) \
 	| $(GROTTY) $(GROTTYFLAGS) \
 	| $(COL) $(COLFLAGS) \
-	| (! $(GREP) -n '.\{$(MANWIDTH)\}.' >&2)
+	| (! $(GREP) -n '.\{$(MANWIDTH)\}.' | $(SED) 's,^,$<:,' >&2)
 	touch $@
 
 $(_LINT_man_mandoc): $(_LINTDIR)/%.lint-man.mandoc.touch: $(MANDIR)/% | $$(@D)/.
