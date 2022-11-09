@@ -93,7 +93,9 @@ Description
           -  For linting man(7) source:
              -  eqn(1)
              -  grotty(1)
+             -  head(1)
              -  mkdir(1)
+             -  tail(1)
              -  tbl(1)
              -  troff(1) >= 1.23.0 - GNU troff is required.
 

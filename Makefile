@@ -71,6 +71,7 @@ help:
 	$(info	lint-man		Wrapper for lint-man-* targets)
 	$(info	lint-man-groff		Lint man pages with groff(1))
 	$(info	lint-man-mandoc		Lint man pages with mandoc(1))
+	$(info	lint-man-tbl		Lint man pages about '\" t' comment for tbl(1))
 	$(info	)
 	$(info	[un]install		Alias for "[un]install-man")
 	$(info	[un]install-man		Wrapper for [un]install-man* targets)

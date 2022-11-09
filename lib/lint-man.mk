@@ -66,9 +66,10 @@ MANDOC              := mandoc
 
 _LINT_man_groff :=$(patsubst $(MANDIR)/%,$(_LINTDIR)/%.lint-man.groff.touch,$(LINTMAN))
 _LINT_man_mandoc:=$(patsubst $(MANDIR)/%,$(_LINTDIR)/%.lint-man.mandoc.touch,$(LINTMAN))
+_LINT_man_tbl   :=$(patsubst $(MANDIR)/%,$(_LINTDIR)/%.lint-man.tbl.touch,$(LINTMAN))
 
 
-linters_man := groff mandoc
+linters_man := groff mandoc tbl
 lint_man    := $(foreach x,$(linters_man),lint-man-$(x))
 
 
@@ -92,6 +93,28 @@ $(_LINT_man_mandoc): $(_LINTDIR)/%.lint-man.mandoc.touch: $(MANDIR)/% | $$(@D)/.
 	   ||:; \
 	) \
 	| $(GREP) '.' >&2
+	touch $@
+
+$(_LINT_man_tbl): $(_LINTDIR)/%.lint-man.tbl.touch: $(MANDIR)/% | $$(@D)/.
+	$(info LINT (tbl)	$@)
+	if $(GREP) -q '^\.TS$$' $< && ! $(HEAD) -n1 $< | $(GREP) -q '\\" t$$'; \
+	then \
+		2>&1 $(ECHO) "$<:1: missing '\\\" t' comment:"; \
+		2>&1 $(HEAD) -n1 <$<; \
+		exit 1; \
+	fi
+	if $(HEAD) -n1 $< | $(GREP) -q '\\" t$$' && ! $(GREP) -q '^\.TS$$' $<; \
+	then \
+		2>&1 $(ECHO) "$<:1: spurious '\\\" t' comment:"; \
+		2>&1 $(HEAD) -n1 <$<; \
+		exit 1; \
+	fi
+	if $(TAIL) -n+2 <$< | $(GREP) -q '\\" t$$'; \
+	then \
+		2>&1 $(ECHO) "$<: spurious '\\\" t' not in first line:"; \
+		2>&1 $(GREP) -n '\\" t$$' $< /dev/null; \
+		exit 1; \
+	fi
 	touch $@
 
 
