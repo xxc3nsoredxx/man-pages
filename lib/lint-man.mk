@@ -84,7 +84,11 @@ $(_LINT_man_groff): $(_LINTDIR)/%.lint-man.groff.touch: $(MANDIR)/% | $$(@D)/.
 
 $(_LINT_man_mandoc): $(_LINTDIR)/%.lint-man.mandoc.touch: $(MANDIR)/% | $$(@D)/.
 	$(info LINT (mandoc)	$@)
-	$(MANDOC) $(MANDOCFLAGS) $<
+	! ($(MANDOC) $(MANDOCFLAGS) $< 2>&1 \
+	   | $(GREP) -v 'WARNING: cannot parse date, using it verbatim: TH (date)' \
+	   ||:; \
+	) \
+	| $(GREP) '.' >&2
 	touch $@
 
 
