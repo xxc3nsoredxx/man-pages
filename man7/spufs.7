@@ -82,9 +82,11 @@ and
 .IR st_gid .
 .PP
 All files support the
-.BR chmod (2)/ fchmod (2)
+.BR chmod (2)/\c
+.BR fchmod (2)
 and
-.BR chown (2)/ fchown (2)
+.BR chown (2)/\c
+.BR fchown (2)
 operations, but will not be able to grant permissions that contradict
 the possible operations (e.g., read access on the
 .I wbox

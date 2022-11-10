@@ -134,12 +134,16 @@ Attempt to allocate huge pages every time a new page is needed.
 Only allocate huge page if it will be fully within
 .IR i_size .
 Also respect
-.BR fadvise (2)/ madvise (2)
+.BR fadvise (2)
+and
+.BR madvise (2)
 hints
 .TP
 .B advise
 Only allocate huge pages if requested with
-.BR fadvise (2)/ madvise (2).
+.BR fadvise (2)
+or
+.BR madvise (2).
 .TP
 .B deny
 For use in emergencies, to force the huge option off from all mounts.

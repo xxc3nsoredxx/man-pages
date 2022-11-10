@@ -212,7 +212,9 @@ The glibc
 wrapper function transparently deals with the kernel differences.
 .PP
 Applications may wish to fall back to
-.BR read (2)/ write (2)
+.BR read (2)
+and
+.BR write (2)
 in the case where
 .BR sendfile ()
 fails with
