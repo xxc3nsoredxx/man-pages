@@ -17,7 +17,7 @@ TMACDIR := $(SYSCONFDIR)/groff/tmac
 
 
 MANWIDTH          ?= 80
-TROFF_LINE_LENGTH := $(shell $(ECHO) $(MANWIDTH)-2 | $(BC))
+TROFF_LINE_LENGTH := $(shell $(EXPR) $(MANWIDTH) - 2)
 TROFF_OUT_DEVICE  := $(shell $(LOCALE) charmap \
                              | $(GREP) -i 'utf-*8' >/dev/null \
                                  && $(ECHO) utf8 \

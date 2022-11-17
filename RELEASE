@@ -15,8 +15,8 @@ Description
        The following list of dependencies states what the build system (the
        makefiles) need to perform the relevant (dist) targets:
 
-       -  bc(1)
        -  echo(1)
+       -  expr(1)
        -  find(1)
        -  git(1)
        -  grep(1)

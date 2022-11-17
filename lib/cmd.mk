@@ -8,8 +8,8 @@ ifndef MAKEFILE_CMD_INCLUDED
 MAKEFILE_CMD_INCLUDED := 1
 
 
-BC         := bc
 ECHO       := echo
+EXPR       := expr
 FIND       := find
 GIT        := git
 GREP       := grep

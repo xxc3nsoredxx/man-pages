@@ -73,8 +73,8 @@ Description
    Dependencies
        -  Build-depends:
           -  Generic:
-             -  bc(1)
              -  echo(1)
+             -  expr(1)
              -  find(1)
              -  grep(1)
              -  locale(1)
