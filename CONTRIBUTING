@@ -71,7 +71,7 @@ Description
 
              [patch] shmop.2: Add "(void *)" cast to RETURN VALUE
 
-       -  Sign your patch with "Signed-opff-by:".  Read about the "Developer's
+       -  Sign your patch with "Signed-off-by:".  Read about the "Developer's
           Certificate of Origin" at
           <https://www.kernel.org/doc/Documentation/process/submitting-patches.rst>.
           When appropriate, other tags documented in that file, such as
