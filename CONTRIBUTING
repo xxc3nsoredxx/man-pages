@@ -2,7 +2,7 @@ Name
        Contributing - instructions for contributing to the project
 
 Synopsis
-       Mailing list, patches, and bug reports.
+       Mailing list, patches, lint, style guide, bug reports, and notes
 
 Description
    Mailing list
@@ -162,6 +162,15 @@ Description
        If you can't meet them all, don't worry; it will still run the linters
        that you have available.
 
+   Style guide
+       For a description of the preferred layout of manual pages, as well as
+       some style guide notes, see:
+
+           $ man 7 man-pages
+
+       It will also be interesting to consult groff_man(7) and
+       groff_man_style(7) for understanding and writing good man(7) source code.
+
 Reporting bugs
        Report bugs to the mailing list, following the instructions above for
        sending mails to the list.  If you can write a patch (see instructions
@@ -182,13 +191,6 @@ Reporting bugs
        There's also a bugzilla, but we don't use it as much as the mailing list.
 
 Notes
-       For a description of the preferred layout of manual pages, as well as
-       some style guide notes, see:
-
-           $ man 7 man-pages
-
-       It will also be interesting to consult groff_man(7) and
-       groff_man_style(7) for understanding and writing good man(7) source code.
 
 Bugs
    Bugzilla:
