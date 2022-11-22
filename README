@@ -40,6 +40,9 @@ Files
    lsm
        Linux software map.  See also <https://lsm.qqx.org/>.
 
+   .mailmap
+       See gitmailmap(5).
+
    LICENSES/*.txt
        Licenses in use by the project.
 
