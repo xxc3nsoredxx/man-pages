@@ -35,60 +35,6 @@ sed_rm_ccomments()
 }
 
 ########################################################################
-#	Linux kernel
-
-#  grep_syscall()  finds the prototype of a syscall in the kernel sources,
-# printing the filename, line number, and the prototype.
-# It should be run from the root of the linux kernel source tree.
-# Usage example:  .../linux$ grep_syscall openat2;
-#
-# See also: grepc(1)
-
-grep_syscall()
-{
-	if [ $# -ne 1 ]; then
-		>&2 echo "Usage: ${FUNCNAME[0]} <syscall>";
-		return $EX_USAGE;
-	fi
-
-	find ./* -type f \
-	|grep '\.c$' \
-	|xargs grep -l "$1" \
-	|sort \
-	|xargs pcregrep -Mn "(?s)^\w*SYSCALL_DEFINE.\($1\b.*?\)" \
-	|sed -E 's/^[^:]+:[0-9]+:/&\n/';
-
-	find ./* -type f \
-	|grep '\.[ch]$' \
-	|xargs grep -l "$1" \
-	|sort \
-	|xargs pcregrep -Mn "(?s)^asmlinkage\s+[\w\s]+\**sys_$1\s*\(.*?\)" \
-	|sed -E 's/^[^:]+:[0-9]+:/&\n/';
-}
-
-#  grep_syscall_def()  finds the definition of a syscall in the kernel sources,
-# printing the filename, line number, and the function definition.
-# It should be run from the root of the linux kernel source tree.
-# Usage example:  .../linux$ grep_syscall_def openat2;
-#
-# See also: grepc(1)
-
-grep_syscall_def()
-{
-	if [ $# -ne 1 ]; then
-		>&2 echo "Usage: ${FUNCNAME[0]} <syscall>";
-		return $EX_USAGE;
-	fi
-
-	find ./* -type f \
-	|grep '\.c$' \
-	|xargs grep -l "$1" \
-	|sort \
-	|xargs pcregrep -Mn "(?s)^\w*SYSCALL_DEFINE.\($1\b.*?^}" \
-	|sed -E 's/^[^:]+:[0-9]+:/&\n/';
-}
-
-########################################################################
 #	Linux man-pages
 
 #  man_section()  prints specific manual page sections (DESCRIPTION, SYNOPSIS,
@@ -202,30 +148,4 @@ man_gitstaged()
 	|sed 's%.*/%%'							\
 	|tr -d '\n'							\
 	|sed 's/, $//'
-}
-
-########################################################################
-#	Glibc
-
-#  grep_glibc_prototype()  finds a function prototype in the glibc sources,
-# printing the filename, line number, and the prototype.
-# It should be run from the root of the glibc source tree.
-# Usage example:  .../glibc$ grep_glibc_prototype printf;
-#
-# See also: grepc(1)
-
-grep_glibc_prototype()
-{
-	if [ $# -ne 1 ]; then
-		>&2 echo "Usage: ${FUNCNAME[0]} <func>";
-		return $EX_USAGE;
-	fi
-
-	find ./* -type f \
-	|grep '\.h$' \
-	|xargs grep -l "$1" \
-	|sort \
-	|xargs pcregrep -Mn \
-	  "(?s)^[\w[][\w\s(,)[:\]]+\s+\**$1\s*\([\w\s(,)[\]*]+?(...)?\)[\w\s(,)[:\]]*;" \
-	|sed -E 's/^[^:]+:[0-9]+:/&\n/';
 }
