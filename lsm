@@ -7,8 +7,7 @@ Description:    Manual pages for GNU/Linux.  This package contains
                 subsections of those.  Only a few pages are provided in
                 sections 1, 6, and 8, and none in 9.
 Keywords:       man pages
-Maintained-by:  Alejandro Colomar <alx@kernel.org>,
-                Michael Kerrisk <mtk.manpages@gmail.com>
+Maintained-by:  Alejandro Colomar <alx@kernel.org>
 Primary-site:   http://www.kernel.org/pub/linux/docs/man-pages
                 2.6M  man-pages-6.01.tar.gz
 Copying-policy: several; the pages are all freely distributable as long as

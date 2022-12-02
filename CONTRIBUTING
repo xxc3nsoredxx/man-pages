@@ -11,7 +11,6 @@ Description
        to the project, send it to both maintainers and CC the mailing list:
 
            To: Alejandro Colomar <alx@kernel.org>
-           To: Michael Kerrisk <mtk.manpages@gmail.com>
            Cc: <linux-man@vger.kernel.org>
 
        Please CC any relevant developers and mailing lists that may know about
