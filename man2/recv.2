@@ -24,8 +24,8 @@ Standard C library
 .BI "                 int " flags );
 .BI "ssize_t recvfrom(int " sockfd ", void " buf "[restrict ." len "], size_t " len ,
 .BI "                 int " flags ,
-.BI "                 struct sockaddr *restrict " src_addr ,
-.BI "                 socklen_t *restrict " addrlen );
+.BI "                 struct sockaddr *_Nullable restrict " src_addr ,
+.BI "                 socklen_t *_Nullable restrict " addrlen );
 .BI "ssize_t recvmsg(int " sockfd ", struct msghdr *" msg ", int " flags );
 .fi
 .SH DESCRIPTION
