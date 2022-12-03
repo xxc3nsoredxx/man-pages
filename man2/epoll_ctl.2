@@ -15,7 +15,7 @@ Standard C library
 .B #include <sys/epoll.h>
 .PP
 .BI "int epoll_ctl(int " epfd ", int " op ", int " fd \
-", struct epoll_event *" event );
+", struct epoll_event *_Nullable " event );
 .fi
 .SH DESCRIPTION
 This system call is used to add, modify, or remove
