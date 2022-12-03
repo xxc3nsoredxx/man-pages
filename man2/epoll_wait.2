@@ -21,10 +21,11 @@ Standard C library
 .BI "               int " maxevents ", int " timeout );
 .BI "int epoll_pwait(int " epfd ", struct epoll_event *" events ,
 .BI "               int " maxevents ", int " timeout ,
-.BI "               const sigset_t *" sigmask );
+.BI "               const sigset_t *_Nullable " sigmask );
 .BI "int epoll_pwait2(int " epfd ", struct epoll_event *" events ,
-.BI "               int " maxevents ", const struct timespec *" timeout ,
-.BI "               const sigset_t *" sigmask );
+.BI "               int " maxevents ", \
+const struct timespec *_Nullable " timeout ,
+.BI "               const sigset_t *_Nullable " sigmask );
 .fi
 .SH DESCRIPTION
 The
