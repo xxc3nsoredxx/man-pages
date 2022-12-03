@@ -13,8 +13,8 @@ Standard C library
 .B #define _GNU_SOURCE
 .B #include <unistd.h>
 .PP
-.BI "ssize_t copy_file_range(int " fd_in ", off64_t *" off_in ,
-.BI "                        int " fd_out ", off64_t *" off_out ,
+.BI "ssize_t copy_file_range(int " fd_in ", off64_t *_Nullable " off_in ,
+.BI "                        int " fd_out ", off64_t *_Nullable " off_out ,
 .BI "                        size_t " len ", unsigned int " flags );
 .fi
 .SH DESCRIPTION
