@@ -17,8 +17,8 @@ Standard C library
 " constants"
 .RB    "                        (or " <linux/dqblk_xfs.h> "; see NOTES) */"
 .PP
-.BI "int quotactl(int " cmd ", const char *" special ", int " id \
-", caddr_t " addr );
+.BI "int quotactl(int " cmd ", const char *_Nullable " special ", int " id ,
+.BI "             caddr_t " addr );
 .fi
 .SH DESCRIPTION
 The quota system can be used to set per-user, per-group, and per-project limits
