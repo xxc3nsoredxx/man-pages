@@ -15,8 +15,8 @@ Standard C library
 .B #include <sys/stat.h>
 .PP
 .BI "int utimensat(int " dirfd ", const char *" pathname ,
-.BI "              const struct timespec " times "[2], int " flags );
-.BI "int futimens(int " fd ", const struct timespec " times [2]);
+.BI "              const struct timespec " times "[_Nullable 2], int " flags );
+.BI "int futimens(int " fd ", const struct timespec " times "[_Nullable 2]);"
 .fi
 .PP
 .RS -4
