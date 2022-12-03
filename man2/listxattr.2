@@ -14,11 +14,11 @@ Standard C library
 .nf
 .B #include <sys/xattr.h>
 .PP
-.BI "ssize_t listxattr(const char *" path ", char *" list \
+.BI "ssize_t listxattr(const char *" path ", char *_Nullable " list \
 ", size_t " size );
-.BI "ssize_t llistxattr(const char *" path ", char *" list \
+.BI "ssize_t llistxattr(const char *" path ", char *_Nullable " list \
 ", size_t " size );
-.BI "ssize_t flistxattr(int " fd ", char *" list ", size_t " size );
+.BI "ssize_t flistxattr(int " fd ", char *_Nullable " list ", size_t " size );
 .fi
 .SH DESCRIPTION
 Extended attributes are
