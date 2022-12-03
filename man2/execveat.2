@@ -15,7 +15,8 @@ Standard C library
 .B #include <unistd.h>
 .PP
 .BI "int execveat(int " dirfd ", const char *" pathname ,
-.BI "             const char *const " argv "[], const char *const " envp [],
+.BI "             const char *const _Nullable " argv [],
+.BI "             const char *const _Nullable " envp [],
 .BI "             int " flags );
 .fi
 .SH DESCRIPTION
