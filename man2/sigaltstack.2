@@ -13,8 +13,8 @@ Standard C library
 .nf
 .B #include <signal.h>
 .PP
-.BI "int sigaltstack(const stack_t *restrict " ss \
-", stack_t *restrict " old_ss );
+.BI "int sigaltstack(const stack_t *_Nullable restrict " ss ,
+.BI "                stack_t *_Nullable restrict " old_ss );
 .fi
 .PP
 .RS -4
