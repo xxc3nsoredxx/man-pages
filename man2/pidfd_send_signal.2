@@ -15,9 +15,8 @@ Standard C library
 .BR "#include <sys/syscall.h>" "      /* Definition of " SYS_* " constants */"
 .B #include <unistd.h>
 .PP
-.BI "int syscall(SYS_pidfd_send_signal, int " pidfd ", int " sig \
-", siginfo_t *" info ,
-.BI "                      unsigned int " flags );
+.BI "int syscall(SYS_pidfd_send_signal, int " pidfd ", int " sig ,
+.BI "            siginfo_t *_Nullable " info ", unsigned int " flags );
 .fi
 .PP
 .IR Note :
