@@ -50,10 +50,12 @@ Standard C library
 .B #define _GNU_SOURCE
 .B #include <sched.h>
 .PP
-.BI "int clone(int (*" "fn" ")(void *), void *" stack \
-", int " flags ", void *" "arg" ", ..."
-.BI "          /* pid_t *" parent_tid ", void *" tls \
-", pid_t *" child_tid " */ );"
+.BI "int clone(int (*" "fn" ")(void *_Nullable), void *" stack \
+", int " flags ,
+.BI "          void *_Nullable " "arg" ", ..." \
+"  \fR/*\fP" " pid_t *_Nullable " parent_tid ,
+.BI "                                       void *_Nullable " tls ,
+.BI "                                       pid_t *_Nullable " child_tid " \fR*/\fP );"
 .PP
 /* For the prototype of the raw clone() system call, see NOTES */
 .PP
