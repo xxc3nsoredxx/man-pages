@@ -27,7 +27,8 @@ Standard C library
 .nf
 .B #include <sys/shm.h>
 .PP
-.BI "void *shmat(int " shmid ", const void *" shmaddr ", int " shmflg );
+.BI "void *shmat(int " shmid ", const void *_Nullable " shmaddr ", \
+int " shmflg );
 .BI "int shmdt(const void *" shmaddr );
 .fi
 .SH DESCRIPTION
