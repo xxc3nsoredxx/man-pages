@@ -30,19 +30,21 @@ Standard C library
 .PP
 .BR typedef " /* ... */ " fd_set;
 .PP
-.BI "int select(int " nfds ", fd_set *restrict " readfds ,
-.BI "           fd_set *restrict " writefds ", fd_set *restrict " exceptfds ,
-.BI "           struct timeval *restrict " timeout );
+.BI "int select(int " nfds ", fd_set *_Nullable restrict " readfds ,
+.BI "           fd_set *_Nullable restrict " writefds ,
+.BI "           fd_set *_Nullable restrict " exceptfds ,
+.BI "           struct timeval *_Nullable restrict " timeout );
 .PP
 .BI "void FD_CLR(int " fd ", fd_set *" set );
 .BI "int  FD_ISSET(int " fd ", fd_set *" set );
 .BI "void FD_SET(int " fd ", fd_set *" set );
 .BI "void FD_ZERO(fd_set *" set );
 .PP
-.BI "int pselect(int " nfds ", fd_set *restrict " readfds ,
-.BI "           fd_set *restrict " writefds ", fd_set *restrict " exceptfds ,
-.BI "           const struct timespec *restrict " timeout ,
-.BI "           const sigset_t *restrict " sigmask );
+.BI "int pselect(int " nfds ", fd_set *_Nullable restrict " readfds ,
+.BI "           fd_set *_Nullable restrict " writefds ,
+.BI "           fd_set *_Nullable restrict " exceptfds ,
+.BI "           const struct timespec *_Nullable restrict " timeout ,
+.BI "           const sigset_t *_Nullable restrict " sigmask );
 .fi
 .PP
 .RS -4
