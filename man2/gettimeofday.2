@@ -28,9 +28,9 @@ Standard C library
 .B #include <sys/time.h>
 .PP
 .BI "int gettimeofday(struct timeval *restrict " tv ,
-.BI "                 struct timezone *restrict " tz );
+.BI "                 struct timezone *_Nullable restrict " tz );
 .BI "int settimeofday(const struct timeval *" tv ,
-.BI "                 const struct timezone *" tz );
+.BI "                 const struct timezone *_Nullable " tz );
 .fi
 .PP
 .RS -4
