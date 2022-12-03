@@ -24,7 +24,7 @@ Standard C library
 .PP
 .BI "int semop(int " semid ", struct sembuf *" sops ", size_t " nsops );
 .BI "int semtimedop(int " semid ", struct sembuf *" sops ", size_t " nsops ,
-.BI "               const struct timespec *" timeout );
+.BI "               const struct timespec *_Nullable " timeout );
 .fi
 .PP
 .RS -4
