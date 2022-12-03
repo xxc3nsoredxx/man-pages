@@ -26,8 +26,9 @@ Standard C library
 .nf
 .B #include <sys/sendfile.h>
 .PP
-.BI "ssize_t sendfile(int" " out_fd" ", int" " in_fd" ", off_t *" \
-                      offset ", size_t" " count" );
+.BI "ssize_t sendfile(int" " out_fd" ", int" " in_fd" ", \
+off_t *_Nullable " offset ,
+.BI "                 size_t" " count" );
 .\" The below is too ugly. Comments about glibc versions belong
 .\" in the notes, not in the header.
 .\"
