@@ -35,8 +35,9 @@ Standard C library
 .nf
 .B #include <signal.h>
 .PP
-.BI "int sigaction(int " signum ", const struct sigaction *restrict " act ,
-.BI "              struct sigaction *restrict " oldact );
+.BI "int sigaction(int " signum ,
+.BI "              const struct sigaction *_Nullable restrict " act ,
+.BI "              struct sigaction *_Nullable restrict " oldact );
 .fi
 .PP
 .RS -4
