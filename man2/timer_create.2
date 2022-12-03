@@ -14,7 +14,8 @@ Real-time library
 .BR "#include <signal.h>" "           /* Definition of " SIGEV_* " constants */"
 .B  #include <time.h>
 .PP
-.BI "int timer_create(clockid_t " clockid ", struct sigevent *restrict " sevp ,
+.BI "int timer_create(clockid_t " clockid ,
+.BI "                 struct sigevent *_Nullable restrict " sevp ,
 .BI "                 timer_t *restrict " timerid );
 .fi
 .PP
