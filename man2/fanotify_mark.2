@@ -13,8 +13,8 @@ Standard C library
 .B #include <sys/fanotify.h>
 .PP
 .BI "int fanotify_mark(int " fanotify_fd ", unsigned int " flags ,
-.BI "                  uint64_t " mask ", int " dirfd \
-", const char *" pathname );
+.BI "                  uint64_t " mask ", int " dirfd ,
+.BI "                  const char *_Nullable " pathname );
 .fi
 .SH DESCRIPTION
 For an overview of the fanotify API, see
