@@ -24,8 +24,8 @@ Standard C library
 .nf
 .B #include <unistd.h>
 .PP
-.BI "int execve(const char *" pathname ", char *const " argv [],
-.BI "           char *const " envp []);
+.BI "int execve(const char *" pathname ", char *const _Nullable " argv [],
+.BI "           char *const _Nullable " envp []);
 .fi
 .SH DESCRIPTION
 .BR execve ()
