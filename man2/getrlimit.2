@@ -54,8 +54,9 @@ Standard C library
 .BI "int getrlimit(int " resource ", struct rlimit *" rlim );
 .BI "int setrlimit(int " resource ", const struct rlimit *" rlim );
 .PP
-.BI "int prlimit(pid_t "  pid ", int " resource ", const struct rlimit *" new_limit ,
-.BI "            struct rlimit *" old_limit );
+.BI "int prlimit(pid_t "  pid ", int " resource ,
+.BI "            const struct rlimit *_Nullable " new_limit ,
+.BI "            struct rlimit *_Nullable " old_limit );
 .fi
 .PP
 .RS -4
