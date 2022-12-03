@@ -20,7 +20,8 @@ Standard C library
 .BR "#define _GNU_SOURCE" "             /* See feature_test_macros(7) */"
 .B #include <sched.h>
 .PP
-.BI "int getcpu(unsigned int *" cpu ", unsigned int *" node );
+.BI "int getcpu(unsigned int *_Nullable " cpu ", \
+unsigned int *_Nullable " node );
 .fi
 .SH DESCRIPTION
 The
