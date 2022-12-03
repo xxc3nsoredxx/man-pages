@@ -36,8 +36,8 @@ Standard C library
 .nf
 .B #include <sys/wait.h>
 .PP
-.BI "pid_t wait(int *" "wstatus" );
-.BI "pid_t waitpid(pid_t " pid ", int *" wstatus ", int " options );
+.BI "pid_t wait(int *_Nullable " "wstatus" );
+.BI "pid_t waitpid(pid_t " pid ", int *_Nullable " wstatus ", int " options );
 .PP
 .BI "int waitid(idtype_t " idtype ", id_t " id \
 ", siginfo_t *" infop ", int " options );
