@@ -17,22 +17,23 @@ Standard C library
 .PP
 .nf
 /* Prototype for the glibc wrapper function */
-.BI "int sigprocmask(int " how ", const sigset_t *restrict " set ,
-.BI "                           sigset_t *restrict " oldset );
+.BI "int sigprocmask(int " how ", const sigset_t *_Nullable restrict " set ,
+.BI "                           sigset_t *_Nullable restrict " oldset );
 .PP
 .BR "#include <signal.h>" "           /* Definition of " SIG_* " constants */"
 .BR "#include <sys/syscall.h>" "      /* Definition of " SYS_* " constants */"
 .B #include <unistd.h>
 .PP
 /* Prototype for the underlying system call */
-.BI "int syscall(SYS_rt_sigprocmask, int " how ", const kernel_sigset_t *" set ,
-.BI "                           kernel_sigset_t *" oldset \
-", size_t " sigsetsize );
+.BI "int syscall(SYS_rt_sigprocmask, int " how ,
+.BI "                           const kernel_sigset_t *_Nullable " set ,
+.BI "                           kernel_sigset_t *_Nullable " oldset ,
+.BI "                           size_t " sigsetsize );
 .PP
 /* Prototype for the legacy system call */
 .BI "[[deprecated]] int syscall(SYS_sigprocmask, int " how ,
-.BI "                           const old_kernel_sigset_t *" set ,
-.BI "                           old_kernel_sigset_t *" oldset );
+.BI "                           const old_kernel_sigset_t *_Nullable " set ,
+.BI "                           old_kernel_sigset_t *_Nullable " oldset );
 .fi
 .PP
 .RS -4
