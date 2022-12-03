@@ -17,7 +17,7 @@ Standard C library
 .PP
 .BI "int timerfd_settime(int " fd ", int " flags ,
 .BI "                    const struct itimerspec *" new_value ,
-.BI "                    struct itimerspec *" old_value );
+.BI "                    struct itimerspec *_Nullable " old_value );
 .BI "int timerfd_gettime(int " fd ", struct itimerspec *" curr_value );
 .fi
 .SH DESCRIPTION
