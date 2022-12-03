@@ -15,7 +15,7 @@ Linux Key Management Utilities
 .B #include <keyutils.h>
 .PP
 .BI "key_serial_t request_key(const char *" type ", const char *" description ,
-.BI "                         const char *" callout_info ,
+.BI "                         const char *_Nullable " callout_info ,
 .BI "                         key_serial_t " dest_keyring );
 .fi
 .SH DESCRIPTION
