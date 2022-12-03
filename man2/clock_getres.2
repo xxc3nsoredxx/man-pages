@@ -23,7 +23,7 @@ Real-time library
 .nf
 .B #include <time.h>
 .PP
-.BI "int clock_getres(clockid_t " clockid ", struct timespec *" res );
+.BI "int clock_getres(clockid_t " clockid ", struct timespec *_Nullable " res );
 .PP
 .BI "int clock_gettime(clockid_t " clockid ", struct timespec *" tp );
 .BI "int clock_settime(clockid_t " clockid ", const struct timespec *" tp );
