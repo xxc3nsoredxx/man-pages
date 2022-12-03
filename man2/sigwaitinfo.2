@@ -14,9 +14,9 @@ Standard C library
 .B #include <signal.h>
 .PP
 .BI "int sigwaitinfo(const sigset_t *restrict " set ,
-.BI "                siginfo_t *restrict " info );
+.BI "                siginfo_t *_Nullable restrict " info );
 .BI "int sigtimedwait(const sigset_t *restrict " set ,
-.BI "                siginfo_t *restrict " info ,
+.BI "                siginfo_t *_Nullable restrict " info ,
 .BI "                const struct timespec *restrict " timeout );
 .fi
 .PP
