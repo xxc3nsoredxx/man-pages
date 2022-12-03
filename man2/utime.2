@@ -18,11 +18,13 @@ Standard C library
 .nf
 .B #include <utime.h>
 .PP
-.BI "int utime(const char *" filename ", const struct utimbuf *" times );
+.BI "int utime(const char *" filename ,
+.BI "          const struct utimbuf *_Nullable " times );
 .PP
 .B #include <sys/time.h>
 .PP
-.BI "int utimes(const char *" filename ", const struct timeval " times [2]);
+.BI "int utimes(const char *" filename ,
+.BI "          const struct timeval " times "[_Nullable 2]);"
 .fi
 .SH DESCRIPTION
 .B Note:
