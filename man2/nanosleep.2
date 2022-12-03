@@ -22,7 +22,8 @@ Standard C library
 .nf
 .B #include <time.h>
 .PP
-.BI "int nanosleep(const struct timespec *" req ", struct timespec *" rem );
+.BI "int nanosleep(const struct timespec *" req ,
+.BI "              struct timespec *_Nullable " rem );
 .fi
 .PP
 .RS -4
