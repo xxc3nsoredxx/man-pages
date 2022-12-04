@@ -65,7 +65,10 @@ available in all mount namespaces,
 a mount operation was required in each namespace.
 For this use case, and others,
 the shared subtree feature was introduced in Linux 2.6.15.
-This feature allows for automatic, controlled propagation of mount and unmount
+This feature allows for automatic, controlled propagation of
+.BR mount (2)
+and
+.BR umount (2)
 .I events
 between namespaces
 (or, more precisely, between the mounts that are members of a
@@ -79,25 +82,49 @@ as having one of the following
 .TP
 .B MS_SHARED
 This mount shares events with members of a peer group.
-Mount and unmount events immediately under this mount will propagate
+.BR mount (2)
+and
+.BR umount (2)
+events immediately under this mount will propagate
 to the other mounts that are members of the peer group.
 .I Propagation
-here means that the same mount or unmount will automatically occur
+here means that the same
+.BR mount (2)
+or
+.BR umount (2)
+will automatically occur
 under all of the other mounts in the peer group.
-Conversely, mount and unmount events that take place under
+Conversely,
+.BR mount (2)
+and
+.BR umount (2)
+events that take place under
 peer mounts will propagate to this mount.
 .TP
 .B MS_PRIVATE
 This mount is private; it does not have a peer group.
-Mount and unmount events do not propagate into or out of this mount.
+.BR mount (2)
+and
+.BR umount (2)
+events do not propagate into or out of this mount.
 .TP
 .B MS_SLAVE
-Mount and unmount events propagate into this mount from
+.BR mount (2)
+and
+.BR umount (2)
+events propagate into this mount from
 a (master) shared peer group.
-Mount and unmount events under this mount do not propagate to any peer.
+.BR mount (2)
+and
+.BR umount (2)
+events under this mount do not propagate to any peer.
 .IP
 Note that a mount can be the slave of another peer group
-while at the same time sharing mount and unmount events
+while at the same time sharing
+.BR mount (2)
+and
+.BR umount (2)
+events
 with a peer group of which it is a member.
 (More precisely, one peer group can be the slave of another peer group.)
 .TP
@@ -131,7 +158,10 @@ while others are private
 (or slaved or unbindable).
 .PP
 Note that a mount's propagation type determines whether
-mounts and unmounts of mounts
+.BR mount (2)
+and
+.BR umount (2)
+of mounts
 .I immediately under
 the mount are propagated.
 Thus, the propagation type does not affect propagation of events for
@@ -320,12 +350,19 @@ sh1# \fBcat /proc/self/mountinfo | grep \(aq/mnt\(aq | sed \(aqs/ \- .*//\(aq\fP
 .\"
 .SS MS_SLAVE example
 Making a mount a slave allows it to receive propagated
-mount and unmount events from a master shared peer group,
+.BR mount (2)
+and
+.BR umount (2)
+events from a master shared peer group,
 while preventing it from propagating events to that master.
 This is useful if we want to (say) receive a mount event when
 an optical disk is mounted in the master shared peer group
 (in another mount namespace),
-but want to prevent mount and unmount events under the slave mount
+but want to prevent
+.BR mount (2)
+and
+.BR umount (2)
+events under the slave mount
 from having side effects in other namespaces.
 .PP
 We can demonstrate the effect of slaving by first marking
@@ -1068,7 +1105,8 @@ The above steps, performed in a more privileged mount namespace,
 have created a bind mount that
 obscures the contents of the shadow password file,
 .IR /etc/shadow .
-For security reasons, it should not be possible to unmount
+For security reasons, it should not be possible to
+.BR umount (2)
 that mount in a less privileged mount namespace,
 since that would reveal the contents of
 .IR /etc/shadow .
@@ -1079,7 +1117,9 @@ The new mount namespace will inherit copies of all of the mounts
 from the previous mount namespace.
 However, those mounts will be locked because the new mount namespace
 is less privileged.
-Consequently, an attempt to unmount the mount fails as show
+Consequently, an attempt to
+.BR umount (2)
+the mount fails as show
 in the following step:
 .IP
 .in +4n
@@ -1126,7 +1166,9 @@ makes the original
 file once more visible in that namespace.
 .IP [4]
 Following on from point [3],
-note that it is possible to unmount an entire subtree of mounts that
+note that it is possible to
+.BR umount (2)
+an entire subtree of mounts that
 propagated as a unit into a less privileged mount namespace,
 as illustrated in the following example.
 .IP
@@ -1220,10 +1262,14 @@ ns2# \fBgrep /mnt /proc/self/mountinfo | sed \(aqs/ \- .*//\(aq\fP
 .EE
 .in
 .IP
-While it is not possible to unmount a part of the propagated subtree
+While it is not possible to
+.BR umount (2)
+a part of the propagated subtree
 .RI ( /mnt/ppp/y )
 in "ns2",
-it is possible to unmount the entire subtree,
+it is possible to
+.BR umount (2)
+the entire subtree,
 as shown by the following commands:
 .IP
 .in +4n
