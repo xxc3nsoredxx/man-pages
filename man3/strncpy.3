@@ -81,7 +81,7 @@ But
 .BR stpncpy (3)
 is better for this purpose,
 since it detects truncation.
-See CAVEATS below.
+See BUGS below.
 .SH RETURN VALUE
 The
 .BR strncpy ()
@@ -107,7 +107,7 @@ T}	Thread safety	MT-Safe
 .sp 1
 .SH STANDARDS
 POSIX.1-2001, POSIX.1-2008, C89, C99, SVr4, 4.3BSD.
-.SH CAVEATS
+.SH BUGS
 .BR strncpy ()
 has a misleading name.
 It doesn't produce a (null-terminated) string;
