@@ -339,7 +339,9 @@ handling, size-zero allocations, and overflow checking;
 otherwise, other library routines may crash or operate incorrectly.
 For example, if the replacement
 .IR free ()
-does not preserve errno, then seemingly unrelated library routines may
+does not preserve
+.IR errno ,
+then seemingly unrelated library routines may
 fail without having a valid reason in
 .IR errno .
 Private memory allocators may also need to replace other glibc functions;
