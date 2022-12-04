@@ -67,6 +67,15 @@ strncpy(char *dest, const char *src, size_t n)
 }
 .EE
 .in
+.PP
+The only valid use of
+.BR strncpy ()
+is to copy a C string to a fixed-length buffer
+while ensuring that unused bytes in the destination buffer are zeroed out
+(perhaps to prevent information leaks if the buffer is to be
+written to media or transmitted to another process via an
+interprocess communication technique).
+But see CAVEATS below.
 .SH RETURN VALUE
 The
 .BR strncpy ()
@@ -92,14 +101,6 @@ T}	Thread safety	MT-Safe
 .sp 1
 .SH STANDARDS
 POSIX.1-2001, POSIX.1-2008, C89, C99, SVr4, 4.3BSD.
-.SH NOTES
-The only valid (and intended) use of
-.BR strncpy ()
-is to copy a C string to a fixed-length buffer
-while ensuring that unused bytes in the destination buffer are zeroed out
-(perhaps to prevent information leaks if the buffer is to be
-written to media or transmitted to another process via an
-interprocess communication technique).
 .SH CAVEATS
 .BR strncpy ()
 has a misleading name.
