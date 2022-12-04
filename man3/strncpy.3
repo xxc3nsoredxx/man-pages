@@ -1,1 +1,115 @@
-.so man3/strcpy.3
+.\" Copyright (C) 1993 David Metcalfe (david@prism.demon.co.uk)
+.\"
+.\" SPDX-License-Identifier: Linux-man-pages-copyleft
+.\"
+.\" References consulted:
+.\"     Linux libc source code
+.\"     Lewine's _POSIX Programmer's Guide_ (O'Reilly & Associates, 1991)
+.\"     386BSD man pages
+.\" Modified Sat Jul 24 18:06:49 1993 by Rik Faith (faith@cs.unc.edu)
+.\" Modified Fri Aug 25 23:17:51 1995 by Andries Brouwer (aeb@cwi.nl)
+.\" Modified Wed Dec 18 00:47:18 1996 by Andries Brouwer (aeb@cwi.nl)
+.\" 2007-06-15, Marc Boyer <marc.boyer@enseeiht.fr> + mtk
+.\"     Improve discussion of strncpy().
+.\"
+.TH strcpy 3 (date) "Linux man-pages (unreleased)"
+.SH NAME
+strncpy \- copy a string
+.SH LIBRARY
+Standard C library
+.RI ( libc ", " \-lc )
+.SH SYNOPSIS
+.nf
+.B #include <string.h>
+.PP
+.BI "char *strncpy(char " dest "[restrict ." n "], \
+const char " src "[restrict ." n ],
+.BI "              size_t " n );
+.fi
+.SH DESCRIPTION
+.BI Note: " This is probably not the function you want to use."
+For safe string copying, see
+.BR strlcpy (3bsd).
+.PP
+The
+.BR strncpy ()
+copies at most
+.I n
+bytes of
+.IR src ,
+and fills the rest of the
+.I dest
+buffer with null bytes.
+.BR Warning :
+If there is no null byte
+among the first
+.I n
+bytes of
+.IR src ,
+the string placed in
+.I dest
+will not be null-terminated.
+.PP
+A simple implementation of
+.BR strncpy ()
+might be:
+.PP
+.in +4n
+.EX
+char *
+strncpy(char *dest, const char *src, size_t n)
+{
+    bzero(dest, n);
+    memccpy(dest, src, '\e0', n);
+
+    return dest;
+}
+.EE
+.in
+.SH RETURN VALUE
+The
+.BR strncpy ()
+function returns a pointer to
+the destination buffer
+.IR dest .
+.SH ATTRIBUTES
+For an explanation of the terms used in this section, see
+.BR attributes (7).
+.ad l
+.nh
+.TS
+allbox;
+lbx lb lb
+l l l.
+Interface	Attribute	Value
+T{
+.BR strncpy ()
+T}	Thread safety	MT-Safe
+.TE
+.hy
+.ad
+.sp 1
+.SH STANDARDS
+POSIX.1-2001, POSIX.1-2008, C89, C99, SVr4, 4.3BSD.
+.SH NOTES
+The only valid (and intended) use of
+.BR strncpy ()
+is to copy a C string to a fixed-length buffer
+while ensuring that unused bytes in the destination buffer are zeroed out
+(perhaps to prevent information leaks if the buffer is to be
+written to media or transmitted to another process via an
+interprocess communication technique).
+.SH CAVEATS
+.BR strncpy ()
+has a misleading name.
+It doesn't produce a (null-terminated) string;
+and it should never be used for producing a string.
+.SH SEE ALSO
+.BR bzero (3),
+.BR memccpy (3),
+.BR memcpy (3),
+.BR memmove (3),
+.BR memset (3),
+.BR stpncpy (3),
+.BR string (3),
+.BR wcsncpy (3)
