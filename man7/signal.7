@@ -527,7 +527,7 @@ Signal 29 is
 on SPARC.
 .\"
 .SS Real-time signals
-Starting with version 2.2,
+Starting with Linux 2.2,
 Linux supports real-time signals as originally defined in the POSIX.1b
 real-time extensions (and now included in POSIX.1-2001).
 The range of supported real-time signals is defined by the macros
@@ -612,7 +612,7 @@ According to POSIX, an implementation should permit at least
 (32) real-time signals to be queued to
 a process.
 However, Linux does things differently.
-In kernels up to and including 2.6.7, Linux imposes
+Up to and including Linux 2.6.7, Linux imposes
 a system-wide limit on the number of queued real-time signals
 for all processes.
 This limit can be viewed and (with privilege) changed via the
@@ -706,7 +706,7 @@ Socket interfaces:
 .\" If a timeout (setsockopt()) is in effect on the socket, then these
 .\" system calls switch to using EINTR.  Consequently, they and are not
 .\" automatically restarted, and they show the stop/cont behavior
-.\" described below.  (Verified from 2.6.26 source, and by experiment; mtk)
+.\" described below.  (Verified from Linux 2.6.26 source, and by experiment; mtk)
 .BR accept (2),
 .BR connect (2),
 .BR recv (2),

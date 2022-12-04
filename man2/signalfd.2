@@ -86,7 +86,7 @@ flag in
 .BR open (2)
 for reasons why this may be useful.
 .PP
-In Linux up to version 2.6.26, the
+Up to Linux 2.6.26, the
 .I flags
 argument is unused, and must be specified as zero.
 .PP
@@ -329,12 +329,12 @@ Could not mount (internal) anonymous inode device.
 There was insufficient memory to create a new signalfd file descriptor.
 .SH VERSIONS
 .BR signalfd ()
-is available on Linux since kernel 2.6.22.
-Working support is provided in glibc since version 2.8.
+is available since Linux 2.6.22.
+Working support is provided since glibc 2.8.
 .\" signalfd() is in glibc 2.7, but reportedly does not build
 The
 .BR signalfd4 ()
-system call (see NOTES) is available on Linux since kernel 2.6.27.
+system call (see NOTES) is available since Linux 2.6.27.
 .SH STANDARDS
 .BR signalfd ()
 and
@@ -428,13 +428,13 @@ wrapper function will use
 .BR signalfd4 ()
 where it is available.
 .SH BUGS
-In kernels before 2.6.25, the
+Before Linux 2.6.25, the
 .I ssi_ptr
 and
 .I ssi_int
 fields are not filled in with the data accompanying a signal sent by
 .BR sigqueue (3).
-.\" The fix also was put into 2.6.24.5
+.\" The fix also was put into Linux 2.6.24.5
 .SH EXAMPLES
 The program below accepts the signals
 .B SIGINT

@@ -374,7 +374,7 @@ is set to 64; this was the size of the first published struct.
 is 72, corresponding to the addition of breakpoints in Linux 2.6.33.
 .\" commit cb5d76999029ae7a517cb07dfa732c1b5a934fc2
 .\" this was added much later when PERF_ATTR_SIZE_VER2 happened
-.\" but the actual attr_size had increased in 2.6.33
+.\" but the actual attr_size had increased in Linux 2.6.33
 .B PERF_ATTR_SIZE_VER2
 is 80 corresponding to the addition of branch sampling in Linux 3.4.
 .\" commit cb5d76999029ae7a517cb07dfa732c1b5a934fc2
@@ -1169,8 +1169,8 @@ Do not include user callchains.
 .\" commit 13d7a2410fa637f450a29ecb515ac318ee40c741
 .\" This is tricky; was committed during 3.12 development
 .\" but right before release was disabled.
-.\" So while you could select mmap2 starting with 3.12
-.\" it did not work until 3.16
+.\" So while you could select mmap2 starting with Linux 3.12
+.\" it did not work until Linux 3.16
 .\" commit a5a5ba72843dd05f991184d6cb9a4471acce1005
 Generate an extended executable mmap record that contains enough
 additional information to uniquely identify shared mappings.
@@ -1568,7 +1568,7 @@ metadata page
 that contains various
 bits of information such as where the ring-buffer head is.
 .PP
-Before kernel 2.6.39, there is a bug that means you must allocate an mmap
+Before Linux 2.6.39, there is a bug that means you must allocate an mmap
 ring buffer when sampling even if you do not plan to access it.
 .PP
 The structure of the first metadata mmap page is as follows:

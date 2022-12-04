@@ -1023,7 +1023,7 @@ The glibc implementation of the functions
 and
 .BR vsnprintf ()
 conforms to the C99 standard, that is, behaves as described above,
-since glibc version 2.1.
+since glibc 2.1.
 Until glibc 2.0.6, they would return \-1
 when the output was truncated.
 .\" .SH HISTORY
@@ -1199,8 +1199,8 @@ make_message(const char *fmt, ...)
 }
 .EE
 .PP
-If truncation occurs in glibc versions prior to 2.0.6, this is treated as an
-error instead of being handled gracefully.
+If truncation occurs in glibc versions prior to glibc 2.0.6,
+this is treated as an error instead of being handled gracefully.
 .SH SEE ALSO
 .BR printf (1),
 .BR asprintf (3),

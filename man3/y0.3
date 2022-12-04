@@ -247,9 +247,9 @@ did not set
 .I errno
 for "range error: result underflow".
 .PP
-In glibc version 2.3.2 and earlier,
+In glibc 2.3.2 and earlier,
 .\" Actually, 2.3.2 is the earliest test result I have; so yet
-.\" to confirm if this error occurs only in 2.3.2.
+.\" to confirm if this error occurs only in glibc 2.3.2.
 these functions do not raise an invalid floating-point exception
 .RB ( FE_INVALID )
 when a domain error occurs.

@@ -37,7 +37,7 @@ Feature Test Macro Requirements for glibc (see
 .nf
     _XOPEN_SOURCE >= 500
 .\"    || _XOPEN_SOURCE && _XOPEN_SOURCE_EXTENDED
-        || /* Since glibc 2.12: */ _POSIX_C_SOURCE >= 200809L
+        || /* Glibc >= 2.12: */ _POSIX_C_SOURCE >= 200809L
         || /* Glibc <= 2.19: */ _SVID_SOURCE || _BSD_SOURCE
 .fi
 .PP
@@ -48,7 +48,7 @@ Feature Test Macro Requirements for glibc (see
 .PP
 .BR mkstemps ():
 .nf
-    /* Glibc since 2.19: */ _DEFAULT_SOURCE
+    /* Glibc >= 2.19: */ _DEFAULT_SOURCE
         || /* Glibc <= 2.19: */ _SVID_SOURCE || _BSD_SOURCE
 .fi
 .PP

@@ -372,16 +372,16 @@ performed the analogous task using a temporary buffer and a call to
 .PP
 The need for this extra effort in the glibc wrapper functions
 went away with Linux 2.2 and later.
-However, glibc continued to provide this behavior until version 2.10.
-Starting with glibc version 2.9,
+However, glibc continued to provide this behavior until glibc 2.10.
+Starting with glibc 2.9,
 the wrapper functions provide this behavior only if the library detects
-that the system is running a Linux kernel older than version 2.6.18
+that the system is running a Linux kernel older than Linux 2.6.18
 (an arbitrarily selected kernel version).
 And since glibc 2.20
-(which requires a minimum Linux kernel version of 2.6.32),
+(which requires a minimum of Linux 2.6.32),
 the glibc wrapper functions always just directly invoke the system calls.
 .SH BUGS
-Linux 5.9 and 5.10 have a bug where
+Linux 5.9 and Linux 5.10 have a bug where
 .BR preadv2 ()
 with the
 .B RWF_NOWAIT

@@ -434,7 +434,7 @@ An invalid value was passed in
 or
 .IR event_f_flags .
 .B FAN_ALL_INIT_FLAGS
-(deprecated since Linux kernel version 4.20)
+(deprecated since Linux 4.20)
 .\" commit 23c9deeb3285d34fd243abb3d6b9f07db60c3cf4
 defines all allowable bits for
 .IR flags .
@@ -461,8 +461,7 @@ The fanotify API is available only if the kernel was configured with
 The operation is not permitted because the caller lacks a required capability.
 .SH VERSIONS
 .BR fanotify_init ()
-was introduced in version 2.6.36 of the Linux kernel and enabled in version
-2.6.37.
+was introduced in Linux 2.6.36 and enabled in Linux 2.6.37.
 .PP
 Prior to Linux 5.13,
 .\" commit 7cea2a3c505e87a9d6afc78be4a7f7be636a73a7
@@ -519,7 +518,7 @@ listening process itself generated the event.
 .SH STANDARDS
 This system call is Linux-specific.
 .SH BUGS
-The following bug was present in Linux kernels before version 3.18:
+The following bug was present before Linux 3.18:
 .IP \(bu 3
 .\" Fixed by commit 0b37e097a648aa71d4db1ad108001e95b69a2da4
 The
@@ -527,7 +526,7 @@ The
 is ignored when passed in
 .IR event_f_flags .
 .PP
-The following bug was present in Linux kernels before version 3.14:
+The following bug was present before Linux 3.14:
 .IP \(bu 3
 .\" Fixed by commit 48149e9d3a7e924010a0daab30a6197b7d7b6580
 The

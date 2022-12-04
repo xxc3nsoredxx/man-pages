@@ -62,7 +62,7 @@ to achieve the same result.
 Provide semaphore-like semantics for reads from the new file descriptor.
 See below.
 .PP
-In Linux up to version 2.6.26, the
+Up to Linux 2.6.26, the
 .I flags
 argument is unused, and must be specified as zero.
 .PP
@@ -247,13 +247,13 @@ There was insufficient memory to create a new
 eventfd file descriptor.
 .SH VERSIONS
 .BR eventfd ()
-is available on Linux since kernel 2.6.22.
-Working support is provided in glibc since version 2.8.
+is available since Linux 2.6.22.
+Working support is provided since glibc 2.8.
 .\" eventfd() is in glibc 2.7, but reportedly does not build
 The
 .BR eventfd2 ()
-system call (see NOTES) is available on Linux since kernel 2.6.27.
-Since version 2.9, the glibc
+system call (see NOTES) is available since Linux 2.6.27.
+Since glibc 2.9, the
 .BR eventfd ()
 wrapper will employ the
 .BR eventfd2 ()

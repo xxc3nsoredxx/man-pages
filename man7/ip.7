@@ -323,7 +323,7 @@ is valid only for
 .BR setsockopt (2).
 .\"
 .TP
-.BR IP_ADD_SOURCE_MEMBERSHIP " (since Linux 2.4.22 / 2.5.68)"
+.BR IP_ADD_SOURCE_MEMBERSHIP " (since Linux 2.4.22 / Linux 2.5.68)"
 Join a multicast group and allow receiving data only
 from a specified source.
 Argument is an
@@ -411,7 +411,7 @@ structure as described under
 .BR IP_ADD_SOURCE_MEMBERSHIP .
 .TP
 .BR IP_FREEBIND " (since Linux 2.4)"
-.\" Precisely: 2.4.0-test10
+.\" Precisely: since Linux 2.4.0-test10
 If enabled, this boolean option allows binding to an IP address
 that is nonlocal or does not (yet) exist.
 This permits listening on a socket,
@@ -478,7 +478,7 @@ For the full description of multicast source filtering
 refer to RFC 3376.
 .TP
 .BR IP_MTU " (since Linux 2.2)"
-.\" Precisely: 2.1.124
+.\" Precisely: since Linux 2.1.124
 Retrieve the current known path MTU of the current socket.
 Returns an integer.
 .IP
@@ -488,7 +488,7 @@ is valid only for
 and can be employed only when the socket has been connected.
 .TP
 .BR IP_MTU_DISCOVER " (since Linux 2.2)"
-.\" Precisely: 2.1.124
+.\" Precisely: since Linux 2.1.124
 Set or receive the Path MTU Discovery setting for a socket.
 When enabled, Linux will perform Path MTU Discovery
 as defined in RFC\ 1191 on
@@ -633,7 +633,7 @@ This option is valid only for
 sockets.
 .TP
 .BR IP_OPTIONS " (since Linux 2.0)"
-.\" Precisely: 1.3.30
+.\" Precisely: since Linux 1.3.30
 Set or get the IP options to be sent with every packet from this socket.
 The arguments are a pointer to a memory buffer containing the options
 and the option length.
@@ -701,7 +701,7 @@ is
 and this is never used for a control message type.
 .TP
 .BR IP_PKTINFO " (since Linux 2.2)"
-.\" Precisely: 2.1.68
+.\" Precisely: since Linux 2.1.68
 Pass an
 .B IP_PKTINFO
 ancillary message that contains a
@@ -751,7 +751,7 @@ index overwrites
 for the routing table lookup.
 .TP
 .BR IP_RECVERR " (since Linux 2.2)"
-.\" Precisely: 2.1.15
+.\" Precisely: since Linux 2.1.15
 Enable extended reliable error message passing.
 When enabled on a datagram socket, all
 generated errors will be queued in a per-socket error queue.
@@ -890,7 +890,7 @@ It sets or retrieves an integer boolean flag.
 defaults to off.
 .TP
 .BR IP_RECVOPTS " (since Linux 2.2)"
-.\" Precisely: 2.1.15
+.\" Precisely: since Linux 2.1.15
 Pass all incoming IP options to the user in a
 .B IP_OPTIONS
 control message.
@@ -912,7 +912,7 @@ The ancillary message contains a
 .IR "struct sockaddr_in" .
 .TP
 .BR IP_RECVTOS " (since Linux 2.2)"
-.\" Precisely: 2.1.68
+.\" Precisely: since Linux 2.1.68
 If enabled, the
 .B IP_TOS
 ancillary message is passed with incoming packets.
@@ -921,7 +921,7 @@ field of the packet header.
 Expects a boolean integer flag.
 .TP
 .BR IP_RECVTTL " (since Linux 2.2)"
-.\" Precisely: 2.1.68
+.\" Precisely: since Linux 2.1.68
 When this flag is set, pass a
 .B IP_TTL
 control message with the time-to-live
@@ -931,14 +931,14 @@ Not supported for
 sockets.
 .TP
 .BR IP_RETOPTS " (since Linux 2.2)"
-.\" Precisely: 2.1.15
+.\" Precisely: since Linux 2.1.15
 Identical to
 .BR IP_RECVOPTS ,
 but returns raw unprocessed options with timestamp and route record
 options not filled in for this hop.
 .TP
 .BR IP_ROUTER_ALERT " (since Linux 2.2)"
-.\" Precisely: 2.1.68
+.\" Precisely: since Linux 2.1.68
 Pass all to-be forwarded packets with the
 IP Router Alert option set to this socket.
 Valid only for raw sockets.
@@ -1090,10 +1090,10 @@ meaning that the option is disabled.
 .\"
 .TP
 .IR ip_always_defrag " (Boolean; since Linux 2.2.13)"
-[New with kernel 2.2.13; in earlier kernel versions this feature
+[New with Linux 2.2.13; in earlier kernel versions this feature
 was controlled at compile time by the
 .B CONFIG_IP_ALWAYS_DEFRAG
-option; this option is not present in 2.4.x and later]
+option; this option is not present in Linux 2.4.x and later]
 .IP
 When this boolean flag is enabled (not equal 0), incoming fragments
 (parts of IP packets
@@ -1113,14 +1113,14 @@ This is automagically turned on when masquerading or transparent
 proxying are configured.
 .\"
 .TP
-.IR ip_autoconfig " (since Linux 2.2 to 2.6.17)"
-.\" Precisely: since 2.1.68
+.IR ip_autoconfig " (since Linux 2.2 to Linux 2.6.17)"
+.\" Precisely: since Linux 2.1.68
 .\" FIXME document ip_autoconfig
 Not documented.
 .\"
 .TP
 .IR ip_default_ttl " (integer; default: 64; since Linux 2.2)"
-.\" Precisely: 2.1.15
+.\" Precisely: since Linux 2.1.15
 Set the default time-to-live value of outgoing packets.
 This can be changed per socket with the
 .B IP_TTL
@@ -1140,7 +1140,7 @@ IP forwarding can be also set on a per-interface basis.
 .\"
 .TP
 .IR ip_local_port_range " (since Linux 2.2)"
-.\" Precisely: since 2.1.68
+.\" Precisely: since Linux 2.1.68
 This file contains two integers that define the default local port range
 allocated to sockets that are not explicitly bound to a port number\(emthat
 is, the range used for
@@ -1188,7 +1188,7 @@ It is better to fix the broken routers on the path than to turn off
 Path MTU Discovery globally, because not doing it incurs a high cost
 to the network.
 .\"
-.\" The following is from 2.6.12: Documentation/networking/ip-sysctl.txt
+.\" The following is from Linux 2.6.12: Documentation/networking/ip-sysctl.txt
 .TP
 .IR ip_nonlocal_bind " (Boolean; default: disabled; since Linux 2.4)"
 .\" Precisely: patch-2.4.0-test10
@@ -1197,12 +1197,12 @@ If set, allows processes to
 to nonlocal IP addresses,
 which can be quite useful, but may break some applications.
 .\"
-.\" The following is from 2.6.12: Documentation/networking/ip-sysctl.txt
+.\" The following is from Linux 2.6.12: Documentation/networking/ip-sysctl.txt
 .TP
 .IR ip6frag_time " (integer; default: 30)"
 Time in seconds to keep an IPv6 fragment in memory.
 .\"
-.\" The following is from 2.6.12: Documentation/networking/ip-sysctl.txt
+.\" The following is from Linux 2.6.12: Documentation/networking/ip-sysctl.txt
 .TP
 .IR ip6frag_secret_interval " (integer; default: 600)"
 Regeneration interval (in seconds) of the hash secret (or lifetime

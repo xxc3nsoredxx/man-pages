@@ -35,26 +35,26 @@ Feature Test Macro Requirements for glibc (see
 .BR finitef (),
 .BR finitel ():
 .nf
-    /* Glibc since 2.19: */ _DEFAULT_SOURCE
+    /* Glibc >= 2.19: */ _DEFAULT_SOURCE
         || /* Glibc <= 2.19: */ _BSD_SOURCE || _SVID_SOURCE
 .PP
 .BR isinf ():
     _XOPEN_SOURCE >= 600 || _ISOC99_SOURCE
-        || /* Glibc since 2.19: */ _DEFAULT_SOURCE
+        || /* Glibc >= 2.19: */ _DEFAULT_SOURCE
         || /* Glibc <= 2.19: */ _BSD_SOURCE || _SVID_SOURCE
 .fi
 .PP
 .BR isinff (),
 .BR isinfl ():
 .nf
-    /* Glibc since 2.19: */ _DEFAULT_SOURCE
+    /* Glibc >= 2.19: */ _DEFAULT_SOURCE
         || /* Glibc <= 2.19: */ _BSD_SOURCE || _SVID_SOURCE
 .fi
 .PP
 .BR isnan ():
 .nf
     _XOPEN_SOURCE || _ISOC99_SOURCE
-        || /* Glibc since 2.19: */ _DEFAULT_SOURCE
+        || /* Glibc >= 2.19: */ _DEFAULT_SOURCE
         || /* Glibc <= 2.19: */ _BSD_SOURCE || _SVID_SOURCE
 .fi
 .PP
@@ -62,7 +62,7 @@ Feature Test Macro Requirements for glibc (see
 .BR isnanl ():
 .nf
     _XOPEN_SOURCE >= 600
-        || /* Glibc since 2.19: */ _DEFAULT_SOURCE
+        || /* Glibc >= 2.19: */ _DEFAULT_SOURCE
         || /* Glibc <= 2.19: */ _BSD_SOURCE || _SVID_SOURCE
 .fi
 .SH DESCRIPTION

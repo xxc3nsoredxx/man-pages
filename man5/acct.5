@@ -87,7 +87,7 @@ fields measure time in "clock ticks"; divide these values by
 .I sysconf(_SC_CLK_TCK)
 to convert them to seconds.
 .SS Version 3 accounting file format
-Since kernel 2.6.8,
+Since Linux 2.6.8,
 an optional alternative version of the accounting file can be produced
 if the
 .B CONFIG_BSD_PROCESS_ACCT_V3
@@ -131,7 +131,7 @@ struct acct_v3 {
 .SH VERSIONS
 The
 .I acct_v3
-structure is defined in glibc since version 2.6.
+structure is defined since glibc 2.6.
 .SH STANDARDS
 Process accounting originated on BSD.
 Although it is present on most systems, it is not standardized,
@@ -140,7 +140,7 @@ and the details vary somewhat between systems.
 Records in the accounting file are ordered by termination time of
 the process.
 .PP
-In kernels up to and including 2.6.9,
+Up to and including Linux 2.6.9,
 a separate accounting record is written for each thread created using
 the NPTL threading library;
 since Linux 2.6.10,

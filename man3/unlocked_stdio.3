@@ -66,7 +66,7 @@ Feature Test Macro Requirements for glibc (see
 .BR putc_unlocked (),
 .BR putchar_unlocked ():
 .nf
-    /* Since glibc 2.24: */ _POSIX_C_SOURCE >= 199309L
+    /* Glibc >= 2.24: */ _POSIX_C_SOURCE >= 199309L
         || /* Glibc <= 2.23: */ _POSIX_C_SOURCE
         || /* Glibc <= 2.19: */ _SVID_SOURCE || _BSD_SOURCE
 .fi
@@ -81,7 +81,7 @@ Feature Test Macro Requirements for glibc (see
 .BR fread_unlocked (),
 .BR fwrite_unlocked ():
 .nf
-    /* Glibc since 2.19: */ _DEFAULT_SOURCE
+    /* Glibc >= 2.19: */ _DEFAULT_SOURCE
         || /* Glibc <= 2.19: */ _SVID_SOURCE || _BSD_SOURCE
 .fi
 .PP

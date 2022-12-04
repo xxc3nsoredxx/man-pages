@@ -655,7 +655,7 @@ appear to return the value that the tracer puts in the return value register.
 .\" A related hole, using PTRACE_SYSCALL instead of SECCOMP_RET_TRACE, was
 .\" changed in arch-specific commits, e.g. 93e35efb8de4 for X86 and
 .\" 0f3912fd934c for ARM.
-Before kernel 4.8, the seccomp check will not be run again after the tracer is
+Before Linux 4.8, the seccomp check will not be run again after the tracer is
 notified.
 (This means that, on older kernels, seccomp-based sandboxes
 .B "must not"
@@ -823,7 +823,7 @@ but the specified offset was not aligned to a 32-bit boundary or exceeded
 .IR "sizeof(struct\~seccomp_data)" .
 .TP
 .B EINVAL
-.\" See kernel/seccomp.c::seccomp_may_assign_mode() in 3.18 sources
+.\" See kernel/seccomp.c::seccomp_may_assign_mode() in Linux 3.18 sources
 A secure computing mode has already been set, and
 .I operation
 differs from the existing setting.
@@ -842,7 +842,7 @@ was not valid or the length of the filter program was zero or exceeded
 Out of memory.
 .TP
 .B ENOMEM
-.\" ENOMEM in kernel/seccomp.c::seccomp_attach_filter() in 3.18 sources
+.\" ENOMEM in kernel/seccomp.c::seccomp_attach_filter() in Linux 3.18 sources
 The total length of all filter programs attached
 to the calling thread would exceed
 .B MAX_INSNS_PER_PATH

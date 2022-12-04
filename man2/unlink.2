@@ -163,7 +163,7 @@ An I/O error occurred.
 .B EISDIR
 .I pathname
 refers to a directory.
-(This is the non-POSIX value returned by Linux since 2.1.132.)
+(This is the non-POSIX value returned since Linux 2.1.132.)
 .TP
 .B ELOOP
 Too many symbolic links were encountered in translating
@@ -254,8 +254,8 @@ is relative and
 is a file descriptor referring to a file other than a directory.
 .SH VERSIONS
 .BR unlinkat ()
-was added to Linux in kernel 2.6.16;
-library support was added to glibc in version 2.4.
+was added in Linux 2.6.16;
+library support was added in glibc 2.4.
 .SH STANDARDS
 .BR unlink ():
 SVr4, 4.3BSD, POSIX.1-2001, POSIX.1-2008.

@@ -9,8 +9,8 @@
 .\" Modified 13 Jun 02, Michael Kerrisk <mtk.manpages@gmail.com>
 .\"	Added note on nonstandard behavior when SIGCHLD is ignored.
 .\" Modified 2004-11-16, mtk, Noted that the nonconformance when
-.\"	SIGCHLD is being ignored is fixed in 2.6.9; other minor changes
-.\" Modified 2004-12-08, mtk, in 2.6 times() return value changed
+.\"	SIGCHLD is being ignored is fixed in Linux 2.6.9; other minor changes
+.\" Modified 2004-12-08, mtk, in Linux 2.6 times() return value changed
 .\" 2005-04-13, mtk
 .\"	Added notes on nonstandard behavior: Linux allows 'buf' to
 .\"	be NULL, but POSIX.1 doesn't specify this and it's nonportable.
@@ -114,7 +114,7 @@ In POSIX.1-1996 the symbol \fBCLK_TCK\fP (defined in
 is mentioned as obsolescent.
 It is obsolete now.
 .PP
-In Linux kernel versions before 2.6.9,
+Before Linux 2.6.9,
 if the disposition of
 .B SIGCHLD
 is set to

@@ -178,8 +178,8 @@ changes to a thread's priority (or policy) using any mechanism other than
 .BR pthread_setschedprio (3)
 should result in the thread being placed at the end of
 the list for its priority.
-.\" In 2.2.x and 2.4.x, the thread is placed at the front of the queue
-.\" In 2.0.x, the Right Thing happened: the thread went to the back -- MTK
+.\" In Linux 2.2.x and Linux 2.4.x, the thread is placed at the front of the queue
+.\" In Linux 2.0.x, the Right Thing happened: the thread went to the back -- MTK
 .IP \(bu
 A thread calling
 .BR sched_yield (2)
@@ -213,7 +213,7 @@ retrieved using
 .\" by the process nice value -- MTK
 .\"
 .SS SCHED_DEADLINE: Sporadic task model deadline scheduling
-Since version 3.14, Linux provides a deadline scheduling policy
+Since Linux 3.14, Linux provides a deadline scheduling policy
 .RB ( SCHED_DEADLINE ).
 This policy is currently implemented using
 GEDF (Global Earliest Deadline First)
@@ -421,16 +421,16 @@ The range of the nice value
 varies across UNIX systems.
 On modern Linux, the range is \-20 (high priority) to +19 (low priority).
 On some other systems, the range is \-20..20.
-Very early Linux kernels (Before Linux 2.0) had the range \-infinity..15.
+Very early Linux kernels (before Linux 2.0) had the range \-infinity..15.
 .\" Linux before 1.3.36 had \-infinity..15.
-.\" Since kernel 1.3.43, Linux has the range \-20..19.
+.\" Since Linux 1.3.43, Linux has the range \-20..19.
 .PP
 The degree to which the nice value affects the relative scheduling of
 .B SCHED_OTHER
 processes likewise varies across UNIX systems and
 across Linux kernel versions.
 .PP
-With the advent of the CFS scheduler in kernel 2.6.23,
+With the advent of the CFS scheduler in Linux 2.6.23,
 Linux adopted an algorithm that causes
 relative differences in nice values to have a much stronger effect.
 In the current implementation, each unit of difference in the
@@ -544,7 +544,7 @@ This flag is disabled in child processes created by
 .BR fork (2).
 .\"
 .SS Privileges and resource limits
-In Linux kernels before 2.6.12, only privileged
+Before Linux 2.6.12, only privileged
 .RB ( CAP_SYS_NICE )
 threads can set a nonzero static priority (i.e., set a real-time
 scheduling policy).
@@ -593,12 +593,12 @@ matches the real or effective user ID of the target thread.
 Special rules apply for the
 .B SCHED_IDLE
 policy.
-In Linux kernels before 2.6.39,
+Before Linux 2.6.39,
 an unprivileged thread operating under this policy cannot
 change its policy, regardless of the value of its
 .B RLIMIT_RTPRIO
 resource limit.
-In Linux kernels since 2.6.39,
+Since Linux 2.6.39,
 .\" commit c02aa73b1d18e43cfd79c2f193b225e84ca497c8
 an unprivileged thread can switch to either the
 .B SCHED_BATCH
@@ -627,7 +627,7 @@ or
 .B SCHED_DEADLINE
 policy can potentially block all other threads from accessing
 the CPU forever.
-Prior to Linux 2.6.25, the only way of preventing a runaway real-time
+Before Linux 2.6.25, the only way of preventing a runaway real-time
 process from freezing the system was to run (at the console)
 a shell scheduled under a higher static priority than the tested application.
 This allows an emergency kill of tested
@@ -643,7 +643,7 @@ See
 .BR getrlimit (2)
 for details.
 .PP
-Since version 2.6.25, Linux also provides two
+Since Linux 2.6.25, Linux also provides two
 .I /proc
 files that can be used to reserve a certain amount of CPU time
 to be used by non-real-time processes.
@@ -667,7 +667,7 @@ The value in this file can range from \-1 to
 .BR INT_MAX \-1.
 Specifying \-1 makes the run time the same as the period;
 that is, no CPU time is set aside for non-real-time processes
-(which was the Linux behavior before kernel 2.6.25).
+(which was the behavior before Linux 2.6.25).
 The default value in this file is 950,000 (0.95 seconds),
 meaning that 5% of the CPU time is reserved for processes that
 don't run under a real-time or deadline scheduling policy.
@@ -895,7 +895,7 @@ $ \fBecho 10 > /proc/self/autogroup\fP
 .SS Real-time features in the mainline Linux kernel
 .\" FIXME . Probably this text will need some minor tweaking
 .\" ask Carsten Emde about this.
-Since kernel version 2.6.18, Linux is gradually
+Since Linux 2.6.18, Linux is gradually
 becoming equipped with real-time capabilities,
 most of which are derived from the former
 .I realtime\-preempt
@@ -942,11 +942,11 @@ Originally, Standard Linux was intended as a general-purpose operating
 system being able to handle background processes, interactive
 applications, and less demanding real-time applications (applications that
 need to usually meet timing deadlines).
-Although the Linux kernel 2.6
+Although the Linux 2.6
 allowed for kernel preemption and the newly introduced O(1) scheduler
 ensures that the time needed to schedule is fixed and deterministic
 irrespective of the number of active tasks, true real-time computing
-was not possible up to kernel version 2.6.17.
+was not possible up to Linux 2.6.17.
 .SH SEE ALSO
 .ad l
 .nh

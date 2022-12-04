@@ -229,14 +229,14 @@ Set the state of the "dumpable" attribute,
 which determines whether core dumps are produced for the calling process
 upon delivery of a signal whose default behavior is to produce a core dump.
 .IP
-In kernels up to and including 2.6.12,
+Up to and including Linux 2.6.12,
 .I arg2
 must be either 0
 .RB ( SUID_DUMP_DISABLE ,
 process is not dumpable) or 1
 .RB ( SUID_DUMP_USER ,
 process is dumpable).
-Between kernels 2.6.13 and 2.6.17,
+Between Linux 2.6.13 and Linux 2.6.17,
 .\" commit abf75a5033d4da7b8a7e92321d74021d1fcfb502
 the value 2 was also permitted,
 which caused any binary which normally would not be dumped
@@ -297,8 +297,8 @@ directory is affected as described in
 Return (as the function result) the current state of the calling
 process's dumpable attribute.
 .\" Since Linux 2.6.13, the dumpable flag can have the value 2,
-.\" but in 2.6.13 PR_GET_DUMPABLE simply returns 1 if the dumpable
-.\" flags has a nonzero value.  This was fixed in 2.6.14.
+.\" but in Linux 2.6.13 PR_GET_DUMPABLE simply returns 1 if the dumpable
+.\" flags has a nonzero value.  This was fixed in Linux 2.6.14.
 .\" prctl PR_SET_ENDIAN
 .TP
 .BR PR_SET_ENDIAN " (since Linux 2.6.18, PowerPC only)"
@@ -1930,7 +1930,7 @@ to \fIarg2\fP.
 is not currently implemented
 (attempting to set this mode will yield the error
 .BR EINVAL ).
-.\" PR_TIMING_TIMESTAMP doesn't do anything in 2.6.26-rc8,
+.\" PR_TIMING_TIMESTAMP doesn't do anything in Linux 2.6.26-rc8,
 .\" and looking at the patch history, it appears
 .\" that it never did anything.
 .\" prctl PR_GET_TIMING

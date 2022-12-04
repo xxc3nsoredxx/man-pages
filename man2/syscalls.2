@@ -70,66 +70,66 @@ or have appeared since that kernel version.
 Note the following points:
 .IP \(bu 3
 Where no kernel version is indicated,
-the system call appeared in kernel 1.0 or earlier.
+the system call appeared in Linux 1.0 or earlier.
 .IP \(bu
 Where a system call is marked "1.2"
-this means the system call probably appeared in a 1.1.x kernel version,
+this means the system call probably appeared in a Linux 1.1.x kernel version,
 and first appeared in a stable kernel with 1.2.
 (Development of the 1.2 kernel was initiated from a branch of kernel
 1.0.6 via the 1.1.x unstable kernel series.)
 .IP \(bu
 Where a system call is marked "2.0"
-this means the system call probably appeared in a 1.3.x kernel version,
-and first appeared in a stable kernel with 2.0.
-(Development of the 2.0 kernel was initiated from a branch of kernel
-1.2.x, somewhere around 1.2.10,
-via the 1.3.x unstable kernel series.)
-.\" Was kernel 2.0 started from a branch of 1.2.10?
+this means the system call probably appeared in a Linux 1.3.x kernel version,
+and first appeared in a stable kernel with Linux 2.0.
+(Development of the Linux 2.0 kernel was initiated from a branch of
+Linux 1.2.x, somewhere around Linux 1.2.10,
+via the Linux 1.3.x unstable kernel series.)
+.\" Was Linux 2.0 started from a branch of Linux 1.2.10?
 .\" At least from the timestamps of the tarballs of
-.\" of 1.2.10 and 1.3.0, that's how it looks, but in
+.\" of Linux 1.2.10 and Linux 1.3.0, that's how it looks, but in
 .\" fact the diff doesn't seem very clear, the
-.\" 1.3.0 .tar.bz is much bigger (2.0 MB) than the
-.\" 1.2.10 .tar.bz2 (1.8 MB), and AEB points out the
-.\" timestamps of some files in 1.3.0 seem to be older
-.\" than those in 1.2.10.  All of this suggests
+.\" Linux 1.3.0 .tar.bz is much bigger (2.0 MB) than the
+.\" Linux 1.2.10 .tar.bz2 (1.8 MB), and AEB points out the
+.\" timestamps of some files in Linux 1.3.0 seem to be older
+.\" than those in Linux 1.2.10.  All of this suggests
 .\" that there might not have been a clean branch point.
 .IP \(bu
 Where a system call is marked "2.2"
-this means the system call probably appeared in a 2.1.x kernel version,
-and first appeared in a stable kernel with 2.2.0.
-(Development of the 2.2 kernel was initiated from a branch of kernel
-2.0.21 via the 2.1.x unstable kernel series.)
+this means the system call probably appeared in a Linux 2.1.x kernel version,
+and first appeared in a stable kernel with Linux 2.2.0.
+(Development of the Linux 2.2 kernel was initiated from a branch of kernel
+Linux 2.0.21 via the Linux 2.1.x unstable kernel series.)
 .IP \(bu
 Where a system call is marked "2.4"
-this means the system call probably appeared in a 2.3.x kernel version,
-and first appeared in a stable kernel with 2.4.0.
-(Development of the 2.4 kernel was initiated from a branch of
-kernel 2.2.8 via the 2.3.x unstable kernel series.)
+this means the system call probably appeared in a Linux 2.3.x kernel version,
+and first appeared in a stable kernel with Linux 2.4.0.
+(Development of the Linux 2.4 kernel was initiated from a branch of
+Linux 2.2.8 via the Linux 2.3.x unstable kernel series.)
 .IP \(bu
 Where a system call is marked "2.6"
-this means the system call probably appeared in a 2.5.x kernel version,
-and first appeared in a stable kernel with 2.6.0.
-(Development of kernel 2.6 was initiated from a branch
-of kernel 2.4.15 via the 2.5.x unstable kernel series.)
+this means the system call probably appeared in a Linux 2.5.x kernel version,
+and first appeared in a stable kernel with Linux 2.6.0.
+(Development of Linux 2.6 was initiated from a branch
+of Linux 2.4.15 via the Linux 2.5.x unstable kernel series.)
 .IP \(bu
-Starting with kernel 2.6.0, the development model changed,
-and new system calls may appear in each 2.6.x release.
+Starting with Linux 2.6.0, the development model changed,
+and new system calls may appear in each Linux 2.6.x release.
 In this case, the exact version number where the system call appeared
 is shown.
-This convention continues with the 3.x kernel series,
-which followed on from kernel 2.6.39; and the 4.x kernel series,
-which followed on from kernel 3.19; and the 5.x kernel series,
-which followed on from kernel 4.20.
+This convention continues with the Linux 3.x kernel series,
+which followed on from Linux 2.6.39; and the Linux 4.x kernel series,
+which followed on from Linux 3.19; and the Linux 5.x kernel series,
+which followed on from Linux 4.20.
 .IP \(bu
 In some cases, a system call was added to a stable kernel
 series after it branched from the previous stable kernel
 series, and then backported into the earlier stable kernel series.
-For example some system calls that appeared in 2.6.x were also backported
-into a 2.4.x release after 2.4.15.
+For example some system calls that appeared in Linux 2.6.x were also backported
+into a Linux 2.4.x release after Linux 2.4.15.
 When this is so, the version where the system call appeared
 in both of the major kernel series is listed.
 .PP
-The list of system calls that are available as at kernel 5.14
+The list of system calls that are available as at Linux 5.14
 (or in a few cases only on older kernels) is as follows:
 .\"
 .\" Looking at scripts/checksyscalls.sh in the kernel source is
@@ -874,7 +874,7 @@ and
 exist as library routines.
 The slot for
 .BR phys (2)
-is in use since kernel 2.1.116 for
+is in use since Linux 2.1.116 for
 .BR umount (2);
 .BR phys (2)
 will never be implemented.
@@ -887,7 +887,7 @@ and may never be in the standard kernel.
 .PP
 There was briefly
 .BR set_zone_reclaim (2),
-added in Linux 2.6.13, and removed in 2.6.16;
+added in Linux 2.6.13, and removed in Linux 2.6.16;
 this system call was never available to user space.
 .\"
 .SS System calls on removed ports
@@ -1075,7 +1075,7 @@ the other versions are obsolete.
 .IP \(bu
 The
 .I rt_sig*
-calls were added in kernel 2.2 to support the addition
+calls were added in Linux 2.2 to support the addition
 of real-time signals (see
 .BR signal (7)).
 These system calls supersede the older system calls of the same
@@ -1122,7 +1122,7 @@ s390x is the only 64-bit architecture that has
 .\" and
 .\" .IR sys_sysctl ().
 .\"
-.\" In kernel 2.1.81,
+.\" In Linux 2.1.81,
 .\" .BR lchown (2)
 .\" and
 .\" .BR chown (2)

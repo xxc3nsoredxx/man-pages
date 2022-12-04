@@ -50,7 +50,7 @@ A nonsettable monotonically increasing clock that measures time
 from some unspecified point in the past that does not change
 after system startup.
 .\" Note: the CLOCK_MONOTONIC_RAW clock added for clock_gettime()
-.\" in 2.6.28 is not supported for POSIX timers -- mtk, Feb 2009
+.\" in Linux 2.6.28 is not supported for POSIX timers -- mtk, Feb 2009
 .TP
 .BR CLOCK_PROCESS_CPUTIME_ID " (since Linux 2.6.12)"
 A clock that measures (user and system) CPU time consumed by
@@ -59,7 +59,7 @@ A clock that measures (user and system) CPU time consumed by
 .BR CLOCK_THREAD_CPUTIME_ID " (since Linux 2.6.12)"
 A clock that measures (user and system) CPU time consumed by
 the calling thread.
-.\" The CLOCK_MONOTONIC_RAW that was added in 2.6.28 can't be used
+.\" The CLOCK_MONOTONIC_RAW that was added in Linux 2.6.28 can't be used
 .\" to create a timer -- mtk, Feb 2009
 .TP
 .BR CLOCK_BOOTTIME " (Since Linux 2.6.39)"
@@ -315,7 +315,7 @@ Prior to this,
 glibc provided an incomplete user-space implementation
 .RB ( CLOCK_REALTIME
 timers only) using POSIX threads,
-and in glibc versions before 2.17,
+and before glibc 2.17,
 .\" glibc commit 93a78ac437ba44f493333d7e2a4b0249839ce460
 the implementation falls back to this technique on systems
 running pre-2.6 Linux kernels.

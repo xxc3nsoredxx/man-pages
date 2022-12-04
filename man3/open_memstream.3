@@ -128,7 +128,7 @@ returned by these functions
 .BR fileno (3)
 will return an error if called on the returned stream).
 .SH BUGS
-In glibc before version 2.7, seeking past the end of a stream created by
+Before glibc 2.7, seeking past the end of a stream created by
 .BR open_memstream ()
 does not enlarge the buffer; instead the
 .BR fseek (3)

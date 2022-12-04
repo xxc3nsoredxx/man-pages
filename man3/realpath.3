@@ -29,7 +29,7 @@ Feature Test Macro Requirements for glibc (see
 .nf
     _XOPEN_SOURCE >= 500
 .\"    || _XOPEN_SOURCE && _XOPEN_SOURCE_EXTENDED
-        || /* Glibc since 2.19: */ _DEFAULT_SOURCE
+        || /* Glibc >= 2.19: */ _DEFAULT_SOURCE
         || /* Glibc <= 2.19: */ _BSD_SOURCE
 .fi
 .SH DESCRIPTION
@@ -93,7 +93,7 @@ Read or search permission was denied for a component of the path prefix.
 .I path
 is NULL.
 .\" (In libc5 this would just cause a segfault.)
-(In glibc versions before 2.3,
+(Before glibc 2.3,
 this error is also returned if
 .I resolved_path
 is NULL.)

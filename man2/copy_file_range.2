@@ -188,7 +188,7 @@ system call first appeared in Linux 4.5, but glibc 2.27 provides a user-space
 emulation when it is not available.
 .\" https://sourceware.org/git/?p=glibc.git;a=commit;f=posix/unistd.h;h=bad7a0c81f501fbbcc79af9eaa4b8254441c4a1f
 .PP
-A major rework of the kernel implementation occurred in 5.3.
+A major rework of the kernel implementation occurred in Linux 5.3.
 Areas of the API that weren't clearly defined were clarified and the API bounds
 are much more strictly checked than on earlier kernels.
 Applications should target the behaviour and requirements of 5.3 kernels.
@@ -197,7 +197,7 @@ Since Linux 5.12,
 cross-filesystem copies can be achieved
 when both filesystems are of the same type,
 and that filesystem implements support for it.
-See BUGS for behavior prior to 5.12.
+See BUGS for behavior prior to Linux 5.12.
 .SH STANDARDS
 The
 .BR copy_file_range ()
@@ -223,7 +223,7 @@ such as the use of reflinks (i.e., two or more inodes that share
 pointers to the same copy-on-write disk blocks)
 or server-side-copy (in the case of NFS).
 .SH BUGS
-In Linux kernels 5.3 to 5.11,
+In Linux 5.3 to Linux 5.11,
 cross-filesystem copies were implemented by the kernel,
 if the operation was not supported by individual filesystems.
 However, on some virtual filesystems,

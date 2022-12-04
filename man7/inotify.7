@@ -142,9 +142,9 @@ structure is thus
 The behavior when the buffer given to
 .BR read (2)
 is too small to return information about the next event depends
-on the kernel version: in kernels before 2.6.21,
+on the kernel version: before Linux 2.6.21,
 .BR read (2)
-returns 0; since kernel 2.6.21,
+returns 0; since Linux 2.6.21,
 .BR read (2)
 fails with the error
 .BR EINVAL .
@@ -576,13 +576,13 @@ that can be created per real user ID.
 This specifies an upper limit on the number of watches
 that can be created per real user ID.
 .SH VERSIONS
-Inotify was merged into the 2.6.13 Linux kernel.
-The required library interfaces were added to glibc in version 2.4.
+Inotify was merged into Linux 2.6.13.
+The required library interfaces were added in glibc 2.4.
 .RB ( IN_DONT_FOLLOW ,
 .BR IN_MASK_ADD ,
 and
 .B IN_ONLYDIR
-were added in glibc version 2.5.)
+were added in glibc 2.5.)
 .SH STANDARDS
 The inotify API is Linux-specific.
 .SH NOTES
@@ -805,9 +805,9 @@ generate
 events.
 .PP
 .\" FIXME . kernel commit 611da04f7a31b2208e838be55a42c7a1310ae321
-.\" implies that unmount events were buggy 2.6.11 to 2.6.36
+.\" implies that unmount events were buggy since Linux 2.6.11 to Linux 2.6.36
 .\"
-In kernels before 2.6.16, the
+Before Linux 2.6.16, the
 .B IN_ONESHOT
 .I mask
 flag does not work.
@@ -822,7 +822,7 @@ since Linux 2.6.36, an
 .B IN_IGNORED
 event is generated in this case.
 .PP
-Before kernel 2.6.25,
+Before Linux 2.6.25,
 .\" commit 1c17d18e3775485bf1e0ce79575eb637a94494a2
 the kernel code that was intended to coalesce successive identical events
 (i.e., the two most recent events could potentially be coalesced

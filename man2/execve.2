@@ -384,14 +384,14 @@ constant (either defined in
 or available at run time using the call
 .IR "sysconf(_SC_ARG_MAX)" ).
 .PP
-On Linux prior to kernel 2.6.23, the memory used to store the
+Before Linux 2.6.23, the memory used to store the
 environment and argument strings was limited to 32 pages
 (defined by the kernel constant
 .BR MAX_ARG_PAGES ).
 On architectures with a 4-kB page size,
 this yields a maximum size of 128\ kB.
 .PP
-On kernel 2.6.23 and later, most architectures support a size limit
+On Linux 2.6.23 and later, most architectures support a size limit
 derived from the soft
 .B RLIMIT_STACK
 resource limit (see
@@ -400,15 +400,15 @@ that is in force at the time of the
 .BR execve ()
 call.
 (Architectures with no memory management unit are excepted:
-they maintain the limit that was in effect before kernel 2.6.23.)
+they maintain the limit that was in effect before Linux 2.6.23.)
 This change allows programs to have a much larger
 argument and/or environment list.
-.\" For some background on the changes to ARG_MAX in kernels 2.6.23 and
-.\" 2.6.25, see:
+.\" For some background on the changes to ARG_MAX in Linux 2.6.23 and
+.\" Linux 2.6.25, see:
 .\"     http://sourceware.org/bugzilla/show_bug.cgi?id=5786
 .\"     http://bugzilla.kernel.org/show_bug.cgi?id=10095
 .\"     http://thread.gmane.org/gmane.linux.kernel/646709/focus=648101,
-.\"     checked into 2.6.25 as commit a64e715fc74b1a7dcc5944f848acc38b2c4d4ee2.
+.\"     checked into Linux 2.6.25 as commit a64e715fc74b1a7dcc5944f848acc38b2c4d4ee2.
 For these architectures, the total size is limited to 1/4 of the allowed
 stack size.
 (Imposing the 1/4-limit
@@ -679,7 +679,7 @@ ignores the set-user-ID and set-group-ID bits on scripts.
 .\" Linux versions have also had other security holes in
 .\" .BR execve ()
 .\" that could be exploited for denial of service by a suitably crafted
-.\" ELF binary. There are no known problems with 2.0.34 or 2.2.15.
+.\" ELF binary. There are no known problems with Linux 2.0.34 or Linux 2.2.15.
 .SS execve() and EAGAIN
 A more detailed explanation of the
 .B EAGAIN
@@ -701,10 +701,10 @@ and that change caused the process to exceed its
 .B RLIMIT_NPROC
 resource limit (i.e., the number of processes belonging
 to the new real UID exceeds the resource limit).
-From Linux 2.6.0 to 3.0, this caused the
+From Linux 2.6.0 to Linux 3.0, this caused the
 .BR set*uid ()
 call to fail.
-(Prior to 2.6,
+(Before Linux 2.6,
 .\" commit 909cc4ae86f3380152a18e2a3c44523893ee11c4
 the resource limit was not imposed on processes that
 changed their user IDs.)
@@ -774,7 +774,7 @@ Since UNIX\ V7, both are NULL.
 .\" Linux versions have also had other security holes in
 .\" .BR execve ()
 .\" that could be exploited for denial of service by a suitably crafted
-.\" ELF binary. There are no known problems with 2.0.34 or 2.2.15.
+.\" ELF binary.  There are no known problems with Linux 2.0.34 or Linux 2.2.15.
 .SH EXAMPLES
 The following program is designed to be execed by the second program below.
 It just echoes its command-line arguments, one per line.

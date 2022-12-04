@@ -131,16 +131,16 @@ for the permissions required for an unprivileged process
 to send a signal to another process.
 .\" In the 0.* kernels things chopped and changed quite
 .\" a bit - MTK, 24 Jul 02
-In kernels 1.0 to 1.2.2, a signal could be sent if the
+In Linux 1.0 to 1.2.2, a signal could be sent if the
 effective user ID of the sender matched effective user ID of the target,
 or the real user ID of the sender matched the real user ID of the target.
-From kernel 1.2.3 until 1.3.77, a signal could be sent if the
+From Linux 1.2.3 until 1.3.77, a signal could be sent if the
 effective user ID of the sender matched either the real or effective
 user ID of the target.
 The current rules, which conform to POSIX.1, were adopted
-in kernel 1.3.78.
+in Linux 1.3.78.
 .SH BUGS
-In 2.6 kernels up to and including 2.6.7,
+In Linux 2.6 up to and including Linux 2.6.7,
 there was a bug that meant that when sending signals to a process group,
 .BR kill ()
 failed with the error

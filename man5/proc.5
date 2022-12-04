@@ -16,7 +16,7 @@
 .\" Modified 2002-07-22, 2003-05-27, 2004-04-06, 2004-05-25
 .\"    by Michael Kerrisk <mtk.manpages@gmail.com>
 .\" 2004-11-17, mtk -- updated notes on /proc/loadavg
-.\" 2004-12-01, mtk, rtsig-max and rtsig-nr went away in 2.6.8
+.\" 2004-12-01, mtk, rtsig-max and rtsig-nr went away in Linux 2.6.8
 .\" 2004-12-14, mtk, updated 'statm', and fixed error in order of list
 .\" 2005-05-12, mtk, updated 'stat'
 .\" 2005-07-13, mtk, added /proc/sys/fs/mqueue/*
@@ -375,7 +375,7 @@ For further information, see the kernel source file
 (or file
 .\" commit b68101a1e8f0263dbc7b8375d2a7c57c6216fb76
 .I Documentation/security/keys.txt
-on Linux between 3.0 and 4.13, or
+between Linux 3.0 and Linux 4.13, or
 .\" commit d410fa4ef99112386de5f218dd7df7b4fca910b4
 .I Documentation/keys.txt
 before Linux 3.0).
@@ -396,7 +396,7 @@ all subsequently created sockets will be labeled with this context.
 See
 .BR sched (7).
 .TP
-.IR /proc/ pid /auxv " (since 2.6.0)"
+.IR /proc/ pid /auxv " (since Linux 2.6.0)"
 .\" Precisely: Linux 2.6.0-test7
 This contains the contents of the ELF interpreter information passed
 to the process at exec time.
@@ -432,7 +432,7 @@ The following values may be written to the file:
 .\" Internally: CLEAR_REFS_ALL
 Reset the PG_Referenced and ACCESSED/YOUNG
 bits for all the pages associated with the process.
-(Before kernel 2.6.32, writing any nonzero value to this file
+(Before Linux 2.6.32, writing any nonzero value to this file
 had this effect.)
 .TP
 2 (since Linux 2.6.32)
@@ -493,7 +493,7 @@ kernel configuration option is enabled.
 .IR /proc/ pid /cmdline
 This read-only file holds the complete command line for the process,
 unless the process is a zombie.
-.\" In 2.3.26, this also used to be true if the process was swapped out.
+.\" In Linux 2.3.26, this also used to be true if the process was swapped out.
 In the latter case, there is nothing in this file:
 that is, a read on this file will return 0 characters.
 The command-line arguments appear in this file as a set of
@@ -1110,7 +1110,7 @@ on this file descriptor would return.)
 See
 .BR user_namespaces (7).
 .TP
-.IR /proc/ pid /io " (since kernel 2.6.20)"
+.IR /proc/ pid /io " (since Linux 2.6.20)"
 .\" commit 7c3ab7381e79dfc7db14a67c6f4f3285664e1ec2
 This file contains I/O statistics for the process, for example:
 .IP
@@ -1206,10 +1206,10 @@ Since Linux 2.6.36,
 .\" commit 3036e7b490bf7878c6dae952eec5fb87b1106589
 this file is readable by all users on the system.
 .\" FIXME Describe /proc/[pid]/loginuid
-.\"       Added in 2.6.11; updating requires CAP_AUDIT_CONTROL
+.\"       Added in Linux 2.6.11; updating requires CAP_AUDIT_CONTROL
 .\"       CONFIG_AUDITSYSCALL
 .TP
-.IR /proc/ pid /map_files/ " (since kernel 3.3)"
+.IR /proc/ pid /map_files/ " (since Linux 3.3)"
 .\" commit 640708a2cff7f81e246243b0073c66e6ece7e53e
 This subdirectory contains entries corresponding to memory-mapped
 files (see
@@ -1253,7 +1253,7 @@ Permission to access this file is governed by a ptrace access mode
 check; see
 .BR ptrace (2).
 .IP
-Until kernel version 4.3,
+Until Linux 4.3,
 .\" commit bdb4d100afe9818aebd1d98ced575c5ef143456c
 this directory appeared only if the
 .B CONFIG_CHECKPOINT_RESTORE
@@ -1352,7 +1352,7 @@ There are additional helpful pseudo-paths:
 .I [stack]
 The initial process's (also known as the main thread's) stack.
 .TP
-.IR [stack: tid ] " (from Linux 3.4 to 4.4)"
+.IR [stack: tid ] " (from Linux 3.4 to Linux 4.4)"
 .\" commit b76437579d1344b612cf1851ae610c636cec7db0 (added)
 .\" commit 65376df582174ffcec9e6471bf5b0dd79ba05e4a (removed)
 A thread's stack (where the
@@ -1530,7 +1530,7 @@ process's mount namespace (see
 The format of this file is documented in
 .BR fstab (5).
 .IP
-Since kernel version 2.6.15, this file is pollable:
+Since Linux 2.6.15, this file is pollable:
 after opening the file for reading, a change in this file
 (i.e., a filesystem mount or unmount) causes
 .BR select (2)
@@ -1624,8 +1624,8 @@ Since Linux 2.6.36, use of this file is deprecated in favor of
 .IR /proc/ pid /oom_score_adj .
 .TP
 .IR /proc/ pid /oom_score " (since Linux 2.6.11)"
-.\" See mm/oom_kill.c::badness() in pre 2.6.36 sources
-.\" See mm/oom_kill.c::oom_badness() after 2.6.36
+.\" See mm/oom_kill.c::badness() before Linux 2.6.36 sources
+.\" See mm/oom_kill.c::oom_badness() after Linux 2.6.36
 .\" commit a63d83f427fbce97a6cea0db2e64b0eb8435cd10
 This file displays the current score that the kernel gives to
 this process for the purpose of selecting a process
@@ -1634,8 +1634,8 @@ A higher score means that the process is more likely to be
 selected by the OOM-killer.
 The basis for this score is the amount of memory used by the process,
 with increases (+) or decreases (\-) for factors including:
-.\" See mm/oom_kill.c::badness() in pre 2.6.36 sources
-.\" See mm/oom_kill.c::oom_badness() after 2.6.36
+.\" See mm/oom_kill.c::badness() before Linux 2.6.36 sources
+.\" See mm/oom_kill.c::oom_badness() after Linux 2.6.36
 .\" commit a63d83f427fbce97a6cea0db2e64b0eb8435cd10
 .RS
 .IP \(bu 3
@@ -1643,7 +1643,7 @@ whether the process is privileged (\-).
 .\" More precisely, if it has CAP_SYS_ADMIN or (pre 2.6.36) CAP_SYS_RESOURCE
 .RE
 .IP
-Before kernel 2.6.36
+Before Linux 2.6.36
 the following factors were also used in the calculation of oom_score:
 .RS
 .IP \(bu 3
@@ -1669,7 +1669,7 @@ or
 setting for the process.
 .TP
 .IR /proc/ pid /oom_score_adj " (since Linux 2.6.36)"
-.\" Text taken from 3.7 Documentation/filesystems/proc.txt
+.\" Text taken from Linux 3.7 Documentation/filesystems/proc.txt
 This file can be used to adjust the badness heuristic used to select which
 process gets killed in out-of-memory conditions.
 .IP
@@ -1887,7 +1887,7 @@ check; see
 See
 .BR user_namespaces (7).
 .TP
-.IR /proc/ pid /seccomp " (Linux 2.6.12 to 2.6.22)"
+.IR /proc/ pid /seccomp " (Linux 2.6.12 to Linux 2.6.22)"
 This file can be used to read and change the process's
 secure computing (seccomp) mode setting.
 It contains the value 0 if the process is not in seccomp mode,
@@ -1913,10 +1913,10 @@ field in
 .\" FIXME Describe /proc/[pid]/sessionid
 .\"	  commit 1e0bd7550ea9cf474b1ad4c6ff5729a507f75fdc
 .\"       CONFIG_AUDITSYSCALL
-.\"       Added in 2.6.25; read-only; only readable by real UID
+.\"       Added in Linux 2.6.25; read-only; only readable by real UID
 .\"
 .\" FIXME Describe /proc/[pid]/sched
-.\"       Added in 2.6.23
+.\"       Added in Linux 2.6.23
 .\"       CONFIG_SCHED_DEBUG, and additional fields if CONFIG_SCHEDSTATS
 .\"       Displays various scheduling parameters
 .\"       This file can be written, to reset stats
@@ -1926,7 +1926,7 @@ field in
 .\"
 .\" FIXME Describe /proc/[pid]/schedstats and
 .\"       /proc/[pid]/task/[tid]/schedstats
-.\"       Added in 2.6.9
+.\"       Added in Linux 2.6.9
 .\"       CONFIG_SCHEDSTATS
 .TP
 .IR /proc/ pid /setgroups " (since Linux 3.19)"
@@ -2245,13 +2245,13 @@ corresponding to the user-visible nice range of \-20 to 19.
 .IP
 Before Linux 2.6, this was a scaled value based on
 the scheduler weighting given to this process.
-.\" And back in kernel 1.2 days things were different again.
+.\" And back in Linux 1.2 days things were different again.
 .TP
 (19) \fInice\fP \ %ld
 The nice value (see
 .BR setpriority (2)),
 a value in the range 19 (low priority) to \-20 (high priority).
-.\" Back in kernel 1.2 days things were different.
+.\" Back in Linux 1.2 days things were different.
 .\" .TP
 .\" \fIcounter\fP %ld
 .\" The current maximum size in jiffies of the process's next timeslice,
@@ -2264,19 +2264,19 @@ a value in the range 19 (low priority) to \-20 (high priority).
 .TP
 (20) \fInum_threads\fP \ %ld
 Number of threads in this process (since Linux 2.6).
-Before kernel 2.6, this field was hard coded to 0 as a placeholder
+Before Linux 2.6, this field was hard coded to 0 as a placeholder
 for an earlier removed field.
 .TP
 (21) \fIitrealvalue\fP \ %ld
 The time in jiffies before the next
 .B SIGALRM
 is sent to the process due to an interval timer.
-Since kernel 2.6.17, this field is no longer maintained,
+Since Linux 2.6.17, this field is no longer maintained,
 and is hard coded as 0.
 .TP
 (22) \fIstarttime\fP \ %llu
 The time the process started after system boot.
-In kernels before Linux 2.6, this value was expressed in jiffies.
+Before Linux 2.6, this value was expressed in jiffies.
 Since Linux 2.6, the value is expressed in clock ticks (divide by
 .IR sysconf(_SC_CLK_TCK) ).
 .IP
@@ -2349,11 +2349,11 @@ The corresponding symbolic name can be found in
 .IR /proc/ pid /wchan .
 .TP
 (36) \fInswap\fP \ %lu
-.\" nswap was added in 2.0
+.\" nswap was added in Linux 2.0
 Number of pages swapped (not maintained).
 .TP
 (37) \fIcnswap\fP \ %lu
-.\" cnswap was added in 2.0
+.\" cnswap was added in Linux 2.0
 Cumulative \fInswap\fP for child processes (not maintained).
 .TP
 (38) \fIexit_signal\fP \ %d \ (since Linux 2.1.22)
@@ -3163,7 +3163,7 @@ documentation available under the kernel source directory
 .\" commit 3b72c814a8e8cd638e1ba0da4dfce501e9dff5af
 (or
 .I Documentation/DocBook
-before 4.10;
+before Linux 4.10;
 the documentation can be built using a command such as
 .I make htmldocs
 in the root directory of the kernel source tree).
@@ -3386,7 +3386,7 @@ r l l l.
 For further details on the meanings of these bits,
 see the kernel source file
 .IR Documentation/admin\-guide/mm/pagemap.rst .
-Before kernel 2.6.29,
+Before Linux 2.6.29,
 .\" commit ad3bdefe877afb47480418fdb05ecd42842de65e
 .\" commit e07a4b9217d1e97d2f3a62b6b070efdc61212110
 .BR KPF_WRITEBACK ,
@@ -3491,7 +3491,7 @@ Because OFD locks are not owned by a single process
 (since multiple processes may have file descriptors that
 refer to the same open file description),
 the value \-1 is displayed in this field for OFD locks.
-(Before kernel 4.14,
+(Before Linux 4.14,
 .\" commit 9d5b86ac13c573795525ecac6ed2db39ab23e2a8
 a bug meant that the PID of the process that
 initially acquired the lock was displayed instead of the value \-1.)
@@ -3600,12 +3600,12 @@ It is more eligible to be reclaimed for other purposes.
 [To be documented.]
 .TP
 .IR Unevictable " %lu (since Linux 2.6.28)"
-(From Linux 2.6.28 to 2.6.30,
+(From Linux 2.6.28 to Linux 2.6.30,
 \fBCONFIG_UNEVICTABLE_LRU\fP was required.)
 [To be documented.]
 .TP
 .IR Mlocked " %lu (since Linux 2.6.28)"
-(From Linux 2.6.28 to 2.6.30,
+(From Linux 2.6.28 to Linux 2.6.30,
 \fBCONFIG_UNEVICTABLE_LRU\fP was required.)
 [To be documented.]
 .TP
@@ -3854,7 +3854,7 @@ See also
 .BR lsmod (8).
 .TP
 .I /proc/mounts
-Before kernel 2.4.19, this file was a list
+Before Linux 2.4.19, this file was a list
 of all the filesystems currently mounted on the system.
 With the introduction of per-process mount namespaces in Linux 2.4.19 (see
 .BR mount_namespaces (7)),
@@ -4289,7 +4289,7 @@ spent in various states:
 .I idle
 (4) Time spent in the idle task.
 .\" FIXME . Actually, the following info about the /proc/stat 'cpu' field
-.\"       does not seem to be quite right (at least in 2.6.12 or 3.6):
+.\"       does not seem to be quite right (at least in Linux 2.6.12 or Linux 3.6):
 .\"       the idle time in /proc/uptime does not quite match this value
 This value should be USER_HZ times the
 second entry in the
@@ -4392,7 +4392,7 @@ See also
 .BR swapon (8).
 .TP
 .I /proc/sys
-This directory (present since 1.3.57) contains a number of files
+This directory (present since Linux 1.3.57) contains a number of files
 and subdirectories corresponding to kernel variables.
 These variables can be read and in some cases modified using
 the \fI/proc\fP filesystem, and the (deprecated)
@@ -4478,12 +4478,12 @@ This field is unused in Linux 2.2.
 is the number of unused dentries.
 .IP \(bu
 .I age_limit
-.\" looks like this is unused in kernels 2.2 to 2.6
+.\" looks like this is unused in Linux 2.2 to Linux 2.6
 is the age in seconds after which dcache entries
 can be reclaimed when memory is short.
 .IP \(bu
 .I want_pages
-.\" looks like this is unused in kernels 2.2 to 2.6
+.\" looks like this is unused in Linux 2.2 to Linux 2.6
 is nonzero when the kernel has called shrink_dcache_pages() and the
 dcache isn't pruned yet.
 .RE
@@ -4913,10 +4913,10 @@ That is, suspend accounting if 2% or less space is free; resume it
 if 4% or more space is free; consider information about amount of free space
 valid for 30 seconds.
 .TP
-.IR /proc/sys/kernel/auto_msgmni " (Linux 2.6.27 to 3.18)"
+.IR /proc/sys/kernel/auto_msgmni " (Linux 2.6.27 to Linux 3.18)"
 .\" commit 9eefe520c814f6f62c5d36a2ddcd3fb99dfdb30e (introduces feature)
 .\" commit 0050ee059f7fc86b1df2527aaa14ed5dc72f9973 (rendered redundant)
-From Linux 2.6.27 to 3.18,
+From Linux 2.6.27 to Linux 3.18,
 this file was used to control recomputing of the value in
 .I /proc/sys/kernel/msgmni
 upon the addition or removal of memory or upon IPC namespace creation/removal.
@@ -4942,7 +4942,7 @@ and reads from this file always return the value "0".
 See
 .BR capabilities (7).
 .TP
-.IR /proc/sys/kernel/cap\-bound " (from Linux 2.2 to 2.6.24)"
+.IR /proc/sys/kernel/cap\-bound " (from Linux 2.2 to Linux 2.6.24)"
 This file holds the value of the kernel
 .I "capability bounding set"
 (expressed as a signed decimal number).
@@ -5039,7 +5039,7 @@ The default value in this file is
 .IR /proc/sys/kernel/htab\-reclaim " (before Linux 2.4.9.2)"
 (PowerPC only) If this file is set to a nonzero value,
 the PowerPC htab
-.\" removed in commit 1b483a6a7b2998e9c98ad985d7494b9b725bd228, before 2.6.28
+.\" removed in commit 1b483a6a7b2998e9c98ad985d7494b9b725bd228, before Linux 2.6.28
 (see kernel file
 .IR Documentation/powerpc/ppc_htab.txt )
 is pruned
@@ -5094,7 +5094,7 @@ in Linux 2.6.26 and earlier)
 option enabled.
 It is described by the Linux kernel source file
 .I Documentation/kmod.txt
-(present only in kernel 2.4 and earlier).
+(present only in Linux 2.4 and earlier).
 .TP
 .IR /proc/sys/kernel/modules_disabled " (since Linux 2.6.31)"
 .\" 3d43321b7015387cfebbe26436d0e9d299162ea1
@@ -5183,7 +5183,7 @@ On 64-bit systems,
 can be set to any value up to 2^22
 .RB ( PID_MAX_LIMIT ,
 approximately 4 million).
-.\" Prior to 2.6.10, pid_max could also be raised above 32768 on 32-bit
+.\" Prior to Linux 2.6.10, pid_max could also be raised above 32768 on 32-bit
 .\" platforms, but this broke /proc/[pid]
 .\" See http://marc.theaimsgroup.com/?l=linux-kernel&m=109513010926152&w=2
 .TP
@@ -5273,14 +5273,14 @@ Maybe to tell it what to do after
 rebooting?
 .TP
 .I /proc/sys/kernel/rtsig\-max
-(Only in kernels up to and including 2.6.7; see
+(Up to and including Linux 2.6.7; see
 .BR setrlimit (2))
 This file can be used to tune the maximum number
 of POSIX real-time (queued) signals that can be outstanding
 in the system.
 .TP
 .I /proc/sys/kernel/rtsig\-nr
-(Only in kernels up to and including 2.6.7.)
+(Up to and including Linux 2.6.7.)
 This file shows the number of POSIX real-time signals currently queued.
 .TP
 .IR /proc/ pid /sched_autogroup_enabled " (since Linux 2.6.38)"
@@ -5857,7 +5857,7 @@ In mode 1, the kernel pretends there is always enough memory,
 until memory actually runs out.
 One use case for this mode is scientific computing applications
 that employ large sparse arrays.
-In Linux kernel versions before 2.6.0, any nonzero value implies mode 1.
+Before Linux 2.6.0, any nonzero value implies mode 1.
 .IP
 In mode 2 (available since Linux 2.6), the total virtual address space
 that can be allocated
@@ -6559,12 +6559,12 @@ Number of free CMA (Contiguous Memory Allocator) pages.
 .\" Present only if the kernel was configured with
 .\" .BR CONFIG_VM_EVENT_COUNTERS .
 .TP
-.IR kswapd_low_wmark_hit_quickly " (since 2.6.33)"
+.IR kswapd_low_wmark_hit_quickly " (since Linux 2.6.33)"
 .\" commit bb3ab596832b920c703d1aea1ce76d69c0f71fb7
 .\" Present only if the kernel was configured with
 .\" .BR CONFIG_VM_EVENT_COUNTERS .
 .TP
-.IR kswapd_high_wmark_hit_quickly " (since 2.6.33)"
+.IR kswapd_high_wmark_hit_quickly " (since Linux 2.6.33)"
 .\" commit bb3ab596832b920c703d1aea1ce76d69c0f71fb7
 .\" Present only if the kernel was configured with
 .\" .BR CONFIG_VM_EVENT_COUNTERS .

@@ -39,11 +39,11 @@ Feature Test Macro Requirements for glibc (see
     Since glibc 2.24:
         _POSIX_C_SOURCE >= 199309L
 .\"        || (_XOPEN_SOURCE && _XOPEN_SOURCE_EXTENDED)
-    Glibc 2.19 to 2.23
+    Glibc 2.19 to glibc 2.23
         _POSIX_C_SOURCE
-    Glibc 2.16 to 2.19:
+    Glibc 2.16 to glibc 2.19:
         _BSD_SOURCE || _POSIX_C_SOURCE
-    Glibc 2.12 to 2.16:
+    Glibc 2.12 to glibc 2.16:
         _BSD_SOURCE || _XOPEN_SOURCE >= 500
             || _POSIX_C_SOURCE >= 200809L
     Glibc 2.11 and earlier:
@@ -301,8 +301,8 @@ The file is marked immutable or append-only.
 The named file resides on a read-only filesystem.
 .SH VERSIONS
 .BR fchmodat ()
-was added to Linux in kernel 2.6.16;
-library support was added to glibc in version 2.4.
+was added in Linux 2.6.16;
+library support was added in glibc 2.4.
 .SH STANDARDS
 .BR chmod (),
 .BR fchmod ():

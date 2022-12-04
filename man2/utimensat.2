@@ -369,8 +369,8 @@ Search permission is denied for one of the prefix components of
 .IR pathname .
 .SH VERSIONS
 .BR utimensat ()
-was added to Linux in kernel 2.6.22;
-glibc support was added with version 2.6.
+was added in Linux 2.6.22;
+glibc support was added with glibc 2.6.
 .PP
 Support for
 .BR futimens ()
@@ -459,7 +459,7 @@ Several bugs afflict
 .BR utimensat ()
 and
 .BR futimens ()
-on kernels before 2.6.26.
+before Linux 2.6.26.
 These bugs are either nonconformances with the POSIX.1 draft specification
 or inconsistencies with historical Linux behavior.
 .IP \(bu 3

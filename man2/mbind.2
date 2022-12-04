@@ -296,7 +296,7 @@ then the call fails with the error
 if the existing pages in the memory range don't follow the policy.
 .\" According to the kernel code, the following is not true
 .\" --Lee Schermerhorn
-.\" In 2.6.16 or later the kernel will also try to move pages
+.\" In Linux 2.6.16 or later the kernel will also try to move pages
 .\" to the requested node with this flag.
 .PP
 If
@@ -423,7 +423,7 @@ privilege.
 .SH VERSIONS
 The
 .BR mbind ()
-system call was added to the Linux kernel in version 2.6.7.
+system call was added in Linux 2.6.7.
 .SH STANDARDS
 This system call is Linux-specific.
 .SH NOTES
@@ -469,7 +469,7 @@ This method will work for
 .BR set_mempolicy (2),
 as well.
 .PP
-Support for huge page policy was added with 2.6.16.
+Support for huge page policy was added with Linux 2.6.16.
 For interleave policy to be effective on huge page mappings the
 policied memory needs to be tens of megabytes or larger.
 .PP

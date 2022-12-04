@@ -16,7 +16,7 @@
 .\"	Updated shmid_ds structure definitions
 .\"	Added information on SHM_DEST and SHM_LOCKED flags
 .\"	Noted that CAP_IPC_LOCK is not required for SHM_UNLOCK
-.\"		since kernel 2.6.9
+.\"		since Linux 2.6.9
 .\" Modified, 2004-11-25, mtk, notes on 2.6.9 RLIMIT_MEMLOCK changes
 .\" 2005-04-25, mtk -- noted aberrant Linux behavior w.r.t. new
 .\"	attaches to a segment that has already been marked for deletion.
@@ -325,12 +325,12 @@ will be set.
 .BR SHM_UNLOCK " (Linux-specific)"
 Unlock the segment, allowing it to be swapped out.
 .PP
-In kernels before 2.6.10, only a privileged process
+Before Linux 2.6.10, only a privileged process
 could employ
 .B SHM_LOCK
 and
 .BR SHM_UNLOCK .
-Since kernel 2.6.10, an unprivileged process can employ these operations
+Since Linux 2.6.10, an unprivileged process can employ these operations
 if its effective UID matches the owner or creator UID of the segment, and
 (for
 .BR SHM_LOCK )
@@ -338,10 +338,10 @@ the amount of memory to be locked falls within the
 .B RLIMIT_MEMLOCK
 resource limit (see
 .BR setrlimit (2)).
-.\" There was some weirdness in 2.6.9: SHM_LOCK and SHM_UNLOCK could
+.\" There was some weirdness in Linux 2.6.9: SHM_LOCK and SHM_UNLOCK could
 .\" be applied to a segment, regardless of ownership of the segment.
 .\" This was a botch-up in the move to RLIMIT_MEMLOCK, and was fixed
-.\" in 2.6.10.  MTK, May 2005
+.\" in Linux 2.6.10.  MTK, May 2005
 .SH RETURN VALUE
 A successful
 .B IPC_INFO
@@ -402,7 +402,7 @@ operation, the index value specified in
 referred to an array slot that is currently unused.
 .TP
 .B ENOMEM
-(In kernels since 2.6.9),
+(Since Linux 2.6.9),
 .B SHM_LOCK
 was specified and the size of the to-be-locked segment would mean
 that the total bytes in locked shared memory segments would exceed
@@ -429,7 +429,7 @@ and the process was not privileged (Linux: did not have the
 .B CAP_SYS_ADMIN
 capability).
 .IP
-Or (in kernels before 2.6.9),
+Or (before Linux 2.6.9),
 .B SHM_LOCK
 or
 .B SHM_UNLOCK

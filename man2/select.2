@@ -15,7 +15,7 @@
 .\" Modified Thu Feb  9 22:32:09 CET 2001 by bert hubert <ahu@ds9a.nl>, aeb
 .\" Modified Mon Nov 11 14:35:00 PST 2002 by Ben Woodard <ben@zork.net>
 .\" 2005-03-11, mtk, modified pselect() text (it is now a system
-.\"     call in 2.6.16.
+.\"     call in Linux 2.6.16.
 .\"
 .TH select 2 (date) "Linux man-pages (unreleased)"
 .SH NAME
@@ -422,7 +422,7 @@ is invalid.
 Unable to allocate memory for internal tables.
 .SH VERSIONS
 .BR pselect ()
-was added to Linux in kernel 2.6.16.
+was added in Linux 2.6.16.
 Prior to this,
 .BR pselect ()
 was emulated in glibc (but see BUGS).
@@ -622,7 +622,7 @@ that did not take a
 .I sigmask
 argument.
 .PP
-In glibc versions 2.1 to 2.2.1,
+From glibc 2.1 to glibc 2.2.1,
 one must define
 .B _GNU_SOURCE
 in order to obtain the declaration of
@@ -667,7 +667,7 @@ According to POSIX, any such file descriptor that is specified in one
 of the sets should result in the error
 .BR EBADF .
 .PP
-Starting with version 2.1, glibc provided an emulation of
+Starting with glibc 2.1, glibc provided an emulation of
 .BR pselect ()
 that was implemented using
 .BR sigprocmask (2)

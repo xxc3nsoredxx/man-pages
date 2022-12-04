@@ -238,7 +238,7 @@ are delimited by colons or spaces.
 .B \-\-list
 List all dependencies and how they are resolved.
 .TP
-.BR \-\-list\-tunables " (since 2.33)"
+.BR \-\-list\-tunables " (since glibc 2.33)"
 Print the names and values of all tunables,
 along with the minimum and maximum allowed values.
 .TP
@@ -588,7 +588,7 @@ is ignored in secure-execution mode.
 By default, when searching shared libraries to resolve a symbol reference,
 the dynamic linker will resolve to the first definition it finds.
 .IP
-Old glibc versions (before 2.2), provided a different behavior:
+Old glibc versions (before glibc 2.2), provided a different behavior:
 if the linker found a symbol that was weak,
 it would remember that symbol and
 keep searching in the remaining shared libraries.
@@ -639,7 +639,7 @@ Since glibc 2.4,
 .B LD_ORIGIN_PATH
 is ignored in secure-execution mode.
 .TP
-.BR LD_POINTER_GUARD " (glibc from 2.4 to 2.22)"
+.BR LD_POINTER_GUARD " (from glibc 2.4 to glibc 2.22)"
 Set to 0 to disable pointer guarding.
 Any other value enables pointer guarding, which is also the default.
 Pointer guarding is a security mechanism whereby some pointers to code

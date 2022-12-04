@@ -56,7 +56,7 @@ moves pages of the calling process.
 .PP
 To move pages in another process requires the following privileges:
 .IP \(bu 3
-In kernels up to and including Linux 4.12:
+Up to and including Linux 4.12:
 the caller must be privileged
 .RB ( CAP_SYS_NICE )
 or the real or effective user ID of the calling process must match the
@@ -218,7 +218,7 @@ to another user but did not have privilege to do so
 Process does not exist.
 .SH VERSIONS
 .BR move_pages ()
-first appeared on Linux in version 2.6.18.
+first appeared in Linux 2.6.18.
 .SH STANDARDS
 This system call is Linux-specific.
 .SH NOTES

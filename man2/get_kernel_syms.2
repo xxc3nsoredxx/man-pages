@@ -16,7 +16,7 @@ get_kernel_syms \- retrieve exported kernel and module symbols
 .fi
 .SH DESCRIPTION
 .BR Note :
-This system call is present only in kernels before Linux 2.6.
+This system call is present only before Linux 2.6.
 .PP
 If
 .I table
@@ -56,7 +56,7 @@ There is only one possible error return:
 .BR get_kernel_syms ()
 is not supported in this version of the kernel.
 .SH VERSIONS
-This system call is present on Linux only up until kernel 2.4;
+This system call is present only up until Linux 2.4;
 it was removed in Linux 2.6.
 .\" Removed in Linux 2.5.48
 .SH STANDARDS
@@ -65,7 +65,7 @@ is Linux-specific.
 .SH NOTES
 This obsolete system call is not supported by glibc.
 No declaration is provided in glibc headers, but, through a quirk of history,
-glibc versions before 2.23 did export an ABI for this system call.
+glibc versions before glibc 2.23 did export an ABI for this system call.
 Therefore, in order to employ this system call,
 it was sufficient to manually declare the interface in your code;
 alternatively, you could invoke the system call using

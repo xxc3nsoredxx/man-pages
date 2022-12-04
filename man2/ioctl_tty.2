@@ -345,9 +345,9 @@ or
 .I /dev/tty0
 to the given terminal.
 If that was a pseudoterminal master, send it to the slave.
-In Linux before version 2.6.10,
+Before Linux 2.6.10,
 anybody can do this as long as the output was not redirected yet;
-since version 2.6.10, only a process with the
+since Linux 2.6.10, only a process with the
 .B CAP_SYS_ADMIN
 capability may do this.
 If output was redirected already, then

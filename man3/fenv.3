@@ -240,7 +240,7 @@ These functions return zero on success and nonzero if an error occurred.
 .\" This was corrected in Corrigendum 1 (ISO/IEC 9899:1999/Cor.1:2001(E))
 .\" of the C99 Standard.
 .SH VERSIONS
-These functions first appeared in glibc in version 2.1.
+These functions were added in glibc 2.1.
 .SH ATTRIBUTES
 For an explanation of the terms used in this section, see
 .BR attributes (7).
@@ -290,7 +290,7 @@ It is defined only if
 is defined.
 The C99 standard does not define a way to set individual bits in the
 floating-point mask, for example, to trap on specific flags.
-Since version 2.2, glibc supports the functions
+Since glibc 2.2, glibc supports the functions
 .BR feenableexcept ()
 and
 .BR fedisableexcept ()

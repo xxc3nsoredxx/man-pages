@@ -1393,7 +1393,7 @@ Should the timeout be reached,
 the persistent keyring will be removed and
 everything it pins can then be garbage collected.
 .IP
-Persistent keyrings were added to Linux in kernel version 3.13.
+Persistent keyrings were added in Linux 3.13.
 .IP
 The arguments
 .I arg4
@@ -1542,7 +1542,9 @@ as with SP800-108 (the counter KDF).
 .\" keyutils commit d68a981e5db41d059ac782071c35d1e8f3aaf61c
 This operation is exposed by
 .I libkeyutils
-(from version 1.5.10 onwards) via the functions
+(from
+.I libkeyutils
+1.5.10 onwards) via the functions
 .BR keyctl_dh_compute (3)
 and
 .BR keyctl_dh_compute_alloc (3).
@@ -1751,7 +1753,7 @@ or
 (the key description)
 exceeded the limit (32 bytes and 4096 bytes respectively).
 .TP
-.BR EINVAL " (Linux kernels before 4.12)"
+.BR EINVAL " (before Linux 4.12)"
 .I operation
 was
 .BR KEYCTL_DH_COMPUTE ,
@@ -1831,7 +1833,7 @@ exceeds
 .B KEYCTL_KDF_MAX_OI_LEN
 (which is 64 currently).
 .TP
-.BR ENFILE " (Linux kernels before 3.13)"
+.BR ENFILE " (before Linux 3.13)"
 .I operation
 was
 .B KEYCTL_LINK

@@ -209,17 +209,17 @@ file descriptor, or
 is less than or equal to zero.
 .SH VERSIONS
 .BR epoll_wait ()
-was added to the kernel in version 2.6.
+was added in Linux 2.6.
 .\" To be precise: kernel 2.5.44.
-.\" The interface should be finalized by Linux kernel 2.5.66.
-Library support is provided in glibc starting with version 2.3.2.
+.\" The interface should be finalized by Linux 2.5.66.
+Library support is provided in glibc 2.3.2.
 .PP
 .BR epoll_pwait ()
-was added to Linux in kernel 2.6.19.
-Library support is provided in glibc starting with version 2.6.
+was added in Linux 2.6.19.
+Library support is provided in glibc 2.6.
 .PP
 .BR epoll_pwait2 ()
-was added to Linux in kernel 5.11.
+was added in Linux 5.11.
 .SH STANDARDS
 .BR epoll_wait (),
 .BR epoll_pwait (),
@@ -274,7 +274,7 @@ wrapper function specifies this argument as a fixed value
 (equal to
 .IR sizeof(sigset_t) ).
 .SH BUGS
-In kernels before 2.6.37, a
+Before Linux 2.6.37, a
 .I timeout
 value larger than approximately
 .I LONG_MAX / HZ

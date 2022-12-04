@@ -97,8 +97,8 @@ mq_unlink(3)	mq_unlink(2)
 .TE
 .RE
 .SS Versions
-POSIX message queues have been supported on Linux since kernel 2.6.6.
-Glibc support has been provided since version 2.3.4.
+POSIX message queues have been supported since Linux 2.6.6.
+Glibc support has been provided since glibc 2.3.4.
 .SS Kernel configuration
 Support for POSIX message queues is configurable via the
 .B CONFIG_POSIX_MQUEUE
@@ -136,7 +136,7 @@ value will be the smaller of
 .I msg_default
 and
 .IR msg_max .
-Up until Linux 2.6.28, the default
+Before Linux 2.6.28, the default
 .I mq_maxmsg
 was 10;
 from Linux 2.6.28 to Linux 3.4, the default was the value defined for the
@@ -153,7 +153,7 @@ argument given to
 The default value for
 .I msg_max
 is 10.
-The minimum value is 1 (10 in kernels before 2.6.28).
+The minimum value is 1 (10 before Linux 2.6.28).
 The upper limit is
 .BR HARD_MSGMAX .
 The
@@ -172,7 +172,7 @@ has changed across kernel versions:
 Up to Linux 2.6.32:
 .I 131072\~/\~sizeof(void\~*)
 .IP \(bu
-Linux 2.6.33 to 3.4:
+Linux 2.6.33 to Linux 3.4:
 .I (32768\~*\~sizeof(void\~*) / 4)
 .IP \(bu
 Since Linux 3.5:
@@ -200,7 +200,7 @@ a new queue's default
 value is capped to the
 .I msgsize_max
 limit.
-Up until Linux 2.6.28, the default
+Before Linux 2.6.28, the default
 .I mq_msgsize
 was 8192;
 from Linux 2.6.28 to Linux 3.4, the default was the value defined for the
@@ -217,7 +217,7 @@ argument given to
 The default value for
 .I msgsize_max
 is 8192 bytes.
-The minimum value is 128 (8192 in kernels before 2.6.28).
+The minimum value is 128 (8192 before Linux 2.6.28).
 The upper limit for
 .I msgsize_max
 has varied across kernel versions:
@@ -226,7 +226,7 @@ has varied across kernel versions:
 Before Linux 2.6.28, the upper limit is
 .BR INT_MAX .
 .IP \(bu
-From Linux 2.6.28 to 3.4, the limit is 1,048,576.
+From Linux 2.6.28 to Linux 3.4, the limit is 1,048,576.
 .IP \(bu
 Since Linux 3.5, the limit is 16,777,216
 .RB ( HARD_MSGSIZEMAX ).
@@ -344,17 +344,17 @@ System V message queues;
 on the other hand POSIX message queues are less widely available
 (especially on older systems) than System V message queues.
 .PP
-Linux does not currently (2.6.26) support the use of access control
+Linux does not currently (Linux 2.6.26) support the use of access control
 lists (ACLs) for POSIX message queues.
 .SH BUGS
-In Linux versions 3.5 to 3.14, the kernel imposed a ceiling of 1024
+Since Linux 3.5 to Linux 3.14, the kernel imposed a ceiling of 1024
 .RB ( HARD_QUEUESMAX )
 on the value to which the
 .I queues_max
 limit could be raised,
 and the ceiling was enforced even for privileged processes.
 This ceiling value was removed in Linux 3.14,
-and patches to stable kernels 3.5.x to 3.13.x also removed the ceiling.
+and patches to stable Linux 3.5.x to Linux 3.13.x also removed the ceiling.
 .PP
 As originally implemented (and documented),
 the QSIZE field displayed the total number of (user-supplied)

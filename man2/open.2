@@ -261,8 +261,8 @@ and
 .I sysvgroups
 mount options described in
 .BR mount (8).
-.\" As at 2.6.25, bsdgroups is supported by ext2, ext3, ext4, and
-.\" XFS (since 2.6.14).
+.\" As at Linux 2.6.25, bsdgroups is supported by ext2, ext3, ext4, and
+.\" XFS (since Linux 2.6.14).
 .IP
 The
 .I mode
@@ -390,7 +390,7 @@ If \fIpathname\fP is not a directory, cause the open to fail.
 .\" http://marc.theaimsgroup.com/?t=112748702800001&r=1&w=2
 .\" [PATCH] open: O_DIRECTORY and O_CREAT together should fail
 .\" O_DIRECTORY | O_CREAT causes O_DIRECTORY to be ignored.
-This flag was added in kernel version 2.1.126, to
+This flag was added in Linux 2.1.126, to
 avoid denial-of-service problems if
 .BR opendir (3)
 is called on a
@@ -541,14 +541,14 @@ error that can occur in this case is indistinguishable from the case where
 an open fails because there are too many symbolic links found
 while resolving components in the prefix part of the pathname.)
 .IP
-This flag is a FreeBSD extension, which was added to Linux in version 2.1.126,
+This flag is a FreeBSD extension, which was added in Linux 2.1.126,
 and has subsequently been standardized in POSIX.1-2008.
 .IP
 See also
 .B O_PATH
 below.
 .\" The headers from glibc 2.0.100 and later include a
-.\" definition of this flag; \fIkernels before 2.1.126 will ignore it if
+.\" definition of this flag; \fIkernels before Linux 2.1.126 will ignore it if
 .\" used\fP.
 .TP
 .BR O_NONBLOCK " or " O_NDELAY
@@ -1239,7 +1239,7 @@ see also
 .B O_LARGEFILE
 above.
 This is the error specified by POSIX.1;
-in kernels before 2.6.24, Linux gave the error
+before Linux 2.6.24, Linux gave the error
 .B EFBIG
 for this case.
 .\" See http://bugzilla.kernel.org/show_bug.cgi?id=7253
@@ -1286,8 +1286,8 @@ flag was specified, and an incompatible lease was held on the file
 .BR fcntl (2)).
 .SH VERSIONS
 .BR openat ()
-was added to Linux in kernel 2.6.16;
-library support was added to glibc in version 2.4.
+was added in Linux 2.6.16;
+library support was added in glibc 2.4.
 .SH STANDARDS
 .BR open (),
 .BR creat ()
@@ -1539,7 +1539,7 @@ new headers get at least
 semantics on pre-2.6.33 kernels.
 .\"
 .SS C library/kernel differences
-Since version 2.26,
+Since glibc 2.26,
 the glibc wrapper function for
 .BR open ()
 employs the
@@ -1547,7 +1547,7 @@ employs the
 system call, rather than the kernel's
 .BR open ()
 system call.
-For certain architectures, this is also true in glibc versions before 2.26.
+For certain architectures, this is also true before glibc 2.26.
 .\"
 .SS NFS
 There are many infelicities in the protocol underlying NFS, affecting
@@ -1832,7 +1832,7 @@ FreeBSD 4.x introduced
 a flag of the same name, but without alignment restrictions.
 .PP
 .B O_DIRECT
-support was added under Linux in kernel version 2.4.10.
+support was added in Linux 2.4.10.
 Older Linux kernels simply ignore this flag.
 Some filesystems may not implement the flag, in which case
 .BR open ()

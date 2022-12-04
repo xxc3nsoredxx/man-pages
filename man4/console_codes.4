@@ -774,10 +774,10 @@ scripts which exercise other features.
 ESC 8 (DECRC) is not able to restore the character set changed with
 ESC %.
 .SH BUGS
-In 2.0.23, CSI is broken, and NUL is not ignored inside
+In Linux 2.0.23, CSI is broken, and NUL is not ignored inside
 escape sequences.
 .PP
-Some older kernel versions (after 2.0) interpret 8-bit control
+Some older kernel versions (after Linux 2.0) interpret 8-bit control
 sequences.
 These "C1 controls" use codes between 128 and 159 to replace
 ESC [, ESC ] and similar two-byte control sequence initiators.

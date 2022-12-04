@@ -276,11 +276,11 @@ Write access was requested to an executable which is being
 executed.
 .SH VERSIONS
 .BR faccessat ()
-was added to Linux in kernel 2.6.16;
-library support was added to glibc in version 2.4.
+was added in Linux 2.6.16;
+library support was added in glibc 2.4.
 .PP
 .BR faccessat2 ()
-was added to Linux in version 5.8.
+was added in Linux 5.8.
 .SH STANDARDS
 .BR access ():
 SVr4, 4.3BSD, POSIX.1-2001, POSIX.1-2008.
@@ -398,7 +398,7 @@ by making use of the
 .BR faccessat2 ()
 system call where it is provided by the underlying kernel.
 .PP
-In kernel 2.4 (and earlier) there is some strangeness in the handling of
+In Linux 2.4 (and earlier) there is some strangeness in the handling of
 .B X_OK
 tests for superuser.
 If all categories of execute permission are disabled
@@ -421,13 +421,13 @@ returns 0 for such files.
 Early 2.6 kernels (up to and including 2.6.3)
 also behaved in the same way as kernel 2.4.
 .PP
-In kernels before 2.6.20,
+Before Linux 2.6.20,
 these calls ignored the effect of the
 .B MS_NOEXEC
 flag if it was used to
 .BR mount (2)
 the underlying filesystem.
-Since kernel 2.6.20, the
+Since Linux 2.6.20, the
 .B MS_NOEXEC
 flag is honored.
 .SH SEE ALSO

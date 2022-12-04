@@ -814,9 +814,9 @@ indicate a socket as readable only if at least
 bytes are available.
 .TP
 .BR SO_RCVTIMEO " and " SO_SNDTIMEO
-.\" Not implemented in 2.0.
-.\" Implemented in 2.1.11 for getsockopt: always return a zero struct.
-.\" Implemented in 2.3.41 for setsockopt, and actually used.
+.\" Not implemented in Linux 2.0.
+.\" Implemented in Linux 2.1.11 for getsockopt: always return a zero struct.
+.\" Implemented in Linux 2.3.41 for setsockopt, and actually used.
 Specify the receiving or sending timeouts until reporting an error.
 The argument is a
 .IR "struct timeval" .

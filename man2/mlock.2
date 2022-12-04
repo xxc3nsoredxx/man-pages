@@ -258,7 +258,7 @@ to perform the requested operation.
 .SH VERSIONS
 .BR mlock2 ()
 is available since Linux 4.4;
-glibc support was added in version 2.27.
+glibc support was added in glibc 2.27.
 .SH STANDARDS
 .BR mlock (),
 .BR munlock (),
@@ -465,9 +465,9 @@ a bug caused the
 .B MCL_FUTURE
 flag to be inherited across a
 .BR fork (2).
-This was rectified in kernel 2.4.18.
+This was rectified in Linux 2.4.18.
 .PP
-Since kernel 2.6.9, if a privileged process calls
+Since Linux 2.6.9, if a privileged process calls
 .I mlockall(MCL_FUTURE)
 and later drops privileges (loses the
 .B CAP_IPC_LOCK

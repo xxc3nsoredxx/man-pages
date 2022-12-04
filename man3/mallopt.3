@@ -111,7 +111,7 @@ If this bit is set, then,
 after printing any error message specified by bit 0,
 the program is terminated by calling
 .BR abort (3).
-In glibc versions since 2.4,
+Since glibc 2.4,
 if bit 0 is also set,
 then, between printing the error message and aborting,
 the program also prints a stack trace in the manner of
@@ -162,7 +162,7 @@ and abort the program.
 Since glibc 2.3.4, the default value for the
 .B M_CHECK_ACTION
 parameter is 3.
-In glibc version 2.3.3 and earlier, the default value is 1.
+In glibc 2.3.3 and earlier, the default value is 1.
 .IP
 Using a nonzero
 .B M_CHECK_ACTION

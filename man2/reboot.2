@@ -13,7 +13,7 @@ Standard C library
 .RI ( libc ", " \-lc )
 .SH SYNOPSIS
 .nf
-.RB "/* Since kernel version 2.1.30 there are symbolic names " LINUX_REBOOT_*
+.RB "/* Since Linux 2.1.30 there are symbolic names " LINUX_REBOOT_*
    for the constants and a fourth argument to the call: */
 .PP
 .BR "#include <linux/reboot.h>  " \
@@ -52,13 +52,13 @@ equals
 equals
 .B LINUX_REBOOT_MAGIC2
 (that is, 672274793).
-However, since 2.1.17 also
+However, since Linux 2.1.17 also
 .B LINUX_REBOOT_MAGIC2A
 (that is, 85072278)
-and since 2.1.97 also
+and since Linux 2.1.97 also
 .B LINUX_REBOOT_MAGIC2B
 (that is, 369367448)
-and since 2.5.71 also
+and since Linux 2.5.71 also
 .B LINUX_REBOOT_MAGIC2C
 (that is, 537993216)
 are permitted as values for

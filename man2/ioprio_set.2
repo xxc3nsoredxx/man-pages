@@ -221,7 +221,7 @@ As at kernel 2.6.17 the only such scheduler is the Completely Fair Queuing
 If no I/O scheduler has been set for a thread,
 then by default the I/O priority will follow the CPU nice value
 .RB ( setpriority (2)).
-In Linux kernels before version 2.6.24,
+Before Linux 2.6.24,
 once an I/O priority had been set using
 .BR ioprio_set (),
 there was no way to reset the I/O scheduling behavior to the default.
@@ -333,7 +333,7 @@ Attempts to set very high priorities
 require the
 .B CAP_SYS_ADMIN
 capability.
-Kernel versions up to 2.6.24 also required
+Up to Linux 2.6.24 also required
 .B CAP_SYS_ADMIN
 to set a very low priority
 .RB ( IOPRIO_CLASS_IDLE ),

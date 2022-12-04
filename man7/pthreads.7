@@ -811,26 +811,26 @@ The information returned by
 .BR times (2)
 and
 .BR getrusage (2)
-is per-thread rather than process-wide (fixed in kernel 2.6.9).
+is per-thread rather than process-wide (fixed in Linux 2.6.9).
 .IP \(bu
-Threads do not share resource limits (fixed in kernel 2.6.10).
+Threads do not share resource limits (fixed in Linux 2.6.10).
 .IP \(bu
-Threads do not share interval timers (fixed in kernel 2.6.12).
+Threads do not share interval timers (fixed in Linux 2.6.12).
 .IP \(bu
 Only the main thread is permitted to start a new session using
 .BR setsid (2)
-(fixed in kernel 2.6.16).
+(fixed in Linux 2.6.16).
 .IP \(bu
 Only the main thread is permitted to make the process into a
 process group leader using
 .BR setpgid (2)
-(fixed in kernel 2.6.16).
+(fixed in Linux 2.6.16).
 .IP \(bu
 Threads have distinct alternate signal stack settings.
 However, a new thread's alternate signal stack settings
 are copied from the thread that created it, so that
 the threads initially share an alternate signal stack
-(fixed in kernel 2.6.16).
+(fixed in Linux 2.6.16).
 .PP
 Note the following further points about the NPTL implementation:
 .IP \(bu 3

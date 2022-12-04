@@ -10,7 +10,7 @@
 .\" Modified 10 June 1995 by Andries Brouwer <aeb@cwi.nl>
 .\" Modified 25 April 1998 by Xavier Leroy <Xavier.Leroy@inria.fr>
 .\" Modified 26 Jun 2001 by Michael Kerrisk
-.\"     Mostly upgraded to 2.4.x
+.\"     Mostly upgraded to Linux 2.4.x
 .\"     Added prototype for sys_clone() plus description
 .\"	Added CLONE_THREAD with a brief description of thread groups
 .\"	Added CLONE_PARENT and revised entire page remove ambiguity
@@ -22,7 +22,7 @@
 .\" Modified 26 Jun 2001 by Michael Kerrisk <mtk.manpages@gmail.com>
 .\"	Updated notes for 2.4.7+ behavior of CLONE_THREAD
 .\" Modified 15 Oct 2002 by Michael Kerrisk <mtk.manpages@gmail.com>
-.\"	Added description for CLONE_NEWNS, which was added in 2.4.19
+.\"	Added description for CLONE_NEWNS, which was added in Linux 2.4.19
 .\" Slightly rephrased, aeb.
 .\" Modified 1 Feb 2003 - added CLONE_SIGHAND restriction, aeb.
 .\" Modified 1 Jan 2004 - various updates, aeb
@@ -465,7 +465,7 @@ is nonsensical and disallowed.
 .TP
 .BR CLONE_DETACHED " (historical)"
 For a while (during the Linux 2.5 development series)
-.\" added in 2.5.32; removed in 2.6.0-test4
+.\" added in Linux 2.5.32; removed in Linux 2.6.0-test4
 there was a
 .B CLONE_DETACHED
 flag,
@@ -665,7 +665,7 @@ This flag can't be specified in conjunction with
 .TP
 .BR CLONE_NEWNET " (since Linux 2.6.24)"
 (The implementation of this flag was completed only
-by about kernel version 2.6.29.)
+by about Linux 2.6.29.)
 .IP
 If
 .B CLONE_NEWNET
@@ -779,8 +779,8 @@ or
 For security reasons,
 .\" commit e66eded8309ebf679d3d3c1f5820d1f2ca332c71
 .\" https://lwn.net/Articles/543273/
-.\" The fix actually went into 3.9 and into 3.8.3. However, user namespaces
-.\" were, for practical purposes, unusable in earlier 3.8.x because of the
+.\" The fix actually went into Linux 3.9 and into Linux 3.8.3. However, user namespaces
+.\" were, for practical purposes, unusable in earlier Linux 3.8.x because of the
 .\" various filesystems that didn't support userns.
 .B CLONE_NEWUSER
 cannot be specified in conjunction with
@@ -848,7 +848,7 @@ that did this.)
 The store operation completes before the clone call
 returns control to user space.
 .TP
-.BR CLONE_PID " (Linux 2.0 to 2.5.15)"
+.BR CLONE_PID " (Linux 2.0 to Linux 2.5.15)"
 If
 .B CLONE_PID
 is set, the child process is created with the same process ID as
@@ -1590,7 +1590,7 @@ In the Linux 2.4.x series,
 .B CLONE_THREAD
 generally does not make the parent of the new thread the same
 as the parent of the calling process.
-However, for kernel versions 2.4.7 to 2.4.18 the
+However, from Linux 2.4.7 to Linux 2.4.18 the
 .B CLONE_THREAD
 flag implied the
 .B CLONE_PARENT

@@ -67,7 +67,7 @@ An invalid floating-point exception
 .RB ( FE_INVALID )
 is raised.
 .SH VERSIONS
-These functions first appeared in glibc in version 2.1.
+These functions were added in glibc 2.1.
 .SH ATTRIBUTES
 For an explanation of the terms used in this section, see
 .BR attributes (7).
@@ -102,7 +102,7 @@ cc \-O \-lm \-fno\-builtin prog.c
 .EE
 .in
 .SH BUGS
-Before version 2.22, the glibc implementation did not set
+Before glibc 2.22, the glibc implementation did not set
 .\" https://www.sourceware.org/bugzilla/show_bug.cgi?id=15467
 .I errno
 to

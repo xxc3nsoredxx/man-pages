@@ -107,8 +107,8 @@ this also should happen when root does the
 the Linux behavior depends on the kernel version,
 and since Linux 2.2.13, root is treated like other users.
 .\" In Linux 2.0 kernels, superuser was like everyone else
-.\" In 2.2, up to 2.2.12, these bits were not cleared for superuser.
-.\" Since 2.2.13, superuser is once more like everyone else.
+.\" In Linux 2.2, up to Linux 2.2.12, these bits were not cleared for superuser.
+.\" Since Linux 2.2.13, superuser is once more like everyone else.
 In case of a non-group-executable file (i.e., one for which the
 .B S_IXGRP
 bit is not set) the
@@ -279,8 +279,8 @@ The file is marked immutable or append-only.
 The named file resides on a read-only filesystem.
 .SH VERSIONS
 .BR fchownat ()
-was added to Linux in kernel 2.6.16;
-library support was added to glibc in version 2.4.
+was added in Linux 2.6.16;
+library support was added in glibc 2.4.
 .SH STANDARDS
 .BR chown (),
 .BR fchown (),
@@ -396,7 +396,7 @@ and
 .BR lchown ()
 wrapper functions transparently deal with the variations across kernel versions.
 .PP
-In versions of Linux prior to 2.1.81 (and distinct from 2.1.46),
+Before Linux 2.1.81 (except 2.1.46),
 .BR chown ()
 did not follow symbolic links.
 Since Linux 2.1.81,

@@ -187,7 +187,7 @@ and
 .BR sigsuspend (2)
 instead.
 .SH NOTES
-These functions appeared in glibc version 2.1.
+These functions appeared in glibc 2.1.
 .PP
 The
 .I sighandler_t
@@ -229,7 +229,7 @@ See
 .BR sigpause (3)
 for details.
 .SH BUGS
-In versions of glibc before 2.2,
+Before glibc 2.2,
 .BR sigset ()
 did not unblock
 .I sig
@@ -238,7 +238,7 @@ if
 was specified as a value other than
 .BR SIG_HOLD .
 .PP
-In versions of glibc before 2.5,
+Before glibc 2.5,
 .BR sigset ()
 does not correctly return the previous disposition of the signal
 in two cases.

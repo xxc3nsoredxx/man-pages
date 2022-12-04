@@ -33,7 +33,7 @@ Feature Test Macro Requirements for glibc (see
     _XOPEN_SOURCE >= 500 || _POSIX_C_SOURCE >= 200112L
         || /* Glibc 2.19 and earlier */ _BSD_SOURCE
 .\" The above is something of a simplification
-.\" also in glibc before 2.3 there was a bit churn
+.\" also before glibc 2.3 there was a bit churn
 .fi
 .PP
 .BR sethostname ():
@@ -98,7 +98,7 @@ is larger than the maximum allowed size.
 .RB "(glibc " gethostname ())
 .I len
 is smaller than the actual size.
-(Before version 2.1, glibc uses
+(Before glibc 2.1, glibc uses
 .B EINVAL
 for this case.)
 .TP
@@ -149,8 +149,8 @@ set to
 in this case, a terminating null byte is not included in the returned
 .IR name .
 .PP
-Versions of glibc before 2.2
-.\" At least glibc 2.0 and 2.1, older versions not checked
+Versions of glibc before glibc 2.2
+.\" At least glibc 2.0 and glibc 2.1, older versions not checked
 handle the case where the length of the
 .I nodename
 was greater than or equal to

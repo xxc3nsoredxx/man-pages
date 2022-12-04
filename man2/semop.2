@@ -358,10 +358,10 @@ the implementation dependent maximum value for
 .SH VERSIONS
 .BR semtimedop ()
 first appeared in Linux 2.5.52,
-and was subsequently backported into kernel 2.4.22.
+and was subsequently backported into Linux 2.4.22.
 Glibc support for
 .BR semtimedop ()
-first appeared in version 2.3.3.
+first appeared in Linux 2.3.3.
 .SH STANDARDS
 POSIX.1-2001, POSIX.1-2008, SVr4.
 .\" SVr4 documents additional error conditions EINVAL, EFBIG, ENOSPC.
@@ -475,10 +475,10 @@ Linux adopts a third approach: decreasing the semaphore value
 as far as possible (i.e., to zero) and allowing process
 termination to proceed immediately.
 .PP
-In kernels 2.6.x, x <= 10, there is a bug that in some circumstances
+In Linux 2.6.x, x <= 10, there is a bug that in some circumstances
 prevents a thread that is waiting for a semaphore value to become
 zero from being woken up when the value does actually become zero.
-This bug is fixed in kernel 2.6.11.
+This bug is fixed in Linux 2.6.11.
 .\" The bug report:
 .\" http://marc.theaimsgroup.com/?l=linux-kernel&m=110260821123863&w=2
 .\" the fix:

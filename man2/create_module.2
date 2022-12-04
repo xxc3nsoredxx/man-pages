@@ -16,7 +16,7 @@ create_module \- create a loadable module entry
 .fi
 .SH DESCRIPTION
 .IR Note :
-This system call is present only in kernels before Linux 2.6.
+This system call is present only before Linux 2.6.
 .PP
 .BR create_module ()
 attempts to create a loadable module entry and reserve the kernel memory
@@ -46,7 +46,7 @@ enough for the module.
 .B ENOSYS
 .BR create_module ()
 is not supported in this version of the kernel
-(e.g., the kernel is version 2.6 or later).
+(e.g., Linux 2.6 or later).
 .TP
 .B EPERM
 The caller was not privileged
@@ -54,7 +54,7 @@ The caller was not privileged
 .B CAP_SYS_MODULE
 capability).
 .SH VERSIONS
-This system call is present on Linux only up until kernel 2.4;
+This system call is present only up until Linux 2.4;
 it was removed in Linux 2.6.
 .\" Removed in Linux 2.5.48
 .SH STANDARDS
@@ -63,7 +63,7 @@ is Linux-specific.
 .SH NOTES
 This obsolete system call is not supported by glibc.
 No declaration is provided in glibc headers, but, through a quirk of history,
-glibc versions before 2.23 did export an ABI for this system call.
+glibc versions before glibc 2.23 did export an ABI for this system call.
 Therefore, in order to employ this system call,
 it was sufficient to manually declare the interface in your code;
 alternatively, you could invoke the system call using

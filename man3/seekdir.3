@@ -30,7 +30,7 @@ Feature Test Macro Requirements for glibc (see
 .BR seekdir ():
 .nf
     _XOPEN_SOURCE
-        || /* Glibc since 2.19: */ _DEFAULT_SOURCE
+        || /* Glibc >= 2.19: */ _DEFAULT_SOURCE
         || /* Glibc <= 2.19: */ _BSD_SOURCE || _SVID_SOURCE
 .fi
 .SH DESCRIPTION
@@ -68,7 +68,7 @@ T}	Thread safety	MT-Safe
 .SH STANDARDS
 POSIX.1-2001, POSIX.1-2008, 4.3BSD.
 .SH NOTES
-In glibc up to version 2.1.1, the type of the
+Up to glibc 2.1.1, the type of the
 .I loc
 argument was
 .IR off_t .

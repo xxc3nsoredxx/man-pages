@@ -459,24 +459,24 @@ these fields do not include the times used by waited-for children (unlike
 .BR getrusage (2)
 and
 .BR times (2)).
-In kernels up to 2.6, and since 2.6.27, these fields report
+Up to Linux 2.6, and since Linux 2.6.27, these fields report
 CPU time in units of
 .IR sysconf(_SC_CLK_TCK) .
-In 2.6 kernels before 2.6.27,
+In Linux 2.6 kernels before Linux 2.6.27,
 a bug meant that these fields reported time in units
 of the (configurable) system jiffy (see
 .BR time (7)).
 .\" FIXME .
 .\" When si_utime and si_stime where originally implemented, the
 .\" measurement unit was HZ, which was the same as clock ticks
-.\" (sysconf(_SC_CLK_TCK)).  In 2.6, HZ became configurable, and
+.\" (sysconf(_SC_CLK_TCK)).  In Linux 2.6, HZ became configurable, and
 .\" was *still* used as the unit to return the info these fields,
 .\" with the result that the field values depended on the
 .\" configured HZ.  Of course, the should have been measured in
 .\" USER_HZ instead, so that sysconf(_SC_CLK_TCK) could be used to
 .\" convert to seconds.  I have a queued patch to fix this:
 .\" http://thread.gmane.org/gmane.linux.kernel/698061/ .
-.\" This patch made it into 2.6.27.
+.\" This patch made it into Linux 2.6.27.
 .\" But note that these fields still don't return the times of
 .\" waited-for children (as is done by getrusage() and times()
 .\" and wait4()).  Solaris 8 does include child times.
@@ -658,7 +658,7 @@ AIO completed.
 .B SI_SIGIO
 Queued
 .B SIGIO
-(only in kernels up to Linux 2.2; from Linux 2.4 onward
+(only up to Linux 2.2; from Linux 2.4 onward
 .BR SIGIO / SIGPOLL
 fills in
 .I si_code
@@ -668,9 +668,9 @@ as described below).
 .BR tkill (2)
 or
 .BR tgkill (2).
-.\" SI_DETHREAD is defined in 2.6.9 sources, but isn't implemented
+.\" SI_DETHREAD is defined in Linux 2.6.9 sources, but isn't implemented
 .\" It appears to have been an idea that was tried during 2.5.6
-.\" through to 2.5.24 and then was backed out.
+.\" through to Linux 2.5.24 and then was backed out.
 .RE
 .PP
 The following values can be placed in
@@ -1118,14 +1118,14 @@ for all of the fields of the
 .I siginfo_t
 that are relevant for that signal.
 .PP
-In kernels up to and including 2.6.13, specifying
+Up to and including Linux 2.6.13, specifying
 .B SA_NODEFER
 in
 .I sa_flags
 prevents not only the delivered signal from being masked during
 execution of the handler, but also the signals specified in
 .IR sa_mask .
-This bug was fixed in kernel 2.6.14.
+This bug was fixed in Linux 2.6.14.
 .\" commit 69be8f189653cd81aae5a74e26615b12871bb72e
 .SH EXAMPLES
 See

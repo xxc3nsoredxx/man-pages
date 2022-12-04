@@ -273,7 +273,7 @@ is one of the following:
 .\"
 .TP
 .BR FUTEX_WAIT " (since Linux 2.6.0)"
-.\" Strictly speaking, since some time in 2.5.x
+.\" Strictly speaking, since some time in Linux 2.5.x
 This operation tests that the value at the
 futex word pointed to by the address
 .I uaddr
@@ -405,7 +405,7 @@ are ignored.
 .\"
 .TP
 .BR FUTEX_FD " (from Linux 2.6.0 up to and including Linux 2.6.25)"
-.\" Strictly speaking, from Linux 2.5.x to 2.6.25
+.\" Strictly speaking, from Linux 2.5.x to Linux 2.6.25
 This operation creates a file descriptor that is associated with
 the futex at
 .IR uaddr .
@@ -1336,7 +1336,7 @@ operation.
 .\" Related to the preceding, Darren proposed that somewhere, man-pages
 .\" should document the following point:
 .\"
-.\"     While the Linux kernel, since 2.6.31, supports requeueing of
+.\"     While the Linux kernel, since Linux 2.6.31, supports requeueing of
 .\"     priority-inheritance (PI) aware mutexes via the
 .\"     FUTEX_WAIT_REQUEUE_PI and FUTEX_CMP_REQUEUE_PI futex operations,
 .\"     the glibc implementation does not yet take full advantage of this.
@@ -1524,7 +1524,7 @@ or
 .B FUTEX_WAIT_BITSET
 operation was interrupted by a signal (see
 .BR signal (7)).
-In kernels before Linux 2.6.22, this error could also be returned for
+Before Linux 2.6.22, this error could also be returned for
 a spurious wakeup; since Linux 2.6.22, this no longer happens.
 .TP
 .B EINVAL

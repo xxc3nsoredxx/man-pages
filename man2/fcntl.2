@@ -297,7 +297,7 @@ covers bytes
 .IR l_start + l_len
 up to and including
 .IR l_start \-1.
-This is supported by Linux since kernel versions 2.4.21 and 2.5.49.
+This is supported since Linux 2.4.21 and Linux 2.5.49.
 .PP
 The
 .I l_type
@@ -776,8 +776,7 @@ would report the socket as having an "exceptional condition".)
 .\" refers to a terminal device, then SIGIO
 .\" signals are sent to the foreground process group of the terminal.
 .IP
-The following was true in 2.6.x kernels up to and including
-kernel 2.6.11:
+The following was true in Linux 2.6.x up to and including Linux 2.6.11:
 .RS
 .IP
 If a nonzero value is given to
@@ -931,7 +930,7 @@ is the signal to send instead, and in this case additional info
 is available to the signal handler if installed with
 .BR SA_SIGINFO .
 .\"
-.\" The following was true only up until 2.6.11:
+.\" The following was true only up until Linux 2.6.11:
 .\"
 .\" Additionally, passing a nonzero value to
 .\" .B F_SETSIG
@@ -1060,7 +1059,7 @@ values is specified in the integer
 Take out a read lease.
 This will cause the calling process to be notified when
 the file is opened for writing or is truncated.
-.\" The following became true in kernel 2.6.10:
+.\" The following became true in Linux 2.6.10:
 .\" See the man-pages-2.09 Changelog for further info.
 A read lease can be placed only on a file descriptor that
 is opened read-only.
@@ -1316,7 +1315,7 @@ so that multiple notifications can be queued.
 .B NOTE:
 New applications should use the
 .I inotify
-interface (available since kernel 2.6.13),
+interface (available since Linux 2.6.13),
 which provides a much superior interface for obtaining notifications of
 filesystem events.
 See
@@ -1904,7 +1903,7 @@ wrapper function transparently employs the more recent system call
 where it is available.
 .\"
 .SS Record locks
-Since kernel 2.0, there is no interaction between the types of lock
+Since Linux 2.0, there is no interaction between the types of lock
 placed by
 .BR flock (2)
 and
@@ -2020,7 +2019,7 @@ operation avoids this problem.
 .\" indicate that ANY negative PGID value will cause F_GETOWN
 .\" to misinterpret the return as an error. Some other architectures
 .\" seem to have the same range check as i386.
-Since glibc version 2.11, glibc makes the kernel
+Since glibc 2.11, glibc makes the kernel
 .B F_GETOWN
 problem invisible by implementing
 .B F_GETOWN

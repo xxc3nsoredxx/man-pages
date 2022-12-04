@@ -112,7 +112,7 @@ argument must be one of:
 This is the maximum size of the process's virtual memory
 (address space).
 The limit is specified in bytes, and is rounded down to the system page size.
-.\" since 2.0.27 / 2.1.12
+.\" since Linux 2.0.27 / Linux 2.1.12
 This limit affects calls to
 .BR brk (2),
 .BR mmap (2),
@@ -190,8 +190,8 @@ catch this signal instead, in which case the relevant system call (e.g.,
 fails with the error
 .BR EFBIG .
 .TP
-.BR RLIMIT_LOCKS " (Linux 2.4.0 to 2.4.24)"
-.\" to be precise: Linux 2.4.0-test9; no longer in 2.4.25 / 2.5.65
+.BR RLIMIT_LOCKS " (Linux 2.4.0 to Linux 2.4.24)"
+.\" to be precise: Linux 2.4.0-test9; no longer in Linux 2.4.25 / Linux 2.5.65
 This is a limit on the combined number of
 .BR flock (2)
 locks and
@@ -230,7 +230,7 @@ and
 a process can lock bytes up to this limit in each of these
 two categories.
 .IP
-In Linux kernels before 2.6.9, this limit controlled the amount of
+Before Linux 2.6.9, this limit controlled the amount of
 memory that could be locked by a privileged process.
 Since Linux 2.6.9, no limits are placed on the amount of memory
 that a privileged process may lock, and this limit instead governs
@@ -360,7 +360,7 @@ affects only calls to
 .BR madvise (2)
 specifying
 .BR MADV_WILLNEED .
-.\" As at kernel 2.6.12, this limit still does nothing in 2.6 though
+.\" As at Linux 2.6.12, this limit still does nothing in Linux 2.6 though
 .\" talk of making it do something has surfaced from time to time in LKML
 .\"       -- MTK, Jul 05
 .TP
@@ -415,7 +415,7 @@ it is always possible to use
 to queue one instance of any of the signals that are not already
 queued to the process.
 .\" This replaces the /proc/sys/kernel/rtsig-max system-wide limit
-.\" that was present in kernels <= 2.6.7.  MTK Dec 04
+.\" that was present in Linux <= 2.6.7.  MTK Dec 04
 .TP
 .B RLIMIT_STACK
 This is the maximum size of the process stack, in bytes.
@@ -624,7 +624,7 @@ For backward compatibility, glibc also provides
 All new applications should be written using
 .BR setrlimit ().
 .SS C library/kernel ABI differences
-Since version 2.13, the glibc
+Since glibc 2.13, the glibc
 .BR getrlimit ()
 and
 .BR setrlimit ()
@@ -645,9 +645,9 @@ and
 signals delivered when a process encountered the soft and hard
 .B RLIMIT_CPU
 limits were delivered one (CPU) second later than they should have been.
-This was fixed in kernel 2.6.8.
+This was fixed in Linux 2.6.8.
 .PP
-In 2.6.x kernels before 2.6.17, a
+In Linux 2.6.x kernels before Linux 2.6.17, a
 .B RLIMIT_CPU
 limit of 0 is wrongly treated as "no limit" (like
 .BR RLIM_INFINITY ).
@@ -658,9 +658,9 @@ but is actually treated as a limit of 1 second.
 A kernel bug means that
 .\" See https://lwn.net/Articles/145008/
 .B RLIMIT_RTPRIO
-does not work in kernel 2.6.12; the problem is fixed in kernel 2.6.13.
+does not work in Linux 2.6.12; the problem is fixed in Linux 2.6.13.
 .PP
-In kernel 2.6.12, there was an off-by-one mismatch
+In Linux 2.6.12, there was an off-by-one mismatch
 between the priority ranges returned by
 .BR getpriority (2)
 and
@@ -668,7 +668,7 @@ and
 This had the effect that the actual ceiling for the nice value
 was calculated as
 .IR "19\ \-\ rlim_cur" .
-This was fixed in kernel 2.6.13.
+This was fixed in Linux 2.6.13.
 .\" see http://marc.theaimsgroup.com/?l=linux-kernel&m=112256338703880&w=2
 .PP
 Since Linux 2.6.12,
@@ -698,7 +698,7 @@ The Linux-specific
 .B RLIMIT_RTTIME
 limit exhibits the same behavior when the soft limit is encountered.
 .PP
-Kernels before 2.4.22 did not diagnose the error
+Kernels before Linux 2.4.22 did not diagnose the error
 .B EINVAL
 for
 .BR setrlimit ()
@@ -758,7 +758,7 @@ wrapper function silently converted the limit value to
 .BR RLIM_INFINITY .
 In other words, the requested resource limit setting was silently ignored.
 .PP
-Since version 2.13,
+Since glibc 2.13,
 .\" https://www.sourceware.org/bugzilla/show_bug.cgi?id=12201
 glibc works around the limitations of the
 .BR getrlimit ()

@@ -9,7 +9,7 @@
 .\" history, etc., see getrlimit.2
 .\"
 .\" Modified 2004-11-16, mtk, Noted that the nonconformance
-.\"	when SIGCHLD is being ignored is fixed in 2.6.9.
+.\"	when SIGCHLD is being ignored is fixed in Linux 2.6.9.
 .\" 2008-02-22, Sripathi Kodi <sripathik@in.ibm.com>: Document RUSAGE_THREAD
 .\" 2008-05-25, mtk, clarify RUSAGE_CHILDREN + other clean-ups.
 .\" 2010-05-24, Mark Hills <mark@pogo.org.uk>: Description of fields,
@@ -212,7 +212,7 @@ is Linux-specific.
 Resource usage metrics are preserved across an
 .BR execve (2).
 .PP
-In Linux kernel versions before 2.6.9, if the disposition of
+Before Linux 2.6.9, if the disposition of
 .B SIGCHLD
 is set to
 .B SIG_IGN
@@ -231,11 +231,11 @@ Ancient systems provided a
 .BR vtimes ()
 function with a similar purpose to
 .BR getrusage ().
-For backward compatibility, glibc (up until version 2.32) also provides
+For backward compatibility, glibc (up until Linux 2.32) also provides
 .BR vtimes ().
 All new applications should be written using
 .BR getrusage ().
-(Since version 2.33, glibc no longer provides an
+(Since Linux 2.33, glibc no longer provides an
 .BR vtimes ()
 implementation.)
 .PP

@@ -515,21 +515,21 @@ Defining this macro (with any value) implicitly defines
 .BR _POSIX_SOURCE ,
 .B _POSIX_C_SOURCE
 with the value 200809L
-(200112L in glibc versions before 2.10;
-199506L in glibc versions before 2.5;
-199309L in glibc versions before 2.1)
+(200112L before glibc 2.10;
+199506L before glibc 2.5;
+199309L before glibc 2.1)
 and
 .B _XOPEN_SOURCE
 with the value 700
-(600 in glibc versions before 2.10;
-500 in glibc versions before 2.2).
+(600 before glibc 2.10;
+500 before glibc 2.2).
 In addition, various GNU-specific extensions are also exposed.
 .IP
 Since glibc 2.19, defining
 .B _GNU_SOURCE
 also has the effect of implicitly defining
 .BR _DEFAULT_SOURCE .
-In glibc versions before 2.20, defining
+Before glibc 2.20, defining
 .B _GNU_SOURCE
 also had the effect of implicitly defining
 .B _BSD_SOURCE
@@ -657,7 +657,7 @@ can now be fortified.
 .IP
 Use of this macro requires compiler support, available with
 .BR gcc (1)
-since version 4.0.
+since glibc 4.0.
 .IP
 Use of
 .B _FORTIFY_SOURCE
@@ -676,9 +676,9 @@ then the following feature test macros are defined by default:
 .BR _POSIX_SOURCE ,
 and
 .BR _POSIX_C_SOURCE =200809L
-(200112L in glibc versions before 2.10;
-199506L in glibc versions before 2.4;
-199309L in glibc versions before 2.1).
+(200112L before glibc 2.10;
+199506L before glibc 2.4;
+199309L before glibc 2.1).
 .PP
 If any of
 .BR __STRICT_ANSI__ ,
@@ -752,8 +752,8 @@ If
 is undefined, then the setting of
 .B _POSIX_C_SOURCE
 depends on the glibc version:
-199506L, in glibc versions before 2.4;
-200112L, in glibc 2.4 to 2.9; and
+199506L, before glibc 2.4;
+200112L, since glibc 2.4 to glibc 2.9; and
 200809L, since glibc 2.10.
 .RE
 .PP

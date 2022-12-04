@@ -272,7 +272,7 @@ Accept authoritative answers only.
 .BR res_send ()
 continues until
 it finds an authoritative answer or returns an error.
-This option was present but unimplemented in glibc until version 2.24;
+This option was present but unimplemented until glibc 2.24;
 since glibc 2.25, it is deprecated, and its usage produces a warning.
 .TP
 .B RES_USEVC
@@ -280,7 +280,7 @@ Use TCP connections for queries rather than UDP datagrams.
 .TP
 .BR RES_PRIMARY " (unimplemented; deprecated in glibc 2.25)"
 Query primary domain name server only.
-This option was present but unimplemented in glibc until version 2.24;
+This option was present but unimplemented until glibc 2.24;
 since glibc 2.25, it is deprecated, and its usage produces a warning.
 .TP
 .B RES_IGNTC
@@ -356,20 +356,20 @@ time.
 Disable the modern BIND checking of incoming hostnames and mail names
 for invalid characters such as underscore (_), non-ASCII,
 or control characters.
-This option was present in glibc until version 2.24;
+This option was present until glibc 2.24;
 since glibc 2.25, it is deprecated, and its usage produces a warning.
 .TP
 .BR RES_KEEPTSIG " (unimplemented; deprecated in glibc 2.25)"
 Do not strip TSIG records.
-This option was present but unimplemented in glibc until version 2.24;
+This option was present but unimplemented until glibc 2.24;
 since glibc 2.25, it is deprecated, and its usage produces a warning.
 .TP
 .BR RES_BLAST " (unimplemented; deprecated in glibc 2.25)"
 Send each query simultaneously and recursively to all servers.
-This option was present but unimplemented in glibc until version 2.24;
+This option was present but unimplemented until glibc 2.24;
 since glibc 2.25, it is deprecated, and its usage produces a warning.
 .TP
-.BR RES_USEBSTRING " (glibc 2.3.4 to 2.24)"
+.BR RES_USEBSTRING " (glibc 2.3.4 to glibc 2.24)"
 Make reverse IPv6 lookups using the bit-label format described in RFC 2673;
 if this option is not set (which is the default), then nibble format is used.
 This option was removed in glibc 2.25,
@@ -382,7 +382,7 @@ Use
 zone in IPv6 reverse lookup instead of
 .IR ip6.int ,
 which is deprecated since glibc 2.3.4.
-This option is present in glibc up to and including version 2.24,
+This option is present up to and including glibc 2.24,
 where it is enabled by default.
 In glibc 2.25, this option was removed.
 .TP
@@ -390,8 +390,8 @@ In glibc 2.25, this option was removed.
 Enables support for the DNS extensions (EDNS0) described in RFC 2671.
 .TP
 .BR RES_SNGLKUP " (since glibc 2.10)"
-By default, glibc performs IPv4 and IPv6 lookups in parallel since
-version 2.9.
+By default, glibc performs IPv4 and IPv6 lookups in parallel
+since glibc 2.9.
 Some appliance DNS servers cannot handle these queries properly
 and make the requests time out.
 This option disables the behavior and makes glibc

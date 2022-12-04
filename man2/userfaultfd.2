@@ -77,7 +77,7 @@ and unread events are flushed.
 .PP
 Userfaultfd supports three modes of registration:
 .TP
-.BR UFFDIO_REGISTER_MODE_MISSING " (since 4.10)"
+.BR UFFDIO_REGISTER_MODE_MISSING " (since Linux 4.10)"
 When registered with
 .B UFFDIO_REGISTER_MODE_MISSING
 mode, user-space will receive a page-fault notification
@@ -89,7 +89,7 @@ or an
 .B UFFDIO_ZEROPAGE
 ioctl.
 .TP
-.BR UFFDIO_REGISTER_MODE_MINOR " (since 5.13)"
+.BR UFFDIO_REGISTER_MODE_MINOR " (since Linux 5.13)"
 When registered with
 .B UFFDIO_REGISTER_MODE_MINOR
 mode, user-space will receive a page-fault notification
@@ -102,7 +102,7 @@ until the page fault is resolved from user-space by an
 .B UFFDIO_CONTINUE
 ioctl.
 .TP
-.BR UFFDIO_REGISTER_MODE_WP " (since 5.7)"
+.BR UFFDIO_REGISTER_MODE_WP " (since Linux 5.7)"
 When registered with
 .B UFFDIO_REGISTER_MODE_WP
 mode, user-space will receive a page-fault notification
@@ -176,8 +176,8 @@ single threaded non-cooperative userfaultfd manager implementations.
 .\"     fault events in multi-threaded monitor.
 .\" .PP
 .\" FIXME elaborate about non-cooperating mode, describe its limitations
-.\" for kernels before 4.11, features added in 4.11
-.\" and limitations remaining in 4.11
+.\" for kernels before Linux 4.11, features added in Linux 4.11
+.\" and limitations remaining in Linux 4.11
 .\" Maybe it's worth adding a dedicated sub-section...
 .\"
 .PP
@@ -269,7 +269,7 @@ userfaultfd can be used only with anonymous private memory mappings.
 Since Linux 4.11,
 userfaultfd can be also used with hugetlbfs and shared memory mappings.
 .\"
-.SS Userfaultfd write-protect mode (since 5.7)
+.SS Userfaultfd write-protect mode (since Linux 5.7)
 Since Linux 5.7, userfaultfd supports write-protect mode for anonymous memory.
 The user needs to first check availability of this feature using
 .B UFFDIO_API
@@ -334,7 +334,7 @@ should have the flag
 .B UFFDIO_WRITEPROTECT_MODE_WP
 cleared upon the faulted page or range.
 .\"
-.SS Userfaultfd minor fault mode (since 5.13)
+.SS Userfaultfd minor fault mode (since Linux 5.13)
 Since Linux 5.13,
 userfaultfd supports minor fault mode.
 In this mode,

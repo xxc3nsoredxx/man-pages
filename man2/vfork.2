@@ -282,8 +282,8 @@ see
 .UE .
 In Linux, it has been equivalent to
 .BR fork (2)
-until 2.2.0-pre6 or so.
-Since 2.2.0-pre9 (on i386, somewhat later on
+until Linux 2.2.0-pre6 or so.
+Since Linux 2.2.0-pre9 (on i386, somewhat later on
 other architectures) it is an independent system call.
 Support was added in glibc 2.0.112.
 .SH BUGS
@@ -300,7 +300,7 @@ signals; rather, output or
 .IR ioctl s
 are allowed and input attempts result in an end-of-file indication."
 .\"
-.\" As far as I can tell, the following is not true in 2.6.19:
+.\" As far as I can tell, the following is not true in Linux 2.6.19:
 .\" Currently (Linux 2.3.25),
 .\" .BR strace (1)
 .\" cannot follow

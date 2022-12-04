@@ -217,7 +217,7 @@ part of the core filename.
 The template may include \(aq/\(aq characters, which are interpreted
 as delimiters for directory names.
 The maximum size of the resulting core filename is 128 bytes (64 bytes
-in kernels before 2.6.19).
+before Linux 2.6.19).
 The default value in this file is "core".
 For backward compatibility, if
 .I /proc/sys/kernel/core_pattern
@@ -237,7 +237,7 @@ its current working directory (found via
 and its root directory (see
 .BR chroot (2)).
 .PP
-Since version 2.4, Linux has also provided
+Since Linux 2.4, Linux has also provided
 a more primitive method of controlling
 the name of the core dump file.
 If the
@@ -255,14 +255,14 @@ if
 is set to 2 ("suidsafe"), the pattern must be either an absolute pathname
 (starting with a leading \(aq/\(aq character) or a pipe, as defined below.
 .SS Piping core dumps to a program
-Since kernel 2.6.19, Linux supports an alternate syntax for the
+Since Linux 2.6.19, Linux supports an alternate syntax for the
 .I /proc/sys/kernel/core_pattern
 file.
 If the first character of this file is a pipe symbol (\fB|\fP),
 then the remainder of the line is interpreted as the command-line for
 a user-space program (or script) that is to be executed.
 .PP
-Since kernel 5.3.0,
+Since Linux 5.3.0,
 .\" commit 315c69261dd3fa12dbc830d4fa00d1fad98d3b03
 the pipe template is split on spaces into an argument list
 .I before
@@ -370,7 +370,7 @@ program is not guaranteed access to
 The default value for this file is 0.
 .\"
 .SS Controlling which mappings are written to the core dump
-Since kernel 2.6.23, the Linux-specific
+Since Linux 2.6.23, the Linux-specific
 .IR /proc/ pid /coredump_filter
 file can be used to control which memory segments are written to the
 core dump file in the event that a core dump is performed for the

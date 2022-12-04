@@ -763,8 +763,7 @@ This error can be returned only with an fanotify group that identifies
 filesystem objects by file handles.
 .SH VERSIONS
 .BR fanotify_mark ()
-was introduced in version 2.6.36 of the Linux kernel and enabled in version
-2.6.37.
+was introduced in Linux 2.6.36 and enabled in Linux 2.6.37.
 .SH STANDARDS
 This system call is Linux-specific.
 .SH NOTES
@@ -814,7 +813,7 @@ events for both the ELF binary and interpreter, respectively:
 .EE
 .in
 .SH BUGS
-The following bugs were present in Linux kernels before version 3.16:
+The following bugs were present in before Linux 3.16:
 .IP \(bu 3
 .\" Fixed by commit 0a8dd2db579f7a0ac7033d6b857c3d5dbaa77563
 If

@@ -118,7 +118,7 @@ from
 .I /dev/random
 will return at most 512 bytes
 .\" SEC_XFER_SIZE in drivers/char/random.c
-(340 bytes on Linux kernels before version 2.6.12).
+(340 bytes before Linux 2.6.12).
 .PP
 Writing to \fI/dev/random\fP or \fI/dev/urandom\fP will update the
 entropy pool with the data written, but this will not result in a
@@ -218,7 +218,7 @@ returns the size of the entropy pool in bits (see below).
 .SS /proc interfaces
 The files in the directory
 .I /proc/sys/kernel/random
-(present since 2.3.16) provide additional information about the
+(present since Linux 2.3.16) provide additional information about the
 .I /dev/random
 device:
 .TP

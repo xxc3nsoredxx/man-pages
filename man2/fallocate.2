@@ -390,7 +390,7 @@ or
 but the file referred to by
 .I fd
 is not a regular file.
-.\" There was an inconsistency in 3.15-rc1, that should be resolved so that all
+.\" There was an inconsistency in Linux 3.15-rc1, that should be resolved so that all
 .\" filesystems use this error for this case. (Tytso says ex4 will change.)
 .\" http://thread.gmane.org/gmane.comp.file-systems.xfs.general/60485/focus=5521
 .\" From: Michael Kerrisk (man-pages <mtk.manpages@...>
@@ -465,11 +465,11 @@ but the file referred to by
 is currently being executed.
 .SH VERSIONS
 .BR fallocate ()
-is available on Linux since kernel 2.6.23.
-Support is provided by glibc since version 2.10.
+is available since Linux 2.6.23.
+Support is provided since glibc 2.10.
 The
 .B FALLOC_FL_*
-flags are defined in glibc headers only since version 2.18.
+flags are defined in glibc headers only since glibc 2.18.
 .\" See http://sourceware.org/bugzilla/show_bug.cgi?id=14964
 .SH STANDARDS
 .BR fallocate ()

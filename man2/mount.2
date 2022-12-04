@@ -440,7 +440,7 @@ If
 includes
 .B MS_BIND
 (available since Linux 2.4),
-.\" since 2.4.0-test9
+.\" since Linux 2.4.0-test9
 then perform a bind mount.
 A bind mount makes a file or a directory subtree visible at
 another point within the single directory hierarchy.
@@ -843,7 +843,7 @@ The definitions of
 .BR MS_STRICTATIME ,
 and
 .B MS_UNBINDABLE
-were added to glibc headers in version 2.12.
+were added to glibc headers in glibc 2.12.
 .\"
 .SH STANDARDS
 This function is Linux-specific and should not be used in
@@ -852,7 +852,7 @@ programs intended to be portable.
 Since Linux 2.4 a single filesystem can be mounted at
 multiple mount points, and multiple mounts can be stacked
 on the same mount point.
-.\" Multiple mounts on same mount point: since 2.3.99pre7.
+.\" Multiple mounts on same mount point: since Linux 2.3.99pre7.
 .PP
 The
 .I mountflags
@@ -863,7 +863,7 @@ occupy the low order 16 bits of
 .IR mountflags .)
 Specifying
 .B MS_MGC_VAL
-was required in kernel versions prior to 2.4,
+was required before Linux 2.4,
 but since Linux 2.4 is no longer required and is ignored if specified.
 .PP
 The original
@@ -885,7 +885,7 @@ just silently ignored in this case.
 .\" The change is in patch-2.4.0-prerelease.
 .\"
 .SS Mount namespaces
-Starting with kernel 2.4.19, Linux provides mount namespaces.
+Starting with Linux 2.4.19, Linux provides mount namespaces.
 A mount namespace is the set of filesystem mounts that
 are visible to a process.
 Mount namespaces can be (and usually are)

@@ -186,12 +186,12 @@ C99, POSIX.1-2001, POSIX.1-2008.
 This function is defined in IEC 559 (and the appendix with
 recommended functions in IEEE 754/IEEE 854).
 .SH BUGS
-In glibc version 2.5 and earlier, these functions do not raise an underflow
+In glibc 2.5 and earlier, these functions do not raise an underflow
 floating-point
 .RB ( FE_UNDERFLOW )
 exception when an underflow occurs.
 .PP
-Before glibc version 2.23
+Before glibc 2.23
 .\" https://www.sourceware.org/bugzilla/show_bug.cgi?id=6799
 these functions did not set
 .IR errno .

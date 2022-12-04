@@ -25,7 +25,7 @@ The system calls
 .BR alloc_hugepages ()
 and
 .BR free_hugepages ()
-were introduced in Linux 2.5.36 and removed again in 2.5.54.
+were introduced in Linux 2.5.36 and removed again in Linux 2.5.54.
 They existed only on i386 and ia64 (when built with
 .BR CONFIG_HUGETLB_PAGE ).
 In Linux 2.4.20, the syscall numbers exist,
@@ -117,7 +117,7 @@ in the three variables HugePages_Total, HugePages_Free, Hugepagesize.
 These extinct system calls were specific to Linux on Intel processors.
 .SH NOTES
 These system calls are gone;
-they existed only in Linux 2.5.36 through to 2.5.54.
+they existed only in Linux 2.5.36 through to Linux 2.5.54.
 Now the hugetlbfs filesystem can be used instead.
 Memory backed by huge pages (if the CPU supports them) is obtained by
 using

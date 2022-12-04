@@ -227,7 +227,7 @@ this option is deprecated; applications should use
 rather than
 .BR gethostbyname (3).
 .TP
-.BR ip6\-bytestring " (since glibc 2.3.4 to 2.24)"
+.BR ip6\-bytestring " (since glibc 2.3.4 to glibc 2.24)"
 Sets
 .B RES_USEBSTRING
 in
@@ -239,7 +239,7 @@ This option was removed in glibc 2.25,
 since it relied on a backward-incompatible
 DNS extension that was never deployed on the Internet.
 .TP
-.BR ip6\-dotint / no\-ip6\-dotint " (glibc 2.3.4 to 2.24)"
+.BR ip6\-dotint / no\-ip6\-dotint " (glibc 2.3.4 to glibc 2.24)"
 Clear/set
 .B RES_NOIP6DOTINT
 in
@@ -254,7 +254,7 @@ when this option is set
 reverse IPv6 lookups are made in the
 .I ip6.arpa
 zone by default.
-These options are available in glibc versions up to 2.24, where
+These options are available up to glibc 2.24, where
 .B no\-ip6\-dotint
 is the default.
 Since
@@ -275,7 +275,7 @@ Sets
 in
 .IR _res.options .
 By default, glibc performs IPv4 and IPv6 lookups in parallel since
-version 2.9.
+glibc 2.9.
 Some appliance DNS servers
 cannot handle these queries properly and make the requests time out.
 This option disables the behavior and makes glibc perform the IPv6
@@ -346,7 +346,7 @@ This means that applications can trust the AD bit in responses if the
 .B trust\-ad
 option has been set correctly.
 .IP
-In glibc version 2.30 and earlier,
+In glibc 2.30 and earlier,
 the AD is not set automatically in queries,
 and is passed through unchanged to applications in responses.
 .RE

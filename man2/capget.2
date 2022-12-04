@@ -8,7 +8,7 @@
 .\" Modified 2004-06-21, aeb
 .\" Modified 2008-04-28, morgan of kernel.org
 .\"     Update in line with addition of file capabilities and
-.\"     64-bit capability sets in kernel 2.6.2[45].
+.\"     64-bit capability sets in Linux 2.6.2[45].
 .\" Modified 2009-01-26, andi kleen
 .\"
 .TH capget 2 (date) "Linux man-pages (unreleased)"
@@ -100,7 +100,7 @@ and
 .I struct __user_cap_data_struct
 names because the typedefs are only pointers.
 .PP
-Kernels prior to 2.6.25 prefer
+Kernels prior to Linux 2.6.25 prefer
 32-bit capabilities with version
 .BR _LINUX_CAPABILITY_VERSION_1 .
 Linux 2.6.25 added 64-bit capability sets, with version
@@ -234,7 +234,7 @@ For kernels lacking VFS
 support, the
 .B CAP_SETPCAP
 capability is required.
-(A bug in kernels before 2.6.11 meant that this error could also
+(A bug in kernels before Linux 2.6.11 meant that this error could also
 occur if a thread without this capability tried to change its
 own capabilities by specifying the
 .I pid

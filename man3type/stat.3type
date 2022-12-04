@@ -135,7 +135,7 @@ via names of the form
 .IR st_atim.tv_nsec ,
 if suitable test macros are defined.
 Nanosecond timestamps were standardized in POSIX.1-2008,
-and, starting with version 2.12,
+and, starting with glibc 2.12,
 glibc exposes the nanosecond component names if
 .B _POSIX_C_SOURCE
 is defined with the value 200809L or greater, or

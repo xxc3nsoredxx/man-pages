@@ -35,7 +35,7 @@ Feature Test Macro Requirements for glibc (see
 .BR putenv ():
 .nf
     _XOPEN_SOURCE
-        || /* Glibc since 2.19: */ _DEFAULT_SOURCE
+        || /* Glibc >= 2.19: */ _DEFAULT_SOURCE
         || /* Glibc <= 2.19: */ _SVID_SOURCE
 .fi
 .SH DESCRIPTION
@@ -100,7 +100,7 @@ one in glibc 2.0 is not, but the glibc 2.1 version is.
 .\" In no case will the old storage associated
 .\" to the environment variable itself be freed.
 .PP
-Since version 2.1.2, the glibc implementation conforms to SUSv2:
+Since glibc 2.1.2, the glibc implementation conforms to SUSv2:
 the pointer \fIstring\fP given to
 .BR putenv ()
 is used.
@@ -111,7 +111,8 @@ changing it later will change the environment.
 with an automatic variable
 as the argument, then return from the calling function while \fIstring\fP
 is still part of the environment.)
-However, glibc versions 2.0 to 2.1.1 differ: a copy of the string is used.
+However, from glibc 2.0 to glibc 2.1.1, it differs:r
+a copy of the string is used.
 On the one hand this causes a memory leak, and on the other hand
 it violates SUSv2.
 .PP

@@ -32,7 +32,7 @@ Feature Test Macro Requirements for glibc (see
 .nf
     Since glibc 2.12:
         (_XOPEN_SOURCE >= 500) && ! (_POSIX_C_SOURCE >= 200809L)
-            || /* Glibc since 2.19: */ _DEFAULT_SOURCE
+            || /* Glibc >= 2.19: */ _DEFAULT_SOURCE
             || /* Glibc <= 2.19: */ _BSD_SOURCE
     Before glibc 2.12:
         _BSD_SOURCE || _XOPEN_SOURCE >= 500
@@ -88,7 +88,7 @@ POSIX.1-2008 removes the specification of
 .BR usleep ().
 .PP
 On the original BSD implementation,
-and in glibc before version 2.2.2, the return type of this function is
+and before glibc 2.2.2, the return type of this function is
 .IR void .
 The POSIX version returns
 .IR int ,

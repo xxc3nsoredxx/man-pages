@@ -24,7 +24,7 @@ Feature Test Macro Requirements for glibc (see
 .nf
     Since glibc 2.12:
         (_XOPEN_SOURCE >= 500) && ! (_POSIX_C_SOURCE >= 200809L)
-            || /* Glibc since 2.19: */ _DEFAULT_SOURCE
+            || /* Glibc >= 2.19: */ _DEFAULT_SOURCE
             || /* Glibc <= 2.19: */ _BSD_SOURCE
     Before glibc 2.12:
         _BSD_SOURCE || _XOPEN_SOURCE >= 500
@@ -102,7 +102,7 @@ The type
 .I useconds_t
 is an unsigned integer type capable of holding integers
 in the range [0,1000000].
-On the original BSD implementation, and in glibc before version 2.1,
+On the original BSD implementation, and in glibc before glibc 2.1,
 the arguments to
 .BR ualarm ()
 were instead typed as

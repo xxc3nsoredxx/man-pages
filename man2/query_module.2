@@ -19,7 +19,7 @@ size_t " bufsize ,
 .fi
 .SH DESCRIPTION
 .IR Note :
-This system call is present only in kernels before Linux 2.6.
+This system call is present only before Linux 2.6.
 .PP
 .BR query_module ()
 requests information from the kernel about loadable modules.
@@ -161,9 +161,9 @@ is set to the minimum size needed.
 .B ENOSYS
 .BR query_module ()
 is not supported in this version of the kernel
-(e.g., the kernel is version 2.6 or later).
+(e.g., Linux 2.6 or later).
 .SH VERSIONS
-This system call is present on Linux only up until kernel 2.4;
+This system call is present only up until Linux 2.4;
 it was removed in Linux 2.6.
 .\" Removed in Linux 2.5.48
 .SH STANDARDS

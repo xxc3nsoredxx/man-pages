@@ -131,7 +131,7 @@ possibly implemented in terms of
 .BR fcntl (2),
 appears on most UNIX systems.
 .SH NOTES
-Since kernel 2.0,
+Since Linux 2.0,
 .BR flock ()
 is implemented as a system call in its own right rather
 than being emulated in the GNU C library as a call to
@@ -186,7 +186,7 @@ and occurs on many other implementations.)
 .\" Kernel 2.5.21 changed things a little: during lock conversion
 .\" it is now the highest priority process that will get the lock -- mtk
 .SS NFS details
-In Linux kernels up to 2.6.11,
+Up to Linux 2.6.11,
 .BR flock ()
 does not lock files over NFS
 (i.e., the scope of locks was limited to the local system).
@@ -223,7 +223,7 @@ see the discussion of the
 option in
 .BR nfs (5).
 .SS CIFS details
-In Linux kernels up to 5.4,
+Up to Linux 5.4,
 .BR flock ()
 is not propagated over SMB.
 A file with such locks will not appear locked for remote clients.

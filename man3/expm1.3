@@ -137,7 +137,7 @@ for some large negative
 .I x
 values (where the function result approaches \-1).
 .PP
-Before approximately glibc version 2.11,
+Before approximately glibc 2.11,
 .\" http://sources.redhat.com/bugzilla/show_bug.cgi?id=6814
 .\" e.g., expm1(1e5) through expm1(1.00199970127e5),
 .\" but not expm1(1.00199970128e5) and beyond.
@@ -148,11 +148,11 @@ for some large positive
 .I x
 values.
 .PP
-Before version 2.11,
-.\" It looks like the fix was in 2.11, or possibly 2.12.
-.\" I have no test system for 2.11, but 2.12 passes.
+Before glibc 2.11,
+.\" It looks like the fix was in glibc 2.11, or possibly glibc 2.12.
+.\" I have no test system for glibc 2.11, but glibc 2.12 passes.
 .\" From the source (sysdeps/i386/fpu/s_expm1.S) it looks
-.\" like the changes were in 2.11.
+.\" like the changes were in glibc 2.11.
 the glibc implementation did not set
 .\" http://sources.redhat.com/bugzilla/show_bug.cgi?id=6788
 .I errno

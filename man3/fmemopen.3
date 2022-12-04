@@ -185,13 +185,13 @@ returned by this function
 .BR fileno (3)
 will return an error if called on the returned stream).
 .PP
-With version 2.22, binary mode (see below) was removed,
+With glibc 2.22, binary mode (see below) was removed,
 many longstanding bugs in the implementation of
 .BR fmemopen ()
 were fixed, and a new versioned symbol was created for this interface.
 .\"
 .SS Binary mode
-From version 2.9 to 2.21, the glibc implementation of
+From glibc 2.9 to glibc 2.21, the glibc implementation of
 .BR fmemopen ()
 supported a "binary" mode,
 enabled by specifying the letter \(aqb\(aq as the second character in
@@ -220,7 +220,7 @@ Binary mode was removed in glibc 2.22; a \(aqb\(aq specified in
 .I mode
 has no effect.
 .SH BUGS
-In versions of glibc before 2.22, if
+Before glibc 2.22, if
 .I size
 is specified as zero,
 .BR fmemopen ()
@@ -229,9 +229,9 @@ fails with the error
 .\" http://sourceware.org/bugzilla/show_bug.cgi?id=11216
 It would be more consistent if this case successfully created
 a stream that then returned end-of-file on the first attempt at reading;
-since version 2.22, the glibc implementation provides that behavior.
+since glibc 2.22, the glibc implementation provides that behavior.
 .PP
-In versions of glibc before 2.22,
+Before glibc 2.22,
 specifying append mode ("a" or "a+") for
 .BR fmemopen ()
 sets the initial buffer position to the first null byte, but
@@ -241,7 +241,7 @@ the end of the stream)
 does not force subsequent writes to append at the end of the stream.
 This bug is fixed in glibc 2.22.
 .PP
-In versions of glibc before 2.22, if the
+Before glibc 2.22, if the
 .I mode
 argument to
 .BR fmemopen ()
@@ -258,7 +258,7 @@ However, in this case the glibc
 sets the buffer position to \-1.
 This bug is fixed in glibc 2.22.
 .PP
-In versions of glibc before 2.22,
+Before glibc 2.22,
 .\" https://sourceware.org/bugzilla/show_bug.cgi?id=14292
 when a call to
 .BR fseek (3)

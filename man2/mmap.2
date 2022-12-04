@@ -8,7 +8,7 @@
 .\" Modified 2001-10-04 by John Levon <moz@compsoc.man.ac.uk>
 .\" Modified 2003-02-02 by Andi Kleen <ak@muc.de>
 .\" Modified 2003-05-21 by Michael Kerrisk <mtk.manpages@gmail.com>
-.\"	MAP_LOCKED works from 2.5.37
+.\"	MAP_LOCKED works from Linux 2.5.37
 .\" Modified 2004-06-17 by Michael Kerrisk <mtk.manpages@gmail.com>
 .\" Modified 2004-09-11 by aeb
 .\" Modified 2004-12-08, from Eric Estievenart <eric.estievenart@free.fr>
@@ -61,7 +61,7 @@ and attempt to create the mapping there.
 If another mapping already exists there, the kernel picks a new address that
 may or may not depend on the hint.
 .\" Before Linux 2.6.24, the address was rounded up to the next page
-.\" boundary; since 2.6.24, it is rounded down!
+.\" boundary; since Linux 2.6.24, it is rounded down!
 The address of the new mapping is returned as the result of the call.
 .PP
 The contents of a file mapping (as opposed to an anonymous mapping; see
@@ -248,7 +248,7 @@ Software that aspires to be portable should use the
 .B MAP_FIXED
 flag with care,
 keeping in mind that the exact layout of a process's memory mappings
-is allowed to change significantly between kernel versions,
+is allowed to change significantly between Linux versions,
 C library versions, and operating system releases.
 .I Carefully read the discussion of this flag in NOTES!
 .TP
@@ -376,7 +376,7 @@ See also the discussion of the file
 .I /proc/sys/vm/overcommit_memory
 in
 .BR proc (5).
-In kernels before 2.6, this flag had effect only for
+Before Linux 2.6, this flag had effect only for
 private writable mappings.
 .TP
 .BR MAP_POPULATE " (since Linux 2.5.46)"
@@ -611,7 +611,7 @@ argument asks for
 .B PROT_EXEC
 but the mapped area belongs to a file on a filesystem that
 was mounted no-exec.
-.\" (Since 2.4.25 / 2.6.0.)
+.\" (Since Linux 2.4.25 / Linux 2.6.0.)
 .TP
 .B EPERM
 The operation was prevented by a file seal; see
@@ -864,7 +864,7 @@ This page describes the interface provided by the glibc
 .BR mmap ()
 wrapper function.
 Originally, this function invoked a system call of the same name.
-Since kernel 2.4, that system call has been superseded by
+Since Linux 2.4, that system call has been superseded by
 .BR mmap2 (2),
 and nowadays
 .\" Since around glibc 2.1/2.2, depending on the platform.
@@ -880,7 +880,7 @@ On Linux, there are no guarantees like those suggested above under
 By default, any process can be killed
 at any moment when the system runs out of memory.
 .PP
-In kernels before 2.6.7, the
+Before Linux 2.6.7, the
 .B MAP_POPULATE
 flag has effect only if
 .I prot
@@ -892,11 +892,11 @@ SUSv3 specifies that
 should fail if
 .I length
 is 0.
-However, in kernels before 2.6.12,
+However, before Linux 2.6.12,
 .BR mmap ()
 succeeded in this case: no mapping was created and the call returned
 .IR addr .
-Since kernel 2.6.12,
+Since Linux 2.6.12,
 .BR mmap ()
 fails with the error
 .B EINVAL

@@ -29,7 +29,7 @@ Feature Test Macro Requirements for glibc (see
 .nf
     _XOPEN_SOURCE >= 500
 .\"    || _XOPEN_SOURCE && _XOPEN_SOURCE_EXTENDED
-        || /* Glibc since 2.19: */ _DEFAULT_SOURCE
+        || /* Glibc >= 2.19: */ _DEFAULT_SOURCE
         || /* Glibc <= 2.19: */ _SVID_SOURCE
 .fi
 .SH DESCRIPTION
@@ -98,7 +98,7 @@ If
 .I value
 is zero, it returns an empty string.
 .PP
-These functions are broken in glibc before 2.2.5
+These functions are broken before glibc 2.2.5
 (puts most significant digit first).
 .PP
 This is not the encoding used by

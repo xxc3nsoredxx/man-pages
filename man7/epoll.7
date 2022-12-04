@@ -236,7 +236,7 @@ call.
 .SS /proc interfaces
 The following interfaces can be used to limit the amount of
 kernel memory consumed by epoll:
-.\" Following was added in 2.6.28, but them removed in 2.6.29
+.\" Following was added in Linux 2.6.28, but them removed in Linux 2.6.29
 .\" .TP
 .\" .IR /proc/sys/fs/epoll/max_user_instances " (since Linux 2.6.28)"
 .\" This specifies an upper limit on the number of epoll instances
@@ -250,7 +250,7 @@ The limit is per real user ID.
 Each registered file descriptor costs roughly 90 bytes on a 32-bit kernel,
 and roughly 160 bytes on a 64-bit kernel.
 Currently,
-.\" 2.6.29 (in 2.6.28, the default was 1/32 of lowmem)
+.\" Linux 2.6.29 (in Linux 2.6.28, the default was 1/32 of lowmem)
 the default value for
 .I max_user_watches
 is 1/25 (4%) of the available low memory,
@@ -578,7 +578,7 @@ The
 .B epoll
 API was introduced in Linux kernel 2.5.44.
 .\" Its interface should be finalized in Linux kernel 2.5.66.
-Support was added to glibc in version 2.3.2.
+Support was added in glibc 2.3.2.
 .SH STANDARDS
 The
 .B epoll

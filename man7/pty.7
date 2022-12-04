@@ -47,7 +47,7 @@ pseudoterminals.
 System V-style terminals are commonly called UNIX 98 pseudoterminals
 on Linux systems.
 .PP
-Since kernel 2.6.4, BSD-style pseudoterminals are considered deprecated:
+Since Linux 2.6.4, BSD-style pseudoterminals are considered deprecated:
 support can be disabled when building the kernel by disabling the
 .B CONFIG_LEGACY_PTYS
 option.
@@ -74,12 +74,12 @@ in a call to
 .PP
 The Linux kernel imposes a limit on the number of available
 UNIX 98 pseudoterminals.
-In kernels up to and including 2.6.3, this limit is configured
+Up to and including Linux 2.6.3, this limit is configured
 at kernel compilation time
 .RB ( CONFIG_UNIX98_PTYS ),
 and the permitted number of pseudoterminals can be up to 2048,
 with a default setting of 256.
-Since kernel 2.6.4, the limit is dynamically adjustable via
+Since Linux 2.6.4, the limit is dynamically adjustable via
 .IR /proc/sys/kernel/pty/max ,
 and a corresponding file,
 .IR /proc/sys/kernel/pty/nr ,

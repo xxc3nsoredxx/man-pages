@@ -88,7 +88,7 @@ Insufficient stack space left.
 .BR makecontext ()
 and
 .BR swapcontext ()
-are provided in glibc since version 2.1.
+are provided since glibc 2.1.
 .SH ATTRIBUTES
 For an explanation of the terms used in this section, see
 .BR attributes (7).
@@ -142,7 +142,7 @@ However, doing this is not guaranteed to be portable,
 is undefined according to the standards,
 and won't work on architectures where pointers are larger than
 .IR int s.
-Nevertheless, starting with version 2.8, glibc makes some changes to
+Nevertheless, starting with glibc 2.8, glibc makes some changes to
 .BR makecontext (),
 to permit this on some 64-bit architectures (e.g., x86-64).
 .SH EXAMPLES

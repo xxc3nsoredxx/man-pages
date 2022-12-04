@@ -160,11 +160,11 @@ The partition or path must be prepared with
 There is an upper limit on the number of swap files that may be used,
 defined by the kernel constant
 .BR MAX_SWAPFILES .
-Before kernel 2.4.10,
+Before Linux 2.4.10,
 .B MAX_SWAPFILES
 has the value 8;
-since kernel 2.4.10, it has the value 32.
-Since kernel 2.6.18, the limit is decreased by 2 (thus: 30)
+since Linux 2.4.10, it has the value 32.
+Since Linux 2.6.18, the limit is decreased by 2 (thus: 30)
 if the kernel is built with the
 .B CONFIG_MIGRATION
 option
@@ -172,20 +172,20 @@ option
 .BR mbind (2)
 and
 .BR migrate_pages (2)).
-Since kernel 2.6.32, the limit is further decreased by 1
+Since Linux 2.6.32, the limit is further decreased by 1
 if the kernel is built with the
 .B CONFIG_MEMORY_FAILURE
 option.
-Since kernel 5.14, the limit is further decreased by 4
+Since Linux 5.14, the limit is further decreased by 4
 if the kernel is built with the
 .B CONFIG_DEVICE_PRIVATE
 option.
 .PP
-Discard of swap pages was introduced in kernel 2.6.29,
+Discard of swap pages was introduced in Linux 2.6.29,
 then made conditional
 on the
 .B SWAP_FLAG_DISCARD
-flag in kernel 2.6.36,
+flag in Linux 2.6.36,
 .\" To be precise: 2.6.35.5
 which still discards the
 entire swap area when

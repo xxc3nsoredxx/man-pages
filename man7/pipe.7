@@ -110,7 +110,7 @@ an application should be designed so that a reading process consumes data
 as soon as it is available,
 so that a writing process does not remain blocked.
 .PP
-In Linux versions before 2.6.11, the capacity of a pipe was the same as
+Before Linux 2.6.11, the capacity of a pipe was the same as
 the system page size (e.g., 4096 bytes on i386).
 Since Linux 2.6.11, the pipe capacity is 16 pages
 (i.e., 65,536 bytes in a system with a page size of 4096 bytes).
@@ -315,7 +315,7 @@ The target for delivery of signals must be set using the
 command.
 On Linux,
 .B O_ASYNC
-is supported for pipes and FIFOs only since kernel 2.6.
+is supported for pipes and FIFOs only since Linux 2.6.
 .SS Portability notes
 On some systems (but not Linux), pipes are bidirectional:
 data can be transmitted in both directions between the pipe ends.

@@ -371,10 +371,10 @@ This error can occur if
 refers to, for example, a regular file or a directory.
 .SH VERSIONS
 .BR epoll_ctl ()
-was added to the kernel in version 2.6.
+was added to in Linux 2.6.
 .\" To be precise: kernel 2.5.44.
 .\" The interface should be finalized by Linux kernel 2.5.66.
-Library support is provided in glibc starting with version 2.3.2.
+Library support is provided in glibc 2.3.2.
 .SH STANDARDS
 .BR epoll_ctl ()
 is Linux-specific.
@@ -384,7 +384,7 @@ The
 interface supports all file descriptors that support
 .BR poll (2).
 .SH BUGS
-In kernel versions before 2.6.9, the
+Before Linux 2.6.9, the
 .B EPOLL_CTL_DEL
 operation required a non-null pointer in
 .IR event ,
@@ -394,7 +394,7 @@ Since Linux 2.6.9,
 can be specified as NULL
 when using
 .BR EPOLL_CTL_DEL .
-Applications that need to be portable to kernels before 2.6.9
+Applications that need to be portable to kernels before Linux 2.6.9
 should specify a non-null pointer in
 .IR event .
 .PP

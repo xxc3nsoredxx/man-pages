@@ -10,7 +10,7 @@
 .\" 2008-07-15, Serge Hallyn <serue@us.bbm.com>
 .\"     Document file capabilities, per-process capability
 .\"     bounding set, changed semantics for CAP_SETPCAP,
-.\"     and other changes in 2.6.2[45].
+.\"     and other changes in Linux 2.6.2[45].
 .\"     Add CAP_MAC_ADMIN, CAP_MAC_OVERRIDE, CAP_SETFCAP.
 .\" 2008-07-15, mtk
 .\"     Add text describing circumstances in which CAP_SETPCAP
@@ -41,7 +41,7 @@ while unprivileged processes are subject to full permission
 checking based on the process's credentials
 (usually: effective UID, effective GID, and supplementary group list).
 .PP
-Starting with kernel 2.2, Linux divides the privileges traditionally
+Starting with Linux 2.2, Linux divides the privileges traditionally
 associated with superuser into distinct units, known as
 .IR capabilities ,
 which can be independently enabled and disabled.
@@ -347,7 +347,7 @@ make changes to the
 .I securebits
 flags.
 .IP
-If file capabilities are not supported (i.e., kernels before Linux 2.6.24):
+If file capabilities are not supported (i.e., before Linux 2.6.24):
 grant or remove any capability in the
 caller's permitted capability set to or from any other process.
 (This property of
@@ -582,7 +582,7 @@ Load and unload kernel modules
 and
 .BR delete_module (2));
 .IP \(bu
-in kernels before 2.6.25:
+before Linux 2.6.25:
 drop capabilities from the system-wide capability bounding set.
 .PD
 .RE
@@ -833,8 +833,8 @@ be changed and retrieved.
 The filesystem must support attaching capabilities to an executable file,
 so that a process gains those capabilities when the file is executed.
 .PP
-Before kernel 2.6.24, only the first two of these requirements are met;
-since kernel 2.6.24, all three requirements are met.
+Before Linux 2.6.24, only the first two of these requirements are met;
+since Linux 2.6.24, all three requirements are met.
 .\"
 .SS Notes to kernel developers
 When adding a new kernel feature that should be governed by a capability,
@@ -986,7 +986,7 @@ this can be used to determine the highest bit
 that may be set in a capability set.
 .\"
 .SS File capabilities
-Since kernel 2.6.24, the kernel supports
+Since Linux 2.6.24, the kernel supports
 associating capability sets with an executable file using
 .BR setcap (8).
 The file capability sets are stored in an extended attribute (see
@@ -1428,7 +1428,7 @@ operation.
 .PP
 Removing capabilities from the bounding set is supported only if file
 capabilities are compiled into the kernel.
-In kernels before Linux 2.6.33,
+Before Linux 2.6.33,
 file capabilities were an optional feature configurable via the
 .B CONFIG_SECURITY_FILE_CAPABILITIES
 option.
@@ -1453,7 +1453,7 @@ back into the thread's inheritable set in the future.
 .PP
 .B "Capability bounding set prior to Linux 2.6.25"
 .PP
-In kernels before 2.6.25, the capability bounding set is a system-wide
+Before Linux 2.6.25, the capability bounding set is a system-wide
 attribute that affects all threads on the system.
 The bounding set is accessible via the file
 .IR /proc/sys/kernel/cap\-bound .
@@ -1478,7 +1478,7 @@ in
 and rebuild the kernel.
 .PP
 The system-wide capability bounding set feature was added
-to Linux starting with kernel version 2.2.11.
+to Linux 2.2.11.
 .\"
 .\"
 .\"
@@ -1564,7 +1564,7 @@ The new effective set must be a subset of the new permitted set.
 .\" For some background:
 .\"       see http://lwn.net/Articles/280279/ and
 .\"       http://article.gmane.org/gmane.linux.kernel.lsm/5476/
-Starting with kernel 2.6.26,
+Starting with Linux 2.6.26,
 and with a kernel in which file capabilities are enabled,
 Linux implements a set of per-thread
 .I securebits
@@ -1776,7 +1776,7 @@ $ \fBsudo strace \-o trace.log \-u ceci ./myprivprog\fP
 .EE
 .in
 .PP
-From kernel 2.5.27 to kernel 2.6.26,
+From Linux 2.5.27 to Linux 2.6.26,
 .\" commit 5915eb53861c5776cfec33ca4fcc1fd20d66dd27 removed
 .\" CONFIG_SECURITY_CAPABILITIES
 capabilities were an optional kernel component,
@@ -1816,7 +1816,7 @@ It can be found at
 .UR https://git.kernel.org\:/pub\:/scm\:/libs\:/libcap\:/libcap.git\:/refs/
 .UE .
 .PP
-Before kernel 2.6.24, and from kernel 2.6.24 to kernel 2.6.32 if
+Before Linux 2.6.24, and from Linux 2.6.24 to Linux 2.6.32 if
 file capabilities are not enabled, a thread with the
 .B CAP_SETPCAP
 capability can manipulate the capabilities of threads other than itself.

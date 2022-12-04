@@ -297,7 +297,7 @@ and
 .BR writev (2).
 And among the effects that should be atomic across threads (and processes)
 are updates of the file offset.
-However, on Linux before version 3.14,
+However, before Linux 3.14,
 this was not the case: if two processes that share
 an open file description (see
 .BR open (2))

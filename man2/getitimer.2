@@ -227,7 +227,7 @@ timer may expire before the signal from a previous expiration
 has been delivered.
 The second signal in such an event will be lost.
 .PP
-On Linux kernels before 2.6.16, timer values are represented in jiffies.
+Before Linux 2.6.16, timer values are represented in jiffies.
 If a request is made set a timer with a value whose jiffies
 representation exceeds
 .B MAX_SEC_IN_JIFFIES
@@ -243,10 +243,10 @@ the kernel uses a different internal representation for times,
 and this ceiling is removed.
 .PP
 On certain systems (including i386),
-Linux kernels before version 2.6.12 have a bug which will produce
+Linux kernels before Linux 2.6.12 have a bug which will produce
 premature timer expirations of up to one jiffy under some circumstances.
-This bug is fixed in kernel 2.6.12.
-.\" 4 Jul 2005: It looks like this bug may remain in 2.4.x.
+This bug is fixed in Linux 2.6.12.
+.\" 4 Jul 2005: It looks like this bug may remain in Linux 2.4.x.
 .\"	http://lkml.org/lkml/2005/7/1/165
 .PP
 POSIX.1-2001 says that
@@ -254,10 +254,10 @@ POSIX.1-2001 says that
 should fail if a
 .I tv_usec
 value is specified that is outside of the range 0 to 999999.
-However, in kernels up to and including 2.6.21,
+However, up to and including Linux 2.6.21,
 Linux does not give an error, but instead silently
 adjusts the corresponding seconds value for the timer.
-From kernel 2.6.22 onward,
+From Linux 2.6.22 onward,
 this nonconformance has been repaired:
 an improper
 .I tv_usec
