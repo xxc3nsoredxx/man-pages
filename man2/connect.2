@@ -108,9 +108,9 @@ in the path prefix.
 The user tried to connect to a broadcast address without having the socket
 broadcast flag enabled or the connection request failed because of a local
 firewall rule.
-.IP
+.TP
 .B EACCES
-can also be returned if an SELinux policy denied a connection (for
+It can also be returned if an SELinux policy denied a connection (for
 example, if there is a policy saying that an HTTP proxy can only
 connect to ports associated with HTTP servers, and the proxy tries to
 connect to a different port).
