@@ -105,6 +105,13 @@ interprocess communication technique).
 has a misleading name.
 It doesn't produce a (null-terminated) string;
 and it should never be used for producing a string.
+.PP
+It can't detect truncation.
+It's probably better to explicitly call
+.BR bzero (3)
+and
+.BR memccpy (3),
+since that allows detecting truncation.
 .SH SEE ALSO
 .BR bzero (3),
 .BR memccpy (3),
