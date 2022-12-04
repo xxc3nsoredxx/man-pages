@@ -27,7 +27,8 @@ network namespace.
 When a network namespace is freed
 (i.e., when the last process in the namespace terminates),
 its physical network devices are moved back to the
-initial network namespace (not to the parent of the process).
+initial network namespace
+(not to the namespace of the parent of the process).
 .PP
 A virtual network
 .RB ( veth (4))
