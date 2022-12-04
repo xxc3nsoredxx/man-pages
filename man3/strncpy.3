@@ -61,7 +61,7 @@ char *
 strncpy(char *dest, const char *src, size_t n)
 {
     bzero(dest, n);
-    memccpy(dest, src, '\e0', n);
+    memccpy(dest, src, \(aq\e0\(aq, n);
 
     return dest;
 }
