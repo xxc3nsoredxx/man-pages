@@ -1241,8 +1241,8 @@ update_map(char *mapping, char *map_file)
 }
 
 /* Linux 3.19 made a change in the handling of setgroups(2) and the
-   \(aqgid_map\(aq file to address a security issue. The issue allowed
-   *unprivileged* users to employ user namespaces in order to drop
+   \(aqgid_map\(aq file to address a security issue.  The issue allowed
+   *unprivileged* users to employ user namespaces in order to drop groups.
    The upshot of the 3.19 changes is that in order to update the
    \(aqgid_maps\(aq file, use of the setgroups() system call in this
    user namespace must first be disabled by writing "deny" to one of
