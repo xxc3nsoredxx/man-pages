@@ -38,8 +38,12 @@ or in
 .IR /etc/shadow ,
 is an empty string, login is allowed without even asking for a password.
 Note that this functionality may be intentionally disabled in applications,
-or configurable (for example using the "nullok" or "nonull" arguments to
-pam_unix.so).
+or configurable (for example using the
+.RB \(dq nullok \(dq
+or
+.RB \(dq nonull \(dq
+arguments to
+.BR pam_unix (8)).
 .PP
 If the encrypted password in
 .I /etc/passwd
