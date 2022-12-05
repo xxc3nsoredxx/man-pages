@@ -1,4 +1,5 @@
 .\" Copyright (c) Bruno Haible <haible@clisp.cons.org>
+.\" Copyright (c) 2022 Alejandro Colomar <alx@kernel.org>
 .\"
 .\" SPDX-License-Identifier: GPL-2.0-or-later
 .\"
@@ -8,7 +9,7 @@
 .\" Corrected, aeb, 990824
 .TH stpncpy 3 (date) "Linux man-pages (unreleased)"
 .SH NAME
-stpncpy \- copy a fixed-size string, returning a pointer to its end
+stpncpy \- copy string into a fixed-length buffer and zero the rest of it
 .SH LIBRARY
 Standard C library
 .RI ( libc ", " \-lc )
@@ -34,45 +35,57 @@ Feature Test Macro Requirements for glibc (see
         _GNU_SOURCE
 .fi
 .SH DESCRIPTION
+.IR Note :
+This is probably not the function you want to use.
+For safe string copying, see
+.BR strlcpy (3bsd).
+.PP
 The
 .BR stpncpy ()
 function copies at most
 .I n
-characters from the string
-pointed to by
+characters of
+.I src
+and fills the rest of the
+.I dest
+buffer with null bytes.
+.BR Warning :
+If there is no null character among the first
+.I n
+bytes of
 .IR src ,
-including the terminating null byte (\(aq\e0\(aq),
-to the array pointed to by
-.IR dest .
-Exactly
-.I n
-characters are written at
-.IR dest .
-If the length
-.I strlen(src)
-is smaller than
-.IR n ,
-the
-remaining characters in the array pointed to by
+the string placed in
 .I dest
-are filled
-with null bytes (\(aq\e0\(aq),
-If the length
-.I strlen(src)
-is greater than or equal to
-.IR n ,
-the string pointed to by
-.I dest
-will
-not be null-terminated.
+will not be null-terminated.
 .PP
-The strings may not overlap.
+A simple implementation of
+.BR strncpy ()
+might be:
 .PP
-The programmer must ensure that there is room for at least
-.I n
-characters
-at
-.IR dest .
+.in +4n
+.EX
+char *
+stpncpy(char *dest, const char *src, size_t n)
+{
+    char  *p
+
+    bzero(dest, n);
+    p = memccpy(dest, src, \(aq\e0\(aq, n);
+    if (p == NULL)
+        return dest + n;
+
+    return p - 1;
+}
+.EE
+.in
+.PP
+The only valid use of
+.BR strncpy ()
+is to copy a C string to a fixed-length buffer
+while ensuring that unused bytes in the destination buffer are zeroed out
+(perhaps to prevent information leaks if the buffer is to be
+written to media or transmitted to another process via an
+interprocess communication technique).
 .SH RETURN VALUE
 .BR stpncpy ()
 returns a pointer to the terminating null byte
@@ -81,7 +94,8 @@ in
 or, if
 .I dest
 is not null-terminated,
-.IR dest + n .
+.IR dest + n
+(that is, a pointer to one-past-the-end of the array).
 .SH ATTRIBUTES
 For an explanation of the terms used in this section, see
 .BR attributes (7).
@@ -104,5 +118,5 @@ This function was added to POSIX.1-2008.
 Before that, it was a GNU extension.
 It first appeared in glibc 1.07 in 1993.
 .SH SEE ALSO
-.BR strncpy (3),
+.BR strlcpy (3bsd)
 .BR wcpncpy (3)
