@@ -86,6 +86,13 @@ This function has no relationship with
 Since it doesn't know the size of the destination buffer,
 this function can easily write past the end of the array,
 being an open door to all kinds of crackers.
+.PP
+It can't detect truncation.
+If
+.I src
+is not a null-terminated string,
+this function will succeed silently
+(for whatever definition of succeess you have).
 .SH SEE ALSO
 .BR strcpy (3),
 .BR string (3)
