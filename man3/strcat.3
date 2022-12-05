@@ -11,7 +11,7 @@
 .\"     Improve discussion of strncat().
 .TH strcat 3 (date) "Linux man-pages (unreleased)"
 .SH NAME
-strcat, strncat \- concatenate two strings
+strcat \- concatenate two strings
 .SH LIBRARY
 Standard C library
 .RI ( libc ", " \-lc )
@@ -20,8 +20,6 @@ Standard C library
 .B #include <string.h>
 .PP
 .BI "char *strcat(char *restrict " dest ", const char *restrict " src );
-.BI "char *strncat(char " dest "[restrict strlen(." dest ") + strnlen(." n ") + 1],"
-.BI "              const char " src "[restrict ." n "], size_t " n );
 .fi
 .SH DESCRIPTION
 The
@@ -42,73 +40,10 @@ If
 .I dest
 is not large enough, program behavior is unpredictable;
 .IR "buffer overruns are a favorite avenue for attacking secure programs" .
-.PP
-The
-.BR strncat ()
-function is similar, except that
-.IP \(bu 3
-it will use at most
-.I n
-bytes from
-.IR src ;
-and
-.IP \(bu
-.I src
-does not need to be null-terminated if it contains
-.I n
-or more bytes.
-.PP
-As with
-.BR strcat (),
-the resulting string in
-.I dest
-is always null-terminated.
-.PP
-If
-.I src
-contains
-.I n
-or more bytes,
-.BR strncat ()
-writes
-.I n+1
-bytes to
-.I dest
-.RI ( n
-from
-.I src
-plus the terminating null byte).
-Therefore, the size of
-.I dest
-must be at least
-.IR "strlen(dest)+n+1" .
-.PP
-A simple implementation of
-.BR strncat ()
-might be:
-.PP
-.in +4n
-.EX
-char *
-strncat(char *dest, const char *src, size_t n)
-{
-    size_t dest_len = strlen(dest);
-    size_t i;
-
-    for (i = 0 ; i < n && src[i] != \(aq\e0\(aq ; i++)
-        dest[dest_len + i] = src[i];
-    dest[dest_len + i] = \(aq\e0\(aq;
-
-    return dest;
-}
-.EE
-.in
 .SH RETURN VALUE
 The
 .BR strcat ()
-and
-.BR strncat ()
-functions return a pointer to the resulting string
+function returns a pointer to the resulting string
 .IR dest .
 .SH ATTRIBUTES
 For an explanation of the terms used in this section, see
@@ -175,12 +110,10 @@ library.
 .SH EXAMPLES
 Because
 .BR strcat ()
-and
-.BR strncat ()
 must find the null byte that terminates the string
 .I dest
 using a search that starts at the beginning of the string,
-the execution time of these functions
+the execution time of this function
 scales according to the length of the string
 .IR dest .
 This can be demonstrated by running the program below.
@@ -222,6 +155,6 @@ main(void)
 .BR memcpy (3),
 .BR strcpy (3),
 .BR string (3),
-.BR strncpy (3),
+.BR strlcat (3bsd),
 .BR wcscat (3),
 .BR wcsncat (3)

@@ -1,1 +1,91 @@
-.so man3/strcat.3
+.\" Copyright 2022 Alejandro Colomar <alx@kernel.org>
+.\"
+.\" SPDX-License-Identifier: Linux-man-pages-copyleft
+.\"
+.TH strncat 3 (date) "Linux man-pages (unreleased)"
+.SH NAME
+strncat \- concatenate two strings
+.SH LIBRARY
+Standard C library
+.RI ( libc ", " \-lc )
+.SH SYNOPSIS
+.nf
+.B #include <string.h>
+.PP
+.B [[deprecated]]
+.BI "char *strncat(char " dest "[restrict strlen(." dest ") + strnlen(." n ") + 1],"
+.BI "              const char " src "[restrict ." n ],
+.BI "              size_t " n );
+.fi
+.SH DESCRIPTION
+.BI Note: " Never use this function."
+.PP
+For safe string concatenation, see
+.BR strlcat (3bsd).
+For copying or concatenating a string into a fixed-length buffer
+with zeroing of the rest, see
+.BR stpncpy (3).
+.PP
+.BR strncat ()
+appends at most
+.I n
+characters of
+.I src
+to the end of
+.IR dst .
+It always terminates with a null character the string placed in
+.IR dest .
+.PP
+A simple implementation of
+.BR strncat ()
+might be:
+.PP
+.in +4n
+.EX
+char *
+strncat(char *dest, const char *src, size_t n)
+{
+    return memcpy(dest + strlen(dest), src, strnlen(src, n));
+}
+.EE
+.in
+.SH RETURN VALUE
+.BR strncat ()
+returns a pointer to the resulting string
+.IR dest .
+.SH ATTRIBUTES
+For an explanation of the terms used in this section, see
+.BR attributes (7).
+.ad l
+.nh
+.TS
+allbox;
+lbx lb lb
+l l l.
+Interface	Attribute	Value
+T{
+.BR strncat ()
+T}	Thread safety	MT-Safe
+.TE
+.hy
+.ad
+.sp 1
+.SH STANDARDS
+POSIX.1-2001, POSIX.1-2008, C89, C99, SVr4, 4.3BSD.
+.SH BUGS
+All.
+Seriously,
+there's no use case for this function.
+.PP
+It has a
+.I very
+misleading name.
+This function has no relationship with
+.BR strncpy (3).
+.PP
+Since it doesn't know the size of the destination buffer,
+this function can easily write past the end of the array,
+being an open door to all kinds of crackers.
+.SH SEE ALSO
+.BR strcpy (3),
+.BR string (3)
