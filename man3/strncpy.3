@@ -29,7 +29,7 @@ size_t " n );
 .fi
 .SH DESCRIPTION
 .BI Note: " This is not the function you want to use."
-For safe string copying, see
+For string copying with truncation, see
 .BR strlcpy (3bsd).
 For copying a string into a fixed-length buffer with zeroing of the rest,
 see
@@ -70,7 +70,7 @@ strncpy(char *dest, const char *src, size_t n)
 .EE
 .in
 .PP
-The only valid use of
+The use of
 .BR strncpy ()
 is to copy a C string to a fixed-length buffer
 while ensuring that unused bytes in the destination buffer are zeroed out

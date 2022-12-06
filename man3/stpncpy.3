@@ -37,7 +37,7 @@ Feature Test Macro Requirements for glibc (see
 .SH DESCRIPTION
 .IR Note :
 This is probably not the function you want to use.
-For safe string copying, see
+For string copying with truncation, see
 .BR strlcpy (3bsd).
 .PP
 The
@@ -79,7 +79,7 @@ stpncpy(char *dest, const char *src, size_t n)
 .EE
 .in
 .PP
-The only valid use of
+The use of
 .BR strncpy ()
 is to copy a C string to a fixed-length buffer
 while ensuring that unused bytes in the destination buffer are zeroed out
