@@ -186,7 +186,7 @@ returning a pointer to the start of
 .IR dest .
 .TP
 .nf
-.BI "char *strncat(char " dest "[restrict strlen(." dest ") + strnlen(." src ") + 1],"
+.BI "char *strncat(char " dest "[restrict strlen(." dest ") + strnlen(." src ", ." n ") + 1],"
 .BI "       const char " src "[restrict ." n ],
 .BI "       size_t " n );
 .fi
