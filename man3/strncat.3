@@ -19,7 +19,7 @@ Standard C library
 .SH DESCRIPTION
 .IR Note :
 This is probably not the function you want to use.
-For safe string concatenation, see
+For string concatenation with truncation, see
 .BR strlcat (3bsd).
 For copying or concatenating a string into a fixed-length buffer
 with zeroing of the rest, see
@@ -44,13 +44,13 @@ might be:
 char *
 strncat(char *dest, const char *src, size_t n)
 {
-    char    *cat, *end;
+    char    *cat;
     size_t  len;
 
     cat = dest + strlen(dest);
     len = strnlen(src, n);
-    end = mempcpy(cat, src, len);
-    *end = \(aq\e0\(aq;
+    memcpy(cat, src, len);
+    cat[len] = \(aq\e0\(aq;
 
     return dest;
 }
@@ -92,139 +92,51 @@ that copies instead of concatenating.
 .IP \(bu
 Allow chaining the function,
 by returning a suitable pointer.
+Copy chaining is faster than concatenating.
 .IP \(bu
-Prevent buffer overruns by truncating instead.
-.IP \(bu
-Report truncation,
-by returning a suitable pointer.
+Don't check for null characters in the middle of the unterminated string.
+If the string is terminated, this function should not be used.
+If the string is unterminated, it is unnecessary.
 .IP \(bu
 A name that tells what it does:
 Copy from an
 .IR u nterminated
 .IR str ing
 to a
-.IR st ring
-delimited by a pointer to one
-.IR p ast
-the
-.IR e nd
-of the array.
+.IR st ring,
+and return a
+.IR p ointer
+to its end.
 .PP
 .in +4n
 .EX
-/* This code is in the public domain */
+/* This code is in the public domain.
+ *
+ * char *ustr2stp(char dst[restrict .n+1],
+ *                const char src[restrict .n],
+ *                size_t len);
+ */
 char *
-ustr2stpe(char *dst, const char *restrict src, size_t n, char past_end[0])
+ustr2stp(char *restrict dst, const char *restrict src, size_t len)
 {
-    bool       trunc;
-    char       *end;
-    ptrdiff_t  len;
+    memcpy(dst, src, len);
+    dst[len] = \(aq\e0\(aq;
 
-    if (dst == past_end)
-        return past_end;
-
-    trunc = false;
-    len = strnlen(src, n);
-    if (len > past_end \- dst \- 1) {
-        len = past_end \- dst \- 1;
-        trunc = true;
-    }
-
-    end = mempcpy(dst, src, len);
-    *end = \(aq\e0\(aq;
-
-    return trunc ? past_end : end;
+    return dst + len;
 }
 .EE
 .in
-.PP
-That function is not present in libc,
-but it's safer and faster than
-.BR strncpy (3).
-If defined as an inline function,
-there's even a chance that the compiler will collapse it to just a
-.BR mempcpy (3).
+.SH CAVEATS
+This function doesn't know the size of the destination buffer,
+so it can overrun the buffer if the programmer wasn't careful enough.
 .SH BUGS
 .BR strncat (3)
-has a
-.I very
-misleading name;
+has a misleading name;
 it has no relationship with
 .BR strncpy (3).
-.PP
-Since it doesn't know the size of the destination buffer,
-this function can easily write past the end of the array,
-causing Undefined Behavior.
 .SH EXAMPLES
-The following two programs are equivalent,
-except that the one using
-.BR strncat (3)
-can't protect from buffer overruns.
-One uses
-.BR ustr2stpe (),
-and the other uses
-.BR strncat ().
-.SS ustr2stpe()
-.in +4n
-.\" SRC BEGIN (ustr2stpe.c)
-.EX
-#define _GNU_SOURCE
-#include <stdbool.h>
-#include <stddef.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-
-#define nitems(arr)    (sizeof((arr)) / sizeof((arr)[0]))
-
-char *
-my_ustr2stpe(char *dst, const char *restrict src, size_t n, char past_end[0])
-{
-    bool       trunc;
-    char       *end;
-    ptrdiff_t  len;
-
-    if (dst == past_end)
-        return past_end;
-
-    trunc = false;
-    len = strnlen(src, n);
-    if (len > past_end \- dst \- 1) {
-        len = past_end \- dst \- 1;
-        trunc = true;
-    }
-
-    end = mempcpy(dst, src, len);
-    *end = \(aq\e0\(aq;
-
-    return trunc ? past_end : end;
-}
-
-int
-main(void)
-{
-    char pre[4] = "pre.";
-    char *post = ".post";
-    char *src = "some_long_body.post";
-    char dest[100];
-    char *p, *past_end;
-
-    past_end = dest + nitems(dest);
-    p = dest;
-    p = my_ustr2stpe(p, pre, nitems(pre), past_end);
-    p = my_ustr2stpe(p, src, strlen(src) - strlen(post), past_end);
-    p = my_ustr2stpe(p, "", 0, past_end);
-    if (p == past_end)
-        fprintf(stderr, "truncation\en");
-
-    puts(dest);  // "pre.some_long_body"
-    exit(EXIT_SUCCESS);
-}
-.EE
-.\" SRC END
-.in
-.SS strncat()
-.in +4n
+The following program creates a string
+from a concatenation of unterminated strings.
 .\" SRC BEGIN (strncpy.c)
 .EX
 #include <stdio.h>
@@ -244,7 +156,6 @@ main(void)
     dest[0] = \(aq\e0\(aq;
     strncat(dest, pre, nitems(pre));
     strncat(dest, src, strlen(src) \- strlen(post));
-    strncat(dest, "", 0);
 
     puts(dest);  // "pre.some_long_body"
     exit(EXIT_SUCCESS);
