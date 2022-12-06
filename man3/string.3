@@ -113,20 +113,6 @@ Randomly swap the characters in
 Return the length of the string
 .IR s .
 .TP
-.nf
-.BI "char *strncat(char " dest "[restrict ." n "], \
-const char " src "[restrict ." n ],
-.BI "       size_t " n );
-.fi
-Append at most
-.I n
-bytes from the string
-.I src
-to the string
-.IR dest ,
-returning a pointer to
-.IR dest .
-.TP
 .BI "int strncmp(const char " s1 [. n "], const char " s2 [. n "], size_t " n );
 Compare at most
 .I n
@@ -134,20 +120,6 @@ bytes of the strings
 .I s1
 and
 .IR s2 .
-.TP
-.nf
-.BI "char *strncpy(char " dest "[restrict ." n "], \
-const char " src "[restrict ." n ],
-.BI "       size_t " n );
-.fi
-Copy at most
-.I n
-bytes from string
-.I src
-to
-.IR dest ,
-returning a pointer to the start of
-.IR dest .
 .TP
 .BI "char *strpbrk(const char *" s ", const char *" accept );
 Return a pointer to the first occurrence in the string
@@ -197,6 +169,35 @@ to the current locale and copies the first
 .I n
 bytes to
 .IR dst .
+.SS Obsolete functions
+.TP
+.nf
+.BI "char *strncpy(char " dest "[restrict ." n "], \
+const char " src "[restrict ." n ],
+.BI "       size_t " n );
+.fi
+Copy at most
+.I n
+bytes from string
+.I src
+to
+.IR dest ,
+returning a pointer to the start of
+.IR dest .
+.TP
+.nf
+.BI "char *strncat(char " dest "[restrict strlen(." dest ") + strnlen(." src ") + 1],"
+.BI "       const char " src "[restrict ." n ],
+.BI "       size_t " n );
+.fi
+Append at most
+.I n
+bytes from
+.I src
+to
+.IR dest ,
+returning a pointer to
+.IR dest .
 .SH DESCRIPTION
 The string functions perform operations on null-terminated
 strings.
