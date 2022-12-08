@@ -587,10 +587,6 @@ is NULL.
 .TP
 .B ENOMEM
 Out of memory.
-.TP
-.B ERANGE
-The result of an integer conversion would exceed the size
-that can be stored in the corresponding integer type.
 .SH ATTRIBUTES
 For an explanation of the terms used in this section, see
 .BR attributes (7).
@@ -620,9 +616,6 @@ The functions
 and
 .BR sscanf ()
 conform to C89 and C99 and POSIX.1-2001.
-These standards do not specify the
-.B ERANGE
-error.
 .PP
 The
 .B q
