@@ -64,6 +64,37 @@ For further information on feature test macros, see
 .\" .IP (3X)
 .\" Various special libraries.  The manual pages documenting their functions
 .\" specify the library names.
+.SS Subsections
+Section 3 of this manual is organized into subsections
+that reflect the complex structure of the standard C library
+and its many implementations:
+.IP \(bu 3
+3const
+.IP \(bu
+3head
+.IP \(bu
+3type
+.PP
+This difficult history frequently makes it a poor example to follow
+in design, implementation, and presentation.
+.PP
+Ideally,
+a library for the C language
+is designed such that each header file
+presents the interface to a coherent software module.
+It provides a small number of function declarations
+and exposes only data types and constants that
+are required for use of those functions.
+Together,
+these are termed an API or
+.IR "application program interface" .
+Types and constants to be shared among multiple APIs
+shopuld be placed in header files that declare no functions.
+This organization permits a C library module
+to be documented concisely with one header file per manual page.
+Such an approach
+improves the readability and accessibility of library documentation,
+and thereby the usability of the software.
 .SH STANDARDS
 Certain terms and abbreviations are used to indicate UNIX variants
 and standards to which calls in this section conform.
