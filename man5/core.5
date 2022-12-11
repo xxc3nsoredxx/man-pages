@@ -67,6 +67,9 @@ command
 .RI ( limit
 in
 .BR csh (1)).
+However,
+.B RLIMIT_CORE
+will be ignored if the system is configured to pipe core dumps to a program.
 .IP \(bu
 The binary being executed by the process does not have read
 permission enabled.
