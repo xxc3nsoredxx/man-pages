@@ -386,6 +386,7 @@ No conversion is done (but initial white space characters are discarded),
 and assignment does not occur.
 .TP
 .B d
+.IR Deprecated .
 Matches an optionally signed decimal integer;
 the next pointer must be a pointer to
 .IR int .
@@ -400,6 +401,7 @@ the next pointer must be a pointer to
 .\" is silently ignored, causing old programs to fail mysteriously.)
 .TP
 .B i
+.IR Deprecated .
 Matches an optionally signed integer; the next pointer must be a pointer to
 .IR int .
 The integer is read in base 16 if it begins with
@@ -412,15 +414,18 @@ and in base 10 otherwise.
 Only characters that correspond to the base are used.
 .TP
 .B o
+.IR Deprecated .
 Matches an unsigned octal integer; the next pointer must be a pointer to
 .IR "unsigned int" .
 .TP
 .B u
+.IR Deprecated .
 Matches an unsigned decimal integer; the next pointer must be a
 pointer to
 .IR "unsigned int" .
 .TP
 .B x
+.IR Deprecated .
 Matches an unsigned hexadecimal integer
 (that may optionally begin with a prefix of
 .I 0x
@@ -431,27 +436,33 @@ be a pointer to
 .IR "unsigned int" .
 .TP
 .B X
+.IR Deprecated .
 Equivalent to
 .BR x .
 .TP
 .B f
+.IR Deprecated .
 Matches an optionally signed floating-point number; the next pointer must
 be a pointer to
 .IR float .
 .TP
 .B e
+.IR Deprecated .
 Equivalent to
 .BR f .
 .TP
 .B g
+.IR Deprecated .
 Equivalent to
 .BR f .
 .TP
 .B E
+.IR Deprecated .
 Equivalent to
 .BR f .
 .TP
 .B a
+.IR Deprecated .
 (C99) Equivalent to
 .BR f .
 .TP
