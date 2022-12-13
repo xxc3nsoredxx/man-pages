@@ -152,7 +152,8 @@ Out of memory.
 .B ENOSPC
 There is not enough space on the target filesystem to complete the copy.
 .TP
-.BR EOPNOTSUPP " (since Linux 5.12)"
+.BR EOPNOTSUPP " (since Linux 5.19)"
+.\" commit 868f9f2f8e004bfe0d3935b1976f625b2924893b
 The filesystem does not support this operation.
 .TP
 .B EOVERFLOW
@@ -171,11 +172,13 @@ or
 refers to an active swap file.
 .TP
 .BR EXDEV " (before Linux 5.3)"
+.\" commit 5dae222a5ff0c269730393018a5539cc970a4726
 The files referred to by
 .IR fd_in " and " fd_out
 are not on the same filesystem.
 .TP
-.BR EXDEV " (since Linux 5.12)"
+.BR EXDEV " (since Linux 5.19)"
+.\" commit 868f9f2f8e004bfe0d3935b1976f625b2924893b
 The files referred to by
 .IR fd_in " and " fd_out
 are not on the same filesystem,
@@ -191,13 +194,15 @@ emulation when it is not available.
 A major rework of the kernel implementation occurred in Linux 5.3.
 Areas of the API that weren't clearly defined were clarified and the API bounds
 are much more strictly checked than on earlier kernels.
-Applications should target the behaviour and requirements of 5.3 kernels.
 .PP
-Since Linux 5.12,
+Since Linux 5.19,
 cross-filesystem copies can be achieved
 when both filesystems are of the same type,
 and that filesystem implements support for it.
-See BUGS for behavior prior to Linux 5.12.
+See BUGS for behavior prior to Linux 5.19.
+.PP
+Applications should target the behaviour and requirements of 5.19 kernels,
+that was also backported to earlier stable kernels.
 .SH STANDARDS
 The
 .BR copy_file_range ()
@@ -223,7 +228,7 @@ such as the use of reflinks (i.e., two or more inodes that share
 pointers to the same copy-on-write disk blocks)
 or server-side-copy (in the case of NFS).
 .SH BUGS
-In Linux 5.3 to Linux 5.11,
+In Linux 5.3 to Linux 5.18,
 cross-filesystem copies were implemented by the kernel,
 if the operation was not supported by individual filesystems.
 However, on some virtual filesystems,
