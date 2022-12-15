@@ -47,7 +47,7 @@ Description
            -  DESTDIR
            -  prefix
 
-       Comand Variables
+       Command Variables
            Some commands use flags.  A command named 'command' will have a
            variable COMMAND to specify an alternative command name.  To append
            flags to the default ones, set the variable EXTRA_COMMANDFLAGS.  To
