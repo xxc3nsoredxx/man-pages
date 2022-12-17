@@ -99,20 +99,20 @@ $(_LINT_man_tbl): $(_LINTDIR)/%.lint-man.tbl.touch: $(MANDIR)/% | $$(@D)/.
 	$(info LINT (tbl)	$@)
 	if $(GREP) -q '^\.TS$$' $< && ! $(HEAD) -n1 $< | $(GREP) -q '\\" t$$'; \
 	then \
-		2>&1 $(ECHO) "$<:1: missing '\\\" t' comment:"; \
-		2>&1 $(HEAD) -n1 <$<; \
+		>&2 $(ECHO) "$<:1: missing '\\\" t' comment:"; \
+		>&2 $(HEAD) -n1 <$<; \
 		exit 1; \
 	fi
 	if $(HEAD) -n1 $< | $(GREP) -q '\\" t$$' && ! $(GREP) -q '^\.TS$$' $<; \
 	then \
-		2>&1 $(ECHO) "$<:1: spurious '\\\" t' comment:"; \
-		2>&1 $(HEAD) -n1 <$<; \
+		>&2 $(ECHO) "$<:1: spurious '\\\" t' comment:"; \
+		>&2 $(HEAD) -n1 <$<; \
 		exit 1; \
 	fi
 	if $(TAIL) -n+2 <$< | $(GREP) -q '\\" t$$'; \
 	then \
-		2>&1 $(ECHO) "$<: spurious '\\\" t' not in first line:"; \
-		2>&1 $(GREP) -n '\\" t$$' $< /dev/null; \
+		>&2 $(ECHO) "$<: spurious '\\\" t' not in first line:"; \
+		>&2 $(GREP) -n '\\" t$$' $< /dev/null; \
 		exit 1; \
 	fi
 	touch $@
