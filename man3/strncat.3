@@ -87,6 +87,7 @@ Shlemiel the painter
 .SH EXAMPLES
 .\" SRC BEGIN (strncat.c)
 .EX
+#include <err.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -110,6 +111,8 @@ main(void)
     maxsize = nitems(pre) + strlen(src) \- strlen(post) +
               nitems(new_post) + 1;
     dest = malloc(sizeof(*dest) * maxsize);
+    if (dest == NULL)
+        err(EXIT_FAILURE, "malloc()");
 
     dest[0] = \(aq\e0\(aq;  // There's no 'cpy' function to this 'cat'.
     strncat(dest, pre, nitems(pre));
