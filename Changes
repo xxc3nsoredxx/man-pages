@@ -1,6 +1,6 @@
-==================== Changes in man-pages-?.?? ====================
+==================== Changes in man-pages-6.02 ====================
 
-Released: ????-??-??, ??Location??
+Released: 2022-12-22, Aldaya
 
 
 Contributors
@@ -11,27 +11,157 @@ ideas, and discussions that have been incorporated in changes in
 this release:
 
 
+"G. Branden Robinson" <g.branden.robinson@gmail.com>
+1092615079 <1092615079@qq.com>
+Aaron Schrab <aaron@schrab.com>
+Agostino Sarubbo <ago@gentoo.org>
+Ahelenia Ziemiańska <nabijaczleweli@nabijaczleweli.xyz>
+Alejandro Colomar <alx@kernel.org>
+Alex Colomar <alx.manpages@gmail.com>
+Amir Goldstein <amir73il@gmail.com>
+Andrew Clayton <andrew@digital-domain.net>
+Andrew Pinski <pinskia@gmail.com>
+Andries E. Brouwer <aeb@cwi.nl>
+Darrick J. Wong <djwong@kernel.org>
+Douglas McIlroy <douglas.mcilroy@dartmouth.edu>
+Eric Biggers <ebiggers@google.com>
+Florian Weimer <fweimer@redhat.com>
+G. Branden Robinson <g.branden.robinson@gmail.com>
+Grigoriy <grigoriyremvar@protonmail.com>
+Grzegorz Szymaszek <gszymaszek@short.pl>
+Helge Kreutzmann <debian@helgefjell.de>
+Ian Abbott <abbotti@mev.co.uk>
+Iker Pedrosa <ipedrosa@redhat.com>
+Ingo Schwarze <schwarze@openbsd.org>
+Jakub Wilk <jwilk@jwilk.net>
+Jan Kara <jack@suse.cz>
+JeanHeyd Meneide <wg14@soasis.org>
+Jun Ishiguro <algon.0320@gmail.com>
+Luca Versari <veluca93@gmail.com>
+Luis Javier Merino <ninjalj@gmail.com>
+Mario Blättermann <mario.blaettermann@gmail.com>
+Martin Sebor <msebor@redhat.com>
+Martin Uecker <uecker@tugraz.at>
+Matthew Bobrowski <repnop@google.com>
+Michael Kerrisk <mtk.manpages@gmail.com>
+Michael Tokarev <mjt@tls.msk.ru>
+Mike Frysinger <vapier@gentoo.org>
+Mike Gilbert <floppym@gentoo.org>
+Minchan Kim <minchan@kernel.org>
+Nicolás A. Ortega Froysa <nicolas@ortegas.org>
+Pali Rohár <pali@kernel.org>
+Pierre Labastie <pierre.labastie@neuf.fr>
+Sam James <sam@gentoo.org>
+Serge Hallyn <serge@hallyn.com>
+Stefan Puiu <stefan.puiu@gmail.com>
+Steve Izma <sizma@golden.net>
+Suren Baghdasaryan <surenb@google.com>
+Thomas Voss <mail@thomasvoss.com>
+Tycho Andersen <tycho@tycho.pizza>
+Xi Ruoyao <xry111@xry111.site>
+Zach O'Keefe <zokeefe@google.com>
+Zack Weinberg <zack@owlfolio.org>
+
+
 Apologies if I missed anyone!
 
 
 New and rewritten pages
 -----------------------
 
+man3/
+	static_assert.3
+	strcpy.3
+	stpncpy.3
+	strncat.3
+
+man3const/
+	EOF.3const
+	EXIT_SUCCESS.3const
+
+man7/
+	string_copying.7
+
 
 Newly documented interfaces in existing pages
 ---------------------------------------------
+
+ioctl_tty.2
+	TIOCSERGETLSR
+	TIOCSER_TEMT
+
+madvise.2
+	MADV_COLLAPSE
+
+syscall.2
+	loongarch
 
 
 New and changed links
 ---------------------
 
+man3/
+	_Static_assert.3	(static_assert(3))
+	stpcpy.3		(strcpy(3))
+	strcat.3		(strcpy(3))
+	strncpy.3		(stpncpy(3))
+	stpecpy.3		(string_copying(7))
+	stpecpyx.3		(string_copying(7))
+	ustpcpy.3		(string_copying(7))
+	ustr2stp.3		(string_copying(7))
+	zustr2stp.3		(string_copying(7))
+	zustr2ustp.3		(string_copying(7))
+
+man3const/
+	EXIT_FAILURE.3const	(EXIT_SUCCESS(3const))
+
 
 Global changes
 --------------
 
+-  Use correct letter case in manual page titles, instead of uppercase.
+
+-  Use \" t comments when appropriate (Lintian needs this).
+
+-  SYNOPSIS:
+
+   -  Add _Nullable for functions that receive NULL as a meaningful
+      input.
+
+   -  Use VLA syntax to clarify the meaning of size parameters, rather
+      than hiding it in possibly-confusing text.  This syntax is not
+      accepted by any compilers, though.
+
+   -  Use [[noreturn]] instead of noreturn, which will be deprecated
+      soon.
+
+-  Repository documentation:
+
+   -  Added significant documentation about the repository and the
+      project in the root of the repository in different files.
+      Starting from the README, anyone passing by should be able to
+      understand how the project works and be directed to other
+      documentation files.  These files also document the release
+      process.
+
+   -  Michael has been busy lately, and he is no longer maintaining
+      the project.  The in-repository documentation mentioned above has
+      been updated to reflect that.
+
 
 Changes to individual pages
 ---------------------------
+
+copy_file_range.2
+	Fix wrong kernel version information
+
+process_madvise.2
+	Fix capability and ptrace requirements
+
+madvise.2
+	Update Transparent Huge Pages file/shmem documentation for
+	Linux 5.4+.
+
 
 The manual pages (and other files in the repository) have been improved
 beyond what this changelog covers.  To learn more about changes applied
