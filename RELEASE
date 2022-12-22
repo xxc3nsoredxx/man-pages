@@ -179,7 +179,9 @@ Description
             -  Push:
 
                    $ git push
-                   $ git push man-pages-${new}
+                   $ git push korg man-pages-${new}
+
+               korg is just my name for the remote.
 
 Files
    Changes, Changes.old
