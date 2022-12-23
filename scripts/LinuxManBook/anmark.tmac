@@ -1,0 +1,22 @@
+.nr PDFOUTLINE.FOLDLEVEL 1
+.defcolor pdf:href.colour rgb 0.00 0.25 0.75
+.pdfinfo /Title "The Linux Manpage Book"
+.special S TINOR
+.de EnD
+..
+.am reload-man
+.de MR EnD
+.  nh
+.  ds an*title \\\\$4
+.  if '\\\\*[an*title]'' .ds an*title \\\\$1
+.  an*cln an*par "\\\\*[an*title]_\\\\$2\"
+.  ie \\\\n(.$=1 \
+.    I \\\\$1
+.  el \{\
+.    ie d pdf:look(\\\\*[an*par]) .pdfhref L -D \\\\*[an*par] -A "\\\\$3" -- \fI\\\\$1\fP(\\\\$2)
+.    el .IR \\\\$1 (\\\\$2)\\\\$3
+.  \}
+.  hy \\\\n(mJ
+.EnD
+..
+.
