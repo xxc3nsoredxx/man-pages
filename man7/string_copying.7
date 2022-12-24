@@ -7,7 +7,7 @@
 .SH NAME
 stpcpy,
 strcpy, strcat,
-stpecpy, stpecpyx,
+stpecpy,
 strlcpy, strlcat,
 stpncpy,
 strncpy,
@@ -30,10 +30,7 @@ ustpcpy, ustr2stp
 // Chain-copy a string with truncation.
 .BI "char *stpecpy(char *" dst ", char " end "[0], const char *restrict " src );
 .PP
-// Chain-copy a string with truncation and SIGSEGV on UB.
-.BI "char *stpecpyx(char *" dst ", char " end "[0], const char *restrict " src );
-.PP
-// Copy/catenate a string with truncation and SIGSEGV on UB.
+// Copy/catenate a string with truncation.
 .BI "size_t strlcpy(char " dst "[restrict ." sz "], \
 const char *restrict " src ,
 .BI "               size_t " sz );
@@ -223,17 +220,6 @@ Functions that truncate:
 is the most efficient string copy function that performs truncation.
 It only requires to check for truncation once after all chained calls.
 .IP \(bu
-.BR stpecpyx (3)
-is a variant of
-.BR stpecpy (3)
-that consumes the entire source string,
-to catch bugs in the program
-by forcing a segmentation fault (as
-.BR strlcpy (3bsd)
-and
-.BR strlcat (3bsd)
-do).
-.IP \(bu
 .BR strlcpy (3bsd)
 and
 .BR strlcat (3bsd)
@@ -334,8 +320,7 @@ List of functions:
 .BR strcpy "(3), \c"
 .BR strcat (3)
 .IP \(bu
-.BR stpecpy "(3), \c"
-.BR stpecpyx (3)
+.BR stpecpy (3)
 .IP \(bu
 .BR strlcpy "(3bsd), \c"
 .BR strlcat (3bsd)
@@ -399,27 +384,19 @@ The return value is useless.
 .IP
 .BR stpcpy (3)
 is a faster alternative to these functions.
-.\" ----- DESCRIPTION :: Functions :: stpecpy(3), stpecpyx(3) ---------/
+.\" ----- DESCRIPTION :: Functions :: stpecpy(3) ----------------------/
 .TP
 .BR stpecpy (3)
-.TQ
-.BR stpecpyx (3)
-These functions copy the input string into a destination string.
+This function copies the input string into a destination string.
 If the destination buffer,
 limited by a pointer to its end,
 isn't large enough to hold the copy,
 the resulting string is truncated
 (but it is guaranteed to be null-terminated).
-They return a pointer suitable for chaining.
+It returns a pointer suitable for chaining.
 Truncation needs to be detected only once after the last chained call.
-.BR stpecpyx (3)
-has identical semantics to
-.BR stpecpy (3),
-except that it forces a SIGSEGV if the
-.I src
-pointer is not a string.
 .IP
-These functions are not provided by any library;
+This function is not provided by any library;
 See EXAMPLES for a reference implementation.
 .\" ----- DESCRIPTION :: Functions :: strlcpy(3bsd), strlcat(3bsd) ----/
 .TP
@@ -437,8 +414,8 @@ These functions force a SIGSEGV if the
 .I src
 pointer is not a string.
 .IP
-.BR stpecpyx (3)
-is a faster alternative to these functions.
+.BR stpecpy (3)
+is a simpler alternative to these functions.
 .\" ----- DESCRIPTION :: Functions :: stpncpy(3) ----------------------/
 .TP
 .BR stpncpy (3)
@@ -538,14 +515,13 @@ a pointer to the terminating null byte in the destination string.
 .BR zustr2stp (3)
 .PD
 .PP
-The following functions return
+The following function returns
 a pointer to the terminating null byte in the destination string,
 except when truncation occurs;
 if truncation occurs,
-they return a pointer to the end of the destination buffer.
+it returns a pointer to the end of the destination buffer.
 .IP \(bu 3
-.BR stpecpy (3),
-.BR stpecpyx (3)
+.BR stpecpy (3)
 .PP
 The following function returns
 a pointer to one after the last character
@@ -648,11 +624,9 @@ strcat(buf, "!");
 len = strlen(buf);
 puts(buf);
 .EE
-.\" ----- EXAMPLES :: stpecpy(3), stpecpyx(3) -------------------------/
+.\" ----- EXAMPLES :: stpecpy(3) --------------------------------------/
 .TP
 .BR stpecpy (3)
-.TQ
-.BR stpecpyx (3)
 .EX
 end = buf + sizeof(buf);
 p = buf;
@@ -781,6 +755,9 @@ char *
 {
     char *p;
 
+    if (src[strlen(src)] != \(aq\e0\(aq)
+        raise(SIGSEGV);
+
     if (dst == end)
         return end;
 
@@ -791,16 +768,6 @@ char *
     /* truncation detected */
     end[\-1] = \(aq\e0\(aq;
     return end;
-}
-
-.\" ----- EXAMPLES :: Implementations :: stpecpy(3) -------------------/
-char *
-.IR stpecpyx "(char *dst, char end[0], const char *restrict src)"
-{
-    if (src[strlen(src)] != \(aq\e0\(aq)
-        raise(SIGSEGV);
-
-    return stpecpy(dst, end, src);
 }
 
 .\" ----- EXAMPLES :: Implementations :: zustr2ustp(3) ----------------/
