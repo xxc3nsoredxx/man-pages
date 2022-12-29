@@ -74,14 +74,7 @@ T}	Thread safety	MT-Safe
 .ad
 .sp 1
 .SH STANDARDS
-POSIX.1-2001, POSIX.1-2008, C89, C99.
-In C89,
-.I expression
-is required to be of type
-.I int
-and undefined behavior results if it is not, but in C99
-it may have any scalar type.
-.\" See Defect Report 107 for more details.
+POSIX.1-2001, POSIX.1-2008, C99.
 .SH BUGS
 .BR assert ()
 is implemented as a macro; if the expression tested has side-effects,
