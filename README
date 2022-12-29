@@ -62,7 +62,7 @@ Versions
        Tarballs of releases starting from 2.00 are available at
        <https://mirrors.edge.kernel.org/pub/linux/docs/man-pages/>.
 
-       The git(1) repository covers the development since 1.70:
+       The git(1) repository can be found at:
        <git://git.kernel.org/pub/scm/docs/man-pages/man-pages.git>
 
        A secondary git(1) repository can be found at:
