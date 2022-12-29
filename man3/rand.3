@@ -190,6 +190,9 @@ The following program can be used to display the
 pseudo-random sequence produced by
 .BR rand ()
 when given a particular seed.
+When the seed is
+.IR \-1 ,
+the program uses a random seed.
 .PP
 .in +4n
 .\" SRC BEGIN (rand.c)
@@ -210,6 +213,11 @@ main(int argc, char *argv[])
 
     seed = atoi(argv[1]);
     nloops = atoi(argv[2]);
+
+    if (seed == \-1) {
+        seed = arc4random();
+        printf("seed: %u\en", seed);
+    }
 
     srand(seed);
     for (unsigned int j = 0; j < nloops; j++) {
