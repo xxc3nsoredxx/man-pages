@@ -16,7 +16,7 @@ Version of 16 November 2002
 .nr chapter_page 0      \" avoid diag. if there's no .Se call
 .ds chapter_name
 \#
-\# Redefine LP so that it can take an argument to surpress spacing
+\# Redefine LP so that it can take an argument to suppress spacing
 \#
 .de par*start*nospace
 .ds@auto-end
@@ -243,7 +243,7 @@ Version of 16 November 2002
 ..
 .als Hl horizontal_line
 \#
-\#  Standard Section Formating Routine
+\#  Standard Section Formatting Routine
 \#
 .de format_standard_section
 .RT
@@ -260,7 +260,7 @@ Version of 16 November 2002
 .el .ds chapter_type Chapter
 .\" If there is a section number, output Type and section number
 .if !'\\$1'' \s14\fB\\*[chapter_type] \\$1\fP\s0
-.\" If there is no section number, but there is a type, then ouput it
+.\" If there is no section number, but there is a type, then output it
 .if '\\$1'' .if !'\\$3'' \s14\fB\\*[chapter_type]\fP\s0
 .sp 5p
 .\" Print the section title if there is one
@@ -357,7 +357,7 @@ Version of 16 November 2002
 .\" list start $1: A - ALPHA
 .\"                a - alpha
 .\"                B - bullet
-.\"                N - numberic
+.\"                N - numeric
 .\"                R - ROMAN NUMERALS
 .\"                r - roman numerals
 .\"            $2: indent
@@ -368,7 +368,7 @@ Version of 16 November 2002
 .	tm Ls: Need A, a, B, N, R, or r as type
 .nr l\\n+[l0] 0 1
 .ie '\\$1'' \{.                      \" set defaults
-.	if '\\n[l0]'1' .af l\\n[l0] 1    \"numberic at 1st level
+.	if '\\n[l0]'1' .af l\\n[l0] 1    \"numeric at 1st level
 .	if '\\n[l0]'2' .af l\\n[l0] a    \"alpha at 2nd level
 .	if '\\n[l0]'3' .af l\\n[l0] i    \"roman at 3rd level
 .	if '\\n[l0]'4' .ds l\\n[l0] \(bu \"bullet at 4th level

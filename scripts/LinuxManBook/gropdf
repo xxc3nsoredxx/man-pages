@@ -2791,7 +2791,7 @@ sub do_m
     # PDF uses G/RG/K for graphic stroke, and g/rg/k for text & graphic fill.
     #
     # This means that we must maintain g/rg/k state separately for text colour & graphic fill (this is
-    # probably why 'gs' maintains seperate graphic states for text & graphics when distilling PS -> PDF).
+    # probably why 'gs' maintains separate graphic states for text & graphics when distilling PS -> PDF).
     #
     # To facilitate this:-
     #
