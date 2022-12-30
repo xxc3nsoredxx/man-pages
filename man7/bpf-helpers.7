@@ -3728,7 +3728,7 @@ Nothing has been written
 .sp
 \fB\-EEXIST\fP if the option already exists.
 .sp
-\fB\-EFAULT\fP on failrue to parse the existing header options.
+\fB\-EFAULT\fP on failure to parse the existing header options.
 .sp
 \fB\-EPERM\fP if the helper cannot be used under the current
 \fIskops\fP\fB\->op\fP\&.
@@ -4068,7 +4068,7 @@ Current \fIktime\fP\&.
 .INDENT 7.0
 .TP
 .B Description
-Returns the stored IMA hash of the \fIinode\fP (if it\(aqs avaialable).
+Returns the stored IMA hash of the \fIinode\fP (if it\(aqs available).
 If the hash is larger than \fIsize\fP, then only \fIsize\fP
 bytes will be copied to \fIdst\fP
 .TP
@@ -4104,7 +4104,7 @@ ctx. Providing an \fIlen_diff\fP adjustment that is larger than the
 actual packet size (resulting in negative packet size) will in
 principle not exceed the MTU, why it is not considered a
 failure.  Other BPF\-helpers are needed for performing the
-planned size change, why the responsability for catch a negative
+planned size change, why the responsibility for catch a negative
 packet size belong in those helpers.
 .sp
 Specifying \fIifindex\fP zero means the MTU check is performed

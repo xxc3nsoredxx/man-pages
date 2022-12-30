@@ -20,7 +20,7 @@ Linux kernel headers
 .B };
 .EE
 .SH DESCRIPTION
-Specifies how a pathname should be open.
+Specifies how a pathname should be opened.
 .PP
 The fields are as follows:
 .TP
