@@ -18,7 +18,7 @@ Standard C library
 .BI "void arc4random_buf(void " buf [. n "], size_t " n );
 .fi
 .SH DESCRIPTION
-These functions give cryptographically-secure random numbers.
+These functions give cryptographically-secure pseudorandom numbers.
 .PP
 .BR arc4random ()
 returns a uniformly-distributed value.
@@ -33,14 +33,14 @@ fills the memory pointed to by
 .IR buf ,
 with
 .I n
-bytes of random data.
+bytes of pseudorandom data.
 .PP
 The
 .BR rand (3)
 and
 .BR drand48 (3)
 families of functions should only be used where
-the quality of the random numbers is not a concern
+the quality of the pseudorandom numbers is not a concern
 .I and
 there's a need for repeatability of the results.
 Unless you meet both of those conditions,
@@ -49,10 +49,10 @@ use the
 functions.
 .SH RETURN VALUE
 .BR arc4random ()
-returns a random number.
+returns a pseudorandom number.
 .PP
 .BR arc4random_uniform ()
-returns a random number less than
+returns a pseudorandom number less than
 .I upper_bound
 for valid input, or
 .B 0
