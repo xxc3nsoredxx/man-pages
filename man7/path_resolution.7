@@ -73,8 +73,9 @@ If the component is found and is a directory, we set the
 current lookup directory to that directory, and go to the
 next component.
 .PP
-If the component is found and is a symbolic link (symlink), we first
-resolve this symbolic link (with the current lookup directory
+If the component is found and is a symbolic link,
+we first resolve this symbolic link
+(with the current lookup directory
 as starting lookup directory).
 Upon error, that error is returned.
 If the result is not a directory, an
@@ -164,15 +165,16 @@ the component preceding the slash either exists and resolves to a directory
 or it names a directory that is to be created
 immediately after the pathname is resolved.
 Otherwise, a trailing \(aq/\(aq is ignored.
-.SS Final symlink
+.SS Final symbolic link
 If the last component of a pathname is a symbolic link, then it
 depends on the system call whether the file referred to will be
 the symbolic link or the result of path resolution on its contents.
 For example, the system call
 .BR lstat (2)
-will operate on the symlink, while
+will operate on the symbolic link,
+while
 .BR stat (2)
-operates on the file pointed to by the symlink.
+operates on the file pointed to by the symbolic link.
 .SS Length limit
 There is a maximum length for pathnames.
 If the pathname (or some
