@@ -16,7 +16,7 @@ Standard C library
 .PP
 .B struct timespec {
 .BR "    time_t  tv_sec;" "   /* Seconds */"
-.BR "    long    tv_usec;" "  /* Nanoseconds [" 0 ", " 999999999 "] */"
+.BR "    long    tv_nsec;" "  /* Nanoseconds [" 0 ", " 999999999 "] */"
 .B };
 .EE
 .SH DESCRIPTION
