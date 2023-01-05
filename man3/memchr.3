@@ -22,7 +22,8 @@ Standard C library
 .PP
 .BI "void *memchr(const void " s [. n "], int " c ", size_t " n );
 .BI "void *memrchr(const void " s [. n "], int " c ", size_t " n );
-.BI "void *rawmemchr(const void " s [. n "], int " c );
+.PP
+.BI "[[deprecated]] void *rawmemchr(const void " s [. n "], int " c );
 .fi
 .PP
 .RS -4
@@ -66,26 +67,21 @@ instead of forward from the beginning.
 The
 .BR rawmemchr ()
 function is similar to
-.BR memchr ():
-it assumes (i.e., the programmer knows for certain)
+.BR memchr (),
+but it assumes
+(i.e., the programmer knows for certain)
 that an instance of
 .I c
 lies somewhere in the memory area starting at the location pointed to by
-.IR s ,
-and so performs an optimized search for
-.I c
-(i.e., no use of a count argument to limit the range of the search).
+.IR s .
 If an instance of
 .I c
-is not found, the results are unpredictable.
-The following call is a fast means of locating a string's
-terminating null byte:
-.PP
-.in +4n
-.EX
-char *p = rawmemchr(s,\ \(aq\e0\(aq);
-.EE
-.in
+is not found, the behavior is undefined.
+Use either
+.BR strlen (3)
+or
+.BR memchr (3)
+instead.
 .SH RETURN VALUE
 The
 .BR memchr ()
