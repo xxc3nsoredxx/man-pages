@@ -9,22 +9,20 @@
 .SH NAME
 ldconfig \- configure dynamic linker run-time bindings
 .SH SYNOPSIS
-.BR /sbin/ldconfig " [" \-nNvXV "] [" \-f " \fIconf\fP] [" \-C " \fIcache\fP] [" \-r " \fIroot\fP]"
-.IR directory \...
 .PD 0
+.BR /sbin/ldconfig " [" \-nNvXV "] [" \-f " \fIconf\fP] [" \-C " \fIcache\fP] [" \-r " \fIroot\fP]"
+.IR directory ...
 .PP
-.PD
 .B /sbin/ldconfig
 .B \-l
 .RB [ \-v ]
-.IR library \...
-.PD 0
+.IR library ...
 .PP
-.PD
 .B /sbin/ldconfig
 .B \-p
+.PD
 .SH DESCRIPTION
-.B ldconfig
+.B \%ldconfig
 creates the necessary links and cache to the most recent shared
 libraries found in the directories specified on the command line,
 in the file
@@ -37,7 +35,8 @@ and
 .I /lib
 and
 .I /usr/lib
-are the trusted directories for 32-bit libraries, while
+are the trusted directories for 32-bit libraries,
+while
 .I /lib64
 and
 .I /usr/lib64
@@ -47,13 +46,17 @@ The cache is used by the run-time linker,
 .I ld.so
 or
 .IR ld\-linux.so .
-.B ldconfig
+.B \%ldconfig
 checks the header and filenames of the libraries it encounters when
 determining which versions should have their links updated.
 .PP
-.B ldconfig
-will attempt to deduce the type of ELF libraries (i.e., libc5 or libc6/glibc)
-based on what C libraries, if any, the library was linked against.
+.B \%ldconfig
+will attempt to deduce the type of ELF libraries
+(i.e.,
+libc5 or libc6/glibc)
+based on what C libraries,
+if any,
+the library was linked against.
 .\" The following sentence looks suspect
 .\" (perhaps historical cruft) -- MTK, Jul 2005
 .\" Therefore, when making dynamic libraries,
@@ -61,14 +64,18 @@ based on what C libraries, if any, the library was linked against.
 .PP
 Some existing libraries do not contain enough information
 to allow the deduction of their type.
-Therefore, the
+Therefore,
+the
 .I /etc/ld.so.conf
 file format allows the specification of an expected type.
 This is used
 .I only
 for those ELF libraries which we can not work out.
 The format
-is "dirname=TYPE", where TYPE can be libc4, libc5, or libc6.
+is "dirname=TYPE",
+where TYPE can be libc4,
+libc5,
+or libc6.
 (This syntax also works on the command line.)
 Spaces are
 .I not
@@ -76,12 +83,12 @@ allowed.
 Also see the
 .B \-p
 option.
-.B ldconfig
+.B \%ldconfig
 should normally be run by the superuser as it may require write
 permission on some root owned directories and files.
 .PP
 Note that
-.B ldconfig
+.B \%ldconfig
 will only look at files that are named
 .I lib*.so*
 (for regular shared objects) or
@@ -89,9 +96,10 @@ will only look at files that are named
 (for the dynamic loader itself).
 Other files will be ignored.
 Also,
-.B ldconfig
-expects a certain pattern to how the symlinks are set up, like this
-example, where the middle file
+.B \%ldconfig
+expects a certain pattern to how the symlinks are set up,
+like this example,
+where the middle file
 .RB ( libfoo.so.1
 here) is the SONAME for the library:
 .PP
@@ -107,16 +115,19 @@ after an upgrade.
 .TP
 .BR \-c " \fIfmt\fP, " \-\-format=\fIfmt\fP
 (Since glibc 2.2)
+.\" commit 45eca4d141c047950db48c69c8941163d0a61fcd
 Cache format to use:
 .IR old ,
 .IR new ,
 or
-.IR compat .
-Since glibc 2.32, the default is
+.IR \%compat .
+Since glibc 2.32,
+the default is
 .IR new .
 .\" commit cad64f778aced84efdaa04ae64f8737b86f063ab
-Before that, it was
-.IR compat .
+Before that,
+it was
+.IR \%compat .
 .TP
 .BI "\-C " cache
 Use
@@ -129,11 +140,10 @@ Use
 .I conf
 instead of
 .IR /etc/ld.so.conf .
-.\" FIXME glibc 2.7 added -i
 .TP
 .BR \-i ", " \-\-ignore\-aux\-cache
 (Since glibc 2.7)
-.\"             commit 27d9ffda17df4d2388687afd12897774fde39bcc
+.\" commit 27d9ffda17df4d2388687afd12897774fde39bcc
 Ignore auxiliary cache file.
 .TP
 .B \-l
@@ -154,7 +164,8 @@ Implies
 Don't rebuild the cache.
 Unless
 .B \-X
-is also specified, links are still updated.
+is also specified,
+links are still updated.
 .TP
 .BR \-p ", " \-\-print\-cache
 Print the lists of directories and candidate libraries stored in
@@ -167,8 +178,9 @@ as the root directory.
 .TP
 .BR \-v ", " \-\-verbose
 Verbose mode.
-Print current version number, the name of each directory as it
-is scanned, and any links that are created.
+Print current version number,
+the name of each directory as it is scanned,
+and any links that are created.
 Overrides quiet mode.
 .TP
 .BR \-V ", " \-\-version
@@ -178,7 +190,8 @@ Print program version.
 Don't update links.
 Unless
 .B \-N
-is also specified, the cache is still rebuilt.
+is also specified,
+the cache is still rebuilt.
 .SH FILES
 .\" FIXME Since glibc-2.3.4, "include" directives are supported in ld.so.conf
 .\"
@@ -189,7 +202,8 @@ is also specified, the cache is still rebuilt.
 Run-time linker/loader.
 .TP
 .I /etc/ld.so.conf
-File containing a list of directories, one per line,
+File containing a list of directories,
+one per line,
 in which to search for libraries.
 .TP
 .I /etc/ld.so.cache
