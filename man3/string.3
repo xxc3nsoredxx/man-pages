@@ -37,16 +37,12 @@ and
 ignoring case.
 .TP
 .BI "char *index(const char *" s ", int " c );
-Return a pointer to the first occurrence of the character
-.I c
-in the string
-.IR s .
+Identical to
+.BR strchr (3).
 .TP
 .BI "char *rindex(const char *" s ", int " c );
-Return a pointer to the last occurrence of the character
-.I c
-in the string
-.IR s .
+Identical to
+.BR strrchr (3).
 .TP
 .B #include <string.h>
 .TP
@@ -204,8 +200,6 @@ strings.
 See the individual man pages for descriptions of each function.
 .SH SEE ALSO
 .BR bstring (3),
-.BR index (3),
-.BR rindex (3),
 .BR stpcpy (3),
 .BR strcasecmp (3),
 .BR strcat (3),
