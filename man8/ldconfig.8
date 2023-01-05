@@ -38,8 +38,8 @@ in the file
 and in the trusted directories,
 .I /lib
 and
-.I /usr/lib
-(on some 64-bit architectures such as x86-64,
+.IR /usr/lib .
+On some 64-bit architectures such as x86-64,
 .I /lib
 and
 .I /usr/lib
@@ -48,7 +48,7 @@ while
 .I /lib64
 and
 .I /usr/lib64
-are used for 64-bit libraries).
+are used for 64-bit libraries.
 .PP
 The cache is used by the run-time linker,
 .I ld.so
@@ -95,9 +95,8 @@ option.
 should normally be run by the superuser as it may require write
 permission on some root owned directories and files.
 .PP
-Note that
 .B \%ldconfig
-will only look at files that are named
+will look only at files that are named
 .I lib*.so*
 (for regular shared objects) or
 .I ld\-*.so*
@@ -105,7 +104,7 @@ will only look at files that are named
 Other files will be ignored.
 Also,
 .B \%ldconfig
-expects a certain pattern to how the symlinks are set up,
+expects a certain pattern to how the symbolic links are set up,
 like this example,
 where the middle file
 .RB ( libfoo.so.1
@@ -162,13 +161,12 @@ Ignore auxiliary cache file.
 .TP
 .B \-l
 (Since glibc 2.2)
-Library mode.
-Manually link individual libraries.
-Intended for use by experts only.
+Interpret each operand as a libary name and configure its links.
+Intended for use only by experts.
 .TP
 .B \-n
-Process only the directories specified on the command line.
-Don't process the trusted directories,
+Process only the directories specified on the command line;
+don't process the trusted directories,
 nor those specified in
 .IR /etc/ld.so.conf .
 Implies
@@ -219,15 +217,15 @@ the cache is still rebuilt.
 .PD 0
 .TP
 .I /lib/ld.so
-Run-time linker/loader.
+is the run-time linker/loader.
 .TP
 .I /etc/ld.so.conf
-File containing a list of directories,
+contains a list of directories,
 one per line,
 in which to search for libraries.
 .TP
 .I /etc/ld.so.cache
-File containing an ordered list of libraries found in the directories
+contains an ordered list of libraries found in the directories
 specified in
 .IR /etc/ld.so.conf ,
 as well as those found in the trusted directories.
