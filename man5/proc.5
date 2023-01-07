@@ -1372,6 +1372,20 @@ See
 .TP
 .I [heap]
 The process's heap.
+.TP
+.IR [anon: name ] " (since Linux 5.17)"
+.\" Commit 9a10064f5625d5572c3626c1516e0bebc6c9fe9b
+A named private anonymous mapping.
+Set with
+.BR prctl (2)
+.BR PR_SET_VMA_ANON_NAME .
+.TP
+.IR [anon_shmem: name ] " (since Linux 6.2)"
+.\" Commit d09e8ca6cb93bb4b97517a18fbbf7eccb0e9ff43
+A named shared anonymous mapping.
+Set with
+.BR prctl (2)
+.BR PR_SET_VMA_ANON_NAME .
 .in
 .RE
 .IP

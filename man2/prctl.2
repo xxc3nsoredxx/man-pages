@@ -769,6 +769,40 @@ This feature is available only if the kernel is built with the
 .B CONFIG_CHECKPOINT_RESTORE
 option enabled.
 .RE
+.\" prctl PR_SET_VMA
+.TP
+.BR PR_SET_VMA " (since Linux 5.17)"
+.\" Commit 9a10064f5625d5572c3626c1516e0bebc6c9fe9b
+Sets an attribute specified in
+.I arg2
+for virtual memory areas starting from the address specified in
+.I arg3
+and spanning the size specified in
+.IR arg4 .
+.I arg5
+specifies the value of the attribute to be set.
+.IP
+Note that assigning an attribute to a virtual memory area
+might prevent it from being merged with adjacent virtual memory areas
+due to the difference in that attribute's value.
+.IP
+Currently,
+.I arg2
+must be one of:
+.RS
+.TP
+.B PR_SET_VMA_ANON_NAME
+Set a name for anonymous virtual memory areas.
+.I arg5
+should be a pointer to a null-terminated string containing the name.
+The name length including null byte cannot exceed 80 bytes.
+If
+.I arg5
+is NULL, the name of the appropriate anonymous virtual memory areas
+will be reset.
+The name can contain only printable ascii characters (including space),
+except \(aq[\(aq, \(aq]\(aq, \(aq\e\(aq, \(aq$\(aq, and \(aq\(ga\(aq.
+.RE
 .\" prctl PR_MPX_ENABLE_MANAGEMENT
 .TP
 .BR PR_MPX_ENABLE_MANAGEMENT ", " PR_MPX_DISABLE_MANAGEMENT " (since Linux 3.19, removed in Linux 5.4; only on x86)"
