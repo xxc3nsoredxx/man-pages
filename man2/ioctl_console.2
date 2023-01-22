@@ -587,7 +587,7 @@ struct vt_stat {
 For each vt in use, the corresponding bit in the
 .I v_state
 member is set.
-(Kernels 1.0 through 1.1.92.)
+(Linux 1.0 through Linux 1.1.92.)
 .TP
 .B VT_RELDISP
 Release a display.
@@ -747,7 +747,7 @@ variable
 .BR TIOCLINUX ", " subcode = 8
 Dump screen width and height, cursor position, and all the
 character-attribute pairs.
-(Kernels 1.1.67 through 1.1.91 only.
+(Linux 1.1.67 through Linux 1.1.91 only.
 With Linux 1.1.92 or later, read from
 .I /dev/vcsa*
 instead.)
@@ -755,7 +755,7 @@ instead.)
 .BR TIOCLINUX ", " subcode = 9
 Restore screen width and height, cursor position, and all the
 character-attribute pairs.
-(Kernels 1.1.67 through 1.1.91 only.
+(Linux 1.1.67 through Linux 1.1.91 only.
 With Linux 1.1.92 or later, write to
 .I /dev/vcsa*
 instead.)

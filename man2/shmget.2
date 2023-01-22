@@ -375,8 +375,8 @@ since Linux 2.4, the default value is 4096.
 .IP
 On Linux, this limit can be read and modified via
 .IR /proc/sys/kernel/shmmni .
-.\" Kernels between 2.4.x and 2.6.8 had an off-by-one error that meant
-.\" that we could create one more segment than SHMMNI -- MTK
+.\" Kernels between Linux 2.4.x and Linux 2.6.8 had an off-by-one error
+.\" that meant that we could create one more segment than SHMMNI -- MTK
 .\" This /proc file is not available in Linux 2.2 and earlier -- MTK
 .PP
 The implementation has no specific limits for the per-process maximum
