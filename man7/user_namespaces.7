@@ -722,9 +722,9 @@ and
 Writing
 .RI \(dq deny \(dq
 to the
-.I /proc/ pid /setgroups
+.IR /proc/ pid /setgroups
 file before writing to
-.I /proc/ pid /gid_map
+.IR /proc/ pid /gid_map
 .\" Things changed in Linux 3.19
 .\" commit 9cc46516ddf497ea16e8d7cb986ae03a0f6b92f8
 .\" commit 66d2f338ee4c449396b6f99f5e75cd18eb6df272
@@ -732,14 +732,14 @@ file before writing to
 will permanently disable
 .BR setgroups (2)
 in a user namespace and allow writing to
-.I /proc/ pid /gid_map
+.IR /proc/ pid /gid_map
 without having the
 .B CAP_SETGID
 capability in the parent user namespace.
 .\"
 .\" ============================================================
 .\"
-.SS The /proc/ pid /setgroups file
+.SS The /proc/\fIpid\fP/setgroups file
 .\"
 .\" commit 9cc46516ddf497ea16e8d7cb986ae03a0f6b92f8
 .\" commit 66d2f338ee4c449396b6f99f5e75cd18eb6df272
@@ -839,7 +839,7 @@ This restriction also propagates down to all child user namespaces of
 this user namespace.
 .PP
 The
-.I /proc/ pid /setgroups
+.IR /proc/ pid /setgroups
 file was added in Linux 3.19,
 but was backported to many earlier stable kernel series,
 because it addresses a security issue.
