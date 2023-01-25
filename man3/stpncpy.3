@@ -144,7 +144,7 @@ main(void)
 
     if (sizeof(buf2) < strlen("Hello world!"))
         warnx("strncpy: truncating character sequence");
-    strncpy(buf2, "Hello world!", sizeof(buf));
+    strncpy(buf2, "Hello world!", sizeof(buf2));
     len = strnlen(buf2, sizeof(buf2));
 
     printf("[len = %zu]: ", len);
