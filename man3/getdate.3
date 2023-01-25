@@ -286,7 +286,7 @@ main(int argc, char *argv[])
         tmp = getdate(argv[j]);
 
         if (tmp == NULL) {
-            printf("Call %d failed; getdate_err = %d\en",
+            printf("Call %zu failed; getdate_err = %d\en",
                    j, getdate_err);
             continue;
         }
