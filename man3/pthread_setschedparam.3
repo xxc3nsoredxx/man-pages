@@ -403,7 +403,7 @@ main(int argc, char *argv[])
         printf("Scheduler settings in \(aqattr\(aq\en");
         display_sched_attr(policy, &param);
 
-        s = pthread_attr_getinheritsched(&attr, &inheritsched);
+        pthread_attr_getinheritsched(&attr, &inheritsched);
         printf("    inheritsched is %s\en",
                (inheritsched == PTHREAD_INHERIT_SCHED)  ? "INHERIT" :
                (inheritsched == PTHREAD_EXPLICIT_SCHED) ? "EXPLICIT" :
