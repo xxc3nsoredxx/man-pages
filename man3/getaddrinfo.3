@@ -713,13 +713,13 @@ main(int argc, char *argv[])
     /* Read datagrams and echo them back to sender. */
 
     for (;;) {
+        char host[NI_MAXHOST], service[NI_MAXSERV];
+
         peer_addrlen = sizeof(peer_addr);
         nread = recvfrom(sfd, buf, BUF_SIZE, 0,
                          (struct sockaddr *) &peer_addr, &peer_addrlen);
         if (nread == \-1)
             continue;               /* Ignore failed request */
-
-        char host[NI_MAXHOST], service[NI_MAXSERV];
 
         s = getnameinfo((struct sockaddr *) &peer_addr,
                         peer_addrlen, host, NI_MAXHOST,

@@ -309,11 +309,12 @@ action(const void *nodep, VISIT which, int depth)
 int
 main(void)
 {
-    int **val;
+    int  *ptr;
+    int  **val;
 
     srand(time(NULL));
     for (unsigned int i = 0; i < 12; i++) {
-        int *ptr = xmalloc(sizeof(*ptr));
+        ptr = xmalloc(sizeof(*ptr));
         *ptr = rand() & 0xff;
         val = tsearch(ptr, &root, compare);
         if (val == NULL)
