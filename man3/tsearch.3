@@ -319,7 +319,7 @@ main(void)
         val = tsearch(ptr, &root, compare);
         if (val == NULL)
             exit(EXIT_FAILURE);
-        else if (*val != ptr)
+        if (*val != ptr)
             free(ptr);
     }
     twalk(root, action);
