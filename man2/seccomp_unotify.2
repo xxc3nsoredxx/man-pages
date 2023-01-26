@@ -1813,7 +1813,7 @@ allocSeccompNotifBuffers(struct seccomp_notif **req,
         resp_size = sizeof(struct seccomp_notif_resp);
 
     *resp = malloc(resp_size);
-    if (resp == NULL)
+    if (*resp == NULL)
         err(EXIT_FAILURE, "malloc\-seccomp_notif_resp");
 
 }
