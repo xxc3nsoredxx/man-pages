@@ -1,0 +1,8 @@
+ConfigurationNotChecked
+missingIncludeSystem
+redundantContinue
+unassignedVariable
+uninitvar
+unknownMacro
+unmatchedSuppression
+variableScope

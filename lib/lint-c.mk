@@ -26,6 +26,16 @@ EXTRA_CLANG-TIDYFLAGS   :=
 CLANG-TIDYFLAGS         := $(DEFAULT_CLANG-TIDYFLAGS) $(EXTRA_CLANG-TIDYFLAGS)
 CLANG-TIDY              := clang-tidy
 
+CPPCHECK_SUPPRESS     := $(SYSCONFDIR)/cppcheck/cppcheck.suppress
+DEFAULT_CPPCHECKFLAGS := --enable=all
+DEFAULT_CPPCHECKFLAGS += --error-exitcode=2
+DEFAULT_CPPCHECKFLAgS += --inconclusive
+DEFAULT_CPPCHECKFLAGS += --quiet
+DEFAULT_CPPCHECKFLAGS += --suppressions-list=$(CPPCHECK_SUPPRESS)
+EXTRA_CPPCHECKFLAGS   :=
+CPPCHECKFLAGS         := $(DEFAULT_CPPCHECKFLAGS) $(EXTRA_CPPCHECKFLAGS)
+CPPCHECK              := cppcheck
+
 DEFAULT_CPPLINTFLAGS :=
 EXTRA_CPPLINTFLAGS   :=
 CPPLINTFLAGS         := $(DEFAULT_CPPLINTFLAGS) $(EXTRA_CPPLINTFLAGS)
@@ -40,11 +50,12 @@ IWYU              := iwyu
 
 _LINT_c_checkpatch := $(patsubst %.c,%.lint-c.checkpatch.touch,$(_UNITS_src_c))
 _LINT_c_clang-tidy := $(patsubst %.c,%.lint-c.clang-tidy.touch,$(_UNITS_src_c))
+_LINT_c_cppcheck   := $(patsubst %.c,%.lint-c.cppcheck.touch,$(_UNITS_src_c))
 _LINT_c_cpplint    := $(patsubst %.c,%.lint-c.cpplint.touch,$(_UNITS_src_c))
 _LINT_c_iwyu       := $(patsubst %.c,%.lint-c.iwyu.touch,$(_UNITS_src_c))
 
 
-linters_c := checkpatch clang-tidy cpplint iwyu
+linters_c := checkpatch clang-tidy cppcheck cpplint iwyu
 lint_c    := $(foreach x,$(linters_c),lint-c-$(x))
 
 
@@ -57,6 +68,11 @@ $(_LINT_c_clang-tidy): %.lint-c.clang-tidy.touch: %.c
 	$(info LINT (clang-tidy)	$@)
 	$(CLANG-TIDY) $(CLANG-TIDYFLAGS) $< -- $(CPPFLAGS) $(CFLAGS) 2>&1 \
 	| $(SED) '/generated\.$$/d'
+	touch $@
+
+$(_LINT_c_cppcheck): %.lint-c.cppcheck.touch: %.c
+	$(info LINT (cppcheck)	$@)
+	$(CPPCHECK) $(CPPCHECKFLAGS) $<
 	touch $@
 
 $(_LINT_c_cpplint): %.lint-c.cpplint.touch: %.c
