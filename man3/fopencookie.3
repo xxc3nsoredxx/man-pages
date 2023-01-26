@@ -445,6 +445,8 @@ main(int argc, char *argv[])
         printf("/%.*s/\en", (int) nread, buf);
     }
 
+    free(mycookie.buf);
+
     exit(EXIT_SUCCESS);
 }
 .EE
