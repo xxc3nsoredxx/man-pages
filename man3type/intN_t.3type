@@ -98,7 +98,7 @@ are only required in implementations that provide integer types with width 64;
 and all other types of this form are optional.
 .PP
 The macros
-.RB [ U ] INT \fIN\fP _WIDTH W
+.RB [ U ] INT \fIN\fP _WIDTH
 expand to the width in bits of these types
 .RI ( N ).
 .PP
