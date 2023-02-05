@@ -19,7 +19,7 @@ The
 .B st
 driver provides the interface to a variety of SCSI tape devices.
 Currently, the driver takes control of all detected devices of type
-\[lq]sequential-access\(rq.
+\[lq]sequential-access\[rq].
 The
 .B st
 driver uses major device number 9.
@@ -33,12 +33,12 @@ concatenated to the five lowermost bits to form the tape number.
 The minor numbers can be grouped into
 two sets of four numbers: the principal (auto-rewind) minor device numbers,
 .IR n ,
-and the \[lq]no-rewind\(rq device numbers,
+and the \[lq]no-rewind\[rq] device numbers,
 .RI ( n " + 128)."
 Devices opened using the principal device number will be sent a
 .B REWIND
 command when they are closed.
-Devices opened using the \[lq]no-rewind\(rq device number will not.
+Devices opened using the \[lq]no-rewind\[rq] device number will not.
 (Note that using an auto-rewind device for positioning the tape with,
 for instance, mt does not lead to the desired result: the tape is
 rewound after the mt command and the next command starts from the
@@ -755,7 +755,7 @@ found the drive with a tape in place and ready for operation.
 \fBGMT_D_1600\fP(\fIx\fP)
 .TQ
 \fBGMT_D_800\fP(\fIx\fP)
-This \[lq]generic\(rq status information reports the current
+This \[lq]generic\[rq] status information reports the current
 density setting for 9-track \(12" tape drives only.
 .TP
 \fBGMT_DR_OPEN\fP(\fIx\fP)
