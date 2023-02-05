@@ -599,8 +599,8 @@ The following shell session demonstrates the use of this program
 .RB "$" " cc \-o core_pattern_pipe_test core_pattern_pipe_test.c"
 .RB "$" " su"
 Password:
-.RB "#" " echo \(dq|$PWD/core_pattern_pipe_test %p \
-UID=%u GID=%g sig=%s\(dq > \e"
+.RB "#" " echo \[dq]|$PWD/core_pattern_pipe_test %p \
+UID=%u GID=%g sig=%s\[dq] > \e"
 .B "    /proc/sys/kernel/core_pattern"
 .RB "#" " exit"
 .RB "$" " sleep 100"

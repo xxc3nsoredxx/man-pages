@@ -53,8 +53,8 @@ BPF-HELPERS \- list of eBPF helper functions
 The extended Berkeley Packet Filter (eBPF) subsystem consists in programs
 written in a pseudo\-assembly language, then attached to one of the several
 kernel hooks and run in reaction of specific events. This framework differs
-from the older, \(dqclassic\(dq BPF (or \(dqcBPF\(dq) in several aspects, one of them being
-the ability to call special functions (or \(dqhelpers\(dq) from within a program.
+from the older, \[dq]classic\[dq] BPF (or \[dq]cBPF\[dq]) in several aspects, one of them being
+the ability to call special functions (or \[dq]helpers\[dq]) from within a program.
 These functions are restricted to a white\-list of helpers defined in the
 kernel.
 .sp
@@ -154,7 +154,7 @@ Current \fIktime\fP\&.
 .INDENT 7.0
 .TP
 .B Description
-This helper is a \(dqprintk()\-like\(dq facility for debugging. It
+This helper is a \[dq]printk()\-like\[dq] facility for debugging. It
 prints a message defined by format \fIfmt\fP (of size \fIfmt_size\fP)
 to file \fI/sys/kernel/debug/tracing/trace\fP from DebugFS, if
 available. It can take up to three additional \fBu64\fP
@@ -221,7 +221,7 @@ encounters an unknown specifier.
 Also, note that \fBbpf_trace_printk\fP() is slow, and should
 only be used for debugging purposes. For this reason, a notice
 block (spanning several lines) is printed to kernel logs and
-states that the helper should not be used \(dqfor production use\(dq
+states that the helper should not be used \[dq]for production use\[dq]
 the first time this helper is used (or more precisely, when
 \fBtrace_printk\fP() buffers are allocated). For passing values
 to user space, perf events should be preferred.
@@ -349,7 +349,7 @@ direct packet access.
 .INDENT 7.0
 .TP
 .B Description
-This special helper is used to trigger a \(dqtail call\(dq, or in
+This special helper is used to trigger a \[dq]tail call\[dq], or in
 other words, to jump into another eBPF program. The same stack
 frame is used (but values on stack and in registers for the
 caller are not accessible to the callee). This mechanism allows
@@ -471,7 +471,7 @@ only hold data for one version of cgroups at a time).
 .sp
 This helper is only available is the kernel was compiled with
 the \fBCONFIG_CGROUP_NET_CLASSID\fP configuration option set to
-\(dq\fBy\fP\(dq or to \(dq\fBm\fP\(dq.
+\[dq]\fBy\fP\[dq] or to \[dq]\fBm\fP\[dq].
 .TP
 .B Return
 The classid, or 0 for the default unconfigured classid.
@@ -528,7 +528,7 @@ The \fBstruct bpf_tunnel_key\fP is an object that generalizes the
 principal parameters used by various tunneling protocols into a
 single struct. This way, it can be used to easily make a
 decision based on the contents of the encapsulation header,
-\(dqsummarized\(dq in this struct. In particular, it holds the IP
+\[dq]summarized\[dq] in this struct. In particular, it holds the IP
 address of the remote end (IPv4 or IPv6, depending on the case)
 in \fIkey\fP\fB\->remote_ipv4\fP or \fIkey\fP\fB\->remote_ipv6\fP\&. Also,
 this struct exposes the \fIkey\fP\fB\->tunnel_id\fP, which is
@@ -561,9 +561,9 @@ return TC_ACT_OK;               // accept packet
 .UNINDENT
 .sp
 This interface can also be used with all encapsulation devices
-that can operate in \(dqcollect metadata\(dq mode: instead of having
-one network device per specific configuration, the \(dqcollect
-metadata\(dq mode only requires a single device where the
+that can operate in \[dq]collect metadata\[dq] mode: instead of having
+one network device per specific configuration, the \[dq]collect
+metadata\[dq] mode only requires a single device where the
 configuration can be extracted from this helper.
 .sp
 This can be used together with various tunnels such as VXLan,
@@ -774,7 +774,7 @@ the packet associated to \fIskb\fP, into the buffer pointed by
 \fIto\fP\&.
 .sp
 Since Linux 4.7, usage of this helper has mostly been replaced
-by \(dqdirect packet access\(dq, enabling packet data to be
+by \[dq]direct packet access\[dq], enabling packet data to be
 manipulated with \fIskb\fP\fB\->data\fP and \fIskb\fP\fB\->data_end\fP
 pointing respectively to the first byte of packet data and to
 the byte after the last byte of packet data. However, it
@@ -885,7 +885,7 @@ Retrieve tunnel options metadata for the packet associated to
 of \fIsize\fP\&.
 .sp
 This helper can be used with encapsulation devices that can
-operate in \(dqcollect metadata\(dq mode (please refer to the related
+operate in \[dq]collect metadata\[dq] mode (please refer to the related
 note in the description of \fBbpf_skb_get_tunnel_key\fP() for
 more details). A particular example where this can be used is
 in combination with the Geneve encapsulation protocol, where it
@@ -1889,7 +1889,7 @@ direct packet access.
 .TP
 .B Description
 Retrieve the XFRM state (IP transform framework, see also
-\fBip\-xfrm(8)\fP) at \fIindex\fP in XFRM \(dqsecurity path\(dq for \fIskb\fP\&.
+\fBip\-xfrm(8)\fP) at \fIindex\fP in XFRM \[dq]security path\[dq] for \fIskb\fP\&.
 .sp
 The retrieved value is stored in the \fBstruct bpf_xfrm_state\fP
 pointed by \fIxfrm_state\fP and of length \fIsize\fP\&.
@@ -1979,10 +1979,10 @@ Base offset to load data from is \fIskb\fP\[aq]s mac header.
 Base offset to load data from is \fIskb\fP\[aq]s network header.
 .UNINDENT
 .sp
-In general, \(dqdirect packet access\(dq is the preferred method to
+In general, \[dq]direct packet access\[dq] is the preferred method to
 access packet data, however, this helper is in particular useful
 in socket filters where \fIskb\fP\fB\->data\fP does not always point
-to the start of the mac header and where \(dqdirect packet access\(dq
+to the start of the mac header and where \[dq]direct packet access\[dq]
 is not available.
 .TP
 .B Return
@@ -2237,7 +2237,7 @@ the program.
 .sp
 This helper is only available is the kernel was compiled with
 the \fBCONFIG_BPF_LIRC_MODE2\fP configuration option set to
-\(dq\fBy\fP\(dq.
+\[dq]\fBy\fP\[dq].
 .TP
 .B Return
 0
@@ -2267,7 +2267,7 @@ The \fIprotocol\fP is the decoded protocol number (see
 .sp
 This helper is only available is the kernel was compiled with
 the \fBCONFIG_BPF_LIRC_MODE2\fP configuration option set to
-\(dq\fBy\fP\(dq.
+\[dq]\fBy\fP\[dq].
 .TP
 .B Return
 0
@@ -2546,7 +2546,7 @@ the program.
 .sp
 This helper is only available is the kernel was compiled with
 the \fBCONFIG_BPF_LIRC_MODE2\fP configuration option set to
-\(dq\fBy\fP\(dq.
+\[dq]\fBy\fP\[dq].
 .TP
 .B Return
 0
@@ -2734,9 +2734,9 @@ program buffer \fIbuf\fP of size \fIbuf_len\fP\&.
 .sp
 The buffer is always NUL terminated, unless it\[aq]s zero\-sized.
 .sp
-If \fIflags\fP is zero, full name (e.g. \(dqnet/ipv4/tcp_mem\(dq) is
+If \fIflags\fP is zero, full name (e.g. \[dq]net/ipv4/tcp_mem\[dq]) is
 copied. Use \fBBPF_F_SYSCTL_BASE_NAME\fP flag to copy base name
-only (e.g. \(dqtcp_mem\(dq).
+only (e.g. \[dq]tcp_mem\[dq]).
 .TP
 .B Return
 Number of character copied (not including the trailing NUL).
@@ -2880,7 +2880,7 @@ be a \fBBPF_MAP_TYPE_SK_STORAGE\fP also.
 .sp
 Underneath, the value is stored locally at \fIsk\fP instead of
 the \fImap\fP\&.  The \fImap\fP is used as the bpf\-local\-storage
-\(dqtype\(dq. The bpf\-local\-storage \(dqtype\(dq (i.e. the \fImap\fP) is
+\[dq]type\[dq]. The bpf\-local\-storage \[dq]type\[dq] (i.e. the \fImap\fP) is
 searched against all bpf\-local\-storages residing at \fIsk\fP\&.
 .sp
 \fIsk\fP is a kernel \fBstruct sock\fP pointer for LSM program.
@@ -3033,7 +3033,7 @@ get its length at runtime. See the following snippet:
 .sp
 .nf
 .ft C
-SEC(\(dqkprobe/sys_open\(dq)
+SEC(\[dq]kprobe/sys_open\[dq])
 void bpf_sys_open(struct pt_regs *ctx)
 {
         char buf[PATHLEN]; // PATHLEN is defined to 256
@@ -3662,12 +3662,12 @@ kind that it wants to search.
 .sp
 If the searching kind is an experimental kind
 (i.e. 253 or 254 according to RFC6994).  It also
-needs to specify the \(dqmagic\(dq which is either
+needs to specify the \[dq]magic\[dq] which is either
 2 bytes or 4 bytes.  It then also needs to
 specify the size of the magic by using
-the 2nd byte which is \(dqkind\-length\(dq of a TCP
-header option and the \(dqkind\-length\(dq also
-includes the first 2 bytes \(dqkind\(dq and \(dqkind\-length\(dq
+the 2nd byte which is \[dq]kind\-length\[dq] of a TCP
+header option and the \[dq]kind\-length\[dq] also
+includes the first 2 bytes \[dq]kind\[dq] and \[dq]kind\-length\[dq]
 itself as a normal TCP header option also does.
 .sp
 For example, to search experimental kind 254 with
@@ -3789,7 +3789,7 @@ be a \fBBPF_MAP_TYPE_INODE_STORAGE\fP\&.
 .sp
 Underneath, the value is stored locally at \fIinode\fP instead of
 the \fImap\fP\&.  The \fImap\fP is used as the bpf\-local\-storage
-\(dqtype\(dq. The bpf\-local\-storage \(dqtype\(dq (i.e. the \fImap\fP) is
+\[dq]type\[dq]. The bpf\-local\-storage \[dq]type\[dq] (i.e. the \fImap\fP) is
 searched against all bpf_local_storage residing at \fIinode\fP\&.
 .sp
 An optional \fIflags\fP (\fBBPF_LOCAL_STORAGE_GET_F_CREATE\fP) can be
@@ -4010,7 +4010,7 @@ be a \fBBPF_MAP_TYPE_TASK_STORAGE\fP\&.
 .sp
 Underneath, the value is stored locally at \fItask\fP instead of
 the \fImap\fP\&.  The \fImap\fP is used as the bpf\-local\-storage
-\(dqtype\(dq. The bpf\-local\-storage \(dqtype\(dq (i.e. the \fImap\fP) is
+\[dq]type\[dq]. The bpf\-local\-storage \[dq]type\[dq] (i.e. the \fImap\fP) is
 searched against all bpf_local_storage residing at \fItask\fP\&.
 .sp
 An optional \fIflags\fP (\fBBPF_LOCAL_STORAGE_GET_F_CREATE\fP) can be
@@ -4043,7 +4043,7 @@ Delete a bpf_local_storage from a \fItask\fP\&.
 .INDENT 7.0
 .TP
 .B Description
-Return a BTF pointer to the \(dqcurrent\(dq task.
+Return a BTF pointer to the \[dq]current\[dq] task.
 This pointer can also be used in helpers that accept an
 \fIARG_PTR_TO_BTF_ID\fP of type \fItask_struct\fP\&.
 .TP
@@ -5002,7 +5002,7 @@ available within the Linux kernel sources, at the following locations:
 eBPF programs can have an associated license, passed along with the bytecode
 instructions to the kernel when the programs are loaded. The format for that
 string is identical to the one in use for kernel modules (Dual licenses, such
-as \(dqDual BSD/GPL\(dq, may be used). Some helper functions are only accessible to
+as \[dq]Dual BSD/GPL\[dq], may be used). Some helper functions are only accessible to
 programs that are compatible with the GNU Privacy License (GPL).
 .sp
 In order to use such helpers, the eBPF program must be loaded with the correct
@@ -5014,7 +5014,7 @@ similar to the following:
 .sp
 .nf
 .ft C
-char ____license[] __attribute__((section(\(dqlicense\(dq), used)) = \(dqGPL\(dq;
+char ____license[] __attribute__((section(\[dq]license\[dq]), used)) = \[dq]GPL\[dq];
 .ft P
 .fi
 .UNINDENT

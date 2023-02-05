@@ -636,7 +636,7 @@ In the case of
 use of the
 .BR setgroups (2)
 system call must first be denied by writing
-.RI \(dq deny \(dq
+.RI \[dq] deny \[dq]
 to the
 .IR /proc/ pid /setgroups
 file (see below) before writing to
@@ -720,7 +720,7 @@ and
 .BR setgroups (2).
 .PP
 Writing
-.RI \(dq deny \(dq
+.RI \[dq] deny \[dq]
 to the
 .IR /proc/ pid /setgroups
 file before writing to
@@ -749,13 +749,13 @@ capability in the parent user namespace.
 The
 .IR /proc/ pid /setgroups
 file displays the string
-.RI \(dq allow \(dq
+.RI \[dq] allow \[dq]
 if processes in the user namespace that contains the process
 .I pid
 are permitted to employ the
 .BR setgroups (2)
 system call; it displays
-.RI \(dq deny \(dq
+.RI \[dq] deny \[dq]
 if
 .BR setgroups (2)
 is not permitted in that user namespace.
@@ -770,16 +770,16 @@ has not yet been set.
 A privileged process (one with the
 .B CAP_SYS_ADMIN
 capability in the namespace) may write either of the strings
-.RI \(dq allow \(dq
+.RI \[dq] allow \[dq]
 or
-.RI \(dq deny \(dq
+.RI \[dq] deny \[dq]
 to this file
 .I before
 writing a group ID mapping
 for this user namespace to the file
 .IR /proc/ pid /gid_map .
 Writing the string
-.RI \(dq deny \(dq
+.RI \[dq] deny \[dq]
 prevents any process in the user namespace from employing
 .BR setgroups (2).
 .PP
@@ -803,7 +803,7 @@ being disallowed to
 being allowed.
 .PP
 The default value of this file in the initial user namespace is
-.RI \(dq allow \(dq.
+.RI \[dq] allow \[dq].
 .PP
 Once
 .IR /proc/ pid /gid_map
@@ -814,7 +814,7 @@ in the user namespace),
 it is no longer possible to disallow
 .BR setgroups (2)
 by writing
-.RI \(dq deny \(dq
+.RI \[dq] deny \[dq]
 to
 .IR /proc/ pid /setgroups
 (the write fails with the error
@@ -827,11 +827,11 @@ setting from its parent.
 If the
 .I setgroups
 file has the value
-.RI \(dq deny \(dq,
+.RI \[dq] deny \[dq],
 then the
 .BR setgroups (2)
 system call can't subsequently be reenabled (by writing
-.RI \(dq allow \(dq
+.RI \[dq] allow \[dq]
 to the file) in this user namespace.
 (Attempts to do so fail with the error
 .BR EPERM .)
