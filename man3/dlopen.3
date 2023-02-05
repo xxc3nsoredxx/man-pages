@@ -68,32 +68,32 @@ Otherwise, the dynamic linker searches for the object as follows
 (see
 .BR ld.so (8)
 for further details):
-.IP \(bu 3
+.IP \[bu] 3
 (ELF only) If the calling object
 (i.e., the shared library or executable from which
 .BR dlopen ()
 is called)
 contains a DT_RPATH tag, and does not contain a DT_RUNPATH tag,
 then the directories listed in the DT_RPATH tag are searched.
-.IP \(bu
+.IP \[bu]
 If, at the time that the program was started, the environment variable
 .B LD_LIBRARY_PATH
 was defined to contain a colon-separated list of directories,
 then these are searched.
 (As a security measure, this variable is ignored for set-user-ID and
 set-group-ID programs.)
-.IP \(bu
+.IP \[bu]
 (ELF only) If the calling object
 contains a DT_RUNPATH tag, then the directories listed in that tag
 are searched.
-.IP \(bu
+.IP \[bu]
 The cache file
 .I /etc/ld.so.cache
 (maintained by
 .BR ldconfig (8))
 is checked to see whether it contains an entry for
 .IR filename .
-.IP \(bu
+.IP \[bu]
 The directories
 .I /lib
 and

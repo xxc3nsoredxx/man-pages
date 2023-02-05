@@ -60,14 +60,14 @@ instead of
 Furthermore, since glibc 2.24, glibc deprecates
 .BR readdir_r ().
 The reasons are as follows:
-.IP \(bu 3
+.IP \[bu] 3
 On systems where
 .B NAME_MAX
 is undefined, calling
 .BR readdir_r ()
 may be unsafe because the interface does not allow the caller to specify
 the length of the buffer used for the returned directory entry.
-.IP \(bu
+.IP \[bu]
 On some systems,
 .BR readdir_r ()
 can't read directory entries with very long names.
@@ -81,7 +81,7 @@ On some other systems,
 may return a success status, but the returned
 .I d_name
 field may not be null terminated or may be truncated.
-.IP \(bu
+.IP \[bu]
 In the current POSIX.1 specification (POSIX.1-2008),
 .BR readdir (3)
 is not required to be thread-safe.
@@ -98,7 +98,7 @@ using
 with external synchronization is still preferable to the use of
 .BR readdir_r (),
 for the reasons given in the points above.
-.IP \(bu
+.IP \[bu]
 It is expected that a future version of POSIX.1
 .\" FIXME .
 .\" http://www.austingroupbugs.net/view.php?id=696

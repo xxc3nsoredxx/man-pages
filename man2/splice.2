@@ -35,13 +35,13 @@ The following semantics apply for
 .I fd_in
 and
 .IR off_in :
-.IP \(bu 3
+.IP \[bu] 3
 If
 .I fd_in
 refers to a pipe, then
 .I off_in
 must be NULL.
-.IP \(bu
+.IP \[bu]
 If
 .I fd_in
 does not refer to a pipe and
@@ -50,7 +50,7 @@ is NULL, then bytes are read from
 .I fd_in
 starting from the file offset,
 and the file offset is adjusted appropriately.
-.IP \(bu
+.IP \[bu]
 If
 .I fd_in
 does not refer to a pipe and

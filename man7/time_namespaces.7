@@ -8,7 +8,7 @@
 time_namespaces \- overview of Linux time namespaces
 .SH DESCRIPTION
 Time namespaces virtualize the values of two system clocks:
-.IP \(bu 3
+.IP \[bu] 3
 .B CLOCK_MONOTONIC
 (and likewise
 .B CLOCK_MONOTONIC_COARSE
@@ -16,7 +16,7 @@ and
 .BR CLOCK_MONOTONIC_RAW ),
 a nonsettable clock that represents monotonic time  since\[em]as
 described  by  POSIX\[em]"some  unspecified  point in the past".
-.IP \(bu
+.IP \[bu]
 .B CLOCK_BOOTTIME
 (and likewise
 .BR CLOCK_BOOTTIME_ALARM ),
@@ -147,11 +147,11 @@ An
 value is out of range.
 In particular;
 .RS
-.IP \(bu 3
+.IP \[bu] 3
 .I offset-secs
 can't be set to a value which would make the current
 time on the corresponding clock inside the namespace a negative value; and
-.IP \(bu
+.IP \[bu]
 .I offset-secs
 can't be set to a value such that the time on the corresponding clock
 inside the namespace would exceed half of the value of the kernel constant

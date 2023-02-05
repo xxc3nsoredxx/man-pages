@@ -79,7 +79,7 @@ number of bytes written and
 .I *src
 by one.
 The conversion can stop for three reasons:
-.IP \(bu 3
+.IP \[bu] 3
 A wide character has been encountered that can not be represented as a
 multibyte sequence (according to the current locale).
 In this case,
@@ -91,7 +91,7 @@ and
 .I errno
 is set to
 .BR EILSEQ .
-.IP \(bu
+.IP \[bu]
 .I nwc
 wide characters have been
 converted without encountering a null wide character (L\[aq]\e0\[aq]),
@@ -103,7 +103,7 @@ to the next wide character to be converted, and the number of bytes written
 to
 .I dest
 is returned.
-.IP \(bu
+.IP \[bu]
 The wide-character string has been completely converted, including the
 terminating null wide character (which has the side effect of bringing back
 .I *ps

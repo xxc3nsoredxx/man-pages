@@ -108,18 +108,18 @@ that can be used to manipulate and inspect signal sets, see
 In the absence of
 .BR pthread_attr_setsigmask_np ()
 it is possible to create a thread with a desired signal mask as follows:
-.IP \(bu 3
+.IP \[bu] 3
 The creating thread uses
 .BR pthread_sigmask (3)
 to save its current signal mask and set its mask to block all signals.
-.IP \(bu
+.IP \[bu]
 The new thread is then created using
 .BR pthread_create ();
 the new thread will inherit the creating thread's signal mask.
-.IP \(bu
+.IP \[bu]
 The new thread sets its signal mask to the desired value using
 .BR pthread_sigmask (3).
-.IP \(bu
+.IP \[bu]
 The creating thread restores its signal mask to the original value.
 .PP
 Following the above steps,

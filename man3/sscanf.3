@@ -105,17 +105,17 @@ meaning that the input was inappropriate (see below).
 .PP
 A directive is one of the following:
 .TP
-\(bu
+\[bu]
 A sequence of white-space characters (space, tab, newline, etc.; see
 .BR isspace (3)).
 This directive matches any amount of white space,
 including none, in the input.
 .TP
-\(bu
+\[bu]
 An ordinary character (i.e., one other than white space or \[aq]%\[aq]).
 This character must exactly match the next character of input.
 .TP
-\(bu
+\[bu]
 A conversion specification,
 which commences with a \[aq]%\[aq] (percent) character.
 A sequence of characters from the input is converted according to
@@ -134,7 +134,7 @@ begins with either the character \[aq]%\[aq] or the character sequence
 "\fB%\fP\fIn\fP\fB$\fP"
 (see below for the distinction) followed by:
 .TP
-\(bu
+\[bu]
 An optional \[aq]*\[aq] assignment-suppression character:
 .BR sscanf ()
 reads input as directed by the conversion specification,
@@ -145,7 +145,7 @@ argument is required, and this specification is not
 included in the count of successful assignments returned by
 .BR scanf ().
 .TP
-\(bu
+\[bu]
 For decimal conversions, an optional quote character (\[aq]).
 This specifies that the input number may include thousands'
 separators as defined by the
@@ -156,7 +156,7 @@ category of the current locale.
 The quote character may precede or follow the \[aq]*\[aq]
 assignment-suppression character.
 .TP
-\(bu
+\[bu]
 An optional \[aq]m\[aq] character.
 This is used with string conversions
 .RI ( %s ,
@@ -175,7 +175,7 @@ The caller should subsequently
 .BR free (3)
 this buffer when it is no longer required.
 .TP
-\(bu
+\[bu]
 An optional decimal integer which specifies the
 .IR "maximum field width" .
 Reading of characters stops either when this maximum is reached or
@@ -187,7 +187,7 @@ String input conversions store a terminating null byte (\[aq]\e0\[aq])
 to mark the end of the input;
 the maximum field width does not include this terminator.
 .TP
-\(bu
+\[bu]
 An optional
 .IR "type modifier character" .
 For example, the
@@ -201,7 +201,7 @@ argument refers to a
 rather than a pointer to an
 .IR int .
 .TP
-\(bu
+\[bu]
 A
 .I "conversion specifier"
 that specifies the type of input conversion to be performed.
@@ -641,12 +641,12 @@ As well as being standardized by POSIX, the
 modifier has the following further advantages over
 the use of
 .BR a :
-.IP \(bu 3
+.IP \[bu] 3
 It may also be applied to
 .B %c
 conversion specifiers (e.g.,
 .BR %3mc ).
-.IP \(bu
+.IP \[bu]
 It avoids ambiguity with respect to the
 .B %a
 floating-point conversion specifier (and is unaffected by

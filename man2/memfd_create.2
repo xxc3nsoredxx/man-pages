@@ -297,7 +297,7 @@ A second process obtains a file descriptor for the
 file and maps it.
 Among the possible ways in which this could happen are the following:
 .RS
-.IP \(bu 3
+.IP \[bu] 3
 The process that called
 .BR memfd_create ()
 could transfer the resulting file descriptor to the second process
@@ -307,7 +307,7 @@ and
 .BR cmsg (3)).
 The second process then maps the file using
 .BR mmap (2).
-.IP \(bu
+.IP \[bu]
 The second process is created via
 .BR fork (2)
 and thus automatically inherits the file descriptor and mapping.
@@ -315,7 +315,7 @@ and thus automatically inherits the file descriptor and mapping.
 there is a natural trust relationship between the two processes,
 since they are running under the same user ID.
 Therefore, file sealing would not normally be necessary.)
-.IP \(bu
+.IP \[bu]
 The second process opens the file
 .IR /proc/<pid>/fd/<fd> ,
 where

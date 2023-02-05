@@ -23,11 +23,11 @@ system call allows the calling thread to move into different namespaces.
 The
 .I fd
 argument is one of the following:
-.IP \(bu 3
+.IP \[bu] 3
 a file descriptor referring to one of the magic links in a
 .IR /proc/ pid /ns/
 directory (or a bind mount to such a link);
-.IP \(bu
+.IP \[bu]
 a PID file descriptor (see
 .BR pidfd_open (2)).
 .PP

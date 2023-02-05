@@ -299,25 +299,25 @@ the value of the
 attribute.
 .PP
 Please consider the following advice carefully:
-.IP \(bu 3
+.IP \[bu] 3
 If your application will make a second request for the same name,
 after more than 1 TTL but before
 .B reload\-count
 TTLs,
 and is sensitive to the latency of a cache miss,
 then reloading may be a good idea for you.
-.IP \(bu
+.IP \[bu]
 If your name service is configured to return very short TTLs,
 and your applications only make requests rarely under normal circumstances,
 then reloading may result in additional load on your backing name service
 without any benefit to applications,
 which is probably a bad idea for you.
-.IP \(bu
+.IP \[bu]
 If your name service capacity is limited,
 reloading may have the surprising effect of
 increasing load on your name service instead of reducing it,
 and may be a bad idea for you.
-.IP \(bu
+.IP \[bu]
 Setting
 .B reload\-count
 to

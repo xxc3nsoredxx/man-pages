@@ -77,7 +77,7 @@ is as follows:
 The target establishes a seccomp filter in the usual manner,
 but with two differences:
 .RS
-.IP \(bu 3
+.IP \[bu] 3
 The
 .BR seccomp (2)
 .I flags
@@ -101,7 +101,7 @@ Only one "listening" seccomp filter can be installed for a thread.
 .\" suddenly it might break if a container manager is trying to listen to it
 .\" too, etc. I expect it won't be needed soon, but I do think it'll change.
 .\"
-.IP \(bu
+.IP \[bu]
 In cases where it is appropriate, the seccomp filter returns the action value
 .BR SECCOMP_RET_USER_NOTIF .
 This return value will trigger a notification event.
@@ -336,12 +336,12 @@ This is a cookie for the notification.
 Each such cookie is guaranteed to be unique for the corresponding
 seccomp filter.
 .RS
-.IP \(bu 3
+.IP \[bu] 3
 The cookie can be used with the
 .B SECCOMP_IOCTL_NOTIF_ID_VALID
 .BR ioctl (2)
 operation described below.
-.IP \(bu
+.IP \[bu]
 When returning a notification response to the kernel,
 the supervisor must include the cookie value in the
 .I seccomp_notif_resp
@@ -539,7 +539,7 @@ Tell the kernel to execute the target's system call.
 .RE
 .PP
 Two kinds of response are possible:
-.IP \(bu 3
+.IP \[bu] 3
 A response to the kernel telling it to execute the
 target's system call.
 In this case, the
@@ -562,7 +562,7 @@ be executed normally in the target.
 The
 .B SECCOMP_USER_NOTIF_FLAG_CONTINUE
 flag should be used with caution; see NOTES.
-.IP \(bu
+.IP \[bu]
 A spoofed return value for the target's system call.
 In this case, the kernel does not execute the target's system call,
 instead causing the system call to return a spoofed value as specified by
@@ -906,7 +906,7 @@ flag can be monitored using
 and
 .BR select (2).
 These interfaces indicate that the file descriptor is ready as follows:
-.IP \(bu 3
+.IP \[bu] 3
 When a notification is pending,
 these interfaces indicate that the file descriptor is readable.
 Following such an indication, a subsequent
@@ -917,7 +917,7 @@ or else failing with the error
 .B EINTR
 if the target has been killed by a signal or its system call
 has been interrupted by a signal handler.
-.IP \(bu
+.IP \[bu]
 After the notification has been received (i.e., by the
 .B SECCOMP_IOCTL_NOTIF_RECV
 .BR ioctl (2)
@@ -926,7 +926,7 @@ meaning that a notification response can be sent using the
 .B SECCOMP_IOCTL_NOTIF_SEND
 .BR ioctl (2)
 operation.
-.IP \(bu
+.IP \[bu]
 After the last thread using the filter has terminated and been reaped using
 .BR waitpid (2)
 (or similar),
@@ -1205,7 +1205,7 @@ the supervisor examines the memory of the target process (using
 to discover the pathname argument that was supplied to the
 .BR mkdir (2)
 call, and performs one of the following actions:
-.IP \(bu 3
+.IP \[bu] 3
 If the pathname begins with the prefix "/tmp/",
 then the supervisor attempts to create the specified directory,
 and then spoofs a return for the target process based on the return
@@ -1214,7 +1214,7 @@ value of the supervisor's
 call.
 In the event that that call succeeds,
 the spoofed success return value is the length of the pathname.
-.IP \(bu
+.IP \[bu]
 If the pathname begins with "./" (i.e., it is a relative pathname),
 the supervisor sends a
 .B SECCOMP_USER_NOTIF_FLAG_CONTINUE
@@ -1222,7 +1222,7 @@ response to the kernel to say that the kernel should execute
 the target process's
 .BR mkdir (2)
 call.
-.IP \(bu
+.IP \[bu]
 If the pathname begins with some other prefix,
 the supervisor spoofs an error return for the target process,
 so that the target process's

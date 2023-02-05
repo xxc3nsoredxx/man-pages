@@ -886,7 +886,7 @@ the nonrewind SCSI tape devices
 .\" Several other
 .\" people have also contributed to the driver.
 .SH NOTES
-.IP \(bu 3
+.IP \[bu] 3
 When exchanging data between systems, both systems have to agree on
 the physical tape block size.
 The parameters of a drive after startup
@@ -906,26 +906,26 @@ exchanging data with a foreign system.
 The drawback of
 this is that a fairly large tape block size has to be used to get
 acceptable data transfer rates on the SCSI bus.
-.IP \(bu
+.IP \[bu]
 Many programs (e.g.,
 .BR tar (1))
 allow the user to specify the blocking
 factor on the command line.
 Note that this determines the physical block
 size on tape only in variable-block mode.
-.IP \(bu
+.IP \[bu]
 In order to use SCSI tape drives, the basic SCSI driver,
 a SCSI-adapter driver and the SCSI tape driver must be either
 configured into the kernel or loaded as modules.
 If the SCSI-tape
 driver is not present, the drive is recognized but the tape support
 described in this page is not available.
-.IP \(bu
+.IP \[bu]
 The driver writes error messages to the console/log.
 The SENSE
 codes written into some messages are automatically translated to text
 if verbose SCSI messages are enabled in kernel configuration.
-.IP \(bu
+.IP \[bu]
 The driver's internal buffering allows good throughput in fixed-block
 mode also with small
 .BR read (2)

@@ -368,22 +368,22 @@ is a more portable interface for performing the same task as
 .BR adjtimex ().
 Other than the following points, it is identical to
 .BR adjtimex ():
-.IP \(bu 3
+.IP \[bu] 3
 The constants used in
 .I modes
 are prefixed with "MOD_" rather than "ADJ_", and have the same suffixes (thus,
 .BR MOD_OFFSET ,
 .BR MOD_FREQUENCY ,
 and so on), other than the exceptions noted in the following points.
-.IP \(bu
+.IP \[bu]
 .B MOD_CLKA
 is the synonym for
 .BR ADJ_OFFSET_SINGLESHOT .
-.IP \(bu
+.IP \[bu]
 .B MOD_CLKB
 is the synonym for
 .BR ADJ_TICK .
-.IP \(bu
+.IP \[bu]
 The is no synonym for
 .BR ADJ_OFFSET_SS_READ ,
 which is not described in the KAPI.
@@ -420,25 +420,25 @@ flags.
 The system clock is not synchronized to a reliable server.
 This value is returned when any of the following holds true:
 .RS
-.IP \(bu 3
+.IP \[bu] 3
 Either
 .B STA_UNSYNC
 or
 .B STA_CLOCKERR
 is set.
-.IP \(bu
+.IP \[bu]
 .B STA_PPSSIGNAL
 is clear and either
 .B STA_PPSFREQ
 or
 .B STA_PPSTIME
 is set.
-.IP \(bu
+.IP \[bu]
 .B STA_PPSTIME
 and
 .B STA_PPSJITTER
 are both set.
-.IP \(bu
+.IP \[bu]
 .B STA_PPSFREQ
 is set and either
 .B STA_PPSWANDER

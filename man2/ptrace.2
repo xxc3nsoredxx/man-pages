@@ -2189,7 +2189,7 @@ at completion of the call, it appears as though the
 occurred in the thread group leader, regardless of which thread did the
 .BR execve (2).)
 This resetting of the thread ID looks very confusing to tracers:
-.IP \(bu 3
+.IP \[bu] 3
 All other threads stop in
 .B PTRACE_EVENT_EXIT
 stop, if the
@@ -2199,7 +2199,7 @@ Then all other threads except the thread group leader report
 death as if they exited via
 .BR _exit (2)
 with exit code 0.
-.IP \(bu
+.IP \[bu]
 The execing tracee changes its thread ID while it is in the
 .BR execve (2).
 (Remember, under ptrace, the "pid" returned from
@@ -2207,13 +2207,13 @@ The execing tracee changes its thread ID while it is in the
 or fed into ptrace calls, is the tracee's thread ID.)
 That is, the tracee's thread ID is reset to be the same as its process ID,
 which is the same as the thread group leader's thread ID.
-.IP \(bu
+.IP \[bu]
 Then a
 .B PTRACE_EVENT_EXEC
 stop happens, if the
 .B PTRACE_O_TRACEEXEC
 option was turned on.
-.IP \(bu
+.IP \[bu]
 If the thread group leader has reported its
 .B PTRACE_EVENT_EXIT
 stop by this time,
@@ -2353,7 +2353,7 @@ Many of these bugs have been fixed, but as of Linux 2.6.38 several still
 exist; see BUGS below.
 .PP
 As of Linux 2.6.38, the following is believed to work correctly:
-.IP \(bu 3
+.IP \[bu] 3
 exit/death by signal is reported first to the tracer, then,
 when the tracer consumes the
 .BR waitpid (2)
@@ -2625,13 +2625,13 @@ Deny access if
 .I neither
 of the following is true:
 .RS
-.IP \(bu 3
+.IP \[bu] 3
 The real, effective, and saved-set user IDs of the target
 match the caller's user ID,
 .I and
 the real, effective, and saved-set group IDs of the target
 match the caller's group ID.
-.IP \(bu
+.IP \[bu]
 The caller has the
 .B CAP_SYS_PTRACE
 capability in the user namespace of the target.
@@ -2672,12 +2672,12 @@ Deny access if
 .I neither
 of the following is true:
 .RS
-.IP \(bu 3
+.IP \[bu] 3
 The caller and the target process are in the same user namespace,
 and the caller's capabilities are a superset of the target process's
 .I permitted
 capabilities.
-.IP \(bu
+.IP \[bu]
 The caller has the
 .B CAP_SYS_PTRACE
 capability in the target process's user namespace.
@@ -2715,14 +2715,14 @@ to gain additional credentials that may exist in memory
 and thus expand the scope of the attack.
 .PP
 More precisely, the Yama LSM limits two types of operations:
-.IP \(bu 3
+.IP \[bu] 3
 Any operation that performs a ptrace access mode
 .B PTRACE_MODE_ATTACH
 check\[em]for example,
 .BR ptrace ()
 .BR PTRACE_ATTACH .
 (See the "Ptrace access mode checking" discussion above.)
-.IP \(bu
+.IP \[bu]
 .BR ptrace ()
 .BR PTRACE_TRACEME .
 .PP

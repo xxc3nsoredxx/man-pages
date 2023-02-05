@@ -519,17 +519,17 @@ always return zero, as represented by the ASCII string "0\en".
 See the \fBWARNINGS\fR section, below.
 .PP
 A per-cpuset, running average is employed for the following reasons:
-.IP \(bu 3
+.IP \[bu] 3
 Because this meter is per-cpuset rather than per-process or per virtual
 memory region, the system load imposed by a batch scheduler monitoring
 this metric is sharply reduced on large systems, because a scan of
 the tasklist can be avoided on each set of queries.
-.IP \(bu
+.IP \[bu]
 Because this meter is a running average rather than an accumulating
 counter, a batch scheduler can detect memory pressure with a
 single read, instead of having to read and accumulate results
 for a period of time.
-.IP \(bu
+.IP \[bu]
 Because this meter is per-cpuset rather than per-process,
 the batch scheduler can obtain the key information\[em]memory
 pressure in a cpuset\[em]with a single read, rather than having to
@@ -629,11 +629,11 @@ Cpuset-specified memory spreading behaves similarly to what is known
 .PP
 Cpuset-specified memory spreading can provide substantial performance
 improvements for jobs that:
-.IP \(bu 3
+.IP \[bu] 3
 need to place thread-local data on
 memory nodes close to the CPUs which are running the threads that most
 frequently access that data; but also
-.IP \(bu
+.IP \[bu]
 need to access large filesystem data sets that must to be spread
 across the several nodes in the job's cpuset in order to fit.
 .PP
@@ -705,11 +705,11 @@ marked isolated using the kernel boot time "isolcpus=" argument.
 .PP
 This default load balancing across all CPUs is not well suited to
 the following two situations:
-.IP \(bu 3
+.IP \[bu] 3
 On large systems, load balancing across many CPUs is expensive.
 If the system is managed using cpusets to place independent jobs
 on separate sets of CPUs, full load balancing is unnecessary.
-.IP \(bu
+.IP \[bu]
 Systems supporting real-time on some CPUs need to minimize
 system overhead on those CPUs, including avoiding process load
 balancing if that is not needed.
@@ -911,22 +911,22 @@ Examples of the \fBList Format\fR:
 .\" ================== RULES ==================
 .SH RULES
 The following rules apply to each cpuset:
-.IP \(bu 3
+.IP \[bu] 3
 Its CPUs and memory nodes must be a (possibly equal)
 subset of its parent's.
-.IP \(bu
+.IP \[bu]
 It can be marked
 .I cpu_exclusive
 only if its parent is.
-.IP \(bu
+.IP \[bu]
 It can be marked
 .I mem_exclusive
 only if its parent is.
-.IP \(bu
+.IP \[bu]
 If it is
 .IR cpu_exclusive ,
 its CPUs may not overlap any sibling.
-.IP \(bu
+.IP \[bu]
 If it is
 .IR mem_exclusive ,
 its memory nodes may not overlap any sibling.

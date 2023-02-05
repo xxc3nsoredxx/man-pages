@@ -25,17 +25,17 @@ The handlers are executed in the context of the thread that calls
 .BR fork (2).
 .PP
 Three kinds of handler can be registered:
-.IP \(bu 3
+.IP \[bu] 3
 .I prepare
 specifies a handler that is executed in the parent process before
 .BR fork (2)
 processing starts.
-.IP \(bu
+.IP \[bu]
 .I parent
 specifies a handler that is executed in the parent process after
 .BR fork (2)
 processing completes.
-.IP \(bu
+.IP \[bu]
 .I child
 specifies a handler that is executed in the child process after
 .BR fork (2)

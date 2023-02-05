@@ -168,13 +168,13 @@ Use of cgroup namespaces requires a kernel that is configured with the
 option.
 .PP
 The virtualization provided by cgroup namespaces serves a number of purposes:
-.IP \(bu 3
+.IP \[bu] 3
 It prevents information leaks whereby cgroup directory paths outside of
 a container would otherwise be visible to processes in the container.
 Such leakages could, for example,
 reveal information about the container framework
 to containerized applications.
-.IP \(bu
+.IP \[bu]
 It eases tasks such as container migration.
 The virtualization provided by cgroup namespaces
 allows containers to be isolated from knowledge of
@@ -184,17 +184,17 @@ Without such isolation, the full cgroup pathnames (displayed in
 would need to be replicated on the target system when migrating a container;
 those pathnames would also need to be unique,
 so that they don't conflict with other pathnames on the target system.
-.IP \(bu
+.IP \[bu]
 It allows better confinement of containerized processes,
 because it is possible to mount the container's cgroup filesystems such that
 the container processes can't gain access to ancestor cgroup directories.
 Consider, for example, the following scenario:
 .RS
-.IP \(bu 3
+.IP \[bu] 3
 We have a cgroup directory,
 .IR /cg/1 ,
 that is owned by user ID 9000.
-.IP \(bu
+.IP \[bu]
 We have a process,
 .IR X ,
 also owned by user ID 9000,

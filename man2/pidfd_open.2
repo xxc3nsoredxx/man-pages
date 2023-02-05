@@ -107,14 +107,14 @@ call, its PID will not have been recycled and the returned
 file descriptor will refer to the resulting zombie process.
 Note, however, that this is guaranteed only if the following
 conditions hold true:
-.IP \(bu 3
+.IP \[bu] 3
 the disposition of
 .B SIGCHLD
 has not been explicitly set to
 .B SIG_IGN
 (see
 .BR sigaction (2));
-.IP \(bu
+.IP \[bu]
 the
 .B SA_NOCLDWAIT
 flag was not specified while establishing a handler for
@@ -124,7 +124,7 @@ or while setting the disposition of that signal to
 (see
 .BR sigaction (2));
 and
-.IP \(bu
+.IP \[bu]
 the zombie process was not reaped elsewhere in the program
 (e.g., either by an asynchronously executed signal handler or by
 .BR wait (2)
@@ -146,12 +146,12 @@ A PID file descriptor returned by
 with the
 .B CLONE_PID
 flag) can be used for the following purposes:
-.IP \(bu 3
+.IP \[bu] 3
 The
 .BR pidfd_send_signal (2)
 system call can be used to send a signal to the process referred to by
 a PID file descriptor.
-.IP \(bu
+.IP \[bu]
 A PID file descriptor can be monitored using
 .BR poll (2),
 .BR select (2),
@@ -164,21 +164,21 @@ nothing can be read from the file descriptor
 .RB ( read (2)
 on the file descriptor fails with the error
 .BR EINVAL ).
-.IP \(bu
+.IP \[bu]
 If the PID file descriptor refers to a child of the calling process,
 then it can be waited on using
 .BR waitid (2).
-.IP \(bu
+.IP \[bu]
 The
 .BR pidfd_getfd (2)
 system call can be used to obtain a duplicate of a file descriptor
 of another process referred to by a PID file descriptor.
-.IP \(bu
+.IP \[bu]
 A PID file descriptor can be used as the argument of
 .BR setns (2)
 in order to move into one or more of the same namespaces as the process
 referred to by the file descriptor.
-.IP \(bu
+.IP \[bu]
 A PID file descriptor can be used as the argument of
 .BR process_madvise (2)
 in order to provide advice on the memory usage patterns of the process

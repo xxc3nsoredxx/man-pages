@@ -259,10 +259,10 @@ is 0) timeout packages in
 .BR LIRC_MODE_MODE2 .
 The behavior of this operation has varied across kernel versions:
 .RS
-.IP \(bu 3
+.IP \[bu] 3
 Since Linux 5.17:
 timeout packages are always enabled and this ioctl is a no-op.
-.IP \(bu
+.IP \[bu]
 Since Linux 4.16:
 timeout packages are enabled by default.
 Each time the
@@ -271,7 +271,7 @@ device is opened, the
 .B LIRC_SET_REC_TIMEOUT
 operation can be used to disable (and, if desired, to later re-enable)
 the timeout on the file descriptor.
-.IP \(bu
+.IP \[bu]
 In Linux 4.15 and earlier:
 timeout packages are disabled by default, and enabling them (via
 .BR LIRC_SET_REC_TIMEOUT )

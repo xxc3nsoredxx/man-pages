@@ -113,7 +113,7 @@ beginning with the keyring set via the
 .B KEYCTL_SET_REQKEY_KEYRING
 operation and continuing in the order shown below
 until it finds the first keyring that exists:
-.IP \(bu 3
+.IP \[bu] 3
 .\" 8bbf4976b59fc9fc2861e79cab7beb3f6d647640
 The requestor keyring
 .RB ( KEY_REQKEY_DEFL_REQUESTOR_KEYRING ,
@@ -123,28 +123,28 @@ since Linux 2.6.29).
 .\" If I understand correctly, we'll only get here if
 .\" 'dest_keyring' is zero, in which case KEY_REQKEY_DEFL_REQUESTOR_KEYRING
 .\" won't refer to a keyring. Have I misunderstood?
-.IP \(bu
+.IP \[bu]
 The thread-specific keyring
 .RB ( KEY_REQKEY_DEFL_THREAD_KEYRING ;
 see
 .BR thread\-keyring (7)).
-.IP \(bu
+.IP \[bu]
 The process-specific keyring
 .RB ( KEY_REQKEY_DEFL_PROCESS_KEYRING ;
 see
 .BR process\-keyring (7)).
-.IP \(bu
+.IP \[bu]
 The session-specific keyring
 .RB ( KEY_REQKEY_DEFL_SESSION_KEYRING ;
 see
 .BR session\-keyring (7)).
-.IP \(bu
+.IP \[bu]
 The session keyring for the process's user ID
 .RB ( KEY_REQKEY_DEFL_USER_SESSION_KEYRING ;
 see
 .BR user\-session\-keyring (7)).
 This keyring is expected to always exist.
-.IP \(bu
+.IP \[bu]
 The UID-specific keyring
 .RB ( KEY_REQKEY_DEFL_USER_KEYRING ;
 see
@@ -225,13 +225,13 @@ the context from which associated key requests may be satisfied.
 .IP
 The authorization key is constructed as follows:
 .RS
-.IP \(bu 3
+.IP \[bu] 3
 The key type is
 .IR """.request_key_auth""" .
-.IP \(bu
+.IP \[bu]
 The key's UID and GID are the same as the corresponding filesystem IDs
 of the requesting process.
-.IP \(bu
+.IP \[bu]
 The key grants
 .IR view ,
 .IR read ,
@@ -240,14 +240,14 @@ and
 permissions to the key possessor as well as
 .I view
 permission for the key user.
-.IP \(bu
+.IP \[bu]
 The description (name) of the key is the hexadecimal
 string representing the ID of the key that is to be instantiated
 in the requesting program.
-.IP \(bu
+.IP \[bu]
 The payload of the key is taken from the data specified in
 .IR callout_info .
-.IP \(bu
+.IP \[bu]
 Internally, the kernel also records the PID of the process that called
 .BR request_key ().
 .RE
@@ -298,14 +298,14 @@ which are shown as hexadecimal values).
 .IP (4)
 The program spawned in the previous step:
 .RS
-.IP \(bu 3
+.IP \[bu] 3
 Assumes the authority to instantiate the key U using the
 .BR keyctl (2)
 .B KEYCTL_ASSUME_AUTHORITY
 operation (typically via the
 .BR keyctl_assume_authority (3)
 function).
-.IP \(bu
+.IP \[bu]
 Obtains the callout data from the payload of the authorization key V
 (using the
 .BR keyctl (2)
@@ -314,7 +314,7 @@ operation (or, more commonly, the
 .BR keyctl_read (3)
 function) with a key ID value of
 .BR KEY_SPEC_REQKEY_AUTH_KEY ).
-.IP \(bu
+.IP \[bu]
 Instantiates the key
 (or execs another program that performs that task),
 specifying the payload and destination keyring.

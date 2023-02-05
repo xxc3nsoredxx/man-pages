@@ -69,16 +69,16 @@ column indicates the kernel version
 for those system calls that were new in Linux 2.2,
 or have appeared since that kernel version.
 Note the following points:
-.IP \(bu 3
+.IP \[bu] 3
 Where no kernel version is indicated,
 the system call appeared in Linux 1.0 or earlier.
-.IP \(bu
+.IP \[bu]
 Where a system call is marked "1.2"
 this means the system call probably appeared in a Linux 1.1.x kernel version,
 and first appeared in a stable kernel with 1.2.
 (Development of the 1.2 kernel was initiated from a branch of kernel
 1.0.6 via the 1.1.x unstable kernel series.)
-.IP \(bu
+.IP \[bu]
 Where a system call is marked "2.0"
 this means the system call probably appeared in a Linux 1.3.x kernel version,
 and first appeared in a stable kernel with Linux 2.0.
@@ -94,25 +94,25 @@ via the Linux 1.3.x unstable kernel series.)
 .\" timestamps of some files in Linux 1.3.0 seem to be older
 .\" than those in Linux 1.2.10.  All of this suggests
 .\" that there might not have been a clean branch point.
-.IP \(bu
+.IP \[bu]
 Where a system call is marked "2.2"
 this means the system call probably appeared in a Linux 2.1.x kernel version,
 and first appeared in a stable kernel with Linux 2.2.0.
 (Development of the Linux 2.2 kernel was initiated from a branch of kernel
 Linux 2.0.21 via the Linux 2.1.x unstable kernel series.)
-.IP \(bu
+.IP \[bu]
 Where a system call is marked "2.4"
 this means the system call probably appeared in a Linux 2.3.x kernel version,
 and first appeared in a stable kernel with Linux 2.4.0.
 (Development of the Linux 2.4 kernel was initiated from a branch of
 Linux 2.2.8 via the Linux 2.3.x unstable kernel series.)
-.IP \(bu
+.IP \[bu]
 Where a system call is marked "2.6"
 this means the system call probably appeared in a Linux 2.5.x kernel version,
 and first appeared in a stable kernel with Linux 2.6.0.
 (Development of Linux 2.6 was initiated from a branch
 of Linux 2.4.15 via the Linux 2.5.x unstable kernel series.)
-.IP \(bu
+.IP \[bu]
 Starting with Linux 2.6.0, the development model changed,
 and new system calls may appear in each Linux 2.6.x release.
 In this case, the exact version number where the system call appeared
@@ -121,7 +121,7 @@ This convention continues with the Linux 3.x kernel series,
 which followed on from Linux 2.6.39; and the Linux 4.x kernel series,
 which followed on from Linux 3.19; and the Linux 5.x kernel series,
 which followed on from Linux 4.20.
-.IP \(bu
+.IP \[bu]
 In some cases, a system call was added to a stable kernel
 series after it branched from the previous stable kernel
 series, and then backported into the earlier stable kernel series.
@@ -898,9 +898,9 @@ since been removed from the kernel:
 AVR32 (port removed in Linux 4.12)
 .RS
 .PD 0
-.IP \(bu 3
+.IP \[bu] 3
 .BR pread (2)
-.IP \(bu
+.IP \[bu]
 .BR pwrite (2)
 .PD
 .RE
@@ -908,22 +908,22 @@ AVR32 (port removed in Linux 4.12)
 Blackfin (port removed in Linux 4.17)
 .RS
 .PD 0
-.IP \(bu 3
+.IP \[bu] 3
 .BR bfin_spinlock (2)
 (added in Linux 2.6.22)
-.IP \(bu
+.IP \[bu]
 .BR dma_memcpy (2)
 (added in Linux 2.6.22)
-.IP \(bu
+.IP \[bu]
 .BR pread (2)
 (added in Linux 2.6.22)
-.IP \(bu
+.IP \[bu]
 .BR pwrite (2)
 (added in Linux 2.6.22)
-.IP \(bu
+.IP \[bu]
 .BR sram_alloc (2)
 (added in Linux 2.6.22)
-.IP \(bu
+.IP \[bu]
 .BR sram_free (2)
 (added in Linux 2.6.22)
 .PD
@@ -932,16 +932,16 @@ Blackfin (port removed in Linux 4.17)
 Metag (port removed in Linux 4.17)
 .RS
 .PD 0
-.IP \(bu 3
+.IP \[bu] 3
 .BR metag_get_tls (2)
 (add in Linux 3.9)
-.IP \(bu
+.IP \[bu]
 .BR metag_set_fpu_flags (2)
 (add in Linux 3.9)
-.IP \(bu
+.IP \[bu]
 .BR metag_set_tls (2)
 (add in Linux 3.9)
-.IP \(bu
+.IP \[bu]
 .BR metag_setglobalbit (2)
 (add in Linux 3.9)
 .PD
@@ -950,7 +950,7 @@ Metag (port removed in Linux 4.17)
 Tile (port removed in Linux 4.17)
 .RS
 .PD 0
-.IP \(bu 3
+.IP \[bu] 3
 .BR cmpxchg_badaddr (2)
 (added in Linux 2.6.36)
 .PD
@@ -988,7 +988,7 @@ system call is invoked, and that ABI compatibility is
 preserved for old binaries.)
 Examples of systems calls that exist in multiple versions are
 the following:
-.IP \(bu 3
+.IP \[bu] 3
 By now there are three different versions of
 .BR stat (2):
 .IR sys_stat ()
@@ -1009,7 +1009,7 @@ A similar story applies for
 .BR lstat (2)
 and
 .BR fstat (2).
-.IP \(bu
+.IP \[bu]
 Similarly, the defines
 .IR __NR_oldolduname ,
 .IR __NR_olduname ,
@@ -1020,14 +1020,14 @@ refer to the routines
 .IR sys_uname (),
 and
 .IR sys_newuname ().
-.IP \(bu
+.IP \[bu]
 In Linux 2.0, a new version of
 .BR vm86 (2)
 appeared, with the old and the new kernel routines being named
 .IR sys_vm86old ()
 and
 .IR sys_vm86 ().
-.IP \(bu
+.IP \[bu]
 In Linux 2.4, a new version of
 .BR getrlimit (2)
 appeared, with the old and the new kernel routines being named
@@ -1038,7 +1038,7 @@ and
 .IR sys_getrlimit ()
 (slot
 .IR __NR_ugetrlimit ).
-.IP \(bu
+.IP \[bu]
 Linux 2.4 increased the size of user and group IDs from 16 to 32 bits.
 .\" 64-bit off_t changes: ftruncate64, *stat64,
 .\" fcntl64 (because of the flock structure), getdents64, *statfs64
@@ -1050,7 +1050,7 @@ To support this change, a range of system calls were added
 .BR setresuid32 (2)),
 superseding earlier calls of the same name without the
 "32" suffix.
-.IP \(bu
+.IP \[bu]
 Linux 2.4 added support for applications on 32-bit architectures
 to access large files (i.e., files for which the sizes and
 file offsets can't be represented in 32 bits.)
@@ -1073,7 +1073,7 @@ On newer platforms that only have 64-bit file access and 32-bit UIDs/GIDs
 the UID/GID and file access system calls.
 On platforms (typically, 32-bit platforms) where the *64 and *32 calls exist,
 the other versions are obsolete.
-.IP \(bu
+.IP \[bu]
 The
 .I rt_sig*
 calls were added in Linux 2.2 to support the addition
@@ -1081,7 +1081,7 @@ of real-time signals (see
 .BR signal (7)).
 These system calls supersede the older system calls of the same
 name without the "rt_" prefix.
-.IP \(bu
+.IP \[bu]
 The
 .BR select (2)
 and

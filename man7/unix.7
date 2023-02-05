@@ -166,15 +166,15 @@ bytes of
 .SS Pathname sockets
 When binding a socket to a pathname, a few rules should be observed
 for maximum portability and ease of coding:
-.IP \(bu 3
+.IP \[bu] 3
 The pathname in
 .I sun_path
 should be null-terminated.
-.IP \(bu
+.IP \[bu]
 The length of the pathname, including the terminating null byte,
 should not exceed the size of
 .IR sun_path .
-.IP \(bu
+.IP \[bu]
 The
 .I addrlen
 argument that describes the enclosing

@@ -85,7 +85,7 @@ to the pipe is dealt with as a separate packet, and
 from the pipe will read one packet at a time.
 Note the following points:
 .RS
-.IP \(bu 3
+.IP \[bu] 3
 Writes of greater than
 .B PIPE_BUF
 bytes (see
@@ -95,7 +95,7 @@ The constant
 .B PIPE_BUF
 is defined in
 .IR <limits.h> .
-.IP \(bu
+.IP \[bu]
 If a
 .BR read (2)
 specifies a buffer size that is smaller than the next packet,
@@ -105,7 +105,7 @@ Specifying a buffer size of
 .B PIPE_BUF
 will be sufficient to read the largest possible packets
 (see the previous point).
-.IP \(bu
+.IP \[bu]
 Zero-length packets are not supported.
 (A
 .BR read (2)

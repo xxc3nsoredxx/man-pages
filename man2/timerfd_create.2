@@ -502,7 +502,7 @@ to rearm the timer (without first doing a
 on the file descriptor).
 .PP
 In this case the following occurs:
-.IP \(bu 3
+.IP \[bu] 3
 The
 .BR timerfd_settime ()
 returns \-1 with
@@ -511,7 +511,7 @@ set to
 .BR ECANCELED .
 (This enables the caller to know that the previous timer was affected
 by a discontinuous change to the clock.)
-.IP \(bu
+.IP \[bu]
 The timer
 .I "is successfully rearmed"
 with the settings provided in the second

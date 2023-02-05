@@ -110,12 +110,12 @@ The aforementioned transformations of the effective IDs are
 .I not
 performed (i.e., the set-user-ID and set-group-ID bits are ignored)
 if any of the following is true:
-.IP \(bu 3
+.IP \[bu] 3
 the
 .I no_new_privs
 attribute is set for the calling thread (see
 .BR prctl (2));
-.IP \(bu
+.IP \[bu]
 the underlying filesystem is mounted
 .I nosuid
 (the
@@ -123,7 +123,7 @@ the underlying filesystem is mounted
 flag for
 .BR mount (2));
 or
-.IP \(bu
+.IP \[bu]
 the calling process is being ptraced.
 .PP
 The capabilities of the program file (see
@@ -159,43 +159,43 @@ for binaries linked with glibc (see
 All process attributes are preserved during an
 .BR execve (),
 except the following:
-.IP \(bu 3
+.IP \[bu] 3
 The dispositions of any signals that are being caught are
 reset to the default
 .RB ( signal (7)).
-.IP \(bu
+.IP \[bu]
 Any alternate signal stack is not preserved
 .RB ( sigaltstack (2)).
-.IP \(bu
+.IP \[bu]
 Memory mappings are not preserved
 .RB ( mmap (2)).
-.IP \(bu
+.IP \[bu]
 Attached System\ V shared memory segments are detached
 .RB ( shmat (2)).
-.IP \(bu
+.IP \[bu]
 POSIX shared memory regions are unmapped
 .RB ( shm_open (3)).
-.IP \(bu
+.IP \[bu]
 Open POSIX message queue descriptors are closed
 .RB ( mq_overview (7)).
-.IP \(bu
+.IP \[bu]
 Any open POSIX named semaphores are closed
 .RB ( sem_overview (7)).
-.IP \(bu
+.IP \[bu]
 POSIX timers are not preserved
 .RB ( timer_create (2)).
-.IP \(bu
+.IP \[bu]
 Any open directory streams are closed
 .RB ( opendir (3)).
-.IP \(bu
+.IP \[bu]
 Memory locks are not preserved
 .RB ( mlock (2),
 .BR mlockall (2)).
-.IP \(bu
+.IP \[bu]
 Exit handlers are not preserved
 .RB ( atexit (3),
 .BR on_exit (3)).
-.IP \(bu
+.IP \[bu]
 The floating-point environment is reset to the default (see
 .BR fenv (3)).
 .PP
@@ -204,7 +204,7 @@ in POSIX.1.
 The following Linux-specific process attributes are also
 not preserved during an
 .BR execve ():
-.IP \(bu 3
+.IP \[bu] 3
 The process's "dumpable" attribute is set to the value 1,
 unless a set-user-ID program, a set-group-ID program,
 or a program with capabilities is being executed,
@@ -221,52 +221,52 @@ directory to change to
 .IR root:root ,
 as described in
 .BR proc (5).
-.IP \(bu
+.IP \[bu]
 The
 .BR prctl (2)
 .B PR_SET_KEEPCAPS
 flag is cleared.
-.IP \(bu
+.IP \[bu]
 (Since Linux 2.4.36 / 2.6.23)
 If a set-user-ID or set-group-ID program is being executed,
 then the parent death signal set by
 .BR prctl (2)
 .B PR_SET_PDEATHSIG
 flag is cleared.
-.IP \(bu
+.IP \[bu]
 The process name, as set by
 .BR prctl (2)
 .B PR_SET_NAME
 (and displayed by
 .IR "ps\ \-o comm" ),
 is reset to the name of the new executable file.
-.IP \(bu
+.IP \[bu]
 The
 .B SECBIT_KEEP_CAPS
 .I securebits
 flag is cleared.
 See
 .BR capabilities (7).
-.IP \(bu
+.IP \[bu]
 The termination signal is reset to
 .B SIGCHLD
 (see
 .BR clone (2)).
-.IP \(bu
+.IP \[bu]
 The file descriptor table is unshared, undoing the effect of the
 .B CLONE_FILES
 flag of
 .BR clone (2).
 .PP
 Note the following further points:
-.IP \(bu 3
+.IP \[bu] 3
 All threads other than the calling thread are destroyed during an
 .BR execve ().
 Mutexes, condition variables, and other pthreads objects are not preserved.
-.IP \(bu
+.IP \[bu]
 The equivalent of \fIsetlocale(LC_ALL, "C")\fP
 is executed at program start-up.
-.IP \(bu
+.IP \[bu]
 POSIX.1 specifies that the dispositions of any signals that
 are ignored or set to the default are left unchanged.
 POSIX.1 specifies one exception: if
@@ -274,16 +274,16 @@ POSIX.1 specifies one exception: if
 is being ignored,
 then an implementation may leave the disposition unchanged or
 reset it to the default; Linux does the former.
-.IP \(bu
+.IP \[bu]
 Any outstanding asynchronous I/O operations are canceled
 .RB ( aio_read (3),
 .BR aio_write (3)).
-.IP \(bu
+.IP \[bu]
 For the handling of capabilities during
 .BR execve (),
 see
 .BR capabilities (7).
-.IP \(bu
+.IP \[bu]
 By default, file descriptors remain open across an
 .BR execve ().
 File descriptors that are marked close-on-exec are closed;

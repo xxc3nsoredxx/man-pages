@@ -173,7 +173,7 @@ Otherwise,
 is treated as the description (name) of a keyring,
 and the behavior is as follows:
 .RS
-.IP \(bu 3
+.IP \[bu] 3
 If a keyring with a matching description exists,
 the process will attempt to subscribe to that keyring
 as its session keyring if possible;
@@ -182,7 +182,7 @@ In order to subscribe to the keyring,
 the caller must have
 .I search
 permission on the keyring.
-.IP \(bu
+.IP \[bu]
 If a keyring with a matching description does not exist,
 then a new keyring with the specified description is created,
 and the process is subscribed to that keyring as its session keyring.
@@ -1698,26 +1698,26 @@ was
 .B KEYCTL_DH_COMPUTE
 and one of the following has failed:
 .RS
-.IP \(bu 3
+.IP \[bu] 3
 copying of the
 .IR "struct keyctl_dh_params" ,
 provided in the
 .I arg2
 argument, from user space;
-.IP \(bu
+.IP \[bu]
 copying of the
 .IR "struct keyctl_kdf_params" ,
 provided in the non-NULL
 .I arg5
 argument, from user space
 (in case kernel supports performing KDF operation on DH operation result);
-.IP \(bu
+.IP \[bu]
 copying of data pointed by the
 .I hashname
 field of the
 .I "struct keyctl_kdf_params"
 from user space;
-.IP \(bu
+.IP \[bu]
 copying of data pointed by the
 .I otherinfo
 field of the
@@ -1725,7 +1725,7 @@ field of the
 from user space if the
 .I otherinfolen
 field was nonzero;
-.IP \(bu
+.IP \[bu]
 copying of the result to user space.
 .RE
 .TP
@@ -2030,20 +2030,20 @@ Auth key description: .request_key_auth;1000;1000;0b010000;20d035bf
 .PP
 The last few lines of the above output show that the example program
 was able to fetch:
-.IP \(bu 3
+.IP \[bu] 3
 the description of the key to be instantiated,
 which included the name of the key
 .RI ( mykey );
-.IP \(bu
+.IP \[bu]
 the payload of the authorization key, which consisted of the data
 .RI ( somepayloaddata )
 passed to
 .BR request_key (2);
-.IP \(bu
+.IP \[bu]
 the destination keyring that was specified in the call to
 .BR request_key (2);
 and
-.IP \(bu
+.IP \[bu]
 the description of the authorization key,
 where we can see that the name of the authorization key matches
 the ID of the key that is to be instantiated

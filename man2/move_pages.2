@@ -55,13 +55,13 @@ is 0, then
 moves pages of the calling process.
 .PP
 To move pages in another process requires the following privileges:
-.IP \(bu 3
+.IP \[bu] 3
 Up to and including Linux 4.12:
 the caller must be privileged
 .RB ( CAP_SYS_NICE )
 or the real or effective user ID of the calling process must match the
 real or saved-set user ID of the target process.
-.IP \(bu
+.IP \[bu]
 The older rules allowed the caller to discover various
 virtual address choices made by the kernel that could lead
 to the defeat of address-space-layout randomization

@@ -47,11 +47,11 @@ is nonzero.
 .PP
 A cancelation clean-up handler is popped from the stack
 and executed in the following circumstances:
-.IP \(bu 3
+.IP \[bu] 3
 When a thread is canceled,
 all of the stacked clean-up handlers are popped and executed in
 the reverse of the order in which they were pushed onto the stack.
-.IP \(bu
+.IP \[bu]
 When a thread terminates by calling
 .BR pthread_exit (3),
 all clean-up handlers are executed as described in the preceding point.
@@ -61,7 +61,7 @@ called if the thread terminates by
 performing a
 .I return
 from the thread start function.)
-.IP \(bu
+.IP \[bu]
 When a thread calls
 .BR pthread_cleanup_pop ()
 with a nonzero

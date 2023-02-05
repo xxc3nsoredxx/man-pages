@@ -77,14 +77,14 @@ does not specify
 .BR O_NONBLOCK ,
 the following steps occur:
 .RS
-.IP \(bu 3
+.IP \[bu] 3
 The module is marked so that no new references are permitted.
-.IP \(bu
+.IP \[bu]
 If the module's reference count is nonzero,
 the caller is placed in an uninterruptible sleep state
 .RB ( TASK_UNINTERRUPTIBLE )
 until the reference count is zero, at which point the call unblocks.
-.IP \(bu
+.IP \[bu]
 The module is unloaded in the usual way.
 .RE
 .RE

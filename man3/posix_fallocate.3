@@ -147,16 +147,16 @@ system call, which is MT-safe.
 If the underlying filesystem does not support
 .BR fallocate (2),
 then the operation is emulated with the following caveats:
-.IP \(bu 3
+.IP \[bu] 3
 The emulation is inefficient.
-.IP \(bu
+.IP \[bu]
 There is a race condition where concurrent writes from another thread or
 process could be overwritten with null bytes.
-.IP \(bu
+.IP \[bu]
 There is a race condition where concurrent file size increases by
 another thread or process could result in a file whose size is smaller
 than expected.
-.IP \(bu
+.IP \[bu]
 If
 .I fd
 has been opened with the

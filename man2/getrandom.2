@@ -185,7 +185,7 @@ that was opened by a library.
 .\"
 .SS Maximum number of bytes returned
 As of Linux 3.19 the following limits apply:
-.IP \(bu 3
+.IP \[bu] 3
 When reading from the
 .I urandom
 source, a maximum of 33554431 bytes is returned by a single call to
@@ -193,7 +193,7 @@ source, a maximum of 33554431 bytes is returned by a single call to
 on systems where
 .I int
 has a size of 32 bits.
-.IP \(bu
+.IP \[bu]
 When reading from the
 .I random
 source, a maximum of 512 bytes is returned.
@@ -284,7 +284,7 @@ but the careful programmer will check for this anyway!
 .SH BUGS
 As of Linux 3.19, the following bug exists:
 .\" FIXME patch proposed https://lkml.org/lkml/2014/11/29/16
-.IP \(bu 3
+.IP \[bu] 3
 Depending on CPU load,
 .BR getrandom ()
 does not react to interrupts before reading all bytes requested.

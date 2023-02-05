@@ -168,7 +168,7 @@ Before glibc 2.24, the child process is created using
 instead of
 .BR fork (2)
 when either of the following is true:
-.IP \(bu 3
+.IP \[bu] 3
 the
 .I spawn-flags
 element of the attributes object pointed to by
@@ -176,7 +176,7 @@ element of the attributes object pointed to by
 contains the GNU-specific flag
 .BR POSIX_SPAWN_USEVFORK ;
 or
-.IP \(bu
+.IP \[bu]
 .I file_actions
 is NULL and the
 .I spawn-flags
@@ -306,7 +306,7 @@ of the object pointed to by
 Set the scheduling policy algorithm and parameters of the child,
 as follows:
 .RS
-.IP \(bu 3
+.IP \[bu] 3
 The scheduling policy is set to the value specified in the
 .I spawn-schedpolicy
 attribute
@@ -315,7 +315,7 @@ attribute
 .\" .BR posix_spawnattr_setpolicy (3))
 of the object pointed to by
 .IR attrp .
-.IP \(bu
+.IP \[bu]
 The scheduling parameters are set to the value specified in the
 .I spawn-schedparam
 attribute

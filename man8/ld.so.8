@@ -102,13 +102,13 @@ linker option, this step is skipped.
 .\"
 .SS Dynamic string tokens
 In several places, the dynamic linker expands dynamic string tokens:
-.IP \(bu 3
+.IP \[bu] 3
 In the environment variables
 .BR LD_LIBRARY_PATH ,
 .BR LD_PRELOAD ,
 and
 .BR LD_AUDIT ,
-.IP \(bu
+.IP \[bu]
 inside the values of the dynamic section tags
 .BR DT_NEEDED ,
 .BR DT_RPATH ,
@@ -117,7 +117,7 @@ inside the values of the dynamic section tags
 and
 .B DT_DEPAUDIT
 of ELF binaries,
-.IP \(bu
+.IP \[bu]
 in the arguments to the
 .B ld.so
 command line options
@@ -126,7 +126,7 @@ command line options
 and
 .B \-\-preload
 (see below), and
-.IP \(bu
+.IP \[bu]
 in the filename arguments to the
 .BR dlopen (3)
 and
@@ -296,15 +296,15 @@ entry in the auxiliary vector (see
 .BR getauxval (3))
 has a nonzero value.
 This entry may have a nonzero value for various reasons, including:
-.IP \(bu 3
+.IP \[bu] 3
 The process's real and effective user IDs differ,
 or the real and effective group IDs differ.
 This typically occurs as a result of executing
 a set-user-ID or set-group-ID program.
-.IP \(bu
+.IP \[bu]
 A process with a non-root user ID executed a binary that
 conferred capabilities to the process.
-.IP \(bu
+.IP \[bu]
 A nonzero value may have been set by a Linux Security Module.
 .\"
 .SS Environment variables

@@ -90,24 +90,24 @@ is the IP protocol in the IP header to be received or sent.
 Valid values for
 .I protocol
 include:
-.IP \(bu 3
+.IP \[bu] 3
 0 and
 .B IPPROTO_TCP
 for
 .BR tcp (7)
 stream sockets;
-.IP \(bu
+.IP \[bu]
 0 and
 .B IPPROTO_UDP
 for
 .BR udp (7)
 datagram sockets;
-.IP \(bu
+.IP \[bu]
 .B IPPROTO_SCTP
 for
 .BR sctp (7)
 stream sockets; and
-.IP \(bu
+.IP \[bu]
 .B IPPROTO_UDPLITE
 for
 .BR udplite (7)
@@ -1148,16 +1148,16 @@ is, the range used for
 .IR "ephemeral ports" .
 An ephemeral port is allocated to a socket in the following circumstances:
 .RS
-.IP \(bu 3
+.IP \[bu] 3
 the port number in a socket address is specified as 0 when calling
 .BR bind (2);
-.IP \(bu
+.IP \[bu]
 .BR listen (2)
 is called on a stream socket that was not previously bound;
-.IP \(bu
+.IP \[bu]
 .BR connect (2)
 was called on a socket that was not previously bound;
-.IP \(bu
+.IP \[bu]
 .BR sendto (2)
 is called on a datagram socket that was not previously bound.
 .RE

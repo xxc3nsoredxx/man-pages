@@ -43,12 +43,12 @@ The sequence of characters in the string
 .I src
 shall begin in the initial shift state.
 The conversion can stop for three reasons:
-.IP \(bu 3
+.IP \[bu] 3
 An invalid multibyte sequence has been encountered.
 In this case,
 .I (size_t)\ \-1
 is returned.
-.IP \(bu
+.IP \[bu]
 .I n
 non-L\[aq]\e0\[aq] wide characters have been stored at
 .IR dest .
@@ -56,7 +56,7 @@ In this case, the number of wide characters written to
 .I dest
 is returned, but the
 shift state at this point is lost.
-.IP \(bu
+.IP \[bu]
 The multibyte string has been completely converted, including the
 terminating null character (\[aq]\e0\[aq]).
 In this case, the number of wide characters written to

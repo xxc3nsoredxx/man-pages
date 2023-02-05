@@ -40,13 +40,13 @@ to the address space of the calling process.
 The attaching address is specified by
 .I shmaddr
 with one of the following criteria:
-.IP \(bu 3
+.IP \[bu] 3
 If
 .I shmaddr
 is NULL,
 the system chooses a suitable (unused) page-aligned address to attach
 the segment.
-.IP \(bu
+.IP \[bu]
 If
 .I shmaddr
 isn't NULL
@@ -58,7 +58,7 @@ the attach occurs at the address equal to
 .I shmaddr
 rounded down to the nearest multiple of
 .BR SHMLBA .
-.IP \(bu
+.IP \[bu]
 Otherwise,
 .I shmaddr
 must be a page-aligned address at which the attach occurs.
@@ -108,13 +108,13 @@ call updates the members of the
 structure (see
 .BR shmctl (2))
 associated with the shared memory segment as follows:
-.IP \(bu 3
+.IP \[bu] 3
 .I shm_atime
 is set to the current time.
-.IP \(bu
+.IP \[bu]
 .I shm_lpid
 is set to the process-ID of the calling process.
-.IP \(bu
+.IP \[bu]
 .I shm_nattch
 is incremented by one.
 .\"
@@ -135,13 +135,13 @@ On a successful
 call, the system updates the members of the
 .I shmid_ds
 structure associated with the shared memory segment as follows:
-.IP \(bu 3
+.IP \[bu] 3
 .I shm_dtime
 is set to the current time.
-.IP \(bu
+.IP \[bu]
 .I shm_lpid
 is set to the process-ID of the calling process.
-.IP \(bu
+.IP \[bu]
 .I shm_nattch
 is decremented by one.
 If it becomes 0 and the segment is marked for deletion,

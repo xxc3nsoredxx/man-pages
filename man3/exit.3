@@ -130,7 +130,7 @@ After
 the exit status must be transmitted to the
 parent process.
 There are three cases:
-.IP \(bu 3
+.IP \[bu] 3
 If the parent has set
 .BR SA_NOCLDWAIT ,
 or has set the
@@ -138,10 +138,10 @@ or has set the
 handler to
 .BR SIG_IGN ,
 the status is discarded and the child dies immediately.
-.IP \(bu
+.IP \[bu]
 If the parent was waiting on the child,
 it is notified of the exit status and the child dies immediately.
-.IP \(bu
+.IP \[bu]
 Otherwise,
 the child becomes a "zombie" process:
 most of the process resources are recycled,

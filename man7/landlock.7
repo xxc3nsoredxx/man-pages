@@ -23,13 +23,13 @@ A Landlock security policy is a set of access rights
 tied to a file hierarchy.
 Such policy can be configured and enforced by processes for themselves
 using three system calls:
-.IP \(bu 2
+.IP \[bu] 2
 .BR landlock_create_ruleset (2)
 creates a new ruleset;
-.IP \(bu
+.IP \[bu]
 .BR landlock_add_rule (2)
 adds a new rule to a ruleset;
-.IP \(bu
+.IP \[bu]
 .BR landlock_restrict_self (2)
 enforces a ruleset on the calling thread.
 .PP

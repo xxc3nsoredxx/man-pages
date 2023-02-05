@@ -121,19 +121,19 @@ is similar to the use of
 messages described in
 .BR unix (7),
 but differs in the following respects:
-.IP \(bu 3
+.IP \[bu] 3
 In order to pass a file descriptor using an
 .B SCM_RIGHTS
 message,
 the two processes must first establish a UNIX domain socket connection.
-.IP \(bu
+.IP \[bu]
 The use of
 .B SCM_RIGHTS
 requires cooperation on the part of the process whose
 file descriptor is being copied.
 By contrast, no such cooperation is necessary when using
 .BR pidfd_getfd ().
-.IP \(bu
+.IP \[bu]
 The ability to use
 .BR pidfd_getfd ()
 is restricted by a

@@ -79,7 +79,7 @@ by one and
 by the number of bytes consumed.
 The
 conversion can stop for three reasons:
-.IP \(bu 3
+.IP \[bu] 3
 An invalid multibyte sequence has been encountered.
 In this case,
 .I *src
@@ -90,7 +90,7 @@ and
 .I errno
 is set to
 .BR EILSEQ .
-.IP \(bu
+.IP \[bu]
 The
 .I nms
 limit forces a stop,
@@ -106,7 +106,7 @@ next multibyte sequence to be converted, and the number of wide characters
 written to
 .I dest
 is returned.
-.IP \(bu
+.IP \[bu]
 The multibyte string has been completely converted, including the
 terminating null wide character (\[aq]\e0\[aq])
 (which has the side effect of bringing back

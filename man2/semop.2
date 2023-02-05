@@ -142,12 +142,12 @@ Otherwise,
 (the count of threads waiting until this semaphore's value becomes zero)
 is incremented by one and the thread sleeps until
 one of the following occurs:
-.IP \(bu 3
+.IP \[bu] 3
 .I semval
 becomes 0, at which time the value of
 .I semzcnt
 is decremented.
-.IP \(bu
+.IP \[bu]
 The semaphore set
 is removed:
 .BR semop ()
@@ -155,7 +155,7 @@ fails, with
 .I errno
 set to
 .BR EIDRM .
-.IP \(bu
+.IP \[bu]
 The calling thread catches a signal:
 the value of
 .I semzcnt
@@ -207,19 +207,19 @@ Otherwise,
 (the counter of threads waiting for this semaphore's value to increase)
 is incremented by one and the thread sleeps until
 one of the following occurs:
-.IP \(bu 3
+.IP \[bu] 3
 .I semval
 becomes greater than or equal to the absolute value of
 .IR sem_op :
 the operation now proceeds, as described above.
-.IP \(bu
+.IP \[bu]
 The semaphore set is removed from the system:
 .BR semop ()
 fails, with
 .I errno
 set to
 .BR EIDRM .
-.IP \(bu
+.IP \[bu]
 The calling thread catches a signal:
 the value of
 .I semncnt

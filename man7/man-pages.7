@@ -483,11 +483,11 @@ be separated by blank lines.
 However, blank lines (achieved using
 .IR .PP )
 may be added in the following cases:
-.IP \(bu 3
+.IP \[bu] 3
 to separate long lists of function prototypes into related groups
 (see for example
 .BR list (3));
-.IP \(bu
+.IP \[bu]
 in other cases that may improve readability.
 .PP
 In the SYNOPSIS, a long function prototype may need to be
@@ -543,19 +543,19 @@ This wording is consistent with the wording used in both POSIX.1 and FreeBSD.
 .SS ATTRIBUTES
 .\" See man-pages commit c466875ecd64ed3d3cd3e578406851b7dfb397bf
 Note the following:
-.IP \(bu 3
+.IP \[bu] 3
 Wrap the table in this section in a
 .IR ".ad\ l" / .ad
 pair to disable text filling and a
 .IR .nh / .hy
 pair to disable hyphenation.
-.IP \(bu
+.IP \[bu]
 Ensure that the table occupies the full page width through the use of an
 .I lbx
 description for one of the columns
 (usually the first column,
 though in some cases the last column if it contains a lot of text).
-.IP \(bu
+.IP \[bu]
 Make free use of
 .IR T{ / T}
 macro pairs to allow table cells to be broken over multiple lines
@@ -771,11 +771,11 @@ please write all new pages and patches according to these conventions.
 .PP
 Aside from the well-known spelling differences,
 there are a few other subtleties to watch for:
-.IP \(bu 3
+.IP \[bu] 3
 American English tends to use the forms "backward", "upward", "toward",
 and so on
 rather than the British forms "backwards", "upwards", "towards", and so on.
-.IP \(bu
+.IP \[bu]
 Opinions are divided on "acknowledgement" vs "acknowledgment".
 The latter is predominant, but not universal usage in American English.
 POSIX and the BSD license use the former spelling.
@@ -1077,11 +1077,11 @@ This guideline applies also to code examples.
 .PP
 The use of real minus signs serves the following purposes:
 .\" https://lore.kernel.org/linux-man/20210121061158.5ul7226fgbrmodbt@localhost.localdomain/
-.IP \(bu 3
+.IP \[bu] 3
 To provide better renderings on various targets other than
 ASCII terminals,
 notably in PDF and on Unicode/UTF\-8-capable terminals.
-.IP \(bu
+.IP \[bu]
 To generate glyphs that when copied from rendered pages will
 produce real minus signs when pasted into a terminal.
 .PP
@@ -1113,22 +1113,22 @@ to get a nicely rendered tilde when rendering to PDF.
 Manual pages may include example programs demonstrating how to
 use a system call or library function.
 However, note the following:
-.IP \(bu 3
+.IP \[bu] 3
 Example programs should be written in C.
-.IP \(bu
+.IP \[bu]
 An example program is necessary and useful only if it demonstrates
 something beyond what can easily be provided in a textual
 description of the interface.
 An example program that does nothing
 other than call an interface usually serves little purpose.
-.IP \(bu
+.IP \[bu]
 Example programs should ideally be short
 (e.g., a good example can often be provided in less than 100 lines of code),
 though in some cases longer programs may be necessary
 to properly illustrate the use of an API.
-.IP \(bu
+.IP \[bu]
 Expressive code is appreciated.
-.IP \(bu
+.IP \[bu]
 Comments should included where helpful.
 Complete sentences in free-standing comments should be
 terminated by a period.
@@ -1136,18 +1136,18 @@ Periods should generally be omitted in "tag" comments
 (i.e., comments that are placed on the same line of code);
 such comments are in any case typically brief phrases
 rather than complete sentences.
-.IP \(bu
+.IP \[bu]
 Example programs should do error checking after system calls and
 library function calls.
-.IP \(bu
+.IP \[bu]
 Example programs should be complete, and compile without
 warnings when compiled with \fIcc\ \-Wall\fP.
-.IP \(bu
+.IP \[bu]
 Where possible and appropriate, example programs should allow
 experimentation, by varying their behavior based on inputs
 (ideally from command-line arguments, or alternatively, via
 input read by the program).
-.IP \(bu
+.IP \[bu]
 Example programs should be laid out according to Kernighan and
 Ritchie style, with 4-space indents.
 (Avoid the use of TAB characters in source code!)
@@ -1159,7 +1159,7 @@ something close to the preferred style:
 indent \-npro \-kr \-i4 \-ts4 \-sob \-l72 \-ss \-nut \-psl prog.c
 .EE
 .in
-.IP \(bu
+.IP \[bu]
 For consistency, all example programs should terminate using either of:
 .IP
 .in +4n
@@ -1178,7 +1178,7 @@ exit(1);
 return n;
 .EE
 .in
-.IP \(bu
+.IP \[bu]
 If there is extensive explanatory text before the
 program source code, mark off the source code
 with a subsection heading
@@ -1195,11 +1195,11 @@ Always do this if the explanatory text includes a shell session log.
 .PP
 If you include a shell session log demonstrating the use of a program
 or other system feature:
-.IP \(bu 3
+.IP \[bu] 3
 Place the session log above the source code listing.
-.IP \(bu
+.IP \[bu]
 Indent the session log by four spaces.
-.IP \(bu
+.IP \[bu]
 Boldface the user input text,
 to distinguish it from output produced by the system.
 .PP

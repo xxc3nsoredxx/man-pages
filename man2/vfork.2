@@ -167,11 +167,11 @@ and
 .BR vfork (),
 there are various reasons why Linux and other systems have retained
 .BR vfork ():
-.IP \(bu 3
+.IP \[bu] 3
 Some performance-critical applications require the small performance
 advantage conferred by
 .BR vfork ().
-.IP \(bu
+.IP \[bu]
 .BR vfork ()
 can be implemented on systems that lack a memory-management unit (MMU), but
 .BR fork (2)
@@ -189,7 +189,7 @@ is designed to be implementable on systems that lack an MMU.)
 .\" http://developers.sun.com/solaris/articles/subprocess/subprocess.html
 .\" http://mailman.uclinux.org/pipermail/uclinux-dev/2009-April/000684.html
 .\"
-.IP \(bu
+.IP \[bu]
 On systems where memory is constrained,
 .BR vfork ()
 avoids the need to temporarily commit memory (see the description of

@@ -168,12 +168,12 @@ exceeded.)
 .PP
 There are three separate areas that need to be discussed.
 They are as follows:
-.IP \(bu 3
+.IP \[bu] 3
 Symbolic links used as filename arguments for system calls.
-.IP \(bu
+.IP \[bu]
 Symbolic links specified as command-line arguments to utilities that
 are not traversing a file tree.
-.IP \(bu
+.IP \[bu]
 Symbolic links encountered by utilities that are traversing a file tree
 (either specified on the command line or encountered as part of the
 file hierarchy walk).
@@ -315,7 +315,7 @@ would change the ownership of
 itself.
 .PP
 There are some exceptions to this rule:
-.IP \(bu 3
+.IP \[bu] 3
 The
 .BR mv (1)
 and
@@ -325,7 +325,7 @@ but respectively attempt to rename and delete them.
 (Note, if the symbolic link references a file via a relative path,
 moving it to another directory may very well cause it to stop working,
 since the path may no longer be correct.)
-.IP \(bu
+.IP \[bu]
 The
 .BR ls (1)
 command is also an exception to this rule.
@@ -355,7 +355,7 @@ and
 .I \-L
 options affect its behavior even though it is not doing a walk of
 a file tree.)
-.IP \(bu
+.IP \[bu]
 The
 .BR file (1)
 command is also an exception to this rule.
@@ -415,7 +415,7 @@ walk (where symbolic links that refer to directories are followed).
 .PP
 Certain conventions are (should be) followed as consistently as
 possible by commands that perform file tree walks:
-.IP \(bu 3
+.IP \[bu] 3
 A command can be made to follow
 any symbolic links named on the command line,
 regardless of the type of file they reference, by specifying the
@@ -444,7 +444,7 @@ flag causes symbolic links specified on the command line to be
 dereferenced for the purposes of both the action to be performed
 and the tree walk, and it is as if the user had specified the
 name of the file to which the symbolic link pointed.
-.IP \(bu
+.IP \[bu]
 A command can be made to
 follow any symbolic links named on the command line,
 as well as any symbolic links encountered during the traversal,
@@ -473,7 +473,7 @@ In addition, if any symbolic links are encountered in any file tree that
 .B chown
 traverses, they will be treated in the same fashion as
 .IR slink .
-.IP \(bu
+.IP \[bu]
 A command can be made to
 provide the default behavior by specifying the
 .I \-P
@@ -504,7 +504,7 @@ The
 and
 .BR rm (1)
 commands have exceptions to these rules:
-.IP \(bu 3
+.IP \[bu] 3
 The
 .BR rm (1)
 command operates on the symbolic link, and not the file it references,
@@ -517,7 +517,7 @@ command does not support the
 or
 .I \-P
 options.
-.IP \(bu
+.IP \[bu]
 To maintain compatibility with historic systems,
 the
 .BR ls (1)

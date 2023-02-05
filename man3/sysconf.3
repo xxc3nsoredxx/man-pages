@@ -311,7 +311,7 @@ See also
 The return value of
 .BR sysconf ()
 is one of the following:
-.IP \(bu 3
+.IP \[bu] 3
 On error, \-1 is returned and
 .I errno
 is set to indicate the error
@@ -320,7 +320,7 @@ is set to indicate the error
 indicating that
 .I name
 is invalid).
-.IP \(bu
+.IP \[bu]
 If
 .I name
 corresponds to a maximum or minimum limit, and that limit is indeterminate,
@@ -332,13 +332,13 @@ is not changed.
 to zero before the call, and then check whether
 .I errno
 is nonzero when \-1 is returned.)
-.IP \(bu
+.IP \[bu]
 If
 .I name
 corresponds to an option,
 a positive value is returned if the option is supported,
 and \-1 is returned if the option is not supported.
-.IP \(bu
+.IP \[bu]
 Otherwise,
 the current value of the option or limit is returned.
 This value will not be more restrictive than

@@ -440,7 +440,7 @@ instead.
 The record locks described above are associated with the process
 (unlike the open file description locks described below).
 This has some unfortunate consequences:
-.IP \(bu 3
+.IP \[bu] 3
 If a process closes
 .I any
 file descriptor referring to a file,
@@ -456,7 +456,7 @@ or
 .I /etc/mtab
 when for some reason a library function decides to open, read,
 and close the same file.
-.IP \(bu
+.IP \[bu]
 The threads in a process share locks.
 In other words,
 a multithreaded program can't use record locking to ensure

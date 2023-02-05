@@ -471,11 +471,11 @@ operations on the provided filesystem's files and directories to fail with
 .BR EIO .
 Among the possible incorrect uses are:
 .RS
-.IP \(bu 3
+.IP \[bu] 3
 changing
 .I mode & S_IFMT
 for an inode that has previously been reported to the kernel; or
-.IP \(bu
+.IP \[bu]
 giving replies to the kernel that are shorter than what the kernel expected.
 .RE
 .TP

@@ -215,17 +215,17 @@ it makes sense to truncate.
 Remember to check the return value of such function calls.
 .PP
 Functions that truncate:
-.IP \(bu 3
+.IP \[bu] 3
 .BR stpecpy (3)
 is the most efficient string copy function that performs truncation.
 It only requires to check for truncation once after all chained calls.
-.IP \(bu
+.IP \[bu]
 .BR strlcpy (3bsd)
 and
 .BR strlcat (3bsd)
 are designed to crash if the input string is invalid
 (doesn't contain a terminating null byte).
-.IP \(bu
+.IP \[bu]
 .BR stpncpy (3)
 and
 .BR strncpy (3)
@@ -313,15 +313,15 @@ also require that
 .I dst
 holds a string before the call.
 List of functions:
-.IP \(bu 3
+.IP \[bu] 3
 .PD 0
 .BR stpcpy (3)
-.IP \(bu
+.IP \[bu]
 .BR strcpy "(3), \c"
 .BR strcat (3)
-.IP \(bu
+.IP \[bu]
 .BR stpecpy (3)
-.IP \(bu
+.IP \[bu]
 .BR strlcpy "(3bsd), \c"
 .BR strlcat (3bsd)
 .PD
@@ -331,10 +331,10 @@ but create a character sequence as output.
 These functions have confusing names,
 and have a long history of misuse.
 List of functions:
-.IP \(bu 3
+.IP \[bu] 3
 .PD 0
 .BR stpncpy (3)
-.IP \(bu
+.IP \[bu]
 .BR strncpy (3)
 .PD
 .PP
@@ -347,22 +347,22 @@ holds a string before the call.
 .BR strncat (3)
 has an even more misleading name than the functions above.
 List of functions:
-.IP \(bu 3
+.IP \[bu] 3
 .PD 0
 .BR zustr2stp (3)
-.IP \(bu
+.IP \[bu]
 .BR strncat (3)
-.IP \(bu
+.IP \[bu]
 .BR ustr2stp (3)
 .PD
 .PP
 Other functions operate on an input character sequence
 to create an output character sequence.
 List of functions:
-.IP \(bu 3
+.IP \[bu] 3
 .PD 0
 .BR ustpcpy (3)
-.IP \(bu
+.IP \[bu]
 .BR zustr2stp (3)
 .PD
 .\" ----- DESCRIPTION :: Functions :: ---------------------------------/
@@ -506,12 +506,12 @@ It returns a pointer suitable for chaining.
 .SH RETURN VALUE
 The following functions return
 a pointer to the terminating null byte in the destination string.
-.IP \(bu 3
+.IP \[bu] 3
 .PD 0
 .BR stpcpy (3)
-.IP \(bu
+.IP \[bu]
 .BR ustr2stp (3)
-.IP \(bu
+.IP \[bu]
 .BR zustr2stp (3)
 .PD
 .PP
@@ -520,7 +520,7 @@ a pointer to the terminating null byte in the destination string,
 except when truncation occurs;
 if truncation occurs,
 it returns a pointer to the end of the destination buffer.
-.IP \(bu 3
+.IP \[bu] 3
 .BR stpecpy (3)
 .PP
 The following function returns
@@ -529,23 +529,23 @@ in the destination character sequence;
 if truncation occurs,
 that pointer is equivalent to
 a pointer to the end of the destination buffer.
-.IP \(bu 3
+.IP \[bu] 3
 .BR stpncpy (3)
 .PP
 The following functions return
 a pointer to one after the last character
 in the destination character sequence.
-.IP \(bu 3
+.IP \[bu] 3
 .PD 0
 .BR zustr2ustp (3)
-.IP \(bu
+.IP \[bu]
 .BR ustpcpy (3)
 .PD
 .PP
 The following functions return
 the length of the total string that they tried to create
 (as if truncation didn't occur).
-.IP \(bu 3
+.IP \[bu] 3
 .BR strlcpy (3bsd),
 .BR strlcat (3bsd)
 .PP
@@ -553,13 +553,13 @@ The following functions return the
 .I dst
 pointer,
 which is useless.
-.IP \(bu 3
+.IP \[bu] 3
 .PD 0
 .BR strcpy (3),
 .BR strcat (3)
-.IP \(bu
+.IP \[bu]
 .BR strncpy (3)
-.IP \(bu
+.IP \[bu]
 .BR strncat (3)
 .PD
 .\" ----- NOTES :: strscpy(9) -----------------------------------------/

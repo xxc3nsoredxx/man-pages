@@ -116,11 +116,11 @@ argument specifies the number of milliseconds that
 .BR poll ()
 should block waiting for a file descriptor to become ready.
 The call will block until either:
-.IP \(bu 3
+.IP \[bu] 3
 a file descriptor becomes ready;
-.IP \(bu
+.IP \[bu]
 the call is interrupted by a signal handler; or
-.IP \(bu
+.IP \[bu]
 the timeout expires.
 .PP
 Note that the
@@ -150,14 +150,14 @@ There is data to read.
 There is some exceptional condition on the file descriptor.
 Possibilities include:
 .RS
-.IP \(bu 3
+.IP \[bu] 3
 There is out-of-band data on a TCP socket (see
 .BR tcp (7)).
-.IP \(bu
+.IP \[bu]
 A pseudoterminal master in packet mode has seen a state change on the slave
 (see
 .BR ioctl_tty (2)).
-.IP \(bu
+.IP \[bu]
 A
 .I cgroup.events
 file has been modified (see
@@ -461,14 +461,14 @@ The program loops, repeatedly using
 to monitor the file descriptors,
 printing the number of ready file descriptors on return.
 For each ready file descriptor, the program:
-.IP \(bu 3
+.IP \[bu] 3
 displays the returned
 .I revents
 field in a human-readable form;
-.IP \(bu
+.IP \[bu]
 if the file descriptor is readable, reads some data from it,
 and displays that data on standard output; and
-.IP \(bu
+.IP \[bu]
 if the file descriptor was not readable,
 but some other event occurred (presumably
 .BR POLLHUP ),
@@ -517,7 +517,7 @@ All file descriptors closed; bye
 In the above output, we see that
 .BR poll ()
 returned three times:
-.IP \(bu 3
+.IP \[bu] 3
 On the first return, the bits returned in the
 .I revents
 field were
@@ -526,7 +526,7 @@ indicating that the file descriptor is readable, and
 .BR POLLHUP ,
 indicating that the other end of the FIFO has been closed.
 The program then consumed some of the available input.
-.IP \(bu
+.IP \[bu]
 The second return from
 .BR poll ()
 also indicated
@@ -534,7 +534,7 @@ also indicated
 and
 .BR POLLHUP ;
 the program then consumed the last of the available input.
-.IP \(bu
+.IP \[bu]
 On the final return,
 .BR poll ()
 indicated only

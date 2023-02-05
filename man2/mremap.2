@@ -170,10 +170,10 @@ whole address space requested, but those mappings are of different types.
 An invalid argument was given.
 Possible causes are:
 .RS
-.IP \(bu 3
+.IP \[bu] 3
 \fIold_address\fP was not
 page aligned;
-.IP \(bu
+.IP \[bu]
 a value other than
 .B MREMAP_MAYMOVE
 or
@@ -182,15 +182,15 @@ or
 .B MREMAP_DONTUNMAP
 was specified in
 .IR flags ;
-.IP \(bu
+.IP \[bu]
 .I new_size
 was zero;
-.IP \(bu
+.IP \[bu]
 .I new_size
 or
 .I new_address
 was invalid;
-.IP \(bu
+.IP \[bu]
 the new address range specified by
 .I new_address
 and
@@ -199,29 +199,29 @@ overlapped the old address range specified by
 .I old_address
 and
 .IR old_size ;
-.IP \(bu
+.IP \[bu]
 .B MREMAP_FIXED
 or
 .B MREMAP_DONTUNMAP
 was specified without also specifying
 .BR MREMAP_MAYMOVE ;
-.IP \(bu
+.IP \[bu]
 .B MREMAP_DONTUNMAP
 was specified, but one or more pages in the range specified by
 .I old_address
 and
 .I old_size
 were not private anonymous;
-.IP \(bu
+.IP \[bu]
 .B MREMAP_DONTUNMAP
 was specified and
 .I old_size
 was not equal to
 .IR new_size ;
-.IP \(bu
+.IP \[bu]
 \fIold_size\fP was zero and \fIold_address\fP does not refer to a
 shareable mapping (but see BUGS);
-.IP \(bu
+.IP \[bu]
 \fIold_size\fP was zero and the
 .B MREMAP_MAYMOVE
 flag was not specified.
@@ -231,12 +231,12 @@ flag was not specified.
 Not enough memory was available to complete the operation.
 Possible causes are:
 .RS
-.IP \(bu 3
+.IP \[bu] 3
 The memory area cannot be expanded at the current virtual address, and the
 .B MREMAP_MAYMOVE
 flag is not set in \fIflags\fP.
 Or, there is not enough (virtual) memory available.
-.IP \(bu
+.IP \[bu]
 .B MREMAP_DONTUNMAP
 was used causing a new mapping to be created that would exceed the
 (virtual) memory available.
@@ -292,7 +292,7 @@ argument.
 Possible applications for
 .B MREMAP_DONTUNMAP
 include:
-.IP \(bu 3
+.IP \[bu] 3
 Non-cooperative
 .BR userfaultfd (2):
 an application can yank out a virtual address range using
@@ -301,7 +301,7 @@ and then employ a
 .BR userfaultfd (2)
 handler to handle the page faults that subsequently occur
 as other threads in the process touch pages in the yanked range.
-.IP \(bu
+.IP \[bu]
 Garbage collection:
 .B MREMAP_DONTUNMAP
 can be used in conjunction with

@@ -137,15 +137,15 @@ it will always immediately preempt any currently running
 algorithm without time slicing.
 For threads scheduled under the
 \fBSCHED_FIFO\fP policy, the following rules apply:
-.IP \(bu 3
+.IP \[bu] 3
 A running \fBSCHED_FIFO\fP thread that has been preempted by another thread of
 higher priority will stay at the head of the list for its priority and
 will resume execution as soon as all threads of higher priority are
 blocked again.
-.IP \(bu
+.IP \[bu]
 When a blocked \fBSCHED_FIFO\fP thread becomes runnable, it
 will be inserted at the end of the list for its priority.
-.IP \(bu
+.IP \[bu]
 If a call to
 .BR sched_setscheduler (2),
 .BR sched_setparam (2),
@@ -180,7 +180,7 @@ should result in the thread being placed at the end of
 the list for its priority.
 .\" In Linux 2.2.x and Linux 2.4.x, the thread is placed at the front of the queue
 .\" In Linux 2.0.x, the Right Thing happened: the thread went to the back -- MTK
-.IP \(bu
+.IP \[bu]
 A thread calling
 .BR sched_yield (2)
 will be put at the end of the list.
@@ -492,7 +492,7 @@ When this flag is set, children created by
 .BR fork (2)
 do not inherit privileged scheduling policies.
 The reset-on-fork flag can be set by either:
-.IP \(bu 3
+.IP \[bu] 3
 ORing the
 .B SCHED_RESET_ON_FORK
 flag into the
@@ -501,7 +501,7 @@ argument when calling
 .BR sched_setscheduler (2)
 (since Linux 2.6.32);
 or
-.IP \(bu
+.IP \[bu]
 specifying the
 .B SCHED_FLAG_RESET_ON_FORK
 flag in
@@ -524,7 +524,7 @@ by creating multiple child processes.
 .PP
 More precisely, if the reset-on-fork flag is set,
 the following rules apply for subsequently created children:
-.IP \(bu 3
+.IP \[bu] 3
 If the calling thread has a scheduling policy of
 .B SCHED_FIFO
 or
@@ -532,7 +532,7 @@ or
 the policy is reset to
 .B SCHED_OTHER
 in child processes.
-.IP \(bu
+.IP \[bu]
 If the calling process has a negative nice value,
 the nice value is reset to zero in child processes.
 .PP
@@ -571,7 +571,7 @@ and
 .B SCHED_FIFO
 policies.
 The rules for changing scheduling policy and priority are as follows:
-.IP \(bu 3
+.IP \[bu] 3
 If an unprivileged thread has a nonzero
 .B RLIMIT_RTPRIO
 soft limit, then it can change its scheduling policy and priority,
@@ -579,17 +579,17 @@ subject to the restriction that the priority cannot be set to a
 value higher than the maximum of its current priority and its
 .B RLIMIT_RTPRIO
 soft limit.
-.IP \(bu
+.IP \[bu]
 If the
 .B RLIMIT_RTPRIO
 soft limit is 0, then the only permitted changes are to lower the priority,
 or to switch to a non-real-time policy.
-.IP \(bu
+.IP \[bu]
 Subject to the same rules,
 another unprivileged thread can also make these changes,
 as long as the effective user ID of the thread making the change
 matches the real or effective user ID of the target thread.
-.IP \(bu
+.IP \[bu]
 Special rules apply for the
 .B SCHED_IDLE
 policy.
@@ -832,11 +832,11 @@ Task groups have a hierarchical relationship,
 rooted under the initial task group on the system,
 known as the "root task group".
 Task groups are formed in the following circumstances:
-.IP \(bu 3
+.IP \[bu] 3
 All of the threads in a CPU cgroup form a task group.
 The parent of this task group is the task group of the
 corresponding parent cgroup.
-.IP \(bu
+.IP \[bu]
 If autogrouping is enabled,
 then all of the threads that are (implicitly) placed in an autogroup
 (i.e., the same session, as created by
@@ -844,14 +844,14 @@ then all of the threads that are (implicitly) placed in an autogroup
 form a task group.
 Each new autogroup is thus a separate task group.
 The root task group is the parent of all such autogroups.
-.IP \(bu
+.IP \[bu]
 If autogrouping is enabled, then the root task group consists of
 all processes in the root CPU cgroup that were not
 otherwise implicitly placed into a new autogroup.
-.IP \(bu
+.IP \[bu]
 If autogrouping is disabled, then the root task group consists of
 all processes in the root CPU cgroup.
-.IP \(bu
+.IP \[bu]
 If group scheduling was disabled (i.e., the kernel was configured without
 .BR CONFIG_FAIR_GROUP_SCHED ),
 then all of the processes on the system are notionally placed

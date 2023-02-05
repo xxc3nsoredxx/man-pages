@@ -777,17 +777,17 @@ Instead of
 one can use
 .IR <linux/dqblk_xfs.h> ,
 taking into account that there are several naming discrepancies:
-.IP \(bu 3
+.IP \[bu] 3
 Quota enabling flags (of format
 .BR XFS_QUOTA_[UGP]DQ_{ACCT,ENFD} )
 are defined without a leading "X", as
 .BR FS_QUOTA_[UGP]DQ_{ACCT,ENFD} .
-.IP \(bu
+.IP \[bu]
 The same is true for
 .B XFS_{USER,GROUP,PROJ}_QUOTA
 quota type flags, which are defined as
 .BR FS_{USER,GROUP,PROJ}_QUOTA .
-.IP \(bu
+.IP \[bu]
 The
 .I dqblk_xfs.h
 header file defines its own

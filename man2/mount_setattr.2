@@ -544,13 +544,13 @@ or
 set and the flag is locked.
 Mount attributes become locked on a mount if:
 .RS
-.IP \(bu 3
+.IP \[bu] 3
 A new mount or mount tree is created causing mount propagation across user
 namespaces
 (i.e., propagation to a mount namespace owned by a different user namespace).
 The kernel will lock the aforementioned flags to prevent these sensitive
 properties from being altered.
-.IP \(bu
+.IP \[bu]
 A new mount and user namespace pair is created.
 This happens for example when specifying
 .B CLONE_NEWUSER | CLONE_NEWNS
@@ -609,7 +609,7 @@ This encompasses the user and group IDs associated with inodes
 and also the following
 .BR xattr (7)
 keys:
-.IP \(bu 3
+.IP \[bu] 3
 .IR security.capability ,
 whenever filesystem capabilities
 are stored or returned in the
@@ -618,7 +618,7 @@ format,
 which stores a root user ID alongside the capabilities
 (see
 .BR capabilities (7)).
-.IP \(bu
+.IP \[bu]
 .I system.posix_acl_access
 and
 .IR system.posix_acl_default ,
@@ -629,7 +629,7 @@ or
 entries.
 .PP
 The following conditions must be met in order to create an ID-mapped mount:
-.IP \(bu 3
+.IP \[bu] 3
 The caller must have the
 .B CAP_SYS_ADMIN
 capability in the user namespace the filesystem was mounted in.
@@ -637,51 +637,51 @@ capability in the user namespace the filesystem was mounted in.
 .\" Christian Brauner
 .\"     Note, currently no filesystems mountable in non-initial user namespaces
 .\"     support ID-mapped mounts.
-.IP \(bu
+.IP \[bu]
 The underlying filesystem must support ID-mapped mounts.
 Currently, the following filesystems support ID-mapped mounts:
 .\" fs_flags = FS_ALLOW_IDMAP in kernel sources
 .IP
 .RS
 .PD 0
-.IP \(bu 3
+.IP \[bu] 3
 .BR xfs (5)
 (since Linux 5.12)
-.IP \(bu
+.IP \[bu]
 .BR ext4 (5)
 (since Linux 5.12)
-.IP \(bu
+.IP \[bu]
 .B FAT
 (since Linux 5.12)
-.IP \(bu
+.IP \[bu]
 .BR btrfs (5)
 (since Linux 5.15)
 .\" commit 5b9b26f5d0b88b74001dcfe4ab8a8f2f4e744112
-.IP \(bu
+.IP \[bu]
 .B ntfs3
 (since Linux 5.15)
 .\" commit 82cae269cfa953032fbb8980a7d554d60fb00b17
-.IP \(bu
+.IP \[bu]
 .B f2fs
 (since Linux 5.18)
 .\" commit 984fc4e76d63345499f01c0c198a4b44860cf027
-.IP \(bu
+.IP \[bu]
 .B erofs
 (since Linux 5.19)
 .\" commit 6c459b78d4793afbba6d864c466cc5cd2932459d
-.IP \(bu
+.IP \[bu]
 .B overlayfs
 (ID-mapped lower and upper layers supported since Linux 5.19)
 .PD
 .RE
-.IP \(bu 3
+.IP \[bu] 3
 The mount must not already be ID-mapped.
 This also implies that the ID mapping of a mount cannot be altered.
-.IP \(bu
+.IP \[bu]
 The mount must be a detached mount;
 that is,
 it must have been created by calling
-.IP \(bu
+.IP \[bu]
 The mount must not have any writers.
 .\" commit 1bbcd277a53e08d619ffeec56c5c9287f2bf42f
 .BR open_tree (2)
@@ -731,7 +731,7 @@ for the sake of ID mapping a mount.
 .PP
 ID-mapped mounts can be useful in the following
 and a variety of other scenarios:
-.IP \(bu 3
+.IP \[bu] 3
 Sharing files or filesystems
 between multiple users or multiple machines,
 especially in complex scenarios.
@@ -744,25 +744,25 @@ and use it on multiple computers
 where they are assigned different user IDs and group IDs.
 This effectively makes it possible to
 assign random user IDs and group IDs at login time.
-.IP \(bu
+.IP \[bu]
 Sharing files or filesystems
 from the host with unprivileged containers.
 This allows a user to avoid having to change ownership permanently through
 .BR chown (2).
-.IP \(bu
+.IP \[bu]
 ID mapping a container's root filesystem.
 Users don't need to change ownership permanently through
 .BR chown (2).
 Especially for large root filesystems, using
 .BR chown (2)
 can be prohibitively expensive.
-.IP \(bu
+.IP \[bu]
 Sharing files or filesystems
 between containers with non-overlapping ID mappings.
-.IP \(bu
+.IP \[bu]
 Implementing discretionary access (DAC) permission checking
 for filesystems lacking a concept of ownership.
-.IP \(bu
+.IP \[bu]
 Efficiently changing ownership on a per-mount basis.
 In contrast to
 .BR chown (2),
@@ -775,7 +775,7 @@ With ID-mapped mounts,
 a single
 .BR mount_setattr ()
 system call will be sufficient to change the ownership of all files.
-.IP \(bu
+.IP \[bu]
 Taking the current ownership into account.
 ID mappings specify precisely
 what a user or group ID is supposed to be mapped to.
@@ -784,7 +784,7 @@ This contrasts with the
 system call which cannot by itself
 take the current ownership of the files it changes into account.
 It simply changes the ownership to the specified user ID and group ID.
-.IP \(bu
+.IP \[bu]
 Locally and temporarily restricted ownership changes.
 ID-mapped mounts make it possible to change ownership locally,
 restricting the ownership changes to specific mounts,
@@ -821,7 +821,7 @@ and let
 .I ksize
 be the size of the structure which the kernel supports,
 then there are three cases to consider:
-.IP \(bu 3
+.IP \[bu] 3
 If
 .I ksize
 equals
@@ -829,7 +829,7 @@ equals
 then there is no version mismatch and
 .I attr
 can be used verbatim.
-.IP \(bu
+.IP \[bu]
 If
 .I ksize
 is larger than
@@ -841,7 +841,7 @@ the kernel treats all of the extension fields
 not provided by the user-space application
 as having zero values.
 This provides backwards-compatibility.
-.IP \(bu
+.IP \[bu]
 If
 .I ksize
 is smaller than

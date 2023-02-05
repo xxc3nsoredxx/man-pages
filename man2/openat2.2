@@ -251,7 +251,7 @@ for more details.)
 Unknowingly opening magic links can be risky for some applications.
 Examples of such risks include the following:
 .RS
-.IP \(bu 3
+.IP \[bu] 3
 If the process opening a pathname is a controlling process that
 currently has no controlling terminal (see
 .BR credentials (7)),
@@ -259,7 +259,7 @@ then opening a magic link inside
 .IR /proc/ pid /fd
 that happens to refer to a terminal
 would cause the process to acquire a controlling terminal.
-.IP \(bu
+.IP \[bu]
 .\" From https://lwn.net/Articles/796868/:
 .\"     The presence of this flag will prevent a path lookup operation
 .\"     from traversing through one of these magic links, thus blocking
@@ -503,7 +503,7 @@ be the size of the structure as specified by the user-space application, and
 .I ksize
 be the size of the structure which the kernel supports, then there are
 three cases to consider:
-.IP \(bu 3
+.IP \[bu] 3
 If
 .I ksize
 equals
@@ -511,7 +511,7 @@ equals
 then there is no version mismatch and
 .I how
 can be used verbatim.
-.IP \(bu
+.IP \[bu]
 If
 .I ksize
 is larger than
@@ -524,7 +524,7 @@ the kernel
 treats all of the extension fields not provided by the user-space application
 as having zero values.
 This provides backwards-compatibility.
-.IP \(bu
+.IP \[bu]
 If
 .I ksize
 is smaller than

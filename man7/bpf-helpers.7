@@ -184,26 +184,26 @@ In the above:
 .INDENT 7.0
 .INDENT 3.5
 .INDENT 0.0
-.IP \(bu 2
+.IP \[bu] 2
 \fBtelnet\fP is the name of the current task.
-.IP \(bu 2
+.IP \[bu] 2
 \fB470\fP is the PID of the current task.
-.IP \(bu 2
+.IP \[bu] 2
 \fB001\fP is the CPU number on which the task is
 running.
-.IP \(bu 2
+.IP \[bu] 2
 In \fB\&.N..\fP, each character refers to a set of
 options (whether irqs are enabled, scheduling
 options, whether hard/softirqs are running, level of
 preempt_disabled respectively). \fBN\fP means that
 \fBTIF_NEED_RESCHED\fP and \fBPREEMPT_NEED_RESCHED\fP
 are set.
-.IP \(bu 2
+.IP \[bu] 2
 \fB419421.045894\fP is a timestamp.
-.IP \(bu 2
+.IP \[bu] 2
 \fB0x00000001\fP is a fake value used by BPF for the
 instruction pointer register.
-.IP \(bu 2
+.IP \[bu] 2
 \fB<formatted msg>\fP is the message formatted with
 \fIfmt\fP\&.
 .UNINDENT
@@ -752,11 +752,11 @@ and can be used with programs attached to TC or XDP as well,
 where it allows for passing data to user space listeners. Data
 can be:
 .INDENT 7.0
-.IP \(bu 2
+.IP \[bu] 2
 Only custom structs,
-.IP \(bu 2
+.IP \[bu] 2
 Only the packet payload, or
-.IP \(bu 2
+.IP \[bu] 2
 A combination of both.
 .UNINDENT
 .TP
@@ -854,13 +854,13 @@ to the helper).
 .sp
 This is flexible enough to be used in several ways:
 .INDENT 7.0
-.IP \(bu 2
+.IP \[bu] 2
 With \fIfrom_size\fP == 0, \fIto_size\fP > 0 and \fIseed\fP set to
 checksum, it can be used when pushing new data.
-.IP \(bu 2
+.IP \[bu] 2
 With \fIfrom_size\fP > 0, \fIto_size\fP == 0 and \fIseed\fP set to
 checksum, it can be used when removing data from a packet.
-.IP \(bu 2
+.IP \[bu] 2
 With \fIfrom_size\fP > 0, \fIto_size\fP > 0 and \fIseed\fP set to 0, it
 can be used to compute a diff. Note that \fIfrom_size\fP and
 \fIto_size\fP do not need to be equal.
@@ -987,11 +987,11 @@ Check whether \fIskb\fP is a descendant of the cgroup2 held by
 .B Return
 The return value depends on the result of the test, and can be:
 .INDENT 7.0
-.IP \(bu 2
+.IP \[bu] 2
 0, if the \fIskb\fP failed the cgroup2 descendant test.
-.IP \(bu 2
+.IP \[bu] 2
 1, if the \fIskb\fP succeeded the cgroup2 descendant test.
-.IP \(bu 2
+.IP \[bu] 2
 A negative error code, if an error occurred.
 .UNINDENT
 .UNINDENT
@@ -1060,11 +1060,11 @@ subset of the cgroup2 hierarchy. The cgroup2 to test is held by
 .B Return
 The return value depends on the result of the test, and can be:
 .INDENT 7.0
-.IP \(bu 2
+.IP \[bu] 2
 1, if current task belongs to the cgroup2.
-.IP \(bu 2
+.IP \[bu] 2
 0, if current task does not belong to the cgroup2.
-.IP \(bu 2
+.IP \[bu] 2
 A negative error code, if an error occurred.
 .UNINDENT
 .UNINDENT
@@ -1332,9 +1332,9 @@ The option value of length \fIoptlen\fP is pointed by \fIoptval\fP\&.
 .sp
 \fIbpf_socket\fP should be one of the following:
 .INDENT 7.0
-.IP \(bu 2
+.IP \[bu] 2
 \fBstruct bpf_sock_ops\fP for \fBBPF_PROG_TYPE_SOCK_OPS\fP\&.
-.IP \(bu 2
+.IP \[bu] 2
 \fBstruct bpf_sock_addr\fP for \fBBPF_CGROUP_INET4_CONNECT\fP
 and \fBBPF_CGROUP_INET6_CONNECT\fP\&.
 .UNINDENT
@@ -1342,20 +1342,20 @@ and \fBBPF_CGROUP_INET6_CONNECT\fP\&.
 This helper actually implements a subset of \fBsetsockopt()\fP\&.
 It supports the following \fIlevel\fPs:
 .INDENT 7.0
-.IP \(bu 2
+.IP \[bu] 2
 \fBSOL_SOCKET\fP, which supports the following \fIoptname\fPs:
 \fBSO_RCVBUF\fP, \fBSO_SNDBUF\fP, \fBSO_MAX_PACING_RATE\fP,
 \fBSO_PRIORITY\fP, \fBSO_RCVLOWAT\fP, \fBSO_MARK\fP,
 \fBSO_BINDTODEVICE\fP, \fBSO_KEEPALIVE\fP\&.
-.IP \(bu 2
+.IP \[bu] 2
 \fBIPPROTO_TCP\fP, which supports the following \fIoptname\fPs:
 \fBTCP_CONGESTION\fP, \fBTCP_BPF_IW\fP,
 \fBTCP_BPF_SNDCWND_CLAMP\fP, \fBTCP_SAVE_SYN\fP,
 \fBTCP_KEEPIDLE\fP, \fBTCP_KEEPINTVL\fP, \fBTCP_KEEPCNT\fP,
 \fBTCP_SYNCNT\fP, \fBTCP_USER_TIMEOUT\fP, \fBTCP_NOTSENT_LOWAT\fP\&.
-.IP \(bu 2
+.IP \[bu] 2
 \fBIPPROTO_IP\fP, which supports \fIoptname\fP \fBIP_TOS\fP\&.
-.IP \(bu 2
+.IP \[bu] 2
 \fBIPPROTO_IPV6\fP, which supports \fIoptname\fP \fBIPV6_TCLASS\fP\&.
 .UNINDENT
 .TP
@@ -1374,18 +1374,18 @@ By default, the helper will reset any offloaded checksum
 indicator of the skb to CHECKSUM_NONE. This can be avoided
 by the following flag:
 .INDENT 7.0
-.IP \(bu 2
+.IP \[bu] 2
 \fBBPF_F_ADJ_ROOM_NO_CSUM_RESET\fP: Do not reset offloaded
 checksum data of the skb to CHECKSUM_NONE.
 .UNINDENT
 .sp
 There are two supported modes at this time:
 .INDENT 7.0
-.IP \(bu 2
+.IP \[bu] 2
 \fBBPF_ADJ_ROOM_MAC\fP: Adjust room at the mac layer
 (room space is added or removed between the layer 2 and
 layer 3 headers).
-.IP \(bu 2
+.IP \[bu] 2
 \fBBPF_ADJ_ROOM_NET\fP: Adjust room at the network layer
 (room space is added or removed between the layer 3 and
 layer 4 headers).
@@ -1393,23 +1393,23 @@ layer 4 headers).
 .sp
 The following flags are supported at this time:
 .INDENT 7.0
-.IP \(bu 2
+.IP \[bu] 2
 \fBBPF_F_ADJ_ROOM_FIXED_GSO\fP: Do not adjust gso_size.
 Adjusting mss in this way is not allowed for datagrams.
-.IP \(bu 2
+.IP \[bu] 2
 \fBBPF_F_ADJ_ROOM_ENCAP_L3_IPV4\fP,
 \fBBPF_F_ADJ_ROOM_ENCAP_L3_IPV6\fP:
 Any new space is reserved to hold a tunnel header.
 Configure skb offsets and other fields accordingly.
-.IP \(bu 2
+.IP \[bu] 2
 \fBBPF_F_ADJ_ROOM_ENCAP_L4_GRE\fP,
 \fBBPF_F_ADJ_ROOM_ENCAP_L4_UDP\fP:
 Use with ENCAP_L3 flags to further specify the tunnel type.
-.IP \(bu 2
+.IP \[bu] 2
 \fBBPF_F_ADJ_ROOM_ENCAP_L2\fP(\fIlen\fP):
 Use with ENCAP_L3/L4 flags to further specify the tunnel
 type; \fIlen\fP is the length of the inner MAC header.
-.IP \(bu 2
+.IP \[bu] 2
 \fBBPF_F_ADJ_ROOM_ENCAP_L2_ETH\fP:
 Use with BPF_F_ADJ_ROOM_ENCAP_L2 flag to further specify the
 L2 type as Ethernet.
@@ -1616,9 +1616,9 @@ The retrieved value is stored in the structure pointed by
 .sp
 \fIbpf_socket\fP should be one of the following:
 .INDENT 7.0
-.IP \(bu 2
+.IP \[bu] 2
 \fBstruct bpf_sock_ops\fP for \fBBPF_PROG_TYPE_SOCK_OPS\fP\&.
-.IP \(bu 2
+.IP \[bu] 2
 \fBstruct bpf_sock_addr\fP for \fBBPF_CGROUP_INET4_CONNECT\fP
 and \fBBPF_CGROUP_INET6_CONNECT\fP\&.
 .UNINDENT
@@ -1626,12 +1626,12 @@ and \fBBPF_CGROUP_INET6_CONNECT\fP\&.
 This helper actually implements a subset of \fBgetsockopt()\fP\&.
 It supports the following \fIlevel\fPs:
 .INDENT 7.0
-.IP \(bu 2
+.IP \[bu] 2
 \fBIPPROTO_TCP\fP, which supports \fIoptname\fP
 \fBTCP_CONGESTION\fP\&.
-.IP \(bu 2
+.IP \[bu] 2
 \fBIPPROTO_IP\fP, which supports \fIoptname\fP \fBIP_TOS\fP\&.
-.IP \(bu 2
+.IP \[bu] 2
 \fBIPPROTO_IPV6\fP, which supports \fIoptname\fP \fBIPV6_TCLASS\fP\&.
 .UNINDENT
 .TP
@@ -1688,13 +1688,13 @@ supported in the current kernel.
 .sp
 \fIargval\fP is a flag array which can combine these flags:
 .INDENT 7.0
-.IP \(bu 2
+.IP \[bu] 2
 \fBBPF_SOCK_OPS_RTO_CB_FLAG\fP (retransmission time out)
-.IP \(bu 2
+.IP \[bu] 2
 \fBBPF_SOCK_OPS_RETRANS_CB_FLAG\fP (retransmission)
-.IP \(bu 2
+.IP \[bu] 2
 \fBBPF_SOCK_OPS_STATE_CB_FLAG\fP (TCP state change)
-.IP \(bu 2
+.IP \[bu] 2
 \fBBPF_SOCK_OPS_RTT_CB_FLAG\fP (every RTT)
 .UNINDENT
 .sp
@@ -1710,15 +1710,15 @@ callback:
 Here are some examples of where one could call such eBPF
 program:
 .INDENT 7.0
-.IP \(bu 2
+.IP \[bu] 2
 When RTO fires.
-.IP \(bu 2
+.IP \[bu] 2
 When a packet is retransmitted.
-.IP \(bu 2
+.IP \[bu] 2
 When the connection terminates.
-.IP \(bu 2
+.IP \[bu] 2
 When a packet is sent.
-.IP \(bu 2
+.IP \[bu] 2
 When a packet is received.
 .UNINDENT
 .TP
@@ -1756,11 +1756,11 @@ the next \fIbytes\fP (number of bytes) of message \fImsg\fP\&.
 .sp
 For example, this helper can be used in the following cases:
 .INDENT 7.0
-.IP \(bu 2
+.IP \[bu] 2
 A single \fBsendmsg\fP() or \fBsendfile\fP() system call
 contains multiple logical messages that the eBPF program is
 supposed to read and for which it should apply a verdict.
-.IP \(bu 2
+.IP \[bu] 2
 An eBPF program only cares to read the first \fIbytes\fP of a
 \fImsg\fP\&. If the message has a large payload, then setting up
 and calling the eBPF program repeatedly for all bytes, even
@@ -2022,11 +2022,11 @@ ingress).
 .TP
 .B Return
 .INDENT 7.0
-.IP \(bu 2
+.IP \[bu] 2
 < 0 if any input argument is invalid
-.IP \(bu 2
+.IP \[bu] 2
 0 on success (packet is forwarded, nexthop neighbor exists)
-.IP \(bu 2
+.IP \[bu] 2
 > 0 one of \fBBPF_FIB_LKUP_RET_\fP codes explaining why the
 packet is not forwarded or needs assist from full stack
 .UNINDENT
@@ -2565,55 +2565,55 @@ spinlock can (and must) later be released with a call to
 Spinlocks in BPF programs come with a number of restrictions
 and constraints:
 .INDENT 7.0
-.IP \(bu 2
+.IP \[bu] 2
 \fBbpf_spin_lock\fP objects are only allowed inside maps of
 types \fBBPF_MAP_TYPE_HASH\fP and \fBBPF_MAP_TYPE_ARRAY\fP (this
 list could be extended in the future).
-.IP \(bu 2
+.IP \[bu] 2
 BTF description of the map is mandatory.
-.IP \(bu 2
+.IP \[bu] 2
 The BPF program can take ONE lock at a time, since taking two
 or more could cause dead locks.
-.IP \(bu 2
+.IP \[bu] 2
 Only one \fBstruct bpf_spin_lock\fP is allowed per map element.
-.IP \(bu 2
+.IP \[bu] 2
 When the lock is taken, calls (either BPF to BPF or helpers)
 are not allowed.
-.IP \(bu 2
+.IP \[bu] 2
 The \fBBPF_LD_ABS\fP and \fBBPF_LD_IND\fP instructions are not
 allowed inside a spinlock\-ed region.
-.IP \(bu 2
+.IP \[bu] 2
 The BPF program MUST call \fBbpf_spin_unlock\fP() to release
 the lock, on all execution paths, before it returns.
-.IP \(bu 2
+.IP \[bu] 2
 The BPF program can access \fBstruct bpf_spin_lock\fP only via
 the \fBbpf_spin_lock\fP() and \fBbpf_spin_unlock\fP()
 helpers. Loading or storing data into the \fBstruct
 bpf_spin_lock\fP \fIlock\fP\fB;\fP field of a map is not allowed.
-.IP \(bu 2
+.IP \[bu] 2
 To use the \fBbpf_spin_lock\fP() helper, the BTF description
 of the map value must be a struct and have \fBstruct
 bpf_spin_lock\fP \fIanyname\fP\fB;\fP field at the top level.
 Nested lock inside another struct is not allowed.
-.IP \(bu 2
+.IP \[bu] 2
 The \fBstruct bpf_spin_lock\fP \fIlock\fP field in a map value must
 be aligned on a multiple of 4 bytes in that value.
-.IP \(bu 2
+.IP \[bu] 2
 Syscall with command \fBBPF_MAP_LOOKUP_ELEM\fP does not copy
 the \fBbpf_spin_lock\fP field to user space.
-.IP \(bu 2
+.IP \[bu] 2
 Syscall with command \fBBPF_MAP_UPDATE_ELEM\fP, or update from
 a BPF program, do not update the \fBbpf_spin_lock\fP field.
-.IP \(bu 2
+.IP \[bu] 2
 \fBbpf_spin_lock\fP cannot be on the stack or inside a
 networking packet (it can only be inside of a map values).
-.IP \(bu 2
+.IP \[bu] 2
 \fBbpf_spin_lock\fP is available to root only.
-.IP \(bu 2
+.IP \[bu] 2
 Tracing programs and socket filter programs cannot use
 \fBbpf_spin_lock\fP() due to insufficient preemption checks
 (but this may change in the future).
-.IP \(bu 2
+.IP \[bu] 2
 \fBbpf_spin_lock\fP is not allowed in inner maps of map\-in\-map.
 .UNINDENT
 .TP
@@ -3281,11 +3281,11 @@ selection.
 .sp
 \fIflags\fP argument can combination of following values:
 .INDENT 7.0
-.IP \(bu 2
+.IP \[bu] 2
 \fBBPF_SK_LOOKUP_F_REPLACE\fP to override the previous
 socket selection, potentially done by a BPF program
 that ran before us.
-.IP \(bu 2
+.IP \[bu] 2
 \fBBPF_SK_LOOKUP_F_NO_REUSEPORT\fP to skip
 load\-balancing within reuseport group for the socket
 being selected.
@@ -3296,20 +3296,20 @@ On success \fIctx\->sk\fP will point to the selected socket.
 .B Return
 0 on success, or a negative errno in case of failure.
 .INDENT 7.0
-.IP \(bu 2
+.IP \[bu] 2
 \fB\-EAFNOSUPPORT\fP if socket family (\fIsk\->family\fP) is
 not compatible with packet family (\fIctx\->family\fP).
-.IP \(bu 2
+.IP \[bu] 2
 \fB\-EEXIST\fP if socket has been already selected,
 potentially by another program, and
 \fBBPF_SK_LOOKUP_F_REPLACE\fP flag was not specified.
-.IP \(bu 2
+.IP \[bu] 2
 \fB\-EINVAL\fP if unsupported flags were specified.
-.IP \(bu 2
+.IP \[bu] 2
 \fB\-EPROTOTYPE\fP if socket L4 protocol
 (\fIsk\->protocol\fP) doesn\[aq]t match packet protocol
 (\fIctx\->protocol\fP).
-.IP \(bu 2
+.IP \[bu] 2
 \fB\-ESOCKTNOSUPPORT\fP if socket is not in allowed
 state (TCP listening or UDP unconnected).
 .UNINDENT
@@ -3490,13 +3490,13 @@ Nothing. Always succeeds.
 Query various characteristics of provided ring buffer. What
 exactly is queries is determined by \fIflags\fP:
 .INDENT 7.0
-.IP \(bu 2
+.IP \[bu] 2
 \fBBPF_RB_AVAIL_DATA\fP: Amount of data not yet consumed.
-.IP \(bu 2
+.IP \[bu] 2
 \fBBPF_RB_RING_SIZE\fP: The size of ring buffer.
-.IP \(bu 2
+.IP \[bu] 2
 \fBBPF_RB_CONS_POS\fP: Consumer position (can wrap around).
-.IP \(bu 2
+.IP \[bu] 2
 \fBBPF_RB_PROD_POS\fP: Producer(s) position (can wrap around).
 .UNINDENT
 .sp
@@ -3529,16 +3529,16 @@ stack instead of just egressing at tc.
 .sp
 There are three supported level settings at this time:
 .INDENT 7.0
-.IP \(bu 2
+.IP \[bu] 2
 \fBBPF_CSUM_LEVEL_INC\fP: Increases skb\->csum_level for skbs
 with CHECKSUM_UNNECESSARY.
-.IP \(bu 2
+.IP \[bu] 2
 \fBBPF_CSUM_LEVEL_DEC\fP: Decreases skb\->csum_level for skbs
 with CHECKSUM_UNNECESSARY.
-.IP \(bu 2
+.IP \[bu] 2
 \fBBPF_CSUM_LEVEL_RESET\fP: Resets skb\->csum_level to 0 and
 sets CHECKSUM_NONE to force checksum validation by the stack.
-.IP \(bu 2
+.IP \[bu] 2
 \fBBPF_CSUM_LEVEL_QUERY\fP: No\-op, returns the current
 skb\->csum_level.
 .UNINDENT
@@ -3686,7 +3686,7 @@ of a header option.
 .sp
 Supported flags:
 .INDENT 7.0
-.IP \(bu 2
+.IP \[bu] 2
 \fBBPF_LOAD_HDR_OPT_TCP_SYN\fP to search from the
 saved_syn packet or the just\-received syn packet.
 .UNINDENT
@@ -4166,9 +4166,9 @@ MTU value in your BPF\-code.
 .TP
 .B Return
 .INDENT 7.0
-.IP \(bu 2
+.IP \[bu] 2
 0 on success, and populate MTU value in \fImtu_len\fP pointer.
-.IP \(bu 2
+.IP \[bu] 2
 < 0 if any input argument is invalid (\fImtu_len\fP not updated)
 .UNINDENT
 .sp
@@ -4176,9 +4176,9 @@ MTU violations return positive values, but also populate MTU
 value in \fImtu_len\fP pointer, as this can be needed for
 implementing PMTU handing:
 .INDENT 7.0
-.IP \(bu 2
+.IP \[bu] 2
 \fBBPF_MTU_CHK_RET_FRAG_NEEDED\fP
-.IP \(bu 2
+.IP \[bu] 2
 \fBBPF_MTU_CHK_RET_SEGS_TOOBIG\fP
 .UNINDENT
 .UNINDENT
@@ -4378,11 +4378,11 @@ Expects BPF program context \fIctx\fP as a first argument.
 .TP
 .B Supported for the following program types:
 .INDENT 7.0
-.IP \(bu 2
+.IP \[bu] 2
 kprobe/uprobe;
-.IP \(bu 2
+.IP \[bu] 2
 tracepoint;
-.IP \(bu 2
+.IP \[bu] 2
 perf_event.
 .UNINDENT
 .UNINDENT
@@ -4992,9 +4992,9 @@ within a struct bpf_dynptr.
 Example usage for most of the eBPF helpers listed in this manual page are
 available within the Linux kernel sources, at the following locations:
 .INDENT 0.0
-.IP \(bu 2
+.IP \[bu] 2
 \fIsamples/bpf/\fP
-.IP \(bu 2
+.IP \[bu] 2
 \fItools/testing/selftests/bpf/\fP
 .UNINDENT
 .SH LICENSE
@@ -5030,23 +5030,23 @@ check by yourself what helper functions exist in your kernel, or what types of
 programs they can support, here are some files among the kernel tree that you
 may be interested in:
 .INDENT 0.0
-.IP \(bu 2
+.IP \[bu] 2
 \fIinclude/uapi/linux/bpf.h\fP is the main BPF header. It contains the full list
 of all helper functions, as well as many other BPF definitions including most
 of the flags, structs or constants used by the helpers.
-.IP \(bu 2
+.IP \[bu] 2
 \fInet/core/filter.c\fP contains the definition of most network\-related helper
 functions, and the list of program types from which they can be used.
-.IP \(bu 2
+.IP \[bu] 2
 \fIkernel/trace/bpf_trace.c\fP is the equivalent for most tracing program\-related
 helpers.
-.IP \(bu 2
+.IP \[bu] 2
 \fIkernel/bpf/verifier.c\fP contains the functions used to check that valid types
 of eBPF maps are used with a given helper function.
-.IP \(bu 2
+.IP \[bu] 2
 \fIkernel/bpf/\fP directory contains other files in which additional helpers are
 defined (for cgroups, sockmaps, etc.).
-.IP \(bu 2
+.IP \[bu] 2
 The bpftool utility can be used to probe the availability of helper functions
 on the system (as well as supported program and map types, and a number of
 other parameters). To do so, run \fBbpftool feature probe\fP (see

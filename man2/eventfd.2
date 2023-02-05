@@ -92,21 +92,21 @@ and whether the
 .B EFD_SEMAPHORE
 flag was specified when creating the eventfd file descriptor:
 .RS
-.IP \(bu 3
+.IP \[bu] 3
 If
 .B EFD_SEMAPHORE
 was not specified and the eventfd counter has a nonzero value, then a
 .BR read (2)
 returns 8 bytes containing that value,
 and the counter's value is reset to zero.
-.IP \(bu
+.IP \[bu]
 If
 .B EFD_SEMAPHORE
 was specified and the eventfd counter has a nonzero value, then a
 .BR read (2)
 returns 8 bytes containing the value 1,
 and the counter's value is decremented by 1.
-.IP \(bu
+.IP \[bu]
 If the eventfd counter is zero at the time of the call to
 .BR read (2),
 then the call either blocks until the counter becomes nonzero
@@ -151,7 +151,7 @@ and
 .BR select (2),
 as follows:
 .RS
-.IP \(bu 3
+.IP \[bu] 3
 The file descriptor is readable
 (the
 .BR select (2)
@@ -161,7 +161,7 @@ argument; the
 .B POLLIN
 flag)
 if the counter has a value greater than 0.
-.IP \(bu
+.IP \[bu]
 The file descriptor is writable
 (the
 .BR select (2)
@@ -171,7 +171,7 @@ argument; the
 .B POLLOUT
 flag)
 if it is possible to write a value of at least "1" without blocking.
-.IP \(bu
+.IP \[bu]
 If an overflow of the counter value was detected,
 then
 .BR select (2)

@@ -183,34 +183,34 @@ an explicit size value, then that size becomes the return value of
 Otherwise, the return value,
 .IR bits ,
 is inferred as follows:
-.IP \(bu 3
+.IP \[bu] 3
 If the most significant byte of the network number is
 greater than or equal to 240,
 then
 .I bits
 is 32.
-.IP \(bu
+.IP \[bu]
 Otherwise,
 if the most significant byte of the network number is
 greater than or equal to 224,
 then
 .I bits
 is 4.
-.IP \(bu
+.IP \[bu]
 Otherwise,
 if the most significant byte of the network number is
 greater than or equal to 192,
 then
 .I bits
 is 24.
-.IP \(bu
+.IP \[bu]
 Otherwise,
 if the most significant byte of the network number is
 greater than or equal to 128,
 then
 .I bits
 is 16.
-.IP \(bu
+.IP \[bu]
 Otherwise,
 .I bits
 is 8.

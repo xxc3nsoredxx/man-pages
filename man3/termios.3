@@ -702,14 +702,14 @@ By default,
 is set.
 .PP
 In canonical mode:
-.IP \(bu 3
+.IP \[bu] 3
 Input is made available line by line.
 An input line is available when one of the line delimiters
 is typed (NL, EOL, EOL2; or EOF at the start of line).
 Except in the case of EOF, the line delimiter is included
 in the buffer returned by
 .BR read (2).
-.IP \(bu
+.IP \[bu]
 Line editing is enabled (ERASE, KILL;
 and if the
 .B IEXTEN
@@ -722,7 +722,7 @@ requested fewer bytes than are available in the current line of input,
 then only as many bytes as requested are read,
 and the remaining characters will be available for a future
 .BR read (2).
-.IP \(bu
+.IP \[bu]
 The maximum line length is 4096 chars
 (including the terminating newline character);
 lines longer than 4096 chars are truncated.
@@ -786,11 +786,11 @@ the timer is restarted after each further byte is received.
 .BR read (2)
 returns when any of the following conditions is met:
 .RS
-.IP \(bu 3
+.IP \[bu] 3
 MIN bytes have been received.
-.IP \(bu
+.IP \[bu]
 The interbyte timer expires.
-.IP \(bu
+.IP \[bu]
 The number of bytes requested by
 .BR read (2)
 has been received.

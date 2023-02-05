@@ -133,13 +133,13 @@ C99, POSIX.1-2001, POSIX.1-2008.
 .\" Bug raised: http://sources.redhat.com/bugzilla/show_bug.cgi?id=6794
 Before glibc 2.16, the following bugs existed in the
 glibc implementation of these functions:
-.IP \(bu 3
+.IP \[bu] 3
 The domain error case where
 .I x
 is 0 or a NaN did not cause
 .I errno
 to be set or (on some architectures) raise a floating-point exception.
-.IP \(bu
+.IP \[bu]
 The domain error case where
 .I x
 is an infinity did not cause

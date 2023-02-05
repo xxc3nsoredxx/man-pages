@@ -129,7 +129,7 @@ in glibc 2.\fIx\fP,
 > 0.
 .PP
 First, though, a summary of a few details for the impatient:
-.IP \(bu 3
+.IP \[bu] 3
 The macros that you most likely need to use in modern source code are
 .B _POSIX_C_SOURCE
 (for definitions from various versions of POSIX.1),
@@ -139,13 +139,13 @@ The macros that you most likely need to use in modern source code are
 (for GNU and/or Linux specific stuff), and
 .B _DEFAULT_SOURCE
 (to get definitions that would normally be provided by default).
-.IP \(bu
+.IP \[bu]
 Certain macros are defined with default values.
 Thus, although one or more macros may be indicated as being
 required in the SYNOPSIS of a man page,
 it may not be necessary to define them explicitly.
 Full details of the defaults are given later in this man page.
-.IP \(bu
+.IP \[bu]
 Defining
 .B _XOPEN_SOURCE
 with a value of 600 or greater produces the same effects as defining
@@ -167,7 +167,7 @@ it is implicit that the following has the same effect:
 _XOPEN_SOURCE >= 600
 .EE
 .in
-.IP \(bu
+.IP \[bu]
 Defining
 .B _XOPEN_SOURCE
 with a value of 700 or greater produces the same effects as defining
@@ -208,20 +208,20 @@ flag.
 .B _POSIX_C_SOURCE
 Defining this macro causes header files to expose definitions as follows:
 .RS
-.IP \(bu 3
+.IP \[bu] 3
 The value 1 exposes definitions conforming to POSIX.1-1990 and
 ISO C (1990).
-.IP \(bu
+.IP \[bu]
 The value 2 or greater additionally exposes
 definitions for POSIX.2-1992.
-.IP \(bu
+.IP \[bu]
 The value 199309L or greater additionally exposes
 definitions for POSIX.1b (real-time extensions).
 .\" 199506L functionality is available only since glibc 2.1
-.IP \(bu
+.IP \[bu]
 The value 199506L or greater additionally exposes
 definitions for POSIX.1c (threads).
-.IP \(bu
+.IP \[bu]
 (Since glibc 2.3.3)
 The value 200112L or greater additionally exposes definitions corresponding
 to the POSIX.1-2001 base specification (excluding the XSI extension).
@@ -229,7 +229,7 @@ This value also causes C95 (since glibc 2.12) and
 C99 (since glibc 2.10) features to be exposed
 (in other words, the equivalent of defining
 .BR _ISOC99_SOURCE ).
-.IP \(bu
+.IP \[bu]
 (Since glibc 2.10)
 The value 200809L or greater additionally exposes definitions corresponding
 to the POSIX.1-2008 base specification (excluding the XSI extension).
@@ -247,17 +247,17 @@ feature test macro requirements in the man pages.
 .B _XOPEN_SOURCE
 Defining this macro causes header files to expose definitions as follows:
 .RS
-.IP \(bu 3
+.IP \[bu] 3
 Defining with any value exposes
 definitions conforming to POSIX.1, POSIX.2, and XPG4.
-.IP \(bu
+.IP \[bu]
 The value 500 or greater additionally exposes
 definitions for SUSv2 (UNIX 98).
-.IP \(bu
+.IP \[bu]
 (Since glibc 2.2) The value 600 or greater additionally exposes
 definitions for SUSv3 (UNIX 03; i.e., the POSIX.1-2001 base specification
 plus the XSI extension) and C99 definitions.
-.IP \(bu
+.IP \[bu]
 (Since glibc 2.10) The value 700 or greater additionally exposes
 definitions for SUSv4 (i.e., the POSIX.1-2008 base specification
 plus the XSI extension).
@@ -276,10 +276,10 @@ nor
 is explicitly defined, then
 the following macros are implicitly defined:
 .RS
-.IP \(bu 3
+.IP \[bu] 3
 .B _POSIX_SOURCE
 is defined with the value 1.
-.IP \(bu
+.IP \[bu]
 .B _POSIX_C_SOURCE
 is defined, according to the value of
 .BR _XOPEN_SOURCE :
@@ -712,41 +712,41 @@ and either
 is not defined or
 .B _XOPEN_SOURCE
 is defined with a value of 500 or more, then
-.IP \(bu 3
+.IP \[bu] 3
 .B _POSIX_SOURCE
 is defined with the value 1; and
-.IP \(bu
+.IP \[bu]
 .B _POSIX_C_SOURCE
 is defined with one of the following values:
 .RS 3
-.IP \(bu 3
+.IP \[bu] 3
 2,
 if
 .B _XOPEN_SOURCE
 is defined with a value less than 500;
-.IP \(bu
+.IP \[bu]
 199506L,
 if
 .B _XOPEN_SOURCE
 is defined with a value greater than or equal to 500 and less than 600;
 or
-.IP \(bu
+.IP \[bu]
 (since glibc 2.4) 200112L,
 if
 .B _XOPEN_SOURCE
 is defined with a value greater than or equal to 600 and less than 700.
-.IP \(bu
+.IP \[bu]
 (Since glibc 2.10)
 200809L,
 if
 .B _XOPEN_SOURCE
 is defined with a value greater than or equal to 700.
-.IP \(bu
+.IP \[bu]
 Older versions of glibc do not know about the values
 200112L and 200809L for
 .BR _POSIX_C_SOURCE ,
 and the setting of this macro will depend on the glibc version.
-.IP \(bu
+.IP \[bu]
 If
 .B _XOPEN_SOURCE
 is undefined, then the setting of
