@@ -38,7 +38,7 @@ Feature Test Macro Requirements for glibc (see
 .nf
     _ISOC99_SOURCE || _POSIX_C_SOURCE >= 200112L
         || /* Since glibc 2.19: */ _DEFAULT_SOURCE
-        || /* Glibc <= 2.19: */ _BSD_SOURCE || _SVID_SOURCE
+        || /* glibc <= 2.19: */ _BSD_SOURCE || _SVID_SOURCE
 .fi
 .SH DESCRIPTION
 These functions return the hyperbolic tangent of

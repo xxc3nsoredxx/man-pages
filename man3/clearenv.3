@@ -24,8 +24,8 @@ Feature Test Macro Requirements for glibc (see
 .PP
 .BR clearenv ():
 .nf
-    /* Glibc >= 2.19: */ _DEFAULT_SOURCE
-        || /* Glibc <= 2.19: */ _SVID_SOURCE || _BSD_SOURCE
+    /* glibc >= 2.19: */ _DEFAULT_SOURCE
+        || /* glibc <= 2.19: */ _SVID_SOURCE || _BSD_SOURCE
 .fi
 .SH DESCRIPTION
 The
@@ -44,7 +44,7 @@ The
 function returns zero on success, and a nonzero
 value on failure.
 .\" Most versions of UNIX return -1 on error, or do not even have errors.
-.\" Glibc info and the Watcom C library document "a nonzero value".
+.\" glibc info and the Watcom C library document "a nonzero value".
 .SH VERSIONS
 Available since glibc 2.0.
 .SH ATTRIBUTES

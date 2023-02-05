@@ -34,8 +34,8 @@ Feature Test Macro Requirements for glibc (see
 .nf
     _XOPEN_SOURCE >= 500
 .\"    || _XOPEN_SOURCE && _XOPEN_SOURCE_EXTENDED
-        || /* Glibc >= 2.19: */ _DEFAULT_SOURCE
-        || /* Glibc <= 2.19: */ _BSD_SOURCE || _SVID_SOURCE
+        || /* glibc >= 2.19: */ _DEFAULT_SOURCE
+        || /* glibc <= 2.19: */ _BSD_SOURCE || _SVID_SOURCE
 .fi
 .PP
 .BR getgrent (),
@@ -44,11 +44,11 @@ Feature Test Macro Requirements for glibc (see
     Since glibc 2.22:
         _XOPEN_SOURCE >= 500 || _DEFAULT_SOURCE
 .\"        || _XOPEN_SOURCE && _XOPEN_SOURCE_EXTENDED
-    Glibc 2.21 and earlier
+    glibc 2.21 and earlier
         _XOPEN_SOURCE >= 500
 .\"        || _XOPEN_SOURCE && _XOPEN_SOURCE_EXTENDED
             || /* Since glibc 2.12: */ _POSIX_C_SOURCE >= 200809L
-            || /* Glibc <= 2.19: */ _BSD_SOURCE || _SVID_SOURCE
+            || /* glibc <= 2.19: */ _BSD_SOURCE || _SVID_SOURCE
 .fi
 .SH DESCRIPTION
 The

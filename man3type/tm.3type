@@ -43,7 +43,7 @@ Feature Test Macro Requirements for glibc (see
 .\" Guarded with __USE_MISC:
     Since glibc 2.20:
         _DEFAULT_SOURCE
-    Glibc 2.20 and earlier:
+    glibc 2.20 and earlier:
         _BSD_SOURCE
 .fi
 .SH DESCRIPTION

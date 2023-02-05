@@ -39,14 +39,14 @@ Feature Test Macro Requirements for glibc (see
     Since glibc 2.24:
         _POSIX_C_SOURCE >= 199309L
 .\"        || (_XOPEN_SOURCE && _XOPEN_SOURCE_EXTENDED)
-    Glibc 2.19 to glibc 2.23
+    glibc 2.19 to glibc 2.23
         _POSIX_C_SOURCE
-    Glibc 2.16 to glibc 2.19:
+    glibc 2.16 to glibc 2.19:
         _BSD_SOURCE || _POSIX_C_SOURCE
-    Glibc 2.12 to glibc 2.16:
+    glibc 2.12 to glibc 2.16:
         _BSD_SOURCE || _XOPEN_SOURCE >= 500
             || _POSIX_C_SOURCE >= 200809L
-    Glibc 2.11 and earlier:
+    glibc 2.11 and earlier:
         _BSD_SOURCE || _XOPEN_SOURCE >= 500
 .\"        || (_XOPEN_SOURCE && _XOPEN_SOURCE_EXTENDED)
 .fi
@@ -321,7 +321,7 @@ This interface differs from the underlying Linux system call, which does
 have a
 .I flags
 argument.
-.SS Glibc notes
+.SS glibc notes
 On older kernels where
 .BR fchmodat ()
 is unavailable, the glibc wrapper function falls back to the use of

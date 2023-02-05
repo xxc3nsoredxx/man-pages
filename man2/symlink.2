@@ -38,7 +38,7 @@ Feature Test Macro Requirements for glibc (see
 .nf
     _XOPEN_SOURCE >= 500 || _POSIX_C_SOURCE >= 200112L
 .\"    || _XOPEN_SOURCE && _XOPEN_SOURCE_EXTENDED
-        || /* Glibc <= 2.19: */ _BSD_SOURCE
+        || /* glibc <= 2.19: */ _BSD_SOURCE
 .fi
 .PP
 .BR symlinkat ():
@@ -237,7 +237,7 @@ Deleting the name referred to by a symbolic link will actually delete the
 file (unless it also has other hard links).
 If this behavior is not desired, use
 .BR link (2).
-.SS Glibc notes
+.SS glibc notes
 On older kernels where
 .BR symlinkat ()
 is unavailable, the glibc wrapper function falls back to the use of

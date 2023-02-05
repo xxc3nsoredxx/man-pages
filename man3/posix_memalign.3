@@ -47,8 +47,8 @@ Feature Test Macro Requirements for glibc (see
 .nf
     Since glibc 2.12:
         (_XOPEN_SOURCE >= 500) && !(_POSIX_C_SOURCE >= 200112L)
-            || /* Glibc >= 2.19: */ _DEFAULT_SOURCE
-            || /* Glibc <= 2.19: */ _SVID_SOURCE || _BSD_SOURCE
+            || /* glibc >= 2.19: */ _DEFAULT_SOURCE
+            || /* glibc <= 2.19: */ _SVID_SOURCE || _BSD_SOURCE
     Before glibc 2.12:
         _BSD_SOURCE || _XOPEN_SOURCE >= 500
 .\"    || _XOPEN_SOURCE && _XOPEN_SOURCE_EXTENDED
@@ -220,7 +220,7 @@ According to SUSv2,
 .BR valloc ()
 is declared in \fI<stdlib.h>\fP.
 .\" Libc4,5 and
-Glibc declares it in \fI<malloc.h>\fP, and also in
+glibc declares it in \fI<malloc.h>\fP, and also in
 \fI<stdlib.h>\fP
 if suitable feature test macros are defined (see above).
 .SH NOTES

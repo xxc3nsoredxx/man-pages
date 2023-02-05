@@ -55,10 +55,10 @@ Feature Test Macro Requirements for glibc (see
     Since glibc 2.26:
         _XOPEN_SOURCE >= 500 || _POSIX_C_SOURCE >= 200809L
 .\"    (_XOPEN_SOURCE && _XOPEN_SOURCE_EXTENDED)
-    Glibc 2.25 and earlier:
+    glibc 2.25 and earlier:
         _XOPEN_SOURCE
             || /* Since glibc 2.12: */ _POSIX_C_SOURCE >= 200809L
-            || /* Glibc <= 2.19: */ _BSD_SOURCE
+            || /* glibc <= 2.19: */ _BSD_SOURCE
 .fi
 .SH DESCRIPTION
 All of these system calls are used to wait for state changes

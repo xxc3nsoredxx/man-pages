@@ -36,8 +36,8 @@ Feature Test Macro Requirements for glibc (see
 .BR initstate_r (),
 .BR setstate_r ():
 .nf
-    /* Glibc >= 2.19: */ _DEFAULT_SOURCE
-        || /* Glibc <= 2.19: */ _SVID_SOURCE || _BSD_SOURCE
+    /* glibc >= 2.19: */ _DEFAULT_SOURCE
+        || /* glibc <= 2.19: */ _SVID_SOURCE || _BSD_SOURCE
 .fi
 .SH DESCRIPTION
 These functions are the reentrant equivalents

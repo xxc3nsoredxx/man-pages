@@ -37,7 +37,7 @@ Feature Test Macro Requirements for glibc (see
 .BR lgamma ():
     _ISOC99_SOURCE || _POSIX_C_SOURCE >= 200112L || _XOPEN_SOURCE
         || /* Since glibc 2.19: */ _DEFAULT_SOURCE
-        || /* Glibc <= 2.19: */ _BSD_SOURCE || _SVID_SOURCE
+        || /* glibc <= 2.19: */ _BSD_SOURCE || _SVID_SOURCE
 .fi
 .PP
 .BR lgammaf (),
@@ -45,7 +45,7 @@ Feature Test Macro Requirements for glibc (see
 .nf
     _ISOC99_SOURCE || _POSIX_C_SOURCE >= 200112L
         || /* Since glibc 2.19: */ _DEFAULT_SOURCE
-        || /* Glibc <= 2.19: */ _BSD_SOURCE || _SVID_SOURCE
+        || /* glibc <= 2.19: */ _BSD_SOURCE || _SVID_SOURCE
 .fi
 .PP
 .BR lgamma_r (),
@@ -53,14 +53,14 @@ Feature Test Macro Requirements for glibc (see
 .BR lgammal_r ():
 .nf
     /* Since glibc 2.19: */ _DEFAULT_SOURCE
-        || /* Glibc <= 2.19: */ _BSD_SOURCE || _SVID_SOURCE
+        || /* glibc <= 2.19: */ _BSD_SOURCE || _SVID_SOURCE
 .fi
 .PP
 .IR signgam :
 .nf
     _XOPEN_SOURCE
         || /* Since glibc 2.19: */ _DEFAULT_SOURCE
-        || /* Glibc <= 2.19: */ _BSD_SOURCE || _SVID_SOURCE
+        || /* glibc <= 2.19: */ _BSD_SOURCE || _SVID_SOURCE
 .fi
 .SH DESCRIPTION
 For the definition of the Gamma function, see

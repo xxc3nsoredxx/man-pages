@@ -58,7 +58,7 @@ for printing
 values.
 .TP
 .I ssize_t
-Glibc and most other implementations provide a length modifier for
+glibc and most other implementations provide a length modifier for
 .I ssize_t
 for the
 .BR printf (3)

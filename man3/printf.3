@@ -54,7 +54,7 @@ Feature Test Macro Requirements for glibc (see
 .BR vsnprintf ():
 .nf
     _XOPEN_SOURCE >= 500 || _ISOC99_SOURCE
-        || /* Glibc <= 2.19: */ _BSD_SOURCE
+        || /* glibc <= 2.19: */ _BSD_SOURCE
 .fi
 .PP
 .BR dprintf (),
@@ -861,7 +861,7 @@ The behavior is undefined if the conversion specification includes
 any flags, a field width, or a precision.
 .TP
 .B m
-(Glibc extension; supported by uClibc and musl.)
+(glibc extension; supported by uClibc and musl.)
 Print output of
 .I strerror(errno)
 (or

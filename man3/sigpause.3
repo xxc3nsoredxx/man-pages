@@ -90,7 +90,7 @@ architecture.
 .PP
 .\" Libc4 and libc5 know only about the BSD version.
 .\"
-Glibc uses the BSD version if the
+glibc uses the BSD version if the
 .B _BSD_SOURCE
 feature test macro is defined and none of
 .BR _POSIX_SOURCE ,
@@ -107,7 +107,7 @@ Since glibc 2.26:
 _XOPEN_SOURCE >= 500
 .\" || (_XOPEN_SOURCE && _XOPEN_SOURCE_EXTENDED)
 .IP \(bu
-Glibc 2.25 and earlier: _XOPEN_SOURCE
+glibc 2.25 and earlier: _XOPEN_SOURCE
 .PP
 Since glibc 2.19, only the System V version is exposed by
 .IR <signal.h> ;

@@ -29,7 +29,7 @@ Feature Test Macro Requirements for glibc (see
 .nf
     _XOPEN_SOURCE
         || /* Since glibc 2.19: */ _DEFAULT_SOURCE
-        || /* Glibc <= 2.19: */ _BSD_SOURCE || _SVID_SOURCE
+        || /* glibc <= 2.19: */ _BSD_SOURCE || _SVID_SOURCE
 .fi
 .PP
 .BR gammaf (),
@@ -37,7 +37,7 @@ Feature Test Macro Requirements for glibc (see
 .nf
     _XOPEN_SOURCE >= 600 || (_XOPEN_SOURCE && _ISOC99_SOURCE)
         || /* Since glibc 2.19: */ _DEFAULT_SOURCE
-        || /* Glibc <= 2.19: */ _BSD_SOURCE || _SVID_SOURCE
+        || /* glibc <= 2.19: */ _BSD_SOURCE || _SVID_SOURCE
 .fi
 .SH DESCRIPTION
 These functions are deprecated: instead, use either the
@@ -53,7 +53,7 @@ The libm in 4.4BSD and some versions of FreeBSD had a
 .BR gamma ()
 function that computes the Gamma function, as one would expect.
 .SS glibc version
-Glibc has a
+glibc has a
 .BR gamma ()
 function that is equivalent to
 .BR lgamma (3)

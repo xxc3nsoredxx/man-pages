@@ -49,7 +49,7 @@ Feature Test Macro Requirements for glibc (see
 .nf
     _XOPEN_SOURCE
         || /* Since glibc 2.19: */ _DEFAULT_SOURCE
-        || /* Glibc <= 2.19: */ _SVID_SOURCE || _BSD_SOURCE
+        || /* glibc <= 2.19: */ _SVID_SOURCE || _BSD_SOURCE
 .fi
 .PP
 .BR j0f (),
@@ -62,7 +62,7 @@ Feature Test Macro Requirements for glibc (see
     _XOPEN_SOURCE >= 600
         || (_ISOC99_SOURCE && _XOPEN_SOURCE)
         || /* Since glibc 2.19: */ _DEFAULT_SOURCE
-        || /* Glibc <= 2.19: */ _SVID_SOURCE || _BSD_SOURCE
+        || /* glibc <= 2.19: */ _SVID_SOURCE || _BSD_SOURCE
 .fi
 .SH DESCRIPTION
 The

@@ -249,9 +249,9 @@ their counterparts without the "x" (e.g.,
 is an alias for
 .BR getutent ()).
 .SH NOTES
-.SS Glibc notes
+.SS glibc notes
 The above functions are not thread-safe.
-Glibc adds reentrant versions
+glibc adds reentrant versions
 .PP
 .nf
 .B #include <utmp.h>
@@ -272,7 +272,7 @@ Feature Test Macro Requirements for glibc (see
 .nf
     _GNU_SOURCE
         || /* Since glibc 2.19: */ _DEFAULT_SOURCE
-        || /* Glibc <= 2.19: */    _SVID_SOURCE || _BSD_SOURCE
+        || /* glibc <= 2.19: */    _SVID_SOURCE || _BSD_SOURCE
 .fi
 .PP
 These functions are GNU extensions, analogs of the functions of the

@@ -405,7 +405,7 @@ The processors in an SMP system do not start all at exactly the same
 time and therefore the timer registers are typically running at an offset.
 Some architectures include code that attempts to limit these offsets on bootup.
 However, the code cannot guarantee to accurately tune the offsets.
-Glibc contains no provisions to deal with these offsets (unlike the Linux
+glibc contains no provisions to deal with these offsets (unlike the Linux
 Kernel).
 Typically these offsets are small and therefore the effects may be
 negligible in most cases.

@@ -47,7 +47,7 @@ Feature Test Macro Requirements for glibc (see
     /* Since glibc 2.12: */ _POSIX_C_SOURCE >= 200809L
         || _XOPEN_SOURCE >= 500
 .\"    || _XOPEN_SOURCE && _XOPEN_SOURCE_EXTENDED
-        || /* Glibc <= 2.19: */ _BSD_SOURCE
+        || /* glibc <= 2.19: */ _BSD_SOURCE
 .fi
 .PP
 .BR fchownat ():
@@ -348,7 +348,7 @@ mount options are supported by ext2, ext3, ext4, and XFS.
 Filesystems that don't support these mount options follow the
 .B \-o\ nogrpid
 rules.
-.SS Glibc notes
+.SS glibc notes
 On older kernels where
 .BR fchownat ()
 is unavailable, the glibc wrapper function falls back to the use of
