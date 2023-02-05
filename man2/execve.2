@@ -466,7 +466,7 @@ The filesystem is mounted
 .\" commit 72fa59970f8698023045ab0713d66f3f4f96945c
 Having changed its real UID using one of the
 .BR set*uid ()
-calls, the caller was\(emand is now still\(emabove its
+calls, the caller was\[em]and is now still\[em]above its
 .B RLIMIT_NPROC
 resource limit (see
 .BR setrlimit (2)).
@@ -714,7 +714,7 @@ Since Linux 3.1, the scenario just described no longer causes the
 call to fail,
 because it too often led to security holes where buggy applications
 didn't check the return status and assumed
-that\(emif the caller had root privileges\(emthe call would always succeed.
+that\[em]if the caller had root privileges\[em]the call would always succeed.
 Instead, the
 .BR set*uid ()
 calls now successfully change the real UID,
@@ -733,7 +733,7 @@ call, that call fails with the error
 This kernel logic ensures that the
 .B RLIMIT_NPROC
 resource limit is still enforced for the
-common privileged daemon workflow\(emnamely,
+common privileged daemon workflow\[em]namely,
 .BR fork (2)
 +
 .BR set*uid ()

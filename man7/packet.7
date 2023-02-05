@@ -492,9 +492,9 @@ By default, packets sent through packet sockets pass through the kernel's
 qdisc (traffic control) layer, which is fine for the vast majority of use
 cases.
 For traffic generator appliances using packet sockets
-that intend to brute-force flood the network\(emfor example,
+that intend to brute-force flood the network\[em]for example,
 to test devices under load in a similar
-fashion to pktgen\(emthis layer can be bypassed by setting
+fashion to pktgen\[em]this layer can be bypassed by setting
 this integer option to 1.
 A side effect is that packet buffering in the qdisc layer is avoided,
 which will lead to increased drops when network

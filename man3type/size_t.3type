@@ -79,7 +79,7 @@ Although
 works for
 .I ssize_t
 on most implementations,
-portable POSIX programs should avoid using it\(emfor example,
+portable POSIX programs should avoid using it\[em]for example,
 by converting the value to
 .I intmax_t
 and using its length modifier

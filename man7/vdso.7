@@ -69,9 +69,9 @@ One frequently used system call is
 This system call is called both directly by user-space applications
 as well as indirectly by
 the C library.
-Think timestamps or timing loops or polling\(emall of these
+Think timestamps or timing loops or polling\[em]all of these
 frequently need to know what time it is right now.
-This information is also not secret\(emany application in any
+This information is also not secret\[em]any application in any
 privilege mode (root or any unprivileged user) will get the same answer.
 Thus the kernel arranges for the information required to answer
 this question to be placed in memory the process can access.
@@ -252,7 +252,7 @@ a fixed location in memory.
 User-space applications then call directly into that region.
 There is no provision for backward compatibility
 beyond sniffing raw opcodes,
-but as this is an embedded CPU, it can get away with things\(emsome of the
+but as this is an embedded CPU, it can get away with things\[em]some of the
 object formats it runs aren't even ELF based (they're bFLT/FLAT).
 .PP
 For information on this code page,
@@ -588,7 +588,7 @@ __vdso_time	LINUX_2.6
 .ft P
 \}
 .SS History
-The vDSO was originally just a single function\(emthe vsyscall.
+The vDSO was originally just a single function\[em]the vsyscall.
 In older kernels, you might see that name
 in a process's memory map rather than "vdso".
 Over time, people realized that this mechanism

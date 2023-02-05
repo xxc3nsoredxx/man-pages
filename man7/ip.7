@@ -399,7 +399,7 @@ structure similar to
 .BR IP_ADD_MEMBERSHIP .
 .TP
 .BR IP_DROP_SOURCE_MEMBERSHIP " (since Linux 2.4.22 / 2.5.68)"
-Leave a source-specific group\(emthat is, stop receiving data from
+Leave a source-specific group\[em]that is, stop receiving data from
 a given multicast group that come from a given source.
 If the application has subscribed to multiple sources within
 the same group, data from the remaining sources will still be delivered.
@@ -1143,7 +1143,7 @@ IP forwarding can be also set on a per-interface basis.
 .IR ip_local_port_range " (since Linux 2.2)"
 .\" Precisely: since Linux 2.1.68
 This file contains two integers that define the default local port range
-allocated to sockets that are not explicitly bound to a port number\(emthat
+allocated to sockets that are not explicitly bound to a port number\[em]that
 is, the range used for
 .IR "ephemeral ports" .
 An ephemeral port is allocated to a socket in the following circumstances:

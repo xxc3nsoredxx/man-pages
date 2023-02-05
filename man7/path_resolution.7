@@ -22,7 +22,7 @@ with the
 flag set.
 .PP
 A process may get an entirely private mount namespace in case
-it\(emor one of its ancestors\(emwas started by an invocation of the
+it\[em]or one of its ancestors\[em]was started by an invocation of the
 .BR clone (2)
 system call that had the
 .B CLONE_NEWNS
@@ -31,7 +31,7 @@ This handles the \[aq]/\[aq] part of the pathname.
 .PP
 If the pathname does not start with the \[aq]/\[aq] character, the starting
 lookup directory of the resolution process is the current working directory of
-the process \(em or in the case of
+the process \[em] or in the case of
 .BR openat (2)-style
 system calls, the
 .I dfd
@@ -125,9 +125,9 @@ The lookup of the final component of the pathname goes just like
 that of all other components, as described in the previous step,
 with two differences: (i) the final component need not be a
 directory (at least as far as the path resolution process is
-concerned\(emit may have to be a directory, or a nondirectory, because of
+concerned\[em]it may have to be a directory, or a nondirectory, because of
 the requirements of the specific system call), and (ii) it
-is not necessarily an error if the component is not found\(emmaybe
+is not necessarily an error if the component is not found\[em]maybe
 we are just creating it.
 The details on the treatment
 of the final entry are described in the manual pages of the specific

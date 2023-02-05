@@ -217,7 +217,7 @@ driver are passed to the
 driver.
 The definitions below are from
 .IR /usr/include/linux/mtio.h :
-.SS MTIOCTOP \(em perform a tape operation
+.SS MTIOCTOP \[em] perform a tape operation
 This request takes an argument of type
 .IR "(struct mtop\ *)" .
 Not all drives support all operations.
@@ -332,7 +332,7 @@ is enabled for the drive (see
 below).
 .TP
 .B MTNOP
-No op\(emflushes the driver's buffer as a side effect.
+No op\[em]flushes the driver's buffer as a side effect.
 Should be used before reading status with
 .BR MTIOCGET .
 .TP
@@ -667,7 +667,7 @@ the cleaning request.
 If the pattern is nonzero, the pattern must match
 the masked sense data byte.
 .RE
-.SS MTIOCGET \(em get status
+.SS MTIOCGET \[em] get status
 This request takes an argument of type
 .IR "(struct mtget\ *)" .
 .PP
@@ -799,7 +799,7 @@ This value is set to \-1 when the block number is unknown (e.g., after
 .BR MTBSS ,
 or
 .BR MTSEEK ).
-.SS MTIOCPOS \(em get tape position
+.SS MTIOCPOS \[em] get tape position
 This request takes an argument of type
 .I "(struct mtpos\ *)"
 and reports the drive's notion of the current tape block number,

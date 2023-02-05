@@ -35,8 +35,8 @@ but is unprivileged for operations outside the namespace.
 .\"
 .SS Nested namespaces, namespace membership
 User namespaces can be nested;
-that is, each user namespace\(emexcept the initial ("root")
-namespace\(emhas a parent user namespace,
+that is, each user namespace\[em]except the initial ("root")
+namespace\[em]has a parent user namespace,
 and can have zero or more child user namespaces.
 The parent user namespace is the user namespace
 of the process that creates the user namespace via a call to
@@ -431,11 +431,11 @@ that created this user namespace.
 The length of the range of user IDs that is mapped between the two
 user namespaces.
 .PP
-System calls that return user IDs (group IDs)\(emfor example,
+System calls that return user IDs (group IDs)\[em]for example,
 .BR getuid (2),
 .BR getgid (2),
 and the credential fields in the structure returned by
-.BR stat (2)\(emreturn
+.BR stat (2)\[em]return
 the user ID (group ID) mapped into the caller's user namespace.
 .PP
 When a process accesses a file, its user and group IDs

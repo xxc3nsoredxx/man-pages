@@ -62,8 +62,8 @@ Other
 operations can be used to wake any processes or threads waiting
 for a particular condition.
 .PP
-A futex is a 32-bit value\(emreferred to below as a
-.IR "futex word" \(emwhose
+A futex is a 32-bit value\[em]referred to below as a
+.IR "futex word" \[em]whose
 address is supplied to the
 .BR futex ()
 system call.
@@ -1010,7 +1010,7 @@ The PI futex operations are as follows:
 .\" commit c87e2837be82df479a6bae9f155c43516d2feebc
 This operation is used after an attempt to acquire
 the lock via an atomic user-mode instruction failed
-because the futex word has a nonzero value\(emspecifically,
+because the futex word has a nonzero value\[em]specifically,
 because it contained the (PID-namespace-specific) TID of the lock owner.
 .IP
 The operation checks the value of the futex word at the address
@@ -1545,7 +1545,7 @@ employs one or both of the pointers
 .I uaddr
 and
 .IR uaddr2 ,
-but one of these does not point to a valid object\(emthat is,
+but one of these does not point to a valid object\[em]that is,
 the address is not four-byte-aligned.
 .TP
 .B EINVAL
@@ -1576,7 +1576,7 @@ is invalid.
 .BR FUTEX_CMP_REQUEUE )
 The kernel detected an inconsistency between the user-space state at
 .I uaddr
-and the kernel state\(emthat is, it detected a waiter which waits in
+and the kernel state\[em]that is, it detected a waiter which waits in
 .B FUTEX_LOCK_PI
 or
 .B FUTEX_LOCK_PI2

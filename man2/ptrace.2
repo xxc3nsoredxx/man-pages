@@ -1554,7 +1554,7 @@ The kernel behavior described in the previous paragraph
 causes a problem with transparent handling of stopping signals.
 If the tracer restarts the tracee after group-stop,
 the stopping signal
-is effectively ignored\(emthe tracee doesn't remain stopped, it runs.
+is effectively ignored\[em]the tracee doesn't remain stopped, it runs.
 If the tracer doesn't restart the tracee before entering into the next
 .BR waitpid (2),
 future
@@ -2158,7 +2158,7 @@ and needs to be restarted and waited for again, until
 is seen.
 Yet another complication is to be sure that
 the tracee is not already ptrace-stopped,
-because no signal delivery happens while it is\(emnot even
+because no signal delivery happens while it is\[em]not even
 .BR SIGSTOP .
 .\" FIXME Describe how to detach from a group-stopped tracee so that it
 .\" doesn't run, but continues to wait for SIGCONT.
@@ -2269,7 +2269,7 @@ On receiving the
 stop notification,
 the tracer should clean up all its internal
 data structures describing the threads of this process,
-and retain only one data structure\(emone which
+and retain only one data structure\[em]one which
 describes the single still running tracee, with
 .PP
 .in +4n
@@ -2484,7 +2484,7 @@ The checks are based on factors such as the credentials and capabilities
 of the two processes,
 whether or not the "target" process is dumpable,
 and the results of checks performed by any enabled Linux Security Module
-(LSM)\(emfor example, SELinux, Yama, or Smack\(emand by the commoncap LSM
+(LSM)\[em]for example, SELinux, Yama, or Smack\[em]and by the commoncap LSM
 (which is always invoked).
 .PP
 Prior to Linux 2.6.27, all access checks were of a single type.
@@ -2718,7 +2718,7 @@ More precisely, the Yama LSM limits two types of operations:
 .IP \(bu 3
 Any operation that performs a ptrace access mode
 .B PTRACE_MODE_ATTACH
-check\(emfor example,
+check\[em]for example,
 .BR ptrace ()
 .BR PTRACE_ATTACH .
 (See the "Ptrace access mode checking" discussion above.)

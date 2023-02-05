@@ -115,7 +115,7 @@ is specified for this operation, the system subtracts the value
 from the semaphore adjustment
 .RI ( semadj )
 value for this semaphore.
-This operation can always proceed\(emit never forces a thread to wait.
+This operation can always proceed\[em]it never forces a thread to wait.
 The calling process must have alter permission on the semaphore set.
 .PP
 If
@@ -388,7 +388,7 @@ of all operations performed on a semaphore specifying the
 flag.
 Each process has a list of
 .I semadj
-values\(emone value for each semaphore on which it has operated using
+values\[em]one value for each semaphore on which it has operated using
 .BR SEM_UNDO .
 When a process terminates, each of its per-semaphore
 .I semadj

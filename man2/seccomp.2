@@ -454,7 +454,7 @@ the least significant 16-bits (defined by the constant
 are "data" to be associated with this return value.
 .PP
 If multiple filters exist, they are \fIall\fP executed,
-in reverse order of their addition to the filter tree\(emthat is,
+in reverse order of their addition to the filter tree\[em]that is,
 the most recently installed filter is executed first.
 (Note that all filters will be called
 even if one of the earlier filters returns
@@ -660,9 +660,9 @@ notified.
 (This means that, on older kernels, seccomp-based sandboxes
 .B "must not"
 allow use of
-.BR ptrace (2)\(emeven
+.BR ptrace (2)\[em]even
 of other
-sandboxed processes\(emwithout extreme care;
+sandboxed processes\[em]without extreme care;
 ptracers can use this mechanism to escape from the seccomp sandbox.)
 .IP
 Note that a tracer process will not be notified

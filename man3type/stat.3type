@@ -119,10 +119,10 @@ For further information on the above fields, see
 .SH VERSIONS
 Old kernels and old standards did not support nanosecond timestamp fields.
 Instead, there were three timestamp
-.RI fields\(em st_atime ,
+.RI fields\[em] st_atime ,
 .IR st_mtime ,
 and
-.IR st_ctime \(emtyped
+.IR st_ctime \[em]typed
 as
 .I time_t
 that recorded timestamps with one-second precision.

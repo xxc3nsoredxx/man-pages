@@ -521,7 +521,7 @@ Think of this file as the command line that the process wants you to see.
 .\" commit 4614a696bd1c3a9af3a08f0e5874830a85b889d4
 This file exposes the process's
 .I comm
-value\(emthat is, the command name associated with the process.
+value\[em]that is, the command name associated with the process.
 Different threads in the same process may have different
 .I comm
 values, accessible via
@@ -1148,14 +1148,14 @@ Similar caveats apply here as with
 .IR rchar .
 .TP
 .IR syscr ": read syscalls"
-Attempt to count the number of read I/O operations\(emthat is,
+Attempt to count the number of read I/O operations\[em]that is,
 system calls such as
 .BR read (2)
 and
 .BR pread (2).
 .TP
 .IR syscw ": write syscalls"
-Attempt to count the number of write I/O operations\(emthat is,
+Attempt to count the number of write I/O operations\[em]that is,
 system calls such as
 .BR write (2)
 and

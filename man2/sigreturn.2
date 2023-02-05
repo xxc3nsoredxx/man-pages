@@ -38,8 +38,8 @@ The signal trampoline code in turn calls
 This
 .BR sigreturn ()
 call undoes everything that was
-done\(emchanging the process's signal mask, switching signal stacks (see
-.BR sigaltstack "(2))\(emin"
+done\[em]changing the process's signal mask, switching signal stacks (see
+.BR sigaltstack "(2))\[em]in"
 order to invoke the signal handler.
 Using the information that was earlier saved on the user-space stack
 .BR sigreturn ()
