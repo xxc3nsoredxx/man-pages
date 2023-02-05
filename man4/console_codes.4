@@ -88,40 +88,40 @@ The recognized control characters are BEL, BS, HT, LF, VT, FF,
 CR, SO, SI, CAN, SUB, ESC, DEL, CSI.
 They do what one would expect:
 .TP
-BEL (0x07, \fB\(haG\fP)
+BEL (0x07, \fB\[ha]G\fP)
 beeps;
 .TP
-BS (0x08, \fB\(haH\fP)
+BS (0x08, \fB\[ha]H\fP)
 backspaces one column
 (but not past the beginning of the line);
 .TP
-HT (0x09, \fB\(haI\fP)
+HT (0x09, \fB\[ha]I\fP)
 goes to the next tab stop or to the end of the line
 if there is no earlier tab stop;
 .TP
-LF (0x0A, \fB\(haJ\fP)
+LF (0x0A, \fB\[ha]J\fP)
 .TQ
-VT (0x0B, \fB\(haK\fP)
+VT (0x0B, \fB\[ha]K\fP)
 .TQ
-FF (0x0C, \fB\(haL\fP)
+FF (0x0C, \fB\[ha]L\fP)
 all give a linefeed,
 and if LF/NL (new-line mode) is set also a carriage return;
 .TP
-CR (0x0D, \fB\(haM\fP)
+CR (0x0D, \fB\[ha]M\fP)
 gives a carriage return;
 .TP
-SO (0x0E, \fB\(haN\fP)
+SO (0x0E, \fB\[ha]N\fP)
 activates the G1 character set;
 .TP
-SI (0x0F, \fB\(haO\fP)
+SI (0x0F, \fB\[ha]O\fP)
 activates the G0 character set;
 .TP
-CAN (0x18, \fB\(haX\fP)
+CAN (0x18, \fB\[ha]X\fP)
 .TQ
-SUB (0x1A, \fB\(haZ\fP)
+SUB (0x1A, \fB\[ha]Z\fP)
 abort escape sequences;
 .TP
-ESC (0x1B, \fB\(ha[\fP)
+ESC (0x1B, \fB\[ha][\fP)
 starts an escape sequence;
 .TP
 DEL (0x7F)
@@ -536,8 +536,8 @@ b) VT100 graphics \-> PC, c) PC \-> PC, d) user-defined.
 There are two character sets, called G0 and G1, and one of them
 is the current character set.
 (Initially G0.)
-Typing \fB\(haN\fP causes G1 to become current,
-\fB\(haO\fP causes G0 to become current.
+Typing \fB\[ha]N\fP causes G1 to become current,
+\fB\[ha]O\fP causes G0 to become current.
 .PP
 These variables G0 and G1 point at a translation table, and can be
 changed by the user.
@@ -549,11 +549,11 @@ point at translation table a), b), c), and d), respectively.
 .PP
 The sequence ESC c causes a terminal reset, which is what you want if the
 screen is all garbled.
-The oft-advised "echo \(haV\(haO" will make only G0 current,
+The oft-advised "echo \[ha]V\[ha]O" will make only G0 current,
 but there is no guarantee that G0 points at table a).
 In some distributions there is a program
 .BR reset (1)
-that just does "echo \(ha[c".
+that just does "echo \[ha][c".
 If your terminfo entry for the console is correct
 (and has an entry rs1=\eEc), then "tput reset" will also work.
 .PP
@@ -625,10 +625,10 @@ was ignored;
 ENQ (0x05)
 triggered an answerback message;
 .TP
-DC1 (0x11, \fB\(haQ\fP, XON)
+DC1 (0x11, \fB\[ha]Q\fP, XON)
 resumed transmission;
 .TP
-DC3 (0x13, \fB\(haS\fP, XOFF)
+DC3 (0x13, \fB\[ha]S\fP, XOFF)
 caused VT100 to ignore (and stop transmitting)
 all codes except XOFF and XON.
 .PP
@@ -655,7 +655,7 @@ ESC P	DCS	T{
 Device control string (ended by ESC \e)
 T}
 ESC X	SOS	Start of string.
-ESC \(ha	PM	Privacy message (ended by ESC \e)
+ESC \[ha]	PM	Privacy message (ended by ESC \e)
 ESC \e	ST	String terminator
 ESC * ...		Designate G2 character set
 ESC + ...		Designate G3 character set
@@ -667,7 +667,7 @@ The program
 ESC D, ESC E, ESC H, ESC M, ESC N, ESC O, ESC P ... ESC \e,
 ESC Z (it answers ESC [ ? 1 ; 2 c, "I am a VT100 with
 advanced video option")
-and ESC \(ha ... ESC \e with the same meanings as indicated above.
+and ESC \[ha] ... ESC \e with the same meanings as indicated above.
 It accepts ESC (, ESC ), ESC *,  ESC + followed by 0, A, B for
 the DEC special character and line drawing set, UK, and US-ASCII,
 respectively.

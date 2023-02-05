@@ -405,11 +405,11 @@ If \fBICANON\fP is also set, echo the NL character even if ECHO is not set.
 .B ECHOCTL
 (not in POSIX) If \fBECHO\fP is also set,
 terminal special characters other than
-TAB, NL, START, and STOP are echoed as \fB\(haX\fP,
+TAB, NL, START, and STOP are echoed as \fB\[ha]X\fP,
 where X is the character with
 ASCII code 0x40 greater than the special character.
 For example, character
-0x08 (BS) is echoed as \fB\(haH\fP.
+0x08 (BS) is echoed as \fB\[ha]H\fP.
 [requires
 .B _BSD_SOURCE
 or

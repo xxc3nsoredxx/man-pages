@@ -1122,10 +1122,10 @@ and a full set of permitted and effective capabilities:
 .PP
 .in +4n
 .EX
-bash$ \fBcat /proc/$$/status | egrep \[aq]\(ha[UG]id\[aq]\fP
+bash$ \fBcat /proc/$$/status | egrep \[aq]\[ha][UG]id\[aq]\fP
 Uid:	0	0	0	0
 Gid:	0	0	0	0
-bash$ \fBcat /proc/$$/status | egrep \[aq]\(haCap(Prm|Inh|Eff)\[aq]\fP
+bash$ \fBcat /proc/$$/status | egrep \[aq]\[ha]Cap(Prm|Inh|Eff)\[aq]\fP
 CapInh:	0000000000000000
 CapPrm:	0000001fffffffff
 CapEff:	0000001fffffffff
