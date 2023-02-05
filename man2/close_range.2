@@ -260,7 +260,7 @@ main(int argc, char *argv[])
 
     printf("========= About to call close_range() =======\en");
 
-    if (syscall(SYS_close_range, 3, \(ti0U, 0) == \-1) {
+    if (syscall(SYS_close_range, 3, \[ti]0U, 0) == \-1) {
         perror("close_range");
         exit(EXIT_FAILURE);
     }

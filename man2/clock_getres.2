@@ -224,8 +224,8 @@ dynamic clock ID.
 .in +4n
 .EX
 #define CLOCKFD 3
-#define FD_TO_CLOCKID(fd)   ((\(ti(clockid_t) (fd) << 3) | CLOCKFD)
-#define CLOCKID_TO_FD(clk)  ((unsigned int) \(ti((clk) >> 3))
+#define FD_TO_CLOCKID(fd)   ((\[ti](clockid_t) (fd) << 3) | CLOCKFD)
+#define CLOCKID_TO_FD(clk)  ((unsigned int) \[ti]((clk) >> 3))
 
 struct timespec ts;
 clockid_t clkid;
