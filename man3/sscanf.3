@@ -653,6 +653,25 @@ floating-point conversion specifier (and is unaffected by
 .I gcc\~\-std=c99
 etc.).
 .SH BUGS
+.SS Numeric conversion specifiers
+Use of the numeric conversion specifiers produces Undefined Behavior
+for invalid input.
+See
+.UR https://port70.net/\:%7Ensz/\:c/\:c11/\:n1570.html\:#7.21.6.2p10
+C11 7.21.6.2/10
+.UE .
+This is a bug in the ISO C standard,
+and not an inherent design issue with the API.
+However,
+current implementations are not safe from that bug,
+so it is not recommended to use them.
+Instead,
+programs should use functions such as
+.BR strtol (3)
+to parse numeric input.
+This manual page deprecates use of the numeric conversion specifiers
+until they are fixed by ISO C.
+.SS Nonstandard modifiers
 These functions are fully C99 conformant, but provide the
 additional modifiers
 .B q
