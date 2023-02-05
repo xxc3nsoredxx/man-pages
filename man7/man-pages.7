@@ -666,7 +666,7 @@ These represent a set of (normally) exclusive alternatives.
 .TP
 Bullet lists
 Elements are preceded by bullet symbols
-.RB ( \e(bu ).
+.RB ( \e[bu] ).
 Anything that doesn't fit elsewhere is
 usually covered by this type of list.
 .TP
@@ -722,7 +722,7 @@ If the command is short, then it can be included inline in the text,
 in italic format, for example,
 .IR "man 7 man-pages" .
 In this case, it may be worth using nonbreaking spaces
-(\e\(ti) at suitable places in the command.
+(\e[ti]) at suitable places in the command.
 Command options should be written in italics (e.g.,
 .IR \-l ).
 .PP
@@ -994,7 +994,7 @@ Always include periods in such abbreviations, as shown here.
 In addition, "e.g." and "i.e." should always be followed by a comma.
 .SS Em-dashes
 The way to write an em-dash\(emthe glyph that appears
-at either end of this subphrase\(emin *roff is with the macro "\e(em".
+at either end of this subphrase\(emin *roff is with the macro "\e[em]".
 (On an ASCII terminal, an em-dash typically renders as two hyphens,
 but in other typographical contexts it renders as a long dash.)
 Em-dashes should be written
@@ -1086,11 +1086,11 @@ To generate glyphs that when copied from rendered pages will
 produce real minus signs when pasted into a terminal.
 .PP
 To produce unslanted single quotes that render well in ASCII, UTF-8, and PDF,
-use "\e(aq" ("apostrophe quote"); for example
+use "\e[aq]" ("apostrophe quote"); for example
 .PP
 .in +4n
 .EX
-\e(aqC\e(aq
+\e[aq]C\e[aq]
 .EE
 .in
 .PP
