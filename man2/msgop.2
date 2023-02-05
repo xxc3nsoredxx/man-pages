@@ -636,18 +636,18 @@ main(int argc, char *argv[])
 
     while ((opt = getopt(argc, argv, "srt:k:")) != \-1) {
         switch (opt) {
-        case \(aqs\(aq:
+        case \[aq]s\[aq]:
             mode = 1;
             break;
-        case \(aqr\(aq:
+        case \[aq]r\[aq]:
             mode = 2;
             break;
-        case \(aqt\(aq:
+        case \[aq]t\[aq]:
             msgtype = atoi(optarg);
             if (msgtype <= 0)
                 usage(argv[0], "\-t option must be greater than 0\en");
             break;
-        case \(aqk\(aq:
+        case \[aq]k\[aq]:
             msgkey = atoi(optarg);
             break;
         default:

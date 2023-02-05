@@ -939,13 +939,13 @@ move_mount(int from_dirfd, const char *from_pathname,
 }
 
 static const struct option longopts[] = {
-    {"map\-mount",       required_argument,  NULL,  \(aqa\(aq},
-    {"recursive",       no_argument,        NULL,  \(aqb\(aq},
-    {"read\-only",       no_argument,        NULL,  \(aqc\(aq},
-    {"block\-setid",     no_argument,        NULL,  \(aqd\(aq},
-    {"block\-devices",   no_argument,        NULL,  \(aqe\(aq},
-    {"block\-exec",      no_argument,        NULL,  \(aqf\(aq},
-    {"no\-access\-time",  no_argument,        NULL,  \(aqg\(aq},
+    {"map\-mount",       required_argument,  NULL,  \[aq]a\[aq]},
+    {"recursive",       no_argument,        NULL,  \[aq]b\[aq]},
+    {"read\-only",       no_argument,        NULL,  \[aq]c\[aq]},
+    {"block\-setid",     no_argument,        NULL,  \[aq]d\[aq]},
+    {"block\-devices",   no_argument,        NULL,  \[aq]e\[aq]},
+    {"block\-exec",      no_argument,        NULL,  \[aq]f\[aq]},
+    {"no\-access\-time",  no_argument,        NULL,  \[aq]g\[aq]},
     { NULL,             0,                  NULL,   0 },
 };
 
@@ -964,27 +964,27 @@ main(int argc, char *argv[])
     while ((ret = getopt_long_only(argc, argv, "",
                                    longopts, &index)) != \-1) {
         switch (ret) {
-        case \(aqa\(aq:
+        case \[aq]a\[aq]:
             fd_userns = open(optarg, O_RDONLY | O_CLOEXEC);
             if (fd_userns == \-1)
                 err(EXIT_FAILURE, "open(%s)", optarg);
             break;
-        case \(aqb\(aq:
+        case \[aq]b\[aq]:
             recursive = true;
             break;
-        case \(aqc\(aq:
+        case \[aq]c\[aq]:
             attr\->attr_set |= MOUNT_ATTR_RDONLY;
             break;
-        case \(aqd\(aq:
+        case \[aq]d\[aq]:
             attr\->attr_set |= MOUNT_ATTR_NOSUID;
             break;
-        case \(aqe\(aq:
+        case \[aq]e\[aq]:
             attr\->attr_set |= MOUNT_ATTR_NODEV;
             break;
-        case \(aqf\(aq:
+        case \[aq]f\[aq]:
             attr\->attr_set |= MOUNT_ATTR_NOEXEC;
             break;
-        case \(aqg\(aq:
+        case \[aq]g\[aq]:
             attr\->attr_set |= MOUNT_ATTR_NOATIME;
             attr\->attr_clr |= MOUNT_ATTR__ATIME;
             break;
@@ -999,8 +999,8 @@ main(int argc, char *argv[])
     source = argv[optind];
     target = argv[optind + 1];
 
-    /* In the following, \-1 as the \(aqdirfd\(aq argument ensures that
-       open_tree() fails if \(aqsource\(aq is not an absolute pathname. */
+    /* In the following, \-1 as the \[aq]dirfd\[aq] argument ensures that
+       open_tree() fails if \[aq]source\[aq] is not an absolute pathname. */
 .\" Christian Brauner
 .\"     When writing programs I like to never use relative paths with AT_FDCWD
 .\"     because. Because making assumptions about the current working directory
@@ -1033,8 +1033,8 @@ main(int argc, char *argv[])
 
     close(fd_userns);
 
-    /* In the following, \-1 as the \(aqto_dirfd\(aq argument ensures that
-       open_tree() fails if \(aqtarget\(aq is not an absolute pathname. */
+    /* In the following, \-1 as the \[aq]to_dirfd\[aq] argument ensures that
+       open_tree() fails if \[aq]target\[aq] is not an absolute pathname. */
 
     ret = move_mount(fd_tree, "", \-1, target,
                      MOVE_MOUNT_F_EMPTY_PATH);

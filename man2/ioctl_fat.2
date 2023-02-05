@@ -408,11 +408,11 @@ The following was recorded when applying the program to the directory
 .in +4n
 .EX
 $ \fB./fat_dir /mnt/user\fP
-\[char46] \-> \(aq\(aq
-\[char46]. \-> \(aq\(aq
-ALONGF\(ti1.TXT \-> \(aqa long filename.txt\(aq
-UPPER.TXT \-> \(aq\(aq
-LOWER.TXT \-> \(aqlower.txt\(aq
+\[char46] \-> \[aq]\[aq]
+\[char46]. \-> \[aq]\[aq]
+ALONGF\(ti1.TXT \-> \[aq]a long filename.txt\[aq]
+UPPER.TXT \-> \[aq]\[aq]
+LOWER.TXT \-> \[aq]lower.txt\[aq]
 .EE
 .in
 .\"
@@ -468,7 +468,7 @@ main(int argc, char *argv[])
         /*
          * Write both the short name and the long name.
          */
-        printf("%s \-> \(aq%s\(aq\en", entry[0].d_name, entry[1].d_name);
+        printf("%s \-> \[aq]%s\[aq]\en", entry[0].d_name, entry[1].d_name);
     }
 
     if (ret == \-1) {

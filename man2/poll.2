@@ -578,7 +578,7 @@ main(int argc, char *argv[])
     if (pfds == NULL)
         errExit("malloc");
 
-    /* Open each file on command line, and add it to \(aqpfds\(aq array. */
+    /* Open each file on command line, and add it to \[aq]pfds\[aq] array. */
 
     for (nfds_t j = 0; j < nfds; j++) {
         pfds[j].fd = open(argv[j + 1], O_RDONLY);

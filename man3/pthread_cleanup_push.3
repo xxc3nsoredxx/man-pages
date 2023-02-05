@@ -73,7 +73,7 @@ POSIX.1 permits
 and
 .BR pthread_cleanup_pop ()
 to be implemented as macros that expand to text
-containing \(aq\fB{\fP\(aq and \(aq\fB}\fP\(aq, respectively.
+containing \[aq]\fB{\fP\[aq] and \[aq]\fB}\fP\[aq], respectively.
 For this reason, the caller must ensure that calls to these
 functions are paired within the same function,
 and at the same lexical nesting level.
@@ -133,7 +133,7 @@ and
 functions
 .I are
 implemented as macros that expand to text
-containing \(aq\fB{\fP\(aq and \(aq\fB}\fP\(aq, respectively.
+containing \[aq]\fB{\fP\[aq] and \[aq]\fB}\fP\[aq], respectively.
 This means that variables declared within the scope of
 paired calls to these functions will be visible within only that scope.
 .PP

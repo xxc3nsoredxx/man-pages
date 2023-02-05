@@ -59,7 +59,7 @@ representation, respectively.
 The expected form of the (initial portion of the) string is
 optional leading white space as recognized by
 .BR isspace (3),
-an optional plus (\(aq+\(aq) or minus sign (\(aq\-\(aq) and then either
+an optional plus (\[aq]+\[aq]) or minus sign (\[aq]\-\[aq]) and then either
 (i) a decimal number, or (ii) a hexadecimal number,
 or (iii) an infinity, or (iv) a NAN (not-a-number).
 .PP
@@ -67,8 +67,8 @@ A
 .I "decimal number"
 consists of a nonempty sequence of decimal digits
 possibly containing a radix character (decimal point, locale-dependent,
-usually \(aq.\(aq), optionally followed by a decimal exponent.
-A decimal exponent consists of an \(aqE\(aq or \(aqe\(aq, followed by an
+usually \[aq].\[aq]), optionally followed by a decimal exponent.
+A decimal exponent consists of an \[aq]E\[aq] or \[aq]e\[aq], followed by an
 optional plus or minus sign, followed by a nonempty sequence of
 decimal digits, and indicates multiplication by a power of 10.
 .PP
@@ -78,7 +78,7 @@ consists of a "0x" or "0X" followed by a nonempty sequence of
 hexadecimal digits possibly containing a radix character,
 optionally followed by a binary exponent.
 A binary exponent
-consists of a \(aqP\(aq or \(aqp\(aq, followed by an optional
+consists of a \[aq]P\[aq] or \[aq]p\[aq], followed by an optional
 plus or minus sign, followed by a nonempty sequence of
 decimal digits, and indicates multiplication by a power of 2.
 At least one of radix character and binary exponent must be present.

@@ -54,7 +54,7 @@ the special value 0.
 The string may begin with an arbitrary amount of white space (as
 determined by
 .BR isspace (3))
-followed by a single optional \(aq+\(aq or \(aq\-\(aq
+followed by a single optional \[aq]+\[aq] or \[aq]\-\[aq]
 sign.
 If
 .I base
@@ -63,16 +63,16 @@ is zero or 16, the string may then include a
 zero
 .I base
 is taken as 10 (decimal) unless the next character
-is \(aq0\(aq, in which case it is taken as 8 (octal).
+is \[aq]0\[aq], in which case it is taken as 8 (octal).
 .PP
 The remainder of the string is converted to an
 .I "unsigned long"
 value in the obvious manner,
 stopping at the first character which is not a
 valid digit in the given base.
-(In bases above 10, the letter \(aqA\(aq in
-either uppercase or lowercase represents 10, \(aqB\(aq represents 11, and so
-forth, with \(aqZ\(aq representing 35.)
+(In bases above 10, the letter \[aq]A\[aq] in
+either uppercase or lowercase represents 10, \[aq]B\[aq] represents 11, and so
+forth, with \[aq]Z\[aq] representing 35.)
 .PP
 If
 .I endptr
@@ -91,9 +91,9 @@ in
 (and returns 0).
 In particular, if
 .I *nptr
-is not \(aq\e0\(aq but
+is not \[aq]\e0\[aq] but
 .I **endptr
-is \(aq\e0\(aq on return, the entire string is valid.
+is \[aq]\e0\[aq] on return, the entire string is valid.
 .PP
 The
 .BR strtoull ()

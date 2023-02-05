@@ -698,7 +698,7 @@ main(int argc, char *argv[])
 
     while ((opt = getopt(argc, argv, "sc")) != \-1) {
         switch (opt) {
-        case \(aqc\(aq:       /* \-c: close standard output in child */
+        case \[aq]c\[aq]:       /* \-c: close standard output in child */
 
             /* Create a file actions object and add a "close"
                action to it. */
@@ -715,7 +715,7 @@ main(int argc, char *argv[])
             file_actionsp = &file_actions;
             break;
 
-        case \(aqs\(aq:       /* \-s: block all signals in child */
+        case \[aq]s\[aq]:       /* \-s: block all signals in child */
 
             /* Create an attributes object and add a "set signal mask"
                action to it. */
@@ -740,7 +740,7 @@ main(int argc, char *argv[])
     /* Spawn the child. The name of the program to execute and the
        command\-line arguments are taken from the command\-line arguments
        of this program. The environment of the program execed in the
-       child is made the same as the parent\(aqs environment. */
+       child is made the same as the parent\[aq]s environment. */
 
     s = posix_spawnp(&child_pid, argv[optind], file_actionsp, attrp,
                      &argv[optind], environ);

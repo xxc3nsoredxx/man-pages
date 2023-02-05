@@ -357,7 +357,7 @@ $ \fBln mykey link\fP
 $ \fBls \-i1 link mykey\fP
 2233197 link
 2233197 mykey
-$ \fB./t_semget link p 1\fP       # Generates same key as \(aqmykey\(aq
+$ \fB./t_semget link p 1\fP       # Generates same key as \[aq]mykey\[aq]
 ID = 9
 .EE
 .in
@@ -394,8 +394,8 @@ main(int argc, char *argv[])
     flags = 0;
     while ((opt = getopt(argc, argv, "cx")) != \-1) {
         switch (opt) {
-        case \(aqc\(aq: flags |= IPC_CREAT;   break;
-        case \(aqx\(aq: flags |= IPC_EXCL;    break;
+        case \[aq]c\[aq]: flags |= IPC_CREAT;   break;
+        case \[aq]x\[aq]: flags |= IPC_EXCL;    break;
         default:  usage(argv[0]);
         }
     }

@@ -33,11 +33,11 @@ The termcap database is indexed on the
 .B TERM
 environment variable.
 .PP
-Termcap entries must be defined on a single logical line, with \(aq\e\(aq
+Termcap entries must be defined on a single logical line, with \[aq]\e\[aq]
 used to suppress the newline.
-Fields are separated by \(aq:\(aq.
+Fields are separated by \[aq]:\[aq].
 The first field of each entry starts at the left-hand margin,
-and contains a list of names for the terminal, separated by \(aq|\(aq.
+and contains a list of names for the terminal, separated by \[aq]|\[aq].
 .PP
 The first subfield may (in BSD termcap entries from 4.3BSD and
 earlier) contain a short name consisting of two characters.
@@ -362,7 +362,7 @@ XF	XOFF character if not \fB\(haS\fP
 There are several ways of defining the control codes for string capabilities:
 .PP
 Every normal character represents itself,
-except \(aq\(ha\(aq, \(aq\e\(aq, and \(aq%\(aq.
+except \[aq]\(ha\[aq], \[aq]\e\[aq], and \[aq]%\[aq].
 .PP
 A \fB\(hax\fP means Control-x.
 Control-A equals 1 decimal.
@@ -402,9 +402,9 @@ d
 Do ASCII output of this parameter with a field with of 3
 .TP
 %
-Print a \(aq%\(aq
+Print a \[aq]%\[aq]
 .PP
-If you use binary output, then you should avoid the null character (\(aq\e0\(aq)
+If you use binary output, then you should avoid the null character (\[aq]\e0\[aq])
 because it terminates the string.
 You should reset tabulator expansion
 if a tabulator can be the binary output of a parameter.

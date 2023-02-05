@@ -1419,8 +1419,8 @@ T: terminating
 
 #define ARRAY_SIZE(arr)  (sizeof(arr) / sizeof((arr)[0]))
 
-/* Send the file descriptor \(aqfd\(aq over the connected UNIX domain socket
-   \(aqsockfd\(aq. Returns 0 on success, or \-1 on error. */
+/* Send the file descriptor \[aq]fd\[aq] over the connected UNIX domain socket
+   \[aq]sockfd\[aq]. Returns 0 on success, or \-1 on error. */
 
 static int
 sendfd(int sockfd, int fd)
@@ -1431,17 +1431,17 @@ sendfd(int sockfd, int fd)
     struct cmsghdr  *cmsgp;
 
     /* Allocate a char array of suitable size to hold the ancillary data.
-       However, since this buffer is in reality a \(aqstruct cmsghdr\(aq, use a
+       However, since this buffer is in reality a \[aq]struct cmsghdr\[aq], use a
        union to ensure that it is suitably aligned. */
     union {
         char   buf[CMSG_SPACE(sizeof(int))];
-                        /* Space large enough to hold an \(aqint\(aq */
+                        /* Space large enough to hold an \[aq]int\[aq] */
         struct cmsghdr align;
     } controlMsg;
 
-    /* The \(aqmsg_name\(aq field can be used to specify the address of the
+    /* The \[aq]msg_name\[aq] field can be used to specify the address of the
        destination socket when sending a datagram. However, we do not
-       need to use this field because \(aqsockfd\(aq is a connected socket. */
+       need to use this field because \[aq]sockfd\[aq] is a connected socket. */
 
     msgh.msg_name = NULL;
     msgh.msg_namelen = 0;
@@ -1456,7 +1456,7 @@ sendfd(int sockfd, int fd)
     iov.iov_len = sizeof(int);
     data = 12345;
 
-    /* Set \(aqmsghdr\(aq fields that describe ancillary data */
+    /* Set \[aq]msghdr\[aq] fields that describe ancillary data */
 
     msgh.msg_control = controlMsg.buf;
     msgh.msg_controllen = sizeof(controlMsg.buf);
@@ -1496,7 +1496,7 @@ recvfd(int sockfd)
     } controlMsg;
     struct cmsghdr *cmsgp;
 
-    /* The \(aqmsg_name\(aq field can be used to obtain the address of the
+    /* The \[aq]msg_name\[aq] field can be used to obtain the address of the
        sending socket. However, we do not need this information. */
 
     msgh.msg_name = NULL;
@@ -1506,10 +1506,10 @@ recvfd(int sockfd)
 
     msgh.msg_iov = &iov;
     msgh.msg_iovlen = 1;
-    iov.iov_base = &data;       /* Real data is an \(aqint\(aq */
+    iov.iov_base = &data;       /* Real data is an \[aq]int\[aq] */
     iov.iov_len = sizeof(int);
 
-    /* Set \(aqmsghdr\(aq fields that describe ancillary data */
+    /* Set \[aq]msghdr\[aq] fields that describe ancillary data */
 
     msgh.msg_control = controlMsg.buf;
     msgh.msg_controllen = sizeof(controlMsg.buf);
@@ -1522,7 +1522,7 @@ recvfd(int sockfd)
 
     cmsgp = CMSG_FIRSTHDR(&msgh);
 
-    /* Check the validity of the \(aqcmsghdr\(aq */
+    /* Check the validity of the \[aq]cmsghdr\[aq] */
 
     if (cmsgp == NULL
         || cmsgp\->cmsg_len != CMSG_LEN(sizeof(int))
@@ -1629,8 +1629,8 @@ closeSocketPair(int sockPair[2])
    (1) installs a seccomp filter with the
        SECCOMP_FILTER_FLAG_NEW_LISTENER flag;
    (2) writes the seccomp notification file descriptor returned from
-       the previous step onto the UNIX domain socket, \(aqsockPair[0]\(aq;
-   (3) calls mkdir(2) for each element of \(aqargv\(aq.
+       the previous step onto the UNIX domain socket, \[aq]sockPair[0]\[aq];
+   (3) calls mkdir(2) for each element of \[aq]argv\[aq].
 
    The function return value in the parent is the PID of the child
    process; the child does not return from this function. */
@@ -1706,9 +1706,9 @@ cookieIsValid(int notifyFd, uint64_t id)
 }
 
 /* Access the memory of the target process in order to fetch the
-   pathname referred to by the system call argument \(aqargNum\(aq in
-   \(aqreq\->data.args[]\(aq.  The pathname is returned in \(aqpath\(aq,
-   a buffer of \(aqlen\(aq bytes allocated by the caller.
+   pathname referred to by the system call argument \[aq]argNum\[aq] in
+   \[aq]req\->data.args[]\[aq].  The pathname is returned in \[aq]path\[aq],
+   a buffer of \[aq]len\[aq] bytes allocated by the caller.
 
    Returns true if the pathname is successfully fetched, and false
    otherwise. For possible causes of failure, see the comments below. */
@@ -1751,11 +1751,11 @@ getTargetPathname(struct seccomp_notif *req, int notifyFd,
 
     /* Once again check that the notification ID is still valid. The
        case we are particularly concerned about here is that just
-       before we fetched the pathname, the target\(aqs blocked system
+       before we fetched the pathname, the target\[aq]s blocked system
        call was interrupted by a signal handler, and after the handler
        returned, the target carried on execution (past the interrupted
        system call). In that case, we have no guarantees about what we
-       are reading, since the target\(aqs memory may have been arbitrarily
+       are reading, since the target\[aq]s memory may have been arbitrarily
        changed by subsequent operations. */
 
     if (!cookieIsValid(notifyFd, req\->id)) {
@@ -1763,7 +1763,7 @@ getTargetPathname(struct seccomp_notif *req, int notifyFd,
         return false;
     }
 
-    /* Even if the target\(aqs system call was not interrupted by a signal,
+    /* Even if the target\[aq]s system call was not interrupted by a signal,
        we have no guarantees about what was in the memory of the target
        process. (The memory may have been modified by another thread, or
        even by an external attacking process.) We therefore treat the
@@ -1778,8 +1778,8 @@ getTargetPathname(struct seccomp_notif *req, int notifyFd,
 }
 
 /* Allocate buffers for the seccomp user\-space notification request and
-   response structures. It is the caller\(aqs responsibility to free the
-   buffers returned via \(aqreq\(aq and \(aqresp\(aq. */
+   response structures. It is the caller\[aq]s responsibility to free the
+   buffers returned via \[aq]req\[aq] and \[aq]resp\[aq]. */
 
 static void
 allocSeccompNotifBuffers(struct seccomp_notif **req,
@@ -1801,7 +1801,7 @@ allocSeccompNotifBuffers(struct seccomp_notif **req,
 
     /* When allocating the response buffer, we must allow for the fact
        that the user\-space binary may have been built with user\-space
-       headers where \(aqstruct seccomp_notif_resp\(aq is bigger than the
+       headers where \[aq]struct seccomp_notif_resp\[aq] is bigger than the
        response buffer expected by the (older) kernel. Therefore, we
        allocate a buffer that is the maximum of the two sizes. This
        ensures that if the supervisor places bytes into the response
@@ -1819,7 +1819,7 @@ allocSeccompNotifBuffers(struct seccomp_notif **req,
 }
 
 /* Handle notifications that arrive via the SECCOMP_RET_USER_NOTIF file
-   descriptor, \(aqnotifyFd\(aq. */
+   descriptor, \[aq]notifyFd\[aq]. */
 
 static void
 handleNotifications(int notifyFd)
@@ -1836,7 +1836,7 @@ handleNotifications(int notifyFd)
 
     for (;;) {
 
-        /* Wait for next notification, returning info in \(aq*req\(aq */
+        /* Wait for next notification, returning info in \[aq]*req\[aq] */
 
         memset(req, 0, sizes.seccomp_notif);
         if (ioctl(notifyFd, SECCOMP_IOCTL_NOTIF_RECV, req) == \-1) {
@@ -1872,7 +1872,7 @@ handleNotifications(int notifyFd)
            response (sending this response may yield an error if the
            failure occurred because the notification ID was no longer
            valid); if the directory is in /tmp, then create it on behalf
-           of the supervisor; if the pathname starts with \(aq.\(aq, tell the
+           of the supervisor; if the pathname starts with \[aq].\[aq], tell the
            kernel to let the target process execute the mkdir();
            otherwise, give an error for a directory pathname in any other
            location. */
@@ -1919,7 +1919,7 @@ handleNotifications(int notifyFd)
         if (ioctl(notifyFd, SECCOMP_IOCTL_NOTIF_SEND, resp) == \-1) {
             if (errno == ENOENT)
                 printf("\etS: response failed with ENOENT; "
-                       "perhaps target process\(aqs syscall was "
+                       "perhaps target process\[aq]s syscall was "
                        "interrupted by a signal?\en");
             else
                 perror("ioctl\-SECCOMP_IOCTL_NOTIF_SEND");
@@ -1941,7 +1941,7 @@ handleNotifications(int notifyFd)
 
 /* Implementation of the supervisor process:
 
-   (1) obtains the notification file descriptor from \(aqsockPair[1]\(aq
+   (1) obtains the notification file descriptor from \[aq]sockPair[1]\[aq]
    (2) handles notifications that arrive on that file descriptor. */
 
 static void
@@ -1981,7 +1981,7 @@ main(int argc, char *argv[])
 
     /* Create a child process\-\-the "target"\-\-that installs seccomp
        filtering. The target process writes the seccomp notification
-       file descriptor onto \(aqsockPair[0]\(aq and then calls mkdir(2) for
+       file descriptor onto \[aq]sockPair[0]\[aq] and then calls mkdir(2) for
        each directory in the command\-line arguments. */
 
     (void) targetProcess(sockPair, &argv[optind]);

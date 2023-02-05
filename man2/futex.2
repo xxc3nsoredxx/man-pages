@@ -1800,7 +1800,7 @@ Child  (18535) 4
    Demonstrate the use of futexes in a program where parent and child
    use a pair of futexes located inside a shared anonymous mapping to
    synchronize access to a shared resource: the terminal. The two
-   processes each write \(aqnum\-loops\(aq messages to the terminal and employ
+   processes each write \[aq]num\-loops\[aq] messages to the terminal and employ
    a synchronization protocol that ensures that they alternate in
    writing messages.
 */
@@ -1828,7 +1828,7 @@ futex(uint32_t *uaddr, int futex_op, uint32_t val,
                    timeout, uaddr2, val3);
 }
 
-/* Acquire the futex pointed to by \(aqfutexp\(aq: wait for its value to
+/* Acquire the futex pointed to by \[aq]futexp\[aq]: wait for its value to
    become 1, and then set the value to 0. */
 
 static void
@@ -1859,7 +1859,7 @@ fwait(uint32_t *futexp)
     }
 }
 
-/* Release the futex pointed to by \(aqfutexp\(aq: if the futex currently
+/* Release the futex pointed to by \[aq]futexp\[aq]: if the futex currently
    has the value 0, set its value to 1 and then wake any futex waiters,
    so that if the peer is blocked in fwait(), it can proceed. */
 

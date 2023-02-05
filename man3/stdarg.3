@@ -252,7 +252,7 @@ with each format character based on the type.
 #include <stdarg.h>
 
 void
-foo(char *fmt, ...)   /* \(aq...\(aq is C syntax for a variadic function */
+foo(char *fmt, ...)   /* \[aq]...\[aq] is C syntax for a variadic function */
 
 {
     va_list ap;
@@ -263,15 +263,15 @@ foo(char *fmt, ...)   /* \(aq...\(aq is C syntax for a variadic function */
     va_start(ap, fmt);
     while (*fmt)
         switch (*fmt++) {
-        case \(aqs\(aq:              /* string */
+        case \[aq]s\[aq]:              /* string */
             s = va_arg(ap, char *);
             printf("string %s\en", s);
             break;
-        case \(aqd\(aq:              /* int */
+        case \[aq]d\[aq]:              /* int */
             d = va_arg(ap, int);
             printf("int %d\en", d);
             break;
-        case \(aqc\(aq:              /* char */
+        case \[aq]c\[aq]:              /* char */
             /* need a cast here since va_arg only
                takes fully promoted types */
             c = (char) va_arg(ap, int);

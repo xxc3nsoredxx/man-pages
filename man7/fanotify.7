@@ -1047,7 +1047,7 @@ Listening for events stopped.
 #include <sys/fanotify.h>
 #include <unistd.h>
 
-/* Read all available fanotify events from the file descriptor \(aqfd\(aq. */
+/* Read all available fanotify events from the file descriptor \[aq]fd\[aq]. */
 
 static void
 handle_events(int fd)
@@ -1127,7 +1127,7 @@ handle_events(int fd)
                     exit(EXIT_FAILURE);
                 }
 
-                path[path_len] = \(aq\e0\(aq;
+                path[path_len] = \[aq]\e0\[aq];
                 printf("File %s\en", path);
 
                 /* Close the file descriptor of the event. */
@@ -1209,7 +1209,7 @@ main(int argc, char *argv[])
 
                 /* Console input is available: empty stdin and quit. */
 
-                while (read(STDIN_FILENO, &buf, 1) > 0 && buf != \(aq\en\(aq)
+                while (read(STDIN_FILENO, &buf, 1) > 0 && buf != \[aq]\en\[aq])
                     continue;
                 break;
             }
@@ -1261,7 +1261,7 @@ been processed.
 Listening for events.
 FAN_CREATE (file created):
         Directory /home/user has been modified.
-        Entry \(aqtestfile.txt\(aq is not a subdirectory.
+        Entry \[aq]testfile.txt\[aq] is not a subdirectory.
 All events processed successfully. Program exiting.
 
 $ \fBtouch /home/user/testfile.txt\fP              # In another terminal
@@ -1284,7 +1284,7 @@ flag set and with the created directory name.
 Listening for events.
 FAN_CREATE | FAN_ONDIR (subdirectory created):
         Directory /home/user has been modified.
-        Entry \(aqtestdir\(aq is a subdirectory.
+        Entry \[aq]testdir\[aq] is a subdirectory.
 All events processed successfully. Program exiting.
 
 $ \fBmkdir \-p /home/user/testdir\fP          # In another terminal
@@ -1392,7 +1392,7 @@ main(int argc, char *argv[])
 	/* metadata\->fd is set to FAN_NOFD when the group identifies
 	   objects by file handles.  To obtain a file descriptor for
 	   the file object corresponding to an event you can use the
-	   struct file_handle that\(aqs provided within the
+	   struct file_handle that\[aq]s provided within the
 	   fanotify_event_info_fid in conjunction with the
 	   open_by_handle_at(2) system call.  A check for ESTALE is
 	   done to accommodate for the situation where the file handle
@@ -1421,8 +1421,8 @@ main(int argc, char *argv[])
             exit(EXIT_FAILURE);
         }
 
-        path[path_len] = \(aq\e0\(aq;
-        printf("\etDirectory \(aq%s\(aq has been modified.\en", path);
+        path[path_len] = \[aq]\e0\[aq];
+        printf("\etDirectory \[aq]%s\[aq] has been modified.\en", path);
 
         if (file_name) {
             ret = fstatat(event_fd, file_name, &sb, 0);
@@ -1431,11 +1431,11 @@ main(int argc, char *argv[])
                     perror("fstatat");
                     exit(EXIT_FAILURE);
                 }
-                printf("\etEntry \(aq%s\(aq does not exist.\en", file_name);
+                printf("\etEntry \[aq]%s\[aq] does not exist.\en", file_name);
             } else if ((sb.st_mode & S_IFMT) == S_IFDIR) {
-                printf("\etEntry \(aq%s\(aq is a subdirectory.\en", file_name);
+                printf("\etEntry \[aq]%s\[aq] is a subdirectory.\en", file_name);
             } else {
-                printf("\etEntry \(aq%s\(aq is not a subdirectory.\en",
+                printf("\etEntry \[aq]%s\[aq] is not a subdirectory.\en",
                         file_name);
             }
         }

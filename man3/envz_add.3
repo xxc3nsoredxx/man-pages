@@ -44,10 +44,10 @@ see
 .BR argz_add (3).
 An envz vector is a special argz vector, namely one where the strings
 have the form "name=value".
-Everything after the first \(aq=\(aq is considered
+Everything after the first \[aq]=\[aq] is considered
 to be the value.
-If there is no \(aq=\(aq, the value is taken to be NULL.
-(While the value in case of a trailing \(aq=\(aq is the empty string "".)
+If there is no \[aq]=\[aq], the value is taken to be NULL.
+(While the value in case of a trailing \[aq]=\[aq] is the empty string "".)
 .PP
 These functions are for handling envz vectors.
 .PP
@@ -86,7 +86,7 @@ and returns the value if found, or NULL if not.
 (Note that the value can also be NULL, namely when there is
 an entry for
 .I name
-without \(aq=\(aq sign.)
+without \[aq]=\[aq] sign.)
 .PP
 .BR envz_merge ()
 adds each entry in

@@ -165,7 +165,7 @@ thread_func(void *ignored_argument)
 {
     int s;
 
-    /* Disable cancelation for a while, so that we don\(aqt
+    /* Disable cancelation for a while, so that we don\[aq]t
        immediately react to a cancelation request. */
 
     s = pthread_setcancelstate(PTHREAD_CANCEL_DISABLE, NULL);
@@ -219,7 +219,7 @@ main(void)
     if (res == PTHREAD_CANCELED)
         printf("%s(): thread was canceled\en", __func__);
     else
-        printf("%s(): thread wasn\(aqt canceled (shouldn\(aqt happen!)\en",
+        printf("%s(): thread wasn\[aq]t canceled (shouldn\[aq]t happen!)\en",
                __func__);
     exit(EXIT_SUCCESS);
 }

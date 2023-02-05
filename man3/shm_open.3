@@ -311,7 +311,7 @@ on the memory object that is shared between the two programs.
 struct shmbuf {
     sem_t  sem1;            /* POSIX unnamed semaphore */
     sem_t  sem2;            /* POSIX unnamed semaphore */
-    size_t cnt;             /* Number of bytes used in \(aqbuf\(aq */
+    size_t cnt;             /* Number of bytes used in \[aq]buf\[aq] */
     char   buf[BUF_SIZE];   /* Data being transferred */
 };
 .EE
@@ -367,7 +367,7 @@ main(int argc, char *argv[])
     if (ftruncate(fd, sizeof(struct shmbuf)) == \-1)
         errExit("ftruncate");
 
-    /* Map the object into the caller\(aqs address space. */
+    /* Map the object into the caller\[aq]s address space. */
 
     shmp = mmap(NULL, sizeof(*shmp), PROT_READ | PROT_WRITE,
                 MAP_SHARED, fd, 0);
@@ -381,7 +381,7 @@ main(int argc, char *argv[])
     if (sem_init(&shmp\->sem2, 1, 0) == \-1)
         errExit("sem_init\-sem2");
 
-    /* Wait for \(aqsem1\(aq to be posted by peer before touching
+    /* Wait for \[aq]sem1\[aq] to be posted by peer before touching
        shared memory. */
 
     if (sem_wait(&shmp\->sem1) == \-1)
@@ -392,7 +392,7 @@ main(int argc, char *argv[])
     for (size_t j = 0; j < shmp\->cnt; j++)
         shmp\->buf[j] = toupper((unsigned char) shmp\->buf[j]);
 
-    /* Post \(aqsem2\(aq to tell the peer that it can now
+    /* Post \[aq]sem2\[aq] to tell the peer that it can now
        access the modified data in shared memory. */
 
     if (sem_post(&shmp\->sem2) == \-1)
@@ -459,7 +459,7 @@ main(int argc, char *argv[])
     }
 
     /* Open the existing shared memory object and map it
-       into the caller\(aqs address space. */
+       into the caller\[aq]s address space. */
 
     fd = shm_open(shmpath, O_RDWR, 0);
     if (fd == \-1)

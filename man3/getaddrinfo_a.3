@@ -444,7 +444,7 @@ getcmd(void)
     if (fgets(buf, sizeof(buf), stdin) == NULL)
         return NULL;
 
-    if (buf[strlen(buf) \- 1] == \(aq\en\(aq)
+    if (buf[strlen(buf) \- 1] == \[aq]\en\[aq])
         buf[strlen(buf) \- 1] = 0;
 
     return buf;
@@ -582,16 +582,16 @@ main(void)
             list_requests();
         } else {
             switch (cmd[0]) {
-            case \(aqa\(aq:
+            case \[aq]a\[aq]:
                 add_requests();
                 break;
-            case \(aqw\(aq:
+            case \[aq]w\[aq]:
                 wait_requests();
                 break;
-            case \(aqc\(aq:
+            case \[aq]c\[aq]:
                 cancel_requests();
                 break;
-            case \(aql\(aq:
+            case \[aq]l\[aq]:
                 list_requests();
                 break;
             default:

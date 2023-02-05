@@ -112,12 +112,12 @@ This directive matches any amount of white space,
 including none, in the input.
 .TP
 \(bu
-An ordinary character (i.e., one other than white space or \(aq%\(aq).
+An ordinary character (i.e., one other than white space or \[aq]%\[aq]).
 This character must exactly match the next character of input.
 .TP
 \(bu
 A conversion specification,
-which commences with a \(aq%\(aq (percent) character.
+which commences with a \[aq]%\[aq] (percent) character.
 A sequence of characters from the input is converted according to
 this specification, and the result is placed in the corresponding
 .I pointer
@@ -130,12 +130,12 @@ Each
 .I conversion specification
 in
 .I format
-begins with either the character \(aq%\(aq or the character sequence
+begins with either the character \[aq]%\[aq] or the character sequence
 "\fB%\fP\fIn\fP\fB$\fP"
 (see below for the distinction) followed by:
 .TP
 \(bu
-An optional \(aq*\(aq assignment-suppression character:
+An optional \[aq]*\[aq] assignment-suppression character:
 .BR sscanf ()
 reads input as directed by the conversion specification,
 but discards the input.
@@ -146,18 +146,18 @@ included in the count of successful assignments returned by
 .BR scanf ().
 .TP
 \(bu
-For decimal conversions, an optional quote character (\(aq).
+For decimal conversions, an optional quote character (\[aq]).
 This specifies that the input number may include thousands'
 separators as defined by the
 .B LC_NUMERIC
 category of the current locale.
 (See
 .BR setlocale (3).)
-The quote character may precede or follow the \(aq*\(aq
+The quote character may precede or follow the \[aq]*\[aq]
 assignment-suppression character.
 .TP
 \(bu
-An optional \(aqm\(aq character.
+An optional \[aq]m\[aq] character.
 This is used with string conversions
 .RI ( %s ,
 .IR %c ,
@@ -183,7 +183,7 @@ when a nonmatching character is found, whichever happens first.
 Most conversions discard initial white space characters (the exceptions
 are noted below),
 and these discarded characters don't count toward the maximum field width.
-String input conversions store a terminating null byte (\(aq\e0\(aq)
+String input conversions store a terminating null byte (\[aq]\e0\[aq])
 to mark the end of the input;
 the maximum field width does not include this terminator.
 .TP
@@ -208,7 +208,7 @@ that specifies the type of input conversion to be performed.
 .PP
 The conversion specifications in
 .I format
-are of two forms, either beginning with \(aq%\(aq or beginning with
+are of two forms, either beginning with \[aq]%\[aq] or beginning with
 "\fB%\fP\fIn\fP\fB$\fP".
 The two forms should not be mixed in the same
 .I format
@@ -220,7 +220,7 @@ and
 .BR %* .
 If
 .I format
-contains \(aq%\(aq
+contains \[aq]%\[aq]
 specifications, then these correspond in order with successive
 .I pointer
 arguments.
@@ -350,11 +350,11 @@ The following
 are available:
 .TP
 .B %
-Matches a literal \(aq%\(aq.
+Matches a literal \[aq]%\[aq].
 That is,
 .B %\&%
 in the format string matches a
-single input \(aq%\(aq character.
+single input \[aq]%\[aq] character.
 No conversion is done (but initial white space characters are discarded),
 and assignment does not occur.
 .TP
@@ -443,7 +443,7 @@ Equivalent to
 Matches a sequence of non-white-space characters;
 the next pointer must be a pointer to the initial element of a
 character array that is long enough to hold the input sequence and
-the terminating null byte (\(aq\e0\(aq), which is added automatically.
+the terminating null byte (\[aq]\e0\[aq]), which is added automatically.
 The input string stops at white space or at the maximum field
 width, whichever occurs first.
 .TP

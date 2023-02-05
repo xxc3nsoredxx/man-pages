@@ -424,7 +424,7 @@ Insufficient memory to create a key.
 .B EPERM
 The
 .I type
-argument started with a period (\(aq.\(aq).
+argument started with a period (\[aq].\[aq]).
 .SH VERSIONS
 This system call first appeared in Linux 2.6.10.
 The ability to instantiate keys upon request was added
@@ -451,7 +451,7 @@ we first create a suitable entry in the file
 .in +4n
 .EX
 $ sudo sh
-# \fBecho \(aqcreate user mtk:* *   /bin/keyctl instantiate %k %c %S\(aq \e\fP
+# \fBecho \[aq]create user mtk:* *   /bin/keyctl instantiate %k %c %S\[aq] \e\fP
           \fB> /etc/request\-key.conf\fP
 # \fBexit\fP
 .EE
@@ -489,7 +489,7 @@ to verify that the requested key has been instantiated:
 .in +4n
 .EX
 $ \fB./t_request_key user mtk:key1 "Payload data"\fP
-$ \fBgrep \(aq2dddaf50\(aq /proc/keys\fP
+$ \fBgrep \[aq]2dddaf50\[aq] /proc/keys\fP
 2dddaf50 I\-\-Q\-\-\-  1 perm 3f010000  1000  1000 user  mtk:key1: 12
 .EE
 .in

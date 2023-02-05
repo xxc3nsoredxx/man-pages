@@ -712,7 +712,7 @@ puts(buf);
 .TP
 .BR strncat (3)
 .EX
-buf[0] = \(aq\e0\(aq;  // There's no 'cpy' function to this 'cat'.
+buf[0] = \[aq]\e0\[aq];  // There's no 'cpy' function to this 'cat'.
 strncat(buf, "Hello ", 6);
 strncat(buf, "world", 42);  // Padding null bytes ignored.
 strncat(buf, "!", 1);
@@ -755,18 +755,18 @@ char *
 {
     char *p;
 
-    if (src[strlen(src)] != \(aq\e0\(aq)
+    if (src[strlen(src)] != \[aq]\e0\[aq])
         raise(SIGSEGV);
 
     if (dst == end)
         return end;
 
-    p = memccpy(dst, src, \(aq\e0\(aq, end \- dst);
+    p = memccpy(dst, src, \[aq]\e0\[aq], end \- dst);
     if (p != NULL)
         return p \- 1;
 
     /* truncation detected */
-    end[\-1] = \(aq\e0\(aq;
+    end[\-1] = \[aq]\e0\[aq];
     return end;
 }
 
@@ -784,7 +784,7 @@ char *
     char  *p;
 
     p = zustr2ustp(dst, src, sz);
-    *p = \(aq\e0\(aq;
+    *p = \[aq]\e0\[aq];
 
     return p;
 }
@@ -803,7 +803,7 @@ char *
     char  *p;
 
     p = ustpcpy(dst, src, len);
-    *p = \(aq\e0\(aq;
+    *p = \[aq]\e0\[aq];
 
     return p;
 }

@@ -292,7 +292,7 @@ copies the string to the shared memory, and modifies the semaphore value.
 .PP
 .in +4n
 .EX
-$ \fB./svshm_string_write 1114194 15 \(aqHello, world\(aq\fP
+$ \fB./svshm_string_write 1114194 15 \[aq]Hello, world\[aq]\fP
 .EE
 .in
 .PP
@@ -461,7 +461,7 @@ main(int argc, char *argv[])
         exit(EXIT_FAILURE);
     }
 
-    len = strlen(argv[3]) + 1;  /* +1 to include trailing \(aq\e0\(aq */
+    len = strlen(argv[3]) + 1;  /* +1 to include trailing \[aq]\e0\[aq] */
     if (len > MEM_SIZE) {
         fprintf(stderr, "String is too big!\en");
         exit(EXIT_FAILURE);

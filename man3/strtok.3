@@ -88,7 +88,7 @@ to return NULL on the first call.)
 .PP
 The end of each token is found by scanning forward until either
 the next delimiter byte is found or until the
-terminating null byte (\(aq\e0\(aq) is encountered.
+terminating null byte (\[aq]\e0\[aq]) is encountered.
 If a delimiter byte is found, it is overwritten with
 a null byte to terminate the current token, and
 .BR strtok ()
@@ -216,7 +216,7 @@ An example of the output produced by this program is the following:
 .PP
 .in +4n
 .EX
-.RB "$" " ./a.out \(aqa/bbb///cc;xxx:yyy:\(aq \(aq:;\(aq \(aq/\(aq"
+.RB "$" " ./a.out \[aq]a/bbb///cc;xxx:yyy:\[aq] \[aq]:;\[aq] \[aq]/\[aq]"
 1: a/bbb///cc
          \-\-> a
          \-\-> bbb

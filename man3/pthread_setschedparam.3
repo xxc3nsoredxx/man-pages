@@ -178,7 +178,7 @@ Password:
 Scheduler settings of main thread
     policy=SCHED_FIFO, priority=10
 
-Scheduler settings in \(aqattr\(aq
+Scheduler settings in \[aq]attr\[aq]
     policy=SCHED_RR, priority=20
     inheritsched is EXPLICIT
 
@@ -203,7 +203,7 @@ and instead take their scheduling attributes from the creating thread.
 Scheduler settings of main thread
     policy=SCHED_FIFO, priority=10
 
-Scheduler settings in \(aqattr\(aq
+Scheduler settings in \[aq]attr\[aq]
     policy=SCHED_RR, priority=20
     inheritsched is INHERIT
 
@@ -253,7 +253,7 @@ usage(char *prog_name, char *msg)
     fpe("                     o  SCHED_OTHER\en");
     fpe("\-A               Use default thread attributes object\en");
     fpe("\-i {e|i}         Set inherit scheduler attribute to\en");
-    fpe("                 \(aqexplicit\(aq or \(aqinherit\(aq\en");
+    fpe("                 \[aq]explicit\[aq] or \[aq]inherit\[aq]\en");
     fpe("\-m<policy><prio> Set scheduling policy and priority on\en");
     fpe("                 main thread before pthread_create() call\en");
     exit(EXIT_FAILURE);
@@ -263,9 +263,9 @@ static int
 get_policy(char p, int *policy)
 {
     switch (p) {
-    case \(aqf\(aq: *policy = SCHED_FIFO;     return 1;
-    case \(aqr\(aq: *policy = SCHED_RR;       return 1;
-    case \(aqo\(aq: *policy = SCHED_OTHER;    return 1;
+    case \[aq]f\[aq]: *policy = SCHED_FIFO;     return 1;
+    case \[aq]r\[aq]: *policy = SCHED_RR;       return 1;
+    case \[aq]o\[aq]: *policy = SCHED_OTHER;    return 1;
     default:  return 0;
     }
 }
@@ -322,10 +322,10 @@ main(int argc, char *argv[])
 
     while ((opt = getopt(argc, argv, "a:Ai:m:")) != \-1) {
         switch (opt) {
-        case \(aqa\(aq: attr_sched_str = optarg;      break;
-        case \(aqA\(aq: use_null_attrib = 1;          break;
-        case \(aqi\(aq: inheritsched_str = optarg;    break;
-        case \(aqm\(aq: main_sched_str = optarg;      break;
+        case \[aq]a\[aq]: attr_sched_str = optarg;      break;
+        case \[aq]A\[aq]: use_null_attrib = 1;          break;
+        case \[aq]i\[aq]: inheritsched_str = optarg;    break;
+        case \[aq]m\[aq]: main_sched_str = optarg;      break;
         default:  usage(argv[0], "Unrecognized option\en");
         }
     }
@@ -333,7 +333,7 @@ main(int argc, char *argv[])
     if (use_null_attrib
         && (inheritsched_str != NULL || attr_sched_str != NULL))
     {
-        usage(argv[0], "Can\(aqt specify \-A with \-i or \-a\en");
+        usage(argv[0], "Can\[aq]t specify \-A with \-i or \-a\en");
     }
 
     /* Optionally set scheduling attributes of main thread,
@@ -364,12 +364,12 @@ main(int argc, char *argv[])
     }
 
     if (inheritsched_str != NULL) {
-        if (inheritsched_str[0] == \(aqe\(aq)
+        if (inheritsched_str[0] == \[aq]e\[aq])
             inheritsched = PTHREAD_EXPLICIT_SCHED;
-        else if (inheritsched_str[0] == \(aqi\(aq)
+        else if (inheritsched_str[0] == \[aq]i\[aq])
             inheritsched = PTHREAD_INHERIT_SCHED;
         else
-            usage(argv[0], "Value for \-i must be \(aqe\(aq or \(aqi\(aq\en");
+            usage(argv[0], "Value for \-i must be \[aq]e\[aq] or \[aq]i\[aq]\en");
 
         s = pthread_attr_setinheritsched(&attr, inheritsched);
         if (s != 0)
@@ -378,7 +378,7 @@ main(int argc, char *argv[])
 
     if (attr_sched_str != NULL) {
         if (!get_policy(attr_sched_str[0], &policy))
-            usage(argv[0], "Bad policy for \(aqattr\(aq (\-a)\en");
+            usage(argv[0], "Bad policy for \[aq]attr\[aq] (\-a)\en");
         param.sched_priority = strtol(&attr_sched_str[1], NULL, 0);
 
         s = pthread_attr_setschedpolicy(&attr, policy);
@@ -400,7 +400,7 @@ main(int argc, char *argv[])
         if (s != 0)
             handle_error_en(s, "pthread_attr_getschedpolicy");
 
-        printf("Scheduler settings in \(aqattr\(aq\en");
+        printf("Scheduler settings in \[aq]attr\[aq]\en");
         display_sched_attr(policy, &param);
 
         pthread_attr_getinheritsched(&attr, &inheritsched);

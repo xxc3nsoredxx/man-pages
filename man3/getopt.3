@@ -73,11 +73,11 @@ and
 are the argument count and array as passed to the
 .IR main ()
 function on program invocation.
-An element of \fIargv\fP that starts with \(aq\-\(aq
+An element of \fIargv\fP that starts with \[aq]\-\[aq]
 (and is not exactly "\-" or "\-\-")
 is an option element.
 The characters of this element
-(aside from the initial \(aq\-\(aq) are option characters.
+(aside from the initial \[aq]\-\[aq]) are option characters.
 If
 .BR getopt ()
 is called repeatedly, it returns successively each of the option characters
@@ -114,7 +114,7 @@ A legitimate option character is any visible one byte
 .BR ascii (7)
 character (for which
 .BR isgraph (3)
-would return nonzero) that is not \(aq\-\(aq, \(aq:\(aq, or \(aq;\(aq.
+would return nonzero) that is not \[aq]\-\[aq], \[aq]:\[aq], or \[aq];\[aq].
 If such a
 character is followed by a colon, the option requires an argument, so
 .BR getopt ()
@@ -146,19 +146,19 @@ permutes the contents of \fIargv\fP as it
 scans, so that eventually all the nonoptions are at the end.
 Two other scanning modes are also implemented.
 If the first character of
-\fIoptstring\fP is \(aq+\(aq or the environment variable
+\fIoptstring\fP is \[aq]+\[aq] or the environment variable
 .B POSIXLY_CORRECT
 is set, then option processing stops as soon as a nonoption argument is
 encountered.
-If \(aq+\(aq is not the first character of
+If \[aq]+\[aq] is not the first character of
 .IR optstring ,
 it is treated as a normal option.
 If
 .B POSIXLY_CORRECT
 behaviour is required in this case
 .I optstring
-will contain two \(aq+\(aq symbols.
-If the first character of \fIoptstring\fP is \(aq\-\(aq, then
+will contain two \[aq]+\[aq] symbols.
+If the first character of \fIoptstring\fP is \[aq]\-\[aq], then
 each nonoption \fIargv\fP-element is handled as if it were the argument of
 an option with character code 1.
 (This is used by programs that were
@@ -181,7 +181,7 @@ By default,
 prints an error message on standard error,
 places the erroneous option character in
 .IR optopt ,
-and returns \(aq?\(aq as the function result.
+and returns \[aq]?\[aq] as the function result.
 .IP \(bu
 If the caller has set the global variable
 .I opterr
@@ -189,18 +189,18 @@ to zero, then
 .BR getopt ()
 does not print an error message.
 The caller can determine that there was an error by testing whether
-the function return value is \(aq?\(aq.
+the function return value is \[aq]?\[aq].
 (By default,
 .I opterr
 has a nonzero value.)
 .IP \(bu
 If the first character
-(following any optional \(aq+\(aq or \(aq\-\(aq described above)
+(following any optional \[aq]+\[aq] or \[aq]\-\[aq] described above)
 of \fIoptstring\fP
-is a colon (\(aq:\(aq), then
+is a colon (\[aq]:\[aq]), then
 .BR getopt ()
 likewise does not print an error message.
-In addition, it returns \(aq:\(aq instead of \(aq?\(aq to
+In addition, it returns \[aq]:\[aq] instead of \[aq]?\[aq] to
 indicate a missing option argument.
 This allows the caller to distinguish the two different types of errors.
 .\"
@@ -277,9 +277,9 @@ points to a variable which is set to the index of the long option relative to
 .BR getopt_long_only ()
 is like
 .BR getopt_long (),
-but \(aq\-\(aq as well
+but \[aq]\-\[aq] as well
 as "\-\-" can indicate a long option.
-If an option that starts with \(aq\-\(aq
+If an option that starts with \[aq]\-\[aq]
 (not "\-\-") doesn't match a long option, but does match a short option,
 it is parsed as a short option instead.
 .SH RETURN VALUE
@@ -293,13 +293,13 @@ If
 .BR getopt ()
 encounters an option character that was not in
 .IR optstring ,
-then \(aq?\(aq is returned.
+then \[aq]?\[aq] is returned.
 If
 .BR getopt ()
 encounters an option with a missing argument,
 then the return value depends on the first character in
 .IR optstring :
-if it is \(aq:\(aq, then \(aq:\(aq is returned; otherwise \(aq?\(aq is returned.
+if it is \[aq]:\[aq], then \[aq]:\[aq] is returned; otherwise \[aq]?\[aq] is returned.
 .PP
 .BR getopt_long ()
 and
@@ -310,7 +310,7 @@ For a long option, they
 return \fIval\fP if \fIflag\fP is NULL, and 0 otherwise.
 Error and \-1 returns are the same as for
 .BR getopt (),
-plus \(aq?\(aq for an
+plus \[aq]?\[aq] for an
 ambiguous match or an extraneous parameter.
 .SH ENVIRONMENT
 .TP
@@ -361,7 +361,7 @@ Nevertheless,
 .I const
 is used in the prototype to be compatible with other systems.
 .IP
-The use of \(aq+\(aq and \(aq\-\(aq in
+The use of \[aq]+\[aq] and \[aq]\-\[aq] in
 .I optstring
 is a GNU extension.
 .IP
@@ -384,8 +384,8 @@ These functions are GNU extensions.
 .SH NOTES
 A program that scans multiple argument vectors,
 or rescans the same vector more than once,
-and wants to make use of GNU extensions such as \(aq+\(aq
-and \(aq\-\(aq at the start of
+and wants to make use of GNU extensions such as \[aq]+\[aq]
+and \[aq]\-\[aq] at the start of
 .IR optstring ,
 or changes the value of
 .B POSIXLY_CORRECT
@@ -445,14 +445,14 @@ main(int argc, char *argv[])
     flags = 0;
     while ((opt = getopt(argc, argv, "nt:")) != \-1) {
         switch (opt) {
-        case \(aqn\(aq:
+        case \[aq]n\[aq]:
             flags = 1;
             break;
-        case \(aqt\(aq:
+        case \[aq]t\[aq]:
             nsecs = atoi(optarg);
             tfnd = 1;
             break;
-        default: /* \(aq?\(aq */
+        default: /* \[aq]?\[aq] */
             fprintf(stderr, "Usage: %s [\-t nsecs] [\-n] name\en",
                     argv[0]);
             exit(EXIT_FAILURE);
@@ -500,7 +500,7 @@ main(int argc, char *argv[])
             {"append",  no_argument,       0,  0 },
             {"delete",  required_argument, 0,  0 },
             {"verbose", no_argument,       0,  0 },
-            {"create",  required_argument, 0, \(aqc\(aq},
+            {"create",  required_argument, 0, \[aq]c\[aq]},
             {"file",    required_argument, 0,  0 },
             {0,         0,                 0,  0 }
         };
@@ -518,32 +518,32 @@ main(int argc, char *argv[])
             printf("\en");
             break;
 
-        case \(aq0\(aq:
-        case \(aq1\(aq:
-        case \(aq2\(aq:
+        case \[aq]0\[aq]:
+        case \[aq]1\[aq]:
+        case \[aq]2\[aq]:
             if (digit_optind != 0 && digit_optind != this_option_optind)
               printf("digits occur in two different argv\-elements.\en");
             digit_optind = this_option_optind;
             printf("option %c\en", c);
             break;
 
-        case \(aqa\(aq:
+        case \[aq]a\[aq]:
             printf("option a\en");
             break;
 
-        case \(aqb\(aq:
+        case \[aq]b\[aq]:
             printf("option b\en");
             break;
 
-        case \(aqc\(aq:
-            printf("option c with value \(aq%s\(aq\en", optarg);
+        case \[aq]c\[aq]:
+            printf("option c with value \[aq]%s\[aq]\en", optarg);
             break;
 
-        case \(aqd\(aq:
-            printf("option d with value \(aq%s\(aq\en", optarg);
+        case \[aq]d\[aq]:
+            printf("option d with value \[aq]%s\[aq]\en", optarg);
             break;
 
-        case \(aq?\(aq:
+        case \[aq]?\[aq]:
             break;
 
         default:

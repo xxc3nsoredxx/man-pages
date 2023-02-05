@@ -184,7 +184,7 @@ thread_func(void *arg)
 {
     int tn = (int) arg;
 
-    /* The multiplier \(aq(2 + tn)\(aq ensures that each thread (including
+    /* The multiplier \[aq](2 + tn)\[aq] ensures that each thread (including
        the main thread) allocates a different amount of memory. */
 
     for (unsigned int j = 0; j < numBlocks; j++)
@@ -229,8 +229,8 @@ main(int argc, char *argv[])
             err(EXIT_FAILURE, "pthread_create");
 
         /* If we add a sleep interval after the start\-up of each
-           thread, the threads likely won\(aqt contend for malloc
-           mutexes, and therefore additional arenas won\(aqt be
+           thread, the threads likely won\[aq]t contend for malloc
+           mutexes, and therefore additional arenas won\[aq]t be
            allocated (see malloc(3)). */
 
         if (sleepTime > 0)

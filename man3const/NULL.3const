@@ -58,7 +58,7 @@ which is an
 .BR ascii (7)
 character,
 represented in C as
-.BR \(aq\e0\(aq .
+.BR \[aq]\e0\[aq] .
 .SH BUGS
 When it is necessary to set a pointer variable to a null pointer,
 it is not enough to use

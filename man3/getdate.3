@@ -229,12 +229,12 @@ The following shell session demonstrates the operation of the program:
 .in +4n
 .EX
 .RB "$" " TFILE=$PWD/tfile"
-.RB "$" " echo \(aq%A\(aq > $TFILE " "      # Full name of the day of the week"
-.RB "$" " echo \(aq%T\(aq >> $TFILE" "      # Time (HH:MM:SS)"
-.RB "$" " echo \(aq%F\(aq >> $TFILE" "      # ISO date (YYYY\-MM\-DD)"
+.RB "$" " echo \[aq]%A\[aq] > $TFILE " "      # Full name of the day of the week"
+.RB "$" " echo \[aq]%T\[aq] >> $TFILE" "      # Time (HH:MM:SS)"
+.RB "$" " echo \[aq]%F\[aq] >> $TFILE" "      # ISO date (YYYY\-MM\-DD)"
 .RB "$" " date"
 .RB "$" " export DATEMSK=$TFILE"
-.RB "$" " ./a.out Tuesday \(aq2009\-12\-28\(aq \(aq12:22:33\(aq"
+.RB "$" " ./a.out Tuesday \[aq]2009\-12\-28\[aq] \[aq]12:22:33\[aq]"
 Sun Sep  7 06:03:36 CEST 2008
 Call 1 ("Tuesday") succeeded:
     tm_sec   = 36

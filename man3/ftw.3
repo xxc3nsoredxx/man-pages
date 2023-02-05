@@ -481,9 +481,9 @@ main(int argc, char *argv[])
 {
     int flags = 0;
 
-    if (argc > 2 && strchr(argv[2], \(aqd\(aq) != NULL)
+    if (argc > 2 && strchr(argv[2], \[aq]d\[aq]) != NULL)
         flags |= FTW_DEPTH;
-    if (argc > 2 && strchr(argv[2], \(aqp\(aq) != NULL)
+    if (argc > 2 && strchr(argv[2], \[aq]p\[aq]) != NULL)
         flags |= FTW_PHYS;
 
     if (nftw((argc < 2) ? "." : argv[1], display_info, 20, flags)

@@ -127,13 +127,13 @@ First, some examples using
 .EX
 $ \fB./string_comp ABC ABC\fP
 <str1> and <str2> are equal
-$ \fB./string_comp ABC AB\fP      # \(aqC\(aq is ASCII 67; \(aqC\(aq \- \(aq\e0\(aq = 67
+$ \fB./string_comp ABC AB\fP      # \[aq]C\[aq] is ASCII 67; \[aq]C\[aq] \- \[aq]\e0\[aq] = 67
 <str1> is greater than <str2> (67)
-$ \fB./string_comp ABA ABZ\fP     # \(aqA\(aq is ASCII 65; \(aqZ\(aq is ASCII 90
+$ \fB./string_comp ABA ABZ\fP     # \[aq]A\[aq] is ASCII 65; \[aq]Z\[aq] is ASCII 90
 <str1> is less than <str2> (\-25)
 $ \fB./string_comp ABJ ABC\fP
 <str1> is greater than <str2> (7)
-$ .\fB/string_comp $\(aq\e201\(aq A\fP   # 0201 \- 0101 = 0100 (or 64 decimal)
+$ .\fB/string_comp $\[aq]\e201\[aq] A\fP   # 0201 \- 0101 = 0100 (or 64 decimal)
 <str1> is greater than <str2> (64)
 .EE
 .in

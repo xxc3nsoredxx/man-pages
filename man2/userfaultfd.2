@@ -832,11 +832,11 @@ fault_handler_thread(void *arg)
         printf("flags = %"PRIx64"; ", msg.arg.pagefault.flags);
         printf("address = %"PRIx64"\en", msg.arg.pagefault.address);
 
-        /* Copy the page pointed to by \(aqpage\(aq into the faulting
+        /* Copy the page pointed to by \[aq]page\[aq] into the faulting
            region. Vary the contents that are copied in, so that it
            is more obvious that each fault is handled separately. */
 
-        memset(page, \(aqA\(aq + fault_cnt % 20, page_size);
+        memset(page, \[aq]A\[aq] + fault_cnt % 20, page_size);
         fault_cnt++;
 
         uffdio_copy.src = (unsigned long) page;

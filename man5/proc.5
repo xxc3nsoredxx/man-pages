@@ -498,7 +498,7 @@ unless the process is a zombie.
 In the latter case, there is nothing in this file:
 that is, a read on this file will return 0 characters.
 The command-line arguments appear in this file as a set of
-strings separated by null bytes (\(aq\e0\(aq),
+strings separated by null bytes (\[aq]\e0\[aq]),
 with a further null byte after the last string.
 .IP
 If, after an
@@ -591,13 +591,13 @@ check; see
 This file contains the initial environment that was set
 when the currently executing program was started via
 .BR execve (2).
-The entries are separated by null bytes (\(aq\e0\(aq),
+The entries are separated by null bytes (\[aq]\e0\[aq]),
 and there may be a null byte at the end.
 Thus, to print out the environment of process 1, you would do:
 .IP
 .in +4n
 .EX
-.RB "$" " cat /proc/1/environ | tr \(aq\e000\(aq \(aq\en\(aq"
+.RB "$" " cat /proc/1/environ | tr \[aq]\e000\[aq] \[aq]\en\[aq]"
 .EE
 .in
 .IP
@@ -634,7 +634,7 @@ to run another copy of the same executable that is being run by
 process
 .IR pid .
 If the pathname has been unlinked, the symbolic link will contain the
-string \(aq(deleted)\(aq appended to the original pathname.
+string \[aq](deleted)\[aq] appended to the original pathname.
 .\" The following was still true as at kernel 2.6.13
 In a multithreaded process, the contents of this symbolic link
 are not available if the main thread has already terminated
@@ -1854,7 +1854,7 @@ and in that shell we create some new mounts:
 .IP
 .in +4n
 .EX
-$ \fBPS1=\(aqsh1# \(aq unshare \-Urnm\fP
+$ \fBPS1=\[aq]sh1# \[aq] unshare \-Urnm\fP
 sh1# \fBmount \-t tmpfs tmpfs /etc\fP  # Mount empty tmpfs at /etc
 sh1# \fBmount \-\-bind /usr /dev\fP     # Mount /usr at /dev
 sh1# \fBecho $$\fP
@@ -1868,7 +1868,7 @@ the initial and new namespaces:
 .IP
 .in +4n
 .EX
-$ \fBPS1=\(aqsh2# \(aq sudo sh\fP
+$ \fBPS1=\[aq]sh2# \[aq] sudo sh\fP
 sh2# \fBls /etc | wc \-l\fP                  # In initial NS
 309
 sh2# \fBls /proc/27123/root/etc | wc \-l\fP  # /etc in other NS
@@ -3260,7 +3260,7 @@ driver             driver version
 geometry           physical and logical geometry
 identify           in hexadecimal
 media              media type
-model              manufacturer\(aqs model number
+model              manufacturer\[aq]s model number
 settings           drive settings
 smart_thresholds   IDE disk management thresholds (in hex)
 smart_values       IDE disk management values (in hex)
@@ -4229,7 +4229,7 @@ The command
 .IP
 .in +4n
 .EX
-echo \(aqscsi add\-single\-device 1 0 5 0\(aq > /proc/scsi/scsi
+echo \[aq]scsi add\-single\-device 1 0 5 0\[aq] > /proc/scsi/scsi
 .EE
 .in
 .IP
@@ -4414,13 +4414,13 @@ the \fI/proc\fP filesystem, and the (deprecated)
 .BR sysctl (2)
 system call.
 .IP
-String values may be terminated by either \(aq\e0\(aq or \(aq\en\(aq.
+String values may be terminated by either \[aq]\e0\[aq] or \[aq]\en\[aq].
 .IP
 Integer and long values may be written either in decimal or in
 hexadecimal notation (e.g., 0x3FFF).
 When writing multiple integer or long values, these may be separated
 by any of the following whitespace characters:
-\(aq\ \(aq, \(aq\et\(aq, or \(aq\en\(aq.
+\[aq]\ \[aq], \[aq]\et\[aq], or \[aq]\en\[aq].
 Using other separators leads to the error
 .BR EINVAL .
 .TP
@@ -5019,8 +5019,8 @@ that is:
 .IP
 .in +4n
 .EX
-.RB "#" " echo \(aqdarkstar\(aq > /proc/sys/kernel/hostname"
-.RB "#" " echo \(aqmydomain\(aq > /proc/sys/kernel/domainname"
+.RB "#" " echo \[aq]darkstar\[aq] > /proc/sys/kernel/hostname"
+.RB "#" " echo \[aq]mydomain\[aq] > /proc/sys/kernel/domainname"
 .EE
 .in
 .IP
@@ -5028,8 +5028,8 @@ has the same effect as
 .IP
 .in +4n
 .EX
-.RB "#" " hostname \(aqdarkstar\(aq"
-.RB "#" " domainname \(aqmydomain\(aq"
+.RB "#" " hostname \[aq]darkstar\[aq]"
+.RB "#" " domainname \[aq]mydomain\[aq]"
 .EE
 .in
 .IP
@@ -6144,7 +6144,7 @@ The output columns are:
 .RS
 .IP [1] 5
 a count of the number of events,
-optionally (since Linux 2.6.23) followed by the letter \(aqD\(aq
+optionally (since Linux 2.6.23) followed by the letter \[aq]D\[aq]
 .\" commit c5c061b8f9726bc2c25e19dec227933a13d1e6b7 deferrable timers
 if this is a deferrable timer;
 .IP [2]
@@ -6889,13 +6889,13 @@ This is useful for analyzing virtual memory behavior.
 .SH NOTES
 Many files contain strings (e.g., the environment and command line)
 that are in the internal format,
-with subfields terminated by null bytes (\(aq\e0\(aq).
+with subfields terminated by null bytes (\[aq]\e0\[aq]).
 When inspecting such files, you may find that the results are more readable
 if you use a command of the following form to display them:
 .PP
 .in +4n
 .EX
-.RB "$" " cat \fIfile\fP | tr \(aq\e000\(aq \(aq\en\(aq"
+.RB "$" " cat \fIfile\fP | tr \[aq]\e000\[aq] \[aq]\en\[aq]"
 .EE
 .in
 .PP

@@ -58,9 +58,9 @@ flag; interpretation, if any, is performed by the shell.
 The
 .I type
 argument is a pointer to a null-terminated string which must contain
-either the letter \(aqr\(aq for reading or the letter \(aqw\(aq for writing.
+either the letter \[aq]r\[aq] for reading or the letter \[aq]w\[aq] for writing.
 Since glibc 2.9,
-this argument can additionally include the letter \(aqe\(aq,
+this argument can additionally include the letter \[aq]e\[aq],
 which causes the close-on-exec flag
 .RB ( FD_CLOEXEC )
 to be set on the underlying file descriptor;
@@ -168,7 +168,7 @@ T}	Thread safety	MT-Safe
 .SH STANDARDS
 POSIX.1-2001, POSIX.1-2008.
 .PP
-The \(aqe\(aq value for
+The \[aq]e\[aq] value for
 .I type
 is a Linux extension.
 .SH NOTES

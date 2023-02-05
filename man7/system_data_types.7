@@ -295,15 +295,15 @@ main (void)
         exit(EXIT_FAILURE);
     }
 
-    /* Copy the value to the suseconds_t variable \(aqus\(aq. */
+    /* Copy the value to the suseconds_t variable \[aq]us\[aq]. */
 
     us = tmp;
 
-    /* Even though suseconds_t can hold the value \-1, this isn\(aqt
+    /* Even though suseconds_t can hold the value \-1, this isn\[aq]t
        a sensible number of microseconds. */
 
     if (us < 0) {
-        fprintf(stderr, "Scanned value shouldn\(aqt be negative!\en");
+        fprintf(stderr, "Scanned value shouldn\[aq]t be negative!\en");
         exit(EXIT_FAILURE);
     }
 

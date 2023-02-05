@@ -38,7 +38,7 @@ strncat(char *restrict dst, const char *restrict src, size_t sz)
     len = strnlen(src, sz);
     p = dst + strlen(dst);
     p = mempcpy(p, src, len);
-    *p = \(aq\e0\(aq;
+    *p = \[aq]\e0\[aq];
 
     return dst;
 }
@@ -114,7 +114,7 @@ main(void)
     if (dest == NULL)
         err(EXIT_FAILURE, "malloc()");
 
-    dest[0] = \(aq\e0\(aq;  // There's no 'cpy' function to this 'cat'.
+    dest[0] = \[aq]\e0\[aq];  // There's no 'cpy' function to this 'cat'.
     strncat(dest, pre, nitems(pre));
     strncat(dest, src, strlen(src) \- strlen(post));
     strncat(dest, new_post, nitems(new_post));

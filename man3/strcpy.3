@@ -65,7 +65,7 @@ stpcpy(char *restrict dst, const char *restrict src)
     char  *p;
 
     p = mempcpy(dst, src, strlen(src));
-    *p = \(aq\e0\(aq;
+    *p = \[aq]\e0\[aq];
 
     return p;
 }

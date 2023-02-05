@@ -184,19 +184,19 @@ main(void)
 
     encrypt(buf, 0);
     for (size_t i = 0; i < 8; i++) {
-        for (size_t j = 0, txt[i] = \(aq\e0\(aq; j < 8; j++) {
+        for (size_t j = 0, txt[i] = \[aq]\e0\[aq]; j < 8; j++) {
             txt[i] |= buf[i * 8 + j] << j;
         }
-        txt[8] = \(aq\e0\(aq;
+        txt[8] = \[aq]\e0\[aq];
     }
     printf("After encrypting:  %s\en", txt);
 
     encrypt(buf, 1);
     for (size_t i = 0; i < 8; i++) {
-        for (size_t j = 0, txt[i] = \(aq\e0\(aq; j < 8; j++) {
+        for (size_t j = 0, txt[i] = \[aq]\e0\[aq]; j < 8; j++) {
             txt[i] |= buf[i * 8 + j] << j;
         }
-        txt[8] = \(aq\e0\(aq;
+        txt[8] = \[aq]\e0\[aq];
     }
     printf("After decrypting:  %s\en", txt);
     exit(EXIT_SUCCESS);

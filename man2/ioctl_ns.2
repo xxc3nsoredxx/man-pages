@@ -259,12 +259,12 @@ main(int argc, char *argv[])
         fprintf(stderr, "\enDisplay the result of one or both "
                 "of NS_GET_USERNS (u) or NS_GET_PARENT (p)\en"
                 "for the specified /proc/[pid]/ns/[file]. If neither "
-                "\(aqp\(aq nor \(aqu\(aq is specified,\en"
+                "\[aq]p\[aq] nor \[aq]u\[aq] is specified,\en"
                 "NS_GET_USERNS is the default.\en");
         exit(EXIT_FAILURE);
     }
 
-    /* Obtain a file descriptor for the \(aqns\(aq file specified
+    /* Obtain a file descriptor for the \[aq]ns\[aq] file specified
        in argv[1]. */
 
     fd = open(argv[1], O_RDONLY);
@@ -276,7 +276,7 @@ main(int argc, char *argv[])
     /* Obtain a file descriptor for the owning user namespace and
        then obtain and display the inode number of that namespace. */
 
-    if (argc < 3 || strchr(argv[2], \(aqu\(aq)) {
+    if (argc < 3 || strchr(argv[2], \[aq]u\[aq])) {
         userns_fd = ioctl(fd, NS_GET_USERNS);
 
         if (userns_fd == \-1) {
@@ -304,12 +304,12 @@ main(int argc, char *argv[])
     /* Obtain a file descriptor for the parent namespace and
        then obtain and display the inode number of that namespace. */
 
-    if (argc > 2 && strchr(argv[2], \(aqp\(aq)) {
+    if (argc > 2 && strchr(argv[2], \[aq]p\[aq])) {
         parent_fd = ioctl(fd, NS_GET_PARENT);
 
         if (parent_fd == \-1) {
             if (errno == EINVAL)
-                printf("Can\(aq get parent namespace of a "
+                printf("Can\[aq] get parent namespace of a "
                        "nonhierarchical namespace\en");
             else if (errno == EPERM)
                 printf("The parent namespace is outside "

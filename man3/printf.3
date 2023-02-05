@@ -107,7 +107,7 @@ and
 .BR vsnprintf ()
 write at most
 .I size
-bytes (including the terminating null byte (\(aq\e0\(aq)) to
+bytes (including the terminating null byte (\[aq]\e0\[aq])) to
 .IR str .
 .PP
 The functions
@@ -187,7 +187,7 @@ The overall syntax of a conversion specification is:
 The arguments must correspond properly (after type promotion) with the
 conversion specifier.
 By default, the arguments are used in the order
-given, where each \(aq*\(aq (see
+given, where each \[aq]*\[aq] (see
 .I "Field width"
 and
 .I Precision
@@ -195,7 +195,7 @@ below) and each conversion specifier asks for the next
 argument (and it is an error if insufficiently many arguments are given).
 One can also specify explicitly which argument is taken,
 at each place where an argument is required, by writing "%m$" instead
-of \(aq%\(aq and "*m$" instead of \(aq*\(aq,
+of \[aq]%\[aq] and "*m$" instead of \[aq]*\[aq],
 where the decimal integer \fIm\fP denotes
 the position in the argument list of the desired argument, indexed starting
 from 1.
@@ -218,14 +218,14 @@ printf("%2$*1$d", width, num);
 are equivalent.
 The second style allows repeated references to the
 same argument.
-The C99 standard does not include the style using \(aq$\(aq,
+The C99 standard does not include the style using \[aq]$\[aq],
 which comes from the Single UNIX Specification.
 If the style using
-\(aq$\(aq is used, it must be used throughout for all conversions taking an
+\[aq]$\[aq] is used, it must be used throughout for all conversions taking an
 argument and all width and precision arguments, but it may be mixed
 with "%%" formats, which do not consume an argument.
 There may be no
-gaps in the numbers of arguments specified using \(aq$\(aq; for example, if
+gaps in the numbers of arguments specified using \[aq]$\[aq]; for example, if
 arguments 1 and 3 are specified, argument 2 must also be specified
 somewhere in the format string.
 .PP
@@ -238,12 +238,12 @@ part of the locale.
 (See
 .BR setlocale (3).)
 The POSIX locale
-uses \(aq.\(aq as radix character, and does not have a grouping character.
+uses \[aq].\[aq] as radix character, and does not have a grouping character.
 Thus,
 .PP
 .in +4n
 .EX
-printf("%\(aq.2f", 1234567.89);
+printf("%\[aq].2f", 1234567.89);
 .EE
 .in
 .PP
@@ -348,7 +348,7 @@ overrides a
 .B \&0
 if both are given.
 .TP
-.B \(aq \(aq
+.B \[aq] \[aq]
 (a space) A blank should be left before a positive number
 (or empty string) produced by a signed conversion.
 .TP
@@ -363,7 +363,7 @@ overrides a space if both are used.
 The five flag characters above are defined in the C99 standard.
 The Single UNIX Specification specifies one further flag character.
 .TP
-.B \(aq
+.B \[aq]
 For decimal conversion
 .RB ( i ,
 .BR d ,
@@ -380,7 +380,7 @@ Note that many versions of
 .BR gcc (1)
 cannot parse this option and will issue a warning.
 (SUSv2 did not
-include \fI%\(aqF\fP, but SUSv3 added it.)
+include \fI%\[aq]F\fP, but SUSv3 added it.)
 Note also that the default locale of a C program is "C"
 whose locale information indicates no thousands' grouping character.
 Therefore, without a prior call to
@@ -409,20 +409,20 @@ Instead of a decimal digit string one may write "*" or "*m$"
 is given in the next argument, or in the \fIm\fP-th argument, respectively,
 which must be of type
 .IR int .
-A negative field width is taken as a \(aq\-\(aq flag followed by a
+A negative field width is taken as a \[aq]\-\[aq] flag followed by a
 positive field width.
 In no case does a nonexistent or small field width cause truncation of a
 field; if the result of a conversion is wider than the field width, the
 field is expanded to contain the conversion result.
 .SS Precision
-An optional precision, in the form of a period (\(aq.\(aq)  followed by an
+An optional precision, in the form of a period (\[aq].\[aq])  followed by an
 optional decimal digit string.
 Instead of a decimal digit string one may write "*" or "*m$"
 (for some decimal integer \fIm\fP) to specify that the precision
 is given in the next argument, or in the \fIm\fP-th argument, respectively,
 which must be of type
 .IR int .
-If the precision is given as just \(aq.\(aq, the precision is taken to
+If the precision is given as just \[aq].\[aq], the precision is taken to
 be zero.
 A negative precision is taken as if the precision were omitted.
 This gives the minimum number of digits to appear for
@@ -794,7 +794,7 @@ modifier is present: the
 argument is expected to be a pointer to an array of character type (pointer
 to a string).
 Characters from the array are written up to (but not
-including) a terminating null byte (\(aq\e0\(aq);
+including) a terminating null byte (\[aq]\e0\[aq]);
 if a precision is specified, no more than the number specified
 are written.
 If a precision is given, no null byte need be present;
@@ -870,10 +870,10 @@ in the alternate form).
 No argument is required.
 .TP
 .B %
-A \(aq%\(aq is written.
+A \[aq]%\[aq] is written.
 No argument is converted.
 The complete conversion
-specification is \(aq%%\(aq.
+specification is \[aq]%%\[aq].
 .SH RETURN VALUE
 Upon successful return, these functions return the number of characters
 printed (excluding the null byte used to end output to strings).
@@ -884,7 +884,7 @@ and
 .BR vsnprintf ()
 do not write more than
 .I size
-bytes (including the terminating null byte (\(aq\e0\(aq)).
+bytes (including the terminating null byte (\[aq]\e0\[aq])).
 If the output was truncated due to this limit, then the return value
 is the number of characters (excluding the terminating null byte)
 which would have been written to the final string if enough space
@@ -910,7 +910,7 @@ If an output error is encountered, a negative value is returned.
 .\" No locale-dependent radix character,
 .\" no thousands' separator, no NaN or infinity, no "%m$" and "*m$".
 .\" .PP
-.\" Linux libc5 knows about the five C standard flags and the \(aq flag,
+.\" Linux libc5 knows about the five C standard flags and the \[aq] flag,
 .\" locale, "%m$" and "*m$".
 .\" It knows about the length modifiers \fBh\fP, \fBl\fP, \fBL\fP,
 .\" \fBZ\fP, and \fBq\fP, but accepts \fBL\fP and \fBq\fP
@@ -1180,7 +1180,7 @@ make_message(const char *fmt, ...)
     if (n < 0)
         return NULL;
 
-    size = (size_t) n + 1;      /* One extra byte for \(aq\e0\(aq */
+    size = (size_t) n + 1;      /* One extra byte for \[aq]\e0\[aq] */
     p = malloc(size);
     if (p == NULL)
         return NULL;

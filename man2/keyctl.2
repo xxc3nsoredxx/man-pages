@@ -2065,7 +2065,7 @@ and ID
 .PP
 .in +4n
 .EX
-$ \fBcat /proc/keys | egrep \(aqmykey|256e6a6\(aq\fP
+$ \fBcat /proc/keys | egrep \[aq]mykey|256e6a6\[aq]\fP
 0256e6a6 I\-\-Q\-\-\-  194 perm 3f030000  1000  1000 keyring  _ses: 3
 20d035bf I\-\-Q\-\-\-    1 perm 3f010000  1000  1000 user     mykey: 16
 .EE
@@ -2177,7 +2177,7 @@ main(int argc, char *argv[])
         exit(EXIT_FAILURE);
     }
 
-    auth_key_payload[akp_size] = \(aq\e0\(aq;
+    auth_key_payload[akp_size] = \[aq]\e0\[aq];
     fprintf(fp, "Auth key payload:     %s\en", auth_key_payload);
 
     /*

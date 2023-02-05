@@ -277,7 +277,7 @@ which has the following form:
 struct seccomp_notif_sizes
     __u16 seccomp_notif;      /* Size of notification structure */
     __u16 seccomp_notif_resp; /* Size of response structure */
-    __u16 seccomp_data;       /* Size of \(aqstruct seccomp_data\(aq */
+    __u16 seccomp_data;       /* Size of \[aq]struct seccomp_data\[aq] */
 };
 .EE
 .IP
@@ -1043,7 +1043,7 @@ $ \fBuname \-m\fP
 x86_64
 $ \fBsyscall_nr() {
     cat /usr/src/linux/arch/x86/syscalls/syscall_64.tbl | \e
-    awk \(aq$2 != "x32" && $3 == "\(aq$1\(aq" { print $1 }\(aq
+    awk \[aq]$2 != "x32" && $3 == "\[aq]$1\[aq]" { print $1 }\[aq]
 }\fP
 .EE
 .in
@@ -1129,21 +1129,21 @@ install_filter(int syscall_nr, unsigned int t_arch, int f_errno)
 
     /* Assume that AUDIT_ARCH_X86_64 means the normal x86\-64 ABI
        (in the x32 ABI, all system calls have bit 30 set in the
-       \(aqnr\(aq field, meaning the numbers are >= X32_SYSCALL_BIT). */
+       \[aq]nr\[aq] field, meaning the numbers are >= X32_SYSCALL_BIT). */
     if (t_arch == AUDIT_ARCH_X86_64)
         upper_nr_limit = X32_SYSCALL_BIT \- 1;
 
     struct sock_filter filter[] = {
-        /* [0] Load architecture from \(aqseccomp_data\(aq buffer into
+        /* [0] Load architecture from \[aq]seccomp_data\[aq] buffer into
                accumulator. */
         BPF_STMT(BPF_LD | BPF_W | BPF_ABS,
                  (offsetof(struct seccomp_data, arch))),
 
         /* [1] Jump forward 5 instructions if architecture does not
-               match \(aqt_arch\(aq. */
+               match \[aq]t_arch\[aq]. */
         BPF_JUMP(BPF_JMP | BPF_JEQ | BPF_K, t_arch, 0, 5),
 
-        /* [2] Load system call number from \(aqseccomp_data\(aq buffer into
+        /* [2] Load system call number from \[aq]seccomp_data\[aq] buffer into
                accumulator. */
         BPF_STMT(BPF_LD | BPF_W | BPF_ABS,
                  (offsetof(struct seccomp_data, nr))),
@@ -1154,11 +1154,11 @@ install_filter(int syscall_nr, unsigned int t_arch, int f_errno)
         BPF_JUMP(BPF_JMP | BPF_JGT | BPF_K, upper_nr_limit, 3, 0),
 
         /* [4] Jump forward 1 instruction if system call number
-               does not match \(aqsyscall_nr\(aq. */
+               does not match \[aq]syscall_nr\[aq]. */
         BPF_JUMP(BPF_JMP | BPF_JEQ | BPF_K, syscall_nr, 0, 1),
 
-        /* [5] Matching architecture and system call: don\(aqt execute
-           the system call, and return \(aqf_errno\(aq in \(aqerrno\(aq. */
+        /* [5] Matching architecture and system call: don\[aq]t execute
+           the system call, and return \[aq]f_errno\[aq] in \[aq]errno\[aq]. */
         BPF_STMT(BPF_RET | BPF_K,
                  SECCOMP_RET_ERRNO | (f_errno & SECCOMP_RET_DATA)),
 

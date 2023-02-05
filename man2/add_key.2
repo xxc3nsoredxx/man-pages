@@ -196,7 +196,7 @@ Insufficient memory to create a key.
 .B EPERM
 The
 .I type
-started with a period (\(aq.\(aq).
+started with a period (\[aq].\[aq]).
 Key types that begin with a period are reserved to the implementation.
 .TP
 .B EPERM
@@ -205,7 +205,7 @@ was
 .I """keyring"""
 and the
 .I description
-started with a period (\(aq.\(aq).
+started with a period (\[aq].\[aq]).
 Keyrings with descriptions (names)
 that begin with a period are reserved to the implementation.
 .SH VERSIONS
@@ -232,7 +232,7 @@ The following shell session demonstrates the use of the program:
 .EX
 $ \fB./a.out user mykey "Some payload"\fP
 Key ID is 64a4dca
-$ \fBgrep \(aq64a4dca\(aq /proc/keys\fP
+$ \fBgrep \[aq]64a4dca\[aq] /proc/keys\fP
 064a4dca I\-\-Q\-\-\-    1 perm 3f010000  1000  1000 user    mykey: 12
 .EE
 .in

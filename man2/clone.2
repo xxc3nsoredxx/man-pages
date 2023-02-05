@@ -195,9 +195,9 @@ struct clone_args {
     u64 pidfd;        /* Where to store PID file descriptor
                          (\fIint *\fP) */
     u64 child_tid;    /* Where to store child TID,
-                         in child\(aqs memory (\fIpid_t *\fP) */
+                         in child\[aq]s memory (\fIpid_t *\fP) */
     u64 parent_tid;   /* Where to store child TID,
-                         in parent\(aqs memory (\fIpid_t *\fP) */
+                         in parent\[aq]s memory (\fIpid_t *\fP) */
     u64 exit_signal;  /* Signal to deliver to parent on
                          child termination */
     u64 stack;        /* Pointer to lowest byte of stack */
@@ -1903,8 +1903,8 @@ main(int argc, char *argv[])
 
     sleep(1);           /* Give child time to change its hostname */
 
-    /* Display hostname in parent\(aqs UTS namespace. This will be
-       different from hostname in child\(aqs UTS namespace. */
+    /* Display hostname in parent\[aq]s UTS namespace. This will be
+       different from hostname in child\[aq]s UTS namespace. */
 
     if (uname(&uts) == \-1)
         err(EXIT_FAILURE, "uname");

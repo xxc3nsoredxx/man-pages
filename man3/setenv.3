@@ -97,7 +97,7 @@ set to indicate the error.
 .B EINVAL
 .I name
 is NULL, points to a string of length 0,
-or contains an \(aq=\(aq character.
+or contains an \[aq]=\[aq] character.
 .TP
 .B ENOMEM
 Insufficient memory to add a new variable to the environment.
@@ -138,11 +138,11 @@ POSIX.1-compliant prototype shown in the SYNOPSIS.
 .SH BUGS
 POSIX.1 specifies that if
 .I name
-contains an \(aq=\(aq character, then
+contains an \[aq]=\[aq] character, then
 .BR setenv ()
 should fail with the error
 .BR EINVAL ;
-however, versions of glibc before glibc 2.3.4 allowed an \(aq=\(aq sign in
+however, versions of glibc before glibc 2.3.4 allowed an \[aq]=\[aq] sign in
 .IR name .
 .SH SEE ALSO
 .BR clearenv (3),

@@ -487,7 +487,7 @@ while various files under
 .I /sys
 report a size of 4096 bytes, even though the file content is smaller.
 For such files, one should simply try to read as many bytes as possible
-(and append \(aq\e0\(aq to the returned buffer
+(and append \[aq]\e0\[aq] to the returned buffer
 if it is to be interpreted as a string).
 .SH SEE ALSO
 .BR stat (1),

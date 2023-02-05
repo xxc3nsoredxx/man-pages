@@ -171,7 +171,7 @@ in
 .TP
 %E
 Pathname of executable,
-with slashes (\(aq/\(aq) replaced by exclamation marks (\(aq!\(aq)
+with slashes (\[aq]/\[aq]) replaced by exclamation marks (\[aq]!\[aq])
 (since Linux 3.0).
 .TP
 %g
@@ -217,7 +217,7 @@ core filename, as is the combination of a % followed by any
 character other than those listed above.
 All other characters in the template become a literal
 part of the core filename.
-The template may include \(aq/\(aq characters, which are interpreted
+The template may include \[aq]/\[aq] characters, which are interpreted
 as delimiters for directory names.
 The maximum size of the resulting core filename is 128 bytes (64 bytes
 before Linux 2.6.19).
@@ -256,7 +256,7 @@ Since Linux 3.6,
 if
 .I /proc/sys/fs/suid_dumpable
 is set to 2 ("suidsafe"), the pattern must be either an absolute pathname
-(starting with a leading \(aq/\(aq character) or a pipe, as defined below.
+(starting with a leading \[aq]/\[aq] character) or a pipe, as defined below.
 .SS Piping core dumps to a program
 Since Linux 2.6.19, Linux supports an alternate syntax for the
 .I /proc/sys/kernel/core_pattern

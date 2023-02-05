@@ -142,9 +142,9 @@ typedef struct {
     size_t dls_size;           /* Size in bytes of
                                   the whole buffer */
     unsigned int dls_cnt;      /* Number of elements
-                                  in \(aqdls_serpath\(aq */
+                                  in \[aq]dls_serpath\[aq] */
     Dl_serpath dls_serpath[1]; /* Actually longer,
-                                  \(aqdls_cnt\(aq elements */
+                                  \[aq]dls_cnt\[aq] elements */
 } Dl_serinfo;
 .EE
 .in
@@ -290,7 +290,7 @@ main(int argc, char *argv[])
         exit(EXIT_FAILURE);
     }
 
-    /* Initialize the \(aqdls_size\(aq and \(aqdls_cnt\(aq fields in the newly
+    /* Initialize the \[aq]dls_size\[aq] and \[aq]dls_cnt\[aq] fields in the newly
        allocated buffer. */
 
     if (dlinfo(handle, RTLD_DI_SERINFOSIZE, sip) == \-1) {

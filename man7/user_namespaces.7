@@ -1087,7 +1087,7 @@ and group ID
 .PP
 .in +4n
 .EX
-$ \fB./userns_child_exec \-p \-m \-U \-M \(aq0 1000 1\(aq \-G \(aq0 1000 1\(aq bash\fP
+$ \fB./userns_child_exec \-p \-m \-U \-M \[aq]0 1000 1\[aq] \-G \[aq]0 1000 1\[aq] bash\fP
 .EE
 .in
 .PP
@@ -1122,10 +1122,10 @@ and a full set of permitted and effective capabilities:
 .PP
 .in +4n
 .EX
-bash$ \fBcat /proc/$$/status | egrep \(aq\(ha[UG]id\(aq\fP
+bash$ \fBcat /proc/$$/status | egrep \[aq]\(ha[UG]id\[aq]\fP
 Uid:	0	0	0	0
 Gid:	0	0	0	0
-bash$ \fBcat /proc/$$/status | egrep \(aq\(haCap(Prm|Inh|Eff)\(aq\fP
+bash$ \fBcat /proc/$$/status | egrep \[aq]\(haCap(Prm|Inh|Eff)\[aq]\fP
 CapInh:	0000000000000000
 CapPrm:	0000001fffffffff
 CapEff:	0000001fffffffff
@@ -1180,8 +1180,8 @@ usage(char *pname)
     fpe("\-U          New user namespace\en");
     fpe("\-M uid_map  Specify UID map for user namespace\en");
     fpe("\-G gid_map  Specify GID map for user namespace\en");
-    fpe("\-z          Map user\(aqs UID and GID to 0 in user namespace\en");
-    fpe("            (equivalent to: \-M \(aq0 <uid> 1\(aq \-G \(aq0 <gid> 1\(aq)\en");
+    fpe("\-z          Map user\[aq]s UID and GID to 0 in user namespace\en");
+    fpe("            (equivalent to: \-M \[aq]0 <uid> 1\[aq] \-G \[aq]0 <gid> 1\[aq])\en");
     fpe("\-v          Display verbose messages\en");
     fpe("\en");
     fpe("If \-z, \-M, or \-G is specified, \-U is required.\en");
@@ -1199,8 +1199,8 @@ usage(char *pname)
     exit(EXIT_FAILURE);
 }
 
-/* Update the mapping file \(aqmap_file\(aq, with the value provided in
-   \(aqmapping\(aq, a string that defines a UID or GID mapping. A UID or
+/* Update the mapping file \[aq]map_file\[aq], with the value provided in
+   \[aq]mapping\[aq], a string that defines a UID or GID mapping. A UID or
    GID mapping consists of one or more newline\-delimited records
    of the form:
 
@@ -1215,14 +1215,14 @@ static void
 update_map(char *mapping, char *map_file)
 {
     int fd;
-    size_t map_len;     /* Length of \(aqmapping\(aq */
+    size_t map_len;     /* Length of \[aq]mapping\[aq] */
 
     /* Replace commas in mapping string with newlines. */
 
     map_len = strlen(mapping);
     for (size_t j = 0; j < map_len; j++)
-        if (mapping[j] == \(aq,\(aq)
-            mapping[j] = \(aq\en\(aq;
+        if (mapping[j] == \[aq],\[aq])
+            mapping[j] = \[aq]\en\[aq];
 
     fd = open(map_file, O_RDWR);
     if (fd == \-1) {
@@ -1241,10 +1241,10 @@ update_map(char *mapping, char *map_file)
 }
 
 /* Linux 3.19 made a change in the handling of setgroups(2) and the
-   \(aqgid_map\(aq file to address a security issue.  The issue allowed
+   \[aq]gid_map\[aq] file to address a security issue.  The issue allowed
    *unprivileged* users to employ user namespaces in order to drop groups.
    The upshot of the 3.19 changes is that in order to update the
-   \(aqgid_maps\(aq file, use of the setgroups() system call in this
+   \[aq]gid_maps\[aq] file, use of the setgroups() system call in this
    user namespace must first be disabled by writing "deny" to one of
    the /proc/PID/setgroups files for this namespace.  That is the
    purpose of the following function. */
@@ -1261,11 +1261,11 @@ proc_setgroups_write(pid_t child_pid, char *str)
     fd = open(setgroups_path, O_RDWR);
     if (fd == \-1) {
 
-        /* We may be on a system that doesn\(aqt support
-           /proc/PID/setgroups. In that case, the file won\(aqt exist,
-           and the system won\(aqt impose the restrictions that Linux 3.19
-           added. That\(aqs fine: we don\(aqt need to do anything in order
-           to permit \(aqgid_map\(aq to be updated.
+        /* We may be on a system that doesn\[aq]t support
+           /proc/PID/setgroups. In that case, the file won\[aq]t exist,
+           and the system won\[aq]t impose the restrictions that Linux 3.19
+           added. That\[aq]s fine: we don\[aq]t need to do anything in order
+           to permit \[aq]gid_map\[aq] to be updated.
 
            However, if the error from open() was something other than
            the ENOENT error that is expected for that case,  let the
@@ -1315,7 +1315,7 @@ childFunc(void *arg)
 
 #define STACK_SIZE (1024 * 1024)
 
-static char child_stack[STACK_SIZE];    /* Space for child\(aqs stack */
+static char child_stack[STACK_SIZE];    /* Space for child\[aq]s stack */
 
 int
 main(int argc, char *argv[])
@@ -1328,11 +1328,11 @@ main(int argc, char *argv[])
     char map_buf[MAP_BUF_SIZE];
     char map_path[PATH_MAX];
 
-    /* Parse command\-line options. The initial \(aq+\(aq character in
+    /* Parse command\-line options. The initial \[aq]+\[aq] character in
        the final getopt() argument prevents GNU\-style permutation
-       of command\-line options. That\(aqs useful, since sometimes
-       the \(aqcommand\(aq to be executed by this program itself
-       has command\-line options. We don\(aqt want getopt() to treat
+       of command\-line options. That\[aq]s useful, since sometimes
+       the \[aq]command\[aq] to be executed by this program itself
+       has command\-line options. We don\[aq]t want getopt() to treat
        those as options to this program. */
 
     flags = 0;
@@ -1342,16 +1342,16 @@ main(int argc, char *argv[])
     map_zero = 0;
     while ((opt = getopt(argc, argv, "+imnpuUM:G:zv")) != \-1) {
         switch (opt) {
-        case \(aqi\(aq: flags |= CLONE_NEWIPC;        break;
-        case \(aqm\(aq: flags |= CLONE_NEWNS;         break;
-        case \(aqn\(aq: flags |= CLONE_NEWNET;        break;
-        case \(aqp\(aq: flags |= CLONE_NEWPID;        break;
-        case \(aqu\(aq: flags |= CLONE_NEWUTS;        break;
-        case \(aqv\(aq: verbose = 1;                  break;
-        case \(aqz\(aq: map_zero = 1;                 break;
-        case \(aqM\(aq: uid_map = optarg;             break;
-        case \(aqG\(aq: gid_map = optarg;             break;
-        case \(aqU\(aq: flags |= CLONE_NEWUSER;       break;
+        case \[aq]i\[aq]: flags |= CLONE_NEWIPC;        break;
+        case \[aq]m\[aq]: flags |= CLONE_NEWNS;         break;
+        case \[aq]n\[aq]: flags |= CLONE_NEWNET;        break;
+        case \[aq]p\[aq]: flags |= CLONE_NEWPID;        break;
+        case \[aq]u\[aq]: flags |= CLONE_NEWUTS;        break;
+        case \[aq]v\[aq]: verbose = 1;                  break;
+        case \[aq]z\[aq]: map_zero = 1;                 break;
+        case \[aq]M\[aq]: uid_map = optarg;             break;
+        case \[aq]G\[aq]: gid_map = optarg;             break;
+        case \[aq]U\[aq]: flags |= CLONE_NEWUSER;       break;
         default:  usage(argv[0]);
         }
     }
@@ -1369,11 +1369,11 @@ main(int argc, char *argv[])
        ensure that the parent sets the UID and GID maps before the child
        calls execve(). This ensures that the child maintains its
        capabilities during the execve() in the common case where we
-       want to map the child\(aqs effective user ID to 0 in the new user
+       want to map the child\[aq]s effective user ID to 0 in the new user
        namespace. Without this synchronization, the child would lose
        its capabilities if it performed an execve() with nonzero
        user IDs (see the capabilities(7) man page for details of the
-       transformation of a process\(aqs capabilities during execve()). */
+       transformation of a process\[aq]s capabilities during execve()). */
 
     if (pipe(args.pipe_fd) == \-1)
         err(EXIT_FAILURE, "pipe");

@@ -481,7 +481,7 @@ main(void)
     sigaddset(&mask, SIGINT);
     sigaddset(&mask, SIGQUIT);
 
-    /* Block signals so that they aren\(aqt handled
+    /* Block signals so that they aren\[aq]t handled
        according to their default dispositions. */
 
     if (sigprocmask(SIG_BLOCK, &mask, NULL) == \-1)

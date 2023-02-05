@@ -126,7 +126,7 @@ field is present only when an event is returned
 for a file inside a watched directory;
 it identifies the filename within the watched directory.
 This filename is null-terminated,
-and may include further null bytes (\(aq\e0\(aq) to align subsequent reads to a
+and may include further null bytes (\[aq]\e0\[aq]) to align subsequent reads to a
 suitable address boundary.
 .PP
 The
@@ -908,7 +908,7 @@ Listening for events stopped.
 #include <unistd.h>
 #include <string.h>
 
-/* Read all available inotify events from the file descriptor \(aqfd\(aq.
+/* Read all available inotify events from the file descriptor \[aq]fd\[aq].
    wd is the table of watch descriptors for the directories in argv.
    argc is the length of wd and argv.
    argv is the list of watched directories.
@@ -1027,7 +1027,7 @@ main(int argc, char* argv[])
         wd[i] = inotify_add_watch(fd, argv[i],
                                   IN_OPEN | IN_CLOSE);
         if (wd[i] == \-1) {
-            fprintf(stderr, "Cannot watch \(aq%s\(aq: %s\en",
+            fprintf(stderr, "Cannot watch \[aq]%s\[aq]: %s\en",
                     argv[i], strerror(errno));
             exit(EXIT_FAILURE);
         }
@@ -1061,7 +1061,7 @@ main(int argc, char* argv[])
 
                 /* Console input is available. Empty stdin and quit. */
 
-                while (read(STDIN_FILENO, &buf, 1) > 0 && buf != \(aq\en\(aq)
+                while (read(STDIN_FILENO, &buf, 1) > 0 && buf != \[aq]\en\[aq])
                     continue;
                 break;
             }

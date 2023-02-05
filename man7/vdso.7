@@ -137,7 +137,7 @@ You will frequently find it under the architecture-specific directory:
 .PP
 .in +4n
 .EX
-find arch/$ARCH/ \-name \(aq*vdso*.so*\(aq \-o \-name \(aq*gate*.so*\(aq
+find arch/$ARCH/ \-name \[aq]*vdso*.so*\[aq] \-o \-name \[aq]*gate*.so*\[aq]
 .EE
 .in
 .\"
@@ -607,6 +607,6 @@ Documentation/ABI/stable/vdso
 Documentation/ia64/fsys.txt
 Documentation/vDSO/* (includes examples of using the vDSO)
 
-find arch/ \-iname \(aq*vdso*\(aq \-o \-iname \(aq*gate*\(aq
+find arch/ \-iname \[aq]*vdso*\[aq] \-o \-iname \[aq]*gate*\[aq]
 .EE
 .in

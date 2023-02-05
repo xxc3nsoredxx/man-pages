@@ -349,7 +349,7 @@ main(int argc, char *argv[])
 
     printf("inet_net_pton() returned: %d\en", bits);
 
-    /* Convert binary format back to presentation, using \(aqbits\(aq
+    /* Convert binary format back to presentation, using \[aq]bits\[aq]
        returned by inet_net_pton(). */
 
     if (inet_net_ntop(AF_INET, &addr, bits, buf, sizeof(buf)) == NULL)
@@ -357,7 +357,7 @@ main(int argc, char *argv[])
 
     printf("inet_net_ntop() yielded:  %s\en", buf);
 
-    /* Display \(aqaddr\(aq in raw form (in network byte order), so we can
+    /* Display \[aq]addr\[aq] in raw form (in network byte order), so we can
        see bytes not displayed by inet_net_ntop(); some of those bytes
        may not have been touched by inet_net_ntop(), and so will still
        have any initial value that was specified in argv[2]. */

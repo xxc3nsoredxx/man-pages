@@ -176,9 +176,9 @@ A primary script (usually \fI/etc/rc\fR) is called from
 .BR inittab (5);
 this primary script calls each service's script via a link in the
 relevant sequencing directory.
-Each link whose name begins with \(aqS\(aq is called with
+Each link whose name begins with \[aq]S\[aq] is called with
 the argument "start" (thereby starting the service).
-Each link whose name begins with \(aqK\(aq is called with
+Each link whose name begins with \[aq]K\[aq] is called with
 the argument "stop" (thereby stopping the service).
 .PP
 To define the starting or stopping order within the same run-level,

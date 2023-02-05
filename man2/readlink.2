@@ -285,7 +285,7 @@ main(int argc, char *argv[])
     bufsiz = sb.st_size + 1;
 
     /* Some magic symlinks under (for example) /proc and /sys
-       report \(aqst_size\(aq as zero. In that case, take PATH_MAX as
+       report \[aq]st_size\[aq] as zero. In that case, take PATH_MAX as
        a "good enough" estimate. */
 
     if (sb.st_size == 0)
@@ -303,9 +303,9 @@ main(int argc, char *argv[])
         exit(EXIT_FAILURE);
     }
 
-    /* Print only \(aqnbytes\(aq of \(aqbuf\(aq, as it doesn't contain a terminating
-       null byte (\(aq\e0\(aq). */
-    printf("\(aq%s\(aq points to \(aq%.*s\(aq\en", argv[1], (int) nbytes, buf);
+    /* Print only \[aq]nbytes\[aq] of \[aq]buf\[aq], as it doesn't contain a terminating
+       null byte (\[aq]\e0\[aq]). */
+    printf("\[aq]%s\[aq] points to \[aq]%.*s\[aq]\en", argv[1], (int) nbytes, buf);
 
     /* If the return value was equal to the buffer size, then the
        the link target was larger than expected (perhaps because the

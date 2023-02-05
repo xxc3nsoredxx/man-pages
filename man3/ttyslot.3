@@ -47,22 +47,22 @@ in UNIX\ V6, that was read by the
 .BR init (1)
 program to find out what to do with each terminal line.
 Each line consisted of three characters.
-The first character was either \(aq0\(aq or \(aq1\(aq,
-where \(aq0\(aq meant "ignore".
-The second character denoted the terminal: \(aq8\(aq stood for "/dev/tty8".
+The first character was either \[aq]0\[aq] or \[aq]1\[aq],
+where \[aq]0\[aq] meant "ignore".
+The second character denoted the terminal: \[aq]8\[aq] stood for "/dev/tty8".
 The third character was an argument to
 .BR getty (8)
-indicating the sequence of line speeds to try (\(aq\-\(aq was: start trying
+indicating the sequence of line speeds to try (\[aq]\-\[aq] was: start trying
 110 baud).
 Thus a typical line was "18\-".
-A hang on some line was solved by changing the \(aq1\(aq to a \(aq0\(aq,
+A hang on some line was solved by changing the \[aq]1\[aq] to a \[aq]0\[aq],
 signaling init, changing back again, and signaling init again.
 .PP
 In UNIX\ V7 the format was changed: here the second character
 was the argument to
 .BR getty (8)
-indicating the sequence of line speeds to try (\(aq0\(aq was: cycle through
-300-1200-150-110 baud; \(aq4\(aq was for the on-line console DECwriter)
+indicating the sequence of line speeds to try (\[aq]0\[aq] was: cycle through
+300-1200-150-110 baud; \[aq]4\[aq] was for the on-line console DECwriter)
 while the rest of the line contained the name of the tty.
 Thus a typical line was "14console".
 .PP

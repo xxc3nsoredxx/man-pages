@@ -303,7 +303,7 @@ thread_start(void *arg)
     if (uargv == NULL)
         handle_error("strdup");
 
-    for (char *p = uargv; *p != \(aq\e0\(aq; p++)
+    for (char *p = uargv; *p != \[aq]\e0\[aq]; p++)
         *p = toupper(*p);
 
     return uargv;
@@ -324,7 +324,7 @@ main(int argc, char *argv[])
     stack_size = \-1;
     while ((opt = getopt(argc, argv, "s:")) != \-1) {
         switch (opt) {
-        case \(aqs\(aq:
+        case \[aq]s\[aq]:
             stack_size = strtoul(optarg, NULL, 0);
             break;
 

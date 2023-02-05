@@ -262,9 +262,9 @@ get_thread_attributes_from_cl(int argc, char *argv[],
 
     while ((opt = getopt(argc, argv, "ag:s:")) != \-1) {
         switch (opt) {
-        case \(aqa\(aq:   allocate_stack = 1;                     break;
-        case \(aqg\(aq:   guard_size = strtoul(optarg, NULL, 0);  break;
-        case \(aqs\(aq:   stack_size = strtoul(optarg, NULL, 0);  break;
+        case \[aq]a\[aq]:   allocate_stack = 1;                     break;
+        case \[aq]g\[aq]:   guard_size = strtoul(optarg, NULL, 0);  break;
+        case \[aq]s\[aq]:   stack_size = strtoul(optarg, NULL, 0);  break;
         default:    usage(argv[0], NULL);
         }
     }
