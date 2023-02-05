@@ -13,7 +13,7 @@ Standard C library
 .nf
 .B #include <stdio.h>
 .PP
-.B "#define EOF  /* ... */"
+.BR "#define EOF  " "/* ... */"
 .fi
 .SH DESCRIPTION
 .B EOF
