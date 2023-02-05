@@ -1774,7 +1774,7 @@ If set, the page is in swap space
 61 (since Linux 3.5)
 The page is a file-mapped page or a shared anonymous page.
 .TP
-60\(en58 (since Linux 3.11)
+60\[en]58 (since Linux 3.11)
 Zero
 .\" Not quite true; see commit 541c237c0923f567c9c4cabb8a81635baadc713f
 .TP
@@ -1792,17 +1792,17 @@ PTE is soft-dirty
 (see the kernel source file
 .IR Documentation/admin\-guide/mm/soft\-dirty.rst ).
 .TP
-54\(en0
+54\[en]0
 If the page is present in RAM (bit 63), then these bits
 provide the page frame number, which can be used to index
 .I /proc/kpageflags
 and
 .IR /proc/kpagecount .
 If the page is present in swap (bit 62),
-then bits 4\(en0 give the swap type, and bits 54\(en5 encode the swap offset.
+then bits 4\[en]0 give the swap type, and bits 54\[en]5 encode the swap offset.
 .RE
 .IP
-Before Linux 3.11, bits 60\(en55 were
+Before Linux 3.11, bits 60\[en]55 were
 used to encode the base-2 log of the page size.
 .IP
 To employ
@@ -3417,7 +3417,7 @@ file is present only if the
 .B CONFIG_PROC_PAGE_MONITOR
 kernel configuration option is enabled.
 .TP
-.IR /proc/ksyms " (Linux 1.1.23\(en2.5.47)"
+.IR /proc/ksyms " (Linux 1.1.23\[en]2.5.47)"
 See
 .IR /proc/kallsyms .
 .TP
@@ -4582,7 +4582,7 @@ and the "free file handles" value is always zero.
 .TP
 .IR /proc/sys/fs/inode\-max " (only present until Linux 2.2)"
 This file contains the maximum number of in-memory inodes.
-This value should be 3\(en4 times larger
+This value should be 3\[en]4 times larger
 than the value in
 .IR file\-max ,
 since \fIstdin\fP, \fIstdout\fP

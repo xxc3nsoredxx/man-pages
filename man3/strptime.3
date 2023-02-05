@@ -92,10 +92,10 @@ in abbreviated form or the full name.
 The date and time representation for the current locale.
 .TP
 .B %C
-The century number (0\(en99).
+The century number (0\[en]99).
 .TP
 .BR %d " or " %e
-The day of month (1\(en31).
+The day of month (1\[en]31).
 .TP
 .B %D
 Equivalent to
@@ -108,19 +108,19 @@ The ISO 8601 standard format is
 .BR %Y\-%m\-%d .)
 .TP
 .B %H
-The hour (0\(en23).
+The hour (0\[en]23).
 .TP
 .B %I
-The hour on a 12-hour clock (1\(en12).
+The hour on a 12-hour clock (1\[en]12).
 .TP
 .B %j
-The day number in the year (1\(en366).
+The day number in the year (1\[en]366).
 .TP
 .B %m
-The month number (1\(en12).
+The month number (1\[en]12).
 .TP
 .B %M
-The minute (0\(en59).
+The minute (0\[en]59).
 .TP
 .B %n
 Arbitrary whitespace.
@@ -145,7 +145,7 @@ Equivalent to
 .BR %H:%M .
 .TP
 .B %S
-The second (0\(en60; 60 may occur for leap seconds;
+The second (0\[en]60; 60 may occur for leap seconds;
 earlier also 61 was allowed).
 .TP
 .B %t
@@ -156,14 +156,14 @@ Equivalent to
 .BR %H:%M:%S .
 .TP
 .B %U
-The week number with Sunday the first day of the week (0\(en53).
+The week number with Sunday the first day of the week (0\[en]53).
 The first Sunday of January is the first day of week 1.
 .TP
 .B %w
-The ordinal number of the day of the week (0\(en6), with Sunday = 0.
+The ordinal number of the day of the week (0\[en]6), with Sunday = 0.
 .TP
 .B %W
-The week number with Monday the first day of the week (0\(en53).
+The week number with Monday the first day of the week (0\[en]53).
 The first Monday of January is the first day of week 1.
 .TP
 .B %x
@@ -173,10 +173,10 @@ The date, using the locale's date format.
 The time, using the locale's time format.
 .TP
 .B %y
-The year within century (0\(en99).
-When a century is not otherwise specified, values in the range 69\(en99 refer
-to years in the twentieth century (1969\(en1999); values in the
-range 00\(en68 refer to years in the twenty-first century (2000\(en2068).
+The year within century (0\[en]99).
+When a century is not otherwise specified, values in the range 69\[en]99 refer
+to years in the twentieth century (1969\[en]1999); values in the
+range 00\[en]68 refer to years in the twenty-first century (2000\[en]2068).
 .TP
 .B %Y
 The year, including century (for example, 1991).
@@ -312,9 +312,9 @@ field if any of the year, month, or day elements changed.
 The \[aq]y\[aq] (year in century) specification is taken to specify a year
 .\" in the 20th century by libc4 and libc5.
 .\" It is taken to be a year
-in the range 1950\(en2049 by glibc 2.0.
+in the range 1950\[en]2049 by glibc 2.0.
 It is taken to be a year in
-1969\(en2068 since glibc 2.1.
+1969\[en]2068 since glibc 2.1.
 .\" In libc4 and libc5 the code for %I is broken (fixed in glibc;
 .\" %OI was fixed in glibc 2.2.4).
 .SS glibc notes
@@ -334,17 +334,17 @@ the ISO 8601 date format.
 .TP
 .B %g
 The year corresponding to the ISO week number, but without the century
-(0\(en99).
+(0\[en]99).
 .TP
 .B %G
 The year corresponding to the ISO week number.
 (For example, 1991.)
 .TP
 .B %u
-The day of the week as a decimal number (1\(en7, where Monday = 1).
+The day of the week as a decimal number (1\[en]7, where Monday = 1).
 .TP
 .B %V
-The ISO 8601:1988 week number as a decimal number (1\(en53).
+The ISO 8601:1988 week number as a decimal number (1\[en]53).
 If the week (starting on Monday) containing 1 January has four or more days
 in the new year, then it is considered week 1.
 Otherwise, it is the last week

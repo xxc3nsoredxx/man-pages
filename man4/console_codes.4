@@ -75,7 +75,7 @@ according to the mapping table) it has one of the 14 codes
 1b (ESC), 7f (DEL).
 One can set a "display control characters" mode (see below),
 and allow 07, 09, 0b, 18, 1a, 7f to be displayed as glyphs.
-On the other hand, in UTF-8 mode all codes 00\(en1f are regarded
+On the other hand, in UTF-8 mode all codes 00\[en]1f are regarded
 as control characters, regardless of any "display control characters"
 mode.
 .PP
@@ -185,8 +185,8 @@ T}
 ESC ] R		Reset palette.
 ESC ] P		T{
 Set palette, with parameter given in 7 hexadecimal digits \fInrrggbb\fP after
-the final P. Here \fIn\fP is the color (0\(en15), and \fIrrggbb\fP indicates
-the red/green/blue values (0\(en255).
+the final P. Here \fIn\fP is the color (0\[en]15), and \fIrrggbb\fP indicates
+the red/green/blue values (0\[en]255).
 T}
 .TE
 .ad
@@ -487,7 +487,7 @@ The following sequences are neither ECMA-48 nor native VT102.
 They are native to the Linux console driver.
 Colors are in SGR parameters:
 0 = black, 1 = red, 2 = green, 3 = brown, 4 = blue, 5 = magenta, 6 =
-cyan, 7 = white; 8\(en15 = bright versions of 0\(en7.
+cyan, 7 = white; 8\[en]15 = bright versions of 0\[en]7.
 .TS
 l lx.
 ESC [ 1 ; \fIn\fP ]	T{

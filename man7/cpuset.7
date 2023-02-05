@@ -1400,14 +1400,14 @@ perform the following steps.
 .IP (1) 5
 Let's say we want to move the job in cpuset
 .I alpha
-(CPUs 4\(en7 and memory nodes 2\(en3) to a new cpuset
+(CPUs 4\[en]7 and memory nodes 2\[en]3) to a new cpuset
 .I beta
-(CPUs 16\(en19 and memory nodes 8\(en9).
+(CPUs 16\[en]19 and memory nodes 8\[en]9).
 .IP (2)
 First create the new cpuset
 .IR beta .
 .IP (3)
-Then allow CPUs 16\(en19 and memory nodes 8\(en9 in
+Then allow CPUs 16\[en]19 and memory nodes 8\[en]9 in
 .IR beta .
 .IP (4)
 Then enable
@@ -1439,8 +1439,8 @@ The above should move any processes in
 .I alpha
 to
 .IR beta ,
-and any memory held by these processes on memory nodes 2\(en3 to memory
-nodes 8\(en9, respectively.
+and any memory held by these processes on memory nodes 2\[en]3 to memory
+nodes 8\[en]9, respectively.
 .PP
 Notice that the last step of the above sequence did not do:
 .PP
