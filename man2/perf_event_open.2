@@ -2336,7 +2336,7 @@ struct {
     char   data[size];  /* if PERF_SAMPLE_STACK_USER */
     u64    dyn_size;    /* if PERF_SAMPLE_STACK_USER &&
                            size != 0 */
-    union perf_sample_weight;
+    union perf_sample_weight weight;
                         /* if PERF_SAMPLE_WEIGHT */
                         /* || PERF_SAMPLE_WEIGHT_STRUCT */
     u64    data_src;    /* if PERF_SAMPLE_DATA_SRC */
