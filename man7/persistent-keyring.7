@@ -33,7 +33,7 @@ operation, it will be automatically created.
 Each time the
 .BR keyctl_get_persistent (3)
 operation is performed,
-the persistent key's expiration timer is reset to the value in:
+the persistent keyring's expiration timer is reset to the value in:
 .PP
 .in +4n
 .EX
@@ -44,7 +44,7 @@ the persistent key's expiration timer is reset to the value in:
 Should the timeout be reached,
 the persistent keyring will be removed and
 everything it pins can then be garbage collected.
-The key will then be re-created on a subsequent call to
+The keyring will then be re-created on a subsequent call to
 .BR keyctl_get_persistent (3).
 .PP
 The persistent keyring is not directly searched by
