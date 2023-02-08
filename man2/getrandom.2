@@ -188,7 +188,7 @@ As of Linux 3.19 the following limits apply:
 .IP \[bu] 3
 When reading from the
 .I urandom
-source, a maximum of 33554431 bytes is returned by a single call to
+source, a maximum of 32Mi-1 bytes is returned by a single call to
 .BR getrandom ()
 on systems where
 .I int
