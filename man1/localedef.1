@@ -50,11 +50,13 @@ program reads the indicated
 .I charmap
 and
 .I input
-files, compiles them to a binary form quickly usable by the
+files,
+compiles them to a binary form quickly usable by the
 locale functions in the C library
 .RB ( setlocale (3),
 .BR localeconv (3),
-etc.), and places the output in
+etc.),
+and places the output in
 .IR outputpath .
 .PP
 The
@@ -63,9 +65,11 @@ argument is interpreted as follows:
 .IP \[bu] 3
 If
 .I outputpath
-contains a slash character ('/'), it is interpreted as the name of the
+contains a slash character ('/'),
+it is interpreted as the name of the
 directory where the output definitions are to be stored.
-In this case, there is a separate output file for each locale category
+In this case,
+there is a separate output file for each locale category
 .RI ( LC_TIME ,
 .IR LC_NUMERIC ,
 and so on).
@@ -96,12 +100,14 @@ not already been created.
 .PP
 If no
 .I charmapfile
-is given, the value
+is given,
+the value
 .I ANSI_X3.4\-1968
 (for ASCII) is used by default.
 If no
 .I inputfile
-is given, or if it is given as a dash
+is given,
+or if it is given as a dash
 (\-),
 .B localedef
 reads from standard input.
@@ -128,12 +134,14 @@ Delete the named locales from the locale archive file.
 List the locales contained in the locale archive file.
 .SS Other options
 Some of the following options are sensible only for certain operations;
-generally, it should be self-evident which ones.
+generally,
+it should be self-evident which ones.
 Notice that
 .B \-f
 and
 .B \-c
-are reversed from what you might expect; that is,
+are reversed from what you might expect;
+that is,
 .B \-f
 is not the same as
 .BR \-\-force .
@@ -145,7 +153,8 @@ If
 .I charmapfile
 contains a slash character ('/'),
 it is interpreted as the name of the character map.
-Otherwise, the file is sought in the current directory
+Otherwise,
+the file is sought in the current directory
 and the default directory for character maps.
 If the environment variable
 .B I18NPATH
@@ -178,7 +187,8 @@ If
 .I repertoirefile
 contains a slash character ('/'),
 it is interpreted as the pathname of the repertoire map.
-Otherwise, the file is sought in the current directory
+Otherwise,
+the file is sought in the current directory
 and the default directory for repertoire maps.
 If the environment variable
 .B I18NPATH
@@ -210,7 +220,8 @@ Generate big-endian output.
 Generate little-endian output.
 .TP
 .B \-\-no\-archive
-Do not use the locale archive file, instead create
+Do not use the locale archive file,
+instead create
 .I outputpath
 as a subdirectory in the same directory as the locale archive file,
 and create separate output files for locale categories in it.
@@ -239,18 +250,21 @@ is set.
 .TP
 .BI \-\-prefix= pathname
 Set the prefix to be prepended to the full archive pathname.
-By default, the prefix is empty.
+By default,
+the prefix is empty.
 Setting the prefix to
 .IR foo ,
 the archive would be placed in
 .IR foo/usr/lib/locale/locale\-archive .
 .TP
 .B \-\-quiet
-Suppress all notifications and warnings, and report only fatal errors.
+Suppress all notifications and warnings,
+and report only fatal errors.
 .TP
 .B \-\-replace
 Replace a locale in the locale archive file.
-Without this option, if the locale is in the archive file already,
+Without this option,
+if the locale is in the archive file already,
 an error occurs.
 .TP
 .BI \-\-warnings= warnings
@@ -269,7 +283,9 @@ Also prints the default paths used by
 Print a short usage summary and exit.
 .TP
 .BR \-V ", " \-\-version
-Print the version number, license, and disclaimer of warranty for
+Print the version number,
+license,
+and disclaimer of warranty for
 .BR localedef .
 .SH EXIT STATUS
 One of the following exit values can be returned by
@@ -279,10 +295,12 @@ One of the following exit values can be returned by
 Command completed successfully.
 .TP
 .B 1
-Warnings or errors occurred, output files were written.
+Warnings or errors occurred,
+output files were written.
 .TP
 .B 4
-Errors encountered, no output created.
+Errors encountered,
+no output created.
 .SH ENVIRONMENT
 .TP
 .B POSIXLY_CORRECT
@@ -329,8 +347,8 @@ An output file that contains information about locale measurements
 .TP
 .I outputpath/LC_MESSAGES/SYS_LC_MESSAGES
 An output file that contains information about the language messages
-should be printed in, and what an affirmative or negative answer looks
-like.
+should be printed in,
+and what an affirmative or negative answer looks like.
 .TP
 .I outputpath/LC_MONETARY
 An output file that contains information about formatting of monetary
@@ -367,7 +385,8 @@ localedef \-f UTF\-8 \-i fi_FI fi_FI.UTF\-8
 .EE
 .in
 .PP
-The next example does the same thing, but generates files into the
+The next example does the same thing,
+but generates files into the
 .I fi_FI.UTF\-8
 directory which can then be used by programs when the environment
 variable
