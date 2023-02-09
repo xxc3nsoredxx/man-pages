@@ -80,7 +80,8 @@ are added in at the moment
 or
 .BR waitpid (2)
 returns their process ID.
-In particular, times of grandchildren
+In particular,
+times of grandchildren
 that the children did not wait for are never seen.
 .PP
 All times reported are in clock ticks.
@@ -90,7 +91,9 @@ returns the number of clock ticks that have elapsed since
 an arbitrary point in the past.
 The return value may overflow the possible range of type
 .IR clock_t .
-On error, \fI(clock_t)\ \-1\fP is returned, and
+On error,
+\fI(clock_t)\ \-1\fP is returned,
+and
 .I errno
 is set to indicate the error.
 .SH ERRORS
@@ -99,7 +102,10 @@ is set to indicate the error.
 .I tms
 points outside the process's address space.
 .SH STANDARDS
-POSIX.1-2001, POSIX.1-2008, SVr4, 4.3BSD.
+POSIX.1-2001,
+POSIX.1-2008,
+SVr4,
+4.3BSD.
 .SH NOTES
 The number of clock ticks per second can be obtained using:
 .PP
@@ -124,7 +130,8 @@ are automatically included in the
 .I tms_cstime
 and
 .I tms_cutime
-fields, although POSIX.1-2001 says that this should happen
+fields,
+although POSIX.1-2001 says that this should happen
 only if the calling process
 .BR wait (2)s
 on its children.
@@ -133,12 +140,16 @@ This nonconformance is rectified in Linux 2.6.9 and later.
 .\"	The times of a terminated child process are included... when wait()
 .\"	or waitpid() returns the process ID of this terminated child.
 .PP
-On Linux, the
+On Linux,
+the
 .I buf
-argument can be specified as NULL, with the result that
+argument can be specified as NULL,
+with the result that
 .BR times ()
 just returns a function result.
-However, POSIX does not specify this behavior, and most
+However,
+POSIX does not specify this behavior,
+and most
 other UNIX implementations require a non-NULL value for
 .IR buf .
 .PP
@@ -151,17 +162,22 @@ but this value is measured in units of
 not the clock ticks used by
 .BR times ().
 .PP
-On Linux, the "arbitrary point in the past" from which the return value of
+On Linux,
+the "arbitrary point in the past"
+from which the return value of
 .BR times ()
 is measured has varied across kernel versions.
-On Linux 2.4 and earlier, this point is the moment the system was booted.
-Since Linux 2.6, this point is \fI(2\[ha]32/HZ) \- 300\fP
+On Linux 2.4 and earlier,
+this point is the moment the system was booted.
+Since Linux 2.6,
+this point is \fI(2\[ha]32/HZ) \- 300\fP
 seconds before system boot time.
 This variability across kernel versions (and across UNIX implementations),
 combined with the fact that the returned value may overflow the range of
 .IR clock_t ,
 means that a portable application would be wise to avoid using this value.
-To measure changes in elapsed time, use
+To measure changes in elapsed time,
+use
 .BR clock_gettime (2)
 instead.
 .\" .PP
@@ -172,10 +188,12 @@ SVr1-3 returns
 .I long
 and the struct members are of type
 .I time_t
-although they store clock ticks, not seconds since the Epoch.
+although they store clock ticks,
+not seconds since the Epoch.
 V7 used
 .I long
-for the struct members, because it had no type
+for the struct members,
+because it had no type
 .I time_t
 yet.
 .SH BUGS
@@ -183,7 +201,8 @@ A limitation of the Linux system call conventions on some architectures
 (notably i386) means that on Linux 2.6 there is a small time window
 (41 seconds) soon after boot when
 .BR times ()
-can return \-1, falsely indicating that an error occurred.
+can return \-1,
+falsely indicating that an error occurred.
 The same problem can occur when the return value wraps past
 the maximum value that can be stored in
 .BR clock_t .
