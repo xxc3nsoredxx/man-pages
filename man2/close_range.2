@@ -102,7 +102,7 @@ File descriptors can be closed safely using
 .in +4n
 .EX
 /* we don't want anything past stderr here */
-close_range(3, ~0U, CLOSE_RANGE_UNSHARE);
+close_range(3, \[ti]0U, CLOSE_RANGE_UNSHARE);
 execve(....);
 .EE
 .in
@@ -123,7 +123,7 @@ the current maximum number of file descriptors allocated
 in the caller's file descriptor table
 (the common case when
 .I last
-is ~0U),
+is \[ti]0U),
 the kernel will unshare a new file descriptor table for the caller up to
 .IR first ,
 copying as few file descriptors as possible.
