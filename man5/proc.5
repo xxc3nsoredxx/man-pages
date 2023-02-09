@@ -3073,7 +3073,7 @@ The size in bytes of a certain order is given by the formula:
 .IP
 .in +4n
 .EX
-(2^order)\ *\ PAGE_SIZE
+(2\[ha]order)\ *\ PAGE_SIZE
 .EE
 .in
 .IP
@@ -5195,7 +5195,7 @@ On 32-bit platforms, 32768 is the maximum value for
 .IR pid_max .
 On 64-bit systems,
 .I pid_max
-can be set to any value up to 2^22
+can be set to any value up to 2\[ha]22
 .RB ( PID_MAX_LIMIT ,
 approximately 4 million).
 .\" Prior to Linux 2.6.10, pid_max could also be raised above 32768 on 32-bit

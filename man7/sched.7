@@ -318,7 +318,7 @@ sched_runtime <= sched_deadline <= sched_period
 In addition, under the current implementation,
 all of the parameter values must be at least 1024
 (i.e., just over one microsecond,
-which is the resolution of the implementation), and less than 2^63.
+which is the resolution of the implementation), and less than 2\[ha]63.
 If any of these checks fails,
 .BR sched_setattr (2)
 fails with the error

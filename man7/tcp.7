@@ -300,11 +300,11 @@ Enabling this option can harm the clients of your server.
 .IR tcp_adv_win_scale " (integer; default: 2; since Linux 2.4)"
 .\" Since Linux 2.4.0-test7
 Count buffering overhead as
-.IR "bytes/2^tcp_adv_win_scale" ,
+.IR "bytes/2\[ha]tcp_adv_win_scale" ,
 if
 .I tcp_adv_win_scale
 is greater than 0; or
-.IR "bytes\-bytes/2^(\-tcp_adv_win_scale)" ,
+.IR "bytes\-bytes/2\[ha](\-tcp_adv_win_scale)" ,
 if
 .I tcp_adv_win_scale
 is less than or equal to zero.
@@ -368,7 +368,7 @@ but not loaded.
 This variable defines how many
 bytes of the TCP window are reserved for buffering overhead.
 .IP
-A maximum of (\fIwindow/2^tcp_app_win\fP, mss) bytes in the window
+A maximum of (\fIwindow/2\[ha]tcp_app_win\fP, mss) bytes in the window
 are reserved for the application buffer.
 A value of 0 implies that no amount is reserved.
 .\"

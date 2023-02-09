@@ -70,14 +70,14 @@ The
 and
 .BR nrand48 ()
 functions return nonnegative
-long integers uniformly distributed over the interval [0,\ 2^31).
+long integers uniformly distributed over the interval [0,\ 2\[ha]31).
 .PP
 The
 .BR mrand48 ()
 and
 .BR jrand48 ()
 functions return signed long
-integers uniformly distributed over the interval [\-2^31,\ 2^31).
+integers uniformly distributed over the interval [\-2\[ha]31,\ 2\[ha]31).
 .PP
 The
 .BR srand48 (),
@@ -110,7 +110,7 @@ according to the linear congruential formula:
 .PP
 The parameter
 .I m
-= 2^48, hence 48-bit integer arithmetic is performed.
+= 2\[ha]48, hence 48-bit integer arithmetic is performed.
 Unless
 .BR lcong48 ()
 is called,

@@ -183,7 +183,7 @@ event.
 As noted above,
 .BR write (2)
 can never overflow the counter.
-However an overflow can occur if 2^64
+However an overflow can occur if 2\[ha]64
 eventfd "signal posts" were performed by the KAIO
 subsystem (theoretically possible, but practically unlikely).
 If an overflow has occurred, then
