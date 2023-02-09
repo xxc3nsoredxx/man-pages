@@ -89,12 +89,12 @@ Landlock is supported by the kernel but disabled at boot time.
 .B EINVAL
 .I flags
 is not 0, or the rule accesses are inconsistent (i.e.,
-.I rule_attr->allowed_access
+.I rule_attr\->allowed_access
 is not a subset of the ruleset handled accesses).
 .TP
 .B ENOMSG
 Empty accesses (i.e.,
-.I rule_attr->allowed_access
+.I rule_attr\->allowed_access
 is 0).
 .TP
 .B EBADF

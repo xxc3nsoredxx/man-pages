@@ -848,11 +848,11 @@ operation (here, to emulate a call to
 .in +4n
 int fd, removeFd;
 
-fd = openat(req->data.args[0], path, req->data.args[2],
-                req->data.args[3]);
+fd = openat(req\->data.args[0], path, req\->data.args[2],
+                req\->data.args[3]);
 
 struct seccomp_notif_addfd addfd;
-addfd.id = req->id; /* Cookie from SECCOMP_IOCTL_NOTIF_RECV */
+addfd.id = req\->id; /* Cookie from SECCOMP_IOCTL_NOTIF_RECV */
 addfd.srcfd = fd;
 addfd.newfd = 0;
 addfd.flags = 0;
@@ -864,10 +864,10 @@ close(fd);          /* No longer needed in supervisor */
 
 struct seccomp_notif_resp *resp;
     /* Code to allocate 'resp' omitted */
-resp->id = req->id;
-resp->error = 0;        /* "Success" */
-resp->val = targetFd;
-resp->flags = 0;
+resp\->id = req\->id;
+resp\->error = 0;        /* "Success" */
+resp\->val = targetFd;
+resp\->flags = 0;
 ioctl(notifyFd, SECCOMP_IOCTL_NOTIF_SEND, resp);
 .in
 .EE

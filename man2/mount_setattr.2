@@ -174,21 +174,21 @@ are equivalent to the following steps:
 .PP
 .in +4n
 .EX
-unsigned int current_mnt_flags = mnt->mnt_flags;
+unsigned int current_mnt_flags = mnt\->mnt_flags;
 
 /*
  * Clear all flags set in .attr_clr,
  * clearing MOUNT_ATTR_NOEXEC and MOUNT_ATTR_NODEV.
  */
-current_mnt_flags &= ~attr->attr_clr;
+current_mnt_flags &= \(tiattr\->attr_clr;
 
 /*
  * Now set all flags set in .attr_set,
  * applying MOUNT_ATTR_RDONLY and MOUNT_ATTR_NOSUID.
  */
-current_mnt_flags |= attr->attr_set;
+current_mnt_flags |= attr\->attr_set;
 
-mnt->mnt_flags = current_mnt_flags;
+mnt\->mnt_flags = current_mnt_flags;
 .EE
 .in
 .PP
