@@ -1,6 +1,6 @@
-==================== Changes in man-pages-?.?? ====================
+==================== Changes in man-pages-6.03 ====================
 
-Released: ????-??-??, ??Location??
+Released: 2023-02-12, Xulilla
 
 
 Contributors
@@ -10,6 +10,47 @@ The following people contributed patches/fixes, reports, notes,
 ideas, and discussions that have been incorporated in changes in
 this release:
 
+Aaron Peter Bachmann <aaron_ng@inode.at>
+Adhemerval Zanella <adhemerval.zanella@linaro.org>
+Ahelenia Ziemiańska <nabijaczleweli@nabijaczleweli.xyz>
+Alejandro Colomar <alx@kernel.org>
+Alex Colomar <alx.manpages@gmail.com>
+Arsen Arsenović <arsen@aarsen.me>
+Bernd Petrovitsch <bernd@petrovitsch.priv.at>
+Brian Inglis <Brian.Inglis@Shaw.ca>
+Colin Cross <ccross@google.com>
+Cristian Rodríguez <crrodriguez@opensuse.org>
+Deri James <deri@chuzzlewit.myzen.co.uk>
+Elliott Hughes <enh@google.com>
+Eric Biggers <ebiggers@kernel.org>
+Florian Weimer <fweimer@redhat.com>
+"G. Branden Robinson" <g.branden.robinson@gmail.com>
+Günther Noack <gnoack3000@gmail.com>
+Helge Kreutzmann <debian@helgefjell.de>
+Ian Abbott <abbotti@mev.co.uk>
+Jakub Wilk <jwilk@jwilk.net>
+Jan Engelhardt <jengelh@inai.de>
+"Jason A. Donenfeld" <Jason@zx2c4.com>
+Jonny Grant <jg@jguk.org>
+Joseph Myers <joseph@codesourcery.com>
+Kees Cook <keescook@chromium.org>
+Lennart Jablonka <humm@ljabl.com>
+Mario Blaettermann <mario.blaettermann@gmail.com>
+Mark Galeck <markgaleck@gmail.com>
+Namhyung Kim <namhyung@kernel.org>
+Nick Gregory <nick@nickgregory.me>
+Pasha Tatashin <tatashin@google.com>
+Paul Eggert <eggert@cs.ucla.edu>
+<Radisson97@gmx.de>
+Sam James <sam@gentoo.org>
+Samanta Navarro <ferivoz@riseup.net>
+"Serge E. Hallyn" <serge@hallyn.com>
+Stefan Puiu <stefan.puiu@gmail.com>
+Suren Baghdasaryan <surenb@google.com>
+Thomas Weißschuh <linux@weissschuh.net>
+Walter Harms <wharms@bfs.de>
+Wilco Dijkstra <Wilco.Dijkstra@arm.com>
+Zack Weinberg <zack@owlfolio.org>
 
 Apologies if I missed anyone!
 
@@ -17,21 +58,126 @@ Apologies if I missed anyone!
 New and rewritten pages
 -----------------------
 
+man3/
+	arc4random.3
+	powerof2.3
+	roundup.3
+
+man3head/
+	printf.h.3head
+
 
 Newly documented interfaces in existing pages
 ---------------------------------------------
+
+perf_event_open.2
+	PERF_COUNT_SW_BPF_OUTPUT
+	PERF_COUNT_SW_CGROUP_SWITCHES
+	PERF_FORMAT_LOST
+	PERF_RECORD_MISC_MMAP_BUILD_ID
+	PERF_RECORD_MISC_SWITCH_OUT_PREEMPT
+	PERF_SAMPLE_CODE_PAGE_SIZE
+	PERF_SAMPLE_DATA_PAGE_SIZE
+	PERF_SAMPLE_WEIGHT_STRUCT
+
+	struct perf_event_attr::build_id
+	struct perf_event_attr::inherit_thread
+	struct perf_event_attr::remove_on_exec
+	struct perf_event_attr::sigtrap
+	struct perf_event_attr::aux_sample_size
+	struct perf_event_attr::sig_data
+
+	union perf_sample_weight
+
+	struct read_format::values[]::lost
+
+	struct::weight
+	struct::data_page_size
+	struct::code_page_size
+	struct::size
+	struct::data
+
+	struct:: ::build_id_size
+	struct:: ::build_id
+
+prctl.2
+	PR_SET_VMA
+	PR_SET_VMA_ANON_NAME
 
 
 New and changed links
 ---------------------
 
+man3/
+	arc4random_buf.3			(arc4random(3))
+	arc4random_uniform.3			(arc4random(3))
+	register_printf_modifier.3		(printf.h(3head))
+	register_printf_specifier.3		(printf.h(3head))
+	register_printf_type.3			(printf.h(3head))
+
+man3const/
+	PA_CHAR.3const				(printf.h(3head))
+	PA_DOUBLE.3const			(printf.h(3head))
+	PA_FLAG_LONG.3const			(printf.h(3head))
+	PA_FLAG_LONG_DOUBLE.3const		(printf.h(3head))
+	PA_FLAG_LONG_LONG.3const		(printf.h(3head))
+	PA_FLAG_PTR.3const			(printf.h(3head))
+	PA_FLAG_SHORT.3const			(printf.h(3head))
+	PA_FLOAT.3const				(printf.h(3head))
+	PA_INT.3const				(printf.h(3head))
+	PA_LAST.3const				(printf.h(3head))
+	PA_POINTER.3const			(printf.h(3head))
+	PA_STRING.3const			(printf.h(3head))
+	PA_WCHAR.3const				(printf.h(3head))
+	PA_WSTRING.3const			(printf.h(3head))
+
+man3type/
+	printf_arginfo_size_function.3type	(printf.h(3head))
+	printf_function.3type			(printf.h(3head))
+	printf_info.3type			(printf.h(3head))
+	printf_va_arg_function.3type		(printf.h(3head))
+
 
 Global changes
 --------------
 
+-  Build system:
+   -  Add scripts to produce a book of the Linux man-pages.
+   -  Add lint-c-cppcheck to the make(1) targets to run the cppcheck(1)
+      linter.
+
+-  TH:
+   -  Use correct letter case in page titles.  This started in 6.02, but
+      there were still many cases left.
+
+-  SYNOPSIS:
+   -  Mark some functions as deprecated.
+
+-  STANDARDS:
+   -  Remove most references to ISO C89.  We still document it in
+      standards(7), but it's an ancient language version that this
+      project
+      regards as obsolescent, so in the STANDARDS sections for APIs we
+      only take into account C99 and later and POSIX.1-2001 and later
+      (with few exceptions where older standards are relevant).
+
+-  ffix:
+   -  Change \- to - where appropriate
+   -  Improve readability of numbers:
+      -  Show BCD magic numbers that are meaningful in hex as hex,
+         rather than weird decimal numbers.
+      -  Use IEC multipliers.
+   -  Format ranges consistently using interval notation: [min, max].
+
+-  srcfix:
+   -  Use \[] escapes.
+
 
 Changes to individual pages
 ---------------------------
+
+timespec.3type
+	Update tv_nsec according to C2x.
 
 The manual pages (and other files in the repository) have been improved
 beyond what this changelog covers.  To learn more about changes applied
