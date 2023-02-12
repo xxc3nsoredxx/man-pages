@@ -223,7 +223,7 @@ The specifier was not a valid character.
 .SH VERSIONS
 .BR \%register_printf_function (3)
 is an older function similar to
-.BR \%register_printf_specifier,
+.BR \%register_printf_specifier (),
 and is now deprecated.
 That function can't handle user-defined types.
 .PP
