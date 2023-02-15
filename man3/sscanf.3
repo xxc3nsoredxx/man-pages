@@ -527,13 +527,6 @@ The value
 .B EOF
 is returned if the end of input is reached before either the first
 successful conversion or a matching failure occurs.
-.B EOF
-is also returned if a read error occurs,
-in which case the error indicator for the stream (see
-.BR ferror (3))
-is set, and
-.I errno
-is set to indicate the error.
 .SH ERRORS
 .TP
 .B EILSEQ
