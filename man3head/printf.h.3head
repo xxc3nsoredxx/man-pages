@@ -159,14 +159,15 @@ The type is determined by using one of the following constants:
 cast to
 .IR char .
 .TP
-.B PA_WCHAR wchar_t
+.B PA_WCHAR
+.IR wchar_t .
 .TP
 .B PA_STRING
-.I "const char\~*" ,
+.IR "const char\~*" ,
 a \(aq\e0\(aq-terminated string.
 .TP
 .B PA_WSTRING
-.I "const wchar_t\~*" ,
+.IR "const wchar_t\~*" ,
 a wide character L\(aq\e0\(aq-terminated string.
 .TP
 .B PA_POINTER
