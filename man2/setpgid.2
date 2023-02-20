@@ -214,6 +214,11 @@ a session leader
 .RB ( setpgid (),
 .BR setpgrp ()).
 .TP
+.B EPERM
+The target process group does not exist.
+.RB ( setpgid (),
+.BR setpgrp ()).
+.TP
 .B ESRCH
 For
 .BR getpgid ():
