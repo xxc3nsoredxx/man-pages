@@ -381,6 +381,38 @@ as POSIX and the C standard do not allow replacement of
 .BR calloc (),
 and
 .BR realloc ().
+.SH EXAMPLES
+.EX
+#include <err.h>
+#include <stddef.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+#define MALLOCARRAY(n, type)  ((type *) my_mallocarray(n, sizeof(type)))
+#define MALLOC(type)          MALLOCARRAY(1, type)
+
+static inline void *my_mallocarray(size_t nmemb, size_t size);
+
+int
+main(void)
+{
+    char  *p;
+
+    p = MALLOCARRAY(32, char);
+    if (p == NULL)
+        err(EXIT_FAILURE, "malloc");
+
+    strlcpy(p, "foo", 32);
+    puts(p);
+}
+
+static inline void *
+my_mallocarray(size_t nmemb, size_t size)
+{
+    return reallocarray(NULL, nmemb, size);
+}
+.EE
 .SH SEE ALSO
 .\" http://g.oswego.edu/dl/html/malloc.html
 .\" A Memory Allocator - by Doug Lea
