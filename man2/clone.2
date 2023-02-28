@@ -1436,6 +1436,16 @@ One of the PIDs specified in
 .I set_tid
 was an invalid.
 .TP
+.BR EINVAL " (" clone3 "() only)"
+.\" commit 7f192e3cd316ba58c88dfa26796cf77789dd9872
+.B CLONE_THREAD
+or
+.B CLONE_PARENT
+was specified in the
+.I flags
+mask, but a signal was specified in
+.I exit_signal.
+.TP
 .BR EINVAL " (AArch64 only, Linux 4.6 and earlier)"
 .I stack
 was not aligned to a 128-bit boundary.
