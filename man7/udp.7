@@ -233,6 +233,20 @@ calls by passing it as a
 .BR cmsg (7).
 A value of zero disables the feature.
 This option should not be used in code intended to be portable.
+.TP
+.BR UDP_GRO " (since Linux 5.0)"
+Enables UDP receive offload.
+If enabled,
+the socket may receive multiple datagrams worth of data
+as a single large buffer,
+together with a
+.BR cmsg (7)
+that holds the segment size.
+This option is the inverse of segmentation offload.
+It reduces receive cost by handling multiple datagrams worth of data
+as a single large packet in the kernel receive path,
+even when that exceeds MTU.
+This option should not be used in code intended to be portable.
 .SS Ioctls
 These ioctls can be accessed using
 .BR ioctl (2).
