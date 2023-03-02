@@ -204,6 +204,35 @@ portable.
 .\"     UDP_ENCAP_ESPINUDP draft-ietf-ipsec-udp-encaps-06
 .\"     UDP_ENCAP_L2TPINUDP rfc2661
 .\" FIXME Document UDP_NO_CHECK6_TX and UDP_NO_CHECK6_RX, added in Linux 3.16
+.TP
+.BR UDP_SEGMENT " (since Linux 4.18)"
+Enables UDP segmentation offload.
+Segmentation offload reduces
+.BR send (2)
+cost by transferring multiple datagrams worth of data
+as a single large packet through the kernel transmit path,
+even when that exceeds MTU.
+As late as possible,
+the large packet is split by segment size into a series of datagrams.
+This segmentation offload step is deferred to hardware if supported,
+else performed in software.
+This option takes a value in the range
+.RB [ 0 ,\~ USHRT_MAX ]
+that sets the segment size:
+the size of datagram payload,
+excluding the UDP header.
+The segment size must be chosen such that
+at most 64 datagrams are sent in a single call
+and that the datagrams after segmentation meet
+the same MTU rules that apply to datagrams sent without this option.
+Segmentation offload depends on checksum offload,
+as datagram checksums are computed after segmentation.
+The option may also be set for individual
+.BR sendmsg (2)
+calls by passing it as a
+.BR cmsg (7).
+A value of zero disables the feature.
+This option should not be used in code intended to be portable.
 .SS Ioctls
 These ioctls can be accessed using
 .BR ioctl (2).
