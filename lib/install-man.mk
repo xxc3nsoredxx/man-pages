@@ -29,6 +29,7 @@ man1ext     := .1
 man2ext     := .2
 man2typeext := .2type
 man3ext     := .3
+man3constext:= .3const
 man3headext := .3head
 man3typeext := .3type
 man4ext     := .4
