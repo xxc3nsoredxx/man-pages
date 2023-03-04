@@ -37,36 +37,50 @@ man5ext     := .5
 man6ext     := .6
 man7ext     := .7
 man8ext     := .8
-_mandir     := $(DESTDIR)$(mandir)
 
 
-_manpages      := $(patsubst $(MANDIR)/%,$(_mandir)/%,$(MANPAGES))
-_man1pages     := $(filter %$(man1ext),$(_manpages))
-_man2pages     := $(filter %$(man2ext),$(_manpages))
-_man2typepages := $(filter %$(man2typeext),$(_manpages))
-_man3pages     := $(filter %$(man3ext),$(_manpages))
-_man3constpages:= $(filter %$(man3constext),$(_manpages))
-_man3headpages := $(filter %$(man3headext),$(_manpages))
-_man3typepages := $(filter %$(man3typeext),$(_manpages))
-_man4pages     := $(filter %$(man4ext),$(_manpages))
-_man5pages     := $(filter %$(man5ext),$(_manpages))
-_man6pages     := $(filter %$(man6ext),$(_manpages))
-_man7pages     := $(filter %$(man7ext),$(_manpages))
-_man8pages     := $(filter %$(man8ext),$(_manpages))
+_mandir       := $(DESTDIR)$(mandir)
+_man1dir      := $(DESTDIR)$(man1dir)
+_man2dir      := $(DESTDIR)$(man2dir)
+_man2typedir  := $(DESTDIR)$(man2typedir)
+_man3dir      := $(DESTDIR)$(man3dir)
+_man3constdir := $(DESTDIR)$(man3constdir)
+_man3headdir  := $(DESTDIR)$(man3headdir)
+_man3typedir  := $(DESTDIR)$(man3typedir)
+_man4dir      := $(DESTDIR)$(man4dir)
+_man5dir      := $(DESTDIR)$(man5dir)
+_man6dir      := $(DESTDIR)$(man6dir)
+_man7dir      := $(DESTDIR)$(man7dir)
+_man8dir      := $(DESTDIR)$(man8dir)
+_mandirs      := $(_man1dir)/. \
+                 $(_man2dir)/. $(_man2typedir)/. \
+                 $(_man3dir)/. $(_man3constdir)/. $(_man3headdir)/. $(_man3typedir)/. \
+                 $(_man4dir)/. \
+                 $(_man5dir)/. \
+                 $(_man6dir)/. \
+                 $(_man7dir)/. \
+                 $(_man8dir)/. \
 
-_mandirs     := $(patsubst $(MANDIR)/%,$(_mandir)/%/.,$(MANDIRS))
-_man1dir     := $(filter %man1/.,$(_mandirs))
-_man2dir     := $(filter %man2/.,$(_mandirs))
-_man2typedir := $(filter %man2type/.,$(_mandirs))
-_man3dir     := $(filter %man3/.,$(_mandirs))
-_man3constdir:= $(filter %man3const/.,$(_mandirs))
-_man3headdir := $(filter %man3head/.,$(_mandirs))
-_man3typedir := $(filter %man3type/.,$(_mandirs))
-_man4dir     := $(filter %man4/.,$(_mandirs))
-_man5dir     := $(filter %man5/.,$(_mandirs))
-_man6dir     := $(filter %man6/.,$(_mandirs))
-_man7dir     := $(filter %man7/.,$(_mandirs))
-_man8dir     := $(filter %man8/.,$(_mandirs))
+_man1pages      := $(patsubst $(MANDIR)/man1/%,$(_man1dir)/%,$(MAN1PAGES))
+_man2pages      := $(patsubst $(MANDIR)/man2/%,$(_man2dir)/%,$(MAN2PAGES))
+_man2typepages  := $(patsubst $(MANDIR)/man2type/%,$(_man2typedir)/%,$(MAN2TYPEPAGES))
+_man3pages      := $(patsubst $(MANDIR)/man3/%,$(_man3dir)/%,$(MAN3PAGES))
+_man3constpages := $(patsubst $(MANDIR)/man3const/%,$(_man3constdir)/%,$(MAN3CONSTPAGES))
+_man3headpages  := $(patsubst $(MANDIR)/man3head/%,$(_man3headdir)/%,$(MAN3HEADPAGES))
+_man3typepages  := $(patsubst $(MANDIR)/man3type/%,$(_man3typedir)/%,$(MAN3TYPEPAGES))
+_man4pages      := $(patsubst $(MANDIR)/man4/%,$(_man4dir)/%,$(MAN4PAGES))
+_man5pages      := $(patsubst $(MANDIR)/man5/%,$(_man5dir)/%,$(MAN5PAGES))
+_man6pages      := $(patsubst $(MANDIR)/man6/%,$(_man6dir)/%,$(MAN6PAGES))
+_man7pages      := $(patsubst $(MANDIR)/man7/%,$(_man7dir)/%,$(MAN7PAGES))
+_man8pages      := $(patsubst $(MANDIR)/man8/%,$(_man8dir)/%,$(MAN8PAGES))
+_manpages       := $(_man1pages) \
+                   $(_man2pages) $(_man2typepages) \
+                   $(_man3pages) $(_man3constpages) $(_man3headpages) $(_man3typepages) \
+                   $(_man4pages) \
+                   $(_man5pages) \
+                   $(_man6pages) \
+                   $(_man7pages) \
+                   $(_man8pages)
 
 _man1pages_rm     := $(addsuffix -rm,$(wildcard $(_man1pages)))
 _man2pages_rm     := $(addsuffix -rm,$(wildcard $(_man2pages)))
@@ -102,7 +116,21 @@ installdirs_manX := $(foreach x,$(MAN_SECTIONS),installdirs-man$(x))
 uninstall_manX   := $(foreach x,$(MAN_SECTIONS),uninstall-man$(x))
 
 
-$(_manpages): $(_mandir)/man%: $(MANDIR)/man% | $$(@D)/.
+$(_man1pages):      $(_man1dir)/%:      $(MANDIR)/man1/%      | $$(@D)/.
+$(_man2pages):      $(_man2dir)/%:      $(MANDIR)/man2/%      | $$(@D)/.
+$(_man2typepages):  $(_man2typedir)/%:  $(MANDIR)/man2type/%  | $$(@D)/.
+$(_man3pages):      $(_man3dir)/%:      $(MANDIR)/man3/%      | $$(@D)/.
+$(_man3constpages): $(_man3constdir)/%: $(MANDIR)/man3const/% | $$(@D)/.
+$(_man3headpages):  $(_man3headdir)/%:  $(MANDIR)/man3head/%  | $$(@D)/.
+$(_man3typepages):  $(_man3typedir)/%:  $(MANDIR)/man3type/%  | $$(@D)/.
+$(_man4pages):      $(_man4dir)/%:      $(MANDIR)/man4/%      | $$(@D)/.
+$(_man5pages):      $(_man5dir)/%:      $(MANDIR)/man5/%      | $$(@D)/.
+$(_man6pages):      $(_man6dir)/%:      $(MANDIR)/man6/%      | $$(@D)/.
+$(_man7pages):      $(_man7dir)/%:      $(MANDIR)/man7/%      | $$(@D)/.
+$(_man8pages):      $(_man8dir)/%:      $(MANDIR)/man8/%      | $$(@D)/.
+
+
+$(_manpages):
 	$(info INSTALL	$@)
 	$(INSTALL_DATA) -T $< $@
 	$(SED) -i \
