@@ -66,6 +66,7 @@ help:
 	$(info	lint-c			Wrapper for lint-c-* targets)
 	$(info	lint-c-checkpatch	Lint C programs from EXAMPLES with checkpatch(1))
 	$(info	lint-c-clang-tidy	Lint C programs from EXAMPLES with clang-tidy(1))
+	$(info	lint-c-cppcheck		Lint C programs from EXAMPLES with cppcheck(1))
 	$(info	lint-c-cpplint		Lint C programs from EXAMPLES with cpplint(1))
 	$(info	lint-c-iwyu		Lint C programs from EXAMPLES with iwyu(1))
 	$(info	lint-man		Wrapper for lint-man-* targets)
