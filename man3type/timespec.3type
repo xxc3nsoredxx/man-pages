@@ -24,7 +24,8 @@ Standard C library
 Describes times in seconds and nanoseconds.
 .PP
 .I tv_nsec
-is of an implementation-defined signed type capable of holding the specified range.
+is of an implementation-defined signed type
+capable of holding the specified range.
 Under glibc, this is usually
 .IR long ,
 and

@@ -46,14 +46,15 @@ three characters \[aq][\[aq], \[aq]]\[aq], and \[aq]!\[aq].)
 .PP
 There is one special convention:
 two characters separated by \[aq]\-\[aq] denote a range.
-(Thus, "\fI[A\-Fa\-f0\-9]\fP"
-is equivalent to "\fI[ABCDEFabcdef0123456789]\fP".)
-One may include \[aq]\-\[aq] in its literal meaning by making it the
-first or last character between the brackets.
-(Thus, "\fI[]\-]\fP" matches just the two characters \[aq]]\[aq] and \[aq]\-\[aq],
+(Thus,
+"\fI[A\-Fa\-f0\-9]\fP" is equivalent to "\fI[ABCDEFabcdef0123456789]\fP".)
+One may include \[aq]\-\[aq] in its literal meaning
+by making it the first or last character between the brackets.
+(Thus,
+"\fI[]\-]\fP" matches just the two characters \[aq]]\[aq] and \[aq]\-\[aq],
 and "\fI[\-\-0]\fP" matches the
-three characters \[aq]\-\[aq], \[aq].\[aq], \[aq]0\[aq], since \[aq]/\[aq]
-cannot be matched.)
+three characters \[aq]\-\[aq], \[aq].\[aq], and \[aq]0\[aq],
+since \[aq]/\[aq] cannot be matched.)
 .PP
 .B Complementation
 .PP
@@ -63,9 +64,11 @@ by removing the first \[aq]!\[aq] from it.
 (Thus, "\fI[!]a\-]\fP" matches any
 single character except \[aq]]\[aq], \[aq]a\[aq], and \[aq]\-\[aq].)
 .PP
-One can remove the special meaning of \[aq]?\[aq], \[aq]*\[aq], and \[aq][\[aq] by
-preceding them by a backslash, or, in case this is part of
-a shell command line, enclosing them in quotes.
+One can remove the special meaning of \[aq]?\[aq], \[aq]*\[aq], and \[aq][\[aq]
+by preceding them by a backslash,
+or,
+in case this is part of a shell command line,
+enclosing them in quotes.
 Between brackets these characters stand for themselves.
 Thus, "\fI[[?*\e]\fP" matches the
 four characters \[aq][\[aq], \[aq]?\[aq], \[aq]*\[aq], and \[aq]\e\[aq].
