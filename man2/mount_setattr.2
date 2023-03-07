@@ -641,10 +641,9 @@ capability in the user namespace the filesystem was mounted in.
 The underlying filesystem must support ID-mapped mounts.
 Currently, the following filesystems support ID-mapped mounts:
 .\" fs_flags = FS_ALLOW_IDMAP in kernel sources
-.IP
 .RS
-.PD 0
 .IP \[bu] 3
+.PD 0
 .BR xfs (5)
 (since Linux 5.12)
 .IP \[bu]
@@ -674,7 +673,7 @@ Currently, the following filesystems support ID-mapped mounts:
 (ID-mapped lower and upper layers supported since Linux 5.19)
 .PD
 .RE
-.IP \[bu] 3
+.IP \[bu]
 The mount must not already be ID-mapped.
 This also implies that the ID mapping of a mount cannot be altered.
 .IP \[bu]
