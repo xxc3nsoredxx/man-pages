@@ -16,6 +16,7 @@ GREP       := grep
 GZIP       := gzip
 HEAD       := head
 INSTALL    := install
+LN         := ln
 LOCALE     := locale
 PKG-CONFIG := pkg-config
 SED        := sed

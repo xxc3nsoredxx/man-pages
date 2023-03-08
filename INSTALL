@@ -85,6 +85,7 @@ Description
 
           -  For installing:
              -  install(1)
+             -  ln(1)
 
           -  For uninstalling / cleaning:
              -  rm(1)

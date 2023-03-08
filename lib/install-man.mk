@@ -8,8 +8,18 @@ ifndef MAKEFILE_INSTALL_MAN_INCLUDED
 MAKEFILE_INSTALL_MAN_INCLUDED := 1
 
 
+include $(srcdir)/lib/cmd.mk
 include $(srcdir)/lib/install.mk
 include $(srcdir)/lib/src.mk
+
+
+LINK_PAGES := .so
+ifeq ($(LINK_PAGES),.so)
+else ifeq ($(LINK_PAGES),symlink)
+else
+$(warning "LINK_PAGES": "$(LINK_PAGES)")
+$(error Valid values for "LINK_PAGES": [".so", "symlink"])
+endif
 
 
 mandir      := $(datarootdir)/man
@@ -147,6 +157,12 @@ $(_manpages):
 		-e '/^\.so /s, man7/\(.*\)\.7$$, $(notdir $(man7dir))/\1$(man7ext),' \
 		-e '/^\.so /s, man8/\(.*\)\.8$$, $(notdir $(man8dir))/\1$(man8ext),' \
 		$@
+ifeq ($(LINK_PAGES),symlink)
+	if $(GREP) '^\.so ' <$@ >/dev/null; then \
+		$(SED) 's,^\.so \(.*\),../\1,' <$@ \
+		| $(XARGS) -I tgt $(LN) -fsT tgt $@; \
+	fi
+endif
 
 $(_mandirs): %/.: | $$(dir %). $(_mandir)/.
 
