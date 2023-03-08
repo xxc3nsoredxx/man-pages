@@ -21,6 +21,14 @@ $(warning "LINK_PAGES": "$(LINK_PAGES)")
 $(error Valid values for "LINK_PAGES": [".so", "symlink"])
 endif
 
+Z :=
+ifeq ($(Z),)
+else ifeq ($(Z),.gz)
+else
+$(warning "Z": "$(Z)")
+$(error Valid values for "Z": ["", ".gz"])
+endif
+
 
 mandir      := $(datarootdir)/man
 man1dir     := $(mandir)/man1
@@ -35,18 +43,18 @@ man5dir     := $(mandir)/man5
 man6dir     := $(mandir)/man6
 man7dir     := $(mandir)/man7
 man8dir     := $(mandir)/man8
-man1ext     := .1
-man2ext     := .2
-man2typeext := .2type
-man3ext     := .3
-man3constext:= .3const
-man3headext := .3head
-man3typeext := .3type
-man4ext     := .4
-man5ext     := .5
-man6ext     := .6
-man7ext     := .7
-man8ext     := .8
+man1ext     := .1$(Z)
+man2ext     := .2$(Z)
+man2typeext := .2type$(Z)
+man3ext     := .3$(Z)
+man3constext:= .3const$(Z)
+man3headext := .3head$(Z)
+man3typeext := .3type$(Z)
+man4ext     := .4$(Z)
+man5ext     := .5$(Z)
+man6ext     := .6$(Z)
+man7ext     := .7$(Z)
+man8ext     := .8$(Z)
 
 
 _mandir       := $(DESTDIR)$(mandir)
@@ -71,18 +79,18 @@ _mandirs      := $(_man1dir)/. \
                  $(_man7dir)/. \
                  $(_man8dir)/. \
 
-_man1pages      := $(patsubst $(MANDIR)/man1/%,$(_man1dir)/%,$(MAN1PAGES))
-_man2pages      := $(patsubst $(MANDIR)/man2/%,$(_man2dir)/%,$(MAN2PAGES))
-_man2typepages  := $(patsubst $(MANDIR)/man2type/%,$(_man2typedir)/%,$(MAN2TYPEPAGES))
-_man3pages      := $(patsubst $(MANDIR)/man3/%,$(_man3dir)/%,$(MAN3PAGES))
-_man3constpages := $(patsubst $(MANDIR)/man3const/%,$(_man3constdir)/%,$(MAN3CONSTPAGES))
-_man3headpages  := $(patsubst $(MANDIR)/man3head/%,$(_man3headdir)/%,$(MAN3HEADPAGES))
-_man3typepages  := $(patsubst $(MANDIR)/man3type/%,$(_man3typedir)/%,$(MAN3TYPEPAGES))
-_man4pages      := $(patsubst $(MANDIR)/man4/%,$(_man4dir)/%,$(MAN4PAGES))
-_man5pages      := $(patsubst $(MANDIR)/man5/%,$(_man5dir)/%,$(MAN5PAGES))
-_man6pages      := $(patsubst $(MANDIR)/man6/%,$(_man6dir)/%,$(MAN6PAGES))
-_man7pages      := $(patsubst $(MANDIR)/man7/%,$(_man7dir)/%,$(MAN7PAGES))
-_man8pages      := $(patsubst $(MANDIR)/man8/%,$(_man8dir)/%,$(MAN8PAGES))
+_man1pages      := $(patsubst $(MANDIR)/man1/%,$(_man1dir)/%$(Z),$(MAN1PAGES))
+_man2pages      := $(patsubst $(MANDIR)/man2/%,$(_man2dir)/%$(Z),$(MAN2PAGES))
+_man2typepages  := $(patsubst $(MANDIR)/man2type/%,$(_man2typedir)/%$(Z),$(MAN2TYPEPAGES))
+_man3pages      := $(patsubst $(MANDIR)/man3/%,$(_man3dir)/%$(Z),$(MAN3PAGES))
+_man3constpages := $(patsubst $(MANDIR)/man3const/%,$(_man3constdir)/%$(Z),$(MAN3CONSTPAGES))
+_man3headpages  := $(patsubst $(MANDIR)/man3head/%,$(_man3headdir)/%$(Z),$(MAN3HEADPAGES))
+_man3typepages  := $(patsubst $(MANDIR)/man3type/%,$(_man3typedir)/%$(Z),$(MAN3TYPEPAGES))
+_man4pages      := $(patsubst $(MANDIR)/man4/%,$(_man4dir)/%$(Z),$(MAN4PAGES))
+_man5pages      := $(patsubst $(MANDIR)/man5/%,$(_man5dir)/%$(Z),$(MAN5PAGES))
+_man6pages      := $(patsubst $(MANDIR)/man6/%,$(_man6dir)/%$(Z),$(MAN6PAGES))
+_man7pages      := $(patsubst $(MANDIR)/man7/%,$(_man7dir)/%$(Z),$(MAN7PAGES))
+_man8pages      := $(patsubst $(MANDIR)/man8/%,$(_man8dir)/%$(Z),$(MAN8PAGES))
 _manpages       := $(_man1pages) \
                    $(_man2pages) $(_man2typepages) \
                    $(_man3pages) $(_man3constpages) $(_man3headpages) $(_man3typepages) \
@@ -126,18 +134,18 @@ installdirs_manX := $(foreach x,$(MAN_SECTIONS),installdirs-man$(x))
 uninstall_manX   := $(foreach x,$(MAN_SECTIONS),uninstall-man$(x))
 
 
-$(_man1pages):      $(_man1dir)/%:      $(MANDIR)/man1/%      | $$(@D)/.
-$(_man2pages):      $(_man2dir)/%:      $(MANDIR)/man2/%      | $$(@D)/.
-$(_man2typepages):  $(_man2typedir)/%:  $(MANDIR)/man2type/%  | $$(@D)/.
-$(_man3pages):      $(_man3dir)/%:      $(MANDIR)/man3/%      | $$(@D)/.
-$(_man3constpages): $(_man3constdir)/%: $(MANDIR)/man3const/% | $$(@D)/.
-$(_man3headpages):  $(_man3headdir)/%:  $(MANDIR)/man3head/%  | $$(@D)/.
-$(_man3typepages):  $(_man3typedir)/%:  $(MANDIR)/man3type/%  | $$(@D)/.
-$(_man4pages):      $(_man4dir)/%:      $(MANDIR)/man4/%      | $$(@D)/.
-$(_man5pages):      $(_man5dir)/%:      $(MANDIR)/man5/%      | $$(@D)/.
-$(_man6pages):      $(_man6dir)/%:      $(MANDIR)/man6/%      | $$(@D)/.
-$(_man7pages):      $(_man7dir)/%:      $(MANDIR)/man7/%      | $$(@D)/.
-$(_man8pages):      $(_man8dir)/%:      $(MANDIR)/man8/%      | $$(@D)/.
+$(_man1pages):      $(_man1dir)/%$(Z):      $(MANDIR)/man1/%      | $$(@D)/.
+$(_man2pages):      $(_man2dir)/%$(Z):      $(MANDIR)/man2/%      | $$(@D)/.
+$(_man2typepages):  $(_man2typedir)/%$(Z):  $(MANDIR)/man2type/%  | $$(@D)/.
+$(_man3pages):      $(_man3dir)/%$(Z):      $(MANDIR)/man3/%      | $$(@D)/.
+$(_man3constpages): $(_man3constdir)/%$(Z): $(MANDIR)/man3const/% | $$(@D)/.
+$(_man3headpages):  $(_man3headdir)/%$(Z):  $(MANDIR)/man3head/%  | $$(@D)/.
+$(_man3typepages):  $(_man3typedir)/%$(Z):  $(MANDIR)/man3type/%  | $$(@D)/.
+$(_man4pages):      $(_man4dir)/%$(Z):      $(MANDIR)/man4/%      | $$(@D)/.
+$(_man5pages):      $(_man5dir)/%$(Z):      $(MANDIR)/man5/%      | $$(@D)/.
+$(_man6pages):      $(_man6dir)/%$(Z):      $(MANDIR)/man6/%      | $$(@D)/.
+$(_man7pages):      $(_man7dir)/%$(Z):      $(MANDIR)/man7/%      | $$(@D)/.
+$(_man8pages):      $(_man8dir)/%$(Z):      $(MANDIR)/man8/%      | $$(@D)/.
 
 
 $(_manpages):
@@ -161,6 +169,12 @@ ifeq ($(LINK_PAGES),symlink)
 	if $(GREP) '^\.so ' <$@ >/dev/null; then \
 		$(SED) 's,^\.so \(.*\),../\1,' <$@ \
 		| $(XARGS) -I tgt $(LN) -fsT tgt $@; \
+	fi
+endif
+ifeq ($(Z),.gz)
+	if ! $(TEST) -L $@; then \
+		$(GZIP) - <$@ \
+		| $(SPONGE) $@; \
 	fi
 endif
 

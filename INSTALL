@@ -84,8 +84,11 @@ Description
              -  xargs(1)
 
           -  For installing:
+             -  gzip(1)
              -  install(1)
              -  ln(1)
+             -  sponge(1)
+             -  test(1)
 
           -  For uninstalling / cleaning:
              -  rm(1)

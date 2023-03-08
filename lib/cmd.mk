@@ -21,9 +21,11 @@ LOCALE     := locale
 PKG-CONFIG := pkg-config
 SED        := sed
 SORT       := sort
+SPONGE     := sponge
 TAC        := tac
 TAIL       := tail
 TAR        := tar
+TEST       := test
 XARGS      := xargs
 XZ         := xz
 
