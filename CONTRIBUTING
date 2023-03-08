@@ -8,7 +8,7 @@ Description
    Mailing list
        The main discussions regarding development of the project, patches,
        bugs, news, doubts, etc. happen on the mailing list.  To send an email
-       to the project, send it to both maintainers and CC the mailing list:
+       to the project, send it to Alejandro and CC the mailing list:
 
            To: Alejandro Colomar <alx@kernel.org>
            Cc: <linux-man@vger.kernel.org>
