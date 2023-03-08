@@ -288,9 +288,9 @@ static ssize_t pad_spaces(FILE *stream, size_t pad_len);
 int
 main(void)
 {
-    if (register_printf_specifier(\[aq]b\[aq], b_printf, b_arginf_sz) == -1)
+    if (register_printf_specifier(\[aq]b\[aq], b_printf, b_arginf_sz) == \-1)
         err(EXIT_FAILURE, "register_printf_specifier(\[aq]b\[aq], ...)");
-    if (register_printf_specifier(\[aq]B\[aq], b_printf, b_arginf_sz) == -1)
+    if (register_printf_specifier(\[aq]B\[aq], b_printf, b_arginf_sz) == \-1)
         err(EXIT_FAILURE, "register_printf_specifier(\[aq]B\[aq], ...)");
 
     printf("....----....----....----....----\en");
@@ -410,7 +410,7 @@ b_arginf_sz(const struct printf_info *info, size_t n, int argtypes[n],
             [[maybe_unused]] int size[n])
 {
     if (n < 1)
-        return -1;
+        return \-1;
 
     if (info\->is_long_double)
         argtypes[0] = PA_INT | PA_FLAG_LONG_LONG;
