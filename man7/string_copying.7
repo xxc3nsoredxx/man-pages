@@ -754,9 +754,8 @@ char *
 {
     char *p;
 
-    if (src[strlen(src)] != \[aq]\e0\[aq])
-        raise(SIGSEGV);
-
+    if (dst == NULL)
+        return NULL;
     if (dst == end)
         return end;
 
