@@ -90,6 +90,7 @@ $(_LINT_man_mandoc): $(_LINTDIR)/%.lint-man.mandoc.touch: $(MANDIR)/% | $$(@D)/.
 	   | $(GREP) -v 'UNSUPP: ignoring macro in table:' \
 	   | $(GREP) -v 'WARNING: cannot parse date, using it verbatim: TH (date)' \
 	   | $(GREP) -v 'WARNING: empty block: UR' \
+	   | $(GREP) -v 'WARNING: missing date, using "": TH' \
 	   ||:; \
 	) \
 	| $(GREP) '.' >&2
