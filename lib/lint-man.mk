@@ -98,7 +98,7 @@ $(_LINT_man_mandoc): $(_LINTDIR)/%.lint-man.mandoc.touch: $(MANDIR)/% | $$(@D)/.
 	touch $@
 
 $(_LINT_man_tbl): $(_LINTDIR)/%.lint-man.tbl.touch: $(MANDIR)/% | $$(@D)/.
-	$(info LINT (tbl)	$@)
+	$(info LINT (tbl comment)	$@)
 	if $(GREP) -q '^\.TS$$' $< && ! $(HEAD) -n1 $< | $(GREP) -q '\\" t$$'; \
 	then \
 		>&2 $(ECHO) "$<:1: missing '\\\" t' comment:"; \
