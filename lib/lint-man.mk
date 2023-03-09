@@ -67,6 +67,7 @@ MANDOC              := mandoc
 _LINT_man_groff_eqn    :=$(patsubst $(MANDIR)/%,$(_LINTDIR)/%.eqn,$(LINTMAN))
 _LINT_man_groff_troff  :=$(patsubst $(MANDIR)/%,$(_LINTDIR)/%.troff,$(LINTMAN))
 _LINT_man_groff_grotty :=$(patsubst $(MANDIR)/%,$(_LINTDIR)/%.grotty,$(LINTMAN))
+_LINT_man_groff_col    :=$(patsubst $(MANDIR)/%,$(_LINTDIR)/%.col,$(LINTMAN))
 
 _LINT_man_groff :=$(patsubst $(MANDIR)/%,$(_LINTDIR)/%.lint-man.groff.touch,$(LINTMAN))
 _LINT_man_mandoc:=$(patsubst $(MANDIR)/%,$(_LINTDIR)/%.lint-man.mandoc.touch,$(LINTMAN))
@@ -89,10 +90,13 @@ $(_LINT_man_groff_grotty): %.grotty: %.troff | $$(@D)/.
 	$(info LINT (troff)	$@)
 	$(TROFF) $(TROFFFLAGS) <$< >$@
 
-$(_LINT_man_groff): %.lint-man.groff.touch: %.grotty | $$(@D)/.
-	$(info LINT (groff)	$@)
-	$(GROTTY) $(GROTTYFLAGS) <$< \
-	| $(COL) $(COLFLAGS) \
+$(_LINT_man_groff_col): %.col: %.grotty | $$(@D)/.
+	$(info LINT (grotty)	$@)
+	$(GROTTY) $(GROTTYFLAGS) <$< >$@
+
+$(_LINT_man_groff): %.lint-man.groff.touch: %.col | $$(@D)/.
+	$(info LINT (col)	$@)
+	$(COL) $(COLFLAGS) <$< \
 	| (! $(GREP) -n '.\{$(MANWIDTH)\}.' | $(SED) 's,^,$<:,' >&2)
 	touch $@
 
@@ -143,6 +147,10 @@ lint-man-groff-eqn: $(_LINT_man_groff_troff)
 
 .PHONY: lint-man-groff-troff
 lint-man-groff-troff: $(_LINT_man_groff_grotty)
+	@:
+
+.PHONY: lint-man-groff-grotty
+lint-man-groff-grotty: $(_LINT_man_groff_col)
 	@:
 
 .PHONY: $(lint_man)

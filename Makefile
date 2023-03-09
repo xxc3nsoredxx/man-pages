@@ -76,6 +76,7 @@ help:
 	$(info	lint-man-groff-tbl	Lint man pages with tbl(1))
 	$(info	lint-man-groff-eqn	Lint man pages with eqn(1))
 	$(info	lint-man-groff-troff	Lint man pages with troff(1))
+	$(info	lint-man-groff-grotty	Lint man pages with grotty(1))
 	$(info	)
 	$(info	[un]install		Alias for "[un]install-man")
 	$(info	[un]install-man		Wrapper for [un]install-man* targets)
