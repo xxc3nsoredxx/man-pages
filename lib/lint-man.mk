@@ -91,6 +91,7 @@ $(_LINT_man_mandoc): $(_LINTDIR)/%.lint-man.mandoc.touch: $(MANDIR)/% | $$(@D)/.
 	   | $(GREP) -v 'WARNING: cannot parse date, using it verbatim: TH (date)' \
 	   | $(GREP) -v 'WARNING: empty block: UR' \
 	   | $(GREP) -v 'WARNING: missing date, using "": TH' \
+	   | $(GREP) -v 'WARNING: undefined escape, printing literally: \\\\' \
 	   ||:; \
 	) \
 	| $(GREP) '.' >&2
