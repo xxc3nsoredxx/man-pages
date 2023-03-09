@@ -64,6 +64,8 @@ MANDOCFLAGS         := $(DEFAULT_MANDOCFLAGS) $(EXTRA_MANDOCFLAGS)
 MANDOC              := mandoc
 
 
+_LINT_man_groff_eqn   :=$(patsubst $(MANDIR)/%,$(_LINTDIR)/%.eqn,$(LINTMAN))
+
 _LINT_man_groff :=$(patsubst $(MANDIR)/%,$(_LINTDIR)/%.lint-man.groff.touch,$(LINTMAN))
 _LINT_man_mandoc:=$(patsubst $(MANDIR)/%,$(_LINTDIR)/%.lint-man.mandoc.touch,$(LINTMAN))
 _LINT_man_tbl   :=$(patsubst $(MANDIR)/%,$(_LINTDIR)/%.lint-man.tbl.touch,$(LINTMAN))
@@ -73,10 +75,13 @@ linters_man := groff mandoc tbl
 lint_man    := $(foreach x,$(linters_man),lint-man-$(x))
 
 
-$(_LINT_man_groff): $(_LINTDIR)/%.lint-man.groff.touch: $(MANDIR)/% | $$(@D)/.
+$(_LINT_man_groff_eqn): $(_LINTDIR)/%.eqn: $(MANDIR)/% | $$(@D)/.
+	$(info LINT (tbl)	$@)
+	$(TBL) $< >$@
+
+$(_LINT_man_groff): %.lint-man.groff.touch: %.eqn | $$(@D)/.
 	$(info LINT (groff)	$@)
-	$(TBL) $< \
-	| $(EQN) $(EQNFLAGS) \
+	$(EQN) $(EQNFLAGS) <$< \
 	| $(TROFF) $(TROFFFLAGS) \
 	| $(GROTTY) $(GROTTYFLAGS) \
 	| $(COL) $(COLFLAGS) \
@@ -119,6 +124,10 @@ $(_LINT_man_tbl): $(_LINTDIR)/%.lint-man.tbl.touch: $(MANDIR)/% | $$(@D)/.
 	fi
 	touch $@
 
+
+.PHONY: lint-man-groff-tbl
+lint-man-groff-tbl: $(_LINT_man_groff_eqn)
+	@:
 
 .PHONY: $(lint_man)
 $(lint_man): lint-man-%: $$(_LINT_man_%)
