@@ -23,6 +23,11 @@ TROFF_OUT_DEVICE  := $(shell $(LOCALE) charmap \
                                  && $(ECHO) utf8 \
                                  || $(ECHO) ascii)
 
+DEFAULT_PRECONVFLAGS :=
+EXTRA_PRECONVFLAGS   :=
+PRECONVFLAGS         := $(DEFAULT_PRECONVFLAGS) $(EXTRA_PRECONVFLAGS)
+PRECONV              := preconv
+
 TBL := tbl
 
 DEFAULT_EQNFLAGS := -T$(TROFF_OUT_DEVICE)
@@ -64,6 +69,7 @@ MANDOCFLAGS         := $(DEFAULT_MANDOCFLAGS) $(EXTRA_MANDOCFLAGS)
 MANDOC              := mandoc
 
 
+_LINT_man_groff_tbl    :=$(patsubst $(MANDIR)/%,$(_LINTDIR)/%.tbl,$(LINTMAN))
 _LINT_man_groff_eqn    :=$(patsubst $(MANDIR)/%,$(_LINTDIR)/%.eqn,$(LINTMAN))
 _LINT_man_groff_troff  :=$(patsubst $(MANDIR)/%,$(_LINTDIR)/%.troff,$(LINTMAN))
 _LINT_man_groff_grotty :=$(patsubst $(MANDIR)/%,$(_LINTDIR)/%.grotty,$(LINTMAN))
@@ -79,9 +85,13 @@ linters_man := groff mandoc tbl
 lint_man    := $(foreach x,$(linters_man),lint-man-$(x))
 
 
-$(_LINT_man_groff_eqn): $(_LINTDIR)/%.eqn: $(MANDIR)/% | $$(@D)/.
+$(_LINT_man_groff_tbl): $(_LINTDIR)/%.tbl: $(MANDIR)/% | $$(@D)/.
+	$(info LINT (preconv)	$@)
+	$(PRECONV) $(PRECONVFLAGS) $< >$@
+
+$(_LINT_man_groff_eqn): %.eqn: %.tbl | $$(@D)/.
 	$(info LINT (tbl)	$@)
-	$(TBL) $< >$@
+	$(TBL) <$< >$@
 
 $(_LINT_man_groff_troff): %.troff: %.eqn | $$(@D)/.
 	$(info LINT (eqn)	$@)
@@ -140,6 +150,10 @@ $(_LINT_man_tbl): $(_LINTDIR)/%.lint-man.tbl.touch: $(MANDIR)/% | $$(@D)/.
 	fi
 	touch $@
 
+
+.PHONY: lint-man-groff-preconv
+lint-man-groff-preconv: $(_LINT_man_groff_tbl)
+	@:
 
 .PHONY: lint-man-groff-tbl
 lint-man-groff-tbl: $(_LINT_man_groff_eqn)

@@ -73,6 +73,7 @@ help:
 	$(info	lint-man-mandoc		Lint man pages with mandoc(1))
 	$(info	lint-man-tbl		Lint man pages about '\" t' comment for tbl(1))
 	$(info	lint-man-groff		Alias for "lint-man-groff-grep")
+	$(info	lint-man-groff-preconv	Lint man pages with preconv(1))
 	$(info	lint-man-groff-tbl	Lint man pages with tbl(1))
 	$(info	lint-man-groff-eqn	Lint man pages with eqn(1))
 	$(info	lint-man-groff-troff	Lint man pages with troff(1))
