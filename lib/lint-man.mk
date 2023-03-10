@@ -95,7 +95,8 @@ $(_LINT_man_groff_eqn): %.eqn: %.tbl | $$(@D)/.
 
 $(_LINT_man_groff_troff): %.troff: %.eqn | $$(@D)/.
 	$(info LINT (eqn)	$@)
-	$(EQN) $(EQNFLAGS) <$< >$@
+	$(EQN) $(EQNFLAGS) <$< 2>&1 >$@ \
+	| ( ! $(GREP) . )
 
 $(_LINT_man_groff_grotty): %.grotty: %.troff | $$(@D)/.
 	$(info LINT (troff)	$@)
