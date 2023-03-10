@@ -126,4 +126,5 @@ include $(srcdir)/lib/lint-man.mk
 include $(srcdir)/lib/verbose.mk
 
 
+.DELETE_ON_ERROR:
 FORCE:
