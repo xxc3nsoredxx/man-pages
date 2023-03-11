@@ -38,22 +38,20 @@ Description
 
        A few features can be used to tweak the install:
 
-       Directory Variables
-           To check about all of the directory variables available, compare the
-           GNU Coding Standards with the Makefile and the helper makefiles (see
-           the sections "Standards" and "Files" below).  The most common ones that
-           you may use are:
+       Variables
+           There are many variables available with which you can tweak the
+           build system.  Most of them are directory variables and command
+           variables, based on the GNU Coding Standards.  Others are
+           specially designed for this project.  To see all of the available
+           variables, use:
+
+               $ make help-variables
+
+           The most common ones that you may use are:
 
            -  DESTDIR
            -  prefix
 
-       Command Variables
-           Some commands use flags.  A command named 'command' will have a
-           variable COMMAND to specify an alternative command name.  To append
-           flags to the default ones, set the variable EXTRA_COMMANDFLAGS.  To
-           overwrite the flags, set the variable COMMANDFLAGS.
-
-       Verbose
            Use V=1 for a more verbose output from the makefiles:
 
                $ sudo make install V=1
