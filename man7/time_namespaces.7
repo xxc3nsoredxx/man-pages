@@ -56,13 +56,13 @@ this symbolic link in a call to
 .BR setns (2)
 in order to move into the namespace.)
 .\"
-.SS /proc/PID/timens_offsets
+.SS /proc/\fIpid\fP/timens_offsets
 Associated with each time namespace are offsets,
 expressed with respect to the initial time namespace,
 that define the values of the monotonic and
 boot-time clocks in that namespace.
 These offsets are exposed via the file
-.IR /proc/PID/timens_offsets .
+.IR /proc/ pid /timens_offsets .
 Within this file,
 the offsets are expressed as lines consisting of
 three space-delimited fields:
