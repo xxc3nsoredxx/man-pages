@@ -128,16 +128,19 @@ starts, it reads
 for further instructions.
 This file defines what should be run when the
 .I /sbin/init
-program is instructed to enter a particular \fIrun-level\fR, giving
+program is instructed to enter a particular run level, giving
 the administrator an easy way to establish an environment
-for some usage; each run-level is associated with a set of services
-(for example, run-level \fBS\fR is \fIsingle-user\fR mode,
-and run-level \fB2\fR entails running most network services).
+for some usage; each run level is associated with a set of services
+(for example, run level
+.B S
+is single-user mode,
+and run level
+.B 2
+entails running most network services).
 .PP
-The administrator may change the current
-run-level via
+The administrator may change the current run level via
 .BR init (1),
-and query the current run-level via
+and query the current run level via
 .BR runlevel (8).
 .PP
 However, since it is not convenient to manage individual services
@@ -165,7 +168,7 @@ start, "status" to display the service status, etc.).
 Running the script
 without parameters displays the possible arguments.
 .SS Sequencing directories
-To make specific scripts start/stop at specific run-levels and in a
+To make specific scripts start/stop at specific run levels and in a
 specific order, there are \fIsequencing directories\fR, normally
 of the form  \fI/etc/rc[0\-6S].d\fR.
 In each of these directories,
@@ -181,17 +184,17 @@ the argument "start" (thereby starting the service).
 Each link whose name begins with \[aq]K\[aq] is called with
 the argument "stop" (thereby stopping the service).
 .PP
-To define the starting or stopping order within the same run-level,
+To define the starting or stopping order within the same run level,
 the name of a link contains an \fBorder-number\fR.
 Also, for clarity, the name of a link usually
 ends with the name of the service to which it refers.
 For example,
 the link \fI/etc/rc2.d/S80sendmail\fR starts the sendmail service on
-runlevel 2.
+run level 2.
 This happens after \fI/etc/rc2.d/S12syslog\fR is run
 but before \fI/etc/rc2.d/S90xfs\fR is run.
 .PP
-To manage these links is to manage the boot order and run-levels;
+To manage these links is to manage the boot order and run levels;
 under many systems, there are tools to help with this task
 (e.g.,
 .BR chkconfig (8)).
