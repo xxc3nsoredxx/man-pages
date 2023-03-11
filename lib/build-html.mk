@@ -23,14 +23,14 @@ MAN2HTMLFLAGS         := $(DEFAULT_MAN2HTMLFLAGS) $(EXTRA_MAN2HTMLFLAGS)
 MAN2HTML              := man2html
 
 
-_HTMLPAGES := $(patsubst $(MANDIR)/%,$(_HTMLDIR)/%.html,$(MANPAGES))
+_HTMLPAGES := $(patsubst $(MANDIR)/%,$(_HTMLDIR)/%$(htmlext),$(MANPAGES))
 _HTMLDIRS  := $(patsubst $(MANDIR)/%,$(_HTMLDIR)/%/.,$(MANDIRS))
 
 
 # Use with
 #  make MAN2HTMLFLAGS=whatever html
 # The sed removes the lines "Content-type: text/html\n\n"
-$(_HTMLPAGES): $(_HTMLDIR)/%.html: $(MANDIR)/% | $$(@D)/.
+$(_HTMLPAGES): $(_HTMLDIR)/%$(htmlext): $(MANDIR)/% | $$(@D)/.
 	$(info MAN2HTML	$@)
 	$(MAN2HTML) $(MAN2HTMLFLAGS) $< \
 	| $(SED) -e 1,2d >$@
