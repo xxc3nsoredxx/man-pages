@@ -135,12 +135,10 @@ Description
        new warnings.  However, you might still get warnings that are not your
        fault.  To minimize that, do the following steps:
 
-       (1)  Lint first all of the pages, so that make(1) knows that it only
-            needs to lint again pages that you will touch.  This example is
-            shown with '-j' because it would take a long time (around a couple
-            of minutes) to run without parallel execution.
+       (1)  First use make(1)'s -t option, so that make(1) knows that it only
+            needs to lint again pages that you will touch.
 
-                $ make -ij lint >/dev/null 2>&1
+                $ make -t lint
 
        (2)  Touch the page that you'll edit, and run make(1) again, to see
             which warnings you'll still see from that page that are not your
