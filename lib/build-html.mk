@@ -24,18 +24,18 @@ MAN2HTML              := man2html
 
 
 _HTMLPAGES := $(patsubst $(MANDIR)/%,$(_HTMLDIR)/%$(htmlext),$(MANPAGES))
-_HTMLDIRS  := $(patsubst $(MANDIR)/%,$(_HTMLDIR)/%/.,$(MANDIRS))
+_HTMLDIRS  := $(patsubst $(MANDIR)/%,$(_HTMLDIR)/%/,$(MANDIRS))
 
 
 # Use with
 #  make MAN2HTMLFLAGS=whatever html
 # The sed removes the lines "Content-type: text/html\n\n"
-$(_HTMLPAGES): $(_HTMLDIR)/%$(htmlext): $(MANDIR)/% | $$(@D)/.
+$(_HTMLPAGES): $(_HTMLDIR)/%$(htmlext): $(MANDIR)/% | $$(@D)/
 	$(info MAN2HTML	$@)
 	$(MAN2HTML) $(MAN2HTMLFLAGS) $< \
 	| $(SED) -e 1,2d >$@
 
-$(_HTMLDIRS): %/.: | $$(dir %). $(_HTMLDIR)/.
+$(_HTMLDIRS): %/: | $$(dir %) $(_HTMLDIR)/
 
 
 .PHONY: build-html html

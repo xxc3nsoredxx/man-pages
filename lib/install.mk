@@ -18,9 +18,9 @@ datarootdir := $(prefix)/share
 docdir      := $(datarootdir)/doc
 
 
-%/.:
-	+$(info INSTALL	$(@D)/)
-	+$(INSTALL_DIR) $(@D)
+%/:
+	+$(info INSTALL	$@/)
+	+$(INSTALL_DIR) $@
 
 %-rm:
 	$(info RM	$*)

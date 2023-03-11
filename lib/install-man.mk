@@ -70,14 +70,14 @@ _man5dir      := $(DESTDIR)$(man5dir)
 _man6dir      := $(DESTDIR)$(man6dir)
 _man7dir      := $(DESTDIR)$(man7dir)
 _man8dir      := $(DESTDIR)$(man8dir)
-_mandirs      := $(_man1dir)/. \
-                 $(_man2dir)/. $(_man2typedir)/. \
-                 $(_man3dir)/. $(_man3constdir)/. $(_man3headdir)/. $(_man3typedir)/. \
-                 $(_man4dir)/. \
-                 $(_man5dir)/. \
-                 $(_man6dir)/. \
-                 $(_man7dir)/. \
-                 $(_man8dir)/. \
+_mandirs      := $(_man1dir)/ \
+                 $(_man2dir)/ $(_man2typedir)/ \
+                 $(_man3dir)/ $(_man3constdir)/ $(_man3headdir)/ $(_man3typedir)/ \
+                 $(_man4dir)/ \
+                 $(_man5dir)/ \
+                 $(_man6dir)/ \
+                 $(_man7dir)/ \
+                 $(_man8dir)/ \
 
 _man1pages      := $(patsubst $(MANDIR)/man1/%,$(_man1dir)/%$(Z),$(MAN1PAGES))
 _man2pages      := $(patsubst $(MANDIR)/man2/%,$(_man2dir)/%$(Z),$(MAN2PAGES))
@@ -126,7 +126,7 @@ _man5dir_rmdir     := $(addsuffix -rmdir,$(wildcard $(_man5dir)))
 _man6dir_rmdir     := $(addsuffix -rmdir,$(wildcard $(_man6dir)))
 _man7dir_rmdir     := $(addsuffix -rmdir,$(wildcard $(_man7dir)))
 _man8dir_rmdir     := $(addsuffix -rmdir,$(wildcard $(_man8dir)))
-_mandir_rmdir      := $(addsuffix -rmdir,$(wildcard $(_mandir)/.))
+_mandir_rmdir      := $(addsuffix -rmdir,$(wildcard $(_mandir)/))
 
 MAN_SECTIONS     := 1 2 2type 3 3const 3head 3type 4 5 6 7 8
 install_manX     := $(foreach x,$(MAN_SECTIONS),install-man$(x))
@@ -134,18 +134,18 @@ installdirs_manX := $(foreach x,$(MAN_SECTIONS),installdirs-man$(x))
 uninstall_manX   := $(foreach x,$(MAN_SECTIONS),uninstall-man$(x))
 
 
-$(_man1pages):      $(_man1dir)/%$(Z):      $(MANDIR)/man1/%      | $$(@D)/.
-$(_man2pages):      $(_man2dir)/%$(Z):      $(MANDIR)/man2/%      | $$(@D)/.
-$(_man2typepages):  $(_man2typedir)/%$(Z):  $(MANDIR)/man2type/%  | $$(@D)/.
-$(_man3pages):      $(_man3dir)/%$(Z):      $(MANDIR)/man3/%      | $$(@D)/.
-$(_man3constpages): $(_man3constdir)/%$(Z): $(MANDIR)/man3const/% | $$(@D)/.
-$(_man3headpages):  $(_man3headdir)/%$(Z):  $(MANDIR)/man3head/%  | $$(@D)/.
-$(_man3typepages):  $(_man3typedir)/%$(Z):  $(MANDIR)/man3type/%  | $$(@D)/.
-$(_man4pages):      $(_man4dir)/%$(Z):      $(MANDIR)/man4/%      | $$(@D)/.
-$(_man5pages):      $(_man5dir)/%$(Z):      $(MANDIR)/man5/%      | $$(@D)/.
-$(_man6pages):      $(_man6dir)/%$(Z):      $(MANDIR)/man6/%      | $$(@D)/.
-$(_man7pages):      $(_man7dir)/%$(Z):      $(MANDIR)/man7/%      | $$(@D)/.
-$(_man8pages):      $(_man8dir)/%$(Z):      $(MANDIR)/man8/%      | $$(@D)/.
+$(_man1pages):      $(_man1dir)/%$(Z):      $(MANDIR)/man1/%      | $$(@D)/
+$(_man2pages):      $(_man2dir)/%$(Z):      $(MANDIR)/man2/%      | $$(@D)/
+$(_man2typepages):  $(_man2typedir)/%$(Z):  $(MANDIR)/man2type/%  | $$(@D)/
+$(_man3pages):      $(_man3dir)/%$(Z):      $(MANDIR)/man3/%      | $$(@D)/
+$(_man3constpages): $(_man3constdir)/%$(Z): $(MANDIR)/man3const/% | $$(@D)/
+$(_man3headpages):  $(_man3headdir)/%$(Z):  $(MANDIR)/man3head/%  | $$(@D)/
+$(_man3typepages):  $(_man3typedir)/%$(Z):  $(MANDIR)/man3type/%  | $$(@D)/
+$(_man4pages):      $(_man4dir)/%$(Z):      $(MANDIR)/man4/%      | $$(@D)/
+$(_man5pages):      $(_man5dir)/%$(Z):      $(MANDIR)/man5/%      | $$(@D)/
+$(_man6pages):      $(_man6dir)/%$(Z):      $(MANDIR)/man6/%      | $$(@D)/
+$(_man7pages):      $(_man7dir)/%$(Z):      $(MANDIR)/man7/%      | $$(@D)/
+$(_man8pages):      $(_man8dir)/%$(Z):      $(MANDIR)/man8/%      | $$(@D)/
 
 
 $(_manpages):
@@ -178,9 +178,9 @@ ifeq ($(Z),.gz)
 	fi
 endif
 
-$(_mandirs): %/.: | $$(dir %). $(_mandir)/.
+$(_mandirs): %/: | $$(dir %) $(_mandir)/
 
-$(_mandirs_rmdir): $(_mandir)/man%/.-rmdir: $$(_man%pages_rm) FORCE
+$(_mandirs_rmdir): $(_mandir)/man%/-rmdir: $$(_man%pages_rm) FORCE
 $(_mandir_rmdir): $(uninstall_manX) FORCE
 
 

@@ -73,7 +73,7 @@ _UNITS_src_o   := $(patsubst %.c,%.o,$(_UNITS_src_c))
 _UNITS_src_bin := $(patsubst %.c,%,$(_UNITS_src_c))
 
 
-$(_SRCPAGEDIRS): $(_SRCDIR)/%.d: $(MANDIR)/% | $$(@D)/.
+$(_SRCPAGEDIRS): $(_SRCDIR)/%.d: $(MANDIR)/% | $$(@D)/
 	+$(info MKDIR	$@)
 	+$(MKDIR) $@
 	+touch $@

@@ -85,37 +85,37 @@ linters_man := groff mandoc tbl
 lint_man    := $(foreach x,$(linters_man),lint-man-$(x))
 
 
-$(_LINT_man_groff_tbl): $(_LINTDIR)/%.tbl: $(MANDIR)/% | $$(@D)/.
+$(_LINT_man_groff_tbl): $(_LINTDIR)/%.tbl: $(MANDIR)/% | $$(@D)/
 	$(info LINT (preconv)	$@)
 	$(PRECONV) $(PRECONVFLAGS) $< >$@
 
-$(_LINT_man_groff_eqn): %.eqn: %.tbl | $$(@D)/.
+$(_LINT_man_groff_eqn): %.eqn: %.tbl | $$(@D)/
 	$(info LINT (tbl)	$@)
 	$(TBL) <$< >$@
 
-$(_LINT_man_groff_troff): %.troff: %.eqn | $$(@D)/.
+$(_LINT_man_groff_troff): %.troff: %.eqn | $$(@D)/
 	$(info LINT (eqn)	$@)
 	$(EQN) $(EQNFLAGS) <$< 2>&1 >$@ \
 	| ( ! $(GREP) ^ )
 
-$(_LINT_man_groff_grotty): %.grotty: %.troff | $$(@D)/.
+$(_LINT_man_groff_grotty): %.grotty: %.troff | $$(@D)/
 	$(info LINT (troff)	$@)
 	$(TROFF) $(TROFFFLAGS) <$< >$@
 
-$(_LINT_man_groff_col): %.col: %.grotty | $$(@D)/.
+$(_LINT_man_groff_col): %.col: %.grotty | $$(@D)/
 	$(info LINT (grotty)	$@)
 	$(GROTTY) $(GROTTYFLAGS) <$< >$@
 
-$(_LINT_man_groff_grep): %.grep: %.col | $$(@D)/.
+$(_LINT_man_groff_grep): %.grep: %.col | $$(@D)/
 	$(info LINT (col)	$@)
 	$(COL) $(COLFLAGS) <$< >$@
 
-$(_LINT_man_groff): %.lint-man.groff.touch: %.grep | $$(@D)/.
+$(_LINT_man_groff): %.lint-man.groff.touch: %.grep | $$(@D)/
 	$(info LINT (grep)	$@)
 	! $(GREP) -n '.\{$(MANWIDTH)\}.' $< /dev/null >&2
 	touch $@
 
-$(_LINT_man_mandoc): $(_LINTDIR)/%.lint-man.mandoc.touch: $(MANDIR)/% | $$(@D)/.
+$(_LINT_man_mandoc): $(_LINTDIR)/%.lint-man.mandoc.touch: $(MANDIR)/% | $$(@D)/
 	$(info LINT (mandoc)	$@)
 	! ($(MANDOC) $(MANDOCFLAGS) $< 2>&1 \
 	   | $(GREP) -v 'STYLE: lower case character in document title:' \
@@ -129,7 +129,7 @@ $(_LINT_man_mandoc): $(_LINTDIR)/%.lint-man.mandoc.touch: $(MANDIR)/% | $$(@D)/.
 	| $(GREP) '.' >&2
 	touch $@
 
-$(_LINT_man_tbl): $(_LINTDIR)/%.lint-man.tbl.touch: $(MANDIR)/% | $$(@D)/.
+$(_LINT_man_tbl): $(_LINTDIR)/%.lint-man.tbl.touch: $(MANDIR)/% | $$(@D)/
 	$(info LINT (tbl comment)	$@)
 	if $(GREP) -q '^\.TS$$' $< && ! $(HEAD) -n1 $< | $(GREP) -q '\\" t$$'; \
 	then \

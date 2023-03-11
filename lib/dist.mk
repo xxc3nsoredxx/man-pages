@@ -28,18 +28,18 @@ compression := gz xz
 dist        := $(foreach x,$(compression),dist-$(x))
 
 
-$(_DISTPAGES): $(_DISTDIR)/man%: $(srcdir)/man% FORCE | $$(@D)/.
+$(_DISTPAGES): $(_DISTDIR)/man%: $(srcdir)/man% FORCE | $$(@D)/
 	$(info INSTALL	$@)
 	$(INSTALL_DATA) -T $< $@
 	$(SED) -i '/^.TH/s/(unreleased)/$(DISTVERSION)/' $@
 	$(SED) -i "/^.TH/s/(date)/$$(git log --format=%cs -1 -- $<)/" $@
 
-$(_DISTOTHERS): $(_DISTDIR)/%: $(srcdir)/% | $$(@D)/.
+$(_DISTOTHERS): $(_DISTDIR)/%: $(srcdir)/% | $$(@D)/
 	$(info INSTALL	$@)
 	$(INSTALL_DATA) -T $< $@
 
 
-$(DISTFILE): $(_DISTFILES) | $$(@D)/.
+$(DISTFILE): $(_DISTFILES) | $$(@D)/
 	$(info TAR	$@)
 	$(TAR) cf $@ -T /dev/null
 	$(GIT) ls-files \
@@ -47,11 +47,11 @@ $(DISTFILE): $(_DISTFILES) | $$(@D)/.
 	| $(XARGS) $(TAR) rf $@ -C $(srcdir) \
 		--transform 's,^$(_DISTDIR),$(DISTNAME),'
 
-$(DISTFILE).gz: %.gz: % | $$(@D)/.
+$(DISTFILE).gz: %.gz: % | $$(@D)/
 	$(info GZIP	$@)
 	$(GZIP) -knf $<
 
-$(DISTFILE).xz: %.xz: % | $$(@D)/.
+$(DISTFILE).xz: %.xz: % | $$(@D)/
 	$(info XZ	$@)
 	$(XZ) -kf $<
 

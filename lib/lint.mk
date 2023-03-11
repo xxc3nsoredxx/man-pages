@@ -22,13 +22,13 @@ LINTMAN   := $(shell $(FIND) $(MANDIR)/man*/ -type f \
 		| $(GREP) '$(MANEXT)' \
 		| $(XARGS) $(GREP) -l '^\.TH ' \
 		| $(SORT))
-_LINTDIRS := $(patsubst $(MANDIR)/%,$(_LINTDIR)/%/.,$(MANDIRS))
+_LINTDIRS := $(patsubst $(MANDIR)/%,$(_LINTDIR)/%/,$(MANDIRS))
 
 
 lint := lint-c lint-man
 
 
-$(_LINTDIRS): %/.: | $$(dir %). $(_LINTDIR)/.
+$(_LINTDIRS): %/: | $$(dir %) $(_LINTDIR)/
 
 
 .PHONY: lint

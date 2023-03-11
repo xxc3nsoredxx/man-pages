@@ -20,13 +20,13 @@ MKDIR := mkdir -p
 RM    := rm
 
 
-_SRCDIRS := $(patsubst $(MANDIR)/%,$(_SRCDIR)/%/.,$(MANDIRS))
+_SRCDIRS := $(patsubst $(MANDIR)/%,$(_SRCDIR)/%/,$(MANDIRS))
 
 
-$(_SRCDIRS): %/.: | $$(dir %). $(_SRCDIR)/.
+$(_SRCDIRS): %/: | $$(dir %) $(_SRCDIR)/
 
 
-$(builddir)/%/.:
+$(builddir)/%/:
 	+$(info MKDIR	$(@D)/)
 	+$(MKDIR) $(@D)
 
