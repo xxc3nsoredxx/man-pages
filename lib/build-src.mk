@@ -74,9 +74,9 @@ _UNITS_src_bin := $(patsubst %.c,%,$(_UNITS_src_c))
 
 
 $(_SRCPAGEDIRS): $(_SRCDIR)/%.d: $(MANDIR)/% | $$(@D)/.
-	$(info MKDIR	$@)
-	$(MKDIR) $@
-	touch $@
+	+$(info MKDIR	$@)
+	+$(MKDIR) $@
+	+touch $@
 
 $(_UNITS_src_src): $$(patsubst $(_SRCDIR)/%.d,$(MANDIR)/%,$$(@D)) | $$(@D)
 $(_UNITS_src_c):   $$(filter $$(@D)/%.h,$(_UNITS_src_h))

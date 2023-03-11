@@ -27,8 +27,8 @@ $(_SRCDIRS): %/.: | $$(dir %). $(_SRCDIR)/.
 
 
 $(builddir)/%/.:
-	$(info MKDIR	$(@D)/)
-	$(MKDIR) $(@D)
+	+$(info MKDIR	$(@D)/)
+	+$(MKDIR) $(@D)
 
 
 .PHONY: build
