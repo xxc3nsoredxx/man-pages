@@ -11,7 +11,7 @@
 .SH NAME
 unicode \- universal character set
 .SH DESCRIPTION
-The international standard ISO 10646 defines the
+The international standard ISO/IEC 10646 defines the
 Universal Character Set (UCS).
 UCS contains all characters of all other character set standards.
 It also guarantees "round-trip compatibility";
@@ -41,7 +41,7 @@ including those provided by TeX, Postscript, APL, MS-DOS, MS-Windows,
 Macintosh, OCR fonts, as well as many word processing and publishing
 systems, and more are being added.
 .PP
-The UCS standard (ISO 10646) describes a
+The UCS standard (ISO/IEC 10646) describes a
 31-bit character set architecture
 consisting of 128 24-bit
 .IR groups ,
@@ -52,12 +52,12 @@ made up of 256 8-bit
 with 256
 .I column
 positions, one for each character.
-Part 1 of the standard (ISO 10646-1)
+Part 1 of the standard (ISO/IEC 10646-1)
 defines the first 65534 code positions (0x0000 to 0xfffd), which form
 the
 .I Basic Multilingual Plane
 (BMP), that is plane 0 in group 0.
-Part 2 of the standard (ISO 10646-2)
+Part 2 of the standard (ISO/IEC 10646-2)
 adds characters to group 0 outside the BMP in several
 .I "supplementary planes"
 in the range 0x10000 to 0x10ffff.
@@ -68,7 +68,7 @@ foreseeable future.
 The BMP contains all characters found in the
 commonly used other character sets.
 The supplemental planes added by
-ISO 10646-2 cover only more exotic characters for special scientific,
+ISO/IEC 10646-2 cover only more exotic characters for special scientific,
 dictionary printing, publishing industry, higher-level protocol and
 enthusiast needs.
 .PP
@@ -107,7 +107,7 @@ script or for mathematical typesetting and users of the International
 Phonetic Alphabet.
 .SS Implementation levels
 As not all systems are expected to support advanced mechanisms like
-combining characters, ISO 10646-1 specifies the following three
+combining characters, ISO/IEC 10646-1 specifies the following three
 .I implementation levels
 of UCS:
 .TP 0.9i
@@ -128,8 +128,8 @@ All UCS characters are supported.
 The Unicode 3.0 Standard
 published by the Unicode Consortium
 contains exactly the UCS Basic Multilingual Plane
-at implementation level 3, as described in ISO 10646-1:2000.
-Unicode 3.1 added the supplemental planes of ISO 10646-2.
+at implementation level 3, as described in ISO/IEC 10646-1:2000.
+Unicode 3.1 added the supplemental planes of ISO/IEC 10646-2.
 The Unicode standard and
 technical reports published by the Unicode Consortium provide much
 additional information on the semantics and recommended usages of
