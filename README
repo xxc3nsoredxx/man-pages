@@ -55,7 +55,7 @@ Files
    scripts/*
        Useful scripts for maintainers.
 
-   tmp/
+   .tmp/
        Default directory for files created by the build system.
 
 Versions

@@ -133,7 +133,7 @@ help-variables:
 	$(info	)
 	$(info	# Directory variables:)
 	$(info	)
-	$(info	builddir	tmp)
+	$(info	builddir	.tmp)
 	$(info	DESTDIR		)
 	$(info	prefix		/usr/local)
 	$(info	mandir		$$(datarootdir)/man)

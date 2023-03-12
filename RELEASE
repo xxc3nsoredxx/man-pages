@@ -109,7 +109,7 @@ Description
 
             -  Sign the tarball:
 
-                   $ cd tmp/
+                   $ cd .tmp/
                    $ gpg --detach-sign --armor man-pages-${new}.tar
 
             -  Upload the tarball:
@@ -194,7 +194,7 @@ Files
    lsm
        Linux software map.  See also <https://lsm.qqx.org/>.
 
-   tmp/man-pages-<version>.tar{,.xz,.gz}
+   .tmp/man-pages-<version>.tar{,.xz,.gz}
        Generated tarballs.  You can generate all with 'make dist', or generate
        only some of them, with 'make dist-tar', 'make dist-xz', or
        'make dist-gz'.
