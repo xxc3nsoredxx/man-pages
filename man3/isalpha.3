@@ -244,10 +244,9 @@ T}	Thread safety	MT-Safe
 .sp 1
 .\" FIXME: need a thread-safety statement about the *_l functions
 .SH STANDARDS
-POSIX.1-2001 specifies
+C89 specifies
 .BR isalnum (),
 .BR isalpha (),
-.BR isblank (),
 .BR iscntrl (),
 .BR isdigit (),
 .BR isgraph (),
@@ -258,9 +257,16 @@ POSIX.1-2001 specifies
 .BR isupper (),
 and
 .BR isxdigit (),
-and also
+but not
 .BR isascii ()
-(as an XSI extension).
+and
+.BR isblank ().
+POSIX.1-2001
+also specifies those functions, and also
+.BR isascii ()
+(as an XSI extension)
+and
+.BR isblank ().
 C99 specifies all of the preceding functions, except
 .BR isascii ().
 .PP
